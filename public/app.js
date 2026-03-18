@@ -403,7 +403,7 @@
             </span>
           </td>
           <td class="py-3 px-4 hidden md:table-cell">${statementLink}</td>
-          <td class="py-3 px-4 hidden lg:table-cell text-sm text-gray-400">${checkedDate}</td>
+          <td class="py-3 px-4 hidden lg:table-cell text-sm text-gray-600">${checkedDate}</td>
         </tr>`;
       })
       .join("");
@@ -420,6 +420,29 @@
 
   // ── Setup ──
 
+  const SORT_LABELS = {
+    name: "webshop naam",
+    category: "categorie",
+    status: "status",
+    date: "datum",
+  };
+
+  function updateSortAriaLabels() {
+    document.querySelectorAll(".sort-btn").forEach((btn) => {
+      const key = btn.dataset.sort;
+      const label = SORT_LABELS[key] || key;
+      if (currentSort.key === key) {
+        const dir = currentSort.direction === "asc" ? "oplopend" : "aflopend";
+        btn.setAttribute(
+          "aria-label",
+          `Sorteer op ${label}, huidige sortering: ${dir}`
+        );
+      } else {
+        btn.setAttribute("aria-label", `Sorteer op ${label}`);
+      }
+    });
+  }
+
   function setupSorting() {
     document.querySelectorAll(".sort-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -435,6 +458,7 @@
           .querySelectorAll(".sort-btn")
           .forEach((b) => b.classList.remove("asc", "desc"));
         btn.classList.add(currentSort.direction);
+        updateSortAriaLabels();
         renderTable();
       });
     });
@@ -444,6 +468,10 @@
     document
       .getElementById("filter-search")
       .addEventListener("input", renderTable);
+    const searchBtn = document.getElementById("search-btn");
+    if (searchBtn) {
+      searchBtn.addEventListener("click", renderTable);
+    }
     document
       .getElementById("filter-category")
       .addEventListener("change", renderTable);
@@ -476,6 +504,7 @@
 
     const nameBtn = document.querySelector('[data-sort="name"]');
     if (nameBtn) nameBtn.classList.add("asc");
+    updateSortAriaLabels();
   }
 
   init();

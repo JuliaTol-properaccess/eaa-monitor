@@ -42,9 +42,9 @@
     /* Sort buttons */
     .sort-btn { cursor: pointer; user-select: none; }
     .sort-btn:hover { text-decoration: underline; }
-    .sort-btn::after { content: ' \2195'; opacity: 0.3; font-size: 0.75em; }
-    .sort-btn.asc::after { content: ' \2191'; opacity: 1; }
-    .sort-btn.desc::after { content: ' \2193'; opacity: 1; }
+    .sort-btn::after { content: ' \2195'; color: #6B7280; font-size: 0.75em; }
+    .sort-btn.asc::after { content: ' \2191'; color: #1F2937; }
+    .sort-btn.desc::after { content: ' \2193'; color: #1F2937; }
 
     /* Chart bars */
     .chart-bar { transition: width 0.6s ease-out; }
@@ -89,14 +89,10 @@
 
         <!-- Search -->
         <div class="mt-6 max-w-xl">
-          <label for="filter-search" class="sr-only">Zoek een webshop</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-              </svg>
-            </div>
-            <input type="search" id="filter-search" placeholder="Zoek een webshop, bijv. bol.com, Coolblue..." class="w-full pl-11 pr-4 py-3 rounded-lg text-darkblue text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-magenta">
+          <label for="filter-search" class="block text-sm font-semibold text-white mb-2">Zoek een webshop</label>
+          <div class="flex gap-2">
+            <input type="search" id="filter-search" placeholder="bijv. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-lg text-darkblue text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-magenta">
+            <button type="button" id="search-btn" class="bg-magenta hover:bg-magenta-dark text-white px-5 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-white">Zoeken</button>
           </div>
         </div>
       </div>
@@ -200,17 +196,17 @@
             <thead>
               <tr class="bg-gray-50 border-b border-gray-200 text-left">
                 <th scope="col" class="py-3 px-4">
-                  <button class="sort-btn font-bold text-darkblue" data-sort="name">Webshop</button>
+                  <button class="sort-btn font-bold text-darkblue" data-sort="name" aria-label="Sorteer op webshop naam">Webshop</button>
                 </th>
                 <th scope="col" class="py-3 px-4 hidden sm:table-cell">
-                  <button class="sort-btn font-bold text-darkblue" data-sort="category">Categorie</button>
+                  <button class="sort-btn font-bold text-darkblue" data-sort="category" aria-label="Sorteer op categorie">Categorie</button>
                 </th>
                 <th scope="col" class="py-3 px-4">
-                  <button class="sort-btn font-bold text-darkblue" data-sort="status">Status</button>
+                  <button class="sort-btn font-bold text-darkblue" data-sort="status" aria-label="Sorteer op status">Status</button>
                 </th>
                 <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-darkblue">Verklaring</th>
                 <th scope="col" class="py-3 px-4 hidden lg:table-cell">
-                  <button class="sort-btn font-bold text-darkblue" data-sort="date">Gecontroleerd</button>
+                  <button class="sort-btn font-bold text-darkblue" data-sort="date" aria-label="Sorteer op datum">Gecontroleerd</button>
                 </th>
               </tr>
             </thead>
