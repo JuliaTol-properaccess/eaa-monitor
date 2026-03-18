@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Monitor — Toegankelijkheidsverklaringen Nederlandse webshops</title>
+  <meta name="description" content="Overzicht van Nederlandse webshops en of ze voldoen aan de EAA door een toegankelijkheidsverklaring te publiceren.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            magenta: '#A30D4B',
+            petrol: '#004050',
+            darkblue: '#1F2937',
+            lightgrey: '#F5F5F5',
+          },
+          fontFamily: {
+            heading: ['"Nunito Sans"', 'sans-serif'],
+            body: ['Nunito', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Nunito', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Nunito Sans', sans-serif; }
+    .sort-btn { cursor: pointer; user-select: none; }
+    .sort-btn:hover { text-decoration: underline; }
+    .sort-btn::after { content: ' \2195'; opacity: 0.4; }
+    .sort-btn.asc::after { content: ' \2191'; opacity: 1; }
+    .sort-btn.desc::after { content: ' \2193'; opacity: 1; }
+  </style>
+</head>
+<body class="bg-white text-darkblue">
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-magenta focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">
+    Ga naar hoofdinhoud
+  </a>
+
+  <!-- Header -->
+  <header class="bg-darkblue text-white py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold font-heading">EAA Monitor</h1>
+      <p class="mt-2 text-lg opacity-90">Hebben Nederlandse webshops een toegankelijkheidsverklaring?</p>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-6xl mx-auto px-4 py-8">
+
+    <!-- Summary stats -->
+    <section aria-label="Samenvatting" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-lightgrey rounded-lg p-4 text-center">
+        <p class="text-3xl font-bold font-heading" id="stat-total">-</p>
+        <p class="text-sm mt-1">Gecontroleerd</p>
+      </div>
+      <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+        <p class="text-3xl font-bold font-heading text-green-700" id="stat-with">-</p>
+        <p class="text-sm mt-1 text-green-700">Met verklaring</p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+        <p class="text-3xl font-bold font-heading text-magenta" id="stat-without">-</p>
+        <p class="text-sm mt-1 text-magenta">Zonder verklaring</p>
+      </div>
+      <div class="bg-lightgrey rounded-lg p-4 text-center">
+        <p class="text-3xl font-bold font-heading text-petrol" id="stat-percentage">-</p>
+        <p class="text-sm mt-1">Voldoet</p>
+      </div>
+    </section>
+
+    <!-- Progress bar -->
+    <div class="mb-8" role="img" aria-label="Voortgangsbalk" id="progress-container">
+      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden flex">
+        <div id="progress-with" class="bg-green-600 h-4 transition-all duration-500" style="width: 0%"></div>
+        <div id="progress-error" class="bg-gray-400 h-4 transition-all duration-500" style="width: 0%"></div>
+      </div>
+      <p class="text-sm text-gray-500 mt-1" id="progress-label"></p>
+    </div>
+
+    <!-- Filters -->
+    <section aria-label="Filters" class="flex flex-wrap gap-4 mb-6">
+      <div>
+        <label for="filter-search" class="block text-sm font-bold mb-1">Zoeken</label>
+        <input type="search" id="filter-search" placeholder="Webshop naam..." class="border border-gray-300 rounded px-3 py-2 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol">
+      </div>
+      <div>
+        <label for="filter-category" class="block text-sm font-bold mb-1">Categorie</label>
+        <select id="filter-category" class="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol">
+          <option value="">Alle categorieen</option>
+        </select>
+      </div>
+      <div>
+        <label for="filter-status" class="block text-sm font-bold mb-1">Status</label>
+        <select id="filter-status" class="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol">
+          <option value="">Alle</option>
+          <option value="found">Met verklaring</option>
+          <option value="not_found">Zonder verklaring</option>
+          <option value="error">Fout bij controle</option>
+        </select>
+      </div>
+      <div class="flex items-end">
+        <p class="text-sm text-gray-500 py-2" id="filter-count"></p>
+      </div>
+    </section>
+
+    <!-- Data table -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm" id="results-table">
+        <caption class="sr-only">Overzicht van Nederlandse webshops en hun toegankelijkheidsverklaring status</caption>
+        <thead>
+          <tr class="border-b-2 border-darkblue text-left">
+            <th scope="col" class="py-3 px-2">
+              <button class="sort-btn font-bold" data-sort="name">Webshop</button>
+            </th>
+            <th scope="col" class="py-3 px-2">
+              <button class="sort-btn font-bold" data-sort="category">Categorie</button>
+            </th>
+            <th scope="col" class="py-3 px-2">
+              <button class="sort-btn font-bold" data-sort="status">Status</button>
+            </th>
+            <th scope="col" class="py-3 px-2">Verklaring</th>
+            <th scope="col" class="py-3 px-2 hidden md:table-cell">
+              <button class="sort-btn font-bold" data-sort="date">Gecontroleerd</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="results-body">
+          <tr>
+            <td colspan="5" class="py-8 text-center text-gray-500">Data laden...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Last updated -->
+    <p class="text-sm text-gray-500 mt-6" id="last-updated"></p>
+
+  </main>
+
+  <!-- Footer with explanation -->
+  <footer class="bg-lightgrey mt-12 py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-xl font-bold font-heading mb-4">Over deze monitor</h2>
+      <div class="grid md:grid-cols-2 gap-8 text-sm leading-relaxed">
+        <div>
+          <h3 class="font-bold mb-2">Wat is de EAA?</h3>
+          <p>De European Accessibility Act (EAA) verplicht commerciele organisaties die producten of diensten aan consumenten aanbieden om hun digitale kanalen toegankelijk te maken. In Nederland is deze wet sinds juni 2025 van kracht. Een van de vereisten is het publiceren van een toegankelijkheidsverklaring.</p>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">Methodologie</h3>
+          <p>Deze monitor controleert automatisch de footer van Nederlandse webshops op links naar een toegankelijkheidsverklaring. We zoeken op trefwoorden als "toegankelijkheid" en "accessibility" in linktekst en URL's. De controle vindt wekelijks plaats.</p>
+          <p class="mt-2">Let op: het hebben van een link naar een verklaring betekent niet automatisch dat de website ook daadwerkelijk toegankelijk is. Dit is slechts een eerste indicatie.</p>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mt-6">Een initiatief van Proper Access — specialist in digitale toegankelijkheid.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

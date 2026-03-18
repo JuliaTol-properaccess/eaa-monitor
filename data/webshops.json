@@ -1,0 +1,482 @@
+[
+  {
+    "name": "bol.com",
+    "url": "https://www.bol.com",
+    "category": "marketplace"
+  },
+  {
+    "name": "Coolblue",
+    "url": "https://www.coolblue.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Zalando",
+    "url": "https://www.zalando.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Albert Heijn",
+    "url": "https://www.ah.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Wehkamp",
+    "url": "https://www.wehkamp.nl",
+    "category": "marketplace"
+  },
+  {
+    "name": "MediaMarkt",
+    "url": "https://www.mediamarkt.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "HEMA",
+    "url": "https://www.hema.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kruidvat",
+    "url": "https://www.kruidvat.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Amazon.nl",
+    "url": "https://www.amazon.nl",
+    "category": "marketplace"
+  },
+  {
+    "name": "Decathlon",
+    "url": "https://www.decathlon.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Jumbo",
+    "url": "https://www.jumbo.com",
+    "category": "supermarkt"
+  },
+  {
+    "name": "IKEA",
+    "url": "https://www.ikea.com/nl/nl/",
+    "category": "wonen"
+  },
+  {
+    "name": "H&M",
+    "url": "https://www2.hm.com/nl_nl/index.html",
+    "category": "mode"
+  },
+  {
+    "name": "Booking.com",
+    "url": "https://www.booking.com",
+    "category": "overig"
+  },
+  {
+    "name": "Thuisbezorgd",
+    "url": "https://www.thuisbezorgd.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Picnic",
+    "url": "https://www.picnic.app/nl/",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Rituals",
+    "url": "https://www.rituals.com/nl-nl/",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Etos",
+    "url": "https://www.etos.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Blokker",
+    "url": "https://www.blokker.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Praxis",
+    "url": "https://www.praxis.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "GAMMA",
+    "url": "https://www.gamma.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Hornbach",
+    "url": "https://www.hornbach.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Fonq",
+    "url": "https://www.fonq.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Bever",
+    "url": "https://www.bever.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Perry Sport",
+    "url": "https://www.perrysport.nl",
+    "category": "sport"
+  },
+  {
+    "name": "JD Sports",
+    "url": "https://www.jdsports.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Nike",
+    "url": "https://www.nike.com/nl/",
+    "category": "sport"
+  },
+  {
+    "name": "Adidas",
+    "url": "https://www.adidas.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Zara",
+    "url": "https://www.zara.com/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "C&A",
+    "url": "https://www.c-and-a.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "About You",
+    "url": "https://www.aboutyou.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Omoda",
+    "url": "https://www.omoda.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Sacha",
+    "url": "https://www.sacha.nl",
+    "category": "mode"
+  },
+  {
+    "name": "WE Fashion",
+    "url": "https://www.wefashion.com/nl-NL/",
+    "category": "mode"
+  },
+  {
+    "name": "Scotch & Soda",
+    "url": "https://www.scotchandsoda.com/nl-nl/",
+    "category": "mode"
+  },
+  {
+    "name": "ONLY",
+    "url": "https://www.only.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Vero Moda",
+    "url": "https://www.veromoda.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Jack & Jones",
+    "url": "https://www.jackjones.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Bijenkorf",
+    "url": "https://www.debijenkorf.nl",
+    "category": "marketplace"
+  },
+  {
+    "name": "Leen Bakker",
+    "url": "https://www.leenbakker.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Kwantum",
+    "url": "https://www.kwantum.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Jysk",
+    "url": "https://www.jysk.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Karwei",
+    "url": "https://www.karwei.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Action",
+    "url": "https://www.action.com/nl-nl/",
+    "category": "overig"
+  },
+  {
+    "name": "Trekpleister",
+    "url": "https://www.trekpleister.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Holland & Barrett",
+    "url": "https://www.hollandandbarrett.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Douglas",
+    "url": "https://www.douglas.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "ICI Paris XL",
+    "url": "https://www.iciparisxl.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Sephora",
+    "url": "https://www.sephora.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Bruna",
+    "url": "https://www.bruna.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Bookspot",
+    "url": "https://www.bookspot.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Intertoys",
+    "url": "https://www.intertoys.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Lidl",
+    "url": "https://www.lidl.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Plus",
+    "url": "https://www.plus.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Dirk",
+    "url": "https://www.dirk.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Crisp",
+    "url": "https://www.crisp.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "KPN",
+    "url": "https://www.kpn.com",
+    "category": "elektronica"
+  },
+  {
+    "name": "T-Mobile",
+    "url": "https://www.t-mobile.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Vodafone",
+    "url": "https://www.vodafone.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Belsimpel",
+    "url": "https://www.belsimpel.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Alternate",
+    "url": "https://www.alternate.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Azerty",
+    "url": "https://www.azerty.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Megekko",
+    "url": "https://www.megekko.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Expert",
+    "url": "https://www.expert.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "BCC",
+    "url": "https://www.bcc.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Greetz",
+    "url": "https://www.greetz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hallmark",
+    "url": "https://www.hallmark.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fleurop",
+    "url": "https://www.fleurop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vidaxl",
+    "url": "https://www.vidaxl.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Pets Place",
+    "url": "https://www.petsplace.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zooplus",
+    "url": "https://www.zooplus.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Snipes",
+    "url": "https://www.snipes.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Foot Locker",
+    "url": "https://www.footlocker.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Zeeman",
+    "url": "https://www.zeeman.com/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Bristol",
+    "url": "https://www.bristol.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Van Haren",
+    "url": "https://www.vanharen.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Nelson",
+    "url": "https://www.nelson.nl",
+    "category": "mode"
+  },
+  {
+    "name": "TUI",
+    "url": "https://www.tui.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sunweb",
+    "url": "https://www.sunweb.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Corendon",
+    "url": "https://www.corendon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "NS",
+    "url": "https://www.ns.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Swiss Sense",
+    "url": "https://www.swisssense.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Dille & Kamille",
+    "url": "https://www.dille-kamille.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Lampenlicht",
+    "url": "https://www.lampenlicht.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Manfield",
+    "url": "https://www.manfield.com/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Intersport",
+    "url": "https://www.intersport.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Runners Point",
+    "url": "https://www.runnerspoint.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Thuiswinkel",
+    "url": "https://www.thuiswinkel.org",
+    "category": "overig"
+  },
+  {
+    "name": "Parfumerie.nl",
+    "url": "https://www.parfumerie.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Notino",
+    "url": "https://www.notino.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Samsung",
+    "url": "https://www.samsung.com/nl/",
+    "category": "elektronica"
+  },
+  {
+    "name": "Apple",
+    "url": "https://www.apple.com/nl/",
+    "category": "elektronica"
+  },
+  {
+    "name": "Dyson",
+    "url": "https://www.dyson.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Philips",
+    "url": "https://www.philips.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Oral-B",
+    "url": "https://www.oral-b.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Hunkemoller",
+    "url": "https://www.hunkemoller.nl",
+    "category": "mode"
+  }
+]
