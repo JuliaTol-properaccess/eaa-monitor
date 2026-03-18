@@ -132,7 +132,17 @@ def check_webshop(page, url):
             "error": str(e),
         }
 
-    html = page.content()
+    try:
+        html = page.content()
+    except Exception as e:
+        return {
+            "has_statement": False,
+            "statement_url": None,
+            "statement_link_text": None,
+            "scrape_status": "error",
+            "error": str(e),
+        }
+
     soup = BeautifulSoup(html, "html.parser")
 
     # Try footer areas first

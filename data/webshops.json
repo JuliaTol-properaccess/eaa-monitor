@@ -1,18 +1,183 @@
 [
   {
-    "name": "bol.com",
-    "url": "https://www.bol.com",
-    "category": "marketplace"
+    "name": "123 3D B.V.",
+    "url": "https://www.123-3D.nl",
+    "category": "overig"
   },
   {
-    "name": "Coolblue",
-    "url": "https://www.coolblue.nl",
+    "name": "123Accu B.V.",
+    "url": "https://www.123accu.nl",
+    "category": "overig"
+  },
+  {
+    "name": "123apparatuur.nl",
+    "url": "https://www.123apparatuur.nl",
+    "category": "overig"
+  },
+  {
+    "name": "123gordijn.nl",
+    "url": "https://www.123gordijn.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "123impregneer",
+    "url": "https://www.123impregneer.nl",
+    "category": "overig"
+  },
+  {
+    "name": "123inkt.nl",
+    "url": "https://www.123inkt.nl",
     "category": "elektronica"
   },
   {
-    "name": "Zalando",
-    "url": "https://www.zalando.nl",
+    "name": "123led B.V.",
+    "url": "https://www.123led.nl",
+    "category": "overig"
+  },
+  {
+    "name": "123Lens",
+    "url": "https://www.123lens.nl",
+    "category": "overig"
+  },
+  {
+    "name": "123schoon B.V.",
+    "url": "https://www.123schoon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "123test",
+    "url": "https://www.123test.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "123vitamines",
+    "url": "https://www.123vitamines.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "123Watches.nl",
+    "url": "https://www.123watches.nl",
+    "category": "overig"
+  },
+  {
+    "name": "18Toys.nl",
+    "url": "https://www.18toys.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "1op1dieet.nl",
+    "url": "https://client.1op1dieet.nl",
+    "category": "overig"
+  },
+  {
+    "name": "24-drukwerk.nl",
+    "url": "https://www.24-drukwerk.nl",
+    "category": "overig"
+  },
+  {
+    "name": "24high.nl",
+    "url": "https://24high.nl",
+    "category": "overig"
+  },
+  {
+    "name": "2ehands-fitness.shop",
+    "url": "https://2ehands-fitness.shop",
+    "category": "sport"
+  },
+  {
+    "name": "2ZiP BV",
+    "url": "https://www.2zip.nl",
+    "category": "overig"
+  },
+  {
+    "name": "4goodz.nl",
+    "url": "https://4goodz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "50plusmatch.nl",
+    "url": "https://www.50plusmatch.nl",
+    "category": "overig"
+  },
+  {
+    "name": "A. Vogel",
+    "url": "https://www.avogel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "A2 KOI",
+    "url": "https://www.a2koi.nl",
+    "category": "overig"
+  },
+  {
+    "name": "About You",
+    "url": "https://www.aboutyou.nl",
     "category": "mode"
+  },
+  {
+    "name": "About You - ENG",
+    "url": "https://en.aboutyou.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Absolute Football",
+    "url": "https://www.absoluteteamsport.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Acid Vendetta",
+    "url": "https://acidvendetta.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ACSI",
+    "url": "https://www.webshop.acsi.eu/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Action",
+    "url": "https://www.action.com/nl-nl/",
+    "category": "overig"
+  },
+  {
+    "name": "Action Nederland B.V.",
+    "url": "https://shop.action.com",
+    "category": "overig"
+  },
+  {
+    "name": "Ada Store",
+    "url": "https://www.adastore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Adidas",
+    "url": "https://www.adidas.nl",
+    "category": "sport"
+  },
+  {
+    "name": "AEDwinkel.nl",
+    "url": "https://www.aedwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "afdekzeilwinkel.nl",
+    "url": "https://www.afdekzeilwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Afzuigkap.nl",
+    "url": "https://www.afzuigkap.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Agrishop.nl",
+    "url": "https://www.agrishop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Akoestiekwinkel.nl",
+    "url": "https://www.akoestiekwinkel.nl",
+    "category": "overig"
   },
   {
     "name": "Albert Heijn",
@@ -20,24 +185,64 @@
     "category": "supermarkt"
   },
   {
-    "name": "Wehkamp",
-    "url": "https://www.wehkamp.nl",
-    "category": "marketplace"
-  },
-  {
-    "name": "MediaMarkt",
-    "url": "https://www.mediamarkt.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "HEMA",
-    "url": "https://www.hema.nl",
+    "name": "AlkaVitae Benelux",
+    "url": "https://www.alka.nl",
     "category": "overig"
   },
   {
-    "name": "Kruidvat",
-    "url": "https://www.kruidvat.nl",
-    "category": "drogisterij"
+    "name": "All Over Piercings",
+    "url": "https://www.alloverpiercings.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Alleenonline.nl",
+    "url": "https://www.alleenonline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Allekabels.nl",
+    "url": "https://www.allekabels.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Allezadenkopen.nl",
+    "url": "https://www.allezadenkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "allnatura Vertriebs GmbH & Co. KG",
+    "url": "https://www.allnatura.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ALLPAX GmbH & Co. KG",
+    "url": "https://www.allpax.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Allprepare.com",
+    "url": "https://www.allprepare.com",
+    "category": "overig"
+  },
+  {
+    "name": "Alternate",
+    "url": "https://www.alternate.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "AluminiumOpMaat",
+    "url": "https://www.aluminiumopmaat.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Amacx Sports Nutrition",
+    "url": "https://www.amacx.nl",
+    "category": "sport"
+  },
+  {
+    "name": "amagard.com",
+    "url": "https://www.amagard.com/nl",
+    "category": "overig"
   },
   {
     "name": "Amazon.nl",
@@ -45,73 +250,298 @@
     "category": "marketplace"
   },
   {
-    "name": "Decathlon",
-    "url": "https://www.decathlon.nl",
+    "name": "Amefa.nl",
+    "url": "https://www.amefa.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Amsterdams Munt Kantoor",
+    "url": "https://winkel.amsterdam-munten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Annadiva.nl",
+    "url": "https://www.annadiva.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ANWB.nl",
+    "url": "https://www.anwb.nl/webwinkel",
+    "category": "overig"
+  },
+  {
+    "name": "Apollo Reizen",
+    "url": "https://www.apolloreizen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Apple",
+    "url": "https://www.apple.com/nl/",
+    "category": "elektronica"
+  },
+  {
+    "name": "AQ Living BV",
+    "url": "https://www.aq-living.com",
+    "category": "overig"
+  },
+  {
+    "name": "Arctic-living",
+    "url": "https://www.arctic-living.com",
+    "category": "overig"
+  },
+  {
+    "name": "Astrid & Thérèse",
+    "url": "https://www.astridentherese.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Atmooz",
+    "url": "https://atmooz.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "AutoStickerOriginal",
+    "url": "https://www.autostickeroriginal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Autoverzekering.nl",
+    "url": "https://www.autoverzekering.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Avantisport",
+    "url": "https://www.avantisport.nl",
     "category": "sport"
   },
   {
-    "name": "Jumbo",
-    "url": "https://www.jumbo.com",
-    "category": "supermarkt"
-  },
-  {
-    "name": "IKEA",
-    "url": "https://www.ikea.com/nl/nl/",
+    "name": "AVH-Outdoor Tuinmeubelen",
+    "url": "https://avh-outdoor.nl",
     "category": "wonen"
   },
   {
-    "name": "H&M",
-    "url": "https://www2.hm.com/nl_nl/index.html",
+    "name": "Avoid",
+    "url": "https://www.avoid-online.nl",
+    "category": "overig"
+  },
+  {
+    "name": "AYN Juweliers",
+    "url": "https://www.aynjuweliers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Azerty",
+    "url": "https://www.azerty.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "B2Ctelecom.nl",
+    "url": "https://www.b2ctelecom.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Baby-Dump.nl",
+    "url": "https://www.baby-dump.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Babybum.nl",
+    "url": "https://Babybum.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "BabyMax.nl",
+    "url": "https://www.babymax.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Babypark",
+    "url": "https://www.babypark.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "BabyPlanet",
+    "url": "https://www.babyplanet.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Babywinkel.be",
+    "url": "https://www.babywinkel.be",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Babywinkel.nl",
+    "url": "https://www.babywinkel.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Bagagekoerier.nl",
+    "url": "https://Bagagekoerier.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Baitshop.nl",
+    "url": "https://www.baitshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bak & Co",
+    "url": "https://www.bakenco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Baldur-Nederland",
+    "url": "https://www.baldur-nederland.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bamboo Basics",
+    "url": "https://www.bamboobasics.com",
+    "category": "overig"
+  },
+  {
+    "name": "BandenConcurrent",
+    "url": "https://www.bandenconcurrent.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Barbecuewinkel.com",
+    "url": "https://www.barbecuewinkel.com",
+    "category": "overig"
+  },
+  {
+    "name": "Barco Lichttotaal",
+    "url": "https://www.barco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "BAUHAUS Nederland C.V.",
+    "url": "https://nl.bauhaus",
+    "category": "overig"
+  },
+  {
+    "name": "BBB Cycling",
+    "url": "https://bbbcycling.com",
+    "category": "overig"
+  },
+  {
+    "name": "BBQ Experience Center",
+    "url": "https://www.bbqexperiencecenter.nl",
+    "category": "overig"
+  },
+  {
+    "name": "BBQthuisbezorgd",
+    "url": "https://www.bbqthuisbezorgd.nl",
+    "category": "overig"
+  },
+  {
+    "name": "BCC",
+    "url": "https://www.bcc.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "beautyplaza.com",
+    "url": "https://www.beautyplaza.com",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Beddenreus.nl",
+    "url": "https://www.beddenreus.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Beef Boutique",
+    "url": "https://beefboutique.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Beenmode.nl",
+    "url": "https://www.beenmode.nl",
     "category": "mode"
   },
   {
-    "name": "Booking.com",
-    "url": "https://www.booking.com",
+    "name": "Belsimpel",
+    "url": "https://www.belsimpel.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Belwinkel.nl",
+    "url": "https://www.belwinkel.nl",
     "category": "overig"
   },
   {
-    "name": "Thuisbezorgd",
-    "url": "https://www.thuisbezorgd.nl",
+    "name": "Bemmel & Kroon",
+    "url": "https://bemmelenkroon.nl",
     "category": "overig"
   },
   {
-    "name": "Picnic",
-    "url": "https://www.picnic.app/nl/",
-    "category": "supermarkt"
+    "name": "Benni & Ninni",
+    "url": "https://benni-en-ninni.com",
+    "category": "overig"
   },
   {
-    "name": "Rituals",
-    "url": "https://www.rituals.com/nl-nl/",
-    "category": "drogisterij"
+    "name": "Berden.nl",
+    "url": "https://www.berden.nl/wonen-en-slapen",
+    "category": "overig"
   },
   {
-    "name": "Etos",
-    "url": "https://www.etos.nl",
-    "category": "drogisterij"
+    "name": "Bergfreunde GmbH",
+    "url": "https://bergfreunde.nl",
+    "category": "overig"
   },
   {
-    "name": "Blokker",
-    "url": "https://www.blokker.nl",
-    "category": "wonen"
+    "name": "Berkeyexpert.nl",
+    "url": "https://www.berkeyexpert.nl",
+    "category": "overig"
   },
   {
-    "name": "Praxis",
-    "url": "https://www.praxis.nl",
-    "category": "wonen"
+    "name": "BES LED",
+    "url": "https://www.besled.nl",
+    "category": "overig"
   },
   {
-    "name": "GAMMA",
-    "url": "https://www.gamma.nl",
-    "category": "wonen"
+    "name": "Beschermhoesshop",
+    "url": "https://www.beschermhoesshop.nl",
+    "category": "overig"
   },
   {
-    "name": "Hornbach",
-    "url": "https://www.hornbach.nl",
-    "category": "wonen"
+    "name": "Beslist.nl",
+    "url": "https://www.beslist.nl",
+    "category": "overig"
   },
   {
-    "name": "Fonq",
-    "url": "https://www.fonq.nl",
+    "name": "Bestekshop.nl",
+    "url": "https://www.bestekshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Betersport.nl",
+    "url": "https://www.betersport.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Beterwitgoed.nl",
+    "url": "https://www.beterwitgoed.nl",
+    "category": "overig"
+  },
+  {
+    "name": "BetonDingen.nl",
+    "url": "https://www.betondingen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Betonfabriek BV",
+    "url": "https://www.betonfabriek.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Better Nights",
+    "url": "https://betternights.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "BEUK Meubels",
+    "url": "https://www.beukmeubels.nl",
     "category": "wonen"
   },
   {
@@ -120,134 +550,134 @@
     "category": "sport"
   },
   {
-    "name": "Perry Sport",
-    "url": "https://www.perrysport.nl",
-    "category": "sport"
-  },
-  {
-    "name": "JD Sports",
-    "url": "https://www.jdsports.nl",
-    "category": "sport"
-  },
-  {
-    "name": "Nike",
-    "url": "https://www.nike.com/nl/",
-    "category": "sport"
-  },
-  {
-    "name": "Adidas",
-    "url": "https://www.adidas.nl",
-    "category": "sport"
-  },
-  {
-    "name": "Zara",
-    "url": "https://www.zara.com/nl/",
-    "category": "mode"
-  },
-  {
-    "name": "C&A",
-    "url": "https://www.c-and-a.com/nl/nl/",
-    "category": "mode"
-  },
-  {
-    "name": "About You",
-    "url": "https://www.aboutyou.nl",
-    "category": "mode"
-  },
-  {
-    "name": "Omoda",
-    "url": "https://www.omoda.nl",
-    "category": "mode"
-  },
-  {
-    "name": "Sacha",
-    "url": "https://www.sacha.nl",
-    "category": "mode"
-  },
-  {
-    "name": "WE Fashion",
-    "url": "https://www.wefashion.com/nl-NL/",
-    "category": "mode"
-  },
-  {
-    "name": "Scotch & Soda",
-    "url": "https://www.scotchandsoda.com/nl-nl/",
-    "category": "mode"
-  },
-  {
-    "name": "ONLY",
-    "url": "https://www.only.com/nl/nl/",
-    "category": "mode"
-  },
-  {
-    "name": "Vero Moda",
-    "url": "https://www.veromoda.com/nl/nl/",
-    "category": "mode"
-  },
-  {
-    "name": "Jack & Jones",
-    "url": "https://www.jackjones.com/nl/nl/",
-    "category": "mode"
-  },
-  {
     "name": "Bijenkorf",
     "url": "https://www.debijenkorf.nl",
     "category": "marketplace"
   },
   {
-    "name": "Leen Bakker",
-    "url": "https://www.leenbakker.nl",
-    "category": "wonen"
-  },
-  {
-    "name": "Kwantum",
-    "url": "https://www.kwantum.nl",
-    "category": "wonen"
-  },
-  {
-    "name": "Jysk",
-    "url": "https://www.jysk.nl",
-    "category": "wonen"
-  },
-  {
-    "name": "Karwei",
-    "url": "https://www.karwei.nl",
-    "category": "wonen"
-  },
-  {
-    "name": "Action",
-    "url": "https://www.action.com/nl-nl/",
+    "name": "BijzonderHandig.nl",
+    "url": "https://www.bijzonderhandig.nl",
     "category": "overig"
   },
   {
-    "name": "Trekpleister",
-    "url": "https://www.trekpleister.nl",
+    "name": "bikefamily.nl",
+    "url": "https://www.bikefamily.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Binnenvaartwinkel.nl",
+    "url": "https://www.binnenvaartwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Binorm.nl",
+    "url": "https://www.binorm.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bioflora health products",
+    "url": "https://www.bioflorahealthproducts.nl",
     "category": "drogisterij"
   },
   {
-    "name": "Holland & Barrett",
-    "url": "https://www.hollandandbarrett.nl",
-    "category": "drogisterij"
+    "name": "Bladen.nl",
+    "url": "https://www.bladen.nl",
+    "category": "overig"
   },
   {
-    "name": "Douglas",
-    "url": "https://www.douglas.nl",
-    "category": "drogisterij"
+    "name": "Blessurewijzer",
+    "url": "https://www.blessurewijzer.nl",
+    "category": "overig"
   },
   {
-    "name": "ICI Paris XL",
-    "url": "https://www.iciparisxl.nl",
-    "category": "drogisterij"
+    "name": "Bloeddrukmeter.shop",
+    "url": "https://bloeddrukmeter.shop",
+    "category": "overig"
   },
   {
-    "name": "Sephora",
-    "url": "https://www.sephora.nl",
-    "category": "drogisterij"
+    "name": "Bloem.vip",
+    "url": "https://www.bloem.vip",
+    "category": "overig"
   },
   {
-    "name": "Bruna",
-    "url": "https://www.bruna.nl",
+    "name": "Blokker",
+    "url": "https://www.blokker.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "bloomon",
+    "url": "https://www.bloomon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "BlueMovement",
+    "url": "https://www.bluemovement.com/nl-nl",
+    "category": "overig"
+  },
+  {
+    "name": "Blush",
+    "url": "https://www.blush-jewels.com",
+    "category": "overig"
+  },
+  {
+    "name": "BMW",
+    "url": "https://lifestyle.bmw.com/nl/nl/home",
+    "category": "overig"
+  },
+  {
+    "name": "Bodyfashion Lingerie Born",
+    "url": "https://www.bodyfashion-born.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Boekenbestellen.nl",
+    "url": "https://www.boekenbestellen.nl",
     "category": "boeken"
+  },
+  {
+    "name": "Boekenwereld.com",
+    "url": "https://www.boekenwereld.com",
+    "category": "boeken"
+  },
+  {
+    "name": "Boeketcadeau.nl",
+    "url": "https://www.boeketcadeau.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Boeste",
+    "url": "https://boeste.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Boeties.nl",
+    "url": "https://www.boeties.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bogarden.nl",
+    "url": "https://www.bogarden.nl",
+    "category": "overig"
+  },
+  {
+    "name": "bol.com",
+    "url": "https://www.bol.com",
+    "category": "marketplace"
+  },
+  {
+    "name": "Bold Monkey",
+    "url": "https://www.boldmonkey.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bon Prix France",
+    "url": "https://www.bonprix.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Booking.com",
+    "url": "https://www.booking.com",
+    "category": "overig"
   },
   {
     "name": "Bookspot",
@@ -255,119 +685,99 @@
     "category": "boeken"
   },
   {
-    "name": "Intertoys",
-    "url": "https://www.intertoys.nl",
-    "category": "speelgoed"
-  },
-  {
-    "name": "Lidl",
-    "url": "https://www.lidl.nl",
-    "category": "supermarkt"
-  },
-  {
-    "name": "Plus",
-    "url": "https://www.plus.nl",
-    "category": "supermarkt"
-  },
-  {
-    "name": "Dirk",
-    "url": "https://www.dirk.nl",
-    "category": "supermarkt"
-  },
-  {
-    "name": "Crisp",
-    "url": "https://www.crisp.nl",
-    "category": "supermarkt"
-  },
-  {
-    "name": "KPN",
-    "url": "https://www.kpn.com",
-    "category": "elektronica"
-  },
-  {
-    "name": "T-Mobile",
-    "url": "https://www.t-mobile.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Vodafone",
-    "url": "https://www.vodafone.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Belsimpel",
-    "url": "https://www.belsimpel.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Alternate",
-    "url": "https://www.alternate.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Azerty",
-    "url": "https://www.azerty.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Megekko",
-    "url": "https://www.megekko.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Expert",
-    "url": "https://www.expert.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "BCC",
-    "url": "https://www.bcc.nl",
-    "category": "elektronica"
-  },
-  {
-    "name": "Greetz",
-    "url": "https://www.greetz.nl",
+    "name": "Boom.nl",
+    "url": "https://www.boom.nl",
     "category": "overig"
   },
   {
-    "name": "Hallmark",
-    "url": "https://www.hallmark.nl",
+    "name": "Bosch-Home.nl",
+    "url": "https://www.bosch-home.nl/store",
     "category": "overig"
   },
   {
-    "name": "Fleurop",
-    "url": "https://www.fleurop.nl",
+    "name": "Boska.com",
+    "url": "https://www.boska.com",
     "category": "overig"
   },
   {
-    "name": "Vidaxl",
-    "url": "https://www.vidaxl.nl",
-    "category": "wonen"
-  },
-  {
-    "name": "Pets Place",
-    "url": "https://www.petsplace.nl",
+    "name": "Bostools.nl",
+    "url": "https://www.bostools.nl",
     "category": "overig"
   },
   {
-    "name": "Zooplus",
-    "url": "https://www.zooplus.nl",
+    "name": "BoumanOnline",
+    "url": "https://www.boumanonline.nl",
     "category": "overig"
   },
   {
-    "name": "Snipes",
-    "url": "https://www.snipes.nl",
-    "category": "mode"
+    "name": "Bouwmaterialenkopen.com",
+    "url": "https://www.bouwmaterialenkopen.com",
+    "category": "overig"
   },
   {
-    "name": "Foot Locker",
-    "url": "https://www.footlocker.nl",
-    "category": "mode"
+    "name": "Bouwprofi.nl",
+    "url": "https://www.bouwprofi.nl",
+    "category": "overig"
   },
   {
-    "name": "Zeeman",
-    "url": "https://www.zeeman.com/nl/",
-    "category": "mode"
+    "name": "Bovino",
+    "url": "https://www.bovino.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Boxers.be",
+    "url": "https://www.boxers.be",
+    "category": "overig"
+  },
+  {
+    "name": "boxers.nl",
+    "url": "https://www.boxers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "BoXXer Online B.V.",
+    "url": "https://www.boxxer.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Brabantia",
+    "url": "https://www.brabantia.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Brain balance",
+    "url": "https://shop.charlottelabee.com",
+    "category": "overig"
+  },
+  {
+    "name": "Brandpreventiewinkel",
+    "url": "https://www.brandpreventiewinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "brazilianbikinishop.com",
+    "url": "https://www.brazilianbikinishop.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Breedbandwinkel.nl",
+    "url": "https://www.breedbandwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Brepen",
+    "url": "https://www.brepen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bridgeshop.nl",
+    "url": "https://www.bridgeshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Brisby",
+    "url": "https://www.brisby.nl",
+    "category": "overig"
   },
   {
     "name": "Bristol",
@@ -375,23 +785,303 @@
     "category": "mode"
   },
   {
-    "name": "Van Haren",
-    "url": "https://www.vanharen.nl",
-    "category": "mode"
+    "name": "Bruna",
+    "url": "https://www.bruna.nl",
+    "category": "boeken"
   },
   {
-    "name": "Nelson",
-    "url": "https://www.nelson.nl",
-    "category": "mode"
+    "name": "BRUSHBEAUTY",
+    "url": "https://www.brushbeauty.nl",
+    "category": "drogisterij"
   },
   {
-    "name": "TUI",
-    "url": "https://www.tui.nl",
+    "name": "Bruynzeel Keukens webwinkel",
+    "url": "https://webwinkel.bruynzeelkeukens.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Bubbelbad Onderhoudsproducten Specialist",
+    "url": "https://www.bubbelbad-onderhoudsproducten.nl",
     "category": "overig"
   },
   {
-    "name": "Sunweb",
-    "url": "https://www.sunweb.nl",
+    "name": "Buccanbbq.eu",
+    "url": "https://www.buccanbbq.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Buddha to Buddha",
+    "url": "https://www.buddhatobuddha.com",
+    "category": "overig"
+  },
+  {
+    "name": "BudgetDrogisterij.nl",
+    "url": "https://budgetdrogisterij.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Budgetplant",
+    "url": "https://www.budgetplant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Buffalo.nl",
+    "url": "https://www.Buffalo.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Buiskoppelingshop.nl",
+    "url": "https://www.buiskoppelingshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Buitengoed.nl",
+    "url": "https://www.buitengoed.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Buitenkussens.nl",
+    "url": "https://Www.buitenkussens.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Buitenverlichting-kopen.nl",
+    "url": "https://www.buitenverlichting-kopen.nl/start",
+    "category": "wonen"
+  },
+  {
+    "name": "Bungalow.Net",
+    "url": "https://www.bungalow.net",
+    "category": "overig"
+  },
+  {
+    "name": "Bungalowspecials.nl",
+    "url": "https://www.bungalowspecials.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bunx",
+    "url": "https://www.bunx.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bureaustoel.nl",
+    "url": "https://www.bureaustoel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bushcraftshop.nl",
+    "url": "https://www.bushcraftshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Bustotaal",
+    "url": "https://www.bustotaal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "C&A",
+    "url": "https://www.c-and-a.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Cadeaubon.nl",
+    "url": "https://www.cadeaubon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Caliber Europe",
+    "url": "https://calibereurope.com",
+    "category": "overig"
+  },
+  {
+    "name": "Callmshop",
+    "url": "https://callmshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Cameranu",
+    "url": "https://www.cameranu.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Campercontact",
+    "url": "https://www.campercontact.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Campingazonderdelen.nl",
+    "url": "https://www.campingazonderdelen.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Campingcard.nl",
+    "url": "https://www.campingcard.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Campings.com",
+    "url": "https://www.campings.com/nl",
+    "category": "sport"
+  },
+  {
+    "name": "Cardman.nl",
+    "url": "https://www.cardman.nl",
+    "category": "overig"
+  },
+  {
+    "name": "CareSys",
+    "url": "https://www.caresys.nl",
+    "category": "overig"
+  },
+  {
+    "name": "CarFantasy",
+    "url": "https://www.carfantasy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Caribbean Tours",
+    "url": "https://caribbean-tours.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Carmediabox.nl",
+    "url": "https://www.carmediabox.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Casa Croatia",
+    "url": "https://www.casacroatia.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Casebuilder.com",
+    "url": "https://www.casebuilder.com",
+    "category": "overig"
+  },
+  {
+    "name": "Castelijn Beek",
+    "url": "https://www.modecastelijn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Casy.nl",
+    "url": "https://www.casy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Centraal Beheer",
+    "url": "https://www.centraalbeheer.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Chaletsplus",
+    "url": "https://www.chaletsplus.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Chilly",
+    "url": "https://chillyhilversum.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Chinup",
+    "url": "https://www.chinup.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Chocoladebezorgd B.V.",
+    "url": "https://www.chocoladebezorgd.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Chomi Pets",
+    "url": "https://www.chomipets.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Cibdol.nl",
+    "url": "https://www.cibdol.nl",
+    "category": "overig"
+  },
+  {
+    "name": "classicsportshoes.nl",
+    "url": "https://www.classicsportshoes.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Clean Air Optima International B.V.",
+    "url": "https://www.cleanairoptima.nl",
+    "category": "overig"
+  },
+  {
+    "name": "cleandieselfuel",
+    "url": "https://www.cleandieselfuel.com",
+    "category": "overig"
+  },
+  {
+    "name": "Climatewebshop.com",
+    "url": "https://www.climatewebshop.com",
+    "category": "overig"
+  },
+  {
+    "name": "ClubMotul.nl",
+    "url": "https://www.clubmotul.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Colaris.nl",
+    "url": "https://www.colaris.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Combi Motors Verzekeringen B.V.",
+    "url": "https://www.combimotors.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Comfort Air",
+    "url": "https://www.comfort-air.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Computerkeuze.nl",
+    "url": "https://computerkeuze.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Condoom-Anoniem.nl",
+    "url": "https://www.condoom-anoniem.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Consanguinitas.nl",
+    "url": "https://www.consanguinitas.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Containerverlener.nl",
+    "url": "https://www.containerverlener.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Contorion",
+    "url": "https://www.contorion.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ControlFashion.nl",
+    "url": "https://www.controlfashion.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Coolblue",
+    "url": "https://www.coolblue.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Coolpriser.nl",
+    "url": "https://www.coolpriser.nl",
     "category": "overig"
   },
   {
@@ -400,18 +1090,1768 @@
     "category": "overig"
   },
   {
-    "name": "NS",
-    "url": "https://www.ns.nl",
+    "name": "Cornerbrick",
+    "url": "https://cornerbrick.nl",
     "category": "overig"
   },
   {
-    "name": "Swiss Sense",
-    "url": "https://www.swisssense.nl",
+    "name": "Cosmeticacadeau.nl",
+    "url": "https://www.cosmeticacadeau.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Cosmeticlabs.nl",
+    "url": "https://www.cosmeticlabs.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Cosori",
+    "url": "https://cosorishop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Cratex Pro Line",
+    "url": "https://www.cratexproline.com",
+    "category": "overig"
+  },
+  {
+    "name": "Creativ EventZ",
+    "url": "https://www.creativ-eventz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Creon Kozijnen",
+    "url": "https://www.creon-kozijnen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Creon Raamdecoratie",
+    "url": "https://www.creon-raamdecoratie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Creon Rolluiken",
+    "url": "https://www.creon-rolluiken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Crisp",
+    "url": "https://www.crisp.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Culligan AquaCell",
+    "url": "https://shop.aquacell-waterontharder.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Cupido.nl",
+    "url": "https://www.cupido.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Curaçao Exclusief",
+    "url": "https://www.curacao-exclusief.nl",
+    "category": "overig"
+  },
+  {
+    "name": "DA.nl",
+    "url": "https://www.da.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Daglief.nl",
+    "url": "https://www.daglief.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Dailystyle.nl",
+    "url": "https://www.dailystyle.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Daka.nl",
+    "url": "https://www.daka.nl",
+    "category": "overig"
+  },
+  {
+    "name": "dakraam-gordijn.nl",
+    "url": "https://www.dakraam-gordijn.nl",
     "category": "wonen"
+  },
+  {
+    "name": "Dare to Drink Different",
+    "url": "https://daretodrinkdifferent.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Darts Warehouse",
+    "url": "https://www.dartswarehouse.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Bouwhof",
+    "url": "https://Shop.Bouwhof.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Bruijn in Wijnen Anno 1772",
+    "url": "https://www.debruijninwijnen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Egel",
+    "url": "https://www.de-egel.com",
+    "category": "overig"
+  },
+  {
+    "name": "De Gezondheidslijn",
+    "url": "https://www.degezondheidslijn.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "De Hoeve Buitenleven",
+    "url": "https://www.dehoevebuitenleven.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Keukenrestyler",
+    "url": "https://www.dekeukenrestyler.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "De Online Drogist",
+    "url": "https://www.deonlinedrogist.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "De Online ParketShop",
+    "url": "https://www.onlineparketshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Roode Roos",
+    "url": "https://www.derooderoos.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Schoolwebwinkel",
+    "url": "https://schoolwebwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Smaak van Hongarije.nl",
+    "url": "https://www.desmaakvanhongarije.nl",
+    "category": "overig"
+  },
+  {
+    "name": "De Telegraaf Webshop",
+    "url": "https://webshop.telegraaf.nl",
+    "category": "overig"
+  },
+  {
+    "name": "de Wijnbeurs",
+    "url": "https://www.wijnbeurs.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Decathlon",
+    "url": "https://www.decathlon.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Decorazzi",
+    "url": "https://decorazzi.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Decoverf.nl",
+    "url": "https://www.decoverf.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "DeDomoticaStore.nl",
+    "url": "https://www.dedomoticastore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "DeDuurzameTuin.nl",
+    "url": "https://DeDuurzameTuin.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Dehangmat.nl",
+    "url": "https://www.dehangmat.nl",
+    "category": "overig"
+  },
+  {
+    "name": "deindesign.nl",
+    "url": "https://www.deindesign.nl/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Dekbedden.nl",
+    "url": "https://www.dekbedden.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Dekbedovertrekken & Zo",
+    "url": "https://www.dekbedovertrekkenenzo.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Deleca",
+    "url": "https://www.deleca.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Delfitoys",
+    "url": "https://www.delfitoys.com",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Deloox.nl",
+    "url": "https://www.deloox.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Den Mulder Boomteelt",
+    "url": "https://www.denmulderboomteelt.com",
+    "category": "overig"
+  },
+  {
+    "name": "DeNardi",
+    "url": "https://www.denardi.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Denksport.com",
+    "url": "https://www.denksport.com",
+    "category": "sport"
+  },
+  {
+    "name": "DeSchotelShop",
+    "url": "https://www.deschotelshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Deurbellen.shop",
+    "url": "https://www.deurbellen.shop",
+    "category": "overig"
+  },
+  {
+    "name": "Deurenexpress.com",
+    "url": "https://www.deurenexpress.com",
+    "category": "overig"
+  },
+  {
+    "name": "Deurengigant.nl",
+    "url": "https://www.deurengigant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Deurklink24",
+    "url": "https://www.deurklink24.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Deurtotaalmarkt",
+    "url": "https://www.deurtotaalmarkt.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Diabetes Desk",
+    "url": "https://www.diabetesdesk.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Diamond Point",
+    "url": "https://www.diamondpoint.net",
+    "category": "overig"
+  },
+  {
+    "name": "DiamondsByMe.nl",
+    "url": "https://www.diamondsbyme.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Dierapotheker.nl",
+    "url": "https://www.dierapotheker.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Dierenapotheek",
+    "url": "https://www.dierenapotheek.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Differnz.eu",
+    "url": "https://www.differnz.eu",
+    "category": "overig"
   },
   {
     "name": "Dille & Kamille",
     "url": "https://www.dille-kamille.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Dirk",
+    "url": "https://www.dirk.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Discus.nl",
+    "url": "https://www.discus.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Diveoutlet",
+    "url": "https://www.diveoutlet.nl",
+    "category": "overig"
+  },
+  {
+    "name": "DOK 2",
+    "url": "https://www.dok2.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Donzendekbed.nl",
+    "url": "https://www.donzendekbed.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Dopper",
+    "url": "https://shop.dopper.com",
+    "category": "overig"
+  },
+  {
+    "name": "Doublepoint",
+    "url": "https://www.doublepoint.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Douglas",
+    "url": "https://www.douglas.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "DOUXE Hotel Luxury",
+    "url": "https://www.douxestore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "DQA Health",
+    "url": "https://www.dqahealthandbeauty.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "drank.nl",
+    "url": "https://drank.nl",
+    "category": "overig"
+  },
+  {
+    "name": "DrankDozijn.nl",
+    "url": "https://www.drankdozijn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Dreaver",
+    "url": "https://www.dreaver.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Drent & van Dijk Shop",
+    "url": "https://www.drentenvandijkshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Drogist Wereld",
+    "url": "https://www.drogistwereld.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Drogist.nl",
+    "url": "https://www.drogist.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Dronekenner",
+    "url": "https://www.dronekenner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Duorolgordijn.eu",
+    "url": "https://duorolgordijn.eu",
+    "category": "wonen"
+  },
+  {
+    "name": "Dutch Museum Gift Shop",
+    "url": "https://www.dutchmuseumgiftshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Dutch Soap Company",
+    "url": "https://www.dutchsoapcompany.com",
+    "category": "overig"
+  },
+  {
+    "name": "Dutchbone",
+    "url": "https://www.dutchbone.com",
+    "category": "overig"
+  },
+  {
+    "name": "Dyson",
+    "url": "https://www.dyson.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "e-Matching",
+    "url": "https://www.e-matching.nl",
+    "category": "overig"
+  },
+  {
+    "name": "E-Pal",
+    "url": "https://epal-tech.com",
+    "category": "overig"
+  },
+  {
+    "name": "Eardopes B.V.",
+    "url": "https://eardopes.nl",
+    "category": "overig"
+  },
+  {
+    "name": "easy-noisecontrol.nl",
+    "url": "https://www.easy-noisecontrol.nl",
+    "category": "overig"
+  },
+  {
+    "name": "easycosmetic",
+    "url": "https://www.easycosmetic.nl",
+    "category": "overig"
+  },
+  {
+    "name": "EASYfelt",
+    "url": "https://www.easyfelt.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Easyfiks.nl",
+    "url": "https://www.easyfiks.nl",
+    "category": "overig"
+  },
+  {
+    "name": "EasySwitch.nl",
+    "url": "https://www.easyswitch.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ebook.nl Company B.V.",
+    "url": "https://www.eBook.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Eco-Logisch",
+    "url": "https://www.eco-logisch.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ecodiervoeding.nl",
+    "url": "https://www.ecodiervoeding.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "ECOstyle B.V.",
+    "url": "https://www.ecostyle.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Educatheek.nl",
+    "url": "https://www.educatheek.nl",
+    "category": "overig"
+  },
+  {
+    "name": "eenblessure",
+    "url": "https://www.eenblessure.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Eenoudervakantiegids.nl",
+    "url": "https://www.eenoudervakantiegids.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Eggerswebshop.nl",
+    "url": "https://www.eggerswebshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ekoplaza",
+    "url": "https://www.ekoplaza.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ela Wonen",
+    "url": "https://elawonen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Electrocorner",
+    "url": "https://www.electrocorner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Electroworld.nl",
+    "url": "https://www.electroworld.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Elephantjeoutlet.com",
+    "url": "https://www.elephantje.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Eliza was here",
+    "url": "https://www.elizawashere.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ELRO Europe",
+    "url": "https://www.elro.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Emma Sleep",
+    "url": "https://www.emma-sleep.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Energiebespaarshop.nl",
+    "url": "https://www.energiebespaarshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "EnergyFlip",
+    "url": "https://www.energyflip.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ep.nl",
+    "url": "https://www.ep.nl",
+    "category": "overig"
+  },
+  {
+    "name": "EP:Tummers",
+    "url": "https://www.eptummers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Equestic",
+    "url": "https://www.equestic.com",
+    "category": "overig"
+  },
+  {
+    "name": "Essenza Home",
+    "url": "https://www.essenzahome.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Etos",
+    "url": "https://www.etos.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Eurocampings.nl",
+    "url": "https://www.eurocampings.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Euroflorist",
+    "url": "https://www.euroflorist.nl",
+    "category": "overig"
+  },
+  {
+    "name": "EUROtops",
+    "url": "https://www.eurotops.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Eve's Experience",
+    "url": "https://www.evesexperience.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Everready.nl",
+    "url": "https://everready.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Expert",
+    "url": "https://www.expert.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Exterioo.nl",
+    "url": "https://www.exterioo.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Eyelens.nl",
+    "url": "https://www.eyelens.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fakkelkopen.nl",
+    "url": "https://www.fakkelkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fallerstore",
+    "url": "https://www.fallerstore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "FamilyCards.nl",
+    "url": "https://www.familycards.nl",
+    "category": "overig"
+  },
+  {
+    "name": "FBTO",
+    "url": "https://www.fbto.nl",
+    "category": "overig"
+  },
+  {
+    "name": "FC Kluif",
+    "url": "https://www.fckluif.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Feel furniture",
+    "url": "https://www.feelfurniture.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Feel Home",
+    "url": "https://www.feelhome.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Feestbeest.nl",
+    "url": "https://www.feestbeest.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Feestkleding365.nl",
+    "url": "https://www.feestkleding365.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Feestwinkelxl.nl",
+    "url": "https://www.feestwinkelxl.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fibers & Foams",
+    "url": "https://www.fibers-foams.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fietsaccu-revisie.nl",
+    "url": "https://www.fietsaccu-revisie.nl",
+    "category": "sport"
+  },
+  {
+    "name": "fietsenstunt.nl",
+    "url": "https://www.fietsenstunt.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Fietsenwinkel.nl 2020",
+    "url": "https://www.fietsenwinkel.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Fifth & Francis",
+    "url": "https://www.fifthfrancis.com",
+    "category": "overig"
+  },
+  {
+    "name": "Firewallshop.nl",
+    "url": "https://www.firewallshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fixje",
+    "url": "https://www.fixje.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fleurop",
+    "url": "https://www.fleurop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "FlexiSpot",
+    "url": "https://www.flexispot.nl",
+    "category": "overig"
+  },
+  {
+    "name": "FlexTap",
+    "url": "https://flextap.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Flinders.nl",
+    "url": "https://www.flinders.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Flinndal",
+    "url": "https://www.flinndal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Flyer2000",
+    "url": "https://www.flyer2000.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fonq",
+    "url": "https://www.fonq.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Food2Smile.nl",
+    "url": "https://www.food2smile.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Foot Locker",
+    "url": "https://www.footlocker.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Footlogics.nl",
+    "url": "https://footlogics.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ForaVida.nl",
+    "url": "https://www.foravida.nl",
+    "category": "overig"
+  },
+  {
+    "name": "forecyclingwheels.com",
+    "url": "https://www.forecyclingwheels.com",
+    "category": "overig"
+  },
+  {
+    "name": "Forza Refurbished",
+    "url": "https://www.forza-refurbished.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Foto Kino Linders",
+    "url": "https://www.fotokinolinders.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fresh 'n Rebel",
+    "url": "https://freshnrebel.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fruitmandenbezorgen.nl",
+    "url": "https://www.Fruitmandenbezorgen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Fuel for Fans (NL)",
+    "url": "https://www.fuelforfans.com/nl/nl/home",
+    "category": "overig"
+  },
+  {
+    "name": "FuturumShop.nl",
+    "url": "https://www.futurumshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gadero B.V.",
+    "url": "https://gadero.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gall.nl",
+    "url": "https://www.gall.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gallagherwinkel.nl",
+    "url": "https://www.gallagherwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GAMMA",
+    "url": "https://www.gamma.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Garden-lights-kopen.nl",
+    "url": "https://www.garden-lights-kopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gardentrail",
+    "url": "https://www.gardentrail.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gasveerwinkel.nl",
+    "url": "https://www.gasveerwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GearWulf.nl",
+    "url": "https://www.GearWulf.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Geisha",
+    "url": "https://geishafashion.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GekOpHout.com",
+    "url": "https://www.gekophout.com",
+    "category": "overig"
+  },
+  {
+    "name": "Gents.nl",
+    "url": "https://www.gents.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GewoonGers",
+    "url": "https://www.gewoongers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gezondheidaanhuis.nl",
+    "url": "https://www.gezondheidaanhuis.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Gezondheidswinkel.nl",
+    "url": "https://www.gezondheidswinkel.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Gitaartabs",
+    "url": "https://www.gitaartabs.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Glazen.nl",
+    "url": "https://glazen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Goedkopermetkranen.nl",
+    "url": "https://www.goedkopermetkranen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Goedkopermetschakelmateriaal.nl",
+    "url": "https://www.goedkopermetschakelmateriaal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Golden Ass",
+    "url": "https://goldenass.com",
+    "category": "overig"
+  },
+  {
+    "name": "Golden Naturals",
+    "url": "https://www.goldennaturals.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GOLDNER",
+    "url": "https://www.goldner-fashion.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Goossens wonen & slapen",
+    "url": "https://www.goossenswonen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Gordijnen.nl",
+    "url": "https://www.gordijnen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Gorilla Grip",
+    "url": "https://www.gorillagrip.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Goudonline.nl",
+    "url": "https://www.goudonline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Goudsbloemonline.nl",
+    "url": "https://goudsbloemonline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Goudwisselkantoor",
+    "url": "https://shop-goudwisselkantoor.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GPS-Partner.nl",
+    "url": "https://www.gps-partner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GrandCruWijnen",
+    "url": "https://www.grandcruwijnen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Gras en Groen",
+    "url": "https://www.grasengroenwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Graszoden.nl",
+    "url": "https://www.graszoden.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Graszodengelegd.nl",
+    "url": "https://www.graszodengelegd.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Graszodenkopen",
+    "url": "https://www.graszodenkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Greenfurbished",
+    "url": "https://greenfurbished.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Greenroofshop",
+    "url": "https://www.greenroofshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Greetz",
+    "url": "https://www.greetz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Grixx",
+    "url": "https://grixx.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Groupdeal",
+    "url": "https://www.groupdeal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "GSMpunt.nl",
+    "url": "https://www.GSMpunt.nl",
+    "category": "overig"
+  },
+  {
+    "name": "H&M",
+    "url": "https://www2.hm.com/nl_nl/index.html",
+    "category": "mode"
+  },
+  {
+    "name": "H.P. Steenhuis Piano's en Vleugels",
+    "url": "https://www.steenhuispiano.nl",
+    "category": "overig"
+  },
+  {
+    "name": "H.T. Trade Service GmbH & Co. KG",
+    "url": "https://www.premiumxl24.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Haagplanten.net",
+    "url": "https://www.haagplanten.net",
+    "category": "overig"
+  },
+  {
+    "name": "Haarshop.nl",
+    "url": "https://www.haarshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hairlabs.nl",
+    "url": "https://www.hairlabs.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hallmark",
+    "url": "https://www.hallmark.nl",
+    "category": "overig"
+  },
+  {
+    "name": "HAMMER",
+    "url": "https://www.hammer-fitness.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Handbalshop.nl",
+    "url": "https://www.handbalshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Handyman",
+    "url": "https://www.handyman.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Handzender.nl",
+    "url": "https://www.handzender.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hangmat Gigant",
+    "url": "https://www.hangmatgigant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hangmat Wereld",
+    "url": "https://www.hangmatwereld.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Harlequin",
+    "url": "https://www.harlequin.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hayes Brothers",
+    "url": "https://www.hayesbrothers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "HBeds",
+    "url": "https://hbeds.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Headsetwinkel.nl",
+    "url": "https://www.headsetwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Heatwave",
+    "url": "https://www.heatwave-irheating.com",
+    "category": "overig"
+  },
+  {
+    "name": "Heine-shop.nl",
+    "url": "https://www.heine-shop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Heinigershop.nl",
+    "url": "https://www.heinigershop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hekkenwereld.nl",
+    "url": "https://www.hekkenwereld.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hekwerk Direct",
+    "url": "https://www.hekwerkdirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hellamarine-webshop.nl",
+    "url": "https://hellamarine-webshop.nl/nl",
+    "category": "overig"
+  },
+  {
+    "name": "HEMA",
+    "url": "https://www.hema.nl",
+    "category": "overig"
+  },
+  {
+    "name": "HEMA.nl",
+    "url": "https://www.HEMA.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hermetico-online",
+    "url": "https://www.hermetico-online.com",
+    "category": "overig"
+  },
+  {
+    "name": "Het Kralennest",
+    "url": "https://www.hetkralennest.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Heuts.nl",
+    "url": "https://www.heuts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "HiFi Klubben",
+    "url": "https://www.hifiklubben.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hippe-geboortekaartjes.nl",
+    "url": "https://www.hippe-geboortekaartjes.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hismith",
+    "url": "https://www.hismith.nl",
+    "category": "overig"
+  },
+  {
+    "name": "HockeyDirect.nl",
+    "url": "https://www.hockeydirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hoedshop.nl",
+    "url": "https://www.hoedshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Holbox Shop Direct",
+    "url": "https://shopdirect.holbox.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Holland & Barrett",
+    "url": "https://www.hollandandbarrett.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "HOM.store",
+    "url": "https://hom.store",
+    "category": "overig"
+  },
+  {
+    "name": "Home Company Shop",
+    "url": "https://www.homecompanyshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Homie",
+    "url": "https://www.homiepayperuse.com",
+    "category": "overig"
+  },
+  {
+    "name": "HondenBed.nl",
+    "url": "https://www.hondenbed.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Hondenopvakantie",
+    "url": "https://www.hondenopvakantie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hoofdkussens.com",
+    "url": "https://www.hoofdkussens.com",
+    "category": "overig"
+  },
+  {
+    "name": "Hoogenboom Mode B.V.",
+    "url": "https://www.hoogenboommode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Hoogvliet",
+    "url": "https://www.hoogvliet.com",
+    "category": "overig"
+  },
+  {
+    "name": "Hoopo",
+    "url": "https://www.hoopo.eu/nl",
+    "category": "overig"
+  },
+  {
+    "name": "HorlogeBoetiek",
+    "url": "https://www.horlogeboetiek.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hornbach",
+    "url": "https://www.hornbach.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Horren.com",
+    "url": "https://www.horren.com",
+    "category": "overig"
+  },
+  {
+    "name": "Horrengigant.nl",
+    "url": "https://www.horrengigant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "HotelSpecials.nl",
+    "url": "https://www.hotelspecials.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Houkema Tools",
+    "url": "https://www.houkematools.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hout Vandaag",
+    "url": "https://www.houtvandaag.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Houthal 15",
+    "url": "https://www.houthal15.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hudson Reed",
+    "url": "https://nl.hudsonreed.com",
+    "category": "overig"
+  },
+  {
+    "name": "Huizenvinder.nl",
+    "url": "https://www.huizenvinder.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hulpmiddelwereld.nl",
+    "url": "https://www.hulpmiddelwereld.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Hunkemoller",
+    "url": "https://www.hunkemoller.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Hyckes",
+    "url": "https://www.hyckes.com",
+    "category": "overig"
+  },
+  {
+    "name": "Hyundai Electronics",
+    "url": "https://www.HyundaiElectronics.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ICI Paris XL",
+    "url": "https://www.iciparisxl.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Icon Living B.V.",
+    "url": "https://www.iconliving.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ICT-store",
+    "url": "https://www.ict-store.nl",
+    "category": "overig"
+  },
+  {
+    "name": "iEar | Ultimate sound and vision",
+    "url": "https://www.iear.nl",
+    "category": "overig"
+  },
+  {
+    "name": "IKEA",
+    "url": "https://www.ikea.com/nl/nl/",
+    "category": "wonen"
+  },
+  {
+    "name": "Ikwilvanmijnsoaaf B.V.",
+    "url": "https://www.ikwilvanmijnsoaaf.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ikwilzitzakken.be",
+    "url": "https://www.ikwilzitzakken.be",
+    "category": "overig"
+  },
+  {
+    "name": "ikwilzitzakken.nl",
+    "url": "https://www.ikwilzitzakken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ilovegiffy",
+    "url": "https://ilovegiffy.com",
+    "category": "overig"
+  },
+  {
+    "name": "Importeria.com",
+    "url": "https://importeria.com",
+    "category": "overig"
+  },
+  {
+    "name": "Inductiebeschermenshop.nl",
+    "url": "https://www.inductiebeschermenshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Industrieel Wonen",
+    "url": "https://www.industrieelwonen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Informatique",
+    "url": "https://www.informatique.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Inhuisplaza.nl",
+    "url": "https://www.inhuisplaza.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Innervitamins",
+    "url": "https://www.innervitamins.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Inshared.nl",
+    "url": "https://www.inshared.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Instant Pot",
+    "url": "https://www.instantpot.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Internetdrogist.nl",
+    "url": "https://internetdrogist.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Intersport",
+    "url": "https://www.intersport.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Intertoys",
+    "url": "https://www.intertoys.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Into the Cycle",
+    "url": "https://intothecycle.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Intratuin Webshop",
+    "url": "https://www.intratuin.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "IPcam-shop",
+    "url": "https://www.ipcam-shop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Isaac",
+    "url": "https://www.isaac-cycle.com",
+    "category": "overig"
+  },
+  {
+    "name": "It's all about Christmas",
+    "url": "https://www.kerstversiering.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Itec luchtreiniging",
+    "url": "https://www.itecluchtreiniger.nl",
+    "category": "overig"
+  },
+  {
+    "name": "jachtlakken.nl",
+    "url": "https://www.jachtlakken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Jack & Jones",
+    "url": "https://www.jackjones.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Japoto Parts",
+    "url": "https://www.japoto.nl",
+    "category": "overig"
+  },
+  {
+    "name": "JD Sports",
+    "url": "https://www.jdsports.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Jeroen Beekman Mode",
+    "url": "https://www.jeroenbeekman.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Jones en Jones",
+    "url": "https://www.jonesenjones.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Joybuy",
+    "url": "https://www.joybuy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Jumbo",
+    "url": "https://www.jumbo.com",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Jumbo.com",
+    "url": "https://www.jumbo.com/boodschappen",
+    "category": "overig"
+  },
+  {
+    "name": "JURA Nederland BV",
+    "url": "https://www.nl.jura.com",
+    "category": "overig"
+  },
+  {
+    "name": "Just Underwear B.V.",
+    "url": "https://justunderwear.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Juwelier It's Beautiful",
+    "url": "https://www.its-beautiful.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Juwelier Schute",
+    "url": "https://www.juwelierschute.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Juwelier van Willegen",
+    "url": "https://www.juweliervanwillegen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Jysk",
+    "url": "https://www.jysk.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Kaartje2go",
+    "url": "https://www.kaartje2go.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kabels.nl",
+    "url": "https://www.kabels.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kabelshop.nl",
+    "url": "https://www.kabelshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kabeltje.com",
+    "url": "https://www.kabeltje.com",
+    "category": "overig"
+  },
+  {
+    "name": "Kabrita.nl",
+    "url": "https://www.kabrita.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kadasterdata",
+    "url": "https://www.kadasterdata.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kado Post",
+    "url": "https://www.kado-post.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kamer.nl",
+    "url": "https://www.kamer.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kantoorinrichtingkopen.nl",
+    "url": "https://www.kantoorinrichtingkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kappersproducten.nl",
+    "url": "https://www.kappersproducten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Karcher Webshop Schoonex",
+    "url": "https://karcher-webshop-schoonex.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Karpet24.nl",
+    "url": "https://www.karpet24.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Karwei",
+    "url": "https://www.karwei.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Kastengigant.nl",
+    "url": "https://www.kastengigant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Katoenenko.nl",
+    "url": "https://www.katoenenko.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kees Smit Tuinmeubelen",
+    "url": "https://www.keessmit.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Kerstpakkettenexpress.nl",
+    "url": "https://www.kerstpakkettenexpress.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kerstpakkettenplaza.nl",
+    "url": "https://www.kerstpakkettenplaza.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Keter Benelux B.V.",
+    "url": "https://www.keter.com",
+    "category": "overig"
+  },
+  {
+    "name": "Keukengigant.nl",
+    "url": "https://www.keukengigant.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Keukenloods.nl",
+    "url": "https://www.keukenloods.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "KidsDeco.nl",
+    "url": "https://www.kidsdeco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kikkerland Europe Retail",
+    "url": "https://kikkerlandeu.com",
+    "category": "overig"
+  },
+  {
+    "name": "Kindermodehuis.nl",
+    "url": "https://www.kindermodehuis.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Kiteholland",
+    "url": "https://www.kiteholland.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Kiwi Electronics",
+    "url": "https://www.kiwi-electronics.com",
+    "category": "overig"
+  },
+  {
+    "name": "Klaverblad Verzekeringen",
+    "url": "https://www.klaverblad.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kleertjes.com",
+    "url": "https://www.kleertjes.com",
+    "category": "overig"
+  },
+  {
+    "name": "Klic-App",
+    "url": "https://www.klic-app.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Klima NL",
+    "url": "https://klimanl.nl",
+    "category": "overig"
+  },
+  {
+    "name": "KLIUM Nederland",
+    "url": "https://www.klium.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Klium.com",
+    "url": "https://Klium.com",
+    "category": "overig"
+  },
+  {
+    "name": "Kluizen.nl",
+    "url": "https://www.kluizen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "knm.nl",
+    "url": "https://www.knm.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koeka.com",
+    "url": "https://www.koeka.com",
+    "category": "overig"
+  },
+  {
+    "name": "Koelap",
+    "url": "https://koelap.com",
+    "category": "overig"
+  },
+  {
+    "name": "Kofferentas.nl",
+    "url": "https://www.kofferentas.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koffershop.nl",
+    "url": "https://www.koffershop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koffiecentrale.nl",
+    "url": "https://www.koffiecentrale.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koffievoordeel.nl",
+    "url": "https://www.koffievoordeel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kok Bedden B.V.",
+    "url": "https://www.kokbedden.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "KommaGo.nl",
+    "url": "https://www.kommago.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koop-een-partytent.nl",
+    "url": "https://www.koop-een-partytent.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koopmetservice B.V.",
+    "url": "https://www.koopmetservice.nl",
+    "category": "overig"
+  },
+  {
+    "name": "koremanmaastricht.nl",
+    "url": "https://www.koremanmaastricht.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Korfbalshop.nl",
+    "url": "https://www.korfbalshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Koter Kado",
+    "url": "https://www.koterkado.nl",
+    "category": "overig"
+  },
+  {
+    "name": "KPN",
+    "url": "https://www.kpn.com",
+    "category": "elektronica"
+  },
+  {
+    "name": "Kristalonline",
+    "url": "https://www.kristalonline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kronenburgh Landgoedlinnen",
+    "url": "https://www.landgoedlinnen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kruidvat",
+    "url": "https://www.kruidvat.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "KunstgrasCity",
+    "url": "https://kunstgrascity.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Kwantum",
+    "url": "https://www.kwantum.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Kyndly",
+    "url": "https://www.kyndly.com",
+    "category": "overig"
+  },
+  {
+    "name": "Kärcher",
+    "url": "https://www.karcher.nl",
+    "category": "overig"
+  },
+  {
+    "name": "La Redoute",
+    "url": "https://www.laredoute.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Laagsteprijsgarantie B.V.",
+    "url": "https://www.laagsteprijsgarantie.com",
+    "category": "overig"
+  },
+  {
+    "name": "Lamp1.nl",
+    "url": "https://www.lamp1.nl",
     "category": "wonen"
   },
   {
@@ -420,23 +2860,973 @@
     "category": "wonen"
   },
   {
+    "name": "LAPTOP.NL",
+    "url": "https://www.laptop.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Large Popmerchandising",
+    "url": "https://www.large.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Larson",
+    "url": "https://www.larsonbeds.nl",
+    "category": "overig"
+  },
+  {
+    "name": "lasapparaatstore",
+    "url": "https://www.lasapparaatstore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "LaserOpMaat",
+    "url": "https://www.laseropmaat.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Lastvan.com",
+    "url": "https://www.lastvan.com",
+    "category": "overig"
+  },
+  {
+    "name": "Latour Tuinmeubelen",
+    "url": "https://latour-lith.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Lay3rs 3dprinting",
+    "url": "https://www.lay3rs-retail.nl",
+    "category": "overig"
+  },
+  {
+    "name": "LeadsJeans.nl",
+    "url": "https://www.leadsjeans.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ledlichtdiscounter.nl",
+    "url": "https://ledlichtdiscounter.nl",
+    "category": "overig"
+  },
+  {
+    "name": "LEDshop-Groenovatie.com",
+    "url": "https://www.ledshop-groenovatie.com",
+    "category": "overig"
+  },
+  {
+    "name": "Leen Bakker",
+    "url": "https://www.leenbakker.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Leidingshop",
+    "url": "https://www.leidingshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Levix Computershop B.V.",
+    "url": "https://www.levix.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Lexa.nl",
+    "url": "https://www.lexa.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Libris.nl",
+    "url": "https://www.libris.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Licht Outlet Store",
+    "url": "https://www.lichtoutletstore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Lichtkoepelgigant.nl",
+    "url": "https://www.lichtkoepelgigant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Lidl",
+    "url": "https://www.lidl.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Lief.nl",
+    "url": "https://www.lief.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Life After Me",
+    "url": "https://lifeafterme.com",
+    "category": "overig"
+  },
+  {
+    "name": "Life Outdoor Living",
+    "url": "https://www.lifeoutdoorliving.com/nl",
+    "category": "sport"
+  },
+  {
+    "name": "Lightmatters.nl",
+    "url": "https://www.lightmatters.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Linnen Gordijnen",
+    "url": "https://www.linnengordijnenshop.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Linnenmode.nl",
+    "url": "https://www.linnenmode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Little Grove",
+    "url": "https://little-grove.eu/nl/homepage",
+    "category": "overig"
+  },
+  {
+    "name": "Livera.nl",
+    "url": "https://www.livera.nl",
+    "category": "overig"
+  },
+  {
+    "name": "LiveSchijf",
+    "url": "https://www.liveschijf.com",
+    "category": "overig"
+  },
+  {
+    "name": "LOBERON GmbH",
+    "url": "https://www.loberon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Lodewijks Mode voor Mannen B.V.",
+    "url": "https://www.lodewijkmode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "LOGIXBOX B.V.",
+    "url": "https://logixbox.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Looplabb",
+    "url": "https://www.looplabb.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "looppunt-schoenen",
+    "url": "https://looppunt-schoenen.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Lord of the Strings",
+    "url": "https://www.lordofthestrings.com",
+    "category": "overig"
+  },
+  {
+    "name": "lubberswonen.nl",
+    "url": "https://www.lubberswonen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Lucente",
+    "url": "https://www.lucente.nl/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Luchtbedshop.com",
+    "url": "https://www.luchtbedshop.com",
+    "category": "wonen"
+  },
+  {
+    "name": "Luchtmatraswinkel.be",
+    "url": "https://www.luchtmatraswinkel.be",
+    "category": "wonen"
+  },
+  {
+    "name": "luchtontvochtigerwinkel.nl",
+    "url": "https://www.luchtontvochtigerwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Luisterrijk",
+    "url": "https://www.luisterrijk.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Lundia Original webshop",
+    "url": "https://www.lundia-original-webshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Lundia.com",
+    "url": "https://lundia.com",
+    "category": "overig"
+  },
+  {
+    "name": "Lunenburg",
+    "url": "https://www.lunenburg.nu",
+    "category": "overig"
+  },
+  {
+    "name": "Lust een Drankje",
+    "url": "https://www.lusteendrankje.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Luxplus",
+    "url": "https://www.luxplus.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Luxurious-hairextensions",
+    "url": "https://www.luxurious-hairextensions.com",
+    "category": "overig"
+  },
+  {
+    "name": "Luxury4you",
+    "url": "https://www.luxury4you.nl",
+    "category": "overig"
+  },
+  {
+    "name": "M line",
+    "url": "https://www.mline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "maatkussens.nl",
+    "url": "https://www.maatkussens.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Macropest.nl",
+    "url": "https://www.macropest.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Macrovet",
+    "url": "https://www.macrovet.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Made for Moments",
+    "url": "https://www.madeformoments.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MADELEINE",
+    "url": "https://www.madeleine.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Maeylin Beveiligingssystemen",
+    "url": "https://www.maeylinbeveiligingssystemen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "maison et al",
+    "url": "https://www.maisonetal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Maison Home",
+    "url": "https://www.maisonhome.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Managementboek.nl",
+    "url": "https://www.managementboek.nl",
+    "category": "boeken"
+  },
+  {
     "name": "Manfield",
     "url": "https://www.manfield.com/nl/",
     "category": "mode"
   },
   {
-    "name": "Intersport",
-    "url": "https://www.intersport.nl",
+    "name": "Mario3ds.nl",
+    "url": "https://www.mario3ds.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mario64.nl",
+    "url": "https://www.mario64.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mariocube.nl",
+    "url": "https://www.mariocube.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mariods.nl",
+    "url": "https://www.mariods.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mariogba.nl",
+    "url": "https://www.mariogba.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MarioSNES.nl",
+    "url": "https://www.MarioSNES.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MarioSwitch.nl",
+    "url": "https://www.MarioSwitch.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mariowii-u.nl",
+    "url": "https://www.mariowii-u.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mariowii.nl",
+    "url": "https://www.mariowii.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Marktconcurrent",
+    "url": "https://www.marktconcurrent.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Marktplaats.nl",
+    "url": "https://www.marktplaats.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Marterwinkel.nl",
+    "url": "https://www.marterwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Matrabike.nl",
+    "url": "https://www.matrabike.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Matras Direct",
+    "url": "https://www.matrasdirect.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Mattador",
+    "url": "https://mattador.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mattigo",
+    "url": "https://www.mattigo.com",
+    "category": "overig"
+  },
+  {
+    "name": "MaxiMondo",
+    "url": "https://www.maximondo.com",
+    "category": "overig"
+  },
+  {
+    "name": "MBO Boekenwinkel",
+    "url": "https://mboboekwinkel.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Meden & Perzen perzische en oosterse tapijten",
+    "url": "https://www.meden-perzen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MediaMarkt",
+    "url": "https://www.mediamarkt.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Medische Vakhandel",
+    "url": "https://www.medischevakhandel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Medischeklompen.nl",
+    "url": "https://www.medischeklompen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Meer voor Fietsen",
+    "url": "https://www.meervoorfietsen.nl",
     "category": "sport"
   },
   {
-    "name": "Runners Point",
-    "url": "https://www.runnerspoint.nl",
+    "name": "Megekko",
+    "url": "https://www.megekko.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Mepra-store.nl",
+    "url": "https://www.mepra-store.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MerCruiser-onderdelen.com",
+    "url": "https://www.MerCruiser-onderdelen.com",
+    "category": "overig"
+  },
+  {
+    "name": "Metalenbed.nl",
+    "url": "https://www.metalenbed.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "MetOlijf.nl B.V.",
+    "url": "https://www.metolijf.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Meubels1.nl",
+    "url": "https://www.meubels1.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Mezaldy",
+    "url": "https://www.mezaldy.com/kleding",
+    "category": "overig"
+  },
+  {
+    "name": "Miele Shop.nl",
+    "url": "https://www.miele.nl/shop",
+    "category": "overig"
+  },
+  {
+    "name": "MijnAutoOnderdelen.be",
+    "url": "https://www.mijnautoonderdelen.be",
+    "category": "overig"
+  },
+  {
+    "name": "MijnAutoOnderdelen.nl",
+    "url": "https://www.mijnautoonderdelen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mijnfeelingz.nl",
+    "url": "https://www.mijnfeelingz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MijnIJzerwaren.nl",
+    "url": "https://www.mijnijzerwaren.nl",
+    "category": "overig"
+  },
+  {
+    "name": "miklo.store",
+    "url": "https://miklo.store",
+    "category": "overig"
+  },
+  {
+    "name": "Millstore.nl",
+    "url": "https://www.millstore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "mini-koelkasten.nl",
+    "url": "https://www.mini-koelkasten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Minkbc.nl",
+    "url": "https://www.minkbc.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Miss Mary of Sweden AB",
+    "url": "https://www.missmary.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Miss Steel",
+    "url": "https://www.misssteel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mister Madame",
+    "url": "https://www.mistermadame.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mister Spex",
+    "url": "https://www.misterspex.nl",
+    "category": "overig"
+  },
+  {
+    "name": "MisterMitch.nl",
+    "url": "https://www.MisterMitch.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mobico",
+    "url": "https://www.mobico.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mobiel.nl",
+    "url": "https://www.mobiel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mobielplus",
+    "url": "https://www.mobielplus.com",
+    "category": "overig"
+  },
+  {
+    "name": "Mobielverbinden.nl",
+    "url": "https://www.mobielverbinden.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mobiliteit Expert",
+    "url": "https://Mobiliteitexpert.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Mobiliteitswereld.com",
+    "url": "https://www.mobiliteitswereld.com",
+    "category": "overig"
+  },
+  {
+    "name": "Mobisite",
+    "url": "https://mobisite.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Modelspoorgigant",
+    "url": "https://www.modelspoorgigant.nl",
+    "category": "mode"
+  },
+  {
+    "name": "MOJOGEAR",
+    "url": "https://www.mojogear.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Moodson.com",
+    "url": "https://moodson.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Morpheus Slaapvoorlichters",
+    "url": "https://www.morpheus-beddengoed.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Morpheus.nl",
+    "url": "https://www.morpheus.nl/webshop",
+    "category": "overig"
+  },
+  {
+    "name": "MotoPort.nl",
+    "url": "https://www.motoport.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Motorkledingoutlet.nl",
+    "url": "https://www.motorkledingoutlet.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Motorkledingstore.nl",
+    "url": "https://www.motorkledingstore.nl",
+    "category": "mode"
+  },
+  {
+    "name": "MRS BEE fine jewelry",
+    "url": "https://www.MRSBEE.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Munsterhuis Auto Onderdelen",
+    "url": "https://munsterhuis-auto-onderdelen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Muurmeesters.nl",
+    "url": "https://www.muurmeesters.nl",
+    "category": "overig"
+  },
+  {
+    "name": "My Nametags",
+    "url": "https://www.mynametags.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Myboeken",
+    "url": "https://myboeken.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "MySodaShop.nl",
+    "url": "https://mysodashop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nachtrust Beuningen",
+    "url": "https://nachtrust.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Najell",
+    "url": "https://najell.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "NapPas",
+    "url": "https://www.nappas.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nationale Waarderingsbon",
+    "url": "https://www.nationalewaarderingsbon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Naturallabs.nl",
+    "url": "https://www.naturallabs.nl",
+    "category": "overig"
+  },
+  {
+    "name": "NEBO de fotospecialist B.V.",
+    "url": "https://www.neboweb.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Neleman B.V.",
+    "url": "https://www.neleman.org",
+    "category": "overig"
+  },
+  {
+    "name": "Nelson",
+    "url": "https://www.nelson.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Nespresso",
+    "url": "https://www.nespresso.com/nl/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Netcamshop.nl",
+    "url": "https://www.netcamshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Netwerkkabelshop.nl",
+    "url": "https://www.netwerkkabelshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "New Care Supplements BV",
+    "url": "https://new-care.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Newpharma.nl",
+    "url": "https://www.Newpharma.nl",
+    "category": "overig"
+  },
+  {
+    "name": "NexaParts B.V.",
+    "url": "https://www.nexaparts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nice thingZ",
+    "url": "https://www.nicethingz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nieuwwestbrabant",
+    "url": "https://nieuwwestbrabant.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nike",
+    "url": "https://www.nike.com/nl/",
     "category": "sport"
   },
   {
-    "name": "Thuiswinkel",
-    "url": "https://www.thuiswinkel.org",
+    "name": "Nofruit.nl",
+    "url": "https://www.nofruit.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Noshirt.nl",
+    "url": "https://www.noshirt.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nostalux",
+    "url": "https://www.nostalux.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Notino",
+    "url": "https://www.notino.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Nowinsure.com",
+    "url": "https://www.nowinsure.com",
+    "category": "overig"
+  },
+  {
+    "name": "NRG fitness",
+    "url": "https://www.nrgfitness.nl",
+    "category": "sport"
+  },
+  {
+    "name": "NS",
+    "url": "https://www.ns.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Nt2.nl",
+    "url": "https://www.nt2.nl",
+    "category": "overig"
+  },
+  {
+    "name": "NuBuiten",
+    "url": "https://nubuiten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "NuBuiten.be",
+    "url": "https://nubuiten.be",
+    "category": "overig"
+  },
+  {
+    "name": "Obbink.nl",
+    "url": "https://www.obbink.nl",
+    "category": "overig"
+  },
+  {
+    "name": "OBD-Partner",
+    "url": "https://www.obd-partner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Office Centre",
+    "url": "https://www.officecentre.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Officebrands",
+    "url": "https://www.officebrands.shop",
+    "category": "overig"
+  },
+  {
+    "name": "OfficeNext.nl",
+    "url": "https://officenext.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Officiële Swatch Online Store",
+    "url": "https://swatch.com/nl_nl",
+    "category": "overig"
+  },
+  {
+    "name": "Okimono BV",
+    "url": "https://www.okimono.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Olfit.nl",
+    "url": "https://www.olfit.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Olijfboomspecialist",
+    "url": "https://olijfbomen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Omni Bikeparts",
+    "url": "https://www.omnibikeparts.com/nl_NL",
+    "category": "overig"
+  },
+  {
+    "name": "Omoda",
+    "url": "https://www.omoda.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Onderdelen.nl",
+    "url": "https://www.onderdelen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "OnderdelenExpert.nl",
+    "url": "https://www.onderdelenexpert.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Onderhoudstopper.nl",
+    "url": "https://www.onderhoudstopper.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Online Slaapcomfort",
+    "url": "https://www.onlineslaapcomfort.nl",
+    "category": "overig"
+  },
+  {
+    "name": "OnlineBakstenenKopen.nl",
+    "url": "https://www.onlinebakstenenkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "OnlineDeurenKopen.nl",
+    "url": "https://www.onlinedeurenkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Onlinefashionstore.nl",
+    "url": "https://www.onlinefashionstore.nl",
+    "category": "mode"
+  },
+  {
+    "name": "ONLY",
+    "url": "https://www.only.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Only for Men",
+    "url": "https://www.onlyformen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "OnsMagazijn.nl",
+    "url": "https://www.onsmagazijn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "OogvoorOren.nl",
+    "url": "https://www.oogvoororen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Oolaboo",
+    "url": "https://www.oolabooshop.com",
+    "category": "overig"
+  },
+  {
+    "name": "Opblaasspa.com",
+    "url": "https://www.opblaasspa.com",
+    "category": "overig"
+  },
+  {
+    "name": "OPMAATZAGEN",
+    "url": "https://www.OPMAATZAGEN.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Optiekwereld.nl",
+    "url": "https://www.optiekwereld.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Optiphar",
+    "url": "https://optiphar.com",
+    "category": "overig"
+  },
+  {
+    "name": "Oral-B",
+    "url": "https://www.oral-b.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "orange-audio.com",
+    "url": "https://www.orange-audio.com",
+    "category": "overig"
+  },
+  {
+    "name": "Oroblu.nl",
+    "url": "https://www.oroblu.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ortholon",
+    "url": "https://www.ortholon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Otrium.nl",
+    "url": "https://www.otrium.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ottevangers.nl",
+    "url": "https://www.ottevangers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Outdoorbrands.nl",
+    "url": "https://www.outdoorbrands.nl",
+    "category": "sport"
+  },
+  {
+    "name": "OverhemdenOnline.nl",
+    "url": "https://www.overhemdenonline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Overstappen.nl",
+    "url": "https://www.overstappen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "PadelDirect.nl",
+    "url": "https://www.padeldirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Panchoamelia.com",
+    "url": "https://www.panchoamelia.com",
+    "category": "overig"
+  },
+  {
+    "name": "Pantoffelshoppen.nl",
+    "url": "https://www.pantoffelshoppen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pantyshoppen.nl",
+    "url": "https://www.pantyshoppen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Paracord.nl",
+    "url": "https://www.paracord.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Paraplu-point.nl",
+    "url": "https://www.paraplu-point.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Parasolkopen.nl",
+    "url": "https://www.parasolkopen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Parcelsafe",
+    "url": "https://www.parcelsafe.com",
     "category": "overig"
   },
   {
@@ -445,24 +3835,109 @@
     "category": "drogisterij"
   },
   {
-    "name": "Notino",
-    "url": "https://www.notino.nl",
+    "name": "parfumservice.nl",
+    "url": "https://www.parfumservice.nl",
     "category": "drogisterij"
   },
   {
-    "name": "Samsung",
-    "url": "https://www.samsung.com/nl/",
-    "category": "elektronica"
+    "name": "Parkietwinkel.nl",
+    "url": "https://parkietwinkel.nl",
+    "category": "overig"
   },
   {
-    "name": "Apple",
-    "url": "https://www.apple.com/nl/",
-    "category": "elektronica"
+    "name": "PARSHIP.nl",
+    "url": "https://www.parship.nl",
+    "category": "overig"
   },
   {
-    "name": "Dyson",
-    "url": "https://www.dyson.nl",
-    "category": "elektronica"
+    "name": "Partly",
+    "url": "https://www.partly.nl",
+    "category": "overig"
+  },
+  {
+    "name": "PartsNL",
+    "url": "https://www.partsnl.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Partydeco.nl",
+    "url": "https://www.partydeco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Partywinkel.be",
+    "url": "https://www.partywinkel.be",
+    "category": "overig"
+  },
+  {
+    "name": "Partywinkel.nl",
+    "url": "https://www.partywinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Passasports.nl",
+    "url": "https://www.passasports.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Pastaficio",
+    "url": "https://www.pastaficio.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Patton",
+    "url": "https://patton.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Penshop.nl",
+    "url": "https://www.penshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Perfectewijn.nl",
+    "url": "https://www.perfectewijn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Perfecthealth",
+    "url": "https://www.perfecthealth.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Perfectlab",
+    "url": "https://www.perfectlab.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Perfero.nl",
+    "url": "https://www.perfero.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Perry Sport",
+    "url": "https://www.perrysport.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Peter Hahn",
+    "url": "https://www.peterhahn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Petgamma.com",
+    "url": "https://www.petgamma.com",
+    "category": "overig"
+  },
+  {
+    "name": "Petite Amélie",
+    "url": "https://www.petiteamelie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pets Place",
+    "url": "https://www.petsplace.nl",
+    "category": "overig"
   },
   {
     "name": "Philips",
@@ -470,13 +3945,2288 @@
     "category": "elektronica"
   },
   {
-    "name": "Oral-B",
-    "url": "https://www.oral-b.nl",
+    "name": "Philips Media",
+    "url": "https://philips-media.com",
+    "category": "overig"
+  },
+  {
+    "name": "Phonemarket.nl",
+    "url": "https://www.phonemarket.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Picnic",
+    "url": "https://www.picnic.app/nl/",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Piest.nl",
+    "url": "https://www.piest.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pieterbaks.nl",
+    "url": "https://www.pieterbaks.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pink Gellac",
+    "url": "https://pinkgellac.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "pipoos",
+    "url": "https://www.pipoos.com",
+    "category": "overig"
+  },
+  {
+    "name": "Pixum",
+    "url": "https://www.pixum.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Plafondhogedeur",
+    "url": "https://plafondhogedeur.nl",
+    "category": "overig"
+  },
+  {
+    "name": "PLANCK",
+    "url": "https://www.planck.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Plankencentrale.nl",
+    "url": "https://www.plankencentrale.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Plantshopper.nl",
+    "url": "https://www.plantshopper.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Playbird",
+    "url": "https://www.playbird.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Plein.nl",
+    "url": "https://www.plein.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pleziervaartwinkel.nl",
+    "url": "https://www.pleziervaartwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Plus",
+    "url": "https://www.plus.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Podobrace.nl",
+    "url": "https://podobrace.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pokon",
+    "url": "https://www.pokon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pommelientje",
+    "url": "https://www.pommelientje.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pon Porsche Import - porsche-shop.nl",
+    "url": "https://www.porsche-shop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Popcorn.nl",
+    "url": "https://www.popcorn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Portofoonwinkel.nl",
+    "url": "https://www.portofoonwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Portugalvillas.nl",
+    "url": "https://www.portugalvillas.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Posters.nl",
+    "url": "https://www.posters.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Power Electrics",
+    "url": "https://www.powerelectrics.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Praxis",
+    "url": "https://www.praxis.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Pre-Owned Goudwisselkantoor",
+    "url": "https://pre-owned.goudwisselkantoor.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Presentatiestore.nl",
+    "url": "https://www.presentatiestore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Pretty Orange (BE)",
+    "url": "https://www.prettyorange.be",
+    "category": "overig"
+  },
+  {
+    "name": "PrettyOrange.nl",
+    "url": "https://www.PrettyOrange.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Primera.nl",
+    "url": "https://www.primera.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Prins Petfoods",
+    "url": "https://www.prinspetfoods.nl/nl_NL",
+    "category": "supermarkt"
+  },
+  {
+    "name": "PrintAbout.nl",
+    "url": "https://www.printabout.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Printerland.nl",
+    "url": "https://www.printerland.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Pro Car Tuning",
+    "url": "https://www.procartuning.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Probeauty",
+    "url": "https://www.probeauty.nl",
     "category": "drogisterij"
   },
   {
-    "name": "Hunkemoller",
-    "url": "https://www.hunkemoller.nl",
+    "name": "ProBouwen.nl",
+    "url": "https://www.ProBouwen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Profijt Wijn",
+    "url": "https://profijtwijn.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Profile",
+    "url": "https://www.profile.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Proshop.nl",
+    "url": "https://www.proshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Prénatal",
+    "url": "https://www.prenatal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "PS Food & Lifestyle",
+    "url": "https://www.psfoodandlifestyle.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Pumbo.nl",
+    "url": "https://www.pumbo.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Puur en Fit",
+    "url": "https://www.puurenfit.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Puur Mieke",
+    "url": "https://www.puurmieke.nl",
+    "category": "overig"
+  },
+  {
+    "name": "QFB gardening",
+    "url": "https://www.qfbgardening.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Quickspanner",
+    "url": "https://quickspanner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Quiksilver Texel",
+    "url": "https://www.quiksurf.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Quipa.nl",
+    "url": "https://www.quipa.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Quist Watches",
+    "url": "https://quistwatches.com",
+    "category": "overig"
+  },
+  {
+    "name": "Quofi.nl",
+    "url": "https://www.quofi.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Raamdecoratie.com",
+    "url": "https://www.raamdecoratie.com",
+    "category": "overig"
+  },
+  {
+    "name": "Raamdecoratieshop.nl",
+    "url": "https://raamdecoratieshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Radero",
+    "url": "https://www.radero.nl",
+    "category": "overig"
+  },
+  {
+    "name": "radio-oranje.com",
+    "url": "https://radio-oranje.com",
+    "category": "overig"
+  },
+  {
+    "name": "Raisin.nl",
+    "url": "https://www.raisin.com",
+    "category": "overig"
+  },
+  {
+    "name": "Rave Safe Festival Oordopjes",
+    "url": "https://www.ravesafe.nl",
+    "category": "overig"
+  },
+  {
+    "name": "reBuy",
+    "url": "https://www.rebuy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Recarfix",
+    "url": "https://recarfix.com",
+    "category": "overig"
+  },
+  {
+    "name": "Redable B.V.",
+    "url": "https://www.redable.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Redhound.nl",
+    "url": "https://www.redhound.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Redreset",
+    "url": "https://www.redreset.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Reemster",
+    "url": "https://reemster.com",
+    "category": "overig"
+  },
+  {
+    "name": "Refurb Market",
+    "url": "https://www.refurbmarket.nl",
+    "category": "overig"
+  },
+  {
+    "name": "reigerenderaaf.nl",
+    "url": "https://www.reigerenderaaf.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Reisboekwinkel De Zwerver",
+    "url": "https://www.dezwerver.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Reiswieg.nl",
+    "url": "https://www.reiswieg.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rene Houtman Interieurs B.V.",
+    "url": "https://www.renehoutman.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Rent.nl",
+    "url": "https://www.rent.nl",
+    "category": "overig"
+  },
+  {
+    "name": "REPEAT cashmere",
+    "url": "https://www.repeatcashmere.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rephone",
+    "url": "https://www.rephone.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Retulp",
+    "url": "https://shop.retulp.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rijksmuseum shop",
+    "url": "https://www.rijksmuseumshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ringfotomeppel.nl",
+    "url": "https://www.ringfotomeppel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "RISK Direct",
+    "url": "https://www.risk-direct.nl",
+    "category": "overig"
+  },
+  {
+    "name": "RISK Verzekeringen",
+    "url": "https://www.risk.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rituals",
+    "url": "https://www.rituals.com/nl-nl/",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Riverwoodpetfood.com",
+    "url": "https://www.riverwoodpetfood.com",
+    "category": "supermarkt"
+  },
+  {
+    "name": "roastmarket",
+    "url": "https://www.roastmarket.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rocketshoppers.nl",
+    "url": "https://Rocketshoppers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Roetgerink Mode en Schoenen",
+    "url": "https://www.roetgerink.nl",
     "category": "mode"
+  },
+  {
+    "name": "Rolgordijn.com",
+    "url": "https://rolgordijn.com",
+    "category": "wonen"
+  },
+  {
+    "name": "Rolluikonderdelen.nl",
+    "url": "https://www.rolluikonderdelen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "rommysgallery.com",
+    "url": "https://rommysgallery.com",
+    "category": "overig"
+  },
+  {
+    "name": "Ronalds Italië webshop",
+    "url": "https://webshop.ronalds-italie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Routershop.nl",
+    "url": "https://www.routershop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Royal Canin",
+    "url": "https://www.royalcanin.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rozenkelim.nl",
+    "url": "https://www.rozenkelim.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Rozenkwekerij de wilde",
+    "url": "https://www.dewilde.nl",
+    "category": "overig"
+  },
+  {
+    "name": "RTV Stegeman",
+    "url": "https://www.rtvstegeman.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Runners Point",
+    "url": "https://www.runnerspoint.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Runningdirect.nl",
+    "url": "https://www.runningdirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ruralidays",
+    "url": "https://www.ruralidays.nl",
+    "category": "overig"
+  },
+  {
+    "name": "RVS Products",
+    "url": "https://www.rvs-products.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sacha",
+    "url": "https://www.sacha.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Sake Store",
+    "url": "https://www.sakestore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Salon Goederen B.V.",
+    "url": "https://www.salongoederen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Salontopper.nl",
+    "url": "https://www.salontopper.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Samsung",
+    "url": "https://www.samsung.com/nl/",
+    "category": "elektronica"
+  },
+  {
+    "name": "SamsungOnderdelen.com",
+    "url": "https://www.samsungonderdelen.com",
+    "category": "overig"
+  },
+  {
+    "name": "Sanexo",
+    "url": "https://sanexo.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sanitino.nl",
+    "url": "https://www.sanitino.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sanjoya.eu",
+    "url": "https://www.sanjoya.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Sanpura.nl",
+    "url": "https://www.sanpura.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SB Supply Europe",
+    "url": "https://www.sbsupply.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Scheepvaartwinkel.nl",
+    "url": "https://www.scheepvaartwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Schilderijen.nl",
+    "url": "https://www.schilderijen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Scholtenuitgeverij.nl",
+    "url": "https://www.scholtenuitgeverij.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Schoolboekenthuis.nl",
+    "url": "https://www.schoolboekenthuis.nl",
+    "category": "boeken"
+  },
+  {
+    "name": "Schreuder & Co",
+    "url": "https://www.schreuderenco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Schreuder Natuurgeneesmiddelen",
+    "url": "https://www.schreuder-natuurgeneesmiddelen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Schrikdraad.com",
+    "url": "https://www.schrikdraad.com",
+    "category": "overig"
+  },
+  {
+    "name": "Schulte Herenmode",
+    "url": "https://www.schulteherenmode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Schuttingwerk",
+    "url": "https://schuttingwerk.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Scotch & Soda",
+    "url": "https://www.scotchandsoda.com/nl-nl/",
+    "category": "mode"
+  },
+  {
+    "name": "SDeal",
+    "url": "https://www.sdeal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Season DM",
+    "url": "https://www.seasondm.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Second Nature",
+    "url": "https://second-nature.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Secrid",
+    "url": "https://www.secrid.com",
+    "category": "overig"
+  },
+  {
+    "name": "Securito",
+    "url": "https://www.securito.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Seductionail",
+    "url": "https://www.seductionail.com",
+    "category": "overig"
+  },
+  {
+    "name": "Senifone B.V.",
+    "url": "https://senifone.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sephora",
+    "url": "https://www.sephora.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Sextoyland.nl",
+    "url": "https://www.sextoyland.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Shirtmeister®",
+    "url": "https://shirtmeister.com",
+    "category": "overig"
+  },
+  {
+    "name": "shirts.nl",
+    "url": "https://www.shirts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Shoemixx.nl",
+    "url": "https://www.shoemixx.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Shop The Good",
+    "url": "https://www.shopthegood.nl",
+    "category": "overig"
+  },
+  {
+    "name": "shop.dnhresearch.com",
+    "url": "https://shop.dnhresearch.com",
+    "category": "overig"
+  },
+  {
+    "name": "Shop.onlinebinnenstad.nl",
+    "url": "https://shop.onlinebinnenstad.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Shop4",
+    "url": "https://Shop4.nl",
+    "category": "overig"
+  },
+  {
+    "name": "shop4actioncams",
+    "url": "https://www.shop4actioncams.nl",
+    "category": "overig"
+  },
+  {
+    "name": "shop4hoesjes",
+    "url": "https://www.shop4hoesjes.nl",
+    "category": "overig"
+  },
+  {
+    "name": "shop4houders",
+    "url": "https://www.shop4houders.nl",
+    "category": "overig"
+  },
+  {
+    "name": "shop4laptophoes",
+    "url": "https://www.shop4laptophoes.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "shop4smartwatch",
+    "url": "https://www.shop4smartwatch.nl",
+    "category": "overig"
+  },
+  {
+    "name": "shop4tablethoes",
+    "url": "https://www.shop4tablethoes.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Shopping Point",
+    "url": "https://www.shopping-point.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ShowBird.com",
+    "url": "https://showbird.com",
+    "category": "overig"
+  },
+  {
+    "name": "Siebel Jewelry B.V.",
+    "url": "https://www.siebeljuweliers.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Siemens-home.bsh-group.com",
+    "url": "https://Siemens-home.bsh-group.com",
+    "category": "overig"
+  },
+  {
+    "name": "SIGMA Benelux",
+    "url": "https://www.sigmabenelux.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Simako BDM Shop",
+    "url": "https://www.simakobdmshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "sinful.nl",
+    "url": "https://www.sinful.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Singlereizen.nl",
+    "url": "https://www.singlereizen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sit & Joy",
+    "url": "https://www.sitandjoy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sitcon.nl",
+    "url": "https://www.sitcon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Skinnovators",
+    "url": "https://www.skinnovators.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Skins.nl",
+    "url": "https://www.skins.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Slaapwereld.nl",
+    "url": "https://www.slaapwereld.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sleep Comfy",
+    "url": "https://www.sleepcomfy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sleep Fast",
+    "url": "https://www.sleepfast.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sloggies.nl",
+    "url": "https://www.sloggies.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Slowjuice.nl",
+    "url": "https://www.slowjuice.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SmartHomeSupply",
+    "url": "https://www.smarthomesupply.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Smartphonepolis",
+    "url": "https://www.smartphonepolis.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Smartphoto",
+    "url": "https://www.smartphoto.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SMCP webwinkel",
+    "url": "https://www.smcp.nl/digitale-zorg",
+    "category": "overig"
+  },
+  {
+    "name": "Smeets & Graas",
+    "url": "https://www.smeetsengraas.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Smit Mode",
+    "url": "https://www.smitmode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Smith & Sinclair BV",
+    "url": "https://www.smithandsinclair.com",
+    "category": "overig"
+  },
+  {
+    "name": "Smulderstextiel.nl",
+    "url": "https://www.smulderstextiel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sneltoner.nl",
+    "url": "https://www.sneltoner.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Snelwenskaart.nl",
+    "url": "https://www.snelwenskaart.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Snipes",
+    "url": "https://www.snipes.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Soapoli-online",
+    "url": "https://www.soapoli-online.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sokken.be",
+    "url": "https://www.sokken.be",
+    "category": "overig"
+  },
+  {
+    "name": "sokken.nl",
+    "url": "https://www.sokken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sokshop.nl",
+    "url": "https://www.sokshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SolarNRG Webshop",
+    "url": "https://solarnrg.shop",
+    "category": "overig"
+  },
+  {
+    "name": "Solerza",
+    "url": "https://solerza.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Solza.nl",
+    "url": "https://www.solza.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Somnox",
+    "url": "https://somnox.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "SooS",
+    "url": "https://www.soos.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SOS Central BV",
+    "url": "https://www.soscentral.eu",
+    "category": "overig"
+  },
+  {
+    "name": "Sousvidekenner",
+    "url": "https://www.sousvidekenner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sparkozijnen",
+    "url": "https://www.sparkozijnen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Spatlap",
+    "url": "https://spatlap.com",
+    "category": "overig"
+  },
+  {
+    "name": "Speedcube",
+    "url": "https://www.speedcube.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SpellenRijk.nl",
+    "url": "https://www.spellenrijk.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Spierings Herenmode",
+    "url": "https://www.spieringsherenmode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Spinwood.nl",
+    "url": "https://www.spinwood.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Spirituele Club FGA",
+    "url": "https://www.ellenwouda.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sport2000",
+    "url": "https://www.sport2000.nl",
+    "category": "sport"
+  },
+  {
+    "name": "sportdeal.nl",
+    "url": "https://www.sportdeal.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Sprinklr",
+    "url": "https://sprinklr.co",
+    "category": "overig"
+  },
+  {
+    "name": "Squashpoint",
+    "url": "https://www.squashpoint.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Stassen.nl",
+    "url": "https://www.stassen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SteamOne",
+    "url": "https://steam-one.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Steunkousen.nl",
+    "url": "https://www.steunkousen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "StickerOp",
+    "url": "https://www.stickerop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "STOX",
+    "url": "https://www.stoxenergy.com",
+    "category": "overig"
+  },
+  {
+    "name": "Studio May and June",
+    "url": "https://shop.studiomayandjune.com",
+    "category": "overig"
+  },
+  {
+    "name": "Sublub",
+    "url": "https://www.sublub.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Suitable",
+    "url": "https://www.suitableshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sunwarrior Nederland",
+    "url": "https://www.sunwarriornederland.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sunweb",
+    "url": "https://www.sunweb.nl",
+    "category": "overig"
+  },
+  {
+    "name": "SuperBath.nl",
+    "url": "https://superbath.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Superfoodstore.nl",
+    "url": "https://www.superfoodstore.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Suzuki",
+    "url": "https://suzuki.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Swaens",
+    "url": "https://www.swaens.nl/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Sweetsupply",
+    "url": "https://www.candyspot.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Swiss Sense",
+    "url": "https://www.swisssense.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "T-Mobile",
+    "url": "https://www.t-mobile.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "T-shirt Plein",
+    "url": "https://www.tshirt-plein.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tadaaz",
+    "url": "https://www.tadaaz.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tafelwinkel",
+    "url": "https://www.tafelwinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Talendomein.nl",
+    "url": "https://www.talendomein.nl",
+    "category": "overig"
+  },
+  {
+    "name": "tapijtenkelim.nl",
+    "url": "https://tapijtenkelim.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TBW-Trappen.nl",
+    "url": "https://www.tbwtrappen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TEGELinfo",
+    "url": "https://www.tegelinfo.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TegelMegaStore",
+    "url": "https://tegelmegastore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tel Sell",
+    "url": "https://www.telsell.com",
+    "category": "overig"
+  },
+  {
+    "name": "TelefoonGigant.nl",
+    "url": "https://www.telefoongigant.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "ten Cate | L. ten Cate BV",
+    "url": "https://www.tencate1952.com",
+    "category": "overig"
+  },
+  {
+    "name": "Tencateondergoed.nl.",
+    "url": "https://www.tencateondergoed.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TennisDirect.nl",
+    "url": "https://www.tennisdirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Teufel",
+    "url": "https://teufelaudio.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Texelana",
+    "url": "https://www.texelana.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TextieldrukShop",
+    "url": "https://textieldrukshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "The Bulb Farmers",
+    "url": "https://thebulbfarmers.com",
+    "category": "overig"
+  },
+  {
+    "name": "The Butchery",
+    "url": "https://www.butchery.nl",
+    "category": "overig"
+  },
+  {
+    "name": "The Fifties Store",
+    "url": "https://www.fiftiesstore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "The Meatlovers.nl",
+    "url": "https://themeatlovers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "The Wine List",
+    "url": "https://www.winelist.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Thegreenchapter.nl",
+    "url": "https://shop.thegreenchapter.com",
+    "category": "overig"
+  },
+  {
+    "name": "TheNextShop",
+    "url": "https://thenextshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Theorie.nl",
+    "url": "https://www.theorie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Threeonine",
+    "url": "https://www.threeonine.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Thuisbezorgd",
+    "url": "https://www.thuisbezorgd.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Thuiswinkel",
+    "url": "https://www.thuiswinkel.org",
+    "category": "overig"
+  },
+  {
+    "name": "TI SENTO - Milano BV",
+    "url": "https://www.tisento-milano.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TICKEN",
+    "url": "https://www.ticken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TIM'S",
+    "url": "https://www.tims.nl",
+    "category": "overig"
+  },
+  {
+    "name": "tink GmbH",
+    "url": "https://tink.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tintelingen",
+    "url": "https://www.mijntinteling.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tomado",
+    "url": "https://www.tomado.com",
+    "category": "overig"
+  },
+  {
+    "name": "Tommy Teleshopping B.V.",
+    "url": "https://www.tommyteleshopping.com",
+    "category": "overig"
+  },
+  {
+    "name": "Top-zwembadshop.nl",
+    "url": "https://www.top-zwembadshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Topbloemen.nl",
+    "url": "https://www.topbloemen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Topgeschenken.nl",
+    "url": "https://www.topgeschenken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Toplenzen.nl",
+    "url": "https://www.toplenzen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Toppy.nl",
+    "url": "https://www.toppy.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Topraambekleding.nl",
+    "url": "https://www.topraambekleding.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Toprolluiken.nl",
+    "url": "https://www.toprolluiken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TopShoe.nl",
+    "url": "https://www.topshoe.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Topsleep",
+    "url": "https://topsleep.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Toptaarten.nl",
+    "url": "https://www.toptaarten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Topvoorzetramen.nl",
+    "url": "https://www.topvoorzetramen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Topwebshop.nl",
+    "url": "https://www.topwebshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "totaalBED.nl",
+    "url": "https://www.totaalbed.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Toys For Joy",
+    "url": "https://www.toysforjoy.nl",
+    "category": "speelgoed"
+  },
+  {
+    "name": "Trade Med",
+    "url": "https://www.trademed.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Trapbox.nl",
+    "url": "https://www.trapbox.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Traphekjes.nl",
+    "url": "https://www.traphekjes.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Travelbags.nl",
+    "url": "https://www.travelbags.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Travelonbags.nl",
+    "url": "https://www.travelonbags.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Treasure Juwelier",
+    "url": "https://www.treasurejuwelier.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Trekpleister",
+    "url": "https://www.trekpleister.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Trivio",
+    "url": "https://www.trivio.com",
+    "category": "overig"
+  },
+  {
+    "name": "Tropilex",
+    "url": "https://www.tropilex.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "TrueBase.nl",
+    "url": "https://www.truebase.nl",
+    "category": "overig"
+  },
+  {
+    "name": "TUI",
+    "url": "https://www.tui.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tuinhoutdiscount.nl",
+    "url": "https://tuinhoutdiscount.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinier-winkel.nl",
+    "url": "https://www.tuinier-winkel.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinmaximaal",
+    "url": "https://www.tuinmaximaal.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinmestwinkel.com",
+    "url": "https://www.tuinmestwinkel.com",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinmeubelland",
+    "url": "https://www.tuinmeubelland.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinmeubelshop.nl",
+    "url": "https://www.tuinmeubelshop.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinplanten.nl",
+    "url": "https://tuinplanten.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinsethoeskopen.nl",
+    "url": "https://www.tuinsethoeskopen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuintoppers",
+    "url": "https://www.tuintoppers.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuinverlichtingswinkel.nl",
+    "url": "https://www.tuinverlichtingswinkel.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Tuiss Raamdecoratie",
+    "url": "https://www.raamdecoratievantuiss.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Tumble 'N Dry",
+    "url": "https://tumblendry.com",
+    "category": "overig"
+  },
+  {
+    "name": "Tuursleep.com",
+    "url": "https://www.tuursleep.com",
+    "category": "overig"
+  },
+  {
+    "name": "TwentschWijnhuis.nl",
+    "url": "https://www.twentschwijnhuis.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Uiltje Brewing Company",
+    "url": "https://uiltjebrewing.com",
+    "category": "overig"
+  },
+  {
+    "name": "Uitgeverij Remóvos",
+    "url": "https://www.removos.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Uitgeverij Zwijsen Webshop",
+    "url": "https://www.zwijsen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Uitvaartland",
+    "url": "https://www.uitvaartland.nl",
+    "category": "overig"
+  },
+  {
+    "name": "UniekGoud",
+    "url": "https://uniekgoud.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Unilux",
+    "url": "https://www.unilux.nl",
+    "category": "overig"
+  },
+  {
+    "name": "United People GmbH / Reell",
+    "url": "https://www.reellworld.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Unlimited Health",
+    "url": "https://unlimitedhealth.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "Upway",
+    "url": "https://upway.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Urnencenter.nl",
+    "url": "https://www.urnencenter.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vabotti Schoenen",
+    "url": "https://www.vabottischoenen.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Vacuumzakken.nl",
+    "url": "https://www.vacuumzakken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "vacuumzakkenspecialist.nl",
+    "url": "https://www.vacuumzakkenspecialist.nl",
+    "category": "overig"
+  },
+  {
+    "name": "vacuumzakonline.nl",
+    "url": "https://www.vacuumzakonline.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Van Dal Mannenmode",
+    "url": "https://www.vdal.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Van der Garde tuinmeubelen",
+    "url": "https://www.vdgarde.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Van der Valk Shops",
+    "url": "https://www.valkcadeaucard.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Van Dorp Hout B.V.",
+    "url": "https://www.vandorphout.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Van Haren",
+    "url": "https://www.vanharen.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Van Os Tassen en Koffers",
+    "url": "https://www.vanostassenenkoffers.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Van Poelgeest",
+    "url": "https://shop.van-poelgeest.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VanDeWeijershop.nl",
+    "url": "https://www.vandeweijershop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "vanlinden.com",
+    "url": "https://www.vanlinden.com",
+    "category": "overig"
+  },
+  {
+    "name": "VanMourikSchoenen.nl",
+    "url": "https://www.vanmourikschoenen.nl",
+    "category": "mode"
+  },
+  {
+    "name": "VanSprint",
+    "url": "https://vansprint.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VCTparts",
+    "url": "https://vctparts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VDM Home products",
+    "url": "https://vdmhomeproducts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VDO-Webshop.nl",
+    "url": "https://vdo-webshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vechtsportonline.nl",
+    "url": "https://www.vechtsportonline.nl",
+    "category": "sport"
+  },
+  {
+    "name": "Vegro Verpleegartikelen",
+    "url": "https://www.vegro.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Veilige vaart",
+    "url": "https://Veiligevaart.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Veiligheids-sloten.nl",
+    "url": "https://www.veiligheids-sloten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Veiligkopen.nu",
+    "url": "https://www.veiligkopen.nu",
+    "category": "overig"
+  },
+  {
+    "name": "Vekto.nl",
+    "url": "https://www.vekto.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VELUXshop.nl",
+    "url": "https://www.VELUXshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Veneta Raamdecoratie",
+    "url": "https://www.veneta.com",
+    "category": "overig"
+  },
+  {
+    "name": "Vente-unique.nl",
+    "url": "https://www.vente-unique.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ventilatieland",
+    "url": "https://www.ventilatieland.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ventilatieshop.com",
+    "url": "https://www.ventilatieshop.com",
+    "category": "overig"
+  },
+  {
+    "name": "Ventilators.shop",
+    "url": "https://www.ventilators.shop",
+    "category": "overig"
+  },
+  {
+    "name": "Veratron-marineshop.nl",
+    "url": "https://www.veratron-marineshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "verf.nl",
+    "url": "https://www.verf.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Verfbrouwerij",
+    "url": "https://www.verfbrouwerij.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Verfwinkel.com",
+    "url": "https://www.verfwinkel.com",
+    "category": "wonen"
+  },
+  {
+    "name": "Verfwinkel.nl",
+    "url": "https://Verfwinkel.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Verhagenelektroservice.nl",
+    "url": "https://www.verhagenelektroservice.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Verno.com",
+    "url": "https://www.verno.com",
+    "category": "overig"
+  },
+  {
+    "name": "Vero Moda",
+    "url": "https://www.veromoda.com/nl/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Verstegen Spices & Sauces",
+    "url": "https://verstegen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VERTBAUDET",
+    "url": "https://www.vertbaudet.nl",
+    "category": "overig"
+  },
+  {
+    "name": "verwarmenperkamer",
+    "url": "https://www.verwarmenperkamer.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vetex.nl",
+    "url": "https://www.vetex.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ViaDennis International B.V.",
+    "url": "https://viadennis.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vidaxl",
+    "url": "https://www.vidaxl.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Vignet-Bestellen.nl",
+    "url": "https://www.vignet-bestellen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Villa Piscine",
+    "url": "https://www.villapiscine.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Viltdeco.nl",
+    "url": "https://www.viltdeco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vision Direct",
+    "url": "https://www.visiondirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Visservice",
+    "url": "https://visservicewebshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vitakruid",
+    "url": "https://www.vitakruid.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vitalstyle.nl",
+    "url": "https://www.vitalstyle.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vitamixshop.nl",
+    "url": "https://www.vitamixshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vivara Natuurbeschermingsproducten",
+    "url": "https://www.vivara.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ViveraWaterbedden.nl",
+    "url": "https://www.viverawaterbedden.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Vloerglijders",
+    "url": "https://www.vloerglijders.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vloerverwarming Store",
+    "url": "https://www.vloerverwarmingstore.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vloerverwarming-direct.nl",
+    "url": "https://www.vloerverwarming-direct.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Vodafone",
+    "url": "https://www.vodafone.nl",
+    "category": "elektronica"
+  },
+  {
+    "name": "Voegenshop.nl",
+    "url": "https://www.voegenshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voetbal Retour",
+    "url": "https://www.voetbalretour.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VoetbalDirect.nl",
+    "url": "https://www.voetbaldirect.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voetbalfanshop.nl",
+    "url": "https://www.voetbalfanshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voetbalshirtskoning.nl",
+    "url": "https://www.voetbalshirtskoning.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voetbalshop.nl",
+    "url": "https://www.voetbalshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VoetbalTix.NL",
+    "url": "https://www.voetbaltix.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voipshop.nl",
+    "url": "https://www.voipshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Volleybalshop.nl",
+    "url": "https://www.volleybalshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voorbeeld-ondernemingsplannen.nl",
+    "url": "https://www.voorbeeld-ondernemingsplannen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VoordeelGordijnen.nl",
+    "url": "https://www.voordeelgordijnen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Voordeelscooters.nl",
+    "url": "https://www.voordeelscooters.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Voortman Mode",
+    "url": "https://www.voortmanmode.nl",
+    "category": "mode"
+  },
+  {
+    "name": "VVV Cadeaukaarten",
+    "url": "https://www.vvvcadeaukaarten.nl",
+    "category": "overig"
+  },
+  {
+    "name": "VVV Texel",
+    "url": "https://www.texel.net/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Walkies.nl",
+    "url": "https://www.walkies.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WANDD",
+    "url": "https://wandd.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Warentuin.nl",
+    "url": "https://www.warentuin.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Warmteservice.nl",
+    "url": "https://www.warmteservice.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wasparfum",
+    "url": "https://www.wasparfum.nl",
+    "category": "drogisterij"
+  },
+  {
+    "name": "WaterbedKampioen.nl",
+    "url": "https://www.waterbedkampioen.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Waterpompshop",
+    "url": "https://www.waterpompshop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WE Fashion",
+    "url": "https://www.wefashion.com/nl-NL/",
+    "category": "mode"
+  },
+  {
+    "name": "Webshop Auping",
+    "url": "https://www.auping.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "Webvitaal.nl",
+    "url": "https://www.webvitaal.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Webwinkel.kellerkeukens.nl",
+    "url": "https://webwinkel.kellerkeukens.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Weddingdeco.nl",
+    "url": "https://www.weddingdeco.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Weekendjeweg.nl",
+    "url": "https://weekendjeweg.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WEfashion.nl",
+    "url": "https://www.wefashion.com",
+    "category": "mode"
+  },
+  {
+    "name": "Wehkamp",
+    "url": "https://www.wehkamp.nl",
+    "category": "marketplace"
+  },
+  {
+    "name": "Weleda",
+    "url": "https://www.weleda.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Welkoop.nl",
+    "url": "https://www.welkoop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WeLoveCosmetics",
+    "url": "https://www.welovecosmetics.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Werk aan de Muur",
+    "url": "https://www.werkaandemuur.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Werkbroeken.nl",
+    "url": "https://www.werkbroeken.nl",
+    "category": "overig"
+  },
+  {
+    "name": "werkjassen.nl",
+    "url": "https://www.werkjassen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "werkoveralls.nl",
+    "url": "https://www.werkoveralls.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Werkoverhemden.nl",
+    "url": "https://www.werkoverhemden.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Werkschoeisel.nl",
+    "url": "https://www.werkschoeisel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Werkshirts.nl",
+    "url": "https://www.werkshirts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Werktruien.nl",
+    "url": "https://www.werktruien.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wertgarantie.nl",
+    "url": "https://www.wertgarantie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wesport.nl",
+    "url": "https://www.wesport.nl",
+    "category": "sport"
+  },
+  {
+    "name": "What is Hip",
+    "url": "https://www.whatiship.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wifishop.nl",
+    "url": "https://www.wifishop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WIJ Geboortekaartjes",
+    "url": "https://wijgeboortekaartjes.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wijn33",
+    "url": "https://wijn33.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnhandel Robbers & van den Hoogen",
+    "url": "https://www.robbersenvandenhoogen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnhuis Bodde",
+    "url": "https://www.wijnhuisbodde.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnig.nl",
+    "url": "https://www.wijnig.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnjuweel.nl",
+    "url": "https://www.wijnjuweel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnkastenshop.com",
+    "url": "https://www.wijnkastenshop.com",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnkoelkaststore.com",
+    "url": "https://wijnkoelkaststore.com",
+    "category": "overig"
+  },
+  {
+    "name": "Wijnvoordeel.nl",
+    "url": "https://www.wijnvoordeel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WildcameraXL",
+    "url": "https://wildcameraxl.nl",
+    "category": "overig"
+  },
+  {
+    "name": "wilesco-shop.nl",
+    "url": "https://www.wilesco-shop.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wilgentenenschuttingen.nl",
+    "url": "https://www.wilgentenenschuttingen.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Willie.nl",
+    "url": "https://Willie.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wine Unplugged",
+    "url": "https://www.wineunplugged.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wineandbarrels.nl",
+    "url": "https://www.wineandbarrels.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WineInBlack.nl",
+    "url": "https://www.wineinblack.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Winkelstraat.nl",
+    "url": "https://www.winkelstraat.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Winparts.nl",
+    "url": "https://www.winparts.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Winter Tours",
+    "url": "https://winter-tours.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Witgoedhuis.nl",
+    "url": "https://www.witgoedhuis.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Witt International",
+    "url": "https://www.witt-international.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wolfswinkel Groentechniek",
+    "url": "https://www.wolfswinkel.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wolfswinkel.shop",
+    "url": "https://www.wolfswinkel.shop",
+    "category": "overig"
+  },
+  {
+    "name": "Wolky.nl",
+    "url": "https://www.wolky.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wollendekbed.nl",
+    "url": "https://www.wollendekbed.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "Womanizer.nl",
+    "url": "https://www.womanizer.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Woningpartner",
+    "url": "https://woningpartner.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WoodYouCare BV",
+    "url": "https://woodyou.care",
+    "category": "overig"
+  },
+  {
+    "name": "Woonexpress",
+    "url": "https://www.woonexpress.nl",
+    "category": "overig"
+  },
+  {
+    "name": "WoonVeilig",
+    "url": "https://www.woonveilig.nl/shop",
+    "category": "overig"
+  },
+  {
+    "name": "WOOOD",
+    "url": "https://woood.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wooof.com",
+    "url": "https://www.wooof.com",
+    "category": "overig"
+  },
+  {
+    "name": "Workliving",
+    "url": "https://www.workliving.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Wumby",
+    "url": "https://www.wumby.nl",
+    "category": "overig"
+  },
+  {
+    "name": "www.badkamerdeal.nl",
+    "url": "https://www.badkamerdeal.nl",
+    "category": "wonen"
+  },
+  {
+    "name": "www.plantina.nl",
+    "url": "https://www.plantina.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Xclusive Parking",
+    "url": "https://www.xclusiveparking.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Xenos B.V.",
+    "url": "https://www.xenos.nl",
+    "category": "overig"
+  },
+  {
+    "name": "YamaFoodShop.nl",
+    "url": "https://www.yamafoodshop.nl",
+    "category": "supermarkt"
+  },
+  {
+    "name": "Yarinde",
+    "url": "https://www.yarinde.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Ylva-dite.com",
+    "url": "https://www.ylva-dite.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Yoek",
+    "url": "https://www.yoek.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Your Look for less!",
+    "url": "https://www.your-look-for-less.nl",
+    "category": "overig"
+  },
+  {
+    "name": "yourdecoration.nl",
+    "url": "https://www.yourdecoration.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Yourdog",
+    "url": "https://www.yourdog.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Yumeko",
+    "url": "https://www.yumeko.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zadelman",
+    "url": "https://www.zadelman.com",
+    "category": "overig"
+  },
+  {
+    "name": "Zalando",
+    "url": "https://www.zalando.nl",
+    "category": "mode"
+  },
+  {
+    "name": "Zamnesia",
+    "url": "https://www.zamnesia.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zara",
+    "url": "https://www.zara.com/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "Zeeman",
+    "url": "https://www.zeeman.com/nl/",
+    "category": "mode"
+  },
+  {
+    "name": "ZEEMAN Webshop",
+    "url": "https://www.zeeman.com",
+    "category": "overig"
+  },
+  {
+    "name": "Zen-lifestyle.nl",
+    "url": "https://www.zen-lifestyle.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zen.nl winkel",
+    "url": "https://zen.nl/shop",
+    "category": "overig"
+  },
+  {
+    "name": "Zibrowebshop.com",
+    "url": "https://www.zibrowebshop.com",
+    "category": "overig"
+  },
+  {
+    "name": "zilver.nl",
+    "url": "https://www.zilver.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ZINZI",
+    "url": "https://www.zinzi.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ZO schoon",
+    "url": "https://zoschoon.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zonneschermdoek.nl",
+    "url": "https://www.zonneschermdoek.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zonweringstunter.nl",
+    "url": "https://www.zonweringstunter.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zooplus",
+    "url": "https://www.zooplus.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zoweg.nl",
+    "url": "https://www.zoweg.nl",
+    "category": "overig"
+  },
+  {
+    "name": "ZuiderSter.nl",
+    "url": "https://zuiderster.nl",
+    "category": "overig"
+  },
+  {
+    "name": "Zuiver.com",
+    "url": "https://www.zuiver.com/nl",
+    "category": "overig"
+  },
+  {
+    "name": "ZUMO",
+    "url": "https://www.zumo-international.com",
+    "category": "overig"
+  },
+  {
+    "name": "Zwembadstore.com",
+    "url": "https://www.zwembadstore.com",
+    "category": "overig"
+  },
+  {
+    "name": "zwembroeken.nl",
+    "url": "https://www.zwembroeken.nl",
+    "category": "overig"
   }
 ]
