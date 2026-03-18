@@ -26,8 +26,8 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp public/index.html _site/
-          cp public/app.js _site/
+          cp public/*.html _site/
+          cp public/*.js _site/
           cp -r data _site/
 
       - name: Setup Pages

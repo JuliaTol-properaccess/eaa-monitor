@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over dit dashboard — EAA Monitor</title>
+  <meta name="description" content="Over de EAA Monitor: wie er achter zit, hoe het werkt en wat het doel is.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            magenta: { DEFAULT: '#A30D4B', light: '#F9E6EE', dark: '#7A0A38' },
+            petrol: { DEFAULT: '#004050', light: '#E6F0F3', dark: '#002D38' },
+            darkblue: '#1F2937',
+            lightgrey: '#F5F5F5',
+          },
+          fontFamily: {
+            heading: ['"Nunito Sans"', 'sans-serif'],
+            body: ['Nunito', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Nunito', sans-serif; color: #1F2937; }
+    h1, h2, h3 { font-family: 'Nunito Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-petrol focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">
+    Ga naar hoofdinhoud
+  </a>
+
+  <!-- Header bar -->
+  <header class="border-b-4 border-magenta">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div>
+        <p class="text-sm font-semibold text-magenta tracking-wide uppercase">Proper Access</p>
+        <p class="text-2xl md:text-3xl font-extrabold font-heading text-darkblue leading-tight">
+          <a href="index.html" class="hover:text-petrol">EAA Monitor</a>
+        </p>
+      </div>
+      <nav aria-label="Hoofdnavigatie">
+        <a href="index.html" class="text-sm font-semibold text-petrol hover:text-magenta">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Page title -->
+    <section class="bg-petrol text-white py-10 md:py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <h1 class="text-2xl md:text-3xl font-bold font-heading">Over dit dashboard</h1>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+
+      <section class="mb-12">
+        <h2 class="text-xl font-bold font-heading text-darkblue mb-4">Over ons</h2>
+        <p class="leading-relaxed">Dit dashboard is gemaakt door <a href="https://www.properaccess.nl" class="text-petrol font-semibold hover:text-magenta">Proper Access</a>. Julia Tol is de oprichter van dit bedrijf. Julia is tussen 2022 en 2025 betrokken geweest bij het programma DigiToegankelijk TOP, de maker van het <a href="https://dashboard.digitoegankelijk.nl/" class="text-petrol font-semibold hover:text-magenta">Dashboard DigiToegankelijk</a>.</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-xl font-bold font-heading text-darkblue mb-4">Hoe werkt dit dashboard</h2>
+        <p class="leading-relaxed">Elke maandag worden de websites van de Nederlandse webshops gecontroleerd op de aanwezigheid van een toegankelijkheidsverklaring. Het doel van dit dashboard is om inzicht te geven in hoeveel winkels met digitale toegankelijkheid bezig zijn.</p>
+        <p class="leading-relaxed mt-4">We kunnen geen inzicht geven of een uitspraak doen over hoe toegankelijk deze websites zijn.</p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-darkblue text-white mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p class="font-bold font-heading">EAA Monitor</p>
+          <p class="text-sm text-gray-400 mt-1">Een initiatief van Proper Access — specialist in digitale toegankelijkheid</p>
+        </div>
+        <div class="flex gap-4 text-sm text-gray-400">
+          <a href="index.html" class="hover:text-white">Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
