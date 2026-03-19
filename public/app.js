@@ -9,6 +9,8 @@
 
   let allWebshops = [];
   let currentSort = { key: "name", direction: "asc" };
+  let currentPage = 1;
+  const PAGE_SIZE = 25;
 
   const CATEGORY_LABELS = {
     marketplace: "Marketplace",
@@ -360,10 +362,70 @@
     });
   }
 
+  function goToPage(page) {
+    currentPage = page;
+    renderTable();
+    document.getElementById("results-table").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function renderPagination(totalItems) {
+    const nav = document.getElementById("pagination");
+    const totalPages = Math.ceil(totalItems / PAGE_SIZE);
+
+    if (totalPages <= 1) {
+      nav.innerHTML = "";
+      return;
+    }
+
+    const start = (currentPage - 1) * PAGE_SIZE + 1;
+    const end = Math.min(currentPage * PAGE_SIZE, totalItems);
+
+    // Build page buttons
+    const pages = [];
+    const addPage = (p) => {
+      if (p === currentPage) {
+        pages.push(`<span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-petrol text-white font-semibold text-sm" aria-current="page">${p}</span>`);
+      } else {
+        pages.push(`<button class="page-btn inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 text-sm text-darkblue hover:bg-gray-100" data-page="${p}" aria-label="Ga naar pagina ${p}">${p}</button>`);
+      }
+    };
+
+    addPage(1);
+    if (currentPage > 3) pages.push('<span class="px-1 text-gray-400">...</span>');
+    for (let p = Math.max(2, currentPage - 1); p <= Math.min(totalPages - 1, currentPage + 1); p++) {
+      addPage(p);
+    }
+    if (currentPage < totalPages - 2) pages.push('<span class="px-1 text-gray-400">...</span>');
+    if (totalPages > 1) addPage(totalPages);
+
+    const prevDisabled = currentPage === 1;
+    const nextDisabled = currentPage === totalPages;
+
+    nav.innerHTML = `
+      <p class="text-sm text-gray-600">${start}–${end} van ${totalItems} webshops</p>
+      <div class="flex items-center gap-1">
+        <button class="page-prev inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 text-sm text-darkblue hover:bg-gray-100 ${prevDisabled ? "opacity-40 cursor-default" : ""}" ${prevDisabled ? "disabled" : ""} aria-label="Vorige pagina">&lsaquo;</button>
+        ${pages.join("")}
+        <button class="page-next inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 text-sm text-darkblue hover:bg-gray-100 ${nextDisabled ? "opacity-40 cursor-default" : ""}" ${nextDisabled ? "disabled" : ""} aria-label="Volgende pagina">&rsaquo;</button>
+      </div>`;
+
+    nav.querySelectorAll(".page-btn").forEach((btn) =>
+      btn.addEventListener("click", () => goToPage(Number(btn.dataset.page)))
+    );
+    const prevBtn = nav.querySelector(".page-prev");
+    if (prevBtn && !prevDisabled) prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
+    const nextBtn = nav.querySelector(".page-next");
+    if (nextBtn && !nextDisabled) nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
+  }
+
   function renderTable() {
     const filtered = filterWebshops();
     const sorted = sortWebshops(filtered);
     const tbody = document.getElementById("results-body");
+    const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
+
+    // Clamp currentPage
+    if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
 
     document.getElementById("filter-count").textContent =
       filtered.length === allWebshops.length
@@ -373,10 +435,14 @@
     if (sorted.length === 0) {
       tbody.innerHTML =
         '<tr><td colspan="5" class="py-12 text-center text-gray-400">Geen resultaten gevonden</td></tr>';
+      renderPagination(0);
       return;
     }
 
-    tbody.innerHTML = sorted
+    const pageStart = (currentPage - 1) * PAGE_SIZE;
+    const pageItems = sorted.slice(pageStart, pageStart + PAGE_SIZE);
+
+    tbody.innerHTML = pageItems
       .map((shop, i) => {
         const status = getStatusInfo(shop);
         const catLabel = CATEGORY_LABELS[shop.category] || shop.category;
@@ -407,6 +473,8 @@
         </tr>`;
       })
       .join("");
+
+    renderPagination(sorted.length);
   }
 
   // ── Helpers ──
@@ -459,25 +527,31 @@
           .forEach((b) => b.classList.remove("asc", "desc"));
         btn.classList.add(currentSort.direction);
         updateSortAriaLabels();
+        currentPage = 1;
         renderTable();
       });
     });
   }
 
+  function resetPageAndRender() {
+    currentPage = 1;
+    renderTable();
+  }
+
   function setupFilters() {
     document
       .getElementById("filter-search")
-      .addEventListener("input", renderTable);
+      .addEventListener("input", resetPageAndRender);
     const searchBtn = document.getElementById("search-btn");
     if (searchBtn) {
-      searchBtn.addEventListener("click", renderTable);
+      searchBtn.addEventListener("click", resetPageAndRender);
     }
     document
       .getElementById("filter-category")
-      .addEventListener("change", renderTable);
+      .addEventListener("change", resetPageAndRender);
     document
       .getElementById("filter-status")
-      .addEventListener("change", renderTable);
+      .addEventListener("change", resetPageAndRender);
   }
 
   // ── Init ──
