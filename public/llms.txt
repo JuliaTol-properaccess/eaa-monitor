@@ -4,10 +4,10 @@
 > toegankelijkheidsverklaring publiceren, zoals vereist door de European
 > Accessibility Act (EAA). Een initiatief van Proper Access.
 
-Laatste meting (6 juni 2026): 1246 webshops gecontroleerd,
-139 (11%) met toegankelijkheidsverklaring,
-989 (79%) zonder, en
-118 (9%) niet te controleren.
+Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
+248 (2%) met toegankelijkheidsverklaring,
+9036 (87%) zonder, en
+1113 (11%) niet te controleren.
 
 ## Belangrijkste pagina's
 - [Dashboard](https://eaa-monitor.nl/): cijfers, grafiek en volledige lijst van webshops
