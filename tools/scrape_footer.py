@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 WEBSHOPS_FILE = ROOT / "data" / "webshops.json"
 RESULTS_FILE = ROOT / "data" / "results.json"
 OBJECTIONS_FILE = ROOT / "data" / "objections.json"
+HISTORY_FILE = ROOT / "data" / "history.json"
 INDEX_FILE = ROOT / "public" / "index.html"
 LLMS_FILE = ROOT / "public" / "llms.txt"
 
@@ -388,6 +389,40 @@ specialist in digitale toegankelijkheid. Oprichter: Julia Tol, senior auditor.
     print(f"Wrote {LLMS_FILE}")
 
 
+def update_history(stats, date_iso):
+    """Append a weekly summary to data/history.json (idempotent per date).
+
+    Append-only time series that feeds the LinkedIn post-generator (week-over-week
+    deltas) and, later, a trend chart on the dashboard. Re-running on the same day
+    overwrites that day's entry instead of duplicating it.
+    """
+    try:
+        with open(HISTORY_FILE) as f:
+            history = json.load(f)
+        if not isinstance(history, list):
+            history = []
+    except (FileNotFoundError, json.JSONDecodeError):
+        history = []
+
+    entry = {
+        "date": date_iso,
+        "total": stats["total"],
+        "with_statement": stats["with_statement"],
+        "without_statement": stats["without_statement"],
+        "errors": stats["errors"],
+        "pct_with": stats["pct_with"],
+    }
+
+    history = [h for h in history if h.get("date") != date_iso]
+    history.append(entry)
+    history.sort(key=lambda h: h["date"])
+
+    HISTORY_FILE.write_text(
+        json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"Updated {HISTORY_FILE} ({len(history)} meetpunten)")
+
+
 def generate_geo_assets(output):
     """Bake stats/schema into index.html and llms.txt from a results.json dict."""
     objection_urls = _load_objection_urls()
@@ -400,6 +435,7 @@ def generate_geo_assets(output):
     date_iso = output["last_updated"][:10]
     patch_index_html(stats, breakdown, date_nl, date_iso)
     write_llms_txt(stats, date_nl)
+    update_history(stats, date_iso)
 
 
 def main():

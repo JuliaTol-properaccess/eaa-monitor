@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json public/index.html public/llms.txt
+          git add data/results.json data/history.json public/index.html public/llms.txt
           git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
           git push
