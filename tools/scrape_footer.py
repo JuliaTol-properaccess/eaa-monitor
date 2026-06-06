@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 WEBSHOPS_FILE = ROOT / "data" / "webshops.json"
 RESULTS_FILE = ROOT / "data" / "results.json"
 OBJECTIONS_FILE = ROOT / "data" / "objections.json"
+HISTORY_FILE = ROOT / "data" / "history.json"
 INDEX_FILE = ROOT / "public" / "index.html"
 LLMS_FILE = ROOT / "public" / "llms.txt"
 
@@ -388,6 +389,40 @@ specialist in digitale toegankelijkheid. Oprichter: Julia Tol, senior auditor.
     print(f"Wrote {LLMS_FILE}")
 
 
+def update_history(stats, date_iso):
+    """Append a weekly summary to data/history.json (idempotent per date).
+
+    Append-only time series that feeds the LinkedIn post-generator (week-over-week
+    deltas) and, later, a trend chart on the dashboard. Re-running on the same day
+    overwrites that day's entry instead of duplicating it.
+    """
+    try:
+        with open(HISTORY_FILE) as f:
+            history = json.load(f)
+        if not isinstance(history, list):
+            history = []
+    except (FileNotFoundError, json.JSONDecodeError):
+        history = []
+
+    entry = {
+        "date": date_iso,
+        "total": stats["total"],
+        "with_statement": stats["with_statement"],
+        "without_statement": stats["without_statement"],
+        "errors": stats["errors"],
+        "pct_with": stats["pct_with"],
+    }
+
+    history = [h for h in history if h.get("date") != date_iso]
+    history.append(entry)
+    history.sort(key=lambda h: h["date"])
+
+    HISTORY_FILE.write_text(
+        json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"Updated {HISTORY_FILE} ({len(history)} meetpunten)")
+
+
 def generate_geo_assets(output):
     """Bake stats/schema into index.html and llms.txt from a results.json dict."""
     objection_urls = _load_objection_urls()
@@ -400,25 +435,12 @@ def generate_geo_assets(output):
     date_iso = output["last_updated"][:10]
     patch_index_html(stats, breakdown, date_nl, date_iso)
     write_llms_txt(stats, date_nl)
+    update_history(stats, date_iso)
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Scrape webshop footers for accessibility statements")
-    parser.add_argument("--limit", type=int, help="Limit number of webshops to check (for testing)")
-    args = parser.parse_args()
-
-    # Load webshops
-    with open(WEBSHOPS_FILE) as f:
-        webshops = json.load(f)
-
-    if args.limit:
-        webshops = webshops[: args.limit]
-
-    print(f"Checking {len(webshops)} webshops...")
-
+def scrape_webshops(webshops, now):
+    """Scrape a list of webshops sequentially and return the result entries."""
     results = []
-    now = datetime.now(timezone.utc).isoformat()
-
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -434,7 +456,7 @@ def main():
             print(f"  [{i + 1}/{len(webshops)}] {name} ({url})...", end=" ", flush=True)
 
             result = check_webshop(page, url)
-            result_entry = {
+            results.append({
                 "name": name,
                 "url": url,
                 "category": shop.get("category", "overig"),
@@ -444,8 +466,7 @@ def main():
                 "last_checked": now,
                 "scrape_status": result["scrape_status"],
                 "error": result["error"],
-            }
-            results.append(result_entry)
+            })
 
             status = "GEVONDEN" if result["has_statement"] else "niet gevonden"
             if result["scrape_status"] != "success":
@@ -457,13 +478,15 @@ def main():
                 time.sleep(random.uniform(1, 3))
 
         browser.close()
+    return results
 
-    # Count stats
+
+def build_output(results, now):
+    """Build the results.json structure (stats + sorted webshops) from raw entries."""
     with_statement = sum(1 for r in results if r["has_statement"])
     errors = sum(1 for r in results if r["scrape_status"] != "success")
     without_statement = len(results) - with_statement - errors
-
-    output = {
+    return {
         "last_updated": now,
         "total": len(results),
         "with_statement": with_statement,
@@ -472,19 +495,90 @@ def main():
         "webshops": sorted(results, key=lambda x: x["name"].lower()),
     }
 
+
+def finalize(output):
+    """Write results.json and (re)generate the GEO assets served to crawlers."""
     RESULTS_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(RESULTS_FILE, "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-
-    # Bake current numbers + Dataset schema into the served HTML and llms.txt so
-    # AI-crawlers and no-JS visitors see real values instead of placeholders.
     generate_geo_assets(output)
-
     print(f"\nKlaar! Resultaten opgeslagen in {RESULTS_FILE}")
-    print(f"  Totaal: {len(results)}")
-    print(f"  Met verklaring: {with_statement}")
-    print(f"  Zonder verklaring: {without_statement}")
-    print(f"  Fouten: {errors}")
+    print(f"  Totaal: {output['total']}")
+    print(f"  Met verklaring: {output['with_statement']}")
+    print(f"  Zonder verklaring: {output['without_statement']}")
+    print(f"  Fouten: {output['errors']}")
+
+
+def merge_parts(merge_dir, now):
+    """Combine all results.part-*.json files in a directory into final results.json.
+
+    De-duplicates on normalized URL (keeping the first seen) in case shard ranges
+    ever overlap, then finalizes as if it were one big run.
+    """
+    parts = sorted(Path(merge_dir).glob("results.part-*.json"))
+    if not parts:
+        print(f"Geen part-bestanden gevonden in {merge_dir}")
+        sys.exit(1)
+    seen = set()
+    combined = []
+    for part in parts:
+        data = json.load(open(part))
+        entries = data.get("webshops", data) if isinstance(data, dict) else data
+        for r in entries:
+            key = _normalize_url(r.get("url"))
+            if key in seen:
+                continue
+            seen.add(key)
+            combined.append(r)
+        print(f"  {part.name}: {len(entries)} entries")
+    print(f"Samengevoegd: {len(combined)} unieke webshops uit {len(parts)} shards")
+    finalize(build_output(combined, now))
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Scrape webshop footers for accessibility statements")
+    parser.add_argument("--limit", type=int, help="Limit number of webshops to check (for testing)")
+    parser.add_argument("--shard", type=int, help="0-based index of this shard")
+    parser.add_argument("--num-shards", type=int, help="Total number of shards")
+    parser.add_argument("--out", help="Where to write partial results (shard mode)")
+    parser.add_argument("--merge", help="Directory of results.part-*.json to merge into final results.json")
+    args = parser.parse_args()
+
+    now = datetime.now(timezone.utc).isoformat()
+
+    # Merge mode: combine shard outputs, generate assets, done.
+    if args.merge:
+        merge_parts(args.merge, now)
+        return
+
+    # Load webshops
+    with open(WEBSHOPS_FILE) as f:
+        webshops = json.load(f)
+
+    if args.limit:
+        webshops = webshops[: args.limit]
+
+    # Shard mode: take every Nth shop so load spreads evenly across shards.
+    sharded = args.shard is not None and args.num_shards
+    if sharded:
+        webshops = webshops[args.shard:: args.num_shards]
+        print(f"Shard {args.shard}/{args.num_shards}: {len(webshops)} webshops")
+    else:
+        print(f"Checking {len(webshops)} webshops...")
+
+    results = scrape_webshops(webshops, now)
+
+    # Shard mode writes a partial file for the merge step; it must NOT finalize
+    # (that would clobber results.json and regenerate assets from a partial set).
+    if sharded:
+        out = Path(args.out) if args.out else RESULTS_FILE.parent / f"results.part-{args.shard}.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        with open(out, "w") as f:
+            json.dump({"last_updated": now, "webshops": results}, f, indent=2, ensure_ascii=False)
+        print(f"\nShard {args.shard} klaar: {len(results)} resultaten -> {out}")
+        return
+
+    finalize(build_output(results, now))
 
 
 if __name__ == "__main__":

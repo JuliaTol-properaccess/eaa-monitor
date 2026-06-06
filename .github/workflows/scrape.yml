@@ -13,8 +13,16 @@ permissions:
   contents: write
 
 jobs:
+  # The webshop list grew to ~10k shops, which no longer fits a single 6-hour
+  # GitHub Actions job when scraped sequentially. We shard the list across N
+  # parallel jobs (each takes every Nth shop) and merge the partial results in a
+  # final step. Each shard handles ~1.3k shops, well under the time limit.
   scrape:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # one failed shard shouldn't drop the others
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
     steps:
       - uses: actions/checkout@v4
 
@@ -29,13 +37,49 @@ jobs:
           playwright install chromium
           playwright install-deps chromium
 
-      - name: Run scraper
-        run: python tools/scrape_footer.py
+      - name: Run scraper shard
+        run: python tools/scrape_footer.py --shard ${{ matrix.shard }} --num-shards 8 --out results.part-${{ matrix.shard }}.json
+
+      - name: Upload partial results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-part-${{ matrix.shard }}
+          path: results.part-${{ matrix.shard }}.json
+          retention-days: 1
+
+  # Merge the shard outputs into the final results.json, regenerate the
+  # crawler-visible GEO assets, and push. Runs even if some shards failed, so a
+  # single bad shard degrades coverage instead of skipping the whole update.
+  merge:
+    needs: scrape
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        # Merge only needs the script to import; no browser download required.
+        run: pip install -r requirements.txt
+
+      - name: Download all partial results
+        uses: actions/download-artifact@v4
+        with:
+          path: parts
+          pattern: results-part-*
+          merge-multiple: true
+
+      - name: Merge shards and generate assets
+        run: python tools/scrape_footer.py --merge parts
 
       - name: Commit and push results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json public/index.html public/llms.txt
+          git add data/results.json data/history.json public/index.html public/llms.txt
           git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
           git push

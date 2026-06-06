@@ -7,7 +7,9 @@ Dashboard dat controleert of Nederlandse webshops een toegankelijkheidsverklarin
 Volgt het WAT framework (Workflows, Agents, Tools).
 
 - `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks
-- `data/webshops.json` — Handmatig samengestelde lijst van te controleren webshops
+- `tools/scrape_thuiswinkel.py` — Bouwt webshops.json aan met leden van Thuiswinkel.org
+- `tools/scrape_webwinkelkeur.py` — Bouwt webshops.json aan met leden van WebwinkelKeur (server-rendered ledenlijst + JSON-LD per profiel; resume-cache in `.tmp/`)
+- `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels via de scrapers hierboven)
 - `data/results.json` — Automatisch gegenereerde scrape-resultaten (niet handmatig bewerken)
 - `data/objections.json` — Handmatig bijgehouden lijst van webshops die bezwaar hebben gemaakt tegen vermelding (overlay; sluit ze uit van het dashboard, geen e-mailadressen)
 - `public/index.html` + `public/app.js` — Statisch dashboard (HTML + Tailwind + vanilla JS)
@@ -20,8 +22,12 @@ Volgt het WAT framework (Workflows, Agents, Tools).
 ## Commando's
 
 ```bash
-# Scraper draaien
+# Scraper draaien (volledige lijst, sequentieel)
 python tools/scrape_footer.py
+
+# Sharded draaien (zoals de cron): 1 van de 8 delen, daarna mergen
+python tools/scrape_footer.py --shard 0 --num-shards 8 --out results.part-0.json
+python tools/scrape_footer.py --merge <map-met-part-bestanden>
 
 # Frontend lokaal testen
 python -m http.server 8000 -d public
@@ -50,3 +56,10 @@ Voeg entries toe aan `data/webshops.json`:
 ```
 
 Categorieen: `marketplace`, `elektronica`, `mode`, `supermarkt`, `drogisterij`, `wonen`, `sport`, `boeken`, `speelgoed`, `overig`
+
+### Bronnen voor bulk-uitbreiding
+
+- **Thuiswinkel.org** en **WebwinkelKeur** publiceren een doorzoekbare ledenlijst, gescraped via de tools hierboven.
+- **Stichting Webshop Keurmerk** (keurmerk.info) publiceert geen ledenregister, alleen een per-webshop verificatietool. Niet bulk-scrapebaar.
+- **Twinkle100 / Emerce100** zijn kleine ranglijsten (~100 grote namen) met veel overlap; sneller om gericht te diffen tegen bekende grote shops dan apart te scrapen.
+- We richten ons bewust op shops die bij een keurmerk/vakorganisatie zijn aangesloten. Webshops die nergens bij aangesloten zijn, zijn vaak micro-ondernemingen (<10 medewerkers, <€2 mln omzet) en daarmee vrijgesteld van de EAA.
