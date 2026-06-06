@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bezwaar tegen vermelding — EAA Monitor</title>
+  <meta name="description" content="Maak bezwaar tegen vermelding in de EAA Monitor als je webshop buiten de European Accessibility Act valt.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            magenta: { DEFAULT: '#A30D4B', light: '#F9E6EE', dark: '#7A0A38' },
+            petrol: { DEFAULT: '#004050', light: '#E6F0F3', dark: '#002D38' },
+            darkblue: '#1F2937',
+            lightgrey: '#F5F5F5',
+          },
+          fontFamily: {
+            heading: ['"Nunito Sans"', 'sans-serif'],
+            body: ['Nunito', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Nunito', sans-serif; color: #1F2937; }
+    h1, h2, h3 { font-family: 'Nunito Sans', sans-serif; }
+    /* Honeypot: verborgen voor mensen, zichtbaar voor bots */
+    .hp-field { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 3px solid #004050; outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-petrol focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">
+    Ga naar hoofdinhoud
+  </a>
+
+  <!-- Header bar -->
+  <header class="border-b-4 border-magenta">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div>
+        <p class="text-2xl md:text-3xl font-extrabold font-heading text-darkblue leading-tight">
+          <a href="index.html" class="hover:text-petrol">EAA Monitor</a>
+        </p>
+      </div>
+      <nav aria-label="Hoofdnavigatie" class="flex items-center gap-4">
+        <a href="index.html" class="text-sm font-semibold text-petrol hover:text-magenta">Dashboard</a>
+        <a href="bezwaren.html" class="text-sm font-semibold text-petrol hover:text-magenta">Ingediende bezwaren</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Page title -->
+    <section class="bg-petrol text-white py-10 md:py-14">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <h1 class="text-2xl md:text-3xl font-bold font-heading">Bezwaar tegen vermelding</h1>
+        <p class="mt-3 text-lg opacity-90">Valt je webshop buiten de European Accessibility Act? Dan kun je vragen om je vermelding uit het dashboard te halen.</p>
+      </div>
+    </section>
+
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+
+      <section class="mb-8">
+        <h2 class="text-xl font-bold font-heading text-darkblue mb-4">Wanneer kun je bezwaar maken</h2>
+        <p class="leading-relaxed">De European Accessibility Act geldt niet voor elke onderneming. Je kunt bezwaar maken als je webshop aan alle drie deze voorwaarden voldoet. Je verklaart dit zelf. We controleren je verklaring niet inhoudelijk.</p>
+        <ul class="mt-4 space-y-2 list-disc list-inside leading-relaxed">
+          <li>Je hebt minder dan 10 medewerkers, gemiddeld over een jaar en gerekend in voltijdbanen.</li>
+          <li>Je jaaromzet is minder dan € 2 miljoen.</li>
+          <li>Je verkoopt uitsluitend aan bedrijven, niet aan consumenten.</li>
+        </ul>
+        <p class="leading-relaxed mt-4">Na verwerking halen we je webshop uit het dashboard. Je bedrijfsnaam, je webadres en de datum van je bezwaar komen op de openbare <a href="bezwaren.html" class="text-petrol font-semibold underline hover:text-magenta">pagina met ingediende bezwaren</a>. Zo kunnen wij en de toezichthouder zien dat je bezwaar hebt gemaakt. Je e-mailadres blijft privé en komt niet op die pagina.</p>
+      </section>
+
+      <!-- Statusmelding (succes of fout) -->
+      <div id="form-status" role="status" aria-live="polite" tabindex="-1" class="mb-6"></div>
+
+      <form id="bezwaar-form" action="https://formspree.io/f/mdavapbl" method="POST" novalidate>
+
+        <!-- Honeypot tegen spam: laat dit veld leeg -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp-website">Laat dit veld leeg</label>
+          <input type="text" id="hp-website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="mb-5">
+          <label for="bedrijfsnaam" class="block text-sm font-semibold text-darkblue mb-1">Bedrijfsnaam <span class="text-magenta" aria-hidden="true">*</span></label>
+          <input type="text" id="bedrijfsnaam" name="bedrijfsnaam" required autocomplete="organization"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol">
+        </div>
+
+        <div class="mb-5">
+          <label for="webadres" class="block text-sm font-semibold text-darkblue mb-1">Webadres van je webshop <span class="text-magenta" aria-hidden="true">*</span></label>
+          <input type="url" id="webadres" name="webadres" required placeholder="https://www.voorbeeld.nl" autocomplete="url"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol">
+        </div>
+
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-semibold text-darkblue mb-1">Je e-mailadres <span class="text-magenta" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-hint"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol">
+          <p id="email-hint" class="text-sm text-gray-500 mt-1">We gebruiken dit alleen om contact met je op te nemen over je bezwaar. Het komt niet op de openbare pagina.</p>
+        </div>
+
+        <fieldset class="mb-6 border border-gray-200 rounded-xl p-5">
+          <legend class="text-sm font-semibold text-darkblue px-1">Ik verklaar dat mijn onderneming:</legend>
+          <div class="space-y-3 mt-2">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="criterium-fte" name="verklaring_minder_dan_10_medewerkers" value="ja" required
+                class="mt-1 h-5 w-5 rounded border-gray-300 text-petrol focus:ring-petrol">
+              <label for="criterium-fte" class="text-sm leading-relaxed">minder dan 10 medewerkers heeft, gemiddeld over een jaar en gerekend in voltijdbanen</label>
+            </div>
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="criterium-omzet" name="verklaring_omzet_onder_2_miljoen" value="ja" required
+                class="mt-1 h-5 w-5 rounded border-gray-300 text-petrol focus:ring-petrol">
+              <label for="criterium-omzet" class="text-sm leading-relaxed">een jaaromzet heeft van minder dan € 2 miljoen</label>
+            </div>
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="criterium-b2b" name="verklaring_uitsluitend_b2b" value="ja" required
+                class="mt-1 h-5 w-5 rounded border-gray-300 text-petrol focus:ring-petrol">
+              <label for="criterium-b2b" class="text-sm leading-relaxed">uitsluitend aan bedrijven verkoopt, niet aan consumenten</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="mb-6">
+          <label for="toelichting" class="block text-sm font-semibold text-darkblue mb-1">Toelichting</label>
+          <textarea id="toelichting" name="toelichting" rows="3"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-petrol focus:border-petrol"></textarea>
+          <p class="text-sm text-gray-500 mt-1">Optioneel. Heb je iets toe te voegen aan je bezwaar?</p>
+        </div>
+
+        <button type="submit" id="submit-btn"
+          class="bg-magenta hover:bg-magenta-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-petrol focus:ring-offset-2">
+          Bezwaar versturen
+        </button>
+        <p class="text-sm text-gray-500 mt-3">De velden met een <span class="text-magenta">*</span> zijn verplicht.</p>
+      </form>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-darkblue text-white mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p class="font-bold font-heading">EAA Monitor</p>
+          <p class="text-sm text-gray-400 mt-1">Een initiatief van Proper Access, specialist in digitale toegankelijkheid</p>
+        </div>
+        <div class="flex gap-4 text-sm text-gray-400">
+          <a href="index.html" class="hover:text-white">Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      // Velden voorinvullen vanuit de querystring (vanaf de "Bezwaar maken"-knop in de tabel).
+      const params = new URLSearchParams(window.location.search);
+      const naam = params.get("name");
+      const url = params.get("url");
+      if (naam) document.getElementById("bedrijfsnaam").value = naam;
+      if (url) document.getElementById("webadres").value = url;
+
+      const form = document.getElementById("bezwaar-form");
+      const statusEl = document.getElementById("form-status");
+      const submitBtn = document.getElementById("submit-btn");
+
+      function showStatus(type, html) {
+        const base = "rounded-xl p-4 text-sm leading-relaxed";
+        const styles =
+          type === "success"
+            ? "bg-petrol-light text-petrol"
+            : "bg-magenta-light text-magenta-dark";
+        statusEl.className = base + " " + styles + " mb-6";
+        statusEl.innerHTML = html;
+        statusEl.focus();
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        // Native validatie eerst (verplichte velden, e-mail- en url-formaat).
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Bezig met versturen...";
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            form.classList.add("hidden");
+            showStatus(
+              "success",
+              "<strong>Bedankt, je bezwaar is verstuurd.</strong> We bekijken je verzoek en halen je webshop daarna uit het dashboard. Je vindt je bezwaar terug op de pagina met ingediende bezwaren."
+            );
+          } else {
+            const data = await response.json().catch(() => ({}));
+            const msg =
+              data && data.errors && data.errors.length
+                ? data.errors.map((err) => err.message).join(" ")
+                : "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@properaccess.nl.";
+            showStatus("error", msg);
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Bezwaar versturen";
+          }
+        } catch (err) {
+          showStatus(
+            "error",
+            "Er ging iets mis bij het versturen. Controleer je internetverbinding en probeer het opnieuw, of mail naar info@properaccess.nl."
+          );
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Bezwaar versturen";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

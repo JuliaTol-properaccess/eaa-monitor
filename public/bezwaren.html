@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Over dit dashboard — EAA Monitor</title>
-  <meta name="description" content="Over de EAA Monitor: wie er achter zit, hoe het werkt en wat het doel is.">
+  <title>Ingediende bezwaren — EAA Monitor</title>
+  <meta name="description" content="Webshops die bezwaar hebben gemaakt tegen vermelding in de EAA Monitor omdat ze buiten de European Accessibility Act vallen.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
       </div>
       <nav aria-label="Hoofdnavigatie" class="flex items-center gap-4">
         <a href="index.html" class="text-sm font-semibold text-petrol hover:text-magenta">Dashboard</a>
-        <a href="bezwaren.html" class="text-sm font-semibold text-petrol hover:text-magenta">Ingediende bezwaren</a>
+        <a href="over.html" class="text-sm font-semibold text-petrol hover:text-magenta">Over dit dashboard</a>
       </nav>
     </div>
   </header>
@@ -59,23 +59,38 @@
     <!-- Page title -->
     <section class="bg-petrol text-white py-10 md:py-14">
       <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <h1 class="text-2xl md:text-3xl font-bold font-heading">Over dit dashboard</h1>
+        <h1 class="text-2xl md:text-3xl font-bold font-heading">Ingediende bezwaren</h1>
+        <p class="mt-3 text-lg opacity-90">Webshops die zelf hebben verklaard dat ze buiten de European Accessibility Act vallen.</p>
       </div>
     </section>
 
-    <!-- Content -->
     <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
 
-      <section class="mb-12">
-        <h2 class="text-xl font-bold font-heading text-darkblue mb-4">Over ons</h2>
-        <p class="leading-relaxed">Dit dashboard is gemaakt door <a href="https://www.properaccess.nl" class="text-petrol font-semibold hover:text-magenta">Proper Access</a>. Julia Tol is de oprichter van dit bedrijf. Julia is tussen 2022 en 2025 betrokken geweest bij het programma DigiToegankelijk TOP, de maker van het <a href="https://dashboard.digitoegankelijk.nl/" class="text-petrol font-semibold hover:text-magenta">Dashboard DigiToegankelijk</a>.</p>
+      <section class="mb-8">
+        <p class="leading-relaxed">De webshops op deze pagina hebben bezwaar gemaakt tegen vermelding in het dashboard. Ze hebben zelf verklaard dat ze minder dan 10 medewerkers hebben, een jaaromzet van minder dan € 2 miljoen, en uitsluitend aan bedrijven verkopen. Op grond van die verklaring vallen ze buiten de European Accessibility Act.</p>
+        <p class="leading-relaxed mt-4">We controleren deze verklaringen niet inhoudelijk. We tonen ze hier zodat iedereen, ook de toezichthouder, kan zien welke webshops bezwaar hebben gemaakt. Wil je zelf bezwaar maken? Dat kan via de <a href="bezwaar.html" class="text-petrol font-semibold underline hover:text-magenta">pagina bezwaar tegen vermelding</a>.</p>
       </section>
 
-      <section class="mb-12">
-        <h2 class="text-xl font-bold font-heading text-darkblue mb-4">Hoe werkt dit dashboard</h2>
-        <p class="leading-relaxed">Elke maandag worden de websites van de Nederlandse webshops gecontroleerd op de aanwezigheid van een toegankelijkheidsverklaring. Het doel van dit dashboard is om inzicht te geven in hoeveel winkels met digitale toegankelijkheid bezig zijn.</p>
-        <p class="leading-relaxed mt-4">We kunnen geen inzicht geven of een uitspraak doen over hoe toegankelijk deze websites zijn.</p>
-      </section>
+      <p class="text-sm text-gray-500 mb-4" id="objection-count"></p>
+
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm" id="objections-table">
+            <caption class="sr-only">Webshops die bezwaar hebben gemaakt tegen vermelding</caption>
+            <thead>
+              <tr class="bg-gray-50 border-b border-gray-200 text-left">
+                <th scope="col" class="py-3 px-4 font-bold text-darkblue">Webshop</th>
+                <th scope="col" class="py-3 px-4 font-bold text-darkblue">Datum bezwaar</th>
+              </tr>
+            </thead>
+            <tbody id="objections-body">
+              <tr>
+                <td colspan="2" class="py-12 text-center text-gray-400">Bezwaren laden...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
     </article>
 
@@ -87,7 +102,7 @@
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <p class="font-bold font-heading">EAA Monitor</p>
-          <p class="text-sm text-gray-400 mt-1">Een initiatief van Proper Access — specialist in digitale toegankelijkheid</p>
+          <p class="text-sm text-gray-400 mt-1">Een initiatief van Proper Access, specialist in digitale toegankelijkheid</p>
         </div>
         <div class="flex gap-4 text-sm text-gray-400">
           <a href="index.html" class="hover:text-white">Dashboard</a>
@@ -96,5 +111,6 @@
     </div>
   </footer>
 
+  <script src="bezwaren.js"></script>
 </body>
 </html>
