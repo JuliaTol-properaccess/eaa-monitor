@@ -25,6 +25,9 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 ROOT = Path(__file__).resolve().parent.parent
 WEBSHOPS_FILE = ROOT / "data" / "webshops.json"
 RESULTS_FILE = ROOT / "data" / "results.json"
+OBJECTIONS_FILE = ROOT / "data" / "objections.json"
+INDEX_FILE = ROOT / "public" / "index.html"
+LLMS_FILE = ROOT / "public" / "llms.txt"
 
 # Keywords to detect accessibility statement links (case-insensitive)
 KEYWORDS_TEXT = [
@@ -173,6 +176,232 @@ def check_webshop(page, url):
     }
 
 
+# ── GEO output: bake stats + schema into served HTML and llms.txt ──
+#
+# The dashboard renders all numbers client-side from results.json, so AI-crawlers
+# that do not run JavaScript see empty placeholders. To stay citable we bake the
+# headline numbers, a Dataset JSON-LD block and llms.txt at scrape time. The
+# values mirror public/app.js exactly: webshops that filed an objection are
+# excluded, and "met verklaring" means has_statement AND scrape_status success.
+
+CATEGORY_LABELS = {
+    "marketplace": "Marketplace",
+    "elektronica": "Elektronica",
+    "mode": "Mode",
+    "supermarkt": "Supermarkt",
+    "drogisterij": "Drogisterij",
+    "wonen": "Wonen",
+    "sport": "Sport",
+    "boeken": "Boeken",
+    "speelgoed": "Speelgoed",
+    "overig": "Overig",
+}
+
+MONTHS_NL = [
+    "januari", "februari", "maart", "april", "mei", "juni",
+    "juli", "augustus", "september", "oktober", "november", "december",
+]
+
+
+def _normalize_url(url):
+    """Mirror app.js normalizeUrl: strip protocol, leading www, trailing slash."""
+    if not url:
+        return ""
+    u = url.strip().lower()
+    u = re.sub(r"^https?://", "", u)
+    u = re.sub(r"^www\.", "", u)
+    u = re.sub(r"/+$", "", u)
+    return u
+
+
+def _load_objection_urls():
+    """Return a set of normalized URLs that have filed an objection."""
+    try:
+        with open(OBJECTIONS_FILE) as f:
+            data = json.load(f)
+        if isinstance(data, list):
+            return {_normalize_url(o.get("url")) for o in data if o.get("url")}
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    return set()
+
+
+def _pct(n, total):
+    return round(n / total * 100) if total else 0
+
+
+def _public_stats(webshops):
+    """Compute stats the way the dashboard shows them (objections already removed)."""
+    total = len(webshops)
+    with_statement = sum(
+        1 for r in webshops if r["has_statement"] and r["scrape_status"] == "success"
+    )
+    errors = sum(1 for r in webshops if r["scrape_status"] != "success")
+    without_statement = total - with_statement - errors
+    return {
+        "total": total,
+        "with_statement": with_statement,
+        "without_statement": without_statement,
+        "errors": errors,
+        "pct_with": _pct(with_statement, total),
+        "pct_without": _pct(without_statement, total),
+        "pct_error": _pct(errors, total),
+    }
+
+
+def _category_breakdown(webshops):
+    """Per-category found/total, sorted by total descending (matches the cards)."""
+    cats = {}
+    for r in webshops:
+        c = r["category"]
+        cats.setdefault(c, {"total": 0, "found": 0})
+        cats[c]["total"] += 1
+        if r["has_statement"] and r["scrape_status"] == "success":
+            cats[c]["found"] += 1
+    return sorted(cats.items(), key=lambda kv: kv[1]["total"], reverse=True)
+
+
+def _date_nl(iso):
+    """Format an ISO timestamp as e.g. '6 juni 2026' (date part only, no version quirks)."""
+    year, month, day = iso[:10].split("-")
+    return f"{int(day)} {MONTHS_NL[int(month) - 1]} {year}"
+
+
+def _replace_region(html, start, end, new_inner):
+    """Replace everything between two literal marker strings, keeping the markers."""
+    pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
+    return pattern.sub(lambda _m: start + new_inner + end, html, count=1)
+
+
+def _geo_summary_inner(stats, breakdown, date_nl):
+    cat_str = ", ".join(
+        f"{CATEGORY_LABELS.get(c, c)} {d['found']}/{d['total']}" for c, d in breakdown
+    )
+    return f"""
+    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-8">
+      <div class="bg-lightgrey rounded-xl p-6 text-darkblue">
+        <p class="text-base leading-relaxed">
+          Op <strong>{date_nl}</strong> controleerde de EAA Monitor
+          <strong>{stats['total']} Nederlandse webshops</strong> op een toegankelijkheidsverklaring.
+          <strong>{stats['with_statement']} webshops ({stats['pct_with']}%)</strong> publiceren er een; <strong>{stats['without_statement']} ({stats['pct_without']}%)</strong>
+          doen dat niet en bij <strong>{stats['errors']} ({stats['pct_error']}%)</strong> kon de controle niet worden voltooid.
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-gray-600">
+          Resultaat per categorie (met verklaring van totaal): {cat_str}.
+        </p>
+        <p class="mt-3 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}.</p>
+      </div>
+    </section>
+    """
+
+
+def _dataset_jsonld(stats, date_nl, date_iso):
+    obj = {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "@id": "https://eaa-monitor.nl/#dataset",
+        "name": "Toegankelijkheidsverklaringen Nederlandse webshops",
+        "description": (
+            f"Wekelijkse meting of {stats['total']} Nederlandse webshops een "
+            f"toegankelijkheidsverklaring publiceren. Op {date_nl}: "
+            f"{stats['with_statement']} met verklaring, {stats['without_statement']} zonder, "
+            f"{stats['errors']} niet te controleren."
+        ),
+        "url": "https://eaa-monitor.nl/",
+        "creator": {
+            "@type": "Organization",
+            "name": "Proper Access",
+            "url": "https://www.properaccess.nl",
+        },
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "isAccessibleForFree": True,
+        "inLanguage": "nl-NL",
+        "dateModified": date_iso,
+        "temporalCoverage": f"2026-03/{date_iso[:7]}",
+        "measurementTechnique": (
+            "Geautomatiseerde controle van de footer op links naar een "
+            "toegankelijkheidsverklaring"
+        ),
+        "variableMeasured": [
+            {"@type": "PropertyValue", "name": "Aantal gecontroleerde webshops", "value": stats["total"]},
+            {"@type": "PropertyValue", "name": "Webshops met toegankelijkheidsverklaring", "value": stats["with_statement"]},
+            {"@type": "PropertyValue", "name": "Webshops zonder toegankelijkheidsverklaring", "value": stats["without_statement"]},
+            {"@type": "PropertyValue", "name": "Webshops niet te controleren", "value": stats["errors"]},
+            {"@type": "PropertyValue", "name": "Percentage met verklaring", "value": stats["pct_with"], "unitText": "PERCENT"},
+        ],
+        "distribution": [{
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://eaa-monitor.nl/data/results.json",
+        }],
+    }
+    return (
+        "\n  <script type=\"application/ld+json\">\n  "
+        + json.dumps(obj, ensure_ascii=False, indent=2)
+        + "\n  </script>\n  "
+    )
+
+
+def patch_index_html(stats, breakdown, date_nl, date_iso):
+    """Bake current numbers and the Dataset JSON-LD into the served index.html."""
+    html = INDEX_FILE.read_text(encoding="utf-8")
+    html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
+                           _geo_summary_inner(stats, breakdown, date_nl))
+    html = _replace_region(html, "<!--STAT:total-->", "<!--/STAT-->", str(stats["total"]))
+    html = _replace_region(html, "<!--STAT:pctWith-->", "<!--/STAT-->", f"{stats['pct_with']}%")
+    html = _replace_region(html, "<!--STAT:pctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
+    html = _replace_region(html, "<!--CHART:total-->", "<!--/STAT-->", str(stats["total"]))
+    html = _replace_region(html, "<!--LASTUPDATED-->", "<!--/LASTUPDATED-->",
+                           f"Laatst bijgewerkt: {date_nl}")
+    html = _replace_region(html, "<!-- JSONLD-DATASET:START -->", "<!-- JSONLD-DATASET:END -->",
+                           _dataset_jsonld(stats, date_nl, date_iso))
+    INDEX_FILE.write_text(html, encoding="utf-8")
+    print(f"Patched {INDEX_FILE}")
+
+
+def write_llms_txt(stats, date_nl):
+    """(Re)generate public/llms.txt with the current headline figure."""
+    content = f"""# EAA Monitor
+
+> Monitor die wekelijks controleert of Nederlandse webshops een
+> toegankelijkheidsverklaring publiceren, zoals vereist door de European
+> Accessibility Act (EAA). Een initiatief van Proper Access.
+
+Laatste meting ({date_nl}): {stats['total']} webshops gecontroleerd,
+{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,
+{stats['without_statement']} ({stats['pct_without']}%) zonder, en
+{stats['errors']} ({stats['pct_error']}%) niet te controleren.
+
+## Belangrijkste pagina's
+- [Dashboard](https://eaa-monitor.nl/): cijfers, grafiek en volledige lijst van webshops
+- [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
+- [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
+
+## Data
+- [Volledige resultaten (JSON)](https://eaa-monitor.nl/data/results.json)
+
+## Over de maker
+EAA Monitor is gemaakt door Proper Access (https://www.properaccess.nl),
+specialist in digitale toegankelijkheid. Oprichter: Julia Tol, senior auditor.
+"""
+    LLMS_FILE.write_text(content, encoding="utf-8")
+    print(f"Wrote {LLMS_FILE}")
+
+
+def generate_geo_assets(output):
+    """Bake stats/schema into index.html and llms.txt from a results.json dict."""
+    objection_urls = _load_objection_urls()
+    public_webshops = [
+        r for r in output["webshops"] if _normalize_url(r["url"]) not in objection_urls
+    ]
+    stats = _public_stats(public_webshops)
+    breakdown = _category_breakdown(public_webshops)
+    date_nl = _date_nl(output["last_updated"])
+    date_iso = output["last_updated"][:10]
+    patch_index_html(stats, breakdown, date_nl, date_iso)
+    write_llms_txt(stats, date_nl)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Scrape webshop footers for accessibility statements")
     parser.add_argument("--limit", type=int, help="Limit number of webshops to check (for testing)")
@@ -246,6 +475,10 @@ def main():
     RESULTS_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(RESULTS_FILE, "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
+
+    # Bake current numbers + Dataset schema into the served HTML and llms.txt so
+    # AI-crawlers and no-JS visitors see real values instead of placeholders.
+    generate_geo_assets(output)
 
     print(f"\nKlaar! Resultaten opgeslagen in {RESULTS_FILE}")
     print(f"  Totaal: {len(results)}")

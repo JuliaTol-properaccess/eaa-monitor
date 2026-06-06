@@ -29,6 +29,10 @@ jobs:
           cp public/*.html _site/
           cp public/*.js _site/
           cp public/CNAME _site/
+          cp public/robots.txt _site/
+          cp public/sitemap.xml _site/
+          cp public/llms.txt _site/
+          cp -r public/static _site/static
           cp -r data _site/
 
       - name: Setup Pages
