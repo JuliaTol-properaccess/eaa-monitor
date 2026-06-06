@@ -1,0 +1,22 @@
+# EAA Monitor
+
+> Monitor die wekelijks controleert of Nederlandse webshops een
+> toegankelijkheidsverklaring publiceren, zoals vereist door de European
+> Accessibility Act (EAA). Een initiatief van Proper Access.
+
+Laatste meting (6 juni 2026): 1246 webshops gecontroleerd,
+159 (13%) met toegankelijkheidsverklaring,
+1055 (85%) zonder, en
+32 (3%) niet te controleren.
+
+## Belangrijkste pagina's
+- [Dashboard](https://eaa-monitor.nl/): cijfers, grafiek en volledige lijst van webshops
+- [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
+- [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
+
+## Data
+- [Volledige resultaten (JSON)](https://eaa-monitor.nl/data/results.json)
+
+## Over de maker
+EAA Monitor is gemaakt door Proper Access (https://www.properaccess.nl),
+specialist in digitale toegankelijkheid. Oprichter: Julia Tol, senior auditor.

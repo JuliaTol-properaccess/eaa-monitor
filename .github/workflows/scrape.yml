@@ -6,6 +6,12 @@ on:
     - cron: '0 8 * * 1'
   workflow_dispatch: # Allow manual triggers
 
+# Needed so github-actions[bot] can push the updated results back to the repo.
+# Without this the default GITHUB_TOKEN is read-only and the final `git push`
+# fails with a 403 (which is what silently broke the weekly update before).
+permissions:
+  contents: write
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -30,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json
+          git add data/results.json public/index.html public/llms.txt
           git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
           git push
