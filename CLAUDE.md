@@ -22,8 +22,12 @@ Volgt het WAT framework (Workflows, Agents, Tools).
 ## Commando's
 
 ```bash
-# Scraper draaien
+# Scraper draaien (volledige lijst, sequentieel)
 python tools/scrape_footer.py
+
+# Sharded draaien (zoals de cron): 1 van de 8 delen, daarna mergen
+python tools/scrape_footer.py --shard 0 --num-shards 8 --out results.part-0.json
+python tools/scrape_footer.py --merge <map-met-part-bestanden>
 
 # Frontend lokaal testen
 python -m http.server 8000 -d public
