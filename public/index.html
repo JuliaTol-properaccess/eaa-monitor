@@ -71,7 +71,8 @@
         <h1 class="text-2xl md:text-3xl font-extrabold font-heading text-darkblue leading-tight">EAA Monitor</h1>
       </div>
       <div class="flex items-center gap-4">
-        <nav aria-label="Hoofdnavigatie">
+        <nav aria-label="Hoofdnavigatie" class="flex items-center gap-4">
+          <a href="bezwaren.html" class="text-sm font-semibold text-petrol hover:text-magenta">Ingediende bezwaren</a>
           <a href="over.html" class="text-sm font-semibold text-petrol hover:text-magenta">Over dit dashboard</a>
         </nav>
         <p class="text-sm text-gray-500 hidden sm:block" id="last-updated"></p>
@@ -169,6 +170,10 @@
         <p class="text-sm text-gray-500 mt-1 sm:mt-0" id="filter-count"></p>
       </div>
 
+      <div class="bg-lightgrey rounded-xl p-4 mb-4 text-sm text-darkblue">
+        Staat jouw webshop hier, maar val je buiten de EAA omdat je een micro-onderneming bent of alleen aan bedrijven levert? Dan kun je <a href="bezwaar.html" class="text-petrol font-semibold underline hover:text-magenta">bezwaar maken tegen vermelding</a>.
+      </div>
+
       <!-- Filters -->
       <div class="flex flex-wrap gap-3 mb-4">
         <div>
@@ -208,11 +213,12 @@
                 <th scope="col" class="py-3 px-4 hidden lg:table-cell">
                   <button class="sort-btn font-bold text-darkblue" data-sort="date" aria-label="Sorteer op datum">Gecontroleerd</button>
                 </th>
+                <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-darkblue">Bezwaar</th>
               </tr>
             </thead>
             <tbody id="results-body">
               <tr>
-                <td colspan="5" class="py-12 text-center text-gray-400">Data laden...</td>
+                <td colspan="6" class="py-12 text-center text-gray-400">Data laden...</td>
               </tr>
             </tbody>
           </table>

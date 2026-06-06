@@ -62,12 +62,47 @@
     }
   }
 
+  async function loadObjections() {
+    try {
+      let response = await fetch("data/objections.json");
+      if (!response.ok) {
+        response = await fetch("../data/objections.json");
+      }
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch (err) {
+      // Geen bezwaren-bestand of niet leesbaar: behandel als leeg.
+      console.warn("Kan bezwaren niet laden, ga verder zonder:", err);
+      return [];
+    }
+  }
+
+  // Normaliseer een URL zodat matching robuust is, ook bij kleine verschillen
+  // (hoofdletters, protocol, leidend "www.", trailing slash).
+  function normalizeUrl(url) {
+    if (!url) return "";
+    return url
+      .trim()
+      .toLowerCase()
+      .replace(/^https?:\/\//, "")
+      .replace(/^www\./, "")
+      .replace(/\/+$/, "");
+  }
+
   // ── Stats ──
 
-  function getStats(data) {
-    const total = data.total || 0;
-    const withStatement = data.with_statement || 0;
-    const errors = data.errors || 0;
+  function computeStats(webshops) {
+    const total = webshops.length;
+    let withStatement = 0;
+    let errors = 0;
+    webshops.forEach((shop) => {
+      if (shop.scrape_status !== "success") {
+        errors++;
+      } else if (shop.has_statement) {
+        withStatement++;
+      }
+    });
     const withoutStatement = total - withStatement - errors;
     const pctWith = total > 0 ? Math.round((withStatement / total) * 100) : 0;
     const pctWithout =
@@ -434,7 +469,7 @@
 
     if (sorted.length === 0) {
       tbody.innerHTML =
-        '<tr><td colspan="5" class="py-12 text-center text-gray-400">Geen resultaten gevonden</td></tr>';
+        '<tr><td colspan="6" class="py-12 text-center text-gray-400">Geen resultaten gevonden</td></tr>';
       renderPagination(0);
       return;
     }
@@ -457,6 +492,8 @@
 
         const rowBg = i % 2 === 0 ? "" : "bg-gray-50";
 
+        const objectionLink = `<a href="bezwaar.html?name=${encodeURIComponent(shop.name)}&url=${encodeURIComponent(shop.url)}" class="text-petrol underline hover:text-magenta text-sm" aria-label="Bezwaar maken tegen vermelding van ${escapeHtml(shop.name)}">Bezwaar maken</a>`;
+
         return `<tr class="${rowBg} border-b border-gray-100 hover:bg-petrol-light transition-colors">
           <td class="py-3 px-4">
             <a href="${escapeHtml(shop.url)}" target="_blank" rel="noopener noreferrer" class="text-petrol hover:text-magenta font-semibold">${escapeHtml(shop.name)}</a>
@@ -470,6 +507,7 @@
           </td>
           <td class="py-3 px-4 hidden md:table-cell">${statementLink}</td>
           <td class="py-3 px-4 hidden lg:table-cell text-sm text-gray-600">${checkedDate}</td>
+          <td class="py-3 px-4 hidden md:table-cell">${objectionLink}</td>
         </tr>`;
       })
       .join("");
@@ -557,15 +595,24 @@
   // ── Init ──
 
   async function init() {
-    const data = await loadData();
+    const [data, objections] = await Promise.all([
+      loadData(),
+      loadObjections(),
+    ]);
     if (!data) {
       document.getElementById("results-body").innerHTML =
-        '<tr><td colspan="5" class="py-12 text-center text-red-600">Fout bij het laden van data.</td></tr>';
+        '<tr><td colspan="6" class="py-12 text-center text-red-600">Fout bij het laden van data.</td></tr>';
       return;
     }
 
-    allWebshops = data.webshops || [];
-    const stats = getStats(data);
+    // Webshops die bezwaar hebben gemaakt uitsluiten van tabel en cijfers.
+    const objectionSet = new Set(
+      objections.map((o) => normalizeUrl(o.url)).filter(Boolean)
+    );
+    allWebshops = (data.webshops || []).filter(
+      (s) => !objectionSet.has(normalizeUrl(s.url))
+    );
+    const stats = computeStats(allWebshops);
 
     updateStats(stats, data.last_updated);
     renderStatusChart(stats);
