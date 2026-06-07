@@ -290,7 +290,7 @@ def _geo_summary_inner(stats, breakdown, date_nl):
         <p class="mt-3 text-sm leading-relaxed text-gray-600">
           Resultaat per categorie (met verklaring van totaal): {cat_str}.
         </p>
-        <p class="mt-3 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}.</p>
+        <p class="mt-3 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}. De monitor controleert alle webshops elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
       </div>
     </section>
     """
