@@ -3,6 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # The weekly scrape pushes fresh results.json as github-actions[bot]. Pushes
+  # made with the default GITHUB_TOKEN don't trigger other workflows (GitHub's
+  # anti-recursion rule), so without this the dashboard would keep serving stale
+  # data. workflow_run fires after the scrape completes regardless of who pushed.
+  workflow_run:
+    workflows: ["Scrape webshop footers"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
