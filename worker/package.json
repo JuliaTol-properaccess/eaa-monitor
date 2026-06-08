@@ -1,0 +1,14 @@
+{
+  "name": "eaa-bezwaar-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker die bezwaren tegen vermelding in de EAA Monitor automatisch verwerkt, met domein-verificatie.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

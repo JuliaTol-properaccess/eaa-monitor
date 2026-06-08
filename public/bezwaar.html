@@ -173,6 +173,11 @@
     (function () {
       "use strict";
 
+      // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md). Zolang dit leeg is,
+      // gaat het formulier via Formspree naar Julia (handmatige verwerking).
+      // Zet dit op de /submit-URL van de Worker om bezwaren automatisch te verwerken.
+      const BEZWAAR_ENDPOINT = "";
+
       // Velden voorinvullen vanuit de querystring (vanaf de "Bezwaar maken"-knop in de tabel).
       const params = new URLSearchParams(window.location.search);
       const naam = params.get("name");
@@ -207,23 +212,39 @@
         submitBtn.disabled = true;
         submitBtn.textContent = "Bezig met versturen...";
 
+        const endpoint = BEZWAAR_ENDPOINT || form.action;
+
         try {
-          const response = await fetch(form.action, {
+          const response = await fetch(endpoint, {
             method: "POST",
             body: new FormData(form),
             headers: { Accept: "application/json" },
           });
 
           if (response.ok) {
+            const result = await response.json().catch(() => ({}));
             form.classList.add("hidden");
-            showStatus(
-              "success",
-              "<strong>Bedankt, je bezwaar is verstuurd.</strong> We bekijken je verzoek en halen je webshop daarna uit het dashboard. Je vindt je bezwaar terug op de pagina met ingediende bezwaren."
-            );
+            let message;
+            if (result.mode === "verify") {
+              const naar = result.email ? " naar " + result.email : "";
+              message =
+                "<strong>Bijna klaar. Check je mail.</strong> We hebben een bevestigingslink gestuurd" +
+                naar +
+                ". Klik die link om de verwijdering te bevestigen. Daarna halen we je webshop uit het dashboard.";
+            } else if (result.mode === "manual") {
+              message =
+                "<strong>Bedankt, je bezwaar is verstuurd.</strong> Je e-mailadres staat niet op je webshop-domein, dus we controleren je verzoek handmatig en halen je webshop daarna uit het dashboard.";
+            } else {
+              message =
+                "<strong>Bedankt, je bezwaar is verstuurd.</strong> We bekijken je verzoek en halen je webshop daarna uit het dashboard. Je vindt je bezwaar terug op de pagina met ingediende bezwaren.";
+            }
+            showStatus("success", message);
           } else {
             const data = await response.json().catch(() => ({}));
             const msg =
-              data && data.errors && data.errors.length
+              data && data.error
+                ? data.error
+                : data && data.errors && data.errors.length
                 ? data.errors.map((err) => err.message).join(" ")
                 : "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@properaccess.nl.";
             showStatus("error", msg);
