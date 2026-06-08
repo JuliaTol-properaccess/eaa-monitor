@@ -1,24 +1,45 @@
 # EAA Monitor
 
-Dashboard dat controleert of Nederlandse webshops een toegankelijkheidsverklaring hebben in hun footer, zoals vereist door de European Accessibility Act (EAA).
+Hub over de European Accessibility Act (EAA) in Nederland. Het dashboard controleert wekelijks of Nederlandse webshops een toegankelijkheidsverklaring hebben in hun footer; de kennisbank legt uit hoe de wet werkt (scope, toezicht, boetes, mythes).
 
 ## Architectuur
 
-Volgt het WAT framework (Workflows, Agents, Tools).
+Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailwind via CDN + vanilla JS). Design: **Coinbase-look** (navy/Coinbase-blauw, Inter), bewust losgemaakt van het Proper Access-merk; Proper Access blijft in footer-attributie en schema.
 
-- `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks
-- `tools/scrape_thuiswinkel.py` — Bouwt webshops.json aan met leden van Thuiswinkel.org
-- `tools/scrape_webwinkelkeur.py` — Bouwt webshops.json aan met leden van WebwinkelKeur (server-rendered ledenlijst + JSON-LD per profiel; resume-cache in `.tmp/`)
-- `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels via de scrapers hierboven)
+### Tools
+- `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in `index.html` en de meet-regio in `llms.txt` bakt
+- `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
+- `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
+- `tools/scrape_thuiswinkel.py` / `tools/scrape_webwinkelkeur.py` — Bouwen `webshops.json` aan met keurmerk-leden
+
+### Data
+- `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels gescraped)
 - `data/results.json` — Automatisch gegenereerde scrape-resultaten (niet handmatig bewerken)
-- `data/objections.json` — Lijst van webshops die bezwaar hebben gemaakt tegen vermelding (overlay; sluit ze uit van het dashboard, geen e-mailadressen). Wordt bijgewerkt via PR's van de bezwaar-Worker, of handmatig
-- `public/index.html` + `public/app.js` — Statisch dashboard (HTML + Tailwind + vanilla JS)
-- `public/bezwaar.html` — Bezwaarformulier. Verstuurt naar de bezwaar-Worker (`BEZWAAR_ENDPOINT`); valt terug op Formspree als die constante leeg is
-- `public/bezwaren.html` + `public/bezwaren.js` — Openbare lijst van ingediende bezwaren
-- `worker/` — Cloudflare Worker die bezwaren grotendeels automatisch verwerkt met domein-verificatie (zie `worker/DEPLOY.md`)
+- `data/objections.json` — Webshops met bezwaar (overlay; client-side uitgesloten, geen e-mailadressen). Bijgewerkt via PR's van de bezwaar-Worker of handmatig
+- `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
+
+### Pagina's (`public/`)
+- `index.html` — Hub-homepage: cijfer-gedreven hero, kerncijfers, uitgelichte artikelen. **Bevat de scraper-markers** (zie hieronder); niet verwijderen
+- `monitor.html` + `app.js` — Het interactieve dashboard (grafiek/tabel, filters, sorteerbare tabel). Leest `?q=` uit de URL voor de zoekterm vanaf de home
+- `artikelen.html` + `artikelen/*.html` — Kennisbank, **gegenereerd** door `build_articles.py` (niet handmatig bewerken)
+- `wcag-audit.html` — Overzicht van auditbureaus, **gegenereerd** door `build_auditbureaus.py` uit `data/auditbureaus.json` (niet handmatig bewerken)
+- `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
+- `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
+- `over.html` — Over het dashboard
+- `static/theme.js` — Gedeelde Tailwind-tokens (één bron van waarheid). `static/site.css` — componenten, prose, animaties. `static/reveal.js` — scroll-reveal
+
+### Designtokens (`public/static/theme.js`)
+- `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Inter**. De oude PA-tokens (magenta/petrol) zijn vervangen.
+
+### Overig
+- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie (zie `worker/DEPLOY.md`)
 - `workflows/handle_objection.md` — SOP voor het verwerken van een bezwaar
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
-- `.github/workflows/deploy.yml` — Deploy naar GitHub Pages
+- `.github/workflows/deploy.yml` — Deploy naar GitHub Pages (kopieert de hele `public/`-tree recursief)
+
+## Auto-gegenereerde regio's (niet breken)
+
+`scrape_footer.py` vervangt bij elke scrape de inhoud tussen letterlijke markers in `index.html`: `GEO-SUMMARY:START/END`, `STAT:total`, `STAT:pctWith`, `STAT:pctWithout`, `LASTUPDATED`, `JSONLD-DATASET:START/END`. Elke `STAT`-marker mag maar **één keer** voorkomen (de vervanging pakt alleen de eerste match). `llms.txt` heeft twee marker-regio's: `MEASUREMENT` (scraper) en `ARTICLES` (`build_articles.py`).
 
 ## Commando's
 
@@ -29,6 +50,12 @@ python tools/scrape_footer.py
 # Sharded draaien (zoals de cron): 1 van de 8 delen, daarna mergen
 python tools/scrape_footer.py --shard 0 --num-shards 8 --out results.part-0.json
 python tools/scrape_footer.py --merge <map-met-part-bestanden>
+
+# Artikelen (her)bouwen na een wijziging in content/artikelen/
+python tools/build_articles.py
+
+# WCAG-audit-pagina (her)bouwen na een wijziging in data/auditbureaus.json
+python tools/build_auditbureaus.py
 
 # Frontend lokaal testen
 python -m http.server 8000 -d public
@@ -42,8 +69,13 @@ playwright install chromium
 
 ```
 webshops.json (handmatig) → scrape_footer.py (cron) → results.json (auto) → index.html (statisch)
+content/artikelen/*.md → build_articles.py → public/artikelen/*.html + artikelen.html + sitemap.xml
 bezwaar.html → Worker → PR op objections.json → app.js sluit bezwaarmakers uit → bezwaren.html toont ze
 ```
+
+## Artikel schrijven
+
+Maak `content/artikelen/<slug>.md` met YAML-frontmatter (`title`, `slug`, `description`, `date`, `theme` uit scope/toezicht/praktijk/mythes, optioneel `keywords` en `sources`). Schrijf de body in markdown; raw HTML mag (de scope-checker is zo ingebed). Draai daarna `python tools/build_articles.py`. Toon volgens de nlds-schrijfwijzer (je-vorm, geen jargon, geen em-dashes). **Nooit cijfers verzinnen**; onbevestigde claims als zodanig markeren.
 
 ## Bezwaar tegen vermelding
 

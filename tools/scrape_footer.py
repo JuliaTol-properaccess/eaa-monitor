@@ -275,22 +275,22 @@ def _replace_region(html, start, end, new_inner):
 
 
 def _geo_summary_inner(stats, breakdown, date_nl):
-    cat_str = ", ".join(
-        f"{CATEGORY_LABELS.get(c, c)} {d['found']}/{d['total']}" for c, d in breakdown
-    )
+    # breakdown wordt niet meer getoond, maar blijft in de signatuur voor de aanroep.
     return f"""
-    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-8">
-      <div class="bg-lightgrey rounded-xl p-6 text-darkblue">
-        <p class="text-base leading-relaxed">
-          Op <strong>{date_nl}</strong> controleerde de EAA Monitor
-          <strong>{stats['total']} Nederlandse webshops</strong> op een toegankelijkheidsverklaring.
-          <strong>{stats['with_statement']} webshops ({stats['pct_with']}%)</strong> publiceren er een; <strong>{stats['without_statement']} ({stats['pct_without']}%)</strong>
-          doen dat niet en bij <strong>{stats['errors']} ({stats['pct_error']}%)</strong> kon de controle niet worden voltooid.
-        </p>
-        <p class="mt-3 text-sm leading-relaxed text-gray-600">
-          Resultaat per categorie (met verklaring van totaal): {cat_str}.
-        </p>
-        <p class="mt-3 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}. De monitor controleert alle webshops elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink">
+        <div class="max-w-3xl">
+          <p class="text-lg leading-relaxed">
+            Op <strong>{date_nl}</strong> controleerde de EAA Monitor
+            <strong>{stats['total']} Nederlandse webshops</strong> op een toegankelijkheidsverklaring:
+          </p>
+          <ul class="mt-4 space-y-2.5">
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>{stats['with_statement']} webshops ({stats['pct_with']}%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>{stats['without_statement']} ({stats['pct_without']}%)</strong> doen dat niet</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>{stats['errors']} ({stats['pct_error']}%)</strong> kon de controle niet worden voltooid</span></li>
+          </ul>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}. De monitor controleert alle webshops elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+        </div>
       </div>
     </section>
     """
@@ -311,8 +311,8 @@ def _dataset_jsonld(stats, date_nl, date_iso):
         "url": "https://eaa-monitor.nl/",
         "creator": {
             "@type": "Organization",
-            "name": "Proper Access",
-            "url": "https://www.properaccess.nl",
+            "name": "EAA Monitor",
+            "url": "https://eaa-monitor.nl/",
         },
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "isAccessibleForFree": True,
@@ -351,7 +351,6 @@ def patch_index_html(stats, breakdown, date_nl, date_iso):
     html = _replace_region(html, "<!--STAT:total-->", "<!--/STAT-->", str(stats["total"]))
     html = _replace_region(html, "<!--STAT:pctWith-->", "<!--/STAT-->", f"{stats['pct_with']}%")
     html = _replace_region(html, "<!--STAT:pctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
-    html = _replace_region(html, "<!--CHART:total-->", "<!--/STAT-->", str(stats["total"]))
     html = _replace_region(html, "<!--LASTUPDATED-->", "<!--/LASTUPDATED-->",
                            f"Laatst bijgewerkt: {date_nl}")
     html = _replace_region(html, "<!-- JSONLD-DATASET:START -->", "<!-- JSONLD-DATASET:END -->",
@@ -360,30 +359,74 @@ def patch_index_html(stats, breakdown, date_nl, date_iso):
     print(f"Patched {INDEX_FILE}")
 
 
+# llms.txt-regio's. De scraper bezit de meet-regio; tools/build_articles.py bezit
+# de artikellijst-regio. Beide patchen alleen hun eigen blok, zodat ze elkaar niet
+# overschrijven bij een wekelijkse scrape of een artikel-herbuild.
+LLMS_MEAS_START = "<!-- MEASUREMENT:START -->"
+LLMS_MEAS_END = "<!-- MEASUREMENT:END -->"
+LLMS_ART_START = "<!-- ARTICLES:START -->"
+LLMS_ART_END = "<!-- ARTICLES:END -->"
+
+
+def _llms_measurement_block(stats, date_nl):
+    return (
+        f"{LLMS_MEAS_START}\n"
+        f"Laatste meting ({date_nl}): {stats['total']} webshops gecontroleerd,\n"
+        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
+        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
+        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
+        f"{LLMS_MEAS_END}"
+    )
+
+
 def write_llms_txt(stats, date_nl):
-    """(Re)generate public/llms.txt with the current headline figure."""
+    """Patch de meet-regio in public/llms.txt en laat de artikellijst-regio met rust."""
+    meas = _llms_measurement_block(stats, date_nl)
+
+    # Bestaat het bestand al met meet-markers, patch dan alleen dat blok.
+    if LLMS_FILE.exists():
+        text = LLMS_FILE.read_text(encoding="utf-8")
+        if LLMS_MEAS_START in text and LLMS_MEAS_END in text:
+            text = re.sub(
+                re.escape(LLMS_MEAS_START) + r".*?" + re.escape(LLMS_MEAS_END),
+                lambda _m: meas,
+                text,
+                count=1,
+                flags=re.DOTALL,
+            )
+            LLMS_FILE.write_text(text, encoding="utf-8")
+            print(f"Patched {LLMS_FILE} (meet-regio)")
+            return
+        # Geen meet-markers: schrijf het sjabloon, maar bewaar een bestaande
+        # artikellijst-regio als die er al staat.
+        art_match = re.search(
+            re.escape(LLMS_ART_START) + r".*?" + re.escape(LLMS_ART_END),
+            text,
+            flags=re.DOTALL,
+        )
+        articles_block = art_match.group(0) if art_match else f"{LLMS_ART_START}\n{LLMS_ART_END}"
+    else:
+        articles_block = f"{LLMS_ART_START}\n{LLMS_ART_END}"
+
     content = f"""# EAA Monitor
 
-> Monitor die wekelijks controleert of Nederlandse webshops een
-> toegankelijkheidsverklaring publiceren, zoals vereist door de European
-> Accessibility Act (EAA). Een initiatief van Proper Access.
+> Onafhankelijke hub over de European Accessibility Act (EAA) in Nederland.
+> Monitort wekelijks of Nederlandse webshops een toegankelijkheidsverklaring
+> publiceren en legt uit hoe de wet werkt.
 
-Laatste meting ({date_nl}): {stats['total']} webshops gecontroleerd,
-{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,
-{stats['without_statement']} ({stats['pct_without']}%) zonder, en
-{stats['errors']} ({stats['pct_error']}%) niet te controleren.
+{meas}
 
 ## Belangrijkste pagina's
-- [Dashboard](https://eaa-monitor.nl/): cijfers, grafiek en volledige lijst van webshops
+- [Dashboard](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops
+- [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
+- [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland
 - [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
 - [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
 
 ## Data
 - [Volledige resultaten (JSON)](https://eaa-monitor.nl/data/results.json)
 
-## Over de maker
-EAA Monitor is gemaakt door Proper Access (https://www.properaccess.nl),
-specialist in digitale toegankelijkheid. Oprichter: Julia Tol, senior auditor.
+{articles_block}
 """
     LLMS_FILE.write_text(content, encoding="utf-8")
     print(f"Wrote {LLMS_FILE}")

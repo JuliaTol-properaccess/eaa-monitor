@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waarom accessibility-overlays je probleem niet oplossen — EAA Monitor</title>
+  <meta name="description" content="Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.">
+  <link rel="canonical" href="https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html">
+  <meta property="og:title" content="Waarom accessibility-overlays je probleem niet oplossen — EAA Monitor">
+  <meta property="og:description" content="Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.">
+  <meta property="og:site_name" content="EAA Monitor">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Waarom accessibility-overlays je probleem niet oplossen — EAA Monitor">
+  <meta name="twitter:description" content="Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.">
+  <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/static/theme.js"></script>
+  <link rel="stylesheet" href="/static/site.css">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Waarom accessibility-overlays je probleem niet oplossen",
+  "description": "Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.",
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "inLanguage": "nl-NL",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "EAA Monitor",
+    "url": "https://eaa-monitor.nl"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "EAA Monitor",
+    "url": "https://eaa-monitor.nl"
+  },
+  "keywords": "overlay, accessibility overlay, eaa, wcag, toegankelijkheid"
+}
+  </script>
+</head>
+<body class="bg-white">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
+        <span>Monitor</span>
+      </a>
+      <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
+          <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
+          <a href="/monitor.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Monitor</a>
+          <a href="/artikelen.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Kennisbank</a>
+          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
+          <a href="/over.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Over</a>
+      </nav>
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-gray-100 px-4 sm:px-6 py-2">
+        <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
+        <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Monitor</a>
+        <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Kennisbank</a>
+        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
+        <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <div class="bg-navy text-white on-dark">
+      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
+        <a href="/artikelen.html" class="text-sm font-semibold text-white/70 hover:text-white">&larr; Kennisbank</a>
+        <p class="mt-6 inline-block text-xs font-bold uppercase tracking-wider text-brand-bright bg-white/5 px-3 py-1 rounded-full ring-1 ring-white/15">Mythes &amp; misverstanden</p>
+        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">Waarom accessibility-overlays je probleem niet oplossen</h1>
+        <p class="mt-4 text-lg text-white/70 leading-relaxed">Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.</p>
+        <p class="mt-6 text-sm text-white/50">Gepubliceerd op 8 juni 2026</p>
+      </div>
+    </div>
+
+    <article class="max-w-prose mx-auto px-4 sm:px-6 py-14">
+      <div class="prose">
+<p>Een accessibility-overlay belooft veel: plak één regel code op je website en je bent in één klap toegankelijk. Voor een ondernemer die onder druk staat van de European Accessibility Act klinkt dat aantrekkelijk. Toch zijn vakpartijen er uitgesproken kritisch op. Een overlay lost het echte probleem niet op.</p>
+<h2 id="wat-is-een-overlay">Wat is een overlay?</h2>
+<p>Een overlay is een stukje JavaScript dat bovenop je bestaande website draait. Het voegt een knopje toe waarmee bezoekers bijvoorbeeld het contrast of de lettergrootte kunnen aanpassen, en het probeert automatisch problemen in de code te repareren.</p>
+<p>De belofte is dat dit de toegankelijkheid regelt zonder dat je je website hoeft aan te passen. Precies daar zit het probleem.</p>
+<h2 id="waarom-het-niet-werkt">Waarom het niet werkt</h2>
+<p>Toegankelijkheid zit in de structuur van je website: in de code, de opbouw van je pagina's en de logica van je bestelproces. Een laagje dat daar bovenop draait, kan die onderliggende problemen niet wegnemen.</p>
+<ul>
+<li><strong>De echte barrières blijven.</strong> Een verkeerd opgebouwd formulier of een bestelproces dat niet met een toetsenbord te bedienen is, repareer je niet met een knopje voor lettergrootte.</li>
+<li><strong>Mensen die assistieve technologie gebruiken, hebben vaak hun eigen instellingen al.</strong> Schermlezergebruikers en toetsenbordgebruikers werken met software die voor hen is ingesteld. Een overlay die daar overheen komt, kan juist in de weg gaan zitten.</li>
+<li><strong>Automatische reparatie raakt lang niet alles.</strong> Geautomatiseerde tools missen een groot deel van de barrières. Wat een echte gebruiker tegenkomt, valt buiten beeld.</li>
+</ul>
+<p>Dit is ook in de praktijk getest. In twee uitgebreide analyses zijn populaire overlay-tools zoals AccessiBe, UserWay en EqualWeb tegen de WCAG gehouden. Elke tool introduceerde eigen toegankelijkheidsfouten en loste de structurele problemen niet op. Lees <a href="https://www.properaccess.nl/blog/overlay-tools-accessibe-userway-wcag/">Waarom overlay-tools zoals AccessiBe en UserWay je webshop niet WCAG-conform maken</a> en <a href="https://www.properaccess.nl/blog/overlay-toegankelijkheidstools-lossen-ze-echt-iets-op/">Overlay-toegankelijkheidstools: lossen ze echt iets op?</a>.</p>
+<h2 id="wat-de-toezichthouder-belangrijk-vindt">Wat de toezichthouder belangrijk vindt</h2>
+<p>Uit het eerste handhavingsjaar valt een duidelijke les te trekken: echte gebruikers tellen zwaarder dan testscores. Geautomatiseerde tools, en dus ook overlays, missen veel barrières die mensen in de praktijk wél tegenkomen.</p>
+<p>Een groene score van een tool of een overlay-knop in de hoek van je site zegt dus weinig over of iemand met een beperking echt kan afrekenen. Dat is wat telt.</p>
+<h2 id="toegankelijkheid-is-een-proces-geen-knop">Toegankelijkheid is een proces, geen knop</h2>
+<p>De tweede les uit dat eerste jaar: toegankelijkheid is een continu proces, geen eenmalig project en zeker geen knop die je aanzet. Je website verandert, je aanbod verandert, en je toegankelijkheid moet meebewegen.</p>
+<p>Daar past geen overlay bij, maar een aanpak die begint bij je eigen site.</p>
+<h2 id="wat-wel-werkt">Wat wél werkt</h2>
+<ul>
+<li><strong>Breng in kaart waar je staat.</strong> Een inhoudelijke audit laat zien welke barrières er zijn, per onderdeel van je site.</li>
+<li><strong>Test met echte gebruikers.</strong> Mensen die assistieve technologie gebruiken, vinden problemen die geen tool oppikt.</li>
+<li><strong>Los het bij de bron op.</strong> Pas de code en de opbouw aan, zodat de toegankelijkheid in je site zelf zit.</li>
+</ul>
+<p>Kies bij voorkeur een onafhankelijke partij: zonder eigen websitebouw, software of overlay om te verkopen is er geen belang bij een snelle pleister, alleen bij een site die echt werkt voor iedereen.</p>
+      </div>
+
+      <aside class="mt-14 pt-8 border-t border-gray-100" aria-labelledby="bronnen">
+        <h2 id="bronnen" class="text-lg font-bold text-navy mb-3">Bronnen</h2>
+        <ul class="space-y-2 text-sm">
+        <li><a href="https://www.properaccess.nl/blog/overlay-tools-accessibe-userway-wcag/" class="link" rel="nofollow">Waarom overlay-tools zoals AccessiBe en UserWay je webshop niet WCAG-conform maken</a></li>
+        <li><a href="https://www.properaccess.nl/blog/overlay-toegankelijkheidstools-lossen-ze-echt-iets-op/" class="link" rel="nofollow">Overlay-toegankelijkheidstools: lossen ze echt iets op?</a></li>
+        <li><a href="https://www.cardan.com/blog/accessibility-overlays-waarom-ze-niet-werken" class="link" rel="nofollow">Cardan: accessibility-overlays, waarom ze niet werken</a></li>
+        <li><a href="https://www.cardan.com/blog/een-jaar-european-accessibility-act-lessen-voor-bedrijven" class="link" rel="nofollow">Cardan: een jaar European Accessibility Act, lessen voor bedrijven</a></li>
+        </ul>
+      </aside>
+
+      <div class="mt-14 rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
+        <h2 class="text-2xl font-extrabold text-navy tracking-tight">Wil je weten waar je staat?</h2>
+        <p class="mt-3 text-navy/70 leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/wcag-audit.html" class="btn btn-primary">Bekijk auditbureaus</a>
+          <a href="/monitor.html" class="btn btn-ghost">Check jouw webshop in de monitor</a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+  <footer class="bg-navy text-white mt-24 on-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <div class="grid gap-10 md:grid-cols-3">
+        <div class="md:col-span-2">
+          <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
+            <span>Monitor</span>
+          </p>
+          <p class="mt-4 text-sm text-white/60 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Ontdek</p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
+            <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
+            <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
+            <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
+            <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white/60">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+    </div>
+  </footer>
+
+  <script src="/static/nav.js"></script>
+  <script src="/static/reveal.js"></script>
+</body>
+</html>

@@ -58,7 +58,7 @@
     if (objections.length === 0) {
       countEl.textContent = "Er zijn nog geen bezwaren ingediend.";
       tbody.innerHTML =
-        '<tr><td colspan="2" class="py-12 text-center text-gray-400">Nog geen webshops hebben bezwaar gemaakt.</td></tr>';
+        '<tr><td colspan="2" class="py-12 text-center text-gray-600">Nog geen webshops hebben bezwaar gemaakt.</td></tr>';
       return;
     }
 
@@ -77,7 +77,7 @@
         const rowBg = i % 2 === 0 ? "" : "bg-gray-50";
         const name = escapeHtml(o.name || "Onbekend");
         const nameCell = o.url
-          ? `<a href="${escapeHtml(o.url)}" target="_blank" rel="noopener noreferrer" class="text-petrol hover:text-magenta font-semibold">${name}</a>
+          ? `<a href="${escapeHtml(o.url)}" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-semibold">${name}</a>
              <span class="block text-xs text-gray-500">${escapeHtml(displayUrl(o.url))}</span>`
           : name;
         return `<tr class="${rowBg} border-b border-gray-100">

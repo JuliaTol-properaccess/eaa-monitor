@@ -1,0 +1,192 @@
+/* =========================================================================
+   EAA Hub - gedeelde stijlen (Coinbase-look)
+   Componentclasses, animaties, focus-styles en artikel-prose.
+   Tailwind levert de utilities; dit bestand vult aan wat utilities niet doen.
+   ========================================================================= */
+
+:root {
+  --brand: #0052FF;
+  --brand-dark: #0039B3;
+  --navy: #0A0E27;
+  --ink: #0A0B0D;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ----- Focus: zichtbaar en consistent (WCAG 2.2) ----- */
+*:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Donkere secties: lichte focusring voor contrast */
+.on-dark *:focus-visible {
+  outline-color: #ffffff;
+}
+
+/* ----- Links binnen lopende tekst ----- */
+.link {
+  color: var(--brand);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
+.link:hover { text-decoration: underline; }
+
+/* ----- Knoppen ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: transform .12s ease, background-color .15s ease, box-shadow .15s ease;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+  padding: .85rem 1.6rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+}
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-ghost {
+  background: transparent;
+  color: var(--brand);
+  padding: .85rem 1.4rem;
+  border: 1.5px solid #d6def0;
+}
+.btn-ghost:hover { border-color: var(--brand); background: #f5f8ff; }
+.btn-on-dark {
+  background: #fff;
+  color: var(--navy);
+  padding: .85rem 1.6rem;
+}
+.btn-on-dark:hover { background: #e9eefc; }
+
+/* ----- Cards ----- */
+.card {
+  background: #fff;
+  border: 1px solid #ECEFF5;
+  border-radius: 1.25rem;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -18px rgba(10,14,39,.28);
+  border-color: #d6def0;
+}
+
+/* ----- Scroll-reveal (subtiel) ----- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn { transition: none; }
+  .card { transition: none; }
+}
+
+/* ----- Dashboard: statusbol ----- */
+.status-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  display: inline-block; flex-shrink: 0;
+}
+
+/* ----- Dashboard: sorteerknoppen ----- */
+.sort-btn { cursor: pointer; user-select: none; background: none; border: 0; }
+.sort-btn:hover { text-decoration: underline; }
+.sort-btn::after { content: ' \2195'; color: #9AA3B2; font-size: .75em; }
+.sort-btn.asc::after  { content: ' \2191'; color: var(--brand); }
+.sort-btn.desc::after { content: ' \2193'; color: var(--brand); }
+
+/* ----- Dashboard: chart-balken ----- */
+.chart-bar { transition: width .6s ease-out; }
+@media (prefers-reduced-motion: reduce) { .chart-bar { transition: none; } }
+
+/* ----- Dashboard: toggle ----- */
+.toggle-btn { transition: background-color .15s, color .15s; }
+.toggle-btn.active { background-color: var(--brand); color: #fff; }
+
+/* =========================================================================
+   Artikel-prose (Kennisbank)
+   ========================================================================= */
+.prose {
+  color: #1F2433;
+  font-size: 1.075rem;
+  line-height: 1.75;
+}
+.prose > * + * { margin-top: 1.15rem; }
+.prose h2 {
+  font-size: 1.6rem; font-weight: 800; line-height: 1.25;
+  color: var(--navy); margin-top: 2.5rem; margin-bottom: .25rem;
+  letter-spacing: -.01em;
+}
+.prose h3 {
+  font-size: 1.25rem; font-weight: 700; color: var(--navy);
+  margin-top: 1.75rem;
+}
+.prose a { color: var(--brand); font-weight: 600; text-underline-offset: 2px; text-decoration: underline; }
+.prose a:hover { color: var(--brand-dark); }
+/* Knoppen binnen artikel-prose mogen de prose-linkstijl niet erven
+   (anders blauwe tekst op een blauwe knop = onzichtbaar). */
+.prose a.btn { text-decoration: none; }
+.prose a.btn-primary { color: #fff; }
+.prose a.btn-ghost { color: var(--brand); }
+.prose a.btn-on-dark { color: var(--navy); }
+.prose ul, .prose ol { padding-left: 1.4rem; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: .4rem; }
+.prose strong { font-weight: 700; color: var(--navy); }
+.prose blockquote {
+  border-left: 4px solid var(--brand);
+  background: #F5F8FF;
+  padding: 1rem 1.25rem;
+  border-radius: 0 .75rem .75rem 0;
+  font-style: normal;
+  color: #2A3242;
+}
+.prose table {
+  width: 100%; border-collapse: collapse; font-size: .98rem;
+  margin: 1.5rem 0;
+}
+.prose th, .prose td {
+  text-align: left; padding: .7rem .9rem; border-bottom: 1px solid #ECEFF5;
+  vertical-align: top;
+}
+.prose thead th {
+  background: #F5F8FF; color: var(--navy); font-weight: 700;
+  border-bottom: 2px solid #E1E7F5;
+}
+.prose code {
+  background: #EEF1F7; padding: .15em .4em; border-radius: .35rem;
+  font-size: .9em;
+}
+
+/* Notice-blokken in artikelen */
+.notice {
+  border-radius: 1rem;
+  padding: 1.1rem 1.25rem;
+  margin: 1.5rem 0;
+  border: 1px solid transparent;
+}
+.notice-info    { background: #F5F8FF; border-color: #D6E0FF; }
+.notice-warning { background: #FFF8EC; border-color: #F4DFB0; }
+.notice strong { color: var(--navy); }
