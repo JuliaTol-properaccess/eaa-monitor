@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EAA Monitor">
+  <rect width="64" height="64" rx="16" fill="#0052FF"/>
+  <!-- Witte "E" uit rechthoeken: font-onafhankelijk, scherp op elk formaat -->
+  <g fill="#FFFFFF">
+    <rect x="20" y="16" width="8" height="32"/>
+    <rect x="20" y="16" width="24" height="8"/>
+    <rect x="20" y="28" width="20" height="8"/>
+    <rect x="20" y="40" width="24" height="8"/>
+  </g>
+</svg>
