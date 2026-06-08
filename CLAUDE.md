@@ -11,10 +11,11 @@ Volgt het WAT framework (Workflows, Agents, Tools).
 - `tools/scrape_webwinkelkeur.py` — Bouwt webshops.json aan met leden van WebwinkelKeur (server-rendered ledenlijst + JSON-LD per profiel; resume-cache in `.tmp/`)
 - `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels via de scrapers hierboven)
 - `data/results.json` — Automatisch gegenereerde scrape-resultaten (niet handmatig bewerken)
-- `data/objections.json` — Handmatig bijgehouden lijst van webshops die bezwaar hebben gemaakt tegen vermelding (overlay; sluit ze uit van het dashboard, geen e-mailadressen)
+- `data/objections.json` — Lijst van webshops die bezwaar hebben gemaakt tegen vermelding (overlay; sluit ze uit van het dashboard, geen e-mailadressen). Wordt bijgewerkt via PR's van de bezwaar-Worker, of handmatig
 - `public/index.html` + `public/app.js` — Statisch dashboard (HTML + Tailwind + vanilla JS)
-- `public/bezwaar.html` — Bezwaarformulier (verstuurt via Formspree naar Julia)
+- `public/bezwaar.html` — Bezwaarformulier. Verstuurt naar de bezwaar-Worker (`BEZWAAR_ENDPOINT`); valt terug op Formspree als die constante leeg is
 - `public/bezwaren.html` + `public/bezwaren.js` — Openbare lijst van ingediende bezwaren
+- `worker/` — Cloudflare Worker die bezwaren grotendeels automatisch verwerkt met domein-verificatie (zie `worker/DEPLOY.md`)
 - `workflows/handle_objection.md` — SOP voor het verwerken van een bezwaar
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
 - `.github/workflows/deploy.yml` — Deploy naar GitHub Pages
@@ -41,12 +42,17 @@ playwright install chromium
 
 ```
 webshops.json (handmatig) → scrape_footer.py (cron) → results.json (auto) → index.html (statisch)
-objections.json (handmatig) → app.js sluit bezwaarmakers uit → bezwaren.html toont ze
+bezwaar.html → Worker → PR op objections.json → app.js sluit bezwaarmakers uit → bezwaren.html toont ze
 ```
 
 ## Bezwaar tegen vermelding
 
-Webshops die buiten de EAA vallen kunnen via `public/bezwaar.html` bezwaar maken. Julia verwerkt dit handmatig volgens `workflows/handle_objection.md`: na controle een entry toevoegen aan `data/objections.json` (zonder e-mailadres, want de repo is openbaar). De frontend sluit die webshops client-side uit van tabel en cijfers en toont ze op `public/bezwaren.html`.
+Webshops die buiten de EAA vallen kunnen via `public/bezwaar.html` bezwaar maken. Het formulier gaat naar de bezwaar-Worker (`worker/`), die twee routes kiest:
+
+- **Automatisch (domein-geverifieerd):** staat het e-mailadres op het webshop-domein, dan stuurt de Worker een bevestigingslink naar dat adres. Na het klikken opent de Worker een PR op `data/objections.json`. Julia controleert kort en merget. De domeincheck voorkomt dat een concurrent een ander laat verwijderen.
+- **Handmatig (geen domeinmatch):** bij een adres buiten het domein mailt de Worker naar Julia, die het bezwaar verwerkt volgens `workflows/handle_objection.md`.
+
+De frontend sluit bezwaarmakers client-side uit van tabel en cijfers en toont ze op `public/bezwaren.html`. Entries bevatten nooit een e-mailadres, want de repo is openbaar. Uitrol en beheer van de Worker staan in `worker/DEPLOY.md`.
 
 ## Webshops toevoegen
 
