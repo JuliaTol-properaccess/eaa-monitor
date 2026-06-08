@@ -97,6 +97,10 @@ def shared_head(title, description, canonical, *, extra_head="", og_type="websit
   <meta name="description" content="{html.escape(description)}">
   <link rel="canonical" href="{canonical}">
 
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <meta property="og:type" content="{og_type}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:title" content="{html.escape(title)}">
