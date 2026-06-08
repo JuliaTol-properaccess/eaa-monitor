@@ -33,14 +33,11 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp public/*.html _site/
-          cp public/*.js _site/
-          cp public/CNAME _site/
-          cp public/robots.txt _site/
-          cp public/sitemap.xml _site/
-          cp public/llms.txt _site/
-          cp -r public/static _site/static
-          cp -r data _site/
+          # Kopieer de volledige public-tree, inclusief submappen zoals
+          # public/artikelen/ en public/static/. Een platte glob zou submappen
+          # missen, waardoor de kennisbank niet gedeployed zou worden.
+          cp -R public/. _site/
+          cp -R data _site/data
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

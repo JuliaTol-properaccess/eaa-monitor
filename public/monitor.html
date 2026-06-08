@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Het dashboard — EAA Monitor</title>
+  <meta name="description" content="Bekijk per Nederlandse webshop of er een toegankelijkheidsverklaring is gevonden. Filter op categorie en status, of zoek je eigen winkel op.">
+  <link rel="canonical" href="https://eaa-monitor.nl/monitor.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eaa-monitor.nl/monitor.html">
+  <meta property="og:title" content="Het dashboard — EAA Monitor">
+  <meta property="og:description" content="Per webshop: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
+  <meta property="og:site_name" content="EAA Monitor">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Het dashboard — EAA Monitor">
+  <meta name="twitter:description" content="Per webshop: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
+  <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/static/theme.js"></script>
+  <link rel="stylesheet" href="/static/site.css">
+</head>
+<body class="bg-white">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
+        <span>Monitor</span>
+      </a>
+      <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
+          <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
+          <a href="/monitor.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Monitor</a>
+          <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
+          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
+          <a href="/over.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Over</a>
+      </nav>
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-gray-100 px-4 sm:px-6 py-2">
+        <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
+        <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Monitor</a>
+        <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
+        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
+        <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero met statusgrafiek -->
+    <section class="bg-navy text-white on-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-16">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 lg:items-center">
+
+          <div class="min-w-0">
+            <h1 class="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight break-words hyphens-auto">Hebben Nederlandse webshops een toegankelijkheidsverklaring?</h1>
+            <p class="mt-4 text-lg text-white/70 max-w-xl leading-relaxed">Elke maandag controleert deze monitor de footer van Nederlandse webshops op een link naar een toegankelijkheidsverklaring. Zoek je eigen winkel op of filter de lijst.</p>
+
+            <div class="mt-7 max-w-xl">
+              <label for="filter-search" class="block text-sm font-semibold text-white/80 mb-2">Zoek een webshop</label>
+              <div class="flex gap-2">
+                <input type="search" id="filter-search" placeholder="bijv. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-xl text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+                <button type="button" id="search-btn" class="btn btn-primary">Zoeken</button>
+              </div>
+            </div>
+          </div>
+
+          <section aria-label="Verdeling per status" class="min-w-0">
+            <div class="flex items-end justify-between gap-4 mb-4">
+              <div>
+                <h2 class="text-lg font-bold">Aantal webshops per status</h2>
+                <p class="text-sm text-white/60 mt-1">Verdeling van de <span id="chart-total">—</span> gecontroleerde webshops</p>
+              </div>
+              <div class="flex rounded-xl overflow-hidden ring-1 ring-white/20 shrink-0" role="tablist" aria-label="Weergave wisselen">
+                <button class="toggle-btn active px-4 py-2 text-sm font-semibold text-white/70" role="tab" aria-selected="true" aria-controls="chart-view" id="tab-chart">Grafiek</button>
+                <button class="toggle-btn px-4 py-2 text-sm font-semibold text-white/70" role="tab" aria-selected="false" aria-controls="table-view" id="tab-table">Tabel</button>
+              </div>
+            </div>
+
+            <div id="chart-view" role="tabpanel" aria-labelledby="tab-chart" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">
+              <div class="space-y-4" id="status-chart"></div>
+            </div>
+
+            <div id="table-view" role="tabpanel" aria-labelledby="tab-table" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 hidden">
+              <table class="w-full text-sm" id="status-table">
+                <caption class="sr-only">Aantal webshops per status</caption>
+                <thead>
+                  <tr class="border-b-2 border-white/20 text-left">
+                    <th scope="col" class="py-3 px-2 font-bold">Status</th>
+                    <th scope="col" class="py-3 px-2 font-bold text-right">Aantal</th>
+                    <th scope="col" class="py-3 px-2 font-bold text-right">Percentage</th>
+                  </tr>
+                </thead>
+                <tbody id="status-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Kerncijfers (live via app.js) -->
+    <section aria-label="Kerncijfers" class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="card p-6 text-center">
+          <p class="text-4xl font-extrabold text-navy tracking-tight" id="stat-total">—</p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">webshops gecontroleerd</p>
+        </div>
+        <div class="card p-6 text-center">
+          <p class="text-4xl font-extrabold text-status-found tracking-tight" id="stat-percentage">—</p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">heeft een verklaring</p>
+        </div>
+        <div class="card p-6 text-center">
+          <p class="text-4xl font-extrabold text-status-notfound tracking-tight" id="stat-percentage-without">—</p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">heeft geen verklaring</p>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-gray-600" id="last-updated">Laden...</p>
+    </section>
+
+    <!-- Per categorie -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Verdeling per categorie">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Resultaat per categorie</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="category-cards"></div>
+    </section>
+
+    <!-- Volledige lijst -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Alle webshops">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-4">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight">Alle webshops</h2>
+        <p class="text-sm text-gray-500 mt-1 sm:mt-0" id="filter-count"></p>
+      </div>
+
+      <div class="rounded-2xl bg-softblue ring-1 ring-brand-light p-4 mb-4 text-sm text-ink">
+        Staat jouw webshop hier, maar val je buiten de EAA omdat je een micro-onderneming bent of alleen aan bedrijven levert? Dan kun je <a href="/bezwaar.html" class="link">bezwaar maken tegen vermelding</a>.
+      </div>
+
+      <div class="flex flex-wrap gap-3 mb-4">
+        <div>
+          <label for="filter-category" class="block text-sm font-semibold text-navy mb-1">Categorie</label>
+          <select id="filter-category" class="border border-gray-300 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            <option value="">Alle categorieen</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-status" class="block text-sm font-semibold text-navy mb-1">Status</label>
+          <select id="filter-status" class="border border-gray-300 rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            <option value="">Alle statussen</option>
+            <option value="found">Met verklaring</option>
+            <option value="not_found">Zonder verklaring</option>
+            <option value="error">Fout bij controle</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm" id="results-table">
+            <caption class="sr-only">Overzicht van Nederlandse webshops en hun toegankelijkheidsverklaring status</caption>
+            <thead>
+              <tr class="bg-gray-50 border-b border-gray-200 text-left">
+                <th scope="col" class="py-3 px-4" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="name" aria-label="Sorteer op Webshop">Webshop</button>
+                </th>
+                <th scope="col" class="py-3 px-4 hidden sm:table-cell" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="category" aria-label="Sorteer op Categorie">Categorie</button>
+                </th>
+                <th scope="col" class="py-3 px-4" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="status" aria-label="Sorteer op Status">Status</button>
+                </th>
+                <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-navy">Verklaring</th>
+                <th scope="col" class="py-3 px-4 hidden lg:table-cell" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="date" aria-label="Sorteer op Gecontroleerd">Gecontroleerd</button>
+                </th>
+                <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-navy">Bezwaar</th>
+              </tr>
+            </thead>
+            <tbody id="results-body">
+              <tr>
+                <td colspan="6" class="py-12 text-center text-gray-600">Data laden...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <nav aria-label="Paginering" id="pagination" class="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6"></nav>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-navy text-white mt-24 on-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <div class="grid gap-10 md:grid-cols-3">
+        <div class="md:col-span-2">
+          <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
+            <span>Monitor</span>
+          </p>
+          <p class="mt-4 text-sm text-white/60 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Ontdek</p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
+            <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
+            <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
+            <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
+            <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white/60">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="/static/nav.js"></script>
+</body>
+</html>
