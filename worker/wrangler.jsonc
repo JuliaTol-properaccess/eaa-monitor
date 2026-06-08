@@ -1,0 +1,31 @@
+{
+  // Cloudflare Worker die bezwaren tegen vermelding automatisch verwerkt.
+  // Zie DEPLOY.md voor de volledige uitrolstappen (secrets, e-maildomein, PAT).
+  "name": "eaa-bezwaar",
+  "main": "src/index.js",
+  "compatibility_date": "2025-09-01",
+
+  // E-mail versturen vanuit de Worker. Het from-domein moet eerst onboarden:
+  //   npx wrangler email sending enable eaa-monitor.nl
+  "send_email": [{ "name": "EMAIL" }],
+
+  "vars": {
+    // Alleen het dashboard mag de Worker aanroepen (CORS).
+    "ALLOWED_ORIGIN": "https://eaa-monitor.nl",
+
+    // Afzender van de bevestigingsmail. Domein moet onboarded zijn (zie boven).
+    "FROM_EMAIL": "bezwaar@eaa-monitor.nl",
+    "FROM_NAME": "EAA Monitor",
+
+    // Waar handmatige-check-meldingen heen gaan (geen domeinmatch).
+    "NOTIFY_EMAIL": "juliatol@properaccess.nl",
+
+    // Doel-repo voor de commit naar data/objections.json.
+    "GITHUB_REPO": "JuliaTol-properaccess/eaa-monitor",
+    "GITHUB_BRANCH": "main"
+  }
+
+  // Secrets (NIET hier, via `wrangler secret put`):
+  //   SIGNING_SECRET  — willekeurige string voor de HMAC-handtekening
+  //   GITHUB_TOKEN    — fine-grained PAT, Contents + Pull requests: read & write
+}
