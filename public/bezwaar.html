@@ -176,7 +176,7 @@
       // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md). Zolang dit leeg is,
       // gaat het formulier via Formspree naar Julia (handmatige verwerking).
       // Zet dit op de /submit-URL van de Worker om bezwaren automatisch te verwerken.
-      const BEZWAAR_ENDPOINT = "";
+      const BEZWAAR_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/submit";
 
       // Velden voorinvullen vanuit de querystring (vanaf de "Bezwaar maken"-knop in de tabel).
       const params = new URLSearchParams(window.location.search);
