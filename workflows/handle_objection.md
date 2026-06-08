@@ -6,6 +6,16 @@ Een binnengekomen bezwaar van een webshop-eigenaar verwerken: controleren of het
 
 We controleren de inhoudelijke criteria niet. Het is een eigen verklaring. We controleren alleen of het verzoek echt van de webshop komt, om misbruik namens een concurrent te voorkomen.
 
+## Twee routes
+
+Sinds juni 2026 lopen bezwaren via de bezwaar-Worker (`worker/`). Die kiest automatisch een van twee routes:
+
+1. **Automatische route (domein-geverifieerd).** Staat het opgegeven e-mailadres op het webshop-domein zelf (bijvoorbeeld `info@webshop.nl` bij `webshop.nl`), dan stuurt de Worker een bevestigingslink naar dat adres. Klikt de aanvrager die link, dan opent de Worker een pull request op `data/objections.json`. Een concurrent kan die mail niet ontvangen, dus de legitimiteit is daarmee aangetoond. Jij hoeft alleen de PR kort te bekijken en te mergen. De stappen hieronder hoef je dan niet handmatig te doen, de Worker heeft de entry al gemaakt.
+
+2. **Handmatige route (geen domeinmatch).** Staat het e-mailadres niet op het webshop-domein (bijvoorbeeld een gmail-adres), dan maakt de Worker geen PR maar stuurt hij een mail naar Julia. Verwerk dat bezwaar dan met de stappen hieronder.
+
+De stappen in dit document gelden voor de handmatige route, en als naslag voor wat de Worker in de automatische route doet.
+
 ## Inputs
 
 - Een e-mail van Formspree met de velden uit `public/bezwaar.html`:
@@ -66,4 +76,5 @@ Wil een webshop terug in het dashboard? Verwijder het bijbehorende object uit `d
 
 - Verwerk een bezwaar nooit zonder dat alle drie de verklaringen zijn aangevinkt.
 - Zet nooit een e-mailadres in `data/objections.json`; de repo is openbaar.
-- De Formspree-endpoint staat in `public/bezwaar.html` in het `action`-attribuut van het formulier: `https://formspree.io/f/mdavapbl`.
+- De automatische route loopt via de bezwaar-Worker. Code en uitrolinstructies staan in `worker/` (zie `worker/DEPLOY.md`). De frontend wijst naar de Worker via de constante `BEZWAAR_ENDPOINT` in `public/bezwaar.html`. Is die leeg, dan valt het formulier terug op Formspree (`https://formspree.io/f/mdavapbl`).
+- De Worker dedupliceert: een al vermelde webshop of een al ingediend bezwaar levert geen tweede PR op. Bij een PR uit de automatische route hoef je de entry niet zelf te schrijven, alleen te controleren en te mergen.
