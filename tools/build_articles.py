@@ -87,6 +87,7 @@ NAV_ITEMS = [
     ("Monitor", "/monitor.html"),
     ("Financieel", "/monitor-financieel.html"),
     ("Kennisbank", "/artikelen.html"),
+    ("Bronnen", "/bronnen.html"),
     ("WCAG-audit", "/wcag-audit.html"),
     ("Over", "/over.html"),
 ]
@@ -183,6 +184,7 @@ def site_footer():
           <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
+            <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
@@ -456,6 +458,13 @@ def render_kennisbank(articles: list) -> str:
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 {cards_html}
       </div>
+      <div class="mt-10 card p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-softblue">
+        <div class="flex-1">
+          <h2 class="text-lg font-extrabold text-navy tracking-tight">Op zoek naar de oorspronkelijke bronnen?</h2>
+          <p class="mt-1.5 text-sm text-gray-600 leading-relaxed">Bekijk ons doorzoekbare overzicht van artikelen en publicaties over de EAA, van toezichthouders en overheid tot juristen, bureaus en vakmedia.</p>
+        </div>
+        <a href="/bronnen.html" class="btn btn-primary whitespace-nowrap self-start sm:self-auto">Naar de bronnen</a>
+      </div>
       <p class="mt-10 text-sm text-gray-500 leading-relaxed max-w-2xl">Deze kennisbank is samengesteld uit openbare bronnen: publicaties van toezichthouders, nieuwsberichten en vakartikelen. Het is algemene uitleg, geen juridisch advies. Zie je een fout? Onderaan elk artikel kun je het ons laten weten.</p>
     </section>
 
@@ -473,6 +482,7 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/monitor.html", "weekly", "0.9"),
         (f"{BASE_URL}/monitor-financieel.html", "weekly", "0.9"),
         (f"{BASE_URL}/artikelen.html", "weekly", "0.8"),
+        (f"{BASE_URL}/bronnen.html", "weekly", "0.7"),
         (f"{BASE_URL}/vragen.html", "weekly", "0.7"),
         (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6"),
         (f"{BASE_URL}/wcag-audit.html", "monthly", "0.7"),

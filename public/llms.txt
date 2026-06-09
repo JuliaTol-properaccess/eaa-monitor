@@ -23,6 +23,7 @@ Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 43 instellingen
 - [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
 - [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
 - [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland
+- [Vragen uit de praktijk](https://eaa-monitor.nl/vragen.html): antwoorden van toezichthouders (ACM, AFM) op anonieme vragen van ondernemers over de EAA
 - [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
 - [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
 

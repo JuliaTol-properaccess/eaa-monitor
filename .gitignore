@@ -19,5 +19,9 @@ Thumbs.db
 # Node (if added later)
 node_modules/
 
+# Cloudflare Worker lokale state
+.wrangler/
+.dev.vars
+
 # Temporary files
 .tmp/
