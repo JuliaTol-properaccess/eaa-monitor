@@ -12,10 +12,10 @@ Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
 <!-- MEASUREMENT:END -->
 
 <!-- FIN-MEASUREMENT:START -->
-Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 43 instellingen gecontroleerd,
-29 (67%) met toegankelijkheidsverklaring,
-12 (28%) zonder, en
-2 (5%) niet te controleren.
+Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 68 instellingen gecontroleerd,
+44 (65%) met toegankelijkheidsverklaring,
+23 (34%) zonder, en
+1 (1%) niet te controleren.
 <!-- FIN-MEASUREMENT:END -->
 
 ## Belangrijkste pagina's
@@ -34,6 +34,7 @@ Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 43 instellingen
 <!-- ARTICLES:START -->
 ## Artikelen (Kennisbank)
 - [De EAA en de financiële sector: wat doet de AFM?](https://eaa-monitor.nl/artikelen/eaa-financiele-sector.html): Banken, verzekeraars, betaaldiensten en leasemaatschappijen vallen onder de European Accessibility Act. Niet de ACM maar de Autoriteit Financiële Markten houdt toezicht. Lees wat dat betekent en hoe de sector ervoor staat.
+- [Welke subsidies zijn er voor digitale toegankelijkheid?](https://eaa-monitor.nl/artikelen/subsidies-voor-digitale-toegankelijkheid.html): Online overzichten van EAA-subsidies zitten vol fouten. We checkten welke regelingen er écht zijn. Een landelijke pot is er niet. Wel een handvol gemeentelijke regelingen, met flinke verschillen in wat ze dekken.
 - [Waarom accessibility-overlays je probleem niet oplossen](https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html): Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.
 - [Zo schrijf je een toegankelijkheidsverklaring voor je webshop](https://eaa-monitor.nl/artikelen/toegankelijkheidsverklaring-schrijven.html): Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Lees wat erin hoort, hoe je hem publiceert en waarom hij niet los staat van echte toegankelijkheid.
 - [Wie houdt toezicht op de EAA, en wat zijn de boetes?](https://eaa-monitor.nl/artikelen/toezicht-en-boetes.html): Het toezicht op de European Accessibility Act is in Nederland verdeeld over meerdere toezichthouders. De ACM is de hoofdrolspeler voor webshops. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet.
