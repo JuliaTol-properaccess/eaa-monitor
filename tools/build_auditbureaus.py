@@ -117,8 +117,8 @@ def render(bureaus):
     </section>
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-4">
-      <div class="prose max-w-prose">
-        <h2>Waarom een onafhankelijke audit?</h2>
+      <div class="prose max-w-prose bg-white rounded-2xl shadow-sm px-6 sm:px-8 pt-8 pb-6">
+        <h2 class="mt-0">Waarom een onafhankelijke audit?</h2>
         <p>Een geautomatiseerde tool vindt maar een deel van de toegankelijkheidsproblemen. De barrieres die echte gebruikers tegenkomen, zie je pas met een inhoudelijke audit en met tests door mensen die assistieve technologie gebruiken. Een onafhankelijk bureau heeft geen belang bij de uitkomst en kijkt puur naar wat werkt voor de bezoeker.</p>
       </div>
     </section>
