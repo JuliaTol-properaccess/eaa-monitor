@@ -18,6 +18,11 @@ tailwind.config = {
         // Tekst en vlakken
         ink: '#0A0B0D',
         softblue: '#F5F8FF',
+        // Randen. 'field' (~3.3:1 op wit) voor interactieve besturing
+        // (invoervelden, knoppen, checkboxes): haalt WCAG 1.4.11. 'line' is de
+        // lichte decoratieve lijn voor kaarten, tabellen en scheidingen.
+        field: '#868D9C',
+        line: '#D7DEEC',
         // Statuskleuren dashboard
         status: {
           found: '#15803D', 'found-bg': '#F0FDF4',

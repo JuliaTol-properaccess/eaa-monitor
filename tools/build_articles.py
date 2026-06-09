@@ -146,7 +146,7 @@ def site_header(active_path):
     mobile_html = "\n        ".join(mobile)
     return f"""  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-100">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
@@ -159,7 +159,7 @@ def site_header(active_path):
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
-    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-gray-100 px-4 sm:px-6 py-2">
+    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         {mobile_html}
     </nav>
   </header>
@@ -258,7 +258,7 @@ def sources_block(meta: dict) -> str:
         for s in sources
     )
     return f"""
-      <aside class="mt-14 pt-8 border-t border-gray-100" aria-labelledby="bronnen">
+      <aside class="mt-14 pt-8 border-t border-line" aria-labelledby="bronnen">
         <h2 id="bronnen" class="text-lg font-bold text-navy mb-3">Bronnen</h2>
         <ul class="space-y-2 text-sm">
 {items}
@@ -284,10 +284,10 @@ def feedback_block(meta: dict) -> str:
     title = meta["title"]
     url = f"{BASE_URL}/artikelen/{slug}.html"
     return f"""
-      <section class="mt-14 pt-10 border-t border-gray-100" aria-labelledby="feedback-titel">
+      <section class="mt-14 pt-10 border-t border-line" aria-labelledby="feedback-titel">
         <p class="text-sm text-gray-500 leading-relaxed">{DISCLAIMER_TEXT}</p>
 
-        <div class="mt-8 rounded-2xl bg-white ring-1 ring-gray-200 p-6 md:p-8">
+        <div class="mt-8 rounded-2xl bg-white ring-1 ring-line p-6 md:p-8">
           <h2 id="feedback-titel" class="text-xl font-extrabold text-navy tracking-tight">Klopt er iets niet?</h2>
           <p class="mt-2 text-sm text-gray-600 leading-relaxed">Zie je een fout, een verouderd cijfer of mist er een bron? Laat het ons weten, dan kijken we ernaar.</p>
 
@@ -303,12 +303,12 @@ def feedback_block(meta: dict) -> str:
 
             <div>
               <label for="feedback-bericht" class="block text-sm font-semibold text-navy mb-1.5">Wat klopt er niet?</label>
-              <textarea id="feedback-bericht" name="bericht" rows="4" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
+              <textarea id="feedback-bericht" name="bericht" rows="4" required class="w-full rounded-xl border border-field px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
             </div>
 
             <div>
               <label for="feedback-email" class="block text-sm font-semibold text-navy mb-1.5">E-mailadres <span class="font-normal text-gray-500">(optioneel, alleen als je een reactie wilt)</span></label>
-              <input type="email" id="feedback-email" name="email" autocomplete="email" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="jij@voorbeeld.nl">
+              <input type="email" id="feedback-email" name="email" autocomplete="email" class="w-full rounded-xl border border-field px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="jij@voorbeeld.nl">
             </div>
 
             <button type="submit" id="feedback-submit" class="btn btn-primary">Versturen</button>
