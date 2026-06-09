@@ -10,6 +10,7 @@
  * Routes:
  *   POST /submit   — ontvangt het formulier, valideert, stuurt bevestigingsmail
  *   GET  /confirm  — verifieert de getekende token en opent een PR op objections.json
+ *   POST /feedback — feedback op een kennisbank-artikel, mailt Julia rechtstreeks
  *
  * Geen database nodig: de bevestigingslink draagt een HMAC-getekende token met
  * alle bezwaargegevens. Na bevestiging opent de Worker een pull request; Julia
@@ -34,6 +35,9 @@ export default {
     }
     if (url.pathname === "/submit" && request.method === "POST") {
       return withCors(env, await handleSubmit(request, env));
+    }
+    if (url.pathname === "/feedback" && request.method === "POST") {
+      return withCors(env, await handleFeedback(request, env));
     }
     if (url.pathname === "/confirm" && request.method === "GET") {
       return handleConfirm(request, env, url);
@@ -106,7 +110,7 @@ async function handleSubmit(request, env) {
     } catch (err) {
       console.error("Bevestigingsmail mislukt:", err && err.message);
       return json(
-        { ok: false, error: "We konden de bevestigingsmail niet versturen. Probeer het later opnieuw of mail naar info@properaccess.nl." },
+        { ok: false, error: "We konden de bevestigingsmail niet versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
         502
       );
     }
@@ -119,11 +123,53 @@ async function handleSubmit(request, env) {
   } catch (err) {
     console.error("Notificatiemail mislukt:", err && err.message);
     return json(
-      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@properaccess.nl." },
+      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
       502
     );
   }
   return json({ ok: true, mode: "manual" });
+}
+
+// ── /feedback ──────────────────────────────────────────────────────────────
+
+async function handleFeedback(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true });
+  }
+
+  const bericht = (form.get("bericht") || "").trim();
+  const email = (form.get("email") || "").trim();
+  const artikel = (form.get("artikel_titel") || "").trim();
+  const artikelUrl = (form.get("artikel_url") || "").trim();
+
+  if (!bericht) {
+    return json({ ok: false, error: "Schrijf even waar het om gaat voordat je verstuurt." }, 422);
+  }
+  if (bericht.length > 4000) {
+    return json({ ok: false, error: "Je bericht is te lang. Houd het onder de 4000 tekens." }, 422);
+  }
+  if (email && !isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+
+  try {
+    await sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl });
+  } catch (err) {
+    console.error("Feedbackmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
+      502
+    );
+  }
+  return json({ ok: true });
 }
 
 // ── /confirm ─────────────────────────────────────────────────────────────
@@ -156,7 +202,7 @@ async function handleConfirm(request, env, url) {
     return htmlPage(
       "Er ging iets mis",
       `<p>We konden je bezwaar nu niet verwerken. Probeer de link later opnieuw, of mail naar
-       <a href="mailto:info@properaccess.nl">info@properaccess.nl</a>.</p>`,
+       <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>.</p>`,
       502
     );
   }
@@ -304,7 +350,7 @@ async function sendConfirmationEmail(env, { name, email, webadres, confirmUrl })
     ``,
     `Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.`,
     ``,
-    `EAA Monitor, een initiatief van Proper Access`,
+    `EAA Monitor, eaa-monitor.nl`,
   ].join("\n");
   const html = `
     <div style="font-family: Arial, sans-serif; color: #1F2937; line-height: 1.6;">
@@ -322,7 +368,7 @@ async function sendConfirmationEmail(env, { name, email, webadres, confirmUrl })
       <p style="font-size:13px;color:#6B7280;">Werkt de knop niet? Kopieer dan deze link naar je browser:<br>
         <span style="word-break:break-all;">${escapeHtml(confirmUrl)}</span></p>
       <p>Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.</p>
-      <p style="color:#6B7280;font-size:13px;">EAA Monitor, een initiatief van Proper Access</p>
+      <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
     </div>`;
 
   await env.EMAIL.send({
@@ -360,6 +406,27 @@ async function sendManualReviewEmail(env, { name, webadres, email, declared, toe
     to: env.NOTIFY_EMAIL,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email,
+    subject,
+    text: lines.join("\n"),
+  });
+}
+
+async function sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl }) {
+  const subject = `Feedback op artikel: ${artikel || "(onbekend)"}`;
+  const lines = [
+    `Er is feedback binnengekomen via een kennisbank-artikel.`,
+    ``,
+    `Artikel: ${artikel || "(onbekend)"}`,
+    `URL: ${artikelUrl || "(onbekend)"}`,
+    `Reageren kan naar: ${email || "(geen e-mailadres opgegeven)"}`,
+    ``,
+    `Bericht:`,
+    bericht,
+  ];
+  await env.EMAIL.send({
+    to: env.NOTIFY_EMAIL,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
     subject,
     text: lines.join("\n"),
   });
@@ -529,7 +596,7 @@ function htmlPage(title, bodyHtml, status = 200) {
     <div class="card">
       <h1>${escapeHtml(title)}</h1>
       ${bodyHtml}
-      <p class="brand">EAA Monitor, een initiatief van Proper Access</p>
+      <p class="brand">EAA Monitor, eaa-monitor.nl</p>
     </div>
   </div>
 </body>

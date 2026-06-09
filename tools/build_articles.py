@@ -57,6 +57,11 @@ LLMS_FILE = ROOT / "public" / "llms.txt"
 
 BASE_URL = "https://eaa-monitor.nl"
 
+# /feedback-route van de bezwaar-Worker (zie worker/src/index.js). Het inline
+# feedbackformulier onder elk artikel post hier naartoe. Leeg laten valt terug
+# op een mailto in de markup.
+FEEDBACK_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/feedback"
+
 THEMES = {
     "scope": "Voor wie geldt het",
     "toezicht": "Toezicht & handhaving",
@@ -261,6 +266,107 @@ def sources_block(meta: dict) -> str:
       </aside>"""
 
 
+DISCLAIMER_TEXT = (
+    "Deze kennisbank is samengesteld uit openbare bronnen: publicaties van "
+    "toezichthouders, nieuwsberichten en vakartikelen. We houden de uitleg zo "
+    "actueel en accuraat mogelijk, maar de EAA is volop in beweging en je kunt "
+    "aan deze teksten geen rechten ontlenen. Het is algemene uitleg, geen "
+    "juridisch advies."
+)
+
+
+def feedback_block(meta: dict) -> str:
+    """Bron-disclaimer plus inline feedbackformulier onder elk artikel.
+
+    Het formulier post naar de /feedback-route van de bezwaar-Worker, die de
+    opmerking naar Julia mailt. Geen e-mailadres in de pagina; geen opslag."""
+    slug = meta["slug"]
+    title = meta["title"]
+    url = f"{BASE_URL}/artikelen/{slug}.html"
+    return f"""
+      <section class="mt-14 pt-10 border-t border-gray-100" aria-labelledby="feedback-titel">
+        <p class="text-sm text-gray-500 leading-relaxed">{DISCLAIMER_TEXT}</p>
+
+        <div class="mt-8 rounded-2xl bg-white ring-1 ring-gray-200 p-6 md:p-8">
+          <h2 id="feedback-titel" class="text-xl font-extrabold text-navy tracking-tight">Klopt er iets niet?</h2>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Zie je een fout, een verouderd cijfer of mist er een bron? Laat het ons weten, dan kijken we ernaar.</p>
+
+          <div id="feedback-status" tabindex="-1" class="empty:hidden"></div>
+
+          <form id="feedback-form" class="mt-5 space-y-4" novalidate>
+            <input type="hidden" name="artikel_titel" value="{html.escape(title)}">
+            <input type="hidden" name="artikel_slug" value="{html.escape(slug)}">
+            <input type="hidden" name="artikel_url" value="{html.escape(url)}">
+            <div class="hidden" aria-hidden="true">
+              <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div>
+              <label for="feedback-bericht" class="block text-sm font-semibold text-navy mb-1.5">Wat klopt er niet?</label>
+              <textarea id="feedback-bericht" name="bericht" rows="4" required class="w-full rounded-xl border border-gray-300 px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
+            </div>
+
+            <div>
+              <label for="feedback-email" class="block text-sm font-semibold text-navy mb-1.5">E-mailadres <span class="font-normal text-gray-500">(optioneel, alleen als je een reactie wilt)</span></label>
+              <input type="email" id="feedback-email" name="email" autocomplete="email" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="jij@voorbeeld.nl">
+            </div>
+
+            <button type="submit" id="feedback-submit" class="btn btn-primary">Versturen</button>
+          </form>
+        </div>
+      </section>"""
+
+
+def feedback_script() -> str:
+    """Inline submit-handler voor het feedbackformulier (per artikel)."""
+    return f"""  <script>
+    (function () {{
+      "use strict";
+      const FEEDBACK_ENDPOINT = "{FEEDBACK_ENDPOINT}";
+      const form = document.getElementById("feedback-form");
+      if (!form) return;
+      const statusEl = document.getElementById("feedback-status");
+      const submitBtn = document.getElementById("feedback-submit");
+
+      function showStatus(type, html) {{
+        statusEl.className = (type === "success" ? "notice notice-info" : "notice notice-warning") + " mt-4";
+        statusEl.innerHTML = html;
+        statusEl.focus();
+      }}
+
+      form.addEventListener("submit", async function (e) {{
+        e.preventDefault();
+        if (!form.checkValidity()) {{ form.reportValidity(); return; }}
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Bezig met versturen...";
+
+        try {{
+          const response = await fetch(FEEDBACK_ENDPOINT, {{
+            method: "POST",
+            body: new FormData(form),
+            headers: {{ Accept: "application/json" }},
+          }});
+          if (response.ok) {{
+            form.classList.add("hidden");
+            showStatus("success", "<strong>Bedankt voor je feedback.</strong> We bekijken je opmerking en passen het artikel aan als dat nodig is.");
+          }} else {{
+            const data = await response.json().catch(() => ({{}}));
+            showStatus("error", (data && data.error) || "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Versturen";
+          }}
+        }} catch (err) {{
+          showStatus("error", "Er ging iets mis bij het versturen. Controleer je internetverbinding en probeer het opnieuw, of mail naar info@eaa-monitor.nl.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Versturen";
+        }}
+      }});
+    }})();
+  </script>
+"""
+
+
 def render_article(meta: dict) -> str:
     slug = meta["slug"]
     url = f"{BASE_URL}/artikelen/{slug}.html"
@@ -303,10 +409,11 @@ def render_article(meta: dict) -> str:
           <a href="/monitor.html" class="btn btn-ghost">Check jouw webshop in de monitor</a>
         </div>
       </div>
+{feedback_block(meta)}
     </article>
 
   </main>
-{site_footer()}</body>
+{site_footer()}{feedback_script()}</body>
 </html>
 """
 
@@ -347,6 +454,7 @@ def render_kennisbank(articles: list) -> str:
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 {cards_html}
       </div>
+      <p class="mt-10 text-sm text-gray-500 leading-relaxed max-w-2xl">Deze kennisbank is samengesteld uit openbare bronnen: publicaties van toezichthouders, nieuwsberichten en vakartikelen. Het is algemene uitleg, geen juridisch advies. Zie je een fout? Onderaan elk artikel kun je het ons laten weten.</p>
     </section>
 
   </main>
