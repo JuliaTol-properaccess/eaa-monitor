@@ -264,8 +264,8 @@
         </a>
         <a href="/monitor-financieel.html" class="card card-hover reveal p-7 md:p-8 flex flex-col">
           <span class="text-xs font-bold uppercase tracking-wider text-brand">Financieel &middot; AFM-toezicht</span>
-          <p class="mt-4 text-5xl md:text-6xl font-extrabold text-status-notfound tracking-tight"><!--STAT:finPctWithout-->28%<!--/STAT--></p>
-          <p class="mt-2 text-gray-600 leading-relaxed flex-1">van de banken, verzekeraars en betaaldiensten heeft geen verklaring. We controleren <strong class="text-navy"><!--STAT:finTotal-->43<!--/STAT--></strong> instellingen.</p>
+          <p class="mt-4 text-5xl md:text-6xl font-extrabold text-status-notfound tracking-tight"><!--STAT:finPctWithout-->34%<!--/STAT--></p>
+          <p class="mt-2 text-gray-600 leading-relaxed flex-1">van de banken, verzekeraars en betaaldiensten heeft geen verklaring. We controleren <strong class="text-navy"><!--STAT:finTotal-->68<!--/STAT--></strong> instellingen.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Open de financiële monitor &rarr;</span>
         </a>
       </div>
@@ -293,10 +293,11 @@
     </section>
 
     <!-- Auto-gegenereerd door tools/scrape_footer.py bij elke scrape. Niet handmatig bewerken. -->
-    <!-- GEO-SUMMARY:START -->
-    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
-      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink">
+    <section aria-label="Samenvatting per sector" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10 grid gap-6 md:grid-cols-2">
+      <!-- GEO-SUMMARY:START -->
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">E-commerce · ACM-toezicht</p>
           <p class="text-lg leading-relaxed">
             Op <strong>6 juni 2026</strong> controleerde de EAA Monitor
             <strong>10397 Nederlandse webshops</strong> op een toegankelijkheidsverklaring:
@@ -309,8 +310,25 @@
           <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 6 juni 2026. De monitor controleert alle webshops elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
         </div>
       </div>
+      <!-- GEO-SUMMARY:END -->
+      <!-- FIN-GEO-SUMMARY:START -->
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">Financiële sector · AFM-toezicht</p>
+          <p class="text-lg leading-relaxed">
+            Op <strong>9 juni 2026</strong> controleerde de EAA Monitor
+            <strong>68 Nederlandse financiële instellingen</strong> op een toegankelijkheidsverklaring:
+          </p>
+          <ul class="mt-4 space-y-2.5">
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>44 financiële instellingen (65%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>23 (34%)</strong> doen dat niet</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>1 (1%)</strong> kon de controle niet worden voltooid</span></li>
+          </ul>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 9 juni 2026. De monitor controleert alle financiële instellingen elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+        </div>
+      </div>
+      <!-- FIN-GEO-SUMMARY:END -->
     </section>
-    <!-- GEO-SUMMARY:END -->
 
     <!-- INFO: kennisbank -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="kennisbank-heading">
@@ -324,9 +342,9 @@
       </div>
 
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <a href="/artikelen/valt-mijn-webshop-onder-de-eaa.html" class="card card-hover reveal p-7 flex flex-col">
+        <a href="/artikelen/valt-mijn-website-onder-de-eaa.html" class="card card-hover reveal p-7 flex flex-col">
           <span class="text-xs font-bold uppercase tracking-wider text-brand">Voor wie geldt het</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Valt mijn webshop onder de EAA?</h3>
+          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Valt mijn website onder de EAA?</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Lang niet elke site valt eronder. Check het met een paar vragen.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
@@ -365,6 +383,18 @@
       <p class="mt-6 text-gray-600">Liever de bron zelf? In het <a href="/bronnen.html" class="link">bronnenoverzicht</a> vind je toezichthouders, wetgeving, juristen en vakmedia, doorzoekbaar op type.</p>
     </section>
 
+    <!-- CALLOUT: meer dan websites -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="kanalen-heading">
+      <div class="rounded-3xl bg-navy text-white on-dark p-8 md:p-12 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+        <div class="max-w-2xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Vaak vergeten</span>
+          <h2 id="kanalen-heading" class="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight">De EAA gaat over meer dan je website</h2>
+          <p class="mt-3 text-white/70 leading-relaxed">Ook zelfbedieningsterminals, betaalautomaten, e-readers, e-boeken en elektronische communicatie vallen onder de wet. Kijk naar elk digitaal kanaal waar een klant iets met je doet, niet alleen naar de homepage.</p>
+        </div>
+        <a href="/artikelen/niet-alleen-websites-digitale-kanalen.html" class="btn btn-on-dark whitespace-nowrap">Welke kanalen vallen eronder? &rarr;</a>
+      </div>
+    </section>
+
     <!-- INFO: het proces van verbeteren -->
     <section class="bg-softblue mt-20 md:mt-24" aria-labelledby="proces-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
@@ -379,7 +409,7 @@
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white font-extrabold">1</span>
             <h3 class="mt-4 text-lg font-extrabold text-navy">Zoek uit of de wet geldt</h3>
             <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Niet elke site valt onder de EAA. Met een paar vragen weet je of je iets moet doen, en of de micro-uitzondering op jou van toepassing is.</p>
-            <a href="/artikelen/valt-mijn-webshop-onder-de-eaa.html" class="mt-4 text-sm font-semibold text-brand">Doe de scope-check &rarr;</a>
+            <a href="/artikelen/valt-mijn-website-onder-de-eaa.html" class="mt-4 text-sm font-semibold text-brand">Doe de scope-check &rarr;</a>
           </li>
           <li class="card reveal p-7 flex flex-col">
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white font-extrabold">2</span>
@@ -483,9 +513,9 @@
 
   </main>
 
-  <footer class="bg-navy text-white on-dark">
+  <footer class="bg-navy text-white mt-24 on-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-      <div class="grid gap-10 md:grid-cols-3">
+      <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
           <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
@@ -494,14 +524,18 @@
           <p class="mt-4 text-sm text-white/60 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
         </div>
         <div>
-          <p class="text-sm font-semibold text-white/90 mb-3">Ontdek</p>
+          <p class="text-sm font-semibold text-white/90 mb-3">Monitor &amp; uitleg</p>
           <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
             <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Meedoen &amp; info</p>
+          <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
-            <li><a href="/wcag-audit.html" class="hover:text-white">WCAG-audit</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
             <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>

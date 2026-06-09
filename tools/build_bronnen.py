@@ -122,19 +122,15 @@ def render(sources):
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-2">
-      <div class="prose max-w-prose">
-        <h2>Hoe lees je deze lijst?</h2>
-        <p>Bovenaan staan de gezaghebbende bronnen: toezichthouders, overheid en de wettekst zelf. Die wegen het zwaarst. Veel bureau- en blogartikelen zijn inhoudelijk prima, maar de cijfers wisselen, dus check een claim altijd tegen de primaire bron. Dit is een vindlijst, geen factcheck.</p>
-      </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-8" aria-label="Bronnen">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12" aria-label="Bronnen">
       <div class="mb-6 space-y-4">
         <div>
           <label for="bron-search" class="block text-sm font-semibold text-navy mb-1.5">Zoek in bronnen</label>
-          <input type="search" id="bron-search" placeholder="Zoek op titel of organisatie" autocomplete="off"
-                 class="w-full sm:max-w-md rounded-lg border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+          <form id="bron-search-form" role="search" class="flex flex-col sm:flex-row gap-2 sm:max-w-md">
+            <input type="search" id="bron-search" placeholder="Zoek op titel of organisatie" autocomplete="off"
+                   class="flex-1 rounded-lg border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+            <button type="submit" class="btn btn-primary">Zoeken</button>
+          </form>
         </div>
         <div class="flex flex-wrap gap-2" role="group" aria-label="Filter op brontype" id="bron-filters">
 {_filter_buttons(sources)}

@@ -217,7 +217,7 @@ def site_header(active_path):
 def site_footer():
     return f"""  <footer class="bg-navy text-white mt-24 on-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-      <div class="grid gap-10 md:grid-cols-3">
+      <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
           <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
@@ -226,11 +226,17 @@ def site_footer():
           <p class="mt-4 text-sm text-white/60 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
         </div>
         <div>
-          <p class="text-sm font-semibold text-white/90 mb-3">Ontdek</p>
+          <p class="text-sm font-semibold text-white/90 mb-3">Monitor &amp; uitleg</p>
           <ul class="space-y-2 text-sm text-white/60">
-            <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
+            <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
+            <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Meedoen &amp; info</p>
+          <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
