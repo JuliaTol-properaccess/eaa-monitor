@@ -36,6 +36,47 @@ npm install
 npx wrangler login
 ```
 
+### 1b. eaa-monitor.nl naar Cloudflare verhuizen (DNS)
+
+De e-mail van de Worker leunt op Cloudflare: zowel het versturen (Email Sending,
+stap 2) als het ontvangen op `info@eaa-monitor.nl` (Email Routing, stap 2b) werkt
+alleen als het domein als zone bij Cloudflare staat. De DNS draait nu bij one.com,
+dus die verhuis je eerst. **De site blijft op GitHub Pages**, alleen de
+naamservers wijzigen.
+
+Uitgangssituatie (gecontroleerd):
+- Naamservers nu: `ns01.one.com`, `ns02.one.com`.
+- De site wijst naar GitHub Pages (apex A-records + `www` als CNAME).
+- De MX staat op "null MX" (`0 .`): het domein ontvangt nu geen mail.
+
+Stappen:
+
+1. Maak (gratis) een Cloudflare-account aan en kies **Add a site**. Vul
+   `eaa-monitor.nl` in en kies het gratis plan. Cloudflare scant de bestaande DNS.
+2. Controleer dat Cloudflare deze **GitHub Pages-records** heeft overgenomen. Zo
+   niet, voeg ze handmatig toe en zet ze op **DNS only** (grijze wolk, niet
+   geproxyd, anders werkt GitHub Pages niet goed):
+
+   | Type  | Naam  | Waarde                                                        |
+   | ----- | ----- | ------------------------------------------------------------- |
+   | A     | `@`   | `185.199.108.153`                                             |
+   | A     | `@`   | `185.199.109.153`                                             |
+   | A     | `@`   | `185.199.110.153`                                             |
+   | A     | `@`   | `185.199.111.153`                                             |
+   | CNAME | `www` | `juliatol-properaccess.github.io`                             |
+
+3. **Neem de null MX (`0 .`) niet over.** Laat de MX leeg; Email Routing (stap 2b)
+   zet straks de juiste MX-records klaar.
+4. Cloudflare toont nu twee toegewezen naamservers (bijvoorbeeld
+   `xxx.ns.cloudflare.com`). Log in bij **one.com**, ga naar de DNS-/naamserver-
+   instellingen van `eaa-monitor.nl` en vervang `ns01.one.com` en `ns02.one.com`
+   door de twee Cloudflare-naamservers.
+5. Wacht tot Cloudflare de zone als **Active** meldt (meestal minuten, soms tot 24
+   uur). Check daarna dat de site nog laadt en dat in **GitHub → Settings → Pages**
+   het custom domain `eaa-monitor.nl` nog groen staat met "Enforce HTTPS" aan.
+
+Daarna kun je door met stap 2 (versturen) en stap 2b (ontvangen).
+
 ### 2. E-mailverzending aanzetten voor het domein
 
 Het `FROM_EMAIL`-domein (`eaa-monitor.nl`) moet onboarden bij Cloudflare Email
@@ -52,6 +93,59 @@ Staat `eaa-monitor.nl` niet bij Cloudflare? Twee opties:
   Pages staan, alleen de naamservers wijzigen), of
 - gebruik tijdelijk een ander Cloudflare-domein als afzender en pas `FROM_EMAIL`
   in `wrangler.jsonc` aan.
+
+### 2b. E-mail ontvangen op `info@eaa-monitor.nl` (Email Routing)
+
+Email Sending (stap 2) kan alleen versturen. Om binnenkomende mail op
+`info@eaa-monitor.nl` te ontvangen, zet je **Email Routing** aan. Dat stuurt mail
+voor dat adres door naar je echte inbox. Dit is nodig zodat:
+
+- bezwaarmakers die op de bevestigingsmail antwoorden bij jou terechtkomen
+  (de reply-to is `NOTIFY_EMAIL`),
+- handmatige-check-meldingen binnenkomen (de Worker mailt die naar `NOTIFY_EMAIL`),
+- het contactadres dat op de site staat ook echt werkt.
+
+**Voorwaarde:** `eaa-monitor.nl` staat als zone in je Cloudflare-account, net als
+bij stap 2.
+
+Stappen in het Cloudflare-dashboard:
+
+1. Kies de zone **eaa-monitor.nl** en ga naar **Email → Email Routing**.
+2. Klik **Get started / Enable**. Cloudflare zet automatisch de benodigde
+   MX- en SPF-records klaar. Bevestig dat het die records mag toevoegen.
+3. Ga naar **Destination addresses** en voeg je echte inbox toe (bijvoorbeeld een
+   eigen Gmail of een bestaand mailadres dat je leest). Cloudflare stuurt daar een
+   verificatiemail. Klik de link in die mail om het adres te bevestigen.
+4. Ga naar **Routing rules → Custom addresses** en maak een regel:
+   `info@eaa-monitor.nl` **Send to** je geverifieerde inbox. Bewaar.
+5. Aanrader: voeg ook een regel toe voor `bezwaar@eaa-monitor.nl` naar diezelfde
+   inbox, voor het geval iemand op het afzenderadres antwoordt. Of zet een
+   **catch-all** aan die al het overige naar je inbox stuurt.
+
+**Let op de SPF-samenloop.** Email Sending (stap 2) en Email Routing zetten allebei
+DNS-records. Cloudflare voegt ze meestal correct samen, maar controleer in
+**DNS → Records** dat er precies één geldige SPF-regel staat (begint met
+`v=spf1` en bevat `include:_spf.mx.cloudflare.net`), niet twee losse. De send-kant
+check je met:
+
+```bash
+npx wrangler email sending dns get eaa-monitor.nl
+```
+
+**Worker-config neutraal zetten.** Wijzig in `wrangler.jsonc` de regel:
+
+```jsonc
+"NOTIFY_EMAIL": "info@eaa-monitor.nl",
+```
+
+Dit adres is zowel de bestemming van de handmatige meldingen als de reply-to op de
+bevestigingsmails. Omdat Email Routing het doorstuurt naar je echte inbox, blijft
+alles werken en staat er nergens meer een ander mailadres zichtbaar. Deploy daarna
+opnieuw met `npx wrangler deploy`.
+
+**Testen.** Dien via het formulier een bezwaar in met een Gmail-adres (geen
+domeinmatch). De Worker stuurt dan een melding naar `info@eaa-monitor.nl`. Komt die
+binnen in je echte inbox, dan werkt de routing.
 
 ### 3. GitHub-token aanmaken
 
@@ -95,6 +189,21 @@ Zolang die leeg is, blijft het formulier via Formspree naar Julia mailen, dus de
 site blijft werken tot je klaar bent om de Worker live te zetten. Commit en push
 deze wijziging pas als de Worker draait.
 
+## Feedback op artikelen (`POST /feedback`)
+
+Dezelfde Worker bedient ook het feedbackformulier onder elk kennisbank-artikel
+(gegenereerd door `tools/build_articles.py`). De route `/feedback` hergebruikt de
+e-mail-infra: een opmerking wordt rechtstreeks naar `NOTIFY_EMAIL` gemaild, met de
+artikeltitel en -URL erbij. Geen GitHub-PR, geen opslag, **geen extra secrets of
+vars nodig**.
+
+- De frontend-constante staat in `tools/build_articles.py` (`FEEDBACK_ENDPOINT`).
+  Wijzig je het Worker-adres, pas die aan en draai `python tools/build_articles.py`.
+- Een opgegeven e-mailadres is optioneel en wordt de reply-to, zodat je direct kunt
+  antwoorden. Zonder adres valt reply-to terug op `NOTIFY_EMAIL`.
+- **Na een wijziging aan de Worker opnieuw deployen** (`npx wrangler deploy`),
+  anders is `/feedback` nog niet bereikbaar.
+
 ## Testen
 
 1. **Lokaal** (stuurt echte mail, gebruik een eigen testadres):
@@ -127,7 +236,8 @@ npx wrangler tail
 - **E-mailbommen voorkomen.** Iemand kan `/submit` herhaaldelijk aanroepen met
   een webshop-adres en zo bevestigingsmails naar dat domein laten sturen. Zet in
   Cloudflare een **Rate Limiting Rule** op het pad `/submit` (bv. max 5 per
-  minuut per IP).
+  minuut per IP). Zet dezelfde rule ook op `/feedback`, dat net zo goed mail
+  verstuurt.
 - **eTLD-lijst is beperkt.** De domeinvergelijking dekt `.nl`, `.com`, `.be` en
   een korte lijst tweelaagse TLD's (`co.uk` enz.), geen volledige public-suffix-
   lijst. Twijfelgevallen vallen veilig terug op de handmatige route.

@@ -32,7 +32,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Inter**. De oude PA-tokens (magenta/petrol) zijn vervangen.
 
 ### Overig
-- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie (zie `worker/DEPLOY.md`)
+- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie én artikel-feedback (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL` (geen PR, geen opslag, geen extra secrets). Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
 - `workflows/handle_objection.md` — SOP voor het verwerken van een bezwaar
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
 - `.github/workflows/deploy.yml` — Deploy naar GitHub Pages (kopieert de hele `public/`-tree recursief)
