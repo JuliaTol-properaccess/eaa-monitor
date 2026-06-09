@@ -1,7 +1,7 @@
 ---
 title: "Wie houdt toezicht op de EAA, en wat zijn de boetes?"
 slug: "toezicht-en-boetes"
-description: "Het toezicht op de European Accessibility Act is in Nederland verdeeld over meerdere toezichthouders. De ACM is de hoofdrolspeler voor webshops. Boetes lopen op tot € 900.000 of 10% van de jaaromzet."
+description: "Het toezicht op de European Accessibility Act is in Nederland verdeeld over meerdere toezichthouders. De ACM is de hoofdrolspeler voor webshops. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet."
 date: 2026-06-08
 theme: "toezicht"
 keywords:
@@ -15,6 +15,7 @@ sources:
   - { title: "ACM: klant met beperking kan bij merendeel grote webwinkels niet terecht (24 maart 2026)", url: "https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht" }
   - { title: "ACM: speerpunten toezicht digitale economie 2026", url: "https://www.acm.nl/nl/publicaties/speerpunten-van-het-acm-toezicht-op-de-digitale-economie-2026" }
   - { title: "ACM: bereid je voor op regels toegankelijkheid websites en apps", url: "https://www.acm.nl/nl/publicaties/acm-roept-bedrijven-op-zich-voor-te-bereiden-op-regels-toegankelijkheid-websites-en-apps" }
+  - { title: "ACM: meldplicht bij niet voldoen aan toegankelijkheid", url: "https://www.acm.nl/nl/toegankelijkheid/toegankelijkheid-van-e-handelsdiensten-en-elektronische-communicatiediensten/meldplicht-bij-niet-voldoen-aan-toegankelijkheid" }
   - { title: "AFM: toegankelijkheid en de EAA", url: "https://www.afm.nl/en/sector/themas/dienstverlening-aan-consumenten/toegankelijkheid" }
   - { title: "Accessibility.nl: zo houden toezichthouders toezicht op naleving EAA", url: "https://www.accessibility.nl/nieuws/toezicht-op-toegankelijkheid-zo-houden-toezichthouders-toezicht-op-naleving-eaa" }
 ---
@@ -44,13 +45,23 @@ De ACM heeft e-commerce bovendien expliciet benoemd als speerpunt in haar toezic
 
 In maart 2026 publiceerde de ACM een onderzoek onder de circa 100 grootste Nederlandse webshops. Daaruit bleek dat 61% niet toegankelijk is en dat bij nog eens 33% serieuze problemen zijn. Opgeteld heeft ongeveer 94% tekortkomingen.
 
+## Meldplicht sinds oktober 2025
+
+Sinds oktober 2025 geldt een meldplicht. Voldoet je e-commerce- of communicatiedienst niet aan de eisen, dan moet je dat zelf melden bij de ACM via een formulier. Voor financiële diensten gaat die melding naar de AFM.
+
+De ACM noemt twee termijnen. Kritieke of ernstige problemen meld je binnen een week, matige of kleine problemen binnen een maand. Naast de melding plaats je een toegankelijkheidsverklaring op je site of in je app, op een plek die makkelijk te vinden is.
+
+De meldplicht draait de bewijslast om. Je toont zelf aan hoe je dienst ervoor staat, en daarvoor heb je een onderbouwde audit nodig.
+
 ## Wat doet de AFM?
 
-De AFM is de bevoegde toezichthouder voor financiële diensten en is een nalevingsonderzoek gestart. De uitkomst daarvan is nog niet bekend.
+De AFM is de bevoegde toezichthouder voor financiële diensten, zoals internetbankieren, verzekeringsportalen en beleggingsplatformen. De AFM roept de sector op om vaart te maken en wijst op de voordelen: een breder bereik onder onder andere senioren, snellere klantreizen en meer inclusie.
+
+De sector loopt achter. Uit onderzoek onder 62 financiële instellingen, najaar 2025, bleek dat geen enkele instelling volledig aan de eisen voldeed.
 
 ## Hoe hoog zijn de boetes?
 
-Boetes kunnen oplopen tot € 900.000 of tot 10% van de jaaromzet, afhankelijk van welk bedrag hoger is. Voor grotere bedrijven is dat tweede getal vaak het zwaarst.
+De ACM noemt op haar eigen pagina's geen concreet bedrag. Vakbronnen houden vrijwel unaniem € 900.000 of 1% van de jaaromzet aan, afhankelijk van welk bedrag hoger is. Voor grotere bedrijven is dat tweede getal vaak het zwaarst. Bij de AFM ligt de maximale boete volgens vakbronnen lager, rond € 103.000 tot € 110.000.
 
 Naast de boete telt de reputatieschade. Toezichthouders maken handhaving zichtbaar, en niet-naleving wordt daarmee een verhaal dat klanten en pers oppikken.
 
@@ -59,6 +70,8 @@ Naast de boete telt de reputatieschade. Toezichthouders maken handhaving zichtba
 Meerdere vakbronnen schetsen dat toezichthouders in het eerste jaar terughoudend zijn: eerst aanspreken en een verbeterplan vragen, daarna pas beboeten. Behandel dit als het beeld in de markt, niet als officieel ACM-beleid. Het kwam niet hard bevestigd uit de verificatie.
 
 Tegelijk laat het ACM-onderzoek van maart 2026 zien dat de toezichthouder echt meet en publiceert. De boodschap is dus niet om af te wachten, maar om je naleving aantoonbaar op orde te brengen.
+
+In Nederland is nog geen handhavingszaak bekend. Elders in Europa wel. In Frankrijk spanden gehandicaptenorganisaties eind 2025 kort gedingen aan tegen grote supermarkten wegens ontoegankelijke checkouts. In Duitsland kregen webwinkels kort na de invoering van de wet waarschuwingsbrieven. Opvallend in Frankrijk: de druk komt daar van belangenorganisaties, niet van de toezichthouder.
 
 ## Wat betekent dit voor jou?
 
