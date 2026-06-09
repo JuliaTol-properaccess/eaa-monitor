@@ -10,6 +10,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de meet-regio in `llms.txt` bakt. **Twee datasets** via `--dataset {webshops,financieel}` (default `webshops`): `webshops` bakt in `index.html`, `financieel` in `monitor-financieel.html` + een hub-kaart op `index.html` (markers `STAT:finTotal`/`STAT:finPctWithout`)
 - `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
+- `tools/build_vragen.py` — Rendert `data/vragen.json` → `public/vragen.html` (server-rendered vraag-en-antwoord met FAQPage JSON-LD). Deelt head/header/footer met `build_articles.py`
 - `tools/build_bronnen.py` — Rendert `data/bronnen.json` → `public/bronnen.html` (server-rendered, filterbaar bronnenoverzicht). Deelt head/header/footer met `build_articles.py`; de filters/zoek werken client-side via `public/static/bronnen.js`
 - `tools/fetch_bron_dates.py` — Best-effort: haalt elke bron-URL op en vult `date` aan in `data/bronnen.json` (uit `datePublished`/`article:published_time`/`<time>`). Verzint nooit een datum; vindt het niets, dan blijft het veld leeg
 - `tools/scrape_thuiswinkel.py` / `tools/scrape_webwinkelkeur.py` — Bouwen `webshops.json` aan met keurmerk-leden
@@ -21,6 +22,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `data/results-financieel.json` / `data/history-financieel.json` — Automatisch gegenereerd door de financiële scrape (niet handmatig bewerken)
 - `data/objections.json` — Webshops met bezwaar (overlay; client-side uitgesloten, geen e-mailadressen). Bijgewerkt via PR's van de bezwaar-Worker of handmatig
 - `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
+- `data/vragen.json` — Handmatig samengestelde lijst van beantwoorde praktijkvragen (velden: `vraag`, `antwoord`, optioneel `toezichthouder`, `datum`, `thema`, `bron`). Gevuld vanuit binnengekomen anonieme vragen; nooit antwoorden verzinnen
 - `data/bronnen.json` — Externe bronnen over de EAA voor de bronnenpagina (velden: `title`, `url`, `author`, `category`, optioneel `date`). `category` uit de vaste lijst in `build_bronnen.py`. `date` wordt aangevuld door `fetch_bron_dates.py`
 
 ### Pagina's (`public/`)
@@ -29,6 +31,8 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `monitor-financieel.html` — Hetzelfde dashboard voor de financiële sector (AFM-toezicht), met eigen config (leest `data/results-financieel.json`, "Type"-kolom). **Bevat de scraper-markers**; gevuld door `scrape_footer.py --dataset financieel`. Deelt `app.js`
 - `artikelen.html` + `artikelen/*.html` — Kennisbank, **gegenereerd** door `build_articles.py` (niet handmatig bewerken)
 - `wcag-audit.html` — Overzicht van auditbureaus, **gegenereerd** door `build_auditbureaus.py` uit `data/auditbureaus.json` (niet handmatig bewerken)
+- `vragen.html` — Vragen uit de praktijk, **gegenereerd** door `build_vragen.py` uit `data/vragen.json` (niet handmatig bewerken)
+- `vraag-stellen.html` — Anoniem vraagformulier → bezwaar-Worker (`VRAAG_ENDPOINT`, route `/vraag`). Handgeschreven
 - `bronnen.html` — Doorzoekbaar bronnenoverzicht met categoriefilters, **gegenereerd** door `build_bronnen.py` uit `data/bronnen.json` (niet handmatig bewerken)
 - `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
 - `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
@@ -39,8 +43,9 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Inter**. De oude PA-tokens (magenta/petrol) zijn vervangen.
 
 ### Overig
-- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie én artikel-feedback (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL` (geen PR, geen opslag, geen extra secrets). Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
+- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie én artikel-feedback (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`, `POST /vraag`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL`; `/vraag` mailt een anonieme EAA-vraag naar `VRAGEN_EMAIL` (`vragen@eaa-monitor.nl`, terugval op `NOTIFY_EMAIL`) — beide zonder PR, opslag of extra secrets. Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
 - `workflows/handle_objection.md` — SOP voor het verwerken van een bezwaar
+- `workflows/handle_vraag.md` — SOP voor het verwerken van een binnengekomen anonieme vraag (voorleggen aan toezichthouder, antwoord in `data/vragen.json`)
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
 - `.github/workflows/deploy.yml` — Deploy naar GitHub Pages (kopieert de hele `public/`-tree recursief)
 
@@ -66,6 +71,9 @@ python tools/build_articles.py
 
 # WCAG-audit-pagina (her)bouwen na een wijziging in data/auditbureaus.json
 python tools/build_auditbureaus.py
+
+# Praktijkvragen-pagina (her)bouwen na een wijziging in data/vragen.json
+python tools/build_vragen.py
 
 # Bronnenpagina (her)bouwen na een wijziging in data/bronnen.json
 python tools/build_bronnen.py
