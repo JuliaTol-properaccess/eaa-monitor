@@ -84,10 +84,11 @@ def nl_date(d: _date) -> str:
 
 NAV_ITEMS = [
     ("Home", "/"),
-    ("Monitor", "/monitor.html"),
+    ("Webshops", "/monitor.html"),
     ("Financieel", "/monitor-financieel.html"),
     ("Kennisbank", "/artikelen.html"),
     ("Bronnen", "/bronnen.html"),
+    ("Vragen", "/vragen.html"),
     ("WCAG-audit", "/wcag-audit.html"),
     ("Over", "/over.html"),
 ]
