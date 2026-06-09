@@ -204,6 +204,53 @@ vars nodig**.
 - **Na een wijziging aan de Worker opnieuw deployen** (`npx wrangler deploy`),
   anders is `/feedback` nog niet bereikbaar.
 
+## Anonieme vragen (`POST /vraag`)
+
+Dezelfde Worker bedient ook het formulier op `public/vraag-stellen.html`, waarmee
+ondernemers anoniem een vraag over de EAA stellen. De route `/vraag` mailt de vraag
+rechtstreeks naar een **eigen postbus** (`VRAGEN_EMAIL`, standaard
+`vragen@eaa-monitor.nl`), zodat vragen niet tussen de bezwaren en artikelfeedback
+verdwijnen. Geen GitHub-PR, geen opslag. De vrager hoeft geen naam of e-mailadres op
+te geven; geeft die wel een adres, dan wordt dat de reply-to (en blijft het privé).
+
+Julia verwerkt elke vraag volgens `workflows/handle_vraag.md`: ze legt de vraag voor
+aan de toezichthouder en publiceert het antwoord in `data/vragen.json`, waarna
+`python tools/build_vragen.py` de pagina `public/vragen.html` opnieuw bouwt.
+
+- De frontend-constante staat in `public/vraag-stellen.html` (`VRAAG_ENDPOINT`). Wijs
+  die naar de `/vraag`-URL van de Worker.
+- **Na een wijziging aan de Worker opnieuw deployen** (`npx wrangler deploy`).
+
+### Nieuw e-mailadres `vragen@eaa-monitor.nl` aanmaken
+
+De vragen komen binnen op een nieuw adres. Dankzij Cloudflare Email Routing (zie
+stap 2b) hoef je geen mailbox aan te maken; je maakt alleen een **doorstuurregel**
+die mail voor `vragen@eaa-monitor.nl` naar je echte inbox stuurt. Voorwaarde:
+`eaa-monitor.nl` staat al als zone in Cloudflare en Email Routing is aan (stap 2b).
+
+1. Log in op het **Cloudflare-dashboard** en kies de zone **eaa-monitor.nl**.
+2. Ga naar **Email → Email Routing → Routing rules**.
+3. Heb je al een **catch-all** aanstaan die alles naar je inbox stuurt? Dan werkt
+   `vragen@eaa-monitor.nl` al en hoef je hier niets te doen. Ga door naar stap 6.
+4. Zo niet: klik onder **Custom addresses** op **Create address**.
+   - **Custom address:** `vragen@eaa-monitor.nl`
+   - **Action:** *Send to an email*
+   - **Destination:** je geverifieerde inbox (dezelfde als bij `info@`)
+   - Bewaar de regel.
+5. Is die inbox nog niet geverifieerd, voeg hem dan eerst toe onder **Destination
+   addresses** en klik de verificatielink in de mail die Cloudflare stuurt.
+6. **Controleer dat de Worker het adres gebruikt.** In `worker/wrangler.jsonc` staat
+   `"VRAGEN_EMAIL": "vragen@eaa-monitor.nl"`. Klopt dat, deploy dan opnieuw:
+   `npx wrangler deploy`. Wil je tijdelijk geen apart adres, haal de regel weg; dan
+   vallen vragen terug op `NOTIFY_EMAIL` (`info@eaa-monitor.nl`).
+7. **Testen.** Stuur via `public/vraag-stellen.html` een testvraag. Er hoort een mail
+   met onderwerp "Anonieme EAA-vraag" in je inbox te komen.
+
+> Let op: `vragen@eaa-monitor.nl` is **alleen ontvangen** (Email Routing). De Worker
+> verstuurt nog steeds vanaf `FROM_EMAIL` (`bezwaar@eaa-monitor.nl`); dat hoeft niet
+> te veranderen. Wil je ook vanaf `vragen@` versturen, dan moet dat adres apart
+> onboarden bij Email Sending, maar dat is voor deze functie niet nodig.
+
 ## Testen
 
 1. **Lokaal** (stuurt echte mail, gebruik een eigen testadres):
@@ -236,8 +283,8 @@ npx wrangler tail
 - **E-mailbommen voorkomen.** Iemand kan `/submit` herhaaldelijk aanroepen met
   een webshop-adres en zo bevestigingsmails naar dat domein laten sturen. Zet in
   Cloudflare een **Rate Limiting Rule** op het pad `/submit` (bv. max 5 per
-  minuut per IP). Zet dezelfde rule ook op `/feedback`, dat net zo goed mail
-  verstuurt.
+  minuut per IP). Zet dezelfde rule ook op `/feedback` en `/vraag`, die net zo
+  goed mail versturen.
 - **eTLD-lijst is beperkt.** De domeinvergelijking dekt `.nl`, `.com`, `.be` en
   een korte lijst tweelaagse TLD's (`co.uk` enz.), geen volledige public-suffix-
   lijst. Twijfelgevallen vallen veilig terug op de handmatige route.

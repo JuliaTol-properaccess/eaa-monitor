@@ -18,7 +18,15 @@
     "FROM_NAME": "EAA Monitor",
 
     // Waar handmatige-check-meldingen heen gaan (geen domeinmatch).
-    "NOTIFY_EMAIL": "juliatol@properaccess.nl",
+    // Dit adres is ook de reply-to op de bevestigingsmails. Het ontvangt mail
+    // via Cloudflare Email Routing, dat het doorstuurt naar de echte inbox.
+    "NOTIFY_EMAIL": "info@eaa-monitor.nl",
+
+    // Eigen postbus voor anonieme EAA-vragen (route POST /vraag). Zo blijven
+    // vragen gescheiden van bezwaren en artikelfeedback. Maak dit adres aan via
+    // Cloudflare Email Routing (zie DEPLOY.md). Niet gezet? Dan valt /vraag
+    // terug op NOTIFY_EMAIL.
+    "VRAGEN_EMAIL": "vragen@eaa-monitor.nl",
 
     // Doel-repo voor de commit naar data/objections.json.
     "GITHUB_REPO": "JuliaTol-properaccess/eaa-monitor",

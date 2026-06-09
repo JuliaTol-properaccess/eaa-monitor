@@ -185,6 +185,7 @@ def site_footer():
             <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
+            <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
             <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
@@ -482,6 +483,8 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/monitor-financieel.html", "weekly", "0.9"),
         (f"{BASE_URL}/artikelen.html", "weekly", "0.8"),
         (f"{BASE_URL}/bronnen.html", "weekly", "0.7"),
+        (f"{BASE_URL}/vragen.html", "weekly", "0.7"),
+        (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6"),
         (f"{BASE_URL}/wcag-audit.html", "monthly", "0.7"),
         (f"{BASE_URL}/over.html", "monthly", "0.5"),
         (f"{BASE_URL}/bezwaren.html", "weekly", "0.4"),

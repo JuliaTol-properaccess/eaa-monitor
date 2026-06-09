@@ -11,6 +11,7 @@
  *   POST /submit   — ontvangt het formulier, valideert, stuurt bevestigingsmail
  *   GET  /confirm  — verifieert de getekende token en opent een PR op objections.json
  *   POST /feedback — feedback op een kennisbank-artikel, mailt Julia rechtstreeks
+ *   POST /vraag    — anonieme EAA-vraag voor de toezichthouder, mailt Julia rechtstreeks
  *
  * Geen database nodig: de bevestigingslink draagt een HMAC-getekende token met
  * alle bezwaargegevens. Na bevestiging opent de Worker een pull request; Julia
@@ -38,6 +39,9 @@ export default {
     }
     if (url.pathname === "/feedback" && request.method === "POST") {
       return withCors(env, await handleFeedback(request, env));
+    }
+    if (url.pathname === "/vraag" && request.method === "POST") {
+      return withCors(env, await handleVraag(request, env));
     }
     if (url.pathname === "/confirm" && request.method === "GET") {
       return handleConfirm(request, env, url);
@@ -166,6 +170,47 @@ async function handleFeedback(request, env) {
     console.error("Feedbackmail mislukt:", err && err.message);
     return json(
       { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
+      502
+    );
+  }
+  return json({ ok: true });
+}
+
+// ── /vraag ───────────────────────────────────────────────────────────────────
+
+async function handleVraag(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true });
+  }
+
+  const vraag = (form.get("vraag") || "").trim();
+  const email = (form.get("email") || "").trim();
+  const sector = (form.get("sector") || "").trim();
+
+  if (!vraag) {
+    return json({ ok: false, error: "Schrijf je vraag voordat je verstuurt." }, 422);
+  }
+  if (vraag.length > 4000) {
+    return json({ ok: false, error: "Je vraag is te lang. Houd het onder de 4000 tekens." }, 422);
+  }
+  if (email && !isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+
+  try {
+    await sendVraagEmail(env, { vraag, email, sector });
+  } catch (err) {
+    console.error("Vraagmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar vragen@eaa-monitor.nl." },
       502
     );
   }
@@ -427,6 +472,32 @@ async function sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl }) {
     to: env.NOTIFY_EMAIL,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
+    subject,
+    text: lines.join("\n"),
+  });
+}
+
+async function sendVraagEmail(env, { vraag, email, sector }) {
+  // Eigen postbus voor anonieme vragen, met terugval op het algemene adres.
+  const to = env.VRAGEN_EMAIL || env.NOTIFY_EMAIL;
+  const subject = `Anonieme EAA-vraag${sector ? ` (${sector})` : ""}`;
+  const lines = [
+    `Er is een anonieme vraag over de EAA binnengekomen om aan de toezichthouder voor te leggen.`,
+    ``,
+    `Sector/context: ${sector || "(niet opgegeven)"}`,
+    `Antwoord gewenst op: ${email || "(volledig anoniem, geen adres opgegeven)"}`,
+    ``,
+    `Vraag:`,
+    vraag,
+    ``,
+    `Verwerk dit volgens workflows/handle_vraag.md: leg de vraag namens de vrager voor`,
+    `aan de juiste toezichthouder en publiceer het antwoord in data/vragen.json`,
+    `(pagina /vragen.html). Publiceer nooit het e-mailadres of herleidbare gegevens.`,
+  ];
+  await env.EMAIL.send({
+    to,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: email && isValidEmail(email) ? email : to,
     subject,
     text: lines.join("\n"),
   });
