@@ -24,25 +24,29 @@
     "title": "Toegankelijkheid e-commerce en elektronische communicatie",
     "url": "https://www.acm.nl/en/accessibility/accessibility-e-commerce-services-and-electronic-communications-services",
     "author": "ACM",
-    "category": "toezichthouders"
+    "category": "toezichthouders",
+    "date": "2025-11-24"
   },
   {
     "title": "Meldplicht bij niet voldoen aan toegankelijkheid (meldformulier)",
     "url": "https://www.acm.nl/nl/toegankelijkheid/toegankelijkheid-van-e-handelsdiensten-en-elektronische-communicatiediensten/meldplicht-bij-niet-voldoen-aan-toegankelijkheid",
     "author": "ACM",
-    "category": "toezichthouders"
+    "category": "toezichthouders",
+    "date": "2025-06-24"
   },
   {
     "title": "Klant met beperking kan bij merendeel grote webwinkels niet terecht (24 maart 2026)",
     "url": "https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht",
     "author": "ACM",
-    "category": "toezichthouders"
+    "category": "toezichthouders",
+    "date": "2026-03-24"
   },
   {
     "title": "Speerpunten toezicht digitale economie 2026",
     "url": "https://www.acm.nl/nl/publicaties/speerpunten-van-het-acm-toezicht-op-de-digitale-economie-2026",
     "author": "ACM",
-    "category": "toezichthouders"
+    "category": "toezichthouders",
+    "date": "2026-03-10"
   },
   {
     "title": "Toegankelijke (digitale) financiële dienstverlening",
@@ -249,7 +253,8 @@
     "title": "Onbeperkt toegankelijk (januari 2026)",
     "url": "https://www.logeion.nl/kennis/detail/2026/01/06/onbeperkt-toegankelijk",
     "author": "Logeion",
-    "category": "belangen"
+    "category": "belangen",
+    "date": "2026-01-06"
   },
   {
     "title": "Ervaringsdeskundigen en inhoudsdeskundigen zijn samen de sleutel",
@@ -534,7 +539,8 @@
     "title": "Toegankelijk publiceren: hoe de EAA je uitgaven beïnvloedt",
     "url": "https://www.pumbo.nl/support/boek-uitgeven/toegankelijk-publiceren-hoe-de-european-accessibility-act-jouw-uitgaven",
     "author": "Pumbo",
-    "category": "uitgevers"
+    "category": "uitgevers",
+    "date": "2025-01-07"
   },
   {
     "title": "Toegankelijkheid",
@@ -564,6 +570,7 @@
     "title": "European Accessibility Act overview",
     "url": "https://www.twobirds.com/en/insights/2024/global/european-accessibility-act",
     "author": "Bird & Bird",
-    "category": "internationaal"
+    "category": "internationaal",
+    "date": "2025-01-13"
   }
 ]
