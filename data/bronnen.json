@@ -1,97 +1,569 @@
 [
-  { "title": "Europese Toegankelijkheidsrichtlijn: producten", "url": "https://www.rdi.nl/onderwerpen/europese-toegankelijkheidsrichtlijn", "author": "RDI", "category": "toezichthouders" },
-  { "title": "Producten verplicht toegankelijk", "url": "https://www.rdi.nl/onderwerpen/europese-toegankelijkheidsrichtlijn/producten-verplicht-toegankelijk", "author": "RDI", "category": "toezichthouders" },
-  { "title": "Start van de Europese Toegankelijkheidsrichtlijn (28 juni 2025)", "url": "https://www.rdi.nl/actueel/nieuws/2025/06/27/start-europese-toegankelijkheidsrichtlijn", "author": "RDI", "category": "toezichthouders" },
-  { "title": "Toegankelijkheid e-commerce en elektronische communicatie", "url": "https://www.acm.nl/en/accessibility/accessibility-e-commerce-services-and-electronic-communications-services", "author": "ACM", "category": "toezichthouders" },
-  { "title": "Meldplicht bij niet voldoen aan toegankelijkheid (meldformulier)", "url": "https://www.acm.nl/nl/toegankelijkheid/toegankelijkheid-van-e-handelsdiensten-en-elektronische-communicatiediensten/meldplicht-bij-niet-voldoen-aan-toegankelijkheid", "author": "ACM", "category": "toezichthouders" },
-  { "title": "Klant met beperking kan bij merendeel grote webwinkels niet terecht (24 maart 2026)", "url": "https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht", "author": "ACM", "category": "toezichthouders" },
-  { "title": "Speerpunten toezicht digitale economie 2026", "url": "https://www.acm.nl/nl/publicaties/speerpunten-van-het-acm-toezicht-op-de-digitale-economie-2026", "author": "ACM", "category": "toezichthouders" },
-  { "title": "Toegankelijke (digitale) financiële dienstverlening", "url": "https://www.afm.nl/en/sector/themas/dienstverlening-aan-consumenten/toegankelijkheid", "author": "AFM", "category": "toezichthouders" },
-  { "title": "Digitaal toegankelijk(er): voordeel voor consument en sector (april 2025)", "url": "https://www.afm.nl/en/sector/actueel/2025/apr/sb-eaa-update%201", "author": "AFM", "category": "toezichthouders" },
-  { "title": "Toezicht op toegankelijkheid", "url": "https://www.cvdm.nl/voor-mediamakers/toezicht-op-toegankelijkheid/", "author": "Commissariaat voor de Media", "category": "toezichthouders" },
-  { "title": "Toegankelijkheid audiovisueel media-aanbod", "url": "https://www.cvdm.nl/voor-mediamakers/regelgeving/mediawet/toegankelijkheid-audiovisueel-media-aanbod/", "author": "Commissariaat voor de Media", "category": "toezichthouders" },
-  { "title": "Digitale toegankelijkheid in het vervoer", "url": "https://www.ilent.nl/onderwerpen/passagiersrechten/digitale-toegankelijkheid", "author": "ILT", "category": "toezichthouders" },
-
-  { "title": "Richtlijn (EU) 2019/882: de EAA, volledige tekst", "url": "https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng", "author": "EUR-Lex", "category": "overheid" },
-  { "title": "Regels voor digitale toegankelijkheid van producten en diensten", "url": "https://ondernemersplein.overheid.nl/european-accessibility-act-producten-en-diensten-moeten-volledig-toegankelijk-zijn/", "author": "Ondernemersplein (KvK)", "category": "overheid" },
-  { "title": "Waar kan ik webwinkels melden die niet toegankelijk zijn?", "url": "https://www.rijksoverheid.nl/documenten/vragen-en-antwoorden/webwinkels-niet-toegankelijk", "author": "Rijksoverheid", "category": "overheid" },
-  { "title": "Waar kan ik audiovisuele media of e-boekdiensten melden?", "url": "https://www.rijksoverheid.nl/documenten/vragen-en-antwoorden/media-niet-toegankelijk", "author": "Rijksoverheid", "category": "overheid" },
-  { "title": "EN 301 549 en WCAG", "url": "https://www.digitoegankelijk.nl/toegankelijkheid/en-301-549-en-wcag", "author": "Digitoegankelijk.nl", "category": "overheid" },
-  { "title": "Voor wie is het verplicht", "url": "https://www.digitoegankelijk.nl/wetgeving/voor-wie-is-het-verplicht", "author": "Digitoegankelijk.nl", "category": "overheid" },
-  { "title": "Beleid Nederland en Europa", "url": "https://www.digitoegankelijk.nl/wetgeving/beleid-nederland-en-europa", "author": "Digitoegankelijk.nl", "category": "overheid" },
-  { "title": "Kamervragen over gebrekkige naleving EAA (2025)", "url": "https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2025Z14498&did=2025D37687", "author": "Tweede Kamer", "category": "overheid" },
-  { "title": "Implementatiebesluit toegankelijkheid audiovisuele mediadiensten (Stb. 2024, 136)", "url": "https://zoek.officielebekendmakingen.nl/stb-2024-136.html", "author": "Staatsblad", "category": "overheid" },
-  { "title": "Toegankelijkheidsverklaring: voorbeeld op EU-niveau", "url": "https://commission.europa.eu/accessibility-statement_en", "author": "Europese Commissie", "category": "overheid" },
-  { "title": "Toegankelijkheid van websites", "url": "https://www.europarl.europa.eu/portal/nl/accessibility", "author": "Europees Parlement", "category": "overheid" },
-  { "title": "Wat houdt de EAA echt in", "url": "https://www.mkbtoegankelijk.nl/nieuws/european-accessibility-act/", "author": "MKB Toegankelijk", "category": "overheid" },
-  { "title": "Richtlijn voor bankdiensten", "url": "https://www.mkbtoegankelijk.nl/producten-diensten/toegankelijkheidsrichtlijn-bankdiensten/", "author": "MKB Toegankelijk", "category": "overheid" },
-  { "title": "Richtlijn voor televisie- en streamingdiensten", "url": "https://www.mkbtoegankelijk.nl/producten-diensten/toegankelijkheidsrichtlijn-voor-televisie-en-streamingdiensten/", "author": "MKB Toegankelijk", "category": "overheid" },
-  { "title": "Richtlijn voor televisies en mediaspelers", "url": "https://www.mkbtoegankelijk.nl/producten-diensten/toegankelijkheidsrichtlijn-televisies-en-mediaspelers/", "author": "MKB Toegankelijk", "category": "overheid" },
-
-  { "title": "EAA in de kennisbank", "url": "https://www.betaalvereniging.nl/kennisbank/europese-regelgeving/european-accessibility-act/", "author": "Betaalvereniging Nederland", "category": "financieel" },
-  { "title": "Toegankelijkheid en inclusiviteit (taskforce TFEAA)", "url": "https://www.betaalvereniging.nl/samenwerking/toegankelijkheid-en-inclusiviteit/", "author": "Betaalvereniging Nederland", "category": "financieel" },
-  { "title": "Forse stappen toegankelijke betaaldiensten", "url": "https://www.betaalvereniging.nl/actueel/forse-stappen-toegankelijke-betaaldiensten/", "author": "Betaalvereniging Nederland", "category": "financieel" },
-  { "title": "Toegankelijk Bankieren: programma van de banken", "url": "https://toegankelijkbankieren.nl/", "author": "Toegankelijk Bankieren", "category": "financieel" },
-  { "title": "Voldoet jouw bedrijf al aan de Accessibility Act", "url": "https://www.verzekeraars.nl/publicaties/actueel/voldoet-jouw-bedrijf-al-aan-de-accessibility-act", "author": "Verbond van Verzekeraars", "category": "financieel" },
-  { "title": "Onderzoek: geen enkele financiële instelling voldoet", "url": "https://www.ictmagazine.nl/nieuws/onderzoek-geen-enkele-financiele-instelling-voldoet-aan-europese-toegankelijkheidswet/", "author": "ICT Magazine", "category": "financieel" },
-  { "title": "AFM: haast maken om digitale toegankelijkheid te verbeteren", "url": "https://infinance.nl/branche/afm-haast-maken-om-digitale-toegankelijkheid-te-verbeteren/", "author": "InFinance", "category": "financieel" },
-  { "title": "Practical implementation tips for the financial sector", "url": "https://www.vbk.nl/en/legalupdate/practical-implementation-tips-accessibility-directive-financial-sector", "author": "Van Benthem & Keulen", "category": "financieel" },
-  { "title": "Implementatie EU-toegankelijkheidswet voor financiële instellingen", "url": "https://www.rsm.global/netherlands/nl/insights/implementatie-van-de-eu-toegankelijkheidswet-voor-financiele-instellingen", "author": "RSM", "category": "financieel" },
-
-  { "title": "Wouter Bolier: toegankelijkheid moet je wettelijk goed regelen", "url": "https://iederin.nl/eaa/", "author": "Ieder(in)", "category": "belangen" },
-  { "title": "Digitale toegankelijkheid: standpunt", "url": "https://www.oogvereniging.nl/standpunten/digitale-toegankelijkheid/", "author": "Oogvereniging", "category": "belangen" },
-  { "title": "Onbeperkt toegankelijk (januari 2026)", "url": "https://www.logeion.nl/kennis/detail/2026/01/06/onbeperkt-toegankelijk", "author": "Logeion", "category": "belangen" },
-  { "title": "Ervaringsdeskundigen en inhoudsdeskundigen zijn samen de sleutel", "url": "https://www.accessibility.nl/kennis/ervaringsdeskundigen-en-inhoudsdeskundigen-zijn-samen-de-sleutel-naar-toegankelijke", "author": "Accessibility.nl", "category": "belangen" },
-
-  { "title": "De European Accessibility Act", "url": "https://www.ictrecht.nl/wetgeving/european-accessibility-act", "author": "ICTRecht", "category": "juristen" },
-  { "title": "De European Accessibility Act", "url": "https://sensjuristen.nl/european-accessibility-act/", "author": "Sens Juristen", "category": "juristen" },
-  { "title": "De EAA: toegankelijk voor u en door u", "url": "https://www.turing.law/nl/the-european-accessibility-act-toegankelijk-voor-u-en-door-u/", "author": "Turing Advocaten", "category": "juristen" },
-  { "title": "De EAA komt eraan", "url": "https://www.legalz.nl/blog/european-accessibility-act", "author": "Legalz", "category": "juristen" },
-  { "title": "Toegankelijkheidsvoorschriften voor producten en diensten: de EAA", "url": "https://www.damste.nl/kenniscentrum/toegankelijkheidsvoorschriften-voor-producten-en-diensten-de-eaa/", "author": "Damsté", "category": "juristen" },
-  { "title": "Uniforme Europese regels voor toegankelijkheid", "url": "https://louwersadvocaten.nl/uniforme-europese-regels-voor-de-toegankelijkheid-van-producten-en-diensten/", "author": "Louwers Advocaten", "category": "juristen" },
-  { "title": "Toegankelijkheidsrichtlijn / EAA", "url": "https://www.wisemen.nl/nl/artikelen/toegankelijkheidsrichtlijn-european-accessibility-act-eaa-/", "author": "Wisemen", "category": "juristen" },
-
-  { "title": "Boetes onder de EAA: zo verschilt het per land", "url": "https://www.properaccess.nl/blog/eaa-boetes/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "EAA voor webshops: wat moet je regelen", "url": "https://www.properaccess.nl/blog/eaa-voor-webshops/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "Geldt de EAA-wet voor mijn webshop", "url": "https://www.properaccess.nl/blog/geldt-de-eaa-voor-mijn-webshop/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "Voor wie is digitale toegankelijkheid verplicht", "url": "https://www.properaccess.nl/blog/voor-wie-is-digitale-toegankelijkheid-verplicht/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "EAA en het onderwijs: 6 stappen", "url": "https://www.properaccess.nl/blog/eaa-onderwijs-stappenplan-toegankelijke-leeromgeving/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "Wat is WCAG 2.2", "url": "https://www.properaccess.nl/blog/wat-is-wcag-2-2/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "Interview met Julia Tol in het Financieel Dagblad", "url": "https://properaccess.nl/interview-met-julia-tol-over-digitale-toegankelijkheid-in-het-financieel-dagblad/", "author": "Proper Access", "category": "bureaus" },
-  { "title": "Handhaving: boetetabel per toezichthouder (ACM, CvdM, RDI, AFM)", "url": "https://digitaaltoegankelijk.nl/nieuws/europese-toegankelijkheidswet-van-kracht-hoe-zit-het-met-handhaving/", "author": "Digitaal Toegankelijk", "category": "bureaus" },
-  { "title": "Dit zijn de 7 toezichthouders op Wdo en EAA", "url": "https://digitaaltoegankelijk.nl/nieuws/dit-zijn-de-7-toezichthouders-op-de-wet-digitale-overheid-wdo-en-de-european-accessibility-act-eaa/", "author": "Digitaal Toegankelijk", "category": "bureaus" },
-  { "title": "EAA-hub: implementatiegids met stappenplan", "url": "https://digitaaltoegankelijk.nl/european-accessibility-act/", "author": "Digitaal Toegankelijk", "category": "bureaus" },
-  { "title": "Een jaar EAA: 5 lessen voor bedrijven", "url": "https://www.cardan.com/blog/een-jaar-european-accessibility-act-lessen-voor-bedrijven", "author": "Cardan", "category": "bureaus" },
-  { "title": "Webshops: dit gaan de toezichthouders doen", "url": "https://www.cardan.com/blog/webshops-en-digitale-toegankelijkheid-dit-gaan-de-toezichthouders-doen-vanaf-28-juni-2025", "author": "Cardan", "category": "bureaus" },
-  { "title": "Accessibility-overlays: waarom ze niet werken", "url": "https://www.cardan.com/blog/accessibility-overlays-waarom-ze-niet-werken", "author": "Cardan", "category": "bureaus" },
-  { "title": "Moeten onderwijsinstellingen voldoen aan de EAA", "url": "https://www.cardan.com/blog/moeten-onderwijsinstellingen-voldoen-aan-de-european-accessibility-act", "author": "Cardan", "category": "bureaus" },
-  { "title": "Toezichthouders EAA: tabel dienst naar toezichthouder", "url": "https://www.accessibility.nl/toezichthouders-eaa", "author": "Accessibility.nl", "category": "bureaus" },
-  { "title": "Zo houden toezichthouders toezicht op naleving EAA", "url": "https://www.accessibility.nl/nieuws/toezicht-op-toegankelijkheid-zo-houden-toezichthouders-toezicht-op-naleving-eaa", "author": "Accessibility.nl", "category": "bureaus" },
-  { "title": "Toegankelijkheidsverklaring maken: concreet 8-stappenplan", "url": "https://level-level.com/hoe-maak-je-een-toegankelijkheidsverklaring-voor-de-european-accessibility-act/", "author": "Level Level", "category": "bureaus" },
-  { "title": "EAA 2025 (eigen cijfer: gemiste omzet NL, te verifiëren)", "url": "https://level-level.com/nl/blog/european-accessibility-act-2025/", "author": "Level Level", "category": "bureaus" },
-  { "title": "Wordt digitale uitsluiting de grootste misser van 2026?", "url": "https://level-level.com/wordt-digitale-uitsluiting-de-grootste-misser-van-2026-de-european-accessiblity-act-als-kans/", "author": "Level Level", "category": "bureaus" },
-  { "title": "Welke subsidies zijn er voor EAA-naleving", "url": "https://eye-able.com/nl/blog/welke-subsidies-zijn-er-voor-de-wet-digitale-toegankelijkheid-eaa", "author": "Eye-Able", "category": "bureaus" },
-  { "title": "Digital Accessibility Statistics 2026 (benchmarkcijfers)", "url": "https://searchlab.nl/en/statistics/digital-accessibility-statistics-2026", "author": "Searchlab", "category": "bureaus" },
-
-  { "title": "Europese Toegankelijkheidswet treedt in werking", "url": "https://persportaal.anp.nl/artikel/d34caa80-cc79-4e53-a875-6bbc50801a71/europese-toegankelijkheidswet-treedt-in-werking-nieuwe-norm-voor-digitale-inclusie", "author": "ANP Persportaal", "category": "vakmedia" },
-  { "title": "ACM: webshops slecht toegankelijk (maart 2026)", "url": "https://www.marketingtribune.nl/food-en-retail/nieuws/2026/03/acm-webshops-slecht-toegankelijk-voor-mensen-met-beperking/index.xml", "author": "MarketingTribune", "category": "vakmedia" },
-  { "title": "ACM legt nadruk nu op de e-commerce", "url": "https://www.ecommercenews.nl/acm-legt-nadruk-nu-op-de-ecommerce/", "author": "Ecommercenews.nl", "category": "vakmedia" },
-  { "title": "Toegankelijkheid is niet het doel van de EAA", "url": "https://www.frankwatching.com/archive/2025/08/22/european-accessibility-act-toegankelijkheid-niet-het-doel/", "author": "Justin van der Raaf (Frankwatching)", "category": "vakmedia" },
-  { "title": "EAA: dit moet je weten voor juni 2025", "url": "https://www.frankwatching.com/archive/2025/02/17/european-accessibility-act-juni-2025/", "author": "Frankwatching", "category": "vakmedia" },
-  { "title": "Webinar: digitale toegankelijkheid in 2026, van verplichting naar kans", "url": "https://www.frankwatching.com/video-academy/webinar/digitale-toegankelijkheid-in-2026-van-verplichting-naar-kans/", "author": "Frankwatching", "category": "vakmedia" },
-  { "title": "EAA: wat betekent dit voor jou", "url": "https://supportmagazine.nl/artikel/european-accessibility-act-wat-betekent-dit-voor-jou", "author": "Support Magazine", "category": "vakmedia" },
-  { "title": "Het verschil tussen de EAA en de WCAG", "url": "https://ibestuur.nl/artikel/atabix/het-verschil-tussen-de-european-accessibility-act-eaa-en-de-wcag/", "author": "iBestuur", "category": "vakmedia" },
-  { "title": "Webwinkels voldoen niet aan eisen digitale toegankelijkheid", "url": "https://marketingreport.nl/webwinkels-voldoen-niet-aan-eisen-digitale-toegankelijkheid/", "author": "Marketingreport.nl", "category": "vakmedia" },
-  { "title": "MKB-Nederland: veel bedrijven nog niet voorbereid", "url": "https://informatieprofessional.nl/mkb-nederland-veel-bedrijven-nog-niet-voorbereid-op-nieuwe-toegankelijkheidswet/", "author": "Informatieprofessional.nl", "category": "vakmedia" },
-
-  { "title": "Is jouw onderwijsinstelling klaar voor de EAA", "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/is-jouw-onderwijsinstelling-klaar-voor-de-european-accessibility", "author": "SURF Communities", "category": "onderwijs" },
-  { "title": "Wat betekent de EAA voor jouw onderwijsinstelling", "url": "https://ecio.nl/handreiking/artikel-wat-betekent-de-eaa-voor-jouw-onderwijsinstelling/", "author": "ECIO", "category": "onderwijs" },
-
-  { "title": "Toegankelijk publiceren: hoe de EAA je uitgaven beïnvloedt", "url": "https://www.pumbo.nl/support/boek-uitgeven/toegankelijk-publiceren-hoe-de-european-accessibility-act-jouw-uitgaven", "author": "Pumbo", "category": "uitgevers" },
-  { "title": "Toegankelijkheid", "url": "https://www.algemene-uitgevers.nl/projecten/toegankelijkheid", "author": "Mediafederatie / GAU", "category": "uitgevers" },
-
-  { "title": "First EAA lawsuits hit French retailers", "url": "https://testparty.ai/blog/first-european-accessibility-act-lawsuits-france-2025", "author": "TestParty", "category": "internationaal" },
-  { "title": "France's first EAA lawsuit", "url": "https://getwcag.com/en/blog/france-first-eaa-european-accessibility-act-lawsuit", "author": "getwcag.com", "category": "internationaal" },
-  { "title": "EAA enforcement and implementation", "url": "https://www.lflegal.com/lf-country/european-accessibility-act-eaa-enforcement-and-implementation/", "author": "Law Office of Lainey Feingold", "category": "internationaal" },
-  { "title": "European Accessibility Act overview", "url": "https://www.twobirds.com/en/insights/2024/global/european-accessibility-act", "author": "Bird & Bird", "category": "internationaal" }
+  {
+    "title": "Europese Toegankelijkheidsrichtlijn: producten",
+    "url": "https://www.rdi.nl/onderwerpen/europese-toegankelijkheidsrichtlijn",
+    "author": "RDI",
+    "category": "toezichthouders",
+    "date": "2025-05-19"
+  },
+  {
+    "title": "Producten verplicht toegankelijk",
+    "url": "https://www.rdi.nl/onderwerpen/europese-toegankelijkheidsrichtlijn/producten-verplicht-toegankelijk",
+    "author": "RDI",
+    "category": "toezichthouders",
+    "date": "2025-04-29"
+  },
+  {
+    "title": "Start van de Europese Toegankelijkheidsrichtlijn (28 juni 2025)",
+    "url": "https://www.rdi.nl/actueel/nieuws/2025/06/27/start-europese-toegankelijkheidsrichtlijn",
+    "author": "RDI",
+    "category": "toezichthouders",
+    "date": "2025-06-27"
+  },
+  {
+    "title": "Toegankelijkheid e-commerce en elektronische communicatie",
+    "url": "https://www.acm.nl/en/accessibility/accessibility-e-commerce-services-and-electronic-communications-services",
+    "author": "ACM",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Meldplicht bij niet voldoen aan toegankelijkheid (meldformulier)",
+    "url": "https://www.acm.nl/nl/toegankelijkheid/toegankelijkheid-van-e-handelsdiensten-en-elektronische-communicatiediensten/meldplicht-bij-niet-voldoen-aan-toegankelijkheid",
+    "author": "ACM",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Klant met beperking kan bij merendeel grote webwinkels niet terecht (24 maart 2026)",
+    "url": "https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht",
+    "author": "ACM",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Speerpunten toezicht digitale economie 2026",
+    "url": "https://www.acm.nl/nl/publicaties/speerpunten-van-het-acm-toezicht-op-de-digitale-economie-2026",
+    "author": "ACM",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Toegankelijke (digitale) financiële dienstverlening",
+    "url": "https://www.afm.nl/en/sector/themas/dienstverlening-aan-consumenten/toegankelijkheid",
+    "author": "AFM",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Digitaal toegankelijk(er): voordeel voor consument en sector (april 2025)",
+    "url": "https://www.afm.nl/en/sector/actueel/2025/apr/sb-eaa-update%201",
+    "author": "AFM",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Toezicht op toegankelijkheid",
+    "url": "https://www.cvdm.nl/voor-mediamakers/toezicht-op-toegankelijkheid/",
+    "author": "Commissariaat voor de Media",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Toegankelijkheid audiovisueel media-aanbod",
+    "url": "https://www.cvdm.nl/voor-mediamakers/regelgeving/mediawet/toegankelijkheid-audiovisueel-media-aanbod/",
+    "author": "Commissariaat voor de Media",
+    "category": "toezichthouders"
+  },
+  {
+    "title": "Digitale toegankelijkheid in het vervoer",
+    "url": "https://www.ilent.nl/onderwerpen/passagiersrechten/digitale-toegankelijkheid",
+    "author": "ILT",
+    "category": "toezichthouders",
+    "date": "2026-03-04"
+  },
+  {
+    "title": "Richtlijn (EU) 2019/882: de EAA, volledige tekst",
+    "url": "https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng",
+    "author": "EUR-Lex",
+    "category": "overheid"
+  },
+  {
+    "title": "Regels voor digitale toegankelijkheid van producten en diensten",
+    "url": "https://ondernemersplein.overheid.nl/european-accessibility-act-producten-en-diensten-moeten-volledig-toegankelijk-zijn/",
+    "author": "Ondernemersplein (KvK)",
+    "category": "overheid"
+  },
+  {
+    "title": "Waar kan ik webwinkels melden die niet toegankelijk zijn?",
+    "url": "https://www.rijksoverheid.nl/documenten/vragen-en-antwoorden/webwinkels-niet-toegankelijk",
+    "author": "Rijksoverheid",
+    "category": "overheid"
+  },
+  {
+    "title": "Waar kan ik audiovisuele media of e-boekdiensten melden?",
+    "url": "https://www.rijksoverheid.nl/documenten/vragen-en-antwoorden/media-niet-toegankelijk",
+    "author": "Rijksoverheid",
+    "category": "overheid"
+  },
+  {
+    "title": "EN 301 549 en WCAG",
+    "url": "https://www.digitoegankelijk.nl/toegankelijkheid/en-301-549-en-wcag",
+    "author": "Digitoegankelijk.nl",
+    "category": "overheid"
+  },
+  {
+    "title": "Voor wie is het verplicht",
+    "url": "https://www.digitoegankelijk.nl/wetgeving/voor-wie-is-het-verplicht",
+    "author": "Digitoegankelijk.nl",
+    "category": "overheid"
+  },
+  {
+    "title": "Beleid Nederland en Europa",
+    "url": "https://www.digitoegankelijk.nl/wetgeving/beleid-nederland-en-europa",
+    "author": "Digitoegankelijk.nl",
+    "category": "overheid"
+  },
+  {
+    "title": "Kamervragen over gebrekkige naleving EAA (2025)",
+    "url": "https://www.tweedekamer.nl/kamerstukken/kamervragen/detail?id=2025Z14498&did=2025D37687",
+    "author": "Tweede Kamer",
+    "category": "overheid",
+    "date": "2025-07-23"
+  },
+  {
+    "title": "Implementatiebesluit toegankelijkheid audiovisuele mediadiensten (Stb. 2024, 136)",
+    "url": "https://zoek.officielebekendmakingen.nl/stb-2024-136.html",
+    "author": "Staatsblad",
+    "category": "overheid",
+    "date": "2024-05-28"
+  },
+  {
+    "title": "Toegankelijkheidsverklaring: voorbeeld op EU-niveau",
+    "url": "https://commission.europa.eu/accessibility-statement_en",
+    "author": "Europese Commissie",
+    "category": "overheid"
+  },
+  {
+    "title": "Toegankelijkheid van websites",
+    "url": "https://www.europarl.europa.eu/portal/nl/accessibility",
+    "author": "Europees Parlement",
+    "category": "overheid"
+  },
+  {
+    "title": "Wat houdt de EAA echt in",
+    "url": "https://www.mkbtoegankelijk.nl/nieuws/european-accessibility-act/",
+    "author": "MKB Toegankelijk",
+    "category": "overheid",
+    "date": "2024-05-21"
+  },
+  {
+    "title": "Richtlijn voor bankdiensten",
+    "url": "https://www.mkbtoegankelijk.nl/producten-diensten/toegankelijkheidsrichtlijn-bankdiensten/",
+    "author": "MKB Toegankelijk",
+    "category": "overheid",
+    "date": "2023-11-15"
+  },
+  {
+    "title": "Richtlijn voor televisie- en streamingdiensten",
+    "url": "https://www.mkbtoegankelijk.nl/producten-diensten/toegankelijkheidsrichtlijn-voor-televisie-en-streamingdiensten/",
+    "author": "MKB Toegankelijk",
+    "category": "overheid",
+    "date": "2024-03-14"
+  },
+  {
+    "title": "Richtlijn voor televisies en mediaspelers",
+    "url": "https://www.mkbtoegankelijk.nl/producten-diensten/toegankelijkheidsrichtlijn-televisies-en-mediaspelers/",
+    "author": "MKB Toegankelijk",
+    "category": "overheid",
+    "date": "2024-03-14"
+  },
+  {
+    "title": "EAA in de kennisbank",
+    "url": "https://www.betaalvereniging.nl/kennisbank/europese-regelgeving/european-accessibility-act/",
+    "author": "Betaalvereniging Nederland",
+    "category": "financieel",
+    "date": "2025-10-14"
+  },
+  {
+    "title": "Toegankelijkheid en inclusiviteit (taskforce TFEAA)",
+    "url": "https://www.betaalvereniging.nl/samenwerking/toegankelijkheid-en-inclusiviteit/",
+    "author": "Betaalvereniging Nederland",
+    "category": "financieel",
+    "date": "2025-10-14"
+  },
+  {
+    "title": "Forse stappen toegankelijke betaaldiensten",
+    "url": "https://www.betaalvereniging.nl/actueel/forse-stappen-toegankelijke-betaaldiensten/",
+    "author": "Betaalvereniging Nederland",
+    "category": "financieel",
+    "date": "2025-06-10"
+  },
+  {
+    "title": "Toegankelijk Bankieren: programma van de banken",
+    "url": "https://toegankelijkbankieren.nl/",
+    "author": "Toegankelijk Bankieren",
+    "category": "financieel",
+    "date": "2023-05-16"
+  },
+  {
+    "title": "Voldoet jouw bedrijf al aan de Accessibility Act",
+    "url": "https://www.verzekeraars.nl/publicaties/actueel/voldoet-jouw-bedrijf-al-aan-de-accessibility-act",
+    "author": "Verbond van Verzekeraars",
+    "category": "financieel"
+  },
+  {
+    "title": "Onderzoek: geen enkele financiële instelling voldoet",
+    "url": "https://www.ictmagazine.nl/nieuws/onderzoek-geen-enkele-financiele-instelling-voldoet-aan-europese-toegankelijkheidswet/",
+    "author": "ICT Magazine",
+    "category": "financieel",
+    "date": "2026-01-09"
+  },
+  {
+    "title": "AFM: haast maken om digitale toegankelijkheid te verbeteren",
+    "url": "https://infinance.nl/branche/afm-haast-maken-om-digitale-toegankelijkheid-te-verbeteren/",
+    "author": "InFinance",
+    "category": "financieel",
+    "date": "2025-04-28"
+  },
+  {
+    "title": "Practical implementation tips for the financial sector",
+    "url": "https://www.vbk.nl/en/legalupdate/practical-implementation-tips-accessibility-directive-financial-sector",
+    "author": "Van Benthem & Keulen",
+    "category": "financieel"
+  },
+  {
+    "title": "Implementatie EU-toegankelijkheidswet voor financiële instellingen",
+    "url": "https://www.rsm.global/netherlands/nl/insights/implementatie-van-de-eu-toegankelijkheidswet-voor-financiele-instellingen",
+    "author": "RSM",
+    "category": "financieel"
+  },
+  {
+    "title": "Wouter Bolier: toegankelijkheid moet je wettelijk goed regelen",
+    "url": "https://iederin.nl/eaa/",
+    "author": "Ieder(in)",
+    "category": "belangen",
+    "date": "2025-06-06"
+  },
+  {
+    "title": "Digitale toegankelijkheid: standpunt",
+    "url": "https://www.oogvereniging.nl/standpunten/digitale-toegankelijkheid/",
+    "author": "Oogvereniging",
+    "category": "belangen",
+    "date": "2022-10-31"
+  },
+  {
+    "title": "Onbeperkt toegankelijk (januari 2026)",
+    "url": "https://www.logeion.nl/kennis/detail/2026/01/06/onbeperkt-toegankelijk",
+    "author": "Logeion",
+    "category": "belangen"
+  },
+  {
+    "title": "Ervaringsdeskundigen en inhoudsdeskundigen zijn samen de sleutel",
+    "url": "https://www.accessibility.nl/kennis/ervaringsdeskundigen-en-inhoudsdeskundigen-zijn-samen-de-sleutel-naar-toegankelijke",
+    "author": "Accessibility.nl",
+    "category": "belangen",
+    "date": "2023-05-25"
+  },
+  {
+    "title": "De European Accessibility Act",
+    "url": "https://www.ictrecht.nl/wetgeving/european-accessibility-act",
+    "author": "ICTRecht",
+    "category": "juristen",
+    "date": "2024-04-17"
+  },
+  {
+    "title": "De European Accessibility Act",
+    "url": "https://sensjuristen.nl/european-accessibility-act/",
+    "author": "Sens Juristen",
+    "category": "juristen",
+    "date": "2025-06-26"
+  },
+  {
+    "title": "De EAA: toegankelijk voor u en door u",
+    "url": "https://www.turing.law/nl/the-european-accessibility-act-toegankelijk-voor-u-en-door-u/",
+    "author": "Turing Advocaten",
+    "category": "juristen"
+  },
+  {
+    "title": "De EAA komt eraan",
+    "url": "https://www.legalz.nl/blog/european-accessibility-act",
+    "author": "Legalz",
+    "category": "juristen",
+    "date": "2023-01-31"
+  },
+  {
+    "title": "Toegankelijkheidsvoorschriften voor producten en diensten: de EAA",
+    "url": "https://www.damste.nl/kenniscentrum/toegankelijkheidsvoorschriften-voor-producten-en-diensten-de-eaa/",
+    "author": "Damsté",
+    "category": "juristen",
+    "date": "2025-10-14"
+  },
+  {
+    "title": "Uniforme Europese regels voor toegankelijkheid",
+    "url": "https://louwersadvocaten.nl/uniforme-europese-regels-voor-de-toegankelijkheid-van-producten-en-diensten/",
+    "author": "Louwers Advocaten",
+    "category": "juristen",
+    "date": "2025-07-22"
+  },
+  {
+    "title": "Toegankelijkheidsrichtlijn / EAA",
+    "url": "https://www.wisemen.nl/nl/artikelen/toegankelijkheidsrichtlijn-european-accessibility-act-eaa-/",
+    "author": "Wisemen",
+    "category": "juristen"
+  },
+  {
+    "title": "Boetes onder de EAA: zo verschilt het per land",
+    "url": "https://www.properaccess.nl/blog/eaa-boetes/",
+    "author": "Proper Access",
+    "category": "bureaus",
+    "date": "2026-02-09"
+  },
+  {
+    "title": "EAA voor webshops: wat moet je regelen",
+    "url": "https://www.properaccess.nl/blog/eaa-voor-webshops/",
+    "author": "Proper Access",
+    "category": "bureaus",
+    "date": "2026-03-17"
+  },
+  {
+    "title": "Geldt de EAA-wet voor mijn webshop",
+    "url": "https://www.properaccess.nl/blog/geldt-de-eaa-voor-mijn-webshop/",
+    "author": "Proper Access",
+    "category": "bureaus",
+    "date": "2026-04-05"
+  },
+  {
+    "title": "Voor wie is digitale toegankelijkheid verplicht",
+    "url": "https://www.properaccess.nl/blog/voor-wie-is-digitale-toegankelijkheid-verplicht/",
+    "author": "Proper Access",
+    "category": "bureaus",
+    "date": "2026-04-07"
+  },
+  {
+    "title": "EAA en het onderwijs: 6 stappen",
+    "url": "https://www.properaccess.nl/blog/eaa-onderwijs-stappenplan-toegankelijke-leeromgeving/",
+    "author": "Proper Access",
+    "category": "bureaus",
+    "date": "2026-03-09"
+  },
+  {
+    "title": "Wat is WCAG 2.2",
+    "url": "https://www.properaccess.nl/blog/wat-is-wcag-2-2/",
+    "author": "Proper Access",
+    "category": "bureaus",
+    "date": "2026-04-18"
+  },
+  {
+    "title": "Interview met Julia Tol in het Financieel Dagblad",
+    "url": "https://properaccess.nl/interview-met-julia-tol-over-digitale-toegankelijkheid-in-het-financieel-dagblad/",
+    "author": "Proper Access",
+    "category": "bureaus"
+  },
+  {
+    "title": "Handhaving: boetetabel per toezichthouder (ACM, CvdM, RDI, AFM)",
+    "url": "https://digitaaltoegankelijk.nl/nieuws/europese-toegankelijkheidswet-van-kracht-hoe-zit-het-met-handhaving/",
+    "author": "Digitaal Toegankelijk",
+    "category": "bureaus",
+    "date": "2025-07-07"
+  },
+  {
+    "title": "Dit zijn de 7 toezichthouders op Wdo en EAA",
+    "url": "https://digitaaltoegankelijk.nl/nieuws/dit-zijn-de-7-toezichthouders-op-de-wet-digitale-overheid-wdo-en-de-european-accessibility-act-eaa/",
+    "author": "Digitaal Toegankelijk",
+    "category": "bureaus",
+    "date": "2026-01-30"
+  },
+  {
+    "title": "EAA-hub: implementatiegids met stappenplan",
+    "url": "https://digitaaltoegankelijk.nl/european-accessibility-act/",
+    "author": "Digitaal Toegankelijk",
+    "category": "bureaus",
+    "date": "2026-03-16"
+  },
+  {
+    "title": "Een jaar EAA: 5 lessen voor bedrijven",
+    "url": "https://www.cardan.com/blog/een-jaar-european-accessibility-act-lessen-voor-bedrijven",
+    "author": "Cardan",
+    "category": "bureaus",
+    "date": "2026-05-07"
+  },
+  {
+    "title": "Webshops: dit gaan de toezichthouders doen",
+    "url": "https://www.cardan.com/blog/webshops-en-digitale-toegankelijkheid-dit-gaan-de-toezichthouders-doen-vanaf-28-juni-2025",
+    "author": "Cardan",
+    "category": "bureaus",
+    "date": "2025-06-26"
+  },
+  {
+    "title": "Accessibility-overlays: waarom ze niet werken",
+    "url": "https://www.cardan.com/blog/accessibility-overlays-waarom-ze-niet-werken",
+    "author": "Cardan",
+    "category": "bureaus",
+    "date": "2026-04-19"
+  },
+  {
+    "title": "Moeten onderwijsinstellingen voldoen aan de EAA",
+    "url": "https://www.cardan.com/blog/moeten-onderwijsinstellingen-voldoen-aan-de-european-accessibility-act",
+    "author": "Cardan",
+    "category": "bureaus",
+    "date": "2025-07-14"
+  },
+  {
+    "title": "Toezichthouders EAA: tabel dienst naar toezichthouder",
+    "url": "https://www.accessibility.nl/toezichthouders-eaa",
+    "author": "Accessibility.nl",
+    "category": "bureaus"
+  },
+  {
+    "title": "Zo houden toezichthouders toezicht op naleving EAA",
+    "url": "https://www.accessibility.nl/nieuws/toezicht-op-toegankelijkheid-zo-houden-toezichthouders-toezicht-op-naleving-eaa",
+    "author": "Accessibility.nl",
+    "category": "bureaus",
+    "date": "2025-07-17"
+  },
+  {
+    "title": "Toegankelijkheidsverklaring maken: concreet 8-stappenplan",
+    "url": "https://level-level.com/hoe-maak-je-een-toegankelijkheidsverklaring-voor-de-european-accessibility-act/",
+    "author": "Level Level",
+    "category": "bureaus",
+    "date": "2025-12-15"
+  },
+  {
+    "title": "EAA 2025 (eigen cijfer: gemiste omzet NL, te verifiëren)",
+    "url": "https://level-level.com/nl/blog/european-accessibility-act-2025/",
+    "author": "Level Level",
+    "category": "bureaus",
+    "date": "2025-03-21"
+  },
+  {
+    "title": "Wordt digitale uitsluiting de grootste misser van 2026?",
+    "url": "https://level-level.com/wordt-digitale-uitsluiting-de-grootste-misser-van-2026-de-european-accessiblity-act-als-kans/",
+    "author": "Level Level",
+    "category": "bureaus",
+    "date": "2025-10-27"
+  },
+  {
+    "title": "Welke subsidies zijn er voor EAA-naleving",
+    "url": "https://eye-able.com/nl/blog/welke-subsidies-zijn-er-voor-de-wet-digitale-toegankelijkheid-eaa",
+    "author": "Eye-Able",
+    "category": "bureaus"
+  },
+  {
+    "title": "Digital Accessibility Statistics 2026 (benchmarkcijfers)",
+    "url": "https://searchlab.nl/en/statistics/digital-accessibility-statistics-2026",
+    "author": "Searchlab",
+    "category": "bureaus",
+    "date": "2026-03-17"
+  },
+  {
+    "title": "Europese Toegankelijkheidswet treedt in werking",
+    "url": "https://persportaal.anp.nl/artikel/d34caa80-cc79-4e53-a875-6bbc50801a71/europese-toegankelijkheidswet-treedt-in-werking-nieuwe-norm-voor-digitale-inclusie",
+    "author": "ANP Persportaal",
+    "category": "vakmedia",
+    "date": "2025-06-26"
+  },
+  {
+    "title": "ACM: webshops slecht toegankelijk (maart 2026)",
+    "url": "https://www.marketingtribune.nl/food-en-retail/nieuws/2026/03/acm-webshops-slecht-toegankelijk-voor-mensen-met-beperking/index.xml",
+    "author": "MarketingTribune",
+    "category": "vakmedia"
+  },
+  {
+    "title": "ACM legt nadruk nu op de e-commerce",
+    "url": "https://www.ecommercenews.nl/acm-legt-nadruk-nu-op-de-ecommerce/",
+    "author": "Ecommercenews.nl",
+    "category": "vakmedia",
+    "date": "2026-03-13"
+  },
+  {
+    "title": "Toegankelijkheid is niet het doel van de EAA",
+    "url": "https://www.frankwatching.com/archive/2025/08/22/european-accessibility-act-toegankelijkheid-niet-het-doel/",
+    "author": "Justin van der Raaf (Frankwatching)",
+    "category": "vakmedia",
+    "date": "2025-08-22"
+  },
+  {
+    "title": "EAA: dit moet je weten voor juni 2025",
+    "url": "https://www.frankwatching.com/archive/2025/02/17/european-accessibility-act-juni-2025/",
+    "author": "Frankwatching",
+    "category": "vakmedia",
+    "date": "2025-02-17"
+  },
+  {
+    "title": "Webinar: digitale toegankelijkheid in 2026, van verplichting naar kans",
+    "url": "https://www.frankwatching.com/video-academy/webinar/digitale-toegankelijkheid-in-2026-van-verplichting-naar-kans/",
+    "author": "Frankwatching",
+    "category": "vakmedia",
+    "date": "2025-09-08"
+  },
+  {
+    "title": "EAA: wat betekent dit voor jou",
+    "url": "https://supportmagazine.nl/artikel/european-accessibility-act-wat-betekent-dit-voor-jou",
+    "author": "Support Magazine",
+    "category": "vakmedia",
+    "date": "2025-07-02"
+  },
+  {
+    "title": "Het verschil tussen de EAA en de WCAG",
+    "url": "https://ibestuur.nl/artikel/atabix/het-verschil-tussen-de-european-accessibility-act-eaa-en-de-wcag/",
+    "author": "iBestuur",
+    "category": "vakmedia"
+  },
+  {
+    "title": "Webwinkels voldoen niet aan eisen digitale toegankelijkheid",
+    "url": "https://marketingreport.nl/webwinkels-voldoen-niet-aan-eisen-digitale-toegankelijkheid/",
+    "author": "Marketingreport.nl",
+    "category": "vakmedia",
+    "date": "2025-04-15"
+  },
+  {
+    "title": "MKB-Nederland: veel bedrijven nog niet voorbereid",
+    "url": "https://informatieprofessional.nl/mkb-nederland-veel-bedrijven-nog-niet-voorbereid-op-nieuwe-toegankelijkheidswet/",
+    "author": "Informatieprofessional.nl",
+    "category": "vakmedia",
+    "date": "2025-06-23"
+  },
+  {
+    "title": "Is jouw onderwijsinstelling klaar voor de EAA",
+    "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/is-jouw-onderwijsinstelling-klaar-voor-de-european-accessibility",
+    "author": "SURF Communities",
+    "category": "onderwijs",
+    "date": "2025-06-02"
+  },
+  {
+    "title": "Wat betekent de EAA voor jouw onderwijsinstelling",
+    "url": "https://ecio.nl/handreiking/artikel-wat-betekent-de-eaa-voor-jouw-onderwijsinstelling/",
+    "author": "ECIO",
+    "category": "onderwijs"
+  },
+  {
+    "title": "Toegankelijk publiceren: hoe de EAA je uitgaven beïnvloedt",
+    "url": "https://www.pumbo.nl/support/boek-uitgeven/toegankelijk-publiceren-hoe-de-european-accessibility-act-jouw-uitgaven",
+    "author": "Pumbo",
+    "category": "uitgevers"
+  },
+  {
+    "title": "Toegankelijkheid",
+    "url": "https://www.algemene-uitgevers.nl/projecten/toegankelijkheid",
+    "author": "Mediafederatie / GAU",
+    "category": "uitgevers"
+  },
+  {
+    "title": "First EAA lawsuits hit French retailers",
+    "url": "https://testparty.ai/blog/first-european-accessibility-act-lawsuits-france-2025",
+    "author": "TestParty",
+    "category": "internationaal"
+  },
+  {
+    "title": "France's first EAA lawsuit",
+    "url": "https://getwcag.com/en/blog/france-first-eaa-european-accessibility-act-lawsuit",
+    "author": "getwcag.com",
+    "category": "internationaal"
+  },
+  {
+    "title": "EAA enforcement and implementation",
+    "url": "https://www.lflegal.com/lf-country/european-accessibility-act-eaa-enforcement-and-implementation/",
+    "author": "Law Office of Lainey Feingold",
+    "category": "internationaal"
+  },
+  {
+    "title": "European Accessibility Act overview",
+    "url": "https://www.twobirds.com/en/insights/2024/global/european-accessibility-act",
+    "author": "Bird & Bird",
+    "category": "internationaal"
+  }
 ]
