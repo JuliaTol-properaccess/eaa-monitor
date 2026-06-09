@@ -296,6 +296,53 @@ def _geo_summary_inner(stats, breakdown, date_nl):
     """
 
 
+def _nl_int(n):
+    """Heeltal met punt als duizendtalscheiding (nl-NL): 9036 -> 9.036."""
+    return f"{int(n):,}".replace(",", ".")
+
+
+def _hero_chart_inner(stats):
+    """Statische statusgrafiek voor de homepage-hero.
+
+    Spiegelt de dashboard-grafiek (renderStatusChart in app.js): balkbreedte
+    relatief aan de grootste groep, met een ondergrens van 2% zodat een kleine
+    groep zichtbaar blijft. Het aantal + percentage staat naast de balk (niet
+    erin), zodat het ook bij een korte balk leesbaar is."""
+    rows = [
+        ("bg-status-found", "#15803D", "Met verklaring", stats["with_statement"], stats["pct_with"]),
+        ("bg-status-notfound", "#CF202F", "Zonder verklaring", stats["without_statement"], stats["pct_without"]),
+        ("bg-status-error", "#6B7280", "Fout bij controle", stats["errors"], stats["pct_error"]),
+    ]
+    maxc = max(stats["with_statement"], stats["without_statement"], stats["errors"], 1)
+    bars = []
+    for dot, color, label, count, pct in rows:
+        width = max(count / maxc * 100, 2)
+        bars.append(f"""                <div class="flex items-center gap-3">
+                  <div class="w-32 sm:w-36 flex-shrink-0">
+                    <div class="flex items-center gap-2">
+                      <span class="status-dot {dot}" aria-hidden="true"></span>
+                      <span class="text-sm font-semibold">{label}</span>
+                    </div>
+                  </div>
+                  <div class="flex-1 flex items-center gap-3 min-w-0">
+                    <div class="flex-1 bg-white/10 rounded-full h-8 overflow-hidden">
+                      <div class="h-full rounded-full" style="width: {width:.1f}%; background-color: {color};"></div>
+                    </div>
+                    <span class="text-sm font-bold text-white w-20 text-right tabular-nums whitespace-nowrap">{_nl_int(count)} <span class="font-semibold text-white/60">({pct}%)</span></span>
+                  </div>
+                </div>""")
+    bars_html = "\n".join(bars)
+    return f"""
+            <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 sm:p-6">
+              <h2 class="text-lg font-bold">Verdeling per status</h2>
+              <p class="text-sm text-white/60 mt-1">Van de <strong class="font-semibold text-white/80">{_nl_int(stats['total'])}</strong> gecontroleerde webshops</p>
+              <div class="space-y-4 mt-5">
+{bars_html}
+              </div>
+            </div>
+            """
+
+
 def _dataset_jsonld(stats, date_nl, date_iso):
     obj = {
         "@context": "https://schema.org",
@@ -346,6 +393,8 @@ def _dataset_jsonld(stats, date_nl, date_iso):
 def patch_index_html(stats, breakdown, date_nl, date_iso):
     """Bake current numbers and the Dataset JSON-LD into the served index.html."""
     html = INDEX_FILE.read_text(encoding="utf-8")
+    html = _replace_region(html, "<!-- HERO-CHART:START -->", "<!-- HERO-CHART:END -->",
+                           _hero_chart_inner(stats))
     html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
                            _geo_summary_inner(stats, breakdown, date_nl))
     html = _replace_region(html, "<!--STAT:total-->", "<!--/STAT-->", str(stats["total"]))
