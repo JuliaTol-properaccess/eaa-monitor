@@ -85,6 +85,7 @@ def nl_date(d: _date) -> str:
 NAV_ITEMS = [
     ("Home", "/"),
     ("Monitor", "/monitor.html"),
+    ("Financieel", "/monitor-financieel.html"),
     ("Kennisbank", "/artikelen.html"),
     ("WCAG-audit", "/wcag-audit.html"),
     ("Over", "/over.html"),
@@ -469,6 +470,7 @@ def write_sitemap(articles: list):
     static_urls = [
         (f"{BASE_URL}/", "weekly", "1.0"),
         (f"{BASE_URL}/monitor.html", "weekly", "0.9"),
+        (f"{BASE_URL}/monitor-financieel.html", "weekly", "0.9"),
         (f"{BASE_URL}/artikelen.html", "weekly", "0.8"),
         (f"{BASE_URL}/wcag-audit.html", "monthly", "0.7"),
         (f"{BASE_URL}/over.html", "monthly", "0.5"),

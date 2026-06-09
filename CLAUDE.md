@@ -1,13 +1,13 @@
 # EAA Monitor
 
-Hub over de European Accessibility Act (EAA) in Nederland. Het dashboard controleert wekelijks of Nederlandse webshops een toegankelijkheidsverklaring hebben in hun footer; de kennisbank legt uit hoe de wet werkt (scope, toezicht, boetes, mythes).
+Hub over de European Accessibility Act (EAA) in Nederland. Het dashboard controleert wekelijks of Nederlandse webshops (ACM-toezicht) en financiële instellingen (AFM-toezicht) een toegankelijkheidsverklaring hebben in hun footer; de kennisbank legt uit hoe de wet werkt (scope, toezicht, boetes, mythes).
 
 ## Architectuur
 
 Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailwind via CDN + vanilla JS). Design: **Coinbase-look** (navy/Coinbase-blauw, Inter), bewust losgemaakt van het Proper Access-merk; Proper Access blijft in footer-attributie en schema.
 
 ### Tools
-- `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in `index.html` en de meet-regio in `llms.txt` bakt
+- `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de meet-regio in `llms.txt` bakt. **Twee datasets** via `--dataset {webshops,financieel}` (default `webshops`): `webshops` bakt in `index.html`, `financieel` in `monitor-financieel.html` + een hub-kaart op `index.html` (markers `STAT:finTotal`/`STAT:finPctWithout`)
 - `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
 - `tools/scrape_thuiswinkel.py` / `tools/scrape_webwinkelkeur.py` — Bouwen `webshops.json` aan met keurmerk-leden
@@ -15,12 +15,15 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 ### Data
 - `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels gescraped)
 - `data/results.json` — Automatisch gegenereerde scrape-resultaten (niet handmatig bewerken)
+- `data/financieel.json` — Handmatig samengestelde lijst van financiële instellingen uit de AFM/DNB-registers (velden: `name`, `url`, `category` ∈ `bank`/`verzekeraar`/`betaaldienst`/`beleggen`/`lease`, optioneel `bron`). Zelfde schema als `webshops.json`
+- `data/results-financieel.json` / `data/history-financieel.json` — Automatisch gegenereerd door de financiële scrape (niet handmatig bewerken)
 - `data/objections.json` — Webshops met bezwaar (overlay; client-side uitgesloten, geen e-mailadressen). Bijgewerkt via PR's van de bezwaar-Worker of handmatig
 - `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
 
 ### Pagina's (`public/`)
 - `index.html` — Hub-homepage: cijfer-gedreven hero, kerncijfers, uitgelichte artikelen. **Bevat de scraper-markers** (zie hieronder); niet verwijderen
-- `monitor.html` + `app.js` — Het interactieve dashboard (grafiek/tabel, filters, sorteerbare tabel). Leest `?q=` uit de URL voor de zoekterm vanaf de home
+- `monitor.html` + `app.js` — Het interactieve dashboard (grafiek/tabel, filters, sorteerbare tabel). Leest `?q=` uit de URL voor de zoekterm vanaf de home. `app.js` is config-gestuurd via `window.EAA_MONITOR_CONFIG` (`dataUrl`, `noun`, `categoryLabels`, `sortLabels`); zonder config gelden de webshop-defaults
+- `monitor-financieel.html` — Hetzelfde dashboard voor de financiële sector (AFM-toezicht), met eigen config (leest `data/results-financieel.json`, "Type"-kolom). **Bevat de scraper-markers**; gevuld door `scrape_footer.py --dataset financieel`. Deelt `app.js`
 - `artikelen.html` + `artikelen/*.html` — Kennisbank, **gegenereerd** door `build_articles.py` (niet handmatig bewerken)
 - `wcag-audit.html` — Overzicht van auditbureaus, **gegenereerd** door `build_auditbureaus.py` uit `data/auditbureaus.json` (niet handmatig bewerken)
 - `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
@@ -39,13 +42,16 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 
 ## Auto-gegenereerde regio's (niet breken)
 
-`scrape_footer.py` vervangt bij elke scrape de inhoud tussen letterlijke markers in `index.html`: `GEO-SUMMARY:START/END`, `STAT:total`, `STAT:pctWith`, `STAT:pctWithout`, `LASTUPDATED`, `JSONLD-DATASET:START/END`. Elke `STAT`-marker mag maar **één keer** voorkomen (de vervanging pakt alleen de eerste match). `llms.txt` heeft twee marker-regio's: `MEASUREMENT` (scraper) en `ARTICLES` (`build_articles.py`).
+`scrape_footer.py` vervangt bij elke scrape de inhoud tussen letterlijke markers in de doel-HTML (`index.html` voor webshops, `monitor-financieel.html` voor financieel): `GEO-SUMMARY:START/END`, `STAT:total`, `STAT:pctWith`, `STAT:pctWithout`, `LASTUPDATED`, `JSONLD-DATASET:START/END`. Elke `STAT`-marker mag maar **één keer** voorkomen (de vervanging pakt alleen de eerste match). De financiële run patcht daarnaast de hub-kaart op `index.html` (`STAT:finTotal`/`STAT:finPctWithout`). `llms.txt` heeft drie marker-regio's: `MEASUREMENT` (webshop-scraper), `FIN-MEASUREMENT` (financiële scraper) en `ARTICLES` (`build_articles.py`).
 
 ## Commando's
 
 ```bash
 # Scraper draaien (volledige lijst, sequentieel)
 python tools/scrape_footer.py
+
+# Financiële sector scrapen (kleine lijst, geen sharding)
+python tools/scrape_footer.py --dataset financieel
 
 # Sharded draaien (zoals de cron): 1 van de 8 delen, daarna mergen
 python tools/scrape_footer.py --shard 0 --num-shards 8 --out results.part-0.json
