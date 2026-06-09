@@ -12,7 +12,14 @@
   let currentPage = 1;
   const PAGE_SIZE = 25;
 
-  const CATEGORY_LABELS = {
+  // Dezelfde dashboard-logica bedient twee datasets (webshops en financiële
+  // instellingen). De pagina zet window.EAA_MONITOR_CONFIG; zonder config gelden
+  // de webshop-defaults, zodat monitor.html zich ongewijzigd gedraagt.
+  const CFG = window.EAA_MONITOR_CONFIG || {};
+  const DATA_URL = CFG.dataUrl || "data/results.json";
+  const NOUN = CFG.noun || "webshops";
+
+  const CATEGORY_LABELS = CFG.categoryLabels || {
     marketplace: "Marketplace",
     elektronica: "Elektronica",
     mode: "Mode",
@@ -50,9 +57,9 @@
 
   async function loadData() {
     try {
-      let response = await fetch("data/results.json");
+      let response = await fetch(DATA_URL);
       if (!response.ok) {
-        response = await fetch("../data/results.json");
+        response = await fetch("../" + DATA_URL);
       }
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
@@ -439,7 +446,7 @@
     const nextDisabled = currentPage === totalPages;
 
     nav.innerHTML = `
-      <p class="text-sm text-gray-600">${start}–${end} van ${totalItems} webshops</p>
+      <p class="text-sm text-gray-600">${start}–${end} van ${totalItems} ${NOUN}</p>
       <div class="flex items-center gap-1">
         <button class="page-prev inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${prevDisabled ? "opacity-40 cursor-default" : ""}" ${prevDisabled ? "disabled" : ""} aria-label="Vorige pagina">&lsaquo;</button>
         ${pages.join("")}
@@ -466,8 +473,8 @@
 
     document.getElementById("filter-count").textContent =
       filtered.length === allWebshops.length
-        ? `${filtered.length} webshops`
-        : `${filtered.length} van ${allWebshops.length} webshops`;
+        ? `${filtered.length} ${NOUN}`
+        : `${filtered.length} van ${allWebshops.length} ${NOUN}`;
 
     if (sorted.length === 0) {
       tbody.innerHTML =
@@ -530,7 +537,7 @@
 
   // Labels gelijk aan de ZICHTBARE kolomtekst, zodat de toegankelijke naam de
   // zichtbare tekst bevat (WCAG 2.5.3 Label in Name).
-  const SORT_LABELS = {
+  const SORT_LABELS = CFG.sortLabels || {
     name: "Webshop",
     category: "Categorie",
     status: "Status",
