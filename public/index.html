@@ -166,88 +166,28 @@
 
     <!-- Hero -->
     <section class="bg-navy text-white on-dark overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20 md:pt-20 md:pb-24">
-        <div class="grid md:grid-cols-2 gap-10 md:gap-12 md:items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+        <p class="text-sm font-semibold uppercase tracking-widest text-brand-bright">Elke maandag opnieuw gemeten</p>
+        <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-4xl">
+          Maar <span class="text-brand"><!--STAT:pctWith-->2%<!--/STAT--></span> van de Nederlandse webshops publiceert een toegankelijkheidsverklaring.
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
+          Sinds 28 juni 2025 verplicht de European Accessibility Act webshops om hun digitale kanalen toegankelijk te maken. Deze hub meet wekelijks wie een verklaring publiceert en legt uit hoe de wet werkt.
+        </p>
 
-          <div class="min-w-0">
-            <p class="text-sm font-semibold uppercase tracking-widest text-brand-bright">Elke maandag opnieuw gemeten</p>
-            <h1 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.07] tracking-tight break-words hyphens-auto">
-              Maar <span class="text-brand"><!--STAT:pctWith-->2%<!--/STAT--></span> van de Nederlandse webshops publiceert een toegankelijkheidsverklaring.
-            </h1>
-            <p class="mt-6 text-lg text-white/70 leading-relaxed">
-              Sinds 28 juni 2025 verplicht de European Accessibility Act webshops om hun digitale kanalen toegankelijk te maken. Deze hub meet wekelijks wie een verklaring publiceert en legt uit hoe de wet werkt.
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="/monitor.html" class="btn btn-on-dark">Bekijk het dashboard</a>
-              <a href="/artikelen.html" class="btn btn-ghost !text-white !border-white/30 hover:!bg-white/10">Lees de kennisbank</a>
-            </div>
-
-            <!-- Zoek (stuurt door naar de monitor) -->
-            <form id="home-search" class="mt-8 max-w-xl" role="search">
-              <label for="home-search-input" class="block text-sm font-semibold text-white/80 mb-2">Zoek een webshop in de monitor</label>
-              <div class="flex gap-2">
-                <input type="search" id="home-search-input" name="q" placeholder="bijv. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-xl text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-                <button type="submit" class="btn btn-primary">Zoeken</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Statusgrafiek. Auto-gegenereerd door tools/scrape_footer.py bij elke scrape. Niet handmatig bewerken. -->
-          <section aria-label="Verdeling per status" class="min-w-0">
-            <!-- HERO-CHART:START -->
-            <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 sm:p-6">
-              <h2 class="text-lg font-bold">Verdeling per status</h2>
-              <p class="text-sm text-white/60 mt-1">Van de <strong class="font-semibold text-white/80">10.397</strong> gecontroleerde webshops</p>
-              <div class="space-y-4 mt-5">
-                <div class="flex items-center gap-3">
-                  <div class="w-32 sm:w-36 flex-shrink-0">
-                    <div class="flex items-center gap-2">
-                      <span class="status-dot bg-status-found" aria-hidden="true"></span>
-                      <span class="text-sm font-semibold">Met verklaring</span>
-                    </div>
-                  </div>
-                  <div class="flex-1 flex items-center gap-3 min-w-0">
-                    <div class="flex-1 bg-white/10 rounded-full h-8 overflow-hidden">
-                      <div class="h-full rounded-full" style="width: 2.7%; background-color: #15803D;"></div>
-                    </div>
-                    <span class="text-sm font-bold text-white w-20 text-right tabular-nums whitespace-nowrap">248 <span class="font-semibold text-white/60">(2%)</span></span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="w-32 sm:w-36 flex-shrink-0">
-                    <div class="flex items-center gap-2">
-                      <span class="status-dot bg-status-notfound" aria-hidden="true"></span>
-                      <span class="text-sm font-semibold">Zonder verklaring</span>
-                    </div>
-                  </div>
-                  <div class="flex-1 flex items-center gap-3 min-w-0">
-                    <div class="flex-1 bg-white/10 rounded-full h-8 overflow-hidden">
-                      <div class="h-full rounded-full" style="width: 100%; background-color: #CF202F;"></div>
-                    </div>
-                    <span class="text-sm font-bold text-white w-20 text-right tabular-nums whitespace-nowrap">9.036 <span class="font-semibold text-white/60">(87%)</span></span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="w-32 sm:w-36 flex-shrink-0">
-                    <div class="flex items-center gap-2">
-                      <span class="status-dot bg-status-error" aria-hidden="true"></span>
-                      <span class="text-sm font-semibold">Fout bij controle</span>
-                    </div>
-                  </div>
-                  <div class="flex-1 flex items-center gap-3 min-w-0">
-                    <div class="flex-1 bg-white/10 rounded-full h-8 overflow-hidden">
-                      <div class="h-full rounded-full" style="width: 12.3%; background-color: #6B7280;"></div>
-                    </div>
-                    <span class="text-sm font-bold text-white w-20 text-right tabular-nums whitespace-nowrap">1.113 <span class="font-semibold text-white/60">(11%)</span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- HERO-CHART:END -->
-          </section>
-
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/monitor.html" class="btn btn-on-dark">Bekijk het dashboard</a>
+          <a href="/artikelen.html" class="btn btn-ghost !text-white !border-white/30 hover:!bg-white/10">Lees de kennisbank</a>
         </div>
+
+        <!-- Zoek (stuurt door naar de monitor) -->
+        <form id="home-search" class="mt-8 max-w-xl" role="search">
+          <label for="home-search-input" class="block text-sm font-semibold text-white/80 mb-2">Zoek een webshop in de monitor</label>
+          <div class="flex gap-2">
+            <input type="search" id="home-search-input" name="q" placeholder="bijv. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-xl text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+            <button type="submit" class="btn btn-primary">Zoeken</button>
+          </div>
+        </form>
       </div>
     </section>
 
