@@ -245,7 +245,7 @@
           data.total > 0 ? Math.round((data.found / data.total) * 100) : 0;
         const label = CATEGORY_LABELS[cat] || cat;
         return `
-        <div class="bg-white rounded-2xl border border-gray-200 p-4">
+        <div class="bg-white rounded-2xl border border-line p-4">
           <h3 class="m-0">
             <button class="cat-filter-btn text-left text-xs font-semibold text-gray-500 uppercase tracking-wide hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand rounded transition-colors" data-category="${escapeHtml(cat)}">${escapeHtml(label)}</button>
           </h3>
@@ -423,7 +423,7 @@
       if (p === currentPage) {
         pages.push(`<span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand text-white font-semibold text-sm" aria-current="page">${p}</span>`);
       } else {
-        pages.push(`<button class="page-btn inline-flex items-center justify-center w-9 h-9 rounded-lg border border-gray-300 text-sm text-navy hover:bg-gray-100" data-page="${p}" aria-label="Ga naar pagina ${p}">${p}</button>`);
+        pages.push(`<button class="page-btn inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100" data-page="${p}" aria-label="Ga naar pagina ${p}">${p}</button>`);
       }
     };
 
@@ -441,9 +441,9 @@
     nav.innerHTML = `
       <p class="text-sm text-gray-600">${start}–${end} van ${totalItems} webshops</p>
       <div class="flex items-center gap-1">
-        <button class="page-prev inline-flex items-center justify-center w-9 h-9 rounded-lg border border-gray-300 text-sm text-navy hover:bg-gray-100 ${prevDisabled ? "opacity-40 cursor-default" : ""}" ${prevDisabled ? "disabled" : ""} aria-label="Vorige pagina">&lsaquo;</button>
+        <button class="page-prev inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${prevDisabled ? "opacity-40 cursor-default" : ""}" ${prevDisabled ? "disabled" : ""} aria-label="Vorige pagina">&lsaquo;</button>
         ${pages.join("")}
-        <button class="page-next inline-flex items-center justify-center w-9 h-9 rounded-lg border border-gray-300 text-sm text-navy hover:bg-gray-100 ${nextDisabled ? "opacity-40 cursor-default" : ""}" ${nextDisabled ? "disabled" : ""} aria-label="Volgende pagina">&rsaquo;</button>
+        <button class="page-next inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${nextDisabled ? "opacity-40 cursor-default" : ""}" ${nextDisabled ? "disabled" : ""} aria-label="Volgende pagina">&rsaquo;</button>
       </div>`;
 
     nav.querySelectorAll(".page-btn").forEach((btn) =>
@@ -496,7 +496,7 @@
 
         const objectionLink = `<a href="/bezwaar.html?name=${encodeURIComponent(shop.name)}&url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="Bezwaar maken tegen vermelding van ${escapeHtml(shop.name)}">Bezwaar maken</a>`;
 
-        return `<tr class="${rowBg} border-b border-gray-100 hover:bg-softblue transition-colors">
+        return `<tr class="${rowBg} border-b border-line hover:bg-softblue transition-colors">
           <td class="py-3 px-4">
             <a href="${escapeHtml(shop.url)}" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-semibold">${escapeHtml(shop.name)}</a>
           </td>

@@ -80,7 +80,7 @@
           ? `<a href="${escapeHtml(o.url)}" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-semibold">${name}</a>
              <span class="block text-xs text-gray-500">${escapeHtml(displayUrl(o.url))}</span>`
           : name;
-        return `<tr class="${rowBg} border-b border-gray-100">
+        return `<tr class="${rowBg} border-b border-line">
           <td class="py-3 px-4">${nameCell}</td>
           <td class="py-3 px-4 text-sm text-gray-600">${formatDate(o.date)}</td>
         </tr>`;

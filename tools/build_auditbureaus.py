@@ -68,7 +68,7 @@ def _rows(bureaus):
         else:
             naam_cell = naam or "—"
         rows.append(
-            "        <tr class=\"border-b border-gray-100\">\n"
+            "        <tr class=\"border-b border-line\">\n"
             f"          <td class=\"py-4 px-4 align-top\">{naam_cell}</td>\n"
             f"          <td class=\"py-4 px-4 align-top text-gray-700\">{spec or '—'}</td>\n"
             f"          <td class=\"py-4 px-4 align-top text-gray-700 whitespace-nowrap\">{talen or '—'}</td>\n"
@@ -89,7 +89,7 @@ def _table_or_empty(bureaus):
           <table class="w-full text-sm">
             <caption class="sr-only">Auditbureaus voor een WCAG-audit in Nederland</caption>
             <thead>
-              <tr class="bg-gray-50 border-b border-gray-200 text-left">
+              <tr class="bg-gray-50 border-b border-line text-left">
                 <th scope="col" class="py-3 px-4 font-bold text-navy">Auditbureau</th>
                 <th scope="col" class="py-3 px-4 font-bold text-navy">Specialisatie</th>
                 <th scope="col" class="py-3 px-4 font-bold text-navy">Talen</th>

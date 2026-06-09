@@ -25,7 +25,7 @@
 
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-100">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
@@ -42,7 +42,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
-    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-gray-100 px-4 sm:px-6 py-2">
+    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
         <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Monitor</a>
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
@@ -85,38 +85,38 @@
         <div class="mb-5">
           <label for="bedrijfsnaam" class="block text-sm font-semibold text-navy mb-1">Bedrijfsnaam <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="text" id="bedrijfsnaam" name="bedrijfsnaam" required autocomplete="organization"
-            class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
         </div>
 
         <div class="mb-5">
           <label for="webadres" class="block text-sm font-semibold text-navy mb-1">Webadres van je webshop <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="url" id="webadres" name="webadres" required placeholder="https://www.voorbeeld.nl" autocomplete="url"
-            class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
         </div>
 
         <div class="mb-6">
           <label for="email" class="block text-sm font-semibold text-navy mb-1">Je e-mailadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-hint"
-            class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
           <p id="email-hint" class="text-sm text-gray-500 mt-1">We gebruiken dit alleen om contact met je op te nemen over je bezwaar. Het komt niet op de openbare pagina.</p>
         </div>
 
-        <fieldset class="mb-6 border border-gray-200 rounded-2xl p-5">
+        <fieldset class="mb-6 border border-line rounded-2xl p-5">
           <legend class="text-sm font-semibold text-navy px-1">Ik verklaar dat mijn onderneming:</legend>
           <div class="space-y-3 mt-2">
             <div class="flex items-start gap-3">
               <input type="checkbox" id="criterium-fte" name="verklaring_minder_dan_10_medewerkers" value="ja" required
-                class="mt-1 h-5 w-5 rounded border-gray-300 text-brand focus:ring-brand">
+                class="mt-1 h-5 w-5 rounded border-field text-brand focus:ring-brand">
               <label for="criterium-fte" class="text-sm leading-relaxed text-gray-700">minder dan 10 medewerkers heeft, gemiddeld over een jaar en gerekend in voltijdbanen</label>
             </div>
             <div class="flex items-start gap-3">
               <input type="checkbox" id="criterium-omzet" name="verklaring_omzet_onder_2_miljoen" value="ja" required
-                class="mt-1 h-5 w-5 rounded border-gray-300 text-brand focus:ring-brand">
+                class="mt-1 h-5 w-5 rounded border-field text-brand focus:ring-brand">
               <label for="criterium-omzet" class="text-sm leading-relaxed text-gray-700">een jaaromzet heeft van minder dan € 2 miljoen</label>
             </div>
             <div class="flex items-start gap-3">
               <input type="checkbox" id="criterium-b2b" name="verklaring_uitsluitend_b2b" value="ja" required
-                class="mt-1 h-5 w-5 rounded border-gray-300 text-brand focus:ring-brand">
+                class="mt-1 h-5 w-5 rounded border-field text-brand focus:ring-brand">
               <label for="criterium-b2b" class="text-sm leading-relaxed text-gray-700">uitsluitend aan bedrijven verkoopt, niet aan consumenten</label>
             </div>
           </div>
@@ -125,7 +125,7 @@
         <div class="mb-6">
           <label for="toelichting" class="block text-sm font-semibold text-navy mb-1">Toelichting</label>
           <textarea id="toelichting" name="toelichting" rows="3"
-            class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand"></textarea>
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand"></textarea>
           <p class="text-sm text-gray-500 mt-1">Optioneel. Heb je iets toe te voegen aan je bezwaar?</p>
         </div>
 

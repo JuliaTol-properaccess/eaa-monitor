@@ -92,7 +92,7 @@ Beantwoord de vragen hieronder voor een eerste indicatie. Dit is geen juridisch 
     var medewerkers = data.get('medewerkers');
     var omzet = data.get('omzet');
     if (!klant || !medewerkers || !omzet) {
-      out.innerHTML = '<p class="rounded-xl bg-white ring-1 ring-gray-200 p-4 text-navy">Beantwoord eerst alle drie de vragen.</p>';
+      out.innerHTML = '<p class="rounded-xl bg-white ring-1 ring-line p-4 text-navy">Beantwoord eerst alle drie de vragen.</p>';
       return;
     }
     var title, body, tone;
