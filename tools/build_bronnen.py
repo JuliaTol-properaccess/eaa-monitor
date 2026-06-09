@@ -62,21 +62,6 @@ CATEGORIES = [
 ]
 CAT_LABELS = dict(CATEGORIES)
 
-# Maanden voor Nederlandse datumweergave.
-NL_MONTHS = [
-    "", "januari", "februari", "maart", "april", "mei", "juni",
-    "juli", "augustus", "september", "oktober", "november", "december",
-]
-
-
-def nl_date(iso: str) -> str:
-    """ISO-datum (YYYY-MM-DD) naar '24 maart 2026'. Leeg bij ongeldige invoer."""
-    try:
-        y, m, d = (int(x) for x in str(iso).split("-")[:3])
-        return f"{d} {NL_MONTHS[m]} {y}"
-    except (ValueError, IndexError):
-        return ""
-
 
 def _filter_buttons(sources):
     counts = {slug: 0 for slug, _ in CATEGORIES}
@@ -108,23 +93,15 @@ def _items(sources):
         author = html.escape(str(s.get("author", "")).strip())
         cat = str(s.get("category", "")).strip()
         label = html.escape(CAT_LABELS.get(cat, cat))
-        iso = str(s.get("date", "")).strip()
-        date_str = nl_date(iso)
         # data-text voert het client-side zoeken; titel + auteur, lowercase.
         search_text = html.escape(f"{s.get('title', '')} {s.get('author', '')}".lower())
-        meta_left = f'<span class="text-gray-600">{author or "&mdash;"}</span>'
-        if date_str:
-            meta_left += (
-                '<span class="text-gray-300" aria-hidden="true"> · </span>'
-                f'<time datetime="{html.escape(iso)}" class="text-gray-500">{html.escape(date_str)}</time>'
-            )
         rows.append(
             f'        <li class="bron-item card p-5 flex flex-col gap-2" data-cat="{html.escape(cat)}" data-text="{search_text}">\n'
             f'          <a href="{html.escape(url)}" target="_blank" rel="noopener noreferrer" '
             f'class="font-bold text-navy hover:text-brand leading-snug">{title or url}'
             f'<span class="sr-only"> (opent in een nieuw tabblad)</span></a>\n'
             f'          <div class="flex items-center justify-between gap-3 text-sm">\n'
-            f'            <span>{meta_left}</span>\n'
+            f'            <span class="text-gray-600">{author or "&mdash;"}</span>\n'
             f'            <span class="bron-badge">{label}</span>\n'
             f'          </div>\n'
             f'        </li>'
@@ -146,8 +123,8 @@ def render(sources):
     </section>
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-2">
-      <div class="prose max-w-prose bg-white rounded-2xl shadow-sm px-6 sm:px-8 pt-8 pb-6">
-        <h2 class="mt-0">Hoe lees je deze lijst?</h2>
+      <div class="prose max-w-prose">
+        <h2>Hoe lees je deze lijst?</h2>
         <p>Bovenaan staan de gezaghebbende bronnen: toezichthouders, overheid en de wettekst zelf. Die wegen het zwaarst. Veel bureau- en blogartikelen zijn inhoudelijk prima, maar de cijfers wisselen, dus check een claim altijd tegen de primaire bron. Dit is een vindlijst, geen factcheck.</p>
       </div>
     </section>

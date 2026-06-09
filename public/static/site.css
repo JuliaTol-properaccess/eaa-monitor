@@ -193,6 +193,51 @@ body {
 }
 .notice-info    { background: #F5F8FF; border-color: #D6E0FF; }
 .notice-warning { background: #FFF8EC; border-color: #F4DFB0; }
+
+/* =========================================================================
+   Bronnenpagina: filterknoppen, badges, items
+   ========================================================================= */
+.bron-filter {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  padding: .4rem .85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--navy);
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.bron-filter:hover { border-color: var(--brand); color: var(--brand); }
+.bron-filter[aria-pressed="true"] {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.bron-count {
+  font-size: .75rem;
+  font-weight: 700;
+  opacity: .7;
+}
+.bron-filter[aria-pressed="true"] .bron-count { opacity: .9; }
+@media (prefers-reduced-motion: reduce) { .bron-filter { transition: none; } }
+
+.bron-badge {
+  flex-shrink: 0;
+  padding: .15rem .55rem;
+  border-radius: 9999px;
+  background: var(--softblue, #F5F8FF);
+  color: var(--brand-dark);
+  border: 1px solid #D6E0FF;
+  font-size: .7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.bron-item[hidden] { display: none !important; }
 .notice strong { color: var(--navy); }
 
 /* =========================================================================

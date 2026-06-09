@@ -3,8 +3,8 @@
  * Eén bron van waarheid voor kleuren en typografie. Wordt geladen NA de
  * Tailwind CDN-play-script op elke pagina (handmatig en gegenereerd).
  *
- * Designrichting: Coinbase-look. Bewust losgemaakt van het Proper Access-merk
- * (magenta/petrol). Proper Access blijft in de footer-attributie en schema.
+ * Designrichting: Coinbase-look. Neutrale eigen huisstijl voor de EAA Monitor,
+ * niet gekoppeld aan een ander merk.
  */
 tailwind.config = {
   theme: {
