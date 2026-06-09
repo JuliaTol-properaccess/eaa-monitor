@@ -29,6 +29,48 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/static/theme.js"></script>
   <link rel="stylesheet" href="/static/site.css">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://eaa-monitor.nl/vragen.html#faq",
+  "inLanguage": "nl-NL",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kun je je beroepen op een onevenredige last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Daar is geen simpel ja of nee op te geven. Of er sprake is van een onevenredige last, beoordeel je als bedrijf zelf. Dat doe je met alle criteria uit Bijlage VI van de EAA. De ACM legt dit uit op haar website. Daarnaast moet je een melding doen bij de ACM als je e-handelsdienst niet aan de toegankelijkheidseisen voldoet. Daarvoor staat een meldformulier op de site van de ACM. In dat formulier geef je aan of je vindt dat je bepaalde eisen niet kunt naleven omdat dat een onevenredige last oplevert. De ACM kan je beoordeling daarna opvragen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Geldt er een uitzondering als je afhankelijk bent van een bestaand technisch product van een externe leverancier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Volgens de ACM is alleen het feit dat je een externe leverancier gebruikt op zich geen reden voor een uitzondering. Je bent er zelf verantwoordelijk voor dat je dienst aan de toegankelijkheidsregels voldoet. Schakel je anderen in, dan moet je je ervan verzekeren dat zij producten leveren die voldoen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Binnen welke termijn moeten alle bevindingen opgelost zijn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Volgens de ACM moeten alle websites sinds 28 juni 2025 toegankelijk zijn. Wettelijk gezien hadden de bevindingen dus al opgelost moeten zijn."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Geldt er een overgangsperiode nu de wet net van kracht is?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. Volgens de ACM geldt voor e-handelsdiensten geen overgangsperiode."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body class="bg-white">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
@@ -41,13 +83,20 @@
       </a>
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
-          <a href="/monitor.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Webshops</a>
-          <a href="/monitor-financieel.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Financieel</a>
+          <div class="relative" data-dropdown>
+            <button type="button" data-dropdown-toggle class="text-sm font-semibold text-navy hover:text-brand transition-colors inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <div data-dropdown-menu class="hidden absolute left-0 top-full pt-2 z-50">
+              <div class="min-w-[12rem] bg-white rounded-xl shadow-lg ring-1 ring-line py-2">
+              <a href="/monitor.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-commerce</a>
+              <a href="/monitor-financieel.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Fin sector</a>
+              <a href="/over.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Over</a>
+              </div>
+            </div>
+          </div>
           <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Vragen</a>
           <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
-          <a href="/over.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Over</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -55,13 +104,18 @@
     </div>
     <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
-        <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Webshops</a>
-        <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financieel</a>
+        <div data-dropdown>
+          <button type="button" data-dropdown-toggle class="w-full flex items-center justify-between py-2.5 text-base font-semibold text-navy hover:text-brand" aria-expanded="false">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div data-dropdown-menu class="hidden pl-4 ml-1 border-l border-line">
+            <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-commerce</a>
+            <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Fin sector</a>
+            <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
+          </div>
+        </div>
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Vragen</a>
         <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
-        <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
     </nav>
   </header>
 
@@ -77,7 +131,7 @@
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-4">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12 pb-4">
       <div class="prose max-w-prose">
         <h2>Hoe het werkt</h2>
         <p>Je stelt je vraag via het formulier. Je hoeft geen naam of bedrijf op te geven. We bundelen vragen, leggen ze voor aan de toezichthouder die erover gaat (zoals de ACM of de AFM) en zetten het antwoord hier neer. Zo profiteert iedereen van het antwoord, zonder dat jij jezelf bekend hoeft te maken.</p>
@@ -87,10 +141,40 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-6" aria-label="Beantwoorde vragen">
       <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Beantwoorde vragen</h2>
 
-      <div class="card p-10 text-center text-gray-600">
-        <p class="text-lg">Er zijn nog geen vragen beantwoord.</p>
-        <p class="mt-2">Stel als eerste je vraag, dan leggen we hem voor aan de toezichthouder en publiceren we het antwoord hier.</p>
-        <a href="/vraag-stellen.html" class="btn btn-primary mt-6">Stel je vraag anoniem</a>
+      <div class="grid gap-6">
+        <article class="card reveal p-7 md:p-8">
+          <h2 class="text-xl font-extrabold text-navy leading-snug tracking-tight">Kun je je beroepen op een onevenredige last?</h2>
+          <p class="mt-1 text-sm text-gray-500">Beantwoord door ACM op 30 maart 2026</p>
+          <div class="prose max-w-none mt-4">
+<p>Daar is geen simpel ja of nee op te geven. Of er sprake is van een onevenredige last, beoordeel je als bedrijf zelf. Dat doe je met alle criteria uit Bijlage VI van de EAA. De ACM legt dit uit op haar website.</p>
+<p>Daarnaast moet je een melding doen bij de ACM als je e-handelsdienst niet aan de toegankelijkheidseisen voldoet. Daarvoor staat een meldformulier op de site van de ACM. In dat formulier geef je aan of je vindt dat je bepaalde eisen niet kunt naleven omdat dat een onevenredige last oplevert. De ACM kan je beoordeling daarna opvragen.</p>
+          </div>
+          <p class="mt-3 text-sm">Bron: <a href="https://www.acm.nl/toegankelijkheid" class="link" rel="nofollow noopener" target="_blank">ACM: toegankelijkheid</a></p>
+        </article>
+        <article class="card reveal p-7 md:p-8">
+          <h2 class="text-xl font-extrabold text-navy leading-snug tracking-tight">Geldt er een uitzondering als je afhankelijk bent van een bestaand technisch product van een externe leverancier?</h2>
+          <p class="mt-1 text-sm text-gray-500">Beantwoord door ACM op 30 maart 2026</p>
+          <div class="prose max-w-none mt-4">
+<p>Volgens de ACM is alleen het feit dat je een externe leverancier gebruikt op zich geen reden voor een uitzondering. Je bent er zelf verantwoordelijk voor dat je dienst aan de toegankelijkheidsregels voldoet. Schakel je anderen in, dan moet je je ervan verzekeren dat zij producten leveren die voldoen.</p>
+          </div>
+          <p class="mt-3 text-sm">Bron: <a href="https://www.acm.nl/toegankelijkheid" class="link" rel="nofollow noopener" target="_blank">ACM: toegankelijkheid</a></p>
+        </article>
+        <article class="card reveal p-7 md:p-8">
+          <h2 class="text-xl font-extrabold text-navy leading-snug tracking-tight">Binnen welke termijn moeten alle bevindingen opgelost zijn?</h2>
+          <p class="mt-1 text-sm text-gray-500">Beantwoord door ACM op 30 maart 2026</p>
+          <div class="prose max-w-none mt-4">
+<p>Volgens de ACM moeten alle websites sinds 28 juni 2025 toegankelijk zijn. Wettelijk gezien hadden de bevindingen dus al opgelost moeten zijn.</p>
+          </div>
+          <p class="mt-3 text-sm">Bron: <a href="https://www.acm.nl/toegankelijkheid" class="link" rel="nofollow noopener" target="_blank">ACM: toegankelijkheid</a></p>
+        </article>
+        <article class="card reveal p-7 md:p-8">
+          <h2 class="text-xl font-extrabold text-navy leading-snug tracking-tight">Geldt er een overgangsperiode nu de wet net van kracht is?</h2>
+          <p class="mt-1 text-sm text-gray-500">Beantwoord door ACM op 30 maart 2026</p>
+          <div class="prose max-w-none mt-4">
+<p>Nee. Volgens de ACM geldt voor e-handelsdiensten geen overgangsperiode.</p>
+          </div>
+          <p class="mt-3 text-sm">Bron: <a href="https://www.acm.nl/toegankelijkheid" class="link" rel="nofollow noopener" target="_blank">ACM: toegankelijkheid</a></p>
+        </article>
       </div>
     </section>
 

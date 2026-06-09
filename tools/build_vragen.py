@@ -205,7 +205,7 @@ def render(vragen):
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-4">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12 pb-4">
       <div class="prose max-w-prose">
         <h2>Hoe het werkt</h2>
         <p>Je stelt je vraag via het formulier. Je hoeft geen naam of bedrijf op te geven. We bundelen vragen, leggen ze voor aan de toezichthouder die erover gaat (zoals de ACM of de AFM) en zetten het antwoord hier neer. Zo profiteert iedereen van het antwoord, zonder dat jij jezelf bekend hoeft te maken.</p>

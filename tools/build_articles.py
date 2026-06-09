@@ -82,15 +82,19 @@ def nl_date(d: _date) -> str:
 
 # ── Gedeelde HTML-partials (single source of truth voor de hele site) ──────────
 
+# Nav-items: (label, href) voor een gewone link, of (label, [kinderen]) voor een
+# dropdown. De Monitor-dropdown bundelt de twee dashboards plus de over-pagina.
 NAV_ITEMS = [
     ("Home", "/"),
-    ("Webshops", "/monitor.html"),
-    ("Financieel", "/monitor-financieel.html"),
+    ("Monitor", [
+        ("E-commerce", "/monitor.html"),
+        ("Fin sector", "/monitor-financieel.html"),
+        ("Over", "/over.html"),
+    ]),
     ("Kennisbank", "/artikelen.html"),
     ("Bronnen", "/bronnen.html"),
     ("Vragen", "/vragen.html"),
     ("WCAG-audit", "/wcag-audit.html"),
-    ("Over", "/over.html"),
 ]
 
 
@@ -134,17 +138,58 @@ def shared_head(title, description, canonical, *, extra_head="", og_type="websit
 def site_header(active_path):
     """Sticky responsieve header: nav op lg+, hamburger op tablet/mobiel.
     active_path = huidige nav-pad (of "" als de pagina niet in de nav staat)."""
+    chevron = (
+        '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        '<polyline points="6 9 12 15 18 9"></polyline></svg>'
+    )
     desktop, mobile = [], []
-    for label, href in NAV_ITEMS:
-        is_active = href == active_path
-        cur = ' aria-current="page"' if is_active else ""
-        cls = "text-brand" if is_active else "text-navy hover:text-brand"
-        desktop.append(
-            f'<a href="{href}" class="text-sm font-semibold {cls} transition-colors"{cur}>{label}</a>'
-        )
-        mobile.append(
-            f'<a href="{href}" class="block py-2.5 text-base font-semibold {cls}"{cur}>{label}</a>'
-        )
+    for label, target in NAV_ITEMS:
+        if isinstance(target, list):
+            group_active = any(href == active_path for _, href in target)
+            pcls = "text-brand" if group_active else "text-navy hover:text-brand"
+            d_children, m_children = [], []
+            for clabel, chref in target:
+                cactive = chref == active_path
+                ccur = ' aria-current="page"' if cactive else ""
+                ccls = "text-brand" if cactive else "text-navy hover:text-brand"
+                d_children.append(
+                    f'<a href="{chref}" class="block px-4 py-2 text-sm font-semibold {ccls} hover:bg-softblue transition-colors"{ccur}>{clabel}</a>'
+                )
+                m_children.append(
+                    f'<a href="{chref}" class="block py-2.5 text-base font-semibold {ccls}"{ccur}>{clabel}</a>'
+                )
+            d_children_html = "\n              ".join(d_children)
+            m_children_html = "\n            ".join(m_children)
+            desktop.append(
+                f'''<div class="relative" data-dropdown>
+            <button type="button" data-dropdown-toggle class="text-sm font-semibold {pcls} transition-colors inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">{label}{chevron}</button>
+            <div data-dropdown-menu class="hidden absolute left-0 top-full pt-2 z-50">
+              <div class="min-w-[12rem] bg-white rounded-xl shadow-lg ring-1 ring-line py-2">
+              {d_children_html}
+              </div>
+            </div>
+          </div>'''
+            )
+            mobile.append(
+                f'''<div data-dropdown>
+          <button type="button" data-dropdown-toggle class="w-full flex items-center justify-between py-2.5 text-base font-semibold {pcls}" aria-expanded="false">{label}{chevron}</button>
+          <div data-dropdown-menu class="hidden pl-4 ml-1 border-l border-line">
+            {m_children_html}
+          </div>
+        </div>'''
+            )
+        else:
+            href = target
+            is_active = href == active_path
+            cur = ' aria-current="page"' if is_active else ""
+            cls = "text-brand" if is_active else "text-navy hover:text-brand"
+            desktop.append(
+                f'<a href="{href}" class="text-sm font-semibold {cls} transition-colors"{cur}>{label}</a>'
+            )
+            mobile.append(
+                f'<a href="{href}" class="block py-2.5 text-base font-semibold {cls}"{cur}>{label}</a>'
+            )
     desktop_html = "\n          ".join(desktop)
     mobile_html = "\n        ".join(mobile)
     return f"""  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>

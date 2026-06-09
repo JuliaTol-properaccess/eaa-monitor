@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "vraag": "Kun je je beroepen op een onevenredige last?",
+    "antwoord": "Daar is geen simpel ja of nee op te geven. Of er sprake is van een onevenredige last, beoordeel je als bedrijf zelf. Dat doe je met alle criteria uit Bijlage VI van de EAA. De ACM legt dit uit op haar website.\n\nDaarnaast moet je een melding doen bij de ACM als je e-handelsdienst niet aan de toegankelijkheidseisen voldoet. Daarvoor staat een meldformulier op de site van de ACM. In dat formulier geef je aan of je vindt dat je bepaalde eisen niet kunt naleven omdat dat een onevenredige last oplevert. De ACM kan je beoordeling daarna opvragen.",
+    "toezichthouder": "ACM",
+    "datum": "2026-03-30",
+    "thema": "scope",
+    "bron": { "titel": "ACM: toegankelijkheid", "url": "https://www.acm.nl/toegankelijkheid" }
+  },
+  {
+    "vraag": "Geldt er een uitzondering als je afhankelijk bent van een bestaand technisch product van een externe leverancier?",
+    "antwoord": "Volgens de ACM is alleen het feit dat je een externe leverancier gebruikt op zich geen reden voor een uitzondering. Je bent er zelf verantwoordelijk voor dat je dienst aan de toegankelijkheidsregels voldoet. Schakel je anderen in, dan moet je je ervan verzekeren dat zij producten leveren die voldoen.",
+    "toezichthouder": "ACM",
+    "datum": "2026-03-30",
+    "thema": "scope",
+    "bron": { "titel": "ACM: toegankelijkheid", "url": "https://www.acm.nl/toegankelijkheid" }
+  },
+  {
+    "vraag": "Binnen welke termijn moeten alle bevindingen opgelost zijn?",
+    "antwoord": "Volgens de ACM moeten alle websites sinds 28 juni 2025 toegankelijk zijn. Wettelijk gezien hadden de bevindingen dus al opgelost moeten zijn.",
+    "toezichthouder": "ACM",
+    "datum": "2026-03-30",
+    "thema": "praktijk",
+    "bron": { "titel": "ACM: toegankelijkheid", "url": "https://www.acm.nl/toegankelijkheid" }
+  },
+  {
+    "vraag": "Geldt er een overgangsperiode nu de wet net van kracht is?",
+    "antwoord": "Nee. Volgens de ACM geldt voor e-handelsdiensten geen overgangsperiode.",
+    "toezichthouder": "ACM",
+    "datum": "2026-03-30",
+    "thema": "praktijk",
+    "bron": { "titel": "ACM: toegankelijkheid", "url": "https://www.acm.nl/toegankelijkheid" }
+  }
+]
