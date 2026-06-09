@@ -16,6 +16,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://eaa-monitor.nl/bronnen.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://eaa-monitor.nl/wcag-audit.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
