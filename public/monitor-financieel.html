@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Het dashboard — EAA Monitor</title>
-  <meta name="description" content="Bekijk per Nederlandse webshop of er een toegankelijkheidsverklaring is gevonden. Filter op categorie en status, of zoek je eigen winkel op.">
-  <link rel="canonical" href="https://eaa-monitor.nl/monitor.html">
+  <title>Financiële monitor — EAA Monitor</title>
+  <meta name="description" content="Bekijk per Nederlandse bank, verzekeraar, betaaldienst en leasemaatschappij of er een toegankelijkheidsverklaring is gevonden. De AFM houdt toezicht op de financiële sector.">
+  <link rel="canonical" href="https://eaa-monitor.nl/monitor-financieel.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://eaa-monitor.nl/monitor.html">
-  <meta property="og:title" content="Het dashboard — EAA Monitor">
-  <meta property="og:description" content="Per webshop: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
+  <meta property="og:url" content="https://eaa-monitor.nl/monitor-financieel.html">
+  <meta property="og:title" content="Financiële monitor — EAA Monitor">
+  <meta property="og:description" content="Per financiële instelling: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
   <meta property="og:site_name" content="EAA Monitor">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Het dashboard — EAA Monitor">
-  <meta name="twitter:description" content="Per webshop: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
+  <meta name="twitter:title" content="Financiële monitor — EAA Monitor">
+  <meta name="twitter:description" content="Per financiële instelling: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
   <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +28,66 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/static/theme.js"></script>
   <link rel="stylesheet" href="/static/site.css">
+
+  <!-- Auto-gegenereerd door tools/scrape_footer.py --dataset financieel. Niet handmatig bewerken. -->
+  <!-- JSONLD-DATASET:START -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://eaa-monitor.nl/monitor-financieel.html#dataset",
+  "name": "Toegankelijkheidsverklaringen Nederlandse financiële instellingen",
+  "description": "Wekelijkse meting of 43 Nederlandse financiële instellingen een toegankelijkheidsverklaring publiceren. Op 9 juni 2026: 29 met verklaring, 12 zonder, 2 niet te controleren.",
+  "url": "https://eaa-monitor.nl/",
+  "creator": {
+    "@type": "Organization",
+    "name": "EAA Monitor",
+    "url": "https://eaa-monitor.nl/"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "inLanguage": "nl-NL",
+  "dateModified": "2026-06-09",
+  "temporalCoverage": "2026-03/2026-06",
+  "measurementTechnique": "Geautomatiseerde controle van de footer op links naar een toegankelijkheidsverklaring",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Aantal gecontroleerde financiële instellingen",
+      "value": 43
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Financiële instellingen met toegankelijkheidsverklaring",
+      "value": 29
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Financiële instellingen zonder toegankelijkheidsverklaring",
+      "value": 12
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Financiële instellingen niet te controleren",
+      "value": 2
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Percentage met verklaring",
+      "value": 67,
+      "unitText": "PERCENT"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://eaa-monitor.nl/data/results-financieel.json"
+    }
+  ]
+}
+  </script>
+  <!-- JSONLD-DATASET:END -->
 </head>
 <body class="bg-white">
 
@@ -41,8 +101,8 @@
       </a>
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
-          <a href="/monitor.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Monitor</a>
-          <a href="/monitor-financieel.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Financieel</a>
+          <a href="/monitor.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Monitor</a>
+          <a href="/monitor-financieel.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Financieel</a>
           <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
           <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
           <a href="/over.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Over</a>
@@ -53,8 +113,8 @@
     </div>
     <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
-        <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Monitor</a>
-        <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financieel</a>
+        <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Monitor</a>
+        <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Financieel</a>
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
         <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
         <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
@@ -69,13 +129,14 @@
         <div class="grid md:grid-cols-2 gap-8 md:gap-10 md:items-center">
 
           <div class="min-w-0">
-            <h1 class="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight break-words hyphens-auto">Hebben Nederlandse webshops een toegankelijkheidsverklaring?</h1>
-            <p class="mt-4 text-lg text-white/70 max-w-xl leading-relaxed">Elke maandag controleert deze monitor de footer van Nederlandse webshops op een link naar een toegankelijkheidsverklaring. Zoek je eigen winkel op of filter de lijst.</p>
+            <p class="text-sm font-semibold uppercase tracking-widest text-brand-bright">AFM-toezicht</p>
+            <h1 class="mt-3 text-3xl md:text-4xl font-extrabold leading-tight tracking-tight break-words hyphens-auto">Hebben Nederlandse banken en verzekeraars een toegankelijkheidsverklaring?</h1>
+            <p class="mt-4 text-lg text-white/70 max-w-xl leading-relaxed">Elke maandag controleert deze monitor de footer van Nederlandse financiële instellingen, banken, verzekeraars, betaaldiensten en leasemaatschappijen, op een link naar een toegankelijkheidsverklaring. De AFM houdt toezicht op de financiële sector.</p>
 
             <div class="mt-7 max-w-xl">
-              <label for="filter-search" class="block text-sm font-semibold text-white/80 mb-2">Zoek een webshop</label>
+              <label for="filter-search" class="block text-sm font-semibold text-white/80 mb-2">Zoek een instelling</label>
               <div class="flex gap-2">
-                <input type="search" id="filter-search" placeholder="bijv. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-xl text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+                <input type="search" id="filter-search" placeholder="bijv. ING, Achmea, Aegon..." class="flex-1 px-4 py-3 rounded-xl text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
                 <button type="button" id="search-btn" class="btn btn-primary">Zoeken</button>
               </div>
             </div>
@@ -84,8 +145,8 @@
           <section aria-label="Verdeling per status" class="min-w-0">
             <div class="flex items-end justify-between gap-4 mb-4">
               <div>
-                <h2 class="text-lg font-bold">Aantal webshops per status</h2>
-                <p class="text-sm text-white/60 mt-1">Verdeling van de <span id="chart-total">—</span> gecontroleerde webshops</p>
+                <h2 class="text-lg font-bold">Aantal instellingen per status</h2>
+                <p class="text-sm text-white/60 mt-1">Verdeling van de <span id="chart-total">—</span> gecontroleerde instellingen</p>
               </div>
               <div class="flex rounded-xl overflow-hidden ring-1 ring-white/20 shrink-0" role="tablist" aria-label="Weergave wisselen">
                 <button class="toggle-btn active px-4 py-2 text-sm font-semibold text-white/70" role="tab" aria-selected="true" aria-controls="chart-view" id="tab-chart">Grafiek</button>
@@ -99,7 +160,7 @@
 
             <div id="table-view" role="tabpanel" aria-labelledby="tab-table" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 hidden">
               <table class="w-full text-sm" id="status-table">
-                <caption class="sr-only">Aantal webshops per status</caption>
+                <caption class="sr-only">Aantal instellingen per status</caption>
                 <thead>
                   <tr class="border-b-2 border-white/20 text-left">
                     <th scope="col" class="py-3 px-2 font-bold">Status</th>
@@ -116,47 +177,67 @@
       </div>
     </section>
 
-    <!-- Kerncijfers (live via app.js) -->
+    <!-- Kerncijfers (live via app.js; statische fallback via scraper-markers) -->
     <section aria-label="Kerncijfers" class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div class="card p-6 text-center">
-          <p class="text-4xl font-extrabold text-navy tracking-tight" id="stat-total">—</p>
-          <p class="mt-1 text-sm font-semibold text-gray-500">webshops gecontroleerd</p>
+          <p class="text-4xl font-extrabold text-navy tracking-tight" id="stat-total"><!--STAT:total-->43<!--/STAT--></p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">instellingen gecontroleerd</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-extrabold text-status-found tracking-tight" id="stat-percentage">—</p>
+          <p class="text-4xl font-extrabold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->67%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft een verklaring</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-extrabold text-status-notfound tracking-tight" id="stat-percentage-without">—</p>
+          <p class="text-4xl font-extrabold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->28%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft geen verklaring</p>
         </div>
       </div>
-      <p class="mt-4 text-sm text-gray-600" id="last-updated">Laden...</p>
+      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 9 juni 2026<!--/LASTUPDATED--></p>
     </section>
 
-    <!-- Per categorie -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Verdeling per categorie">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Resultaat per categorie</h2>
+    <!-- Auto-gegenereerd door tools/scrape_footer.py --dataset financieel. Niet handmatig bewerken. -->
+    <!-- GEO-SUMMARY:START -->
+    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink">
+        <div class="max-w-3xl">
+          <p class="text-lg leading-relaxed">
+            Op <strong>9 juni 2026</strong> controleerde de EAA Monitor
+            <strong>43 Nederlandse financiële instellingen</strong> op een toegankelijkheidsverklaring:
+          </p>
+          <ul class="mt-4 space-y-2.5">
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>29 financiële instellingen (67%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>12 (28%)</strong> doen dat niet</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>2 (5%)</strong> kon de controle niet worden voltooid</span></li>
+          </ul>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 9 juni 2026. De monitor controleert alle financiële instellingen elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+        </div>
+      </div>
+    </section>
+    <!-- GEO-SUMMARY:END -->
+
+    <!-- Per type -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Verdeling per type">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Resultaat per type</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="category-cards"></div>
     </section>
 
     <!-- Volledige lijst -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Alle webshops">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Alle instellingen">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-4">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight">Alle webshops</h2>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight">Alle instellingen</h2>
         <p class="text-sm text-gray-500 mt-1 sm:mt-0" id="filter-count"></p>
       </div>
 
       <div class="rounded-2xl bg-softblue ring-1 ring-brand-light p-4 mb-4 text-sm text-ink">
-        Staat jouw webshop hier, maar val je buiten de EAA omdat je een micro-onderneming bent of alleen aan bedrijven levert? Dan kun je <a href="/bezwaar.html" class="link">bezwaar maken tegen vermelding</a>.
+        Staat jouw instelling hier, maar val je buiten de EAA? Dan kun je <a href="/bezwaar.html" class="link">bezwaar maken tegen vermelding</a>.
       </div>
 
       <div class="flex flex-wrap gap-3 mb-4">
         <div>
-          <label for="filter-category" class="block text-sm font-semibold text-navy mb-1">Categorie</label>
+          <label for="filter-category" class="block text-sm font-semibold text-navy mb-1">Type</label>
           <select id="filter-category" class="border border-field rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
-            <option value="">Alle categorieen</option>
+            <option value="">Alle typen</option>
           </select>
         </div>
         <div>
@@ -173,14 +254,14 @@
       <div class="card overflow-hidden">
         <div class="overflow-x-auto">
           <table class="w-full text-sm" id="results-table">
-            <caption class="sr-only">Overzicht van Nederlandse webshops en hun toegankelijkheidsverklaring status</caption>
+            <caption class="sr-only">Overzicht van Nederlandse financiële instellingen en hun toegankelijkheidsverklaring status</caption>
             <thead>
               <tr class="bg-gray-50 border-b border-line text-left">
                 <th scope="col" class="py-3 px-4" aria-sort="none">
-                  <button class="sort-btn font-bold text-navy" data-sort="name" aria-label="Sorteer op Webshop">Webshop</button>
+                  <button class="sort-btn font-bold text-navy" data-sort="name" aria-label="Sorteer op Instelling">Instelling</button>
                 </th>
                 <th scope="col" class="py-3 px-4 hidden sm:table-cell" aria-sort="none">
-                  <button class="sort-btn font-bold text-navy" data-sort="category" aria-label="Sorteer op Categorie">Categorie</button>
+                  <button class="sort-btn font-bold text-navy" data-sort="category" aria-label="Sorteer op Type">Type</button>
                 </th>
                 <th scope="col" class="py-3 px-4" aria-sort="none">
                   <button class="sort-btn font-bold text-navy" data-sort="status" aria-label="Sorteer op Status">Status</button>
@@ -218,11 +299,11 @@
         <div>
           <p class="text-sm font-semibold text-white/90 mb-3">Ontdek</p>
           <ul class="space-y-2 text-sm text-white/60">
-            <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
+            <li><a href="/monitor.html" class="hover:text-white">Webshop-dashboard</a></li>
+            <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
-            <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
           </ul>
         </div>
       </div>
@@ -232,9 +313,16 @@
 
   <script>
     window.EAA_MONITOR_CONFIG = {
-      dataUrl: "data/results.json",
-      noun: "webshops",
-      sortLabels: { name: "Webshop", category: "Categorie", status: "Status", date: "Gecontroleerd" },
+      dataUrl: "data/results-financieel.json",
+      noun: "instellingen",
+      sortLabels: { name: "Instelling", category: "Type", status: "Status", date: "Gecontroleerd" },
+      categoryLabels: {
+        bank: "Bank",
+        verzekeraar: "Verzekeraar",
+        betaaldienst: "Betaaldienst",
+        beleggen: "Beleggen",
+        lease: "Lease",
+      },
     };
   </script>
   <script src="app.js"></script>

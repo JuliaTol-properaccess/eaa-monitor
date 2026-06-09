@@ -85,6 +85,7 @@ def nl_date(d: _date) -> str:
 NAV_ITEMS = [
     ("Home", "/"),
     ("Monitor", "/monitor.html"),
+    ("Financieel", "/monitor-financieel.html"),
     ("Kennisbank", "/artikelen.html"),
     ("WCAG-audit", "/wcag-audit.html"),
     ("Over", "/over.html"),
@@ -182,6 +183,7 @@ def site_footer():
           <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
+            <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
             <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
@@ -469,7 +471,10 @@ def write_sitemap(articles: list):
     static_urls = [
         (f"{BASE_URL}/", "weekly", "1.0"),
         (f"{BASE_URL}/monitor.html", "weekly", "0.9"),
+        (f"{BASE_URL}/monitor-financieel.html", "weekly", "0.9"),
         (f"{BASE_URL}/artikelen.html", "weekly", "0.8"),
+        (f"{BASE_URL}/vragen.html", "weekly", "0.7"),
+        (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6"),
         (f"{BASE_URL}/wcag-audit.html", "monthly", "0.7"),
         (f"{BASE_URL}/over.html", "monthly", "0.5"),
         (f"{BASE_URL}/bezwaren.html", "weekly", "0.4"),

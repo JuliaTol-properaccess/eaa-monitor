@@ -145,6 +145,7 @@
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           <a href="/" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Home</a>
           <a href="/monitor.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Monitor</a>
+          <a href="/monitor-financieel.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Financieel</a>
           <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
           <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
           <a href="/over.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Over</a>
@@ -156,6 +157,7 @@
     <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         <a href="/" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Home</a>
         <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Monitor</a>
+        <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financieel</a>
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
         <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
         <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
@@ -230,6 +232,24 @@
     </section>
     <!-- GEO-SUMMARY:END -->
 
+    <!-- Financiële sector -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="financieel-heading">
+      <a href="/monitor-financieel.html" class="card card-hover reveal block p-7 md:p-9">
+        <div class="md:flex md:items-center md:justify-between gap-8">
+          <div class="max-w-2xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand">Nieuw &middot; AFM-toezicht</span>
+            <h2 id="financieel-heading" class="mt-2 text-2xl md:text-3xl font-extrabold text-navy tracking-tight">Ook de financiële sector</h2>
+            <p class="mt-3 text-gray-600 leading-relaxed">Banken, verzekeraars, betaaldiensten en leasemaatschappijen vallen onder de EAA, met de AFM als toezichthouder. We controleren <strong class="text-navy"><!--STAT:finTotal-->43<!--/STAT--></strong> instellingen wekelijks op een toegankelijkheidsverklaring.</p>
+            <span class="mt-5 inline-block text-sm font-semibold text-brand">Bekijk de financiële monitor &rarr;</span>
+          </div>
+          <div class="mt-6 md:mt-0 shrink-0 text-center">
+            <p class="text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:finPctWithout-->28%<!--/STAT--></p>
+            <p class="mt-1 text-sm font-semibold text-gray-500">heeft <strong class="font-extrabold text-gray-700">geen</strong> verklaring</p>
+          </div>
+        </div>
+      </a>
+    </section>
+
     <!-- Uitgelichte artikelen -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-24" aria-labelledby="kennisbank-heading">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
@@ -295,6 +315,21 @@
         <div class="card p-7 md:p-8">
           <h3 class="text-lg font-bold text-navy mb-3">Hoe controleert de EAA Monitor webshops?</h3>
           <p class="text-[15px] leading-relaxed text-gray-700">Deze monitor controleert elke maandag automatisch de footer van Nederlandse webshops op links naar een toegankelijkheidsverklaring. We zoeken op trefwoorden als toegankelijkheid en accessibility in linktekst en URL's. Let op: een link naar een verklaring betekent niet automatisch dat de website ook daadwerkelijk toegankelijk is. Het is een eerste indicatie van bewustzijn en naleving.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anoniem een vraag stellen aan de toezichthouder -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="vraag-heading">
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-14">
+        <div class="max-w-3xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand">Nieuw</span>
+          <h2 id="vraag-heading" class="mt-2 text-3xl md:text-4xl font-extrabold text-navy tracking-tight">Een vraag over de EAA, zonder slapende honden wakker te maken</h2>
+          <p class="mt-4 text-lg text-navy/70 leading-relaxed">Veel ondernemers hebben vragen aan de toezichthouder, maar aarzelen om zich te melden. Stel je vraag hier anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/vraag-stellen.html" class="btn btn-primary">Stel je vraag anoniem</a>
+            <a href="/vragen.html" class="btn btn-ghost">Lees beantwoorde vragen</a>
+          </div>
         </div>
       </div>
     </section>
