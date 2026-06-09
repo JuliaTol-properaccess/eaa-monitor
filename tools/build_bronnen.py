@@ -146,8 +146,8 @@ def render(sources):
     </section>
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-2">
-      <div class="prose max-w-prose">
-        <h2>Hoe lees je deze lijst?</h2>
+      <div class="prose max-w-prose bg-white rounded-2xl shadow-sm px-6 sm:px-8 pt-8 pb-6">
+        <h2 class="mt-0">Hoe lees je deze lijst?</h2>
         <p>Bovenaan staan de gezaghebbende bronnen: toezichthouders, overheid en de wettekst zelf. Die wegen het zwaarst. Veel bureau- en blogartikelen zijn inhoudelijk prima, maar de cijfers wisselen, dus check een claim altijd tegen de primaire bron. Dit is een vindlijst, geen factcheck.</p>
       </div>
     </section>
