@@ -23,12 +23,45 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 # Paths
 ROOT = Path(__file__).resolve().parent.parent
-WEBSHOPS_FILE = ROOT / "data" / "webshops.json"
-RESULTS_FILE = ROOT / "data" / "results.json"
-OBJECTIONS_FILE = ROOT / "data" / "objections.json"
-HISTORY_FILE = ROOT / "data" / "history.json"
-INDEX_FILE = ROOT / "public" / "index.html"
-LLMS_FILE = ROOT / "public" / "llms.txt"
+DATA_DIR = ROOT / "data"
+PUBLIC_DIR = ROOT / "public"
+OBJECTIONS_FILE = DATA_DIR / "objections.json"   # gedeeld door beide datasets
+LLMS_FILE = PUBLIC_DIR / "llms.txt"              # gedeeld; elke dataset bezit één regio
+
+# ── Datasets ──
+# Dezelfde scrape- en bake-logica bedient twee lijsten: webshops en financiële
+# instellingen. Elke dataset wijst naar zijn eigen invoer/uitvoer, het HTML-
+# bestand waarin de cijfers worden gebakken, de llms.txt-meetregio en het
+# zelfstandig naamwoord in de samenvatting-copy. Default is "webshops", zodat
+# bestaande aanroepen zonder --dataset ongewijzigd blijven werken.
+DATASETS = {
+    "webshops": {
+        "key": "webshops",
+        "input_file": DATA_DIR / "webshops.json",
+        "results_file": DATA_DIR / "results.json",
+        "history_file": DATA_DIR / "history.json",
+        "target_html": PUBLIC_DIR / "index.html",
+        "llms_region": "MEASUREMENT",
+        "noun": "webshops",
+        "dataset_id": "https://eaa-monitor.nl/#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse webshops",
+        "content_url": "https://eaa-monitor.nl/data/results.json",
+        "rescan_copy": "De monitor controleert alle webshops elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
+    "financieel": {
+        "key": "financieel",
+        "input_file": DATA_DIR / "financieel.json",
+        "results_file": DATA_DIR / "results-financieel.json",
+        "history_file": DATA_DIR / "history-financieel.json",
+        "target_html": PUBLIC_DIR / "monitor-financieel.html",
+        "llms_region": "FIN-MEASUREMENT",
+        "noun": "financiële instellingen",
+        "dataset_id": "https://eaa-monitor.nl/monitor-financieel.html#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse financiële instellingen",
+        "content_url": "https://eaa-monitor.nl/data/results-financieel.json",
+        "rescan_copy": "De monitor controleert alle financiële instellingen elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
+}
 
 # Keywords to detect accessibility statement links (case-insensitive)
 KEYWORDS_TEXT = [
@@ -274,36 +307,38 @@ def _replace_region(html, start, end, new_inner):
     return pattern.sub(lambda _m: start + new_inner + end, html, count=1)
 
 
-def _geo_summary_inner(stats, breakdown, date_nl):
-    # breakdown wordt niet meer getoond, maar blijft in de signatuur voor de aanroep.
+def _geo_summary_inner(stats, date_nl, ds):
+    noun = ds["noun"]
     return f"""
     <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
       <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink">
         <div class="max-w-3xl">
           <p class="text-lg leading-relaxed">
             Op <strong>{date_nl}</strong> controleerde de EAA Monitor
-            <strong>{stats['total']} Nederlandse webshops</strong> op een toegankelijkheidsverklaring:
+            <strong>{stats['total']} Nederlandse {noun}</strong> op een toegankelijkheidsverklaring:
           </p>
           <ul class="mt-4 space-y-2.5">
-            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>{stats['with_statement']} webshops ({stats['pct_with']}%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>{stats['with_statement']} {noun} ({stats['pct_with']}%)</strong> publiceren een verklaring</span></li>
             <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>{stats['without_statement']} ({stats['pct_without']}%)</strong> doen dat niet</span></li>
             <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>{stats['errors']} ({stats['pct_error']}%)</strong> kon de controle niet worden voltooid</span></li>
           </ul>
-          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}. De monitor controleert alle webshops elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}. {ds['rescan_copy']}</p>
         </div>
       </div>
     </section>
     """
 
 
-def _dataset_jsonld(stats, date_nl, date_iso):
+def _dataset_jsonld(stats, date_nl, date_iso, ds):
+    noun = ds["noun"]
+    noun_cap = noun[0].upper() + noun[1:]
     obj = {
         "@context": "https://schema.org",
         "@type": "Dataset",
-        "@id": "https://eaa-monitor.nl/#dataset",
-        "name": "Toegankelijkheidsverklaringen Nederlandse webshops",
+        "@id": ds["dataset_id"],
+        "name": ds["dataset_name"],
         "description": (
-            f"Wekelijkse meting of {stats['total']} Nederlandse webshops een "
+            f"Wekelijkse meting of {stats['total']} Nederlandse {noun} een "
             f"toegankelijkheidsverklaring publiceren. Op {date_nl}: "
             f"{stats['with_statement']} met verklaring, {stats['without_statement']} zonder, "
             f"{stats['errors']} niet te controleren."
@@ -324,16 +359,16 @@ def _dataset_jsonld(stats, date_nl, date_iso):
             "toegankelijkheidsverklaring"
         ),
         "variableMeasured": [
-            {"@type": "PropertyValue", "name": "Aantal gecontroleerde webshops", "value": stats["total"]},
-            {"@type": "PropertyValue", "name": "Webshops met toegankelijkheidsverklaring", "value": stats["with_statement"]},
-            {"@type": "PropertyValue", "name": "Webshops zonder toegankelijkheidsverklaring", "value": stats["without_statement"]},
-            {"@type": "PropertyValue", "name": "Webshops niet te controleren", "value": stats["errors"]},
+            {"@type": "PropertyValue", "name": f"Aantal gecontroleerde {noun}", "value": stats["total"]},
+            {"@type": "PropertyValue", "name": f"{noun_cap} met toegankelijkheidsverklaring", "value": stats["with_statement"]},
+            {"@type": "PropertyValue", "name": f"{noun_cap} zonder toegankelijkheidsverklaring", "value": stats["without_statement"]},
+            {"@type": "PropertyValue", "name": f"{noun_cap} niet te controleren", "value": stats["errors"]},
             {"@type": "PropertyValue", "name": "Percentage met verklaring", "value": stats["pct_with"], "unitText": "PERCENT"},
         ],
         "distribution": [{
             "@type": "DataDownload",
             "encodingFormat": "application/json",
-            "contentUrl": "https://eaa-monitor.nl/data/results.json",
+            "contentUrl": ds["content_url"],
         }],
     }
     return (
@@ -343,20 +378,40 @@ def _dataset_jsonld(stats, date_nl, date_iso):
     )
 
 
-def patch_index_html(stats, breakdown, date_nl, date_iso):
-    """Bake current numbers and the Dataset JSON-LD into the served index.html."""
-    html = INDEX_FILE.read_text(encoding="utf-8")
+def patch_target_html(stats, date_nl, date_iso, ds):
+    """Bake current numbers and the Dataset JSON-LD into the dataset's served HTML."""
+    target = ds["target_html"]
+    html = target.read_text(encoding="utf-8")
     html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
-                           _geo_summary_inner(stats, breakdown, date_nl))
+                           _geo_summary_inner(stats, date_nl, ds))
     html = _replace_region(html, "<!--STAT:total-->", "<!--/STAT-->", str(stats["total"]))
     html = _replace_region(html, "<!--STAT:pctWith-->", "<!--/STAT-->", f"{stats['pct_with']}%")
     html = _replace_region(html, "<!--STAT:pctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
     html = _replace_region(html, "<!--LASTUPDATED-->", "<!--/LASTUPDATED-->",
                            f"Laatst bijgewerkt: {date_nl}")
     html = _replace_region(html, "<!-- JSONLD-DATASET:START -->", "<!-- JSONLD-DATASET:END -->",
-                           _dataset_jsonld(stats, date_nl, date_iso))
-    INDEX_FILE.write_text(html, encoding="utf-8")
-    print(f"Patched {INDEX_FILE}")
+                           _dataset_jsonld(stats, date_nl, date_iso, ds))
+    target.write_text(html, encoding="utf-8")
+    print(f"Patched {target}")
+
+
+def patch_hub_card(stats):
+    """Vul de financiële kerncijfers op de hub-homepage (index.html).
+
+    De financiële run vult een kleine kaart op de homepage met het aantal
+    gecontroleerde instellingen en het percentage zonder verklaring. Eigen
+    marker-namen (finTotal/finPctWithout), dus losstaand van de webshop-STATs.
+    """
+    index = PUBLIC_DIR / "index.html"
+    if not index.exists():
+        return
+    html = index.read_text(encoding="utf-8")
+    if "<!--STAT:finTotal-->" not in html:
+        return  # hub-kaart nog niet aanwezig; sla over
+    html = _replace_region(html, "<!--STAT:finTotal-->", "<!--/STAT-->", str(stats["total"]))
+    html = _replace_region(html, "<!--STAT:finPctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
+    index.write_text(html, encoding="utf-8")
+    print(f"Patched {index} (financiële hub-kaart)")
 
 
 # llms.txt-regio's. De scraper bezit de meet-regio; tools/build_articles.py bezit
@@ -364,6 +419,8 @@ def patch_index_html(stats, breakdown, date_nl, date_iso):
 # overschrijven bij een wekelijkse scrape of een artikel-herbuild.
 LLMS_MEAS_START = "<!-- MEASUREMENT:START -->"
 LLMS_MEAS_END = "<!-- MEASUREMENT:END -->"
+LLMS_FIN_START = "<!-- FIN-MEASUREMENT:START -->"
+LLMS_FIN_END = "<!-- FIN-MEASUREMENT:END -->"
 LLMS_ART_START = "<!-- ARTICLES:START -->"
 LLMS_ART_END = "<!-- ARTICLES:END -->"
 
@@ -377,6 +434,46 @@ def _llms_measurement_block(stats, date_nl):
         f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
         f"{LLMS_MEAS_END}"
     )
+
+
+def _llms_fin_block(stats, date_nl):
+    return (
+        f"{LLMS_FIN_START}\n"
+        f"Financiële sector (AFM-toezicht), laatste meting ({date_nl}): "
+        f"{stats['total']} instellingen gecontroleerd,\n"
+        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
+        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
+        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
+        f"{LLMS_FIN_END}"
+    )
+
+
+def patch_llms_fin(stats, date_nl):
+    """Patch alleen de financiële meet-regio in public/llms.txt.
+
+    Laat de webshop-meetregio en de artikellijst-regio met rust. Bestaat het
+    bestand nog niet of mist de FIN-regio, dan wordt het blok ingevoegd direct
+    na de webshop-meetregio.
+    """
+    block = _llms_fin_block(stats, date_nl)
+    if not LLMS_FILE.exists():
+        print(f"{LLMS_FILE} bestaat nog niet; sla FIN-meetregio over")
+        return
+    text = LLMS_FILE.read_text(encoding="utf-8")
+    if LLMS_FIN_START in text and LLMS_FIN_END in text:
+        text = re.sub(
+            re.escape(LLMS_FIN_START) + r".*?" + re.escape(LLMS_FIN_END),
+            lambda _m: block,
+            text,
+            count=1,
+            flags=re.DOTALL,
+        )
+    elif LLMS_MEAS_END in text:
+        text = text.replace(LLMS_MEAS_END, LLMS_MEAS_END + "\n\n" + block, 1)
+    else:
+        text = text.rstrip() + "\n\n" + block + "\n"
+    LLMS_FILE.write_text(text, encoding="utf-8")
+    print(f"Patched {LLMS_FILE} (FIN-meetregio)")
 
 
 def write_llms_txt(stats, date_nl):
@@ -408,23 +505,28 @@ def write_llms_txt(stats, date_nl):
     else:
         articles_block = f"{LLMS_ART_START}\n{LLMS_ART_END}"
 
+    fin_block = f"{LLMS_FIN_START}\n{LLMS_FIN_END}"
     content = f"""# EAA Monitor
 
 > Onafhankelijke hub over de European Accessibility Act (EAA) in Nederland.
-> Monitort wekelijks of Nederlandse webshops een toegankelijkheidsverklaring
-> publiceren en legt uit hoe de wet werkt.
+> Monitort wekelijks of Nederlandse webshops en financiële instellingen een
+> toegankelijkheidsverklaring publiceren en legt uit hoe de wet werkt.
 
 {meas}
 
+{fin_block}
+
 ## Belangrijkste pagina's
 - [Dashboard](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops
+- [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
 - [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
 - [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland
 - [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
 - [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
 
 ## Data
-- [Volledige resultaten (JSON)](https://eaa-monitor.nl/data/results.json)
+- [Volledige resultaten webshops (JSON)](https://eaa-monitor.nl/data/results.json)
+- [Volledige resultaten financiële instellingen (JSON)](https://eaa-monitor.nl/data/results-financieel.json)
 
 {articles_block}
 """
@@ -432,15 +534,16 @@ def write_llms_txt(stats, date_nl):
     print(f"Wrote {LLMS_FILE}")
 
 
-def update_history(stats, date_iso):
-    """Append a weekly summary to data/history.json (idempotent per date).
+def update_history(stats, date_iso, ds):
+    """Append a weekly summary to the dataset's history.json (idempotent per date).
 
     Append-only time series that feeds the LinkedIn post-generator (week-over-week
     deltas) and, later, a trend chart on the dashboard. Re-running on the same day
     overwrites that day's entry instead of duplicating it.
     """
+    history_file = ds["history_file"]
     try:
-        with open(HISTORY_FILE) as f:
+        with open(history_file) as f:
             history = json.load(f)
         if not isinstance(history, list):
             history = []
@@ -460,25 +563,28 @@ def update_history(stats, date_iso):
     history.append(entry)
     history.sort(key=lambda h: h["date"])
 
-    HISTORY_FILE.write_text(
+    history_file.write_text(
         json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print(f"Updated {HISTORY_FILE} ({len(history)} meetpunten)")
+    print(f"Updated {history_file} ({len(history)} meetpunten)")
 
 
-def generate_geo_assets(output):
-    """Bake stats/schema into index.html and llms.txt from a results.json dict."""
+def generate_geo_assets(output, ds):
+    """Bake stats/schema into the dataset's served HTML and llms.txt."""
     objection_urls = _load_objection_urls()
-    public_webshops = [
+    public_entries = [
         r for r in output["webshops"] if _normalize_url(r["url"]) not in objection_urls
     ]
-    stats = _public_stats(public_webshops)
-    breakdown = _category_breakdown(public_webshops)
+    stats = _public_stats(public_entries)
     date_nl = _date_nl(output["last_updated"])
     date_iso = output["last_updated"][:10]
-    patch_index_html(stats, breakdown, date_nl, date_iso)
-    write_llms_txt(stats, date_nl)
-    update_history(stats, date_iso)
+    patch_target_html(stats, date_nl, date_iso, ds)
+    if ds["key"] == "financieel":
+        patch_hub_card(stats)
+        patch_llms_fin(stats, date_nl)
+    else:
+        write_llms_txt(stats, date_nl)
+    update_history(stats, date_iso, ds)
 
 
 def scrape_webshops(webshops, now):
@@ -539,20 +645,21 @@ def build_output(results, now):
     }
 
 
-def finalize(output):
-    """Write results.json and (re)generate the GEO assets served to crawlers."""
-    RESULTS_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(RESULTS_FILE, "w") as f:
+def finalize(output, ds):
+    """Write the dataset's results.json and (re)generate the GEO assets."""
+    results_file = ds["results_file"]
+    results_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(results_file, "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    generate_geo_assets(output)
-    print(f"\nKlaar! Resultaten opgeslagen in {RESULTS_FILE}")
+    generate_geo_assets(output, ds)
+    print(f"\nKlaar! Resultaten opgeslagen in {results_file}")
     print(f"  Totaal: {output['total']}")
     print(f"  Met verklaring: {output['with_statement']}")
     print(f"  Zonder verklaring: {output['without_statement']}")
     print(f"  Fouten: {output['errors']}")
 
 
-def merge_parts(merge_dir, now):
+def merge_parts(merge_dir, now, ds):
     """Combine all results.part-*.json files in a directory into final results.json.
 
     De-duplicates on normalized URL (keeping the first seen) in case shard ranges
@@ -574,54 +681,57 @@ def merge_parts(merge_dir, now):
             seen.add(key)
             combined.append(r)
         print(f"  {part.name}: {len(entries)} entries")
-    print(f"Samengevoegd: {len(combined)} unieke webshops uit {len(parts)} shards")
-    finalize(build_output(combined, now))
+    print(f"Samengevoegd: {len(combined)} unieke entries uit {len(parts)} shards")
+    finalize(build_output(combined, now), ds)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Scrape webshop footers for accessibility statements")
-    parser.add_argument("--limit", type=int, help="Limit number of webshops to check (for testing)")
+    parser = argparse.ArgumentParser(description="Scrape footers for accessibility statements")
+    parser.add_argument("--dataset", choices=list(DATASETS), default="webshops",
+                        help="Welke lijst scrapen: webshops (default) of financieel")
+    parser.add_argument("--limit", type=int, help="Limit number of entries to check (for testing)")
     parser.add_argument("--shard", type=int, help="0-based index of this shard")
     parser.add_argument("--num-shards", type=int, help="Total number of shards")
     parser.add_argument("--out", help="Where to write partial results (shard mode)")
     parser.add_argument("--merge", help="Directory of results.part-*.json to merge into final results.json")
     args = parser.parse_args()
 
+    ds = DATASETS[args.dataset]
     now = datetime.now(timezone.utc).isoformat()
 
     # Merge mode: combine shard outputs, generate assets, done.
     if args.merge:
-        merge_parts(args.merge, now)
+        merge_parts(args.merge, now, ds)
         return
 
-    # Load webshops
-    with open(WEBSHOPS_FILE) as f:
-        webshops = json.load(f)
+    # Load the dataset's input list
+    with open(ds["input_file"]) as f:
+        entries = json.load(f)
 
     if args.limit:
-        webshops = webshops[: args.limit]
+        entries = entries[: args.limit]
 
-    # Shard mode: take every Nth shop so load spreads evenly across shards.
+    # Shard mode: take every Nth entry so load spreads evenly across shards.
     sharded = args.shard is not None and args.num_shards
     if sharded:
-        webshops = webshops[args.shard:: args.num_shards]
-        print(f"Shard {args.shard}/{args.num_shards}: {len(webshops)} webshops")
+        entries = entries[args.shard:: args.num_shards]
+        print(f"Shard {args.shard}/{args.num_shards}: {len(entries)} entries")
     else:
-        print(f"Checking {len(webshops)} webshops...")
+        print(f"Checking {len(entries)} entries ({args.dataset})...")
 
-    results = scrape_webshops(webshops, now)
+    results = scrape_webshops(entries, now)
 
     # Shard mode writes a partial file for the merge step; it must NOT finalize
     # (that would clobber results.json and regenerate assets from a partial set).
     if sharded:
-        out = Path(args.out) if args.out else RESULTS_FILE.parent / f"results.part-{args.shard}.json"
+        out = Path(args.out) if args.out else ds["results_file"].parent / f"results.part-{args.shard}.json"
         out.parent.mkdir(parents=True, exist_ok=True)
         with open(out, "w") as f:
             json.dump({"last_updated": now, "webshops": results}, f, indent=2, ensure_ascii=False)
         print(f"\nShard {args.shard} klaar: {len(results)} resultaten -> {out}")
         return
 
-    finalize(build_output(results, now))
+    finalize(build_output(results, now), ds)
 
 
 if __name__ == "__main__":

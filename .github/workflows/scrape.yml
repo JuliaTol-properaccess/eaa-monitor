@@ -63,8 +63,11 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        # Merge only needs the script to import; no browser download required.
-        run: pip install -r requirements.txt
+        # Merge imports the script; the financial scrape also drives a browser.
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
 
       - name: Download all partial results
         uses: actions/download-artifact@v4
@@ -76,10 +79,14 @@ jobs:
       - name: Merge shards and generate assets
         run: python tools/scrape_footer.py --merge parts
 
+      - name: Scrape financial sector
+        # Small curated list (~tens of institutions); runs sequentially, no sharding.
+        run: python tools/scrape_footer.py --dataset financieel
+
       - name: Commit and push results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json data/history.json public/index.html public/llms.txt
+          git add data/results.json data/history.json data/results-financieel.json data/history-financieel.json public/index.html public/monitor-financieel.html public/llms.txt
           git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
           git push

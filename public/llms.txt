@@ -1,8 +1,8 @@
 # EAA Monitor
 
 > Onafhankelijke hub over de European Accessibility Act (EAA) in Nederland.
-> Monitort wekelijks of Nederlandse webshops een toegankelijkheidsverklaring
-> publiceren en legt uit hoe de wet werkt.
+> Monitort wekelijks of Nederlandse webshops en financiële instellingen een
+> toegankelijkheidsverklaring publiceren en legt uit hoe de wet werkt.
 
 <!-- MEASUREMENT:START -->
 Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
@@ -11,18 +11,28 @@ Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
 1113 (11%) niet te controleren.
 <!-- MEASUREMENT:END -->
 
+<!-- FIN-MEASUREMENT:START -->
+Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 68 instellingen gecontroleerd,
+44 (65%) met toegankelijkheidsverklaring,
+23 (34%) zonder, en
+1 (1%) niet te controleren.
+<!-- FIN-MEASUREMENT:END -->
+
 ## Belangrijkste pagina's
 - [Dashboard](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops
+- [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
 - [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
 - [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland
 - [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
 - [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
 
 ## Data
-- [Volledige resultaten (JSON)](https://eaa-monitor.nl/data/results.json)
+- [Volledige resultaten webshops (JSON)](https://eaa-monitor.nl/data/results.json)
+- [Volledige resultaten financiële instellingen (JSON)](https://eaa-monitor.nl/data/results-financieel.json)
 
 <!-- ARTICLES:START -->
 ## Artikelen (Kennisbank)
+- [De EAA en de financiële sector: wat doet de AFM?](https://eaa-monitor.nl/artikelen/eaa-financiele-sector.html): Banken, verzekeraars, betaaldiensten en leasemaatschappijen vallen onder de European Accessibility Act. Niet de ACM maar de Autoriteit Financiële Markten houdt toezicht. Lees wat dat betekent en hoe de sector ervoor staat.
 - [Welke subsidies zijn er voor digitale toegankelijkheid?](https://eaa-monitor.nl/artikelen/subsidies-voor-digitale-toegankelijkheid.html): Online overzichten van EAA-subsidies zitten vol fouten. We checkten welke regelingen er écht zijn. Een landelijke pot is er niet. Wel een handvol gemeentelijke regelingen, met flinke verschillen in wat ze dekken.
 - [Waarom accessibility-overlays je probleem niet oplossen](https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html): Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.
 - [Zo schrijf je een toegankelijkheidsverklaring voor je webshop](https://eaa-monitor.nl/artikelen/toegankelijkheidsverklaring-schrijven.html): Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Lees wat erin hoort, hoe je hem publiceert en waarom hij niet los staat van echte toegankelijkheid.
