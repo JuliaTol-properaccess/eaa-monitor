@@ -11,6 +11,8 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
 - `tools/build_vragen.py` — Rendert `data/vragen.json` → `public/vragen.html` (server-rendered vraag-en-antwoord met FAQPage JSON-LD). Deelt head/header/footer met `build_articles.py`
+- `tools/build_bronnen.py` — Rendert `data/bronnen.json` → `public/bronnen.html` (server-rendered, filterbaar bronnenoverzicht). Deelt head/header/footer met `build_articles.py`; de filters/zoek werken client-side via `public/static/bronnen.js`
+- `tools/fetch_bron_dates.py` — Best-effort: haalt elke bron-URL op en vult `date` aan in `data/bronnen.json` (uit `datePublished`/`article:published_time`/`<time>`). Verzint nooit een datum; vindt het niets, dan blijft het veld leeg
 - `tools/scrape_thuiswinkel.py` / `tools/scrape_webwinkelkeur.py` — Bouwen `webshops.json` aan met keurmerk-leden
 
 ### Data
@@ -21,6 +23,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `data/objections.json` — Webshops met bezwaar (overlay; client-side uitgesloten, geen e-mailadressen). Bijgewerkt via PR's van de bezwaar-Worker of handmatig
 - `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
 - `data/vragen.json` — Handmatig samengestelde lijst van beantwoorde praktijkvragen (velden: `vraag`, `antwoord`, optioneel `toezichthouder`, `datum`, `thema`, `bron`). Gevuld vanuit binnengekomen anonieme vragen; nooit antwoorden verzinnen
+- `data/bronnen.json` — Externe bronnen over de EAA voor de bronnenpagina (velden: `title`, `url`, `author`, `category`, optioneel `date`). `category` uit de vaste lijst in `build_bronnen.py`. `date` wordt aangevuld door `fetch_bron_dates.py`
 
 ### Pagina's (`public/`)
 - `index.html` — Hub-homepage: cijfer-gedreven hero, kerncijfers, uitgelichte artikelen. **Bevat de scraper-markers** (zie hieronder); niet verwijderen
@@ -30,6 +33,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `wcag-audit.html` — Overzicht van auditbureaus, **gegenereerd** door `build_auditbureaus.py` uit `data/auditbureaus.json` (niet handmatig bewerken)
 - `vragen.html` — Vragen uit de praktijk, **gegenereerd** door `build_vragen.py` uit `data/vragen.json` (niet handmatig bewerken)
 - `vraag-stellen.html` — Anoniem vraagformulier → bezwaar-Worker (`VRAAG_ENDPOINT`, route `/vraag`). Handgeschreven
+- `bronnen.html` — Doorzoekbaar bronnenoverzicht met categoriefilters, **gegenereerd** door `build_bronnen.py` uit `data/bronnen.json` (niet handmatig bewerken)
 - `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
 - `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
 - `over.html` — Over het dashboard
@@ -70,6 +74,12 @@ python tools/build_auditbureaus.py
 
 # Praktijkvragen-pagina (her)bouwen na een wijziging in data/vragen.json
 python tools/build_vragen.py
+# Bronnenpagina (her)bouwen na een wijziging in data/bronnen.json
+python tools/build_bronnen.py
+
+# Publicatiedatums aanvullen in data/bronnen.json (best-effort, haalt de URL's op)
+python tools/fetch_bron_dates.py            # alleen ontbrekende
+python tools/fetch_bron_dates.py --overwrite  # ook bestaande opnieuw
 
 # Frontend lokaal testen
 python -m http.server 8000 -d public
@@ -84,6 +94,7 @@ playwright install chromium
 ```
 webshops.json (handmatig) → scrape_footer.py (cron) → results.json (auto) → index.html (statisch)
 content/artikelen/*.md → build_articles.py → public/artikelen/*.html + artikelen.html + sitemap.xml
+data/bronnen.json → fetch_bron_dates.py (datums) → build_bronnen.py → public/bronnen.html
 bezwaar.html → Worker → PR op objections.json → app.js sluit bezwaarmakers uit → bezwaren.html toont ze
 ```
 
