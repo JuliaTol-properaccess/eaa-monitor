@@ -1,10 +1,10 @@
 [
   {
     "date": "2026-06-09",
-    "total": 43,
-    "with_statement": 29,
-    "without_statement": 12,
-    "errors": 2,
-    "pct_with": 67
+    "total": 68,
+    "with_statement": 44,
+    "without_statement": 23,
+    "errors": 1,
+    "pct_with": 65
   }
 ]
