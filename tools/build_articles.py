@@ -475,10 +475,10 @@ def render_article(meta: dict) -> str:
 
     <div class="bg-navy text-white on-dark">
       <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
-        <a href="/artikelen.html" class="text-sm font-semibold text-white/70 hover:text-white">&larr; Kennisbank</a>
+        <a href="/artikelen.html" class="text-sm font-semibold text-white/90 hover:text-white">&larr; Kennisbank</a>
         <p class="mt-6 inline-block text-xs font-bold uppercase tracking-wider text-brand-bright bg-white/5 px-3 py-1 rounded-full ring-1 ring-white/15">{html.escape(theme_label)}</p>
         <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">{html.escape(meta["title"])}</h1>
-        <p class="mt-4 text-lg text-white/70 leading-relaxed">{html.escape(meta["description"])}</p>
+        <p class="mt-4 text-lg text-white/90 leading-relaxed">{html.escape(meta["description"])}</p>
         <p class="mt-6 text-sm text-white/50">Gepubliceerd op {nl_date(meta["date"])}</p>
       </div>
     </div>
@@ -534,7 +534,7 @@ def render_kennisbank(articles: list) -> str:
     <div class="bg-navy text-white on-dark">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
         <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Alles over de<br>European Accessibility Act</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Heldere uitleg zonder paniek of jargon. Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
+        <p class="mt-6 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">Heldere uitleg zonder paniek of jargon. Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
       </div>
     </div>
 

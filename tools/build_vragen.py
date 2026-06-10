@@ -198,7 +198,7 @@ def render(vragen):
     <section class="bg-navy text-white on-dark">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
         <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Vragen uit de praktijk</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
+        <p class="mt-6 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="/vraag-stellen.html" class="btn btn-on-dark">Stel je vraag anoniem</a>
         </div>
