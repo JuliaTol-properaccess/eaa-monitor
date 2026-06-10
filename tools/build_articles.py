@@ -234,18 +234,18 @@ def site_footer():
       <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
         <div>
           <p class="font-extrabold text-lg tracking-tight">Blijf op de hoogte van de EAA</p>
-          <p class="mt-2 text-sm text-white/90 max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
+          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
         </div>
         <form id="newsletter-form" data-endpoint="{NEWSLETTER_ENDPOINT}" novalidate>
           <div class="hidden" aria-hidden="true">
             <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </div>
-          <label for="newsletter-email" class="block text-sm font-semibold text-white/90 mb-1.5">Je e-mailadres</label>
+          <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
             <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
             <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Inschrijven</button>
           </div>
-          <p class="mt-2 text-xs text-white/90">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
+          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
         </form>
       </div>
@@ -255,11 +255,11 @@ def site_footer():
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
             <span>Monitor</span>
           </p>
-          <p class="mt-4 text-sm text-white/90 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
         </div>
         <div>
-          <p class="text-sm font-semibold text-white/90 mb-3">Monitor &amp; uitleg</p>
-          <ul class="space-y-2 text-sm text-white/90">
+          <p class="text-sm font-semibold text-white mb-3">Monitor &amp; uitleg</p>
+          <ul class="space-y-2 text-sm text-white">
             <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
             <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
             <li><a href="/monitor-telecom.html" class="hover:text-white">Telecommonitor</a></li>
@@ -271,8 +271,8 @@ def site_footer():
           </ul>
         </div>
         <div>
-          <p class="text-sm font-semibold text-white/90 mb-3">Meedoen &amp; info</p>
-          <ul class="space-y-2 text-sm text-white/90">
+          <p class="text-sm font-semibold text-white mb-3">Meedoen &amp; info</p>
+          <ul class="space-y-2 text-sm text-white">
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
@@ -280,7 +280,7 @@ def site_footer():
           </ul>
         </div>
       </div>
-      <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white/90">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+      <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
     </div>
     <script src="/static/newsletter.js"></script>
   </footer>
@@ -480,11 +480,11 @@ def render_article(meta: dict) -> str:
 
     <div class="bg-navy text-white on-dark">
       <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
-        <a href="/artikelen.html" class="text-sm font-semibold text-white/90 hover:text-white">&larr; Kennisbank</a>
+        <a href="/artikelen.html" class="text-sm font-semibold text-white hover:text-white">&larr; Kennisbank</a>
         <p class="mt-6 inline-block text-xs font-bold uppercase tracking-wider text-brand-bright bg-white/5 px-3 py-1 rounded-full ring-1 ring-white/15">{html.escape(theme_label)}</p>
         <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">{html.escape(meta["title"])}</h1>
-        <p class="mt-4 text-lg text-white/90 leading-relaxed">{html.escape(meta["description"])}</p>
-        <p class="mt-6 text-sm text-white/50">Gepubliceerd op {nl_date(meta["date"])}</p>
+        <p class="mt-4 text-lg text-white leading-relaxed">{html.escape(meta["description"])}</p>
+        <p class="mt-6 text-sm text-white">Gepubliceerd op {nl_date(meta["date"])}</p>
       </div>
     </div>
 
@@ -496,7 +496,7 @@ def render_article(meta: dict) -> str:
 
       <div class="mt-14 rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-extrabold text-navy tracking-tight">Wil je weten waar je staat?</h2>
-        <p class="mt-3 text-navy/70 leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
+        <p class="mt-3 text-navy leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/wcag-audit.html" class="btn btn-primary">Bekijk auditbureaus</a>
           <a href="/monitor.html" class="btn btn-ghost">Check jouw webshop in de monitor</a>
@@ -539,7 +539,7 @@ def render_kennisbank(articles: list) -> str:
     <div class="bg-navy text-white on-dark">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
         <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Alles over de<br>European Accessibility Act</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">Heldere uitleg zonder paniek of jargon. Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
+        <p class="mt-6 text-lg md:text-xl text-white max-w-2xl leading-relaxed">Heldere uitleg zonder paniek of jargon. Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
       </div>
     </div>
 

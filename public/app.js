@@ -194,7 +194,7 @@
             <div class="flex-1 bg-white/10 rounded-full h-8 overflow-hidden">
               <div class="chart-bar h-full rounded-full" style="width: ${barWidth}%; background-color: ${cfg.color};"></div>
             </div>
-            <span class="text-sm font-bold text-white w-24 text-right tabular-nums whitespace-nowrap">${row.count.toLocaleString("nl-NL")} <span class="font-semibold text-white/60">(${row.pct}%)</span></span>
+            <span class="text-sm font-bold text-white w-24 text-right tabular-nums whitespace-nowrap">${row.count.toLocaleString("nl-NL")} <span class="font-semibold text-white">(${row.pct}%)</span></span>
           </div>
         </div>`;
       })
