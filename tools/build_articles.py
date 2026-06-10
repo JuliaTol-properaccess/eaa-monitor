@@ -98,7 +98,7 @@ NAV_ITEMS = [
         ("Personenvervoer", "/monitor-vervoer.html"),
         ("Media & streaming", "/monitor-media.html"),
         ("E-books", "/monitor-ebooks.html"),
-        ("Over", "/over.html"),
+        ("Over de monitor", "/over.html"),
     ]),
     ("Kennisbank", "/artikelen.html"),
     ("Bronnen", "/bronnen.html"),
