@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-booksmonitor — EAA Monitor</title>
+  <meta name="description" content="Bekijk per Nederlands e-bookplatform of er een toegankelijkheidsverklaring is gevonden. De ACM houdt toezicht op e-commerce, waaronder e-bookverkoop.">
+  <link rel="canonical" href="https://eaa-monitor.nl/monitor-ebooks.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eaa-monitor.nl/monitor-ebooks.html">
+  <meta property="og:title" content="E-booksmonitor — EAA Monitor">
+  <meta property="og:description" content="Per e-bookplatform: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
+  <meta property="og:site_name" content="EAA Monitor">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="E-booksmonitor — EAA Monitor">
+  <meta name="twitter:description" content="Per e-bookplatform: is er een toegankelijkheidsverklaring? Wekelijks bijgewerkt.">
+  <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="/static/theme.js"></script>
+  <link rel="stylesheet" href="/static/site.css">
+
+  <!-- Auto-gegenereerd door tools/scrape_footer.py --dataset ebooks. Niet handmatig bewerken. -->
+  <!-- JSONLD-DATASET:START -->
+  <!-- JSONLD-DATASET:END -->
+</head>
+<body class="bg-white">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
+        <span>Monitor</span>
+      </a>
+      <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
+          <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
+          <div class="relative" data-dropdown>
+            <button type="button" data-dropdown-toggle class="text-sm font-semibold text-brand transition-colors inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <div data-dropdown-menu class="hidden absolute left-0 top-full pt-2 z-50">
+              <div class="min-w-[12rem] bg-white rounded-xl shadow-lg ring-1 ring-line py-2">
+              <a href="/monitor.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-commerce</a>
+              <a href="/monitor-financieel.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Financiële sector</a>
+              <a href="/monitor-telecom.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Telecom</a>
+              <a href="/monitor-vervoer.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Personenvervoer</a>
+              <a href="/monitor-media.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Media & streaming</a>
+              <a href="/monitor-ebooks.html" class="block px-4 py-2 text-sm font-semibold text-brand hover:bg-softblue transition-colors" aria-current="page">E-books</a>
+              <a href="/over.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Over</a>
+              </div>
+            </div>
+          </div>
+          <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
+          <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
+          <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
+          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
+      </nav>
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
+        <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
+        <div data-dropdown>
+          <button type="button" data-dropdown-toggle class="w-full flex items-center justify-between py-2.5 text-base font-semibold text-brand" aria-expanded="false">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div data-dropdown-menu class="hidden pl-4 ml-1 border-l border-line">
+            <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-commerce</a>
+            <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financiële sector</a>
+            <a href="/monitor-telecom.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Telecom</a>
+            <a href="/monitor-vervoer.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Personenvervoer</a>
+            <a href="/monitor-media.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Media & streaming</a>
+            <a href="/monitor-ebooks.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">E-books</a>
+            <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
+          </div>
+        </div>
+        <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
+        <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
+        <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
+        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero met statusgrafiek -->
+    <section class="bg-navy text-white on-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-16">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-10 md:items-center">
+
+          <div class="min-w-0">
+            <p class="text-sm font-semibold uppercase tracking-widest text-brand-bright">ACM-toezicht</p>
+            <h1 class="mt-3 text-3xl md:text-4xl font-extrabold leading-tight tracking-tight break-words hyphens-auto">Hebben Nederlandse e-bookplatforms een toegankelijkheidsverklaring?</h1>
+            <p class="mt-4 text-lg text-white/70 max-w-xl leading-relaxed">Elke maandag controleert deze monitor de footer van Nederlandse e-bookplatforms en -verkopers, van verkoopplatforms tot abonnementsdiensten, op een link naar een toegankelijkheidsverklaring. De ACM houdt toezicht op e-commerce, waaronder e-bookverkoop.</p>
+
+            <div class="mt-7 max-w-xl">
+              <label for="filter-search" class="block text-sm font-semibold text-white/80 mb-2">Zoek een platform</label>
+              <div class="flex gap-2">
+                <input type="search" id="filter-search" placeholder="bijv. Kobo, Storytel..." class="flex-1 px-4 py-3 rounded-xl text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+                <button type="button" id="search-btn" class="btn btn-primary">Zoeken</button>
+              </div>
+            </div>
+          </div>
+
+          <section aria-label="Verdeling per status" class="min-w-0">
+            <div class="flex items-end justify-between gap-4 mb-4">
+              <div>
+                <h2 class="text-lg font-bold">Aantal e-bookplatforms per status</h2>
+                <p class="text-sm text-white/60 mt-1">Verdeling van de <span id="chart-total">—</span> gecontroleerde e-bookplatforms</p>
+              </div>
+              <div class="flex rounded-xl overflow-hidden ring-1 ring-white/20 shrink-0" role="tablist" aria-label="Weergave wisselen">
+                <button class="toggle-btn active px-4 py-2 text-sm font-semibold text-white/70" role="tab" aria-selected="true" aria-controls="chart-view" id="tab-chart">Grafiek</button>
+                <button class="toggle-btn px-4 py-2 text-sm font-semibold text-white/70" role="tab" aria-selected="false" aria-controls="table-view" id="tab-table">Tabel</button>
+              </div>
+            </div>
+
+            <div id="chart-view" role="tabpanel" aria-labelledby="tab-chart" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">
+              <div class="space-y-4" id="status-chart"></div>
+            </div>
+
+            <div id="table-view" role="tabpanel" aria-labelledby="tab-table" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5 hidden">
+              <table class="w-full text-sm" id="status-table">
+                <caption class="sr-only">Aantal e-bookplatforms per status</caption>
+                <thead>
+                  <tr class="border-b-2 border-white/20 text-left">
+                    <th scope="col" class="py-3 px-2 font-bold">Status</th>
+                    <th scope="col" class="py-3 px-2 font-bold text-right">Aantal</th>
+                    <th scope="col" class="py-3 px-2 font-bold text-right">Percentage</th>
+                  </tr>
+                </thead>
+                <tbody id="status-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Kerncijfers (live via app.js; statische fallback via scraper-markers) -->
+    <section aria-label="Kerncijfers" class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="card p-6 text-center">
+          <p class="text-4xl font-extrabold text-navy tracking-tight" id="stat-total"><!--STAT:total-->&ndash;<!--/STAT--></p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">e-bookplatforms gecontroleerd</p>
+        </div>
+        <div class="card p-6 text-center">
+          <p class="text-4xl font-extrabold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->&ndash;<!--/STAT--></p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">heeft een verklaring</p>
+        </div>
+        <div class="card p-6 text-center">
+          <p class="text-4xl font-extrabold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->&ndash;<!--/STAT--></p>
+          <p class="mt-1 text-sm font-semibold text-gray-500">heeft geen verklaring</p>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Eerste meting volgt<!--/LASTUPDATED--></p>
+    </section>
+
+    <!-- Auto-gegenereerd door tools/scrape_footer.py --dataset ebooks. Niet handmatig bewerken. -->
+    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
+      <!-- GEO-SUMMARY:START -->
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">E-books · ACM-toezicht</p>
+          <p class="text-lg leading-relaxed">De eerste meting van deze sector volgt op de eerstvolgende maandagochtend. Daarna verschijnt hier elke week een actuele samenvatting.</p>
+        </div>
+      </div>
+    <!-- GEO-SUMMARY:END -->
+    </section>
+
+    <!-- Per type -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Verdeling per type">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Resultaat per type</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="category-cards"></div>
+    </section>
+
+    <!-- Volledige lijst -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-label="Alle e-bookplatforms">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-4">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight">Alle e-bookplatforms</h2>
+        <p class="text-sm text-gray-500 mt-1 sm:mt-0" id="filter-count"></p>
+      </div>
+
+      <div class="rounded-2xl bg-softblue ring-1 ring-brand-light p-4 mb-4 text-sm text-ink">
+        Staat jouw platform hier, maar val je buiten de EAA? Dan kun je <a href="/bezwaar.html" class="link">bezwaar maken tegen vermelding</a>.
+      </div>
+
+      <div class="flex flex-wrap gap-3 mb-4">
+        <div>
+          <label for="filter-category" class="block text-sm font-semibold text-navy mb-1">Type</label>
+          <select id="filter-category" class="border border-field rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            <option value="">Alle typen</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-status" class="block text-sm font-semibold text-navy mb-1">Status</label>
+          <select id="filter-status" class="border border-field rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            <option value="">Alle statussen</option>
+            <option value="found">Met verklaring</option>
+            <option value="not_found">Zonder verklaring</option>
+            <option value="error">Fout bij controle</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm" id="results-table">
+            <caption class="sr-only">Overzicht van Nederlandse e-bookplatforms en hun toegankelijkheidsverklaring status</caption>
+            <thead>
+              <tr class="bg-gray-50 border-b border-line text-left">
+                <th scope="col" class="py-3 px-4" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="name" aria-label="Sorteer op Platform">Platform</button>
+                </th>
+                <th scope="col" class="py-3 px-4 hidden sm:table-cell" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="category" aria-label="Sorteer op Type">Type</button>
+                </th>
+                <th scope="col" class="py-3 px-4" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="status" aria-label="Sorteer op Status">Status</button>
+                </th>
+                <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-navy">Verklaring</th>
+                <th scope="col" class="py-3 px-4 hidden lg:table-cell" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="date" aria-label="Sorteer op Gecontroleerd">Gecontroleerd</button>
+                </th>
+                <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-navy">Bezwaar</th>
+              </tr>
+            </thead>
+            <tbody id="results-body">
+              <tr>
+                <td colspan="6" class="py-12 text-center text-gray-600">Data laden...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <nav aria-label="Paginering" id="pagination" class="flex items-center justify-between border-t border-line px-4 py-3 sm:px-6"></nav>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-navy text-white mt-24 on-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+          <p class="font-extrabold text-lg tracking-tight">Blijf op de hoogte van de EAA</p>
+          <p class="mt-2 text-sm text-white/60 max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
+        </div>
+        <form id="newsletter-form" data-endpoint="https://eaa-bezwaar.juliatol.workers.dev/newsletter" novalidate>
+          <div class="hidden" aria-hidden="true">
+            <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <label for="newsletter-email" class="block text-sm font-semibold text-white/90 mb-1.5">Je e-mailadres</label>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Inschrijven</button>
+          </div>
+          <p class="mt-2 text-xs text-white/50">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
+          <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
+        </form>
+      </div>
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
+            <span>Monitor</span>
+          </p>
+          <p class="mt-4 text-sm text-white/60 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Monitor &amp; uitleg</p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
+            <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
+            <li><a href="/monitor-telecom.html" class="hover:text-white">Telecommonitor</a></li>
+            <li><a href="/monitor-vervoer.html" class="hover:text-white">Vervoermonitor</a></li>
+            <li><a href="/monitor-media.html" class="hover:text-white">Mediamonitor</a></li>
+            <li><a href="/monitor-ebooks.html" class="hover:text-white">E-booksmonitor</a></li>
+            <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
+            <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Meedoen &amp; info</p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
+            <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
+            <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
+            <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white/60">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+    </div>
+    <script src="/static/newsletter.js"></script>
+  </footer>
+
+  <script>
+    window.EAA_MONITOR_CONFIG = {
+      dataUrl: "data/results-ebooks.json",
+      noun: "e-bookplatforms",
+      sortLabels: { name: "Platform", category: "Type", status: "Status", date: "Gecontroleerd" },
+      categoryLabels: {
+        "verkoop": "Verkoop",
+        "abonnement": "Abonnement",
+        "overig": "Overig",
+      },
+    };
+  </script>
+  <script src="app.js"></script>
+  <script src="/static/nav.js"></script>
+</body>
+</html>
