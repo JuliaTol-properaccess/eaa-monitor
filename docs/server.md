@@ -41,3 +41,22 @@ Let op: `--delete` alleen op de `public/`-sync, niet op `data/`.
 ```bash
 ssh -i ~/.ssh/eaa_monitor_ed25519 root@128.140.50.96 "caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy"
 ```
+
+## Formulieren-service (eaa-forms)
+
+Draait dezelfde code als de Cloudflare Worker (`worker/src/index.js`) via de
+Node-adapter `worker/server.mjs`, als systemd-service `eaa-forms` op poort
+8787, achter Caddy op het pad `/api/*`.
+
+- **Code:** `/opt/eaa-forms/` (rsync vanaf de repo: `worker/src`, `worker/server.mjs`, `worker/package.json`)
+- **Config/secrets:** `/etc/eaa-forms.env` (chmod 600; SIGNING_SECRET, BREVO_API_KEY; GITHUB_TOKEN nog toevoegen vóór de DNS-verhuizing)
+- **Opslag:** `/var/lib/eaa-forms/kv.json` (nieuwsbrief + rate-limit-tellers)
+- **Logs:** `journalctl -u eaa-forms`
+- **Herstarten na code-update:** `systemctl restart eaa-forms`
+
+Deploy van een nieuwe versie:
+
+```bash
+rsync -az -e "ssh -i ~/.ssh/eaa_monitor_ed25519" worker/src worker/server.mjs worker/package.json root@128.140.50.96:/opt/eaa-forms/
+ssh -i ~/.ssh/eaa_monitor_ed25519 root@128.140.50.96 "systemctl restart eaa-forms"
+```

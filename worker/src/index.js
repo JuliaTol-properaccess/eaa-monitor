@@ -164,7 +164,7 @@ async function handleSubmit(request, env) {
       exp: Date.now() + TOKEN_TTL_MS,
     };
     const token = await signToken(env, payload);
-    const origin = new URL(request.url).origin;
+    const origin = publicBase(env, request);
     const confirmUrl = `${origin}/confirm?token=${encodeURIComponent(token)}`;
 
     try {
@@ -367,7 +367,7 @@ async function handleNewsletter(request, env) {
   // Pas na bevestiging opslaan (dubbele opt-in). De link draagt een getekende
   // token met het e-mailadres, dus tot dan slaan we niets op.
   const token = await signToken(env, { email, type: "newsletter", exp: Date.now() + TOKEN_TTL_MS });
-  const origin = new URL(request.url).origin;
+  const origin = publicBase(env, request);
   const confirmUrl = `${origin}/newsletter/confirm?token=${encodeURIComponent(token)}`;
 
   try {
@@ -413,7 +413,7 @@ async function handleNewsletterConfirm(request, env, url) {
     type: "newsletter-unsub",
     exp: Date.now() + NEWSLETTER_UNSUB_TTL_MS,
   });
-  const unsubUrl = `${new URL(request.url).origin}/newsletter/unsubscribe?token=${encodeURIComponent(unsubToken)}`;
+  const unsubUrl = `${publicBase(env, request)}/newsletter/unsubscribe?token=${encodeURIComponent(unsubToken)}`;
 
   return htmlPage(
     "Inschrijving bevestigd",
@@ -573,7 +573,39 @@ function githubHeaders(env) {
 // gaan naar externe adressen en hebben Resend nodig; interne meldingen werken
 // met beide. Alle callers gebruiken dezelfde vorm: { to, from:{email,name},
 // replyTo, subject, text, html? }.
+function publicBase(env, request) {
+  // Basis voor links in mails (bevestiging, afmelden). Achter een reverse
+  // proxy (de VPS, waar de service op het subpad /api hangt) klopt de
+  // request-origin niet; PUBLIC_BASE_URL overschrijft hem dan. Op Cloudflare
+  // is de variabele niet gezet en geldt gewoon de request-origin.
+  return (env.PUBLIC_BASE_URL || new URL(request.url).origin).replace(/\/$/, "");
+}
+
 async function sendEmail(env, msg) {
+  if (env.BREVO_API_KEY) {
+    const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
+    const fromName = typeof msg.from === "string" ? null : msg.from.name;
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "api-key": env.BREVO_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sender: fromName ? { email: fromEmail, name: fromName } : { email: fromEmail },
+        to: [{ email: msg.to }],
+        ...(msg.replyTo ? { replyTo: { email: msg.replyTo } } : {}),
+        subject: msg.subject,
+        textContent: msg.text,
+        ...(msg.html ? { htmlContent: msg.html } : {}),
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Brevo ${res.status}: ${detail.slice(0, 300)}`);
+    }
+    return;
+  }
   if (env.RESEND_API_KEY) {
     const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
     const fromName = typeof msg.from === "string" ? null : msg.from.name;
