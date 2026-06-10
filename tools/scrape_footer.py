@@ -58,6 +58,10 @@ DATASETS = {
         "hub_prefix": None,
         "toezichthouder": "ACM",
         "noun": "webshops",
+        # Geen meetsamenvatting op de hub-homepage; de zes sectorkaarten
+        # dragen de cijfers al. De GEO-SUMMARY-markers zijn uit index.html
+        # verwijderd, dus deze patch moet uit blijven (anders harde fail).
+        "geo_summary": False,
         "summary_heading": None,
         "dataset_id": "https://eaa-monitor.nl/#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse webshops",
@@ -595,8 +599,9 @@ def patch_target_html(stats, date_nl, date_iso, ds):
     """Bake current numbers and the Dataset JSON-LD into the dataset's served HTML."""
     target = ds["target_html"]
     html = target.read_text(encoding="utf-8")
-    html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
-                           _geo_summary_inner(stats, date_nl, ds))
+    if ds.get("geo_summary", True):
+        html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
+                               _geo_summary_inner(stats, date_nl, ds))
     html = _replace_region(html, "<!--STAT:total-->", "<!--/STAT-->", str(stats["total"]))
     html = _replace_region(html, "<!--STAT:pctWith-->", "<!--/STAT-->", f"{stats['pct_with']}%")
     html = _replace_region(html, "<!--STAT:pctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
