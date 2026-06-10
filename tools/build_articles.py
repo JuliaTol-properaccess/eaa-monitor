@@ -10,8 +10,9 @@ artikellijst-regio in public/llms.txt.
 Server-rendered HTML is bewust: het is cruciaal voor SEO en GEO (citability door
 AI-zoekmachines). Elk artikel krijgt Article JSON-LD mee.
 
-Designrichting: Coinbase-look. Tokens staan centraal in public/static/theme.js
-en public/static/site.css; deze tool emit alleen de gedeelde head/nav/footer en
+Designrichting: Coinbase-look. Tokens staan centraal in tailwind.config.js
+(gebouwd naar public/static/tailwind.css via `npm run build:css`) en
+public/static/site.css; deze tool emit alleen de gedeelde head/nav/footer en
 verwijst naar die bestanden.
 
 Gebruik:
@@ -134,12 +135,16 @@ def shared_head(title, description, canonical, *, extra_head="", og_type="websit
   <meta name="twitter:description" content="{html.escape(description)}">
   <meta name="twitter:image" content="{BASE_URL}/static/og.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <script src="/static/theme.js"></script>
+  <link rel="stylesheet" href="/static/fonts.css">
+  <link rel="stylesheet" href="/static/tailwind.css">
   <link rel="stylesheet" href="/static/site.css">
+
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-oCJ6R9bzu6l8fcjrJ8_xA.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){{(plausible.q=plausible.q||[]).push(arguments)}},plausible.init=plausible.init||function(i){{plausible.o=i||{{}}}};
+    plausible.init()
+  </script>
 {extra_head}</head>
 """
 

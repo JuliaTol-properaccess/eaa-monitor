@@ -1,0 +1,11 @@
+{
+  "name": "eaa-monitor",
+  "private": true,
+  "description": "Statische site + tooling voor eaa-monitor.nl. Tailwind wordt lokaal gebouwd (geen CDN).",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i assets/tailwind.in.css -o public/static/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.16"
+  }
+}

@@ -18,8 +18,16 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "public" / "static" / "og.png"
+FONTS_DIR = ROOT / "public" / "static" / "fonts"
 
-# Site design tokens (public/static/theme.js) + Proper Access attribution color
+# Zelf-gehoste Montserrat (zelfde bestanden als de site zelf serveert)
+FONT_FACES = "\n".join(
+    f"@font-face {{ font-family: 'Montserrat'; font-style: normal; font-weight: {w}; "
+    f"src: url('{(FONTS_DIR / f'montserrat-{w}-latin.woff2').as_uri()}') format('woff2'); }}"
+    for w in (400, 500, 600, 700, 800)
+)
+
+# Site design tokens (tailwind.config.js) + Proper Access attribution color
 NAVY = "#0A0E27"
 NAVY_SOFT = "#141A3D"
 BRAND = "#0052FF"
@@ -31,10 +39,8 @@ CARD_HTML = f"""
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+{FONT_FACES}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1200px; height: 630px; }}
   body {{

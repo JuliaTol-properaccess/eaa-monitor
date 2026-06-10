@@ -1,12 +1,20 @@
 /*
  * Gedeelde Tailwind-configuratie voor de hele EAA Hub.
- * Eén bron van waarheid voor kleuren en typografie. Wordt geladen NA de
- * Tailwind CDN-play-script op elke pagina (handmatig en gegenereerd).
+ * Eén bron van waarheid voor kleuren en typografie (voorheen
+ * public/static/theme.js + de Tailwind-CDN; nu een lokale build).
+ *
+ * Na een wijziging hier of in de gebruikte classes:
+ *   npm run build:css
  *
  * Designrichting: Coinbase-look. Neutrale eigen huisstijl voor de EAA Monitor,
  * niet gekoppeld aan een ander merk.
  */
-tailwind.config = {
+module.exports = {
+  content: [
+    "./public/**/*.html",
+    "./public/**/*.js",
+    "./tools/*.py", // HTML-templates in Python-strings (build-tools en scraper)
+  ],
   theme: {
     extend: {
       colors: {

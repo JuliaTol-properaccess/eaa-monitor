@@ -30,6 +30,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Vangnet: bouw de Tailwind-CSS vers, ook als iemand vergat
+      # `npm run build:css` te draaien na een class-wijziging. De gebouwde
+      # public/static/tailwind.css staat ook in git voor lokaal testen.
+      - name: Build Tailwind CSS
+        run: |
+          npm ci
+          npm run build:css
+
       - name: Prepare site
         run: |
           mkdir -p _site

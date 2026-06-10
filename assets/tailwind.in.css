@@ -1,0 +1,4 @@
+/* Bron voor de Tailwind-build. Output: public/static/tailwind.css (npm run build:css). */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
