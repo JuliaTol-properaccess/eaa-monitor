@@ -11,6 +11,7 @@ We willen in de footer kunnen zeggen dat eaa-monitor.nl op Europese diensten dra
 | Onderdeel | Dienst | Herkomst |
 |---|---|---|
 | Domeinregistratie | One.com (registrar), SIDN (.nl-register) | Denemarken / Nederland |
+| Statistieken | Plausible Analytics | Estland (hosting in Duitsland) |
 | DNS | Cloudflare | VS |
 | Hosting | GitHub Pages (Microsoft) | VS |
 | Formulieren en nieuwsbrief | Cloudflare Worker + KV | VS |
@@ -23,11 +24,11 @@ Alleen de domeinlaag is dus al Europees. Alles wat een bezoeker raakt (hosting, 
 
 ## Wat er per onderdeel moet gebeuren
 
-### 1. Fonts zelf hosten — €0, 0,5 tot 1 uur
+### 1. Fonts zelf hosten — €0, 0,5 tot 1 uur — ✅ gedaan (10 juni 2026)
 
 Download Montserrat en serveer hem vanaf de eigen site (`public/static/fonts/`). Daarmee verdwijnt het verzoek naar Google volledig. Dit is ook los van de EU-claim verstandig: Duitse rechters oordeelden al dat het doorsturen van bezoekers-IP's naar Google Fonts een AVG-probleem is. Alternatief zonder zelf hosten: Bunny Fonts (Sloveens, gratis, drop-in vervanger), maar zelf hosten is netter en sneller.
 
-### 2. Tailwind lokaal bouwen — €0, 1 tot 2 uur
+### 2. Tailwind lokaal bouwen — €0, 1 tot 2 uur — ✅ gedaan (10 juni 2026)
 
 `cdn.tailwindcss.com` is bedoeld voor ontwikkeling, niet voor productie. Vervang het door een lokale Tailwind-build die één CSS-bestand genereert (build-stap in de deploy). Sneller voor bezoekers en weer een Amerikaans verzoek minder.
 
@@ -73,7 +74,7 @@ De repo verhuizen naar Codeberg (Duits). Dit is alleen nodig als je de claim wil
 ## Welke claim mag wanneer
 
 - **Nu:** alleen "ons .nl-domein is geregistreerd bij een Europese registrar". Te mager voor een footer-sectie.
-- **Na fase 1:** "geen Amerikaanse trackers of font-CDN's", maar de site draait nog steeds op Amerikaanse hosting. Nog geen EU-claim.
+- **Na fase 1 (✅ 10 juni 2026):** de browser van een bezoeker maakt geen enkel verzoek meer naar een Amerikaanse dienst (fonts zelf-gehost, Tailwind lokaal gebouwd, statistieken via het Europese Plausible). Maar de site wordt nog steeds gesérveerd vanaf Amerikaanse hosting, dus nog geen volledige EU-claim.
 - **Na fase 2:** "Deze website draait volledig op Europese infrastructuur: hosting in Duitsland (Hetzner), Nederlands domein (SIDN), Europese e-mail." Dit is de eerlijke ondergrens voor de footer-sectie; bezoekersdata raakt dan geen enkele Amerikaanse dienst meer.
 - **Na fase 3:** ook de ontwikkelketen is Europees.
 

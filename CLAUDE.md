@@ -4,7 +4,7 @@ Hub over de European Accessibility Act (EAA) in Nederland. Het dashboard control
 
 ## Architectuur
 
-Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailwind via CDN + vanilla JS). Design: **Coinbase-look** (navy/Coinbase-blauw, Inter), bewust losgemaakt van het Proper Access-merk; Proper Access blijft in footer-attributie en schema.
+Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaal gebouwde Tailwind + vanilla JS); geen Amerikaanse CDN's of font-diensten meer, zie `docs/eu-stack-migratie.md`. Design: **Coinbase-look** (navy/Coinbase-blauw, Inter), bewust losgemaakt van het Proper Access-merk; Proper Access blijft in footer-attributie en schema.
 
 ### Tools
 - `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de eigen meet-regio in `llms.txt` bakt. **Zes datasets** via `--dataset {webshops,financieel,telecom,vervoer,media,ebooks}` (default `webshops`), volledig config-gestuurd via de `DATASETS`-dict: `webshops` bakt in `index.html` (legacy ongeprefixte markers); elke andere sector bakt in zijn eigen `monitor-<sector>.html` én vult een hub-kaart op `index.html` (markers `STAT:{hub_prefix}Total`/`STAT:{hub_prefix}PctWithout`). Nieuwe sector toevoegen = DATASETS-entry + `data/<sector>.json` + monitorpagina + hub-kaart op index.html + llms-regio. Pagina's met bot-protectie of wachtrij (minder dan 5 links) tellen als "niet te controleren", nooit als "zonder verklaring"
@@ -38,10 +38,10 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
 - `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
 - `over.html` — Over het dashboard
-- `static/theme.js` — Gedeelde Tailwind-tokens (één bron van waarheid). `static/site.css` — componenten, prose, animaties. `static/reveal.js` — scroll-reveal
+- `static/tailwind.css` — **Gegenereerd** door `npm run build:css` uit `tailwind.config.js` (niet handmatig bewerken; na elke class-wijziging opnieuw bouwen, de deploy bouwt hem ook zelf als vangnet). `static/fonts.css` + `static/fonts/` — zelf-gehoste Montserrat (geen Google Fonts). `static/site.css` — componenten, prose, animaties. `static/reveal.js` — scroll-reveal
 
-### Designtokens (`public/static/theme.js`)
-- `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Inter**. De oude PA-tokens (magenta/petrol) zijn vervangen.
+### Designtokens (`tailwind.config.js`)
+- `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Montserrat** (zelf-gehost). De oude PA-tokens (magenta/petrol) zijn vervangen. Eén bron van waarheid: `tailwind.config.js` (het vroegere `static/theme.js` is weg, net als de Tailwind-CDN).
 
 ### Overig
 - `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie, artikel-feedback, anonieme vragen én nieuwsbrief-opt-in (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`, `POST /vraag`, `POST /newsletter`, `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL`; `/vraag` mailt een anonieme EAA-vraag naar `VRAGEN_EMAIL` (`vragen@eaa-monitor.nl`, terugval op `NOTIFY_EMAIL`) — beide zonder PR, opslag of extra secrets. `/newsletter` is een dubbele opt-in: na bevestiging via een getekende link wordt het adres opgeslagen in de KV-namespace `NEWSLETTER` (sleutel `sub:<email>`); afzender `NEWSLETTER_FROM` (terugval op `FROM_EMAIL`). Het inschrijfformulier staat in de footer (`site_footer()` in `build_articles.py`, endpoint in `NEWSLETTER_ENDPOINT`, submit-logica in `public/static/newsletter.js`). Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
@@ -82,6 +82,10 @@ python tools/build_bronnen.py
 # Publicatiedatums aanvullen in data/bronnen.json (best-effort, haalt de URL's op)
 python tools/fetch_bron_dates.py            # alleen ontbrekende
 python tools/fetch_bron_dates.py --overwrite  # ook bestaande opnieuw
+
+# Tailwind-CSS (her)bouwen na een wijziging in classes of tailwind.config.js
+npm install        # eerste keer
+npm run build:css
 
 # Frontend lokaal testen
 python -m http.server 8000 -d public
