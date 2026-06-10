@@ -193,9 +193,11 @@ ERROR_RATE_THRESHOLD = 0.25
 
 # Wachten op de footer i.p.v. een vaste 2s: de meeste sites hebben de footer al
 # bij domcontentloaded, dan kost dit vrijwel niets. De settle vangt links die
-# vlak na het verschijnen van de footer nog door JS worden gevuld.
+# ná het verschijnen van de footer nog door JS worden geïnjecteerd; 500ms bleek
+# te kort voor overlay-widgets (Lyca Mobile en Transavia flipten tussen runs),
+# 1500ms is stabiel en per site nog steeds korter dan de oude vaste 2s.
 FOOTER_WAIT_TIMEOUT = 2000
-FOOTER_SETTLE_MS = 500
+FOOTER_SETTLE_MS = 1500
 
 # Korte pauze tussen requests. Elke request gaat naar een ander domein, dus
 # per-host rate limiting speelt niet; dit ontziet alleen de runner zelf.
@@ -382,6 +384,24 @@ def check_webshop(page, url):
         result["scrape_status"] = "success"
         result["error"] = None
         return result
+
+    # Een pagina met minder dan een handvol links is vrijwel zeker een
+    # bot-challenge ("Challenge Validation", "Attention Required!"), wachtrij
+    # ("Even geduld...") of lege render; een echte homepage heeft er
+    # tientallen. Niet op footer-aanwezigheid filteren: interstitials hebben
+    # vaak elementen met footer-achtige classes. "Geen verklaring" zou hier
+    # geen eerlijke meting zijn: rapporteer "niet te controleren".
+    if len(all_links) < 5:
+        return {
+            "has_statement": False,
+            "statement_url": None,
+            "statement_link_text": None,
+            "scrape_status": "error",
+            "error": (
+                f"Pagina heeft maar {len(all_links)} links; "
+                "vermoedelijk bot-protectie, wachtrij of lege render"
+            ),
+        }
 
     return {
         "has_statement": False,
@@ -797,6 +817,13 @@ def scrape_webshops(webshops, now):
             if result["scrape_status"] == "error" and _looks_like_crash(result["error"]):
                 print("browser-crash, herstart...", end=" ", flush=True)
                 browser, context, page = _fresh_page(p, browser, context)
+                result = check_webshop(page, url)
+
+            # Wachtrij-/challenge-pagina's lossen vaak vanzelf op; één keer
+            # opnieuw proberen na een korte pauze haalt dan de echte pagina op.
+            if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
+                print("interstitial, retry...", end=" ", flush=True)
+                time.sleep(3)
                 result = check_webshop(page, url)
 
             results.append({

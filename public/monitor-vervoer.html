@@ -31,6 +31,62 @@
 
   <!-- Auto-gegenereerd door tools/scrape_footer.py --dataset vervoer. Niet handmatig bewerken. -->
   <!-- JSONLD-DATASET:START -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://eaa-monitor.nl/monitor-vervoer.html#dataset",
+  "name": "Toegankelijkheidsverklaringen Nederlandse personenvervoerders",
+  "description": "Wekelijkse meting of 21 Nederlandse vervoerders een toegankelijkheidsverklaring publiceren. Op 10 juni 2026: 7 met verklaring, 10 zonder, 4 niet te controleren.",
+  "url": "https://eaa-monitor.nl/",
+  "creator": {
+    "@type": "Organization",
+    "name": "EAA Monitor",
+    "url": "https://eaa-monitor.nl/"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "inLanguage": "nl-NL",
+  "dateModified": "2026-06-10",
+  "temporalCoverage": "2026-03/2026-06",
+  "measurementTechnique": "Geautomatiseerde controle van de footer op links naar een toegankelijkheidsverklaring",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Aantal gecontroleerde vervoerders",
+      "value": 21
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Vervoerders met toegankelijkheidsverklaring",
+      "value": 7
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Vervoerders zonder toegankelijkheidsverklaring",
+      "value": 10
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Vervoerders niet te controleren",
+      "value": 4
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Percentage met verklaring",
+      "value": 33,
+      "unitText": "PERCENT"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://eaa-monitor.nl/data/results-vervoer.json"
+    }
+  ]
+}
+  </script>
   <!-- JSONLD-DATASET:END -->
 </head>
 <body class="bg-white">
@@ -149,19 +205,19 @@
     <section aria-label="Kerncijfers" class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div class="card p-6 text-center">
-          <p class="text-4xl font-extrabold text-navy tracking-tight" id="stat-total"><!--STAT:total-->&ndash;<!--/STAT--></p>
+          <p class="text-4xl font-extrabold text-navy tracking-tight" id="stat-total"><!--STAT:total-->21<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">vervoerders gecontroleerd</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-extrabold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->&ndash;<!--/STAT--></p>
+          <p class="text-4xl font-extrabold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->33%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft een verklaring</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-extrabold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->&ndash;<!--/STAT--></p>
+          <p class="text-4xl font-extrabold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->48%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft geen verklaring</p>
         </div>
       </div>
-      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Eerste meting volgt<!--/LASTUPDATED--></p>
+      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 10 juni 2026<!--/LASTUPDATED--></p>
     </section>
 
     <!-- Auto-gegenereerd door tools/scrape_footer.py --dataset vervoer. Niet handmatig bewerken. -->
@@ -170,7 +226,16 @@
       <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
           <p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">Personenvervoer · ILT-toezicht</p>
-          <p class="text-lg leading-relaxed">De eerste meting van deze sector volgt op de eerstvolgende maandagochtend. Daarna verschijnt hier elke week een actuele samenvatting.</p>
+          <p class="text-lg leading-relaxed">
+            Op <strong>10 juni 2026</strong> controleerde de EAA Monitor
+            <strong>21 Nederlandse vervoerders</strong> op een toegankelijkheidsverklaring:
+          </p>
+          <ul class="mt-4 space-y-2.5">
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>7 vervoerders (33%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>10 (48%)</strong> doen dat niet</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>4 (19%)</strong> kon de controle niet worden voltooid</span></li>
+          </ul>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 10 juni 2026. De monitor controleert alle vervoerders elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
         </div>
       </div>
     <!-- GEO-SUMMARY:END -->

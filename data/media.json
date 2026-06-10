@@ -1,0 +1,17 @@
+[
+  { "name": "NPO Start", "url": "https://npo.nl/start", "category": "omroep", "bron": "https://npo.nl/start" },
+  { "name": "Videoland", "url": "https://www.videoland.com", "category": "streaming-video", "bron": "https://www.cvdm.nl/registers/register-commerciele-media-instellingen-cmoa/" },
+  { "name": "NLZIET", "url": "https://www.nlziet.nl/nl/", "category": "streaming-video", "bron": "https://www.nlziet.nl/nl/" },
+  { "name": "KIJK", "url": "https://www.kijk.nl/", "category": "omroep", "bron": "https://www.kijk.nl/over" },
+  { "name": "RTL.nl", "url": "https://www.rtl.nl", "category": "omroep", "bron": "https://marketingreport.nl/rtl-nederland-rtl-xl-gestopt-gemist-functie-bij-rtl-nl-en-videoland/" },
+  { "name": "Pathé Thuis", "url": "https://www.pathe-thuis.nl", "category": "streaming-video", "bron": "https://www.pathe-thuis.nl/over-pathe-thuis" },
+  { "name": "Viaplay", "url": "https://viaplay.com/nl-nl/", "category": "streaming-video", "bron": "https://viaplay.com/nl-nl/get-sport" },
+  { "name": "HBO Max", "url": "https://www.hbomax.com/nl/nl", "category": "streaming-video", "bron": "https://www.hbomax.com/nl/nl" },
+  { "name": "Disney+", "url": "https://www.disneyplus.com/nl-nl", "category": "streaming-video", "bron": "https://www.disneyplus.com/nl-nl" },
+  { "name": "Netflix", "url": "https://www.netflix.com/nl/", "category": "streaming-video", "bron": "https://www.netflix.com/nl-en/" },
+  { "name": "Prime Video", "url": "https://www.primevideo.com", "category": "streaming-video", "bron": "https://www.primevideo.com/-/nl_NL/gp/video/offers" },
+  { "name": "SkyShowtime", "url": "https://www.skyshowtime.com/nl", "category": "streaming-video", "bron": "https://www.skyshowtime.com/nl" },
+  { "name": "CineMember", "url": "https://www.cinemember.nl/nl/home", "category": "streaming-video", "bron": "https://www.cinemember.nl/nl/home" },
+  { "name": "Spotify", "url": "https://www.spotify.com/nl/", "category": "streaming-audio", "bron": "https://www.spotify.com/nl/signup" },
+  { "name": "Podimo", "url": "https://podimo.com/nl", "category": "streaming-audio", "bron": "https://podimo.com/nl" }
+]

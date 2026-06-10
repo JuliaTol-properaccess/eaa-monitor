@@ -1,0 +1,12 @@
+[
+  { "name": "bol (e-books)", "url": "https://www.bol.com", "category": "verkoop", "bron": "https://servicemedia.cb.nl/hc/nl/articles/4410295540241-Welke-afnemers-zijn-er-voor-e-books" },
+  { "name": "Kobo", "url": "https://www.kobo.com/nl/nl", "category": "verkoop", "bron": "https://servicemedia.cb.nl/hc/nl/articles/4410295540241-Welke-afnemers-zijn-er-voor-e-books" },
+  { "name": "eBook.nl", "url": "https://www.ebook.nl/", "category": "verkoop", "bron": "https://www.ebook.nl/" },
+  { "name": "Bruna (e-books)", "url": "https://www.bruna.nl/ebooks", "category": "verkoop", "bron": "https://www.bruna.nl/ebooks" },
+  { "name": "Libris", "url": "https://libris.nl/tolino-ereaders/ebookacties", "category": "verkoop", "bron": "https://libris.nl/tolino-ereaders/ebookacties" },
+  { "name": "Luisterrijk", "url": "https://www.luisterrijk.nl/", "category": "verkoop", "bron": "https://www.luisterrijk.nl/pagina/over-luisterrijk" },
+  { "name": "Storytel", "url": "https://www.storytel.com/nl/nl/", "category": "abonnement", "bron": "https://alleluisterboeken.nl/storytel" },
+  { "name": "Nextory", "url": "https://nextory.com/nl", "category": "abonnement", "bron": "https://luisterboekenapps.nl/nextory" },
+  { "name": "BookBeat", "url": "https://www.bookbeat.com/nl", "category": "abonnement", "bron": "https://alleluisterboeken.nl/bookbeat" },
+  { "name": "Online Bibliotheek", "url": "https://www.onlinebibliotheek.nl/", "category": "overig", "bron": "https://www.onlinebibliotheek.nl/e-books/hoe-werkt-het.html" }
+]
