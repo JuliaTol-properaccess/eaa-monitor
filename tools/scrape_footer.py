@@ -29,11 +29,25 @@ OBJECTIONS_FILE = DATA_DIR / "objections.json"   # gedeeld door beide datasets
 LLMS_FILE = PUBLIC_DIR / "llms.txt"              # gedeeld; elke dataset bezit één regio
 
 # ── Datasets ──
-# Dezelfde scrape- en bake-logica bedient twee lijsten: webshops en financiële
-# instellingen. Elke dataset wijst naar zijn eigen invoer/uitvoer, het HTML-
-# bestand waarin de cijfers worden gebakken, de llms.txt-meetregio en het
-# zelfstandig naamwoord in de samenvatting-copy. Default is "webshops", zodat
-# bestaande aanroepen zonder --dataset ongewijzigd blijven werken.
+# Dezelfde scrape- en bake-logica bedient alle sectorlijsten. Elke dataset
+# wijst naar zijn eigen invoer/uitvoer, het HTML-bestand waarin de cijfers
+# worden gebakken (target_html), de llms.txt-meetregio en de copy-velden.
+# Default is "webshops", zodat bestaande aanroepen zonder --dataset
+# ongewijzigd blijven werken.
+#
+# Sector-velden:
+# - hub_prefix: marker-prefix van de compacte sectorkaart op index.html
+#   (<!--STAT:{prefix}Total--> / <!--STAT:{prefix}PctWithout-->). None voor
+#   webshops: index.html is daar al de target_html met de legacy ongeprefixte
+#   markers (GEO-SUMMARY, STAT:total, ...).
+# - hub_summary_marker: tijdelijk, alleen financieel; de samenvattingskaart op
+#   index.html. Vervalt bij het 6-kaarten-hub-ontwerp (samenvattingen staan
+#   dan alleen op de eigen monitorpagina).
+# - llms_label: sectorlabel in het llms.txt-meetblok; None geeft de legacy
+#   webshop-formulering "Laatste meting (...)".
+# - llms_noun: kort zelfstandig naamwoord in het llms.txt-meetblok (kan
+#   afwijken van noun, bv. fin: "instellingen").
+# - toezichthouder: label voor hub-kaart en copy.
 DATASETS = {
     "webshops": {
         "key": "webshops",
@@ -42,6 +56,11 @@ DATASETS = {
         "history_file": DATA_DIR / "history.json",
         "target_html": PUBLIC_DIR / "index.html",
         "llms_region": "MEASUREMENT",
+        "llms_label": None,
+        "llms_noun": "webshops",
+        "hub_prefix": None,
+        "hub_summary_marker": None,
+        "toezichthouder": "ACM",
         "noun": "webshops",
         "summary_heading": "E-commerce · ACM-toezicht",
         "dataset_id": "https://eaa-monitor.nl/#dataset",
@@ -56,6 +75,11 @@ DATASETS = {
         "history_file": DATA_DIR / "history-financieel.json",
         "target_html": PUBLIC_DIR / "monitor-financieel.html",
         "llms_region": "FIN-MEASUREMENT",
+        "llms_label": "Financiële sector (AFM-toezicht)",
+        "llms_noun": "instellingen",
+        "hub_prefix": "fin",
+        "hub_summary_marker": "FIN-GEO-SUMMARY",
+        "toezichthouder": "AFM",
         "noun": "financiële instellingen",
         "summary_heading": "Financiële sector · AFM-toezicht",
         "dataset_id": "https://eaa-monitor.nl/monitor-financieel.html#dataset",
@@ -393,7 +417,7 @@ def _replace_region(html, start, end, new_inner):
     occurrences = html.count(start)
     if occurrences != 1:
         sys.exit(
-            f"FOUT: marker {start!r} komt {occurrences}x voor in de doel-HTML "
+            f"FOUT: marker {start!r} komt {occurrences}x voor in het doelbestand "
             f"(verwacht: precies 1x). Niets gepatcht."
         )
     pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
@@ -497,162 +521,88 @@ def patch_target_html(stats, date_nl, date_iso, ds):
     print(f"Patched {target}")
 
 
-def patch_hub_card(stats):
-    """Vul de financiële kerncijfers op de hub-homepage (index.html).
+def patch_hub_card(stats, ds):
+    """Vul de compacte sectorkaart op de hub-homepage (index.html).
 
-    De financiële run vult een kleine kaart op de homepage met het aantal
-    gecontroleerde instellingen en het percentage zonder verklaring. Eigen
-    marker-namen (finTotal/finPctWithout), dus losstaand van de webshop-STATs.
+    Markers: <!--STAT:{hub_prefix}Total--> en <!--STAT:{hub_prefix}PctWithout-->.
+    Webshops (hub_prefix None) slaat dit over: index.html is daar al de
+    target_html met de legacy ongeprefixte markers. Ontbreken béide markers,
+    dan is de kaart nog niet uitgerold en slaan we over (bootstrap); bij een
+    halve kaart faalt _replace_region hard.
     """
+    prefix = ds.get("hub_prefix")
+    if not prefix:
+        return
     index = PUBLIC_DIR / "index.html"
     if not index.exists():
         return
+    total_marker = f"<!--STAT:{prefix}Total-->"
+    pct_marker = f"<!--STAT:{prefix}PctWithout-->"
     html = index.read_text(encoding="utf-8")
-    if "<!--STAT:finTotal-->" not in html:
-        return  # hub-kaart nog niet aanwezig; sla over
-    html = _replace_region(html, "<!--STAT:finTotal-->", "<!--/STAT-->", str(stats["total"]))
-    html = _replace_region(html, "<!--STAT:finPctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
+    if total_marker not in html and pct_marker not in html:
+        print(f"Hub-kaart voor {ds['key']} nog niet aanwezig op index.html; overgeslagen")
+        return
+    html = _replace_region(html, total_marker, "<!--/STAT-->", str(stats["total"]))
+    html = _replace_region(html, pct_marker, "<!--/STAT-->", f"{stats['pct_without']}%")
     _write_atomic(index, html)
-    print(f"Patched {index} (financiële hub-kaart)")
+    print(f"Patched {index} (hub-kaart {ds['key']})")
 
 
-def patch_fin_index_summary(stats, date_nl):
-    """Vul de financiële samenvattingskaart op de hub-homepage (index.html).
+def patch_hub_summary(stats, date_nl, ds):
+    """Vul de sector-samenvattingskaart op de hub-homepage (index.html).
 
-    Naast de webshop-samenvatting (GEO-SUMMARY, gevuld door de webshop-run)
-    toont index.html een tweede kaart voor de financiële sector. Eigen markers
-    (FIN-GEO-SUMMARY), zodat de twee runs elkaar niet overschrijven.
+    Tijdelijk: alleen financieel heeft hub_summary_marker. Vervalt zodra de
+    hub het 6-kaarten-ontwerp krijgt en samenvattingen alleen nog op de eigen
+    monitorpagina staan.
     """
+    marker = ds.get("hub_summary_marker")
+    if not marker:
+        return
     index = PUBLIC_DIR / "index.html"
     if not index.exists():
         return
     html = index.read_text(encoding="utf-8")
-    if "<!-- FIN-GEO-SUMMARY:START -->" not in html:
+    if f"<!-- {marker}:START -->" not in html:
         return  # samenvattingskaart nog niet aanwezig; sla over
-    html = _replace_region(html, "<!-- FIN-GEO-SUMMARY:START -->", "<!-- FIN-GEO-SUMMARY:END -->",
-                           _geo_summary_inner(stats, date_nl, DATASETS["financieel"]))
+    html = _replace_region(html, f"<!-- {marker}:START -->", f"<!-- {marker}:END -->",
+                           _geo_summary_inner(stats, date_nl, ds))
     _write_atomic(index, html)
-    print(f"Patched {index} (financiële samenvatting)")
+    print(f"Patched {index} (samenvatting {ds['key']})")
 
 
-# llms.txt-regio's. De scraper bezit de meet-regio; tools/build_articles.py bezit
-# de artikellijst-regio. Beide patchen alleen hun eigen blok, zodat ze elkaar niet
-# overschrijven bij een wekelijkse scrape of een artikel-herbuild.
-LLMS_MEAS_START = "<!-- MEASUREMENT:START -->"
-LLMS_MEAS_END = "<!-- MEASUREMENT:END -->"
-LLMS_FIN_START = "<!-- FIN-MEASUREMENT:START -->"
-LLMS_FIN_END = "<!-- FIN-MEASUREMENT:END -->"
-LLMS_ART_START = "<!-- ARTICLES:START -->"
-LLMS_ART_END = "<!-- ARTICLES:END -->"
+# llms.txt is een hand-onderhouden skelet (in git) met per sector een eigen
+# meet-regio plus de artikellijst-regio van tools/build_articles.py. De scraper
+# patcht alleen de inhoud van de eigen regio (ds["llms_region"]) en faalt hard
+# als die regio ontbreekt: stil invoegen of het bestand herschrijven kan de
+# hand-onderhouden secties en de regio-volgorde slopen.
 
 
-def _llms_measurement_block(stats, date_nl):
-    return (
-        f"{LLMS_MEAS_START}\n"
-        f"Laatste meting ({date_nl}): {stats['total']} webshops gecontroleerd,\n"
-        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
-        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
-        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
-        f"{LLMS_MEAS_END}"
-    )
+def _llms_measurement_inner(stats, date_nl, ds):
+    """De regelinhoud van een meet-regio (tussen de markers).
 
-
-def _llms_fin_block(stats, date_nl):
-    return (
-        f"{LLMS_FIN_START}\n"
-        f"Financiële sector (AFM-toezicht), laatste meting ({date_nl}): "
-        f"{stats['total']} instellingen gecontroleerd,\n"
-        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
-        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
-        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
-        f"{LLMS_FIN_END}"
-    )
-
-
-def patch_llms_fin(stats, date_nl):
-    """Patch alleen de financiële meet-regio in public/llms.txt.
-
-    Laat de webshop-meetregio en de artikellijst-regio met rust. Bestaat het
-    bestand nog niet of mist de FIN-regio, dan wordt het blok ingevoegd direct
-    na de webshop-meetregio.
+    llms_label None geeft de legacy webshop-formulering ("Laatste meting ...");
+    met label wordt het "<label>, laatste meting ...". Byte-identiek aan de
+    blokken die de oude webshop- en fin-specifieke functies schreven.
     """
-    block = _llms_fin_block(stats, date_nl)
+    intro = f"{ds['llms_label']}, laatste meting" if ds.get("llms_label") else "Laatste meting"
+    return (
+        f"\n{intro} ({date_nl}): {stats['total']} {ds['llms_noun']} gecontroleerd,\n"
+        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
+        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
+        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
+    )
+
+
+def patch_llms_measurement(stats, date_nl, ds):
+    """Patch de meet-regio van deze dataset in public/llms.txt."""
     if not LLMS_FILE.exists():
-        print(f"{LLMS_FILE} bestaat nog niet; sla FIN-meetregio over")
-        return
+        sys.exit(f"FOUT: {LLMS_FILE} bestaat niet; meet-regio {ds['llms_region']} niet gepatcht.")
+    start = f"<!-- {ds['llms_region']}:START -->"
+    end = f"<!-- {ds['llms_region']}:END -->"
     text = LLMS_FILE.read_text(encoding="utf-8")
-    if LLMS_FIN_START in text and LLMS_FIN_END in text:
-        text = re.sub(
-            re.escape(LLMS_FIN_START) + r".*?" + re.escape(LLMS_FIN_END),
-            lambda _m: block,
-            text,
-            count=1,
-            flags=re.DOTALL,
-        )
-    elif LLMS_MEAS_END in text:
-        text = text.replace(LLMS_MEAS_END, LLMS_MEAS_END + "\n\n" + block, 1)
-    else:
-        text = text.rstrip() + "\n\n" + block + "\n"
+    text = _replace_region(text, start, end, _llms_measurement_inner(stats, date_nl, ds))
     _write_atomic(LLMS_FILE, text)
-    print(f"Patched {LLMS_FILE} (FIN-meetregio)")
-
-
-def write_llms_txt(stats, date_nl):
-    """Patch de meet-regio in public/llms.txt en laat de artikellijst-regio met rust."""
-    meas = _llms_measurement_block(stats, date_nl)
-
-    # Bestaat het bestand al met meet-markers, patch dan alleen dat blok.
-    if LLMS_FILE.exists():
-        text = LLMS_FILE.read_text(encoding="utf-8")
-        if LLMS_MEAS_START in text and LLMS_MEAS_END in text:
-            text = re.sub(
-                re.escape(LLMS_MEAS_START) + r".*?" + re.escape(LLMS_MEAS_END),
-                lambda _m: meas,
-                text,
-                count=1,
-                flags=re.DOTALL,
-            )
-            _write_atomic(LLMS_FILE, text)
-            print(f"Patched {LLMS_FILE} (meet-regio)")
-            return
-        # Geen meet-markers: schrijf het sjabloon, maar bewaar een bestaande
-        # artikellijst-regio als die er al staat.
-        art_match = re.search(
-            re.escape(LLMS_ART_START) + r".*?" + re.escape(LLMS_ART_END),
-            text,
-            flags=re.DOTALL,
-        )
-        articles_block = art_match.group(0) if art_match else f"{LLMS_ART_START}\n{LLMS_ART_END}"
-    else:
-        articles_block = f"{LLMS_ART_START}\n{LLMS_ART_END}"
-
-    fin_block = f"{LLMS_FIN_START}\n{LLMS_FIN_END}"
-    content = f"""# EAA Monitor
-
-> Onafhankelijke hub over de European Accessibility Act (EAA) in Nederland.
-> Monitort wekelijks of Nederlandse webshops en financiële instellingen een
-> toegankelijkheidsverklaring publiceren en legt uit hoe de wet werkt.
-
-{meas}
-
-{fin_block}
-
-## Belangrijkste pagina's
-- [Dashboard](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops
-- [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
-- [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
-- [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland
-- [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
-- [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
-
-## Data
-- [Volledige resultaten webshops (JSON)](https://eaa-monitor.nl/data/results.json)
-- [Volledige resultaten financiële instellingen (JSON)](https://eaa-monitor.nl/data/results-financieel.json)
-
-{articles_block}
-"""
-    _write_atomic(LLMS_FILE, content)
-    print(f"Wrote {LLMS_FILE}")
+    print(f"Patched {LLMS_FILE} ({ds['llms_region']})")
 
 
 def update_history(stats, date_iso, ds):
@@ -702,12 +652,9 @@ def generate_geo_assets(output, ds):
     date_nl = _date_nl(output["last_updated"])
     date_iso = output["last_updated"][:10]
     patch_target_html(stats, date_nl, date_iso, ds)
-    if ds["key"] == "financieel":
-        patch_hub_card(stats)
-        patch_fin_index_summary(stats, date_nl)
-        patch_llms_fin(stats, date_nl)
-    else:
-        write_llms_txt(stats, date_nl)
+    patch_hub_card(stats, ds)
+    patch_hub_summary(stats, date_nl, ds)
+    patch_llms_measurement(stats, date_nl, ds)
     update_history(stats, date_iso, ds)
 
 
