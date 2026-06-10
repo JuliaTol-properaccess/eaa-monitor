@@ -60,3 +60,12 @@ Deploy van een nieuwe versie:
 rsync -az -e "ssh -i ~/.ssh/eaa_monitor_ed25519" worker/src worker/server.mjs worker/package.json root@128.140.50.96:/opt/eaa-forms/
 ssh -i ~/.ssh/eaa_monitor_ed25519 root@128.140.50.96 "systemctl restart eaa-forms"
 ```
+
+## Automatische deploy vanuit GitHub Actions
+
+Elke push naar `main` deployt via `.github/workflows/deploy.yml` naar GitHub
+Pages én naar deze VPS (rsync van site + formulieren-service, daarna
+`systemctl restart eaa-forms`). De CI gebruikt een eigen sleutel
+("github-actions-deploy" in `/root/.ssh/authorized_keys`); de private helft
+staat als repo-secret `DEPLOY_SSH_KEY` in GitHub. De host-key van de server is
+vastgepind in de workflow.

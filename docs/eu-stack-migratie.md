@@ -87,6 +87,27 @@ De repo verhuizen naar Codeberg (Duits). Dit is alleen nodig als je de claim wil
 - De Dataset JSON-LD, llms.txt-regio's en sitemap blijven onveranderd werken; alleen de deploy-route verandert.
 - Per server documenteren: IP, SSH-toegang, stack en deploy-procedure (conform onze hostingstandaard).
 
+## Cutover-draaiboek (DNS-verhuizing)
+
+*Stand van de voorbereiding: server, site, formulieren-service en Brevo-mail draaien en zijn getest (10 juni 2026). De stappen hieronder zijn wat er nog rest.*
+
+### Vooraf (kan ruim voor de cutover)
+
+1. **GitHub-token op de server.** Fine-grained PAT (Contents + Pull requests: read & write op de eaa-monitor-repo) als `GITHUB_TOKEN` in `/etc/eaa-forms.env`, daarna `systemctl restart eaa-forms`. Zonder dit kan de service geen bezwaar-PR's openen.
+2. **Inkomende mail regelen.** info@, vragen@ en bezwaar@eaa-monitor.nl zijn nu doorstuuradressen in Cloudflare Email Routing; dat stopt bij de verhuizing. Vervanging: e-mail/doorsturen bij One.com aanzetten en de bijbehorende MX-records noteren voor stap 4.
+3. **DNS-zone exporteren uit Cloudflare** (DNS → Records → Export) als referentie.
+4. **Zone aanmaken bij Hetzner DNS** (dns.hetzner.com, zelfde login): `A eaa-monitor.nl → 128.140.50.96`, `AAAA → 2a01:4f8:c014:6c5d::1`, `CNAME www → eaa-monitor.nl`, de Brevo-records (DKIM, uit Brevo → Senders & Domains), de MX-records uit stap 2, plus wat er verder nog relevant is uit de export. De GitHub Pages-records niet meenemen.
+5. **Nieuwsbrief-abonnees meenemen.** Bevestigde adressen staan in de Cloudflare KV-namespace `NEWSLETTER` (sleutels `sub:<email>`). Exporteren met `wrangler kv key list/get --remote` en importeren in `/var/lib/eaa-forms/kv.json` op de server.
+
+### De cutover zelf (rustig moment, ±30-60 minuten)
+
+6. **Frontend-endpoints omzetten** van `https://eaa-bezwaar.juliatol.workers.dev/...` naar `https://eaa-monitor.nl/api/...` op vier plekken: `FEEDBACK_ENDPOINT` en `NEWSLETTER_ENDPOINT` in `tools/build_articles.py`, `BEZWAAR_ENDPOINT` in `public/bezwaar.html`, `VRAAG_ENDPOINT` in `public/vraag-stellen.html`, en de gebakken `data-endpoint`-attributen in de footers van de handgeschreven pagina's. Builders draaien, committen, pushen (deploy zet het op Pages én VPS).
+7. **Caddy op het domein zetten:** in `/etc/caddy/Caddyfile` het blok `:80` vervangen door `eaa-monitor.nl` en het www-redirect-blok aanzetten, daarna `systemctl reload caddy`. Caddy haalt automatisch een TLS-certificaat zodra de DNS wijst.
+8. **Nameservers omzetten bij One.com:** van `renan/maya.ns.cloudflare.com` naar de drie Hetzner-nameservers die de zone uit stap 4 opgeeft.
+9. **Controleren:** `dig eaa-monitor.nl` wijst naar de VPS, https werkt met geldig certificaat, nieuwsbrief- en vraagformulier doen het, mail naar info@ komt aan, Plausible telt nog.
+10. **Cloudflare Worker een week laten draaien** voor bevestigingslinks die nog onderweg zijn (tokens zijn 7 dagen geldig). Daarna kan de Worker uit en kan stap 5 desgewenst nog één keer voor nakomers.
+11. **De footer-sectie "Europese infrastructuur" toevoegen**: het oorspronkelijke doel. Pas nu klopt de claim helemaal.
+
 ## Bronnen
 
 - [Brevo: limieten gratis plan](https://help.brevo.com/hc/en-us/articles/208580669-FAQs-What-are-the-limits-of-the-Free-plan)
