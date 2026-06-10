@@ -93,7 +93,7 @@ NAV_ITEMS = [
     ("Home", "/"),
     ("Monitor", [
         ("E-commerce", "/monitor.html"),
-        ("Fin sector", "/monitor-financieel.html"),
+        ("Financiële sector", "/monitor-financieel.html"),
         ("Over", "/over.html"),
     ]),
     ("Kennisbank", "/artikelen.html"),
