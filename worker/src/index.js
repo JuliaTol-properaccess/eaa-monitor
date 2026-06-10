@@ -511,6 +511,42 @@ function githubHeaders(env) {
 
 // ── E-mails ────────────────────────────────────────────────────────────────
 
+// Centrale verzendfunctie. Is RESEND_API_KEY gezet, dan gaat de mail via Resend
+// (transactionele provider, mag naar willekeurige adressen). Zo niet, dan valt
+// hij terug op de Cloudflare-binding env.EMAIL, die alleen naar geverifieerde
+// bestemmingen mag. Bevestigingsmails naar bezwaarmakers en nieuwsbrief-abonnees
+// gaan naar externe adressen en hebben Resend nodig; interne meldingen werken
+// met beide. Alle callers gebruiken dezelfde vorm: { to, from:{email,name},
+// replyTo, subject, text, html? }.
+async function sendEmail(env, msg) {
+  if (env.RESEND_API_KEY) {
+    const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
+    const fromName = typeof msg.from === "string" ? null : msg.from.name;
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: fromName ? `${fromName} <${fromEmail}>` : fromEmail,
+        to: [msg.to],
+        ...(msg.replyTo ? { reply_to: msg.replyTo } : {}),
+        subject: msg.subject,
+        text: msg.text,
+        ...(msg.html ? { html: msg.html } : {}),
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Resend ${res.status}: ${detail.slice(0, 300)}`);
+    }
+    return;
+  }
+  // Terugval: Cloudflare Email Sending-binding (alleen geverifieerde bestemmingen).
+  await env.EMAIL.send(msg);
+}
+
 async function sendConfirmationEmail(env, { name, email, webadres, confirmUrl }) {
   const subject = "Bevestig de verwijdering van je webshop uit de EAA Monitor";
   const text = [
@@ -545,7 +581,7 @@ async function sendConfirmationEmail(env, { name, email, webadres, confirmUrl })
       <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
     </div>`;
 
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: email,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: env.NOTIFY_EMAIL,
@@ -576,7 +612,7 @@ async function sendManualReviewEmail(env, { name, webadres, email, declared, toe
     ``,
     `Verwerk dit volgens workflows/handle_objection.md.`,
   ];
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: env.NOTIFY_EMAIL,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email,
@@ -597,7 +633,7 @@ async function sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl }) {
     `Bericht:`,
     bericht,
   ];
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: env.NOTIFY_EMAIL,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
@@ -623,7 +659,7 @@ async function sendVraagEmail(env, { vraag, email, sector }) {
     `aan de juiste toezichthouder en publiceer het antwoord in data/vragen.json`,
     `(pagina /vragen.html). Publiceer nooit het e-mailadres of herleidbare gegevens.`,
   ];
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email && isValidEmail(email) ? email : to,
@@ -666,7 +702,7 @@ async function sendNewsletterConfirmEmail(env, { email, confirmUrl }) {
       <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
     </div>`;
 
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: email,
     from: { email: from, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: env.NOTIFY_EMAIL,
