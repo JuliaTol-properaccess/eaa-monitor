@@ -40,9 +40,6 @@ LLMS_FILE = PUBLIC_DIR / "llms.txt"              # gedeeld; elke dataset bezit �
 #   (<!--STAT:{prefix}Total--> / <!--STAT:{prefix}PctWithout-->). None voor
 #   webshops: index.html is daar al de target_html met de legacy ongeprefixte
 #   markers (GEO-SUMMARY, STAT:total, ...).
-# - hub_summary_marker: tijdelijk, alleen financieel; de samenvattingskaart op
-#   index.html. Vervalt bij het 6-kaarten-hub-ontwerp (samenvattingen staan
-#   dan alleen op de eigen monitorpagina).
 # - llms_label: sectorlabel in het llms.txt-meetblok; None geeft de legacy
 #   webshop-formulering "Laatste meting (...)".
 # - llms_noun: kort zelfstandig naamwoord in het llms.txt-meetblok (kan
@@ -59,7 +56,6 @@ DATASETS = {
         "llms_label": None,
         "llms_noun": "webshops",
         "hub_prefix": None,
-        "hub_summary_marker": None,
         "toezichthouder": "ACM",
         "noun": "webshops",
         "summary_heading": "E-commerce · ACM-toezicht",
@@ -78,7 +74,6 @@ DATASETS = {
         "llms_label": "Financiële sector (AFM-toezicht)",
         "llms_noun": "instellingen",
         "hub_prefix": "fin",
-        "hub_summary_marker": "FIN-GEO-SUMMARY",
         "toezichthouder": "AFM",
         "noun": "financiële instellingen",
         "summary_heading": "Financiële sector · AFM-toezicht",
@@ -97,7 +92,6 @@ DATASETS = {
         "llms_label": "Telecom (ACM-toezicht)",
         "llms_noun": "aanbieders",
         "hub_prefix": "tel",
-        "hub_summary_marker": None,
         "toezichthouder": "ACM",
         "noun": "telecomaanbieders",
         "summary_heading": "Telecom · ACM-toezicht",
@@ -116,7 +110,6 @@ DATASETS = {
         "llms_label": "Personenvervoer (ILT-toezicht)",
         "llms_noun": "vervoerders",
         "hub_prefix": "vervoer",
-        "hub_summary_marker": None,
         "toezichthouder": "ILT",
         "noun": "vervoerders",
         "summary_heading": "Personenvervoer · ILT-toezicht",
@@ -135,7 +128,6 @@ DATASETS = {
         "llms_label": "Media en streaming (toezicht Commissariaat voor de Media)",
         "llms_noun": "mediadiensten",
         "hub_prefix": "media",
-        "hub_summary_marker": None,
         "toezichthouder": "Commissariaat voor de Media",
         "noun": "mediadiensten",
         "summary_heading": "Media & streaming · Commissariaat voor de Media",
@@ -154,7 +146,6 @@ DATASETS = {
         "llms_label": "E-books (ACM-toezicht)",
         "llms_noun": "e-bookplatforms",
         "hub_prefix": "ebooks",
-        "hub_summary_marker": None,
         "toezichthouder": "ACM",
         "noun": "e-bookplatforms",
         "summary_heading": "E-books · ACM-toezicht",
@@ -644,28 +635,6 @@ def patch_hub_card(stats, ds):
     print(f"Patched {index} (hub-kaart {ds['key']})")
 
 
-def patch_hub_summary(stats, date_nl, ds):
-    """Vul de sector-samenvattingskaart op de hub-homepage (index.html).
-
-    Tijdelijk: alleen financieel heeft hub_summary_marker. Vervalt zodra de
-    hub het 6-kaarten-ontwerp krijgt en samenvattingen alleen nog op de eigen
-    monitorpagina staan.
-    """
-    marker = ds.get("hub_summary_marker")
-    if not marker:
-        return
-    index = PUBLIC_DIR / "index.html"
-    if not index.exists():
-        return
-    html = index.read_text(encoding="utf-8")
-    if f"<!-- {marker}:START -->" not in html:
-        return  # samenvattingskaart nog niet aanwezig; sla over
-    html = _replace_region(html, f"<!-- {marker}:START -->", f"<!-- {marker}:END -->",
-                           _geo_summary_inner(stats, date_nl, ds))
-    _write_atomic(index, html)
-    print(f"Patched {index} (samenvatting {ds['key']})")
-
-
 # llms.txt is een hand-onderhouden skelet (in git) met per sector een eigen
 # meet-regio plus de artikellijst-regio van tools/build_articles.py. De scraper
 # patcht alleen de inhoud van de eigen regio (ds["llms_region"]) en faalt hard
@@ -749,7 +718,6 @@ def generate_geo_assets(output, ds):
     date_iso = output["last_updated"][:10]
     patch_target_html(stats, date_nl, date_iso, ds)
     patch_hub_card(stats, ds)
-    patch_hub_summary(stats, date_nl, ds)
     patch_llms_measurement(stats, date_nl, ds)
     update_history(stats, date_iso, ds)
 

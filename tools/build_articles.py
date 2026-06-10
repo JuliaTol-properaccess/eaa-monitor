@@ -88,12 +88,16 @@ def nl_date(d: _date) -> str:
 # ── Gedeelde HTML-partials (single source of truth voor de hele site) ──────────
 
 # Nav-items: (label, href) voor een gewone link, of (label, [kinderen]) voor een
-# dropdown. De Monitor-dropdown bundelt de twee dashboards plus de over-pagina.
+# dropdown. De Monitor-dropdown bundelt de zes sectordashboards plus de over-pagina.
 NAV_ITEMS = [
     ("Home", "/"),
     ("Monitor", [
         ("E-commerce", "/monitor.html"),
         ("Financiële sector", "/monitor-financieel.html"),
+        ("Telecom", "/monitor-telecom.html"),
+        ("Personenvervoer", "/monitor-vervoer.html"),
+        ("Media & streaming", "/monitor-media.html"),
+        ("E-books", "/monitor-ebooks.html"),
         ("Over", "/over.html"),
     ]),
     ("Kennisbank", "/artikelen.html"),
@@ -253,6 +257,10 @@ def site_footer():
           <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
             <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
+            <li><a href="/monitor-telecom.html" class="hover:text-white">Telecommonitor</a></li>
+            <li><a href="/monitor-vervoer.html" class="hover:text-white">Vervoermonitor</a></li>
+            <li><a href="/monitor-media.html" class="hover:text-white">Mediamonitor</a></li>
+            <li><a href="/monitor-ebooks.html" class="hover:text-white">E-booksmonitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
           </ul>
