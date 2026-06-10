@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WCAG-audit: vind een auditbureau — EAA Monitor</title>
-  <meta name="description" content="Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.">
-  <link rel="canonical" href="https://eaa-monitor.nl/wcag-audit.html">
-
+  <title>Nomineer een toegankelijke website voor de eregalerij — EAA Monitor</title>
+  <meta name="description" content="Ken jij een website die uitstekend werkt met een schermlezer, toetsenbord of andere hulptechnologie? Nomineer hem voor de eregalerij. Wij controleren elke nominatie.">
+  <link rel="canonical" href="https://eaa-monitor.nl/nomineren.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://eaa-monitor.nl/wcag-audit.html">
-  <meta property="og:title" content="WCAG-audit: vind een auditbureau — EAA Monitor">
-  <meta property="og:description" content="Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.">
+  <meta property="og:url" content="https://eaa-monitor.nl/nomineren.html">
+  <meta property="og:title" content="Nomineer een toegankelijke website voor de eregalerij">
+  <meta property="og:description" content="Vertel ons welke website echt toegankelijk is en waarom. Na een check door een senior auditor komt hij in de eregalerij, met codevoorbeelden voor ontwikkelaars.">
   <meta property="og:site_name" content="EAA Monitor">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WCAG-audit: vind een auditbureau — EAA Monitor">
-  <meta name="twitter:description" content="Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.">
+  <meta name="twitter:title" content="Nomineer een toegankelijke website voor de eregalerij">
+  <meta name="twitter:description" content="Vertel ons welke website echt toegankelijk is en waarom. Na een check komt hij in de eregalerij.">
   <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +30,7 @@
   <link rel="stylesheet" href="/static/site.css">
 </head>
 <body class="bg-white">
+
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
   <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
@@ -55,7 +55,7 @@
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
-          <a href="/wcag-audit.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">WCAG-audit</a>
+          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -75,36 +75,92 @@
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
-        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">WCAG-audit</a>
+        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
   </header>
 
   <main id="main">
 
     <section class="bg-navy text-white on-dark">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Vind een WCAG-audit</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Een onafhankelijke audit brengt in kaart of je website en app voldoen aan de WCAG en de European Accessibility Act. Hieronder vind je auditbureaus in Nederland.</p>
+      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
+        <a href="/eregalerij.html" class="text-sm font-semibold text-white/70 hover:text-white">&larr; Eregalerij</a>
+        <h1 class="mt-6 text-3xl md:text-5xl font-extrabold tracking-tight">Nomineer een toegankelijke website</h1>
+        <p class="mt-4 text-lg text-white/70 leading-relaxed">Kom je een website tegen die uitstekend werkt met een schermlezer, alleen het toetsenbord of een andere hulptechnologie? Vertel het ons. Na een check door een senior auditor komt hij in de eregalerij.</p>
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-4">
-      <div class="prose max-w-prose bg-white rounded-2xl shadow-sm px-6 sm:px-8 pt-8 pb-6">
-        <h2 class="mt-0">Waarom een onafhankelijke audit?</h2>
-        <p>Een geautomatiseerde tool vindt maar een deel van de toegankelijkheidsproblemen. De barrieres die echte gebruikers tegenkomen, zie je pas met een inhoudelijke audit en met tests door mensen die assistieve technologie gebruiken. Een onafhankelijk bureau heeft geen belang bij de uitkomst en kijkt puur naar wat werkt voor de bezoeker.</p>
-      </div>
-    </section>
+    <article class="max-w-prose mx-auto px-4 sm:px-6 py-12">
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-6" aria-label="Auditbureaus">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Auditbureaus in Nederland</h2>
+      <section class="mb-8">
+        <h2 class="text-xl font-bold text-navy mb-4">Hoe het werkt</h2>
+        <ul class="mt-2 space-y-2 list-disc list-inside leading-relaxed text-gray-700">
+          <li>Je vult het formulier in en bevestigt je nominatie via een link in je mail.</li>
+          <li>Een senior auditor controleert de website: werkt hij echt zo goed als jij zegt?</li>
+          <li>Klopt het, dan komt de website in de <a href="/eregalerij.html" class="link">eregalerij</a>, met voorbeelden uit de code zodat ontwikkelaars ervan kunnen leren.</li>
+          <li>Je e-mailadres gebruiken we alleen voor de bevestiging. We publiceren het nooit en delen het met niemand.</li>
+          <li>Werk je zelf bij de website die je nomineert? Dat mag, maar zeg het er eerlijk bij in je motivatie. We zien het toch en wegen het mee.</li>
+        </ul>
+      </section>
 
-      <div class="card p-10 text-center text-gray-600">
-        <p>De lijst met auditbureaus wordt binnenkort gevuld.</p>
-      </div>
-      <p class="mt-4 text-sm text-gray-600">Staat jouw bureau hier nog niet? Deze lijst wordt met de hand samengesteld.</p>
-    </section>
+      <div id="form-status" role="status" aria-live="polite" tabindex="-1" class="mb-6"></div>
+
+      <form id="nominatie-form" method="POST" novalidate>
+
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp-website">Laat dit veld leeg</label>
+          <input type="text" id="hp-website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="mb-5">
+          <label for="naam" class="block text-sm font-semibold text-navy mb-1">Naam van de website <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <input type="text" id="naam" name="naam" required maxlength="200" placeholder="Bijvoorbeeld: Voorbeeldshop"
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+        </div>
+
+        <div class="mb-5">
+          <label for="webadres" class="block text-sm font-semibold text-navy mb-1">Webadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <input type="url" id="webadres" name="webadres" required maxlength="500" inputmode="url" placeholder="https://www.voorbeeld.nl" aria-describedby="webadres-hint"
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+          <p id="webadres-hint" class="text-sm text-gray-500 mt-1">Het volledige adres, inclusief https://</p>
+        </div>
+
+        <div class="mb-5">
+          <label for="motivatie" class="block text-sm font-semibold text-navy mb-1">Wat doet deze website goed? <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <textarea id="motivatie" name="motivatie" rows="6" required maxlength="2000" aria-describedby="motivatie-hint"
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand"
+            placeholder="Bijvoorbeeld: ik kon met VoiceOver zonder hulp afrekenen, inclusief het kiezen van een bezorgmoment."></textarea>
+          <p id="motivatie-hint" class="text-sm text-gray-500 mt-1">Wees zo concreet mogelijk: wat lukte er dat op andere websites vaak misgaat? Zet er geen gegevens in die naar jou te herleiden zijn.</p>
+        </div>
+
+        <div class="mb-5">
+          <label for="hulptechnologie" class="block text-sm font-semibold text-navy mb-1">Welke hulptechnologie gebruikte je? <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <input type="text" id="hulptechnologie" name="hulptechnologie" maxlength="200" aria-describedby="hulptechnologie-hint" placeholder="Bijvoorbeeld: VoiceOver op iOS"
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+          <p id="hulptechnologie-hint" class="text-sm text-gray-500 mt-1">Bijvoorbeeld een schermlezer (NVDA, JAWS, VoiceOver, TalkBack), schermvergroting, spraakbediening of alleen het toetsenbord.</p>
+        </div>
+
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-semibold text-navy mb-1">Je e-mailadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-hint" placeholder="jij@voorbeeld.nl"
+            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+          <p id="email-hint" class="text-sm text-gray-500 mt-1">Alleen om je nominatie te bevestigen. Het komt niet op de website en we delen het met niemand.</p>
+        </div>
+
+        <div class="mb-6">
+          <label class="flex items-start gap-3">
+            <input type="checkbox" name="toestemming_quote" value="ja" required class="mt-1 w-5 h-5 rounded border-field text-brand focus:ring-2 focus:ring-brand">
+            <span class="text-sm text-gray-700 leading-relaxed">Mijn motivatie mag als anonieme quote bij de vermelding staan. <span class="text-status-notfound" aria-hidden="true">*</span></span>
+          </label>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary">Nominatie versturen</button>
+        <p class="text-sm text-gray-500 mt-3">Velden met een <span class="text-status-notfound">*</span> zijn verplicht.</p>
+      </form>
+
+    </article>
 
   </main>
+
   <footer class="bg-navy text-white mt-24 on-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
       <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
@@ -159,7 +215,61 @@
     <script src="/static/newsletter.js"></script>
   </footer>
 
+  <script>
+    (function () {
+      "use strict";
+
+      // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md), route /hof/nominate.
+      const NOMINATIE_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/hof/nominate";
+
+      const form = document.getElementById("nominatie-form");
+      const statusEl = document.getElementById("form-status");
+      const submitBtn = document.getElementById("submit-btn");
+
+      function showStatus(type, html) {
+        statusEl.className = (type === "success" ? "notice notice-info" : "notice notice-warning") + " mb-6";
+        statusEl.innerHTML = html;
+        statusEl.focus();
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Bezig met versturen...";
+
+        try {
+          const response = await fetch(NOMINATIE_ENDPOINT, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            form.classList.add("hidden");
+            showStatus(
+              "success",
+              "<strong>Bijna klaar.</strong> We hebben je een mail gestuurd. Klik op de link daarin om je nominatie te bevestigen. Daarna controleren we de website en zetten we hem bij goedkeuring in de eregalerij."
+            );
+          } else {
+            const data = await response.json().catch(() => ({}));
+            showStatus("error", (data && data.error) || "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Nominatie versturen";
+          }
+        } catch (err) {
+          showStatus("error", "Er ging iets mis bij het versturen. Controleer je internetverbinding en probeer het opnieuw, of mail naar info@eaa-monitor.nl.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Nominatie versturen";
+        }
+      });
+    })();
+  </script>
   <script src="/static/nav.js"></script>
-  <script src="/static/reveal.js"></script>
 </body>
 </html>

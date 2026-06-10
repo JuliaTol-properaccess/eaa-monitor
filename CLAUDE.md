@@ -12,6 +12,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
 - `tools/build_vragen.py` — Rendert `data/vragen.json` → `public/vragen.html` (server-rendered vraag-en-antwoord met FAQPage JSON-LD). Deelt head/header/footer met `build_articles.py`
 - `tools/build_bronnen.py` — Rendert `data/bronnen.json` → `public/bronnen.html` (server-rendered, filterbaar bronnenoverzicht). Deelt head/header/footer met `build_articles.py`; de filters/zoek werken client-side via `public/static/bronnen.js`
+- `tools/build_halloffame.py` — Rendert `data/halloffame.json` → `public/eregalerij.html` (server-rendered, met ItemList JSON-LD). Slaat entries zonder `observaties` over met een waarschuwing (vangrail tegen te vroeg gemergde nominatie-PR's). Stemtellers komen client-side van de Worker via `public/static/halloffame.js`. Deelt head/header/footer met `build_articles.py`
 - `tools/fetch_bron_dates.py` — Best-effort: haalt elke bron-URL op en vult `date` aan in `data/bronnen.json` (uit `datePublished`/`article:published_time`/`<time>`). Verzint nooit een datum; vindt het niets, dan blijft het veld leeg
 - `tools/scrape_thuiswinkel.py` / `tools/scrape_webwinkelkeur.py` — Bouwen `webshops.json` aan met keurmerk-leden
 
@@ -24,6 +25,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
 - `data/vragen.json` — Handmatig samengestelde lijst van beantwoorde praktijkvragen (velden: `vraag`, `antwoord`, optioneel `toezichthouder`, `datum`, `thema`, `bron`). Gevuld vanuit binnengekomen anonieme vragen; nooit antwoorden verzinnen
 - `data/bronnen.json` — Externe bronnen over de EAA voor de bronnenpagina (velden: `title`, `url`, `author`, `category`, optioneel `date`). `category` uit de vaste lijst in `build_bronnen.py`. `date` wordt aangevuld door `fetch_bron_dates.py`
+- `data/halloffame.json` — Eregalerij-vermeldingen (velden: `naam`, `url`, `slug`, `datum`, `motivatie`, `observaties` met `titel`/`beschrijving`/`code`/`wcag`, optioneel `categorie`, `hulptechnologie`). De Worker voegt entries toe via PR's (nominatieflow); Julia vult `observaties` bij review (zie `workflows/handle_nominatie.md`). **Nooit e-mailadressen** in dit bestand; `slug` na publicatie niet wijzigen (stemtellers hangen eraan)
 
 ### Pagina's (`public/`)
 - `index.html` — Hub-homepage: cijfer-gedreven hero, kerncijfers, uitgelichte artikelen. **Bevat de scraper-markers** (zie hieronder); niet verwijderen
@@ -34,6 +36,8 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `vragen.html` — Vragen uit de praktijk, **gegenereerd** door `build_vragen.py` uit `data/vragen.json` (niet handmatig bewerken)
 - `vraag-stellen.html` — Anoniem vraagformulier → bezwaar-Worker (`VRAAG_ENDPOINT`, route `/vraag`). Handgeschreven
 - `bronnen.html` — Doorzoekbaar bronnenoverzicht met categoriefilters, **gegenereerd** door `build_bronnen.py` uit `data/bronnen.json` (niet handmatig bewerken)
+- `eregalerij.html` — Hall of fame van aantoonbaar toegankelijke websites, **gegenereerd** door `build_halloffame.py` uit `data/halloffame.json` (niet handmatig bewerken). Stemtellers en stemformulieren via `static/halloffame.js` (progressive enhancement: zonder JS verborgen)
+- `nomineren.html` — Nominatieformulier voor de eregalerij → bezwaar-Worker (`NOMINATIE_ENDPOINT`, route `/hof/nominate`). Handgeschreven
 - `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
 - `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
 - `over.html` — Over het dashboard
@@ -43,9 +47,10 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Inter**. De oude PA-tokens (magenta/petrol) zijn vervangen.
 
 ### Overig
-- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie, artikel-feedback, anonieme vragen én nieuwsbrief-opt-in (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`, `POST /vraag`, `POST /newsletter`, `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL`; `/vraag` mailt een anonieme EAA-vraag naar `VRAGEN_EMAIL` (`vragen@eaa-monitor.nl`, terugval op `NOTIFY_EMAIL`) — beide zonder PR, opslag of extra secrets. `/newsletter` is een dubbele opt-in: na bevestiging via een getekende link wordt het adres opgeslagen in de KV-namespace `NEWSLETTER` (sleutel `sub:<email>`); afzender `NEWSLETTER_FROM` (terugval op `FROM_EMAIL`). Het inschrijfformulier staat in de footer (`site_footer()` in `build_articles.py`, endpoint in `NEWSLETTER_ENDPOINT`, submit-logica in `public/static/newsletter.js`). Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
+- `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie, artikel-feedback, anonieme vragen, nieuwsbrief-opt-in én de eregalerij (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`, `POST /vraag`, `POST /newsletter`, `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`, `POST /hof/nominate`, `GET /hof/nominate/confirm`, `POST /hof/vote`, `GET /hof/vote/confirm`, `GET /hof/votes`. De eregalerij-flows: nomineren = dubbele opt-in → PR op `data/halloffame.json` (zelfnominatie wordt gevlagd, nooit auto-live); stemmen = dubbele opt-in, 1 stem per gehasht e-mailadres per `slug` in KV (`hof:vote:`/`hof:count:`), eigen-domein-stemmen geweigerd; `GET /hof/votes` levert de tellers (gecachet) aan `static/halloffame.js`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL`; `/vraag` mailt een anonieme EAA-vraag naar `VRAGEN_EMAIL` (`vragen@eaa-monitor.nl`, terugval op `NOTIFY_EMAIL`) — beide zonder PR, opslag of extra secrets. `/newsletter` is een dubbele opt-in: na bevestiging via een getekende link wordt het adres opgeslagen in de KV-namespace `NEWSLETTER` (sleutel `sub:<email>`); afzender `NEWSLETTER_FROM` (terugval op `FROM_EMAIL`). Het inschrijfformulier staat in de footer (`site_footer()` in `build_articles.py`, endpoint in `NEWSLETTER_ENDPOINT`, submit-logica in `public/static/newsletter.js`). Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
 - `workflows/handle_objection.md` — SOP voor het verwerken van een bezwaar
 - `workflows/handle_vraag.md` — SOP voor het verwerken van een binnengekomen anonieme vraag (voorleggen aan toezichthouder, antwoord in `data/vragen.json`)
+- `workflows/handle_nominatie.md` — SOP voor het verwerken van een eregalerij-nominatie (toegankelijkheidscheck, geverifieerde observaties schrijven, PR mergen)
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
 - `.github/workflows/deploy.yml` — Deploy naar GitHub Pages (kopieert de hele `public/`-tree recursief)
 
@@ -76,6 +81,9 @@ python tools/build_auditbureaus.py
 python tools/build_vragen.py
 # Bronnenpagina (her)bouwen na een wijziging in data/bronnen.json
 python tools/build_bronnen.py
+
+# Eregalerij (her)bouwen na een wijziging in data/halloffame.json
+python tools/build_halloffame.py
 
 # Publicatiedatums aanvullen in data/bronnen.json (best-effort, haalt de URL's op)
 python tools/fetch_bron_dates.py            # alleen ontbrekende

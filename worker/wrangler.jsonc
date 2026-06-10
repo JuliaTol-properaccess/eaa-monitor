@@ -10,8 +10,9 @@
   "send_email": [{ "name": "EMAIL" }],
 
   // Opslag van bevestigde nieuwsbrief-inschrijvingen (route /newsletter, sleutel
-  // sub:<email>) én van de rate-limit-tellers per IP (sleutel rl:<route>:<ip>,
-  // met TTL). Maak de namespace eenmalig aan en vul het id hieronder in (zie DEPLOY.md):
+  // sub:<email>), van de rate-limit-tellers per IP (sleutel rl:<route>:<ip>,
+  // met TTL) en van de eregalerij (hof:pending:<uuid>, hof:vote:<slug>:<hash>,
+  // hof:count:<slug>). Maak de namespace eenmalig aan en vul het id hieronder in (zie DEPLOY.md):
   //   npx wrangler kv namespace create NEWSLETTER
   "kv_namespaces": [{ "binding": "NEWSLETTER", "id": "9bee247149b64408835caa8ca1761d18" }],
 
@@ -38,9 +39,13 @@
     // terug op NOTIFY_EMAIL.
     "VRAGEN_EMAIL": "vragen@eaa-monitor.nl",
 
-    // Doel-repo voor de commit naar data/objections.json.
+    // Doel-repo voor de commits naar data/objections.json en data/halloffame.json.
     "GITHUB_REPO": "JuliaTol-properaccess/eaa-monitor",
-    "GITHUB_BRANCH": "main"
+    "GITHUB_BRANCH": "main",
+
+    // Live JSON van de eregalerij; de stemroute valideert hiertegen welke
+    // vermeldingen bestaan, zonder GitHub-call.
+    "HOF_DATA_URL": "https://eaa-monitor.nl/data/halloffame.json"
   }
 
   // Secrets (NIET hier, via `wrangler secret put`):

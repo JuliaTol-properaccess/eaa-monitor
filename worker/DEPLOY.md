@@ -308,6 +308,62 @@ voorlopig alleen de (bevestigde) adressen.
   `/feedback` en `/vraag`) om misbruik te voorkomen.
 - **Na een wijziging aan de Worker opnieuw deployen** (`npx wrangler deploy`).
 
+## Eregalerij (`/hof/*`)
+
+Dezelfde Worker bedient de eregalerij: nomineren en stemmen, allebei met dubbele
+opt-in per e-mail. Er is **niets extra's te deployen**: geen nieuwe secrets, geen
+nieuwe KV-namespace (alles staat geprefixt in NEWSLETTER), alleen de var
+`HOF_DATA_URL` in `wrangler.jsonc` en daarna `npx wrangler deploy`.
+
+### Nomineren
+
+1. `POST /hof/nominate` ontvangt het formulier van `public/nomineren.html`
+   (velden: `naam`, `webadres`, `motivatie`, `hulptechnologie`, `email`,
+   `toestemming_quote`, honeypot `_gotcha`). De volledige nominatie wacht in KV
+   (`hof:pending:<uuid>`, TTL 7 dagen; de motivatie past niet in een token-URL)
+   en de inzender krijgt een bevestigingsmail. Is het e-maildomein gelijk aan
+   het site-domein, dan wordt de nominatie als **zelfnominatie** gevlagd (niet
+   geweigerd; Julia weegt het in de PR).
+2. `GET /hof/nominate/confirm?token=…` haalt de nominatie uit KV en opent een PR
+   op `data/halloffame.json` (branch `hof/<slug>`, deterministisch, dus een
+   tweede klik opent geen tweede PR). Verwerken volgens
+   `workflows/handle_nominatie.md`; zonder merge verschijnt er niets.
+
+### Stemmen
+
+1. `POST /hof/vote` (velden: `slug`, `email`, `_gotcha`) valideert de slug tegen
+   de live `HOF_DATA_URL` (alleen gepubliceerde vermeldingen), **weigert**
+   stemmen vanaf het domein van de website zelf, en stuurt een bevestigingsmail.
+   Is er al gestemd met dit adres, dan komt er geen nieuwe mail (zelfde antwoord
+   naar buiten, geen mail-bombing).
+2. `GET /hof/vote/confirm?token=…` telt de stem: sleutel
+   `hof:vote:<slug>:<sha256 van het genormaliseerde adres>` (lowercase, +tag
+   eruit) plus teller `hof:count:<slug>`. Dubbel klikken telt niet dubbel.
+3. `GET /hof/votes` geeft alle tellers als JSON (`{"<slug>": <aantal>}`,
+   `Cache-Control: max-age=300`); `public/static/halloffame.js` vult daarmee de
+   tellers op de pagina.
+
+### Tellers bekijken of bijstellen
+
+```bash
+npx wrangler kv key list --binding NEWSLETTER --remote --prefix "hof:"
+npx wrangler kv key get --binding NEWSLETTER --remote "hof:count:<slug>"
+npx wrangler kv key put --binding NEWSLETTER --remote "hof:count:<slug>" "12"
+```
+
+### Aandachtspunten
+
+- Rate limits in de Worker: `hofnominate` 3/uur, `hofvote` 5/uur per IP. Zet
+  desgewenst ook Cloudflare Rate Limiting Rules op `/hof/nominate` en
+  `/hof/vote`, net als op de andere mail-endpoints.
+- Geaccepteerde restrisico's: wegwerp-maildomeinen zijn niet geblokkeerd, KV is
+  eventually consistent (een race kan ±1 stem schelen) en wie meerdere echte
+  adressen heeft kan vaker stemmen. Stemmen zijn sociaal bewijs; publicatie
+  loopt altijd via de handmatig gereviewde PR.
+- De frontend-endpoints staan in `public/nomineren.html`
+  (`NOMINATIE_ENDPOINT`) en `tools/build_halloffame.py` (`HOF_ENDPOINT_BASE`,
+  als `data-hof-endpoint` op de pagina gebakken).
+
 ## Testen
 
 1. **Lokaal** (stuurt echte mail, gebruik een eigen testadres):

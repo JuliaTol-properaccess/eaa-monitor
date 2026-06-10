@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WCAG-audit: vind een auditbureau — EAA Monitor</title>
-  <meta name="description" content="Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.">
-  <link rel="canonical" href="https://eaa-monitor.nl/wcag-audit.html">
+  <title>Eregalerij: websites die echt toegankelijk zijn — EAA Monitor</title>
+  <meta name="description" content="Een toegankelijkheidsverklaring zegt niets over echte toegankelijkheid. In de eregalerij staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met codevoorbeelden.">
+  <link rel="canonical" href="https://eaa-monitor.nl/eregalerij.html">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://eaa-monitor.nl/wcag-audit.html">
-  <meta property="og:title" content="WCAG-audit: vind een auditbureau — EAA Monitor">
-  <meta property="og:description" content="Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.">
+  <meta property="og:url" content="https://eaa-monitor.nl/eregalerij.html">
+  <meta property="og:title" content="Eregalerij: websites die echt toegankelijk zijn — EAA Monitor">
+  <meta property="og:description" content="Een toegankelijkheidsverklaring zegt niets over echte toegankelijkheid. In de eregalerij staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met codevoorbeelden.">
   <meta property="og:site_name" content="EAA Monitor">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WCAG-audit: vind een auditbureau — EAA Monitor">
-  <meta name="twitter:description" content="Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.">
+  <meta name="twitter:title" content="Eregalerij: websites die echt toegankelijk zijn — EAA Monitor">
+  <meta name="twitter:description" content="Een toegankelijkheidsverklaring zegt niets over echte toegankelijkheid. In de eregalerij staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met codevoorbeelden.">
   <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,8 +54,8 @@
           <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
-          <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
-          <a href="/wcag-audit.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">WCAG-audit</a>
+          <a href="/eregalerij.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Eregalerij</a>
+          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -74,34 +74,47 @@
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
-        <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
-        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">WCAG-audit</a>
+        <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Eregalerij</a>
+        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
   </header>
 
-  <main id="main">
+  <main id="main" data-hof-endpoint="https://eaa-bezwaar.juliatol.workers.dev">
 
     <section class="bg-navy text-white on-dark">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Vind een WCAG-audit</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Een onafhankelijke audit brengt in kaart of je website en app voldoen aan de WCAG en de European Accessibility Act. Hieronder vind je auditbureaus in Nederland.</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Eregalerij</h1>
+        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Een toegankelijkheidsverklaring zegt niets over hoe toegankelijk een website echt is. In deze hall of fame staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met echte codevoorbeelden voor ontwikkelaars.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/nomineren.html" class="btn btn-on-dark">Nomineer een website</a>
+        </div>
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 pb-4">
-      <div class="prose max-w-prose bg-white rounded-2xl shadow-sm px-6 sm:px-8 pt-8 pb-6">
-        <h2 class="mt-0">Waarom een onafhankelijke audit?</h2>
-        <p>Een geautomatiseerde tool vindt maar een deel van de toegankelijkheidsproblemen. De barrieres die echte gebruikers tegenkomen, zie je pas met een inhoudelijke audit en met tests door mensen die assistieve technologie gebruiken. Een onafhankelijk bureau heeft geen belang bij de uitkomst en kijkt puur naar wat werkt voor de bezoeker.</p>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12 pb-4">
+      <div class="prose max-w-prose">
+        <h2>Hoe het werkt</h2>
+        <p>Kom je een website tegen die uitstekend werkt met een schermlezer, alleen het toetsenbord of een andere hulptechnologie? Nomineer hem via het formulier. Je bevestigt je nominatie via een link in je mail. Daarna bekijkt een senior auditor de website: werkt hij echt zo goed als de nominatie zegt? Pas dan komt de website in de eregalerij, met geverifieerde voorbeelden uit de code. Zo zien ontwikkelaars niet alleen dát het kan, maar ook hóe.</p>
+        <p>Iedereen kan daarna op een vermelding stemmen. Eén stem per e-mailadres, bevestigd via je mail. Stemmen vanaf het domein van de website zelf tellen we niet mee.</p>
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-6" aria-label="Auditbureaus">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Auditbureaus in Nederland</h2>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-6" aria-label="Opgenomen websites">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">In de eregalerij</h2>
 
       <div class="card p-10 text-center text-gray-600">
-        <p>De lijst met auditbureaus wordt binnenkort gevuld.</p>
+        <p class="text-lg">Er staat nog niemand in de eregalerij.</p>
+        <p class="mt-2">Ken jij een website die echt toegankelijk is? Nomineer hem, dan controleren we hem en zetten we hem hier in het zonnetje.</p>
+        <a href="/nomineren.html" class="btn btn-primary mt-6">Nomineer een website</a>
       </div>
-      <p class="mt-4 text-sm text-gray-600">Staat jouw bureau hier nog niet? Deze lijst wordt met de hand samengesteld.</p>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16">
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
+        <h2 class="text-2xl font-extrabold text-navy tracking-tight">Ken jij een website die hier hoort?</h2>
+        <p class="mt-3 text-navy/70 leading-relaxed max-w-2xl">Nomineer hem. Vertel wat de website goed doet en met welke hulptechnologie je hem gebruikte. Wij controleren elke nominatie voordat hij op deze pagina komt; je e-mailadres gebruiken we alleen voor de bevestiging en publiceren we nooit.</p>
+        <a href="/nomineren.html" class="btn btn-primary mt-6">Nomineer een website</a>
+      </div>
     </section>
 
   </main>
@@ -161,5 +174,6 @@
 
   <script src="/static/nav.js"></script>
   <script src="/static/reveal.js"></script>
+  <script src="/static/halloffame.js"></script>
 </body>
 </html>

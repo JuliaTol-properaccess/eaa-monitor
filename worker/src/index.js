@@ -15,6 +15,21 @@
  *   POST /newsletter             — nieuwsbrief-opt-in, stuurt een bevestigingsmail (dubbele opt-in)
  *   GET  /newsletter/confirm     — bevestigt de inschrijving en slaat het adres op in KV
  *   GET  /newsletter/unsubscribe — meldt het adres af en verwijdert het uit KV
+ *   POST /hof/nominate           — nominatie voor de eregalerij, stuurt een bevestigingsmail
+ *   GET  /hof/nominate/confirm   — bevestigt de nominatie en opent een PR op halloffame.json
+ *   POST /hof/vote               — stem op een eregalerij-vermelding, stuurt een bevestigingsmail
+ *   GET  /hof/vote/confirm       — bevestigt de stem en telt hem (1 per e-mailadres per vermelding)
+ *   GET  /hof/votes              — stemtellers als JSON voor de eregalerij-pagina (gecachet)
+ *
+ * Eregalerij-sleutels in dezelfde KV-namespace NEWSLETTER:
+ *   hof:pending:<uuid>        — nominatie in afwachting van e-mailbevestiging (TTL 7 dagen);
+ *                               het enige plekje waar het e-mailadres van de inzender staat
+ *   hof:vote:<slug>:<sha256>  — uitgebrachte stem (hash van het genormaliseerde e-mailadres)
+ *   hof:count:<slug>          — stemteller per vermelding
+ * Geaccepteerde restrisico's: wegwerp-maildomeinen zijn niet geblokkeerd, KV is
+ * eventually consistent (een race kan ±1 stem schelen) en wie meerdere echte
+ * adressen heeft kan vaker stemmen. Stemmen zijn sociaal bewijs, geen verkiezing;
+ * publicatie in de eregalerij loopt altijd via een handmatig gereviewde PR.
  *
  * Bezwaar, feedback en vraag hebben geen database nodig: de bevestigingslink
  * draagt een HMAC-getekende token met alle gegevens. Na bevestiging opent de
@@ -63,6 +78,21 @@ export default {
     if (url.pathname === "/newsletter/unsubscribe" && request.method === "GET") {
       return handleNewsletterUnsubscribe(request, env, url);
     }
+    if (url.pathname === "/hof/nominate" && request.method === "POST") {
+      return withCors(env, await handleHofNominate(request, env));
+    }
+    if (url.pathname === "/hof/nominate/confirm" && request.method === "GET") {
+      return handleHofNominateConfirm(request, env, url);
+    }
+    if (url.pathname === "/hof/vote" && request.method === "POST") {
+      return withCors(env, await handleHofVote(request, env));
+    }
+    if (url.pathname === "/hof/vote/confirm" && request.method === "GET") {
+      return handleHofVoteConfirm(request, env, url);
+    }
+    if (url.pathname === "/hof/votes" && request.method === "GET") {
+      return withCors(env, await handleHofVotes(env));
+    }
     return new Response("Not found", { status: 404 });
   },
 };
@@ -80,6 +110,8 @@ const RATE_LIMITS = {
   newsletter: { max: 3, windowSecs: 3600 },
   vraag: { max: 5, windowSecs: 3600 },
   feedback: { max: 10, windowSecs: 3600 },
+  hofnominate: { max: 3, windowSecs: 3600 },
+  hofvote: { max: 5, windowSecs: 3600 },
 };
 
 async function rateLimited(env, request, route) {
@@ -455,15 +487,474 @@ async function handleNewsletterUnsubscribe(request, env, url) {
   );
 }
 
-// ── GitHub: bezwaar als pull request indienen ──────────────────────────────
+// ── Eregalerij: nomineren ───────────────────────────────────────────────────
+//
+// Een nominatie gaat nooit automatisch live. De flow: formulier -> bevestigings-
+// mail naar de inzender -> PR op data/halloffame.json -> Julia controleert de
+// website, schrijft geverifieerde observaties en merget. De motivatie past niet
+// in een token-URL (mailclients knippen lange links af), dus de volledige
+// nominatie wacht in KV (hof:pending:<uuid>) en de token draagt alleen het id.
 
-async function createObjectionPR(env, entry) {
+const HOF_DATA_URL_DEFAULT = "https://eaa-monitor.nl/data/halloffame.json";
+
+async function handleHofNominate(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true, mode: "verify" });
+  }
+
+  const naam = (form.get("naam") || "").trim();
+  const webadres = (form.get("webadres") || "").trim();
+  const motivatie = (form.get("motivatie") || "").trim();
+  const hulptechnologie = (form.get("hulptechnologie") || "").trim();
+  const email = (form.get("email") || "").trim();
+  const toestemming = form.get("toestemming_quote") === "ja";
+
+  if (!naam || !webadres || !motivatie || !email) {
+    return json({ ok: false, error: "Vul de naam, het webadres, je motivatie en je e-mailadres in." }, 422);
+  }
+  if (motivatie.length > 2000) {
+    return json({ ok: false, error: "Je motivatie is te lang. Houd het onder de 2000 tekens." }, 422);
+  }
+  if (!isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+  const webHost = hostFromUrl(webadres);
+  if (!webHost) {
+    return json({ ok: false, error: "Dit lijkt geen geldig webadres. Begin met https://" }, 422);
+  }
+  if (!toestemming) {
+    return json({ ok: false, error: "Vink aan dat je motivatie als anonieme quote gepubliceerd mag worden." }, 422);
+  }
+  if (!env.NEWSLETTER) {
+    return json({ ok: false, error: "Nomineren is tijdelijk niet mogelijk. Probeer het later opnieuw." }, 503);
+  }
+
+  // Pas tellen als de invoer geldig is; hierna gaat er mail uit.
+  if (await rateLimited(env, request, "hofnominate")) return tooManyRequests();
+
+  // Zelfnominatie niet weigeren maar vlaggen: hard weigeren is met een
+  // privéadres toch te omzeilen. Julia ziet de vlag in de PR en weegt het zelf.
+  const webDomain = registrableDomain(webHost);
+  const emailDomain = registrableDomain(email.split("@")[1] || "");
+  const zelfnominatie = Boolean(webDomain && emailDomain && webDomain === emailDomain);
+
+  const pending = {
+    naam,
+    url: webadres,
+    slug: slugForBranch(normalizeUrl(webadres)),
+    motivatie,
+    hulptechnologie,
+    email, // alleen hier en in de mail; komt nooit in de repo of de PR-body
+    zelfnominatie,
+    datum: todayISO(),
+  };
+
+  const id = crypto.randomUUID();
+  try {
+    await env.NEWSLETTER.put(`hof:pending:${id}`, JSON.stringify(pending), {
+      expirationTtl: Math.floor(TOKEN_TTL_MS / 1000),
+    });
+  } catch (err) {
+    console.error("Nominatie opslaan mislukt:", err && err.message);
+    return json({ ok: false, error: "Er ging iets mis bij het opslaan. Probeer het later opnieuw." }, 502);
+  }
+
+  const token = await signToken(env, { type: "hof-nominate", id, email, exp: Date.now() + TOKEN_TTL_MS });
+  const origin = new URL(request.url).origin;
+  const confirmUrl = `${origin}/hof/nominate/confirm?token=${encodeURIComponent(token)}`;
+
+  try {
+    await sendHofNominateConfirmEmail(env, { naam, webadres, email, confirmUrl });
+  } catch (err) {
+    console.error("Nominatie-bevestigingsmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "We konden de bevestigingsmail niet versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
+      502
+    );
+  }
+  return json({ ok: true, mode: "verify" });
+}
+
+async function handleHofNominateConfirm(request, env, url) {
+  const payload = await verifyNewsletterToken(env, url.searchParams.get("token") || "", "hof-nominate");
+  if (!payload || typeof payload.id !== "string" || !payload.id) {
+    return htmlPage(
+      "Link ongeldig of verlopen",
+      `<p>Deze bevestigingslink is niet geldig of is verlopen. Nomineer de website opnieuw via het
+       <a href="https://eaa-monitor.nl/nomineren.html">nominatieformulier</a>.</p>`,
+      400
+    );
+  }
+
+  let pending = null;
+  try {
+    const raw = await env.NEWSLETTER.get(`hof:pending:${payload.id}`);
+    if (raw) pending = JSON.parse(raw);
+  } catch (err) {
+    console.error("Nominatie ophalen mislukt:", err && err.message);
+  }
+  if (!pending) {
+    return htmlPage(
+      "Link ongeldig of verlopen",
+      `<p>We konden je nominatie niet meer terugvinden; waarschijnlijk is de link verlopen. Nomineer de
+       website opnieuw via het <a href="https://eaa-monitor.nl/nomineren.html">nominatieformulier</a>.</p>`,
+      400
+    );
+  }
+
+  let result;
+  try {
+    result = await createHofPR(env, pending);
+  } catch (err) {
+    console.error("Nominatie-PR aanmaken mislukt:", err && err.message);
+    return htmlPage(
+      "Er ging iets mis",
+      `<p>We konden je nominatie nu niet verwerken. Probeer de link later opnieuw, of mail naar
+       <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>.</p>`,
+      502
+    );
+  }
+
+  let body;
+  if (result.status === "already_listed") {
+    body = `<p><strong>Deze website staat al in de eregalerij.</strong></p>
+            <p>Goed nieuws dus: anderen vonden hem ook toegankelijk. Je vindt hem op de
+            <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>.</p>`;
+  } else if (result.status === "already_submitted") {
+    body = `<p><strong>Deze website is al genomineerd.</strong></p>
+            <p>De nominatie wacht op een controle door onze auditor. Houd de
+            <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a> in de gaten.</p>`;
+  } else {
+    body = `<p><strong>Bedankt, je nominatie is bevestigd.</strong></p>
+            <p>Een senior auditor bekijkt de website nu eerst zelf. Klopt je nominatie, dan komt de
+            website in de <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>, met
+            voorbeelden uit de code zodat ontwikkelaars ervan kunnen leren.</p>`;
+  }
+  return htmlPage("Nominatie bevestigd", body, 200);
+}
+
+async function createHofPR(env, pending) {
+  const entry = {
+    naam: pending.naam,
+    url: pending.url,
+    slug: pending.slug,
+    categorie: "",
+    datum: pending.datum,
+    motivatie: pending.motivatie,
+    hulptechnologie: pending.hulptechnologie || "",
+    observaties: [],
+  };
+  const norm = normalizeUrl(pending.url);
+  return createDataPR(env, {
+    path: "data/halloffame.json",
+    branchPrefix: "hof",
+    slug: pending.slug,
+    entry,
+    isDuplicate: (e) => normalizeUrl(e.url) === norm,
+    commitMessage: `Nominatie eregalerij (per mail bevestigd): ${pending.naam}`,
+    prTitle: `Nominatie eregalerij: ${pending.naam}`,
+    prBody: [
+      `Nominatie voor de eregalerij, per e-mail bevestigd door de inzender.`,
+      ``,
+      `- Website: ${pending.naam} (${pending.url})`,
+      `- Hulptechnologie van de inzender: ${pending.hulptechnologie || "(niet opgegeven)"}`,
+      `- Datum: ${pending.datum}`,
+      `- Zelfnominatie (e-maildomein = site-domein): ${pending.zelfnominatie ? "ja" : "nee"}`,
+      ``,
+      `Motivatie van de inzender (mag als anonieme quote gepubliceerd worden):`,
+      ``,
+      ...pending.motivatie.split("\n").map((line) => `> ${line}`),
+      ``,
+      `Reviewstappen (workflows/handle_nominatie.md):`,
+      ``,
+      `- [ ] Korte toegankelijkheidscheck gedaan (toetsenbord, schermlezer, structuur, formulieren)`,
+      `- [ ] 2-3 geverifieerde observaties met codevoorbeeld toegevoegd aan de entry`,
+      `- [ ] Motivatie geredigeerd (geen herleidbare gegevens) en categorie gezet`,
+      `- [ ] python tools/build_halloffame.py gedraaid en eregalerij.html mee-gecommit`,
+      ``,
+      `Zonder merge verschijnt er niets op de site. Entries zonder observaties slaat de`,
+      `build-tool over, dus een te vroege merge publiceert nooit een ongecontroleerde entry.`,
+    ].join("\n"),
+  });
+}
+
+// ── Eregalerij: stemmen ─────────────────────────────────────────────────────
+//
+// Eén stem per e-mailadres per vermelding, bevestigd via een getekende link
+// (dubbele opt-in, zoals de nieuwsbrief). Het adres wordt genormaliseerd
+// (lowercase, +tag eruit) en alleen als SHA-256-hash opgeslagen. Stemmen vanaf
+// het domein van de website zelf weigeren we meteen: eerlijker dan stilletjes
+// negeren, want anders krijgt de stemmer een bevestigingsmail voor een stem
+// die nooit telt.
+
+async function handleHofVote(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true, mode: "verify" });
+  }
+
+  const slug = (form.get("slug") || "").trim();
+  const email = (form.get("email") || "").trim();
+
+  if (!slug || !email) {
+    return json({ ok: false, error: "Vul je e-mailadres in." }, 422);
+  }
+  if (!isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+  if (!env.NEWSLETTER) {
+    return json({ ok: false, error: "Stemmen is tijdelijk niet mogelijk. Probeer het later opnieuw." }, 503);
+  }
+
+  // Alleen stemmen op gepubliceerde vermeldingen; de live JSON is de bron.
+  let entry;
+  try {
+    entry = await fetchHofEntry(env, slug);
+  } catch (err) {
+    console.error("Eregalerij-data ophalen mislukt:", err && err.message);
+    return json({ ok: false, error: "We konden de eregalerij nu niet raadplegen. Probeer het later opnieuw." }, 502);
+  }
+  if (!entry) {
+    return json({ ok: false, error: "Deze website staat niet (meer) in de eregalerij." }, 422);
+  }
+
+  // Eigen-domein-check: medewerkers die op hun eigen bedrijf stemmen tellen niet.
+  const entryDomain = registrableDomain(hostFromUrl(entry.url));
+  const emailDomain = registrableDomain(email.split("@")[1] || "");
+  if (entryDomain && emailDomain && entryDomain === emailDomain) {
+    return json(
+      { ok: false, error: "Stemmen vanaf het domein van de website zelf tellen we niet mee." },
+      422
+    );
+  }
+
+  if (await rateLimited(env, request, "hofvote")) return tooManyRequests();
+
+  // Al gestemd? Antwoord hetzelfde (niet lekken dat dit adres al stemde), maar
+  // stuur geen mail; dat houdt het adres onbruikbaar voor mail-bombing.
+  const emailHash = await sha256Hex(normalizeEmailForHash(email));
+  try {
+    if ((await env.NEWSLETTER.get(`hof:vote:${slug}:${emailHash}`)) !== null) {
+      return json({ ok: true, mode: "verify" });
+    }
+  } catch (err) {
+    console.error("KV-check bestaande stem mislukt:", err && err.message);
+  }
+
+  const token = await signToken(env, { type: "hof-vote", slug, email, exp: Date.now() + TOKEN_TTL_MS });
+  const origin = new URL(request.url).origin;
+  const confirmUrl = `${origin}/hof/vote/confirm?token=${encodeURIComponent(token)}`;
+
+  try {
+    await sendHofVoteConfirmEmail(env, { naam: entry.naam, email, confirmUrl });
+  } catch (err) {
+    console.error("Stem-bevestigingsmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "We konden de bevestigingsmail niet versturen. Probeer het later opnieuw." },
+      502
+    );
+  }
+  return json({ ok: true, mode: "verify" });
+}
+
+async function handleHofVoteConfirm(request, env, url) {
+  const payload = await verifyNewsletterToken(env, url.searchParams.get("token") || "", "hof-vote");
+  if (!payload || typeof payload.slug !== "string" || !payload.slug) {
+    return htmlPage(
+      "Link ongeldig of verlopen",
+      `<p>Deze bevestigingslink is niet geldig of is verlopen. Stem opnieuw via de
+       <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>.</p>`,
+      400
+    );
+  }
+
+  const slug = payload.slug;
+  const emailHash = await sha256Hex(normalizeEmailForHash(payload.email));
+  const voteKey = `hof:vote:${slug}:${emailHash}`;
+
+  try {
+    // Idempotent: een tweede klik op dezelfde link telt niet dubbel. KV is
+    // eventually consistent, dus twee bliksemsnelle kliks kunnen in theorie
+    // ±1 stem schelen; acceptabel, stemmen zijn sfeer en geen verkiezing.
+    if ((await env.NEWSLETTER.get(voteKey)) !== null) {
+      return htmlPage(
+        "Je stem telde al mee",
+        `<p><strong>Deze stem hadden we al geteld.</strong></p>
+         <p>Bekijk de stand op de <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>.</p>`,
+        200
+      );
+    }
+    await env.NEWSLETTER.put(voteKey, JSON.stringify({ date: todayISO() }));
+    const count = parseInt((await env.NEWSLETTER.get(`hof:count:${slug}`)) || "0", 10) || 0;
+    await env.NEWSLETTER.put(`hof:count:${slug}`, String(count + 1));
+  } catch (err) {
+    console.error("Stem opslaan mislukt:", err && err.message);
+    return htmlPage(
+      "Er ging iets mis",
+      `<p>We konden je stem nu niet opslaan. Probeer de link later opnieuw.</p>`,
+      502
+    );
+  }
+
+  return htmlPage(
+    "Stem geteld",
+    `<p><strong>Bedankt, je stem telt mee.</strong></p>
+     <p>Bekijk de stand op de <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>.</p>`,
+    200
+  );
+}
+
+// Stemtellers voor de eregalerij-pagina. Gecachet (5 minuten), zodat de pagina
+// KV niet bij elke bezoeker opnieuw uitleest.
+async function handleHofVotes(env) {
+  if (!env.NEWSLETTER) return json({}, 200);
+  const counts = {};
+  try {
+    const list = await env.NEWSLETTER.list({ prefix: "hof:count:" });
+    for (const key of list.keys) {
+      const slug = key.name.slice("hof:count:".length);
+      const value = parseInt((await env.NEWSLETTER.get(key.name)) || "0", 10) || 0;
+      if (slug) counts[slug] = value;
+    }
+  } catch (err) {
+    console.error("Stemtellers ophalen mislukt:", err && err.message);
+  }
+  const res = json(counts, 200);
+  res.headers.set("Cache-Control", "public, max-age=300");
+  return res;
+}
+
+// Zoekt een gepubliceerde eregalerij-entry op slug, tegen de live JSON van de
+// site (HOF_DATA_URL). Zo kan er alleen gestemd worden op wat Julia heeft
+// gemerged, zonder extra GitHub-call.
+async function fetchHofEntry(env, slug) {
+  const res = await fetch(env.HOF_DATA_URL || HOF_DATA_URL_DEFAULT, {
+    headers: { Accept: "application/json" },
+    cf: { cacheTtl: 300, cacheEverything: true },
+  });
+  if (!res.ok) throw new Error(`halloffame.json ophalen: ${res.status}`);
+  const entries = await res.json();
+  if (!Array.isArray(entries)) return null;
+  return entries.find((e) => e && e.slug === slug) || null;
+}
+
+async function sendHofNominateConfirmEmail(env, { naam, webadres, email, confirmUrl }) {
+  const subject = "Bevestig je nominatie voor de eregalerij van de EAA Monitor";
+  const text = [
+    `Hoi,`,
+    ``,
+    `Je hebt "${naam}" (${webadres}) genomineerd voor de eregalerij van de EAA Monitor.`,
+    ``,
+    `Klik op de onderstaande link om je nominatie te bevestigen. De link is 7 dagen geldig.`,
+    ``,
+    confirmUrl,
+    ``,
+    `Na je bevestiging controleert een senior auditor de website. Pas daarna komt hij in de eregalerij.`,
+    ``,
+    `Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.`,
+    ``,
+    `EAA Monitor, eaa-monitor.nl`,
+  ].join("\n");
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #1F2937; line-height: 1.6;">
+      <p>Hoi,</p>
+      <p>Je hebt <strong>${escapeHtml(naam)}</strong> (${escapeHtml(webadres)}) genomineerd voor de
+         eregalerij van de EAA Monitor.</p>
+      <p>Klik op de knop om je nominatie te bevestigen. De link is 7 dagen geldig.</p>
+      <p>
+        <a href="${escapeHtml(confirmUrl)}"
+           style="display:inline-block;background:#0052FF;color:#fff;text-decoration:none;
+                  padding:12px 20px;border-radius:8px;font-weight:bold;">
+          Nominatie bevestigen
+        </a>
+      </p>
+      <p style="font-size:13px;color:#6B7280;">Werkt de knop niet? Kopieer dan deze link naar je browser:<br>
+        <span style="word-break:break-all;">${escapeHtml(confirmUrl)}</span></p>
+      <p>Na je bevestiging controleert een senior auditor de website. Pas daarna komt hij in de eregalerij.</p>
+      <p>Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.</p>
+      <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
+    </div>`;
+
+  await sendEmail(env, {
+    to: email,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: env.NOTIFY_EMAIL,
+    subject,
+    text,
+    html,
+  });
+}
+
+async function sendHofVoteConfirmEmail(env, { naam, email, confirmUrl }) {
+  const subject = "Bevestig je stem in de eregalerij van de EAA Monitor";
+  const text = [
+    `Hoi,`,
+    ``,
+    `Je hebt gestemd op "${naam}" in de eregalerij van de EAA Monitor.`,
+    ``,
+    `Klik op de onderstaande link om je stem te bevestigen. De link is 7 dagen geldig.`,
+    ``,
+    confirmUrl,
+    ``,
+    `Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging telt de stem niet.`,
+    ``,
+    `EAA Monitor, eaa-monitor.nl`,
+  ].join("\n");
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #1F2937; line-height: 1.6;">
+      <p>Hoi,</p>
+      <p>Je hebt gestemd op <strong>${escapeHtml(naam)}</strong> in de eregalerij van de EAA Monitor.</p>
+      <p>Klik op de knop om je stem te bevestigen. De link is 7 dagen geldig.</p>
+      <p>
+        <a href="${escapeHtml(confirmUrl)}"
+           style="display:inline-block;background:#0052FF;color:#fff;text-decoration:none;
+                  padding:12px 20px;border-radius:8px;font-weight:bold;">
+          Stem bevestigen
+        </a>
+      </p>
+      <p style="font-size:13px;color:#6B7280;">Werkt de knop niet? Kopieer dan deze link naar je browser:<br>
+        <span style="word-break:break-all;">${escapeHtml(confirmUrl)}</span></p>
+      <p>Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging telt de stem niet.</p>
+      <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
+    </div>`;
+
+  await sendEmail(env, {
+    to: email,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: env.NOTIFY_EMAIL,
+    subject,
+    text,
+    html,
+  });
+}
+
+// ── GitHub: data-wijziging als pull request indienen ───────────────────────
+
+// Generieke PR-flow voor een entry in een JSON-lijstbestand: bestand ophalen,
+// dedupliceren, branch maken (deterministische naam, dus een tweede bevestiging
+// botst met 422 en opent geen tweede PR), committen en een PR openen.
+// Retourneert { status: "already_listed" | "already_submitted" | "pr_opened", url? }.
+async function createDataPR(env, { path, branchPrefix, slug, entry, isDuplicate, commitMessage, prTitle, prBody }) {
   const repo = env.GITHUB_REPO;
   const base = env.GITHUB_BRANCH || "main";
-  const norm = normalizeUrl(entry.url);
-  const contentsApi = `https://api.github.com/repos/${repo}/contents/data/objections.json`;
+  const contentsApi = `https://api.github.com/repos/${repo}/contents/${path}`;
 
-  // 1. Huidige objections.json op de basisbranch ophalen en dedupliceren.
+  // 1. Huidige bestand op de basisbranch ophalen en dedupliceren.
   const getRes = await fetch(`${contentsApi}?ref=${encodeURIComponent(base)}`, {
     headers: githubHeaders(env),
   });
@@ -477,14 +968,12 @@ async function createObjectionPR(env, entry) {
     current = [];
   }
   if (!Array.isArray(current)) current = [];
-  if (current.some((o) => normalizeUrl(o.url) === norm)) {
+  if (current.some(isDuplicate)) {
     return { status: "already_listed" };
   }
 
-  // 2. Branch maken vanaf de kop van de basisbranch. Deterministische naam, dus
-  //    een tweede bevestiging voor dezelfde webshop botst (422) en opent geen
-  //    tweede PR.
-  const branch = `bezwaar/${slugForBranch(norm)}`;
+  // 2. Branch maken vanaf de kop van de basisbranch.
+  const branch = `${branchPrefix}/${slug}`;
   const headSha = await getBranchHeadSha(env, repo, base);
   const createRef = await fetch(`https://api.github.com/repos/${repo}/git/refs`, {
     method: "POST",
@@ -496,13 +985,13 @@ async function createObjectionPR(env, entry) {
   }
   if (!createRef.ok) throw new Error(`GitHub create ref ${createRef.status}`);
 
-  // 3. Bijgewerkte objections.json naar de nieuwe branch committen.
+  // 3. Bijgewerkt bestand naar de nieuwe branch committen.
   current.push(entry);
   const putRes = await fetch(contentsApi, {
     method: "PUT",
     headers: githubHeaders(env),
     body: JSON.stringify({
-      message: `Bezwaar verwerkt (automatisch, domein-geverifieerd): ${entry.name}`,
+      message: commitMessage,
       content: b64encode(JSON.stringify(current, null, 2) + "\n"),
       sha: file.sha,
       branch,
@@ -514,25 +1003,34 @@ async function createObjectionPR(env, entry) {
   const prRes = await fetch(`https://api.github.com/repos/${repo}/pulls`, {
     method: "POST",
     headers: githubHeaders(env),
-    body: JSON.stringify({
-      title: `Bezwaar: ${entry.name}`,
-      head: branch,
-      base,
-      body: [
-        `Domein-geverifieerd bezwaar tegen vermelding in de EAA Monitor.`,
-        ``,
-        `- Webshop: ${entry.name}`,
-        `- URL: ${entry.url}`,
-        `- Datum: ${entry.date}`,
-        ``,
-        `De aanvrager heeft de verwijdering bevestigd via een link die naar een e-mailadres op het`,
-        `webshop-domein is gestuurd. Controleer kort en merge om de webshop uit het dashboard te halen.`,
-      ].join("\n"),
-    }),
+    body: JSON.stringify({ title: prTitle, head: branch, base, body: prBody }),
   });
   if (!prRes.ok) throw new Error(`GitHub create PR ${prRes.status}`);
   const pr = await prRes.json();
   return { status: "pr_opened", url: pr.html_url };
+}
+
+async function createObjectionPR(env, entry) {
+  const norm = normalizeUrl(entry.url);
+  return createDataPR(env, {
+    path: "data/objections.json",
+    branchPrefix: "bezwaar",
+    slug: slugForBranch(norm),
+    entry,
+    isDuplicate: (o) => normalizeUrl(o.url) === norm,
+    commitMessage: `Bezwaar verwerkt (automatisch, domein-geverifieerd): ${entry.name}`,
+    prTitle: `Bezwaar: ${entry.name}`,
+    prBody: [
+      `Domein-geverifieerd bezwaar tegen vermelding in de EAA Monitor.`,
+      ``,
+      `- Webshop: ${entry.name}`,
+      `- URL: ${entry.url}`,
+      `- Datum: ${entry.date}`,
+      ``,
+      `De aanvrager heeft de verwijdering bevestigd via een link die naar een e-mailadres op het`,
+      `webshop-domein is gestuurd. Controleer kort en merge om de webshop uit het dashboard te halen.`,
+    ].join("\n"),
+  });
 }
 
 async function getBranchHeadSha(env, repo, branch) {
@@ -874,6 +1372,22 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// Normaliseert een e-mailadres voor de stem-dedup: lowercase en de +tag uit het
+// lokale deel (jij+tag@voorbeeld.nl telt als jij@voorbeeld.nl). Goedkope
+// bescherming tegen plus-aliasing; wegwerpdomeinen blokkeren we bewust niet.
+function normalizeEmailForHash(email) {
+  const [local, domain] = String(email || "").trim().toLowerCase().split("@");
+  if (!domain) return String(email || "").trim().toLowerCase();
+  return `${local.split("+")[0]}@${domain}`;
+}
+
+async function sha256Hex(str) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -916,7 +1430,7 @@ function b64urlBytes(bytes) {
 function withCors(env, response) {
   const headers = new Headers(response.headers);
   headers.set("Access-Control-Allow-Origin", env.ALLOWED_ORIGIN || "*");
-  headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   headers.set("Access-Control-Allow-Headers", "Content-Type");
   headers.set("Vary", "Origin");
   return new Response(response.body, { status: response.status, headers });
