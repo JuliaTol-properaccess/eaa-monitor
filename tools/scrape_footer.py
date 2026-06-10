@@ -9,10 +9,10 @@ Usage:
 """
 
 import json
+import os
 import re
 import sys
 import time
-import random
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
@@ -85,6 +85,37 @@ NAVIGATION_TIMEOUT = 15000  # 15 seconds
 # Minimale dekking bij --merge: onder deze fractie van de invoerlijst wordt er
 # niet gefinaliseerd (beschermt tegen publiceren van een deelmeting na shard-falen).
 MERGE_COVERAGE_THRESHOLD = 0.9
+
+# Maximaal foutpercentage in een run: daarboven wordt er niet gepubliceerd.
+# Een browser- of netwerkstoring halverwege zou anders een week vol valse
+# 'errors' live bakken en in history.json vastleggen. Normaal is ~10%.
+ERROR_RATE_THRESHOLD = 0.25
+
+# Wachten op de footer i.p.v. een vaste 2s: de meeste sites hebben de footer al
+# bij domcontentloaded, dan kost dit vrijwel niets. De settle vangt links die
+# vlak na het verschijnen van de footer nog door JS worden gevuld.
+FOOTER_WAIT_TIMEOUT = 2000
+FOOTER_SETTLE_MS = 500
+
+# Korte pauze tussen requests. Elke request gaat naar een ander domein, dus
+# per-host rate limiting speelt niet; dit ontziet alleen de runner zelf.
+REQUEST_PAUSE_S = 0.2
+
+# Resources die we niet nodig hebben om footerlinks te vinden. Blokkeren
+# scheelt het merendeel van de bandbreedte en laadtijd per site.
+BLOCKED_RESOURCE_TYPES = {"image", "media", "font", "stylesheet"}
+
+# Foutmeldingen die op een gecrashte tab/browser wijzen. Zonder herstel zou
+# elke volgende site in de run onterecht als 'error' geteld worden.
+CRASH_MARKERS = (
+    "Target page, context or browser has been closed",
+    "Target closed",
+    "browser has been disconnected",
+    "Connection closed",
+)
+
+# Vers context+page elke N sites, als rem op geheugengroei in lange runs.
+CONTEXT_RECYCLE_EVERY = 200
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -156,17 +187,45 @@ def check_links_for_statement(links, base_url):
     return None
 
 
+def _write_atomic(path, text):
+    """Write via a tmp file + os.replace so a crash or kill mid-write never
+    leaves a truncated (unparseable) file behind."""
+    path = Path(path)
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def _wait_for_footer(page):
+    """Wait until a footer(-like) element is in the DOM instead of a fixed 2s.
+
+    Most sites already have the footer at domcontentloaded, so this returns
+    almost immediately; JS-rendered footers get up to FOOTER_WAIT_TIMEOUT. The
+    settle afterwards catches links that JS fills in right after the footer
+    appears. No footer-like element at all: fall through, check_webshop scans
+    all links on the page anyway.
+    """
+    try:
+        page.wait_for_selector(
+            "footer, [class*='footer' i], [id*='footer' i]",
+            timeout=FOOTER_WAIT_TIMEOUT,
+            state="attached",
+        )
+    except PlaywrightTimeout:
+        pass
+    page.wait_for_timeout(FOOTER_SETTLE_MS)
+
+
 def check_webshop(page, url):
     """Check a single webshop for an accessibility statement link."""
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
-        # Wait a bit for JS to render
-        page.wait_for_timeout(2000)
+        _wait_for_footer(page)
     except PlaywrightTimeout:
         # Retry once
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
-            page.wait_for_timeout(2000)
+            _wait_for_footer(page)
         except PlaywrightTimeout:
             return {
                 "has_statement": False,
@@ -434,7 +493,7 @@ def patch_target_html(stats, date_nl, date_iso, ds):
                            f"Laatst bijgewerkt: {date_nl}")
     html = _replace_region(html, "<!-- JSONLD-DATASET:START -->", "<!-- JSONLD-DATASET:END -->",
                            _dataset_jsonld(stats, date_nl, date_iso, ds))
-    target.write_text(html, encoding="utf-8")
+    _write_atomic(target, html)
     print(f"Patched {target}")
 
 
@@ -453,7 +512,7 @@ def patch_hub_card(stats):
         return  # hub-kaart nog niet aanwezig; sla over
     html = _replace_region(html, "<!--STAT:finTotal-->", "<!--/STAT-->", str(stats["total"]))
     html = _replace_region(html, "<!--STAT:finPctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
-    index.write_text(html, encoding="utf-8")
+    _write_atomic(index, html)
     print(f"Patched {index} (financiële hub-kaart)")
 
 
@@ -472,7 +531,7 @@ def patch_fin_index_summary(stats, date_nl):
         return  # samenvattingskaart nog niet aanwezig; sla over
     html = _replace_region(html, "<!-- FIN-GEO-SUMMARY:START -->", "<!-- FIN-GEO-SUMMARY:END -->",
                            _geo_summary_inner(stats, date_nl, DATASETS["financieel"]))
-    index.write_text(html, encoding="utf-8")
+    _write_atomic(index, html)
     print(f"Patched {index} (financiële samenvatting)")
 
 
@@ -534,7 +593,7 @@ def patch_llms_fin(stats, date_nl):
         text = text.replace(LLMS_MEAS_END, LLMS_MEAS_END + "\n\n" + block, 1)
     else:
         text = text.rstrip() + "\n\n" + block + "\n"
-    LLMS_FILE.write_text(text, encoding="utf-8")
+    _write_atomic(LLMS_FILE, text)
     print(f"Patched {LLMS_FILE} (FIN-meetregio)")
 
 
@@ -553,7 +612,7 @@ def write_llms_txt(stats, date_nl):
                 count=1,
                 flags=re.DOTALL,
             )
-            LLMS_FILE.write_text(text, encoding="utf-8")
+            _write_atomic(LLMS_FILE, text)
             print(f"Patched {LLMS_FILE} (meet-regio)")
             return
         # Geen meet-markers: schrijf het sjabloon, maar bewaar een bestaande
@@ -592,7 +651,7 @@ def write_llms_txt(stats, date_nl):
 
 {articles_block}
 """
-    LLMS_FILE.write_text(content, encoding="utf-8")
+    _write_atomic(LLMS_FILE, content)
     print(f"Wrote {LLMS_FILE}")
 
 
@@ -605,12 +664,16 @@ def update_history(stats, date_iso, ds):
     """
     history_file = ds["history_file"]
     try:
-        with open(history_file) as f:
+        with open(history_file, encoding="utf-8") as f:
             history = json.load(f)
-        if not isinstance(history, list):
-            history = []
-    except (FileNotFoundError, json.JSONDecodeError):
-        history = []
+    except FileNotFoundError:
+        history = []  # eerste run: legitiem leeg beginnen
+    except json.JSONDecodeError as exc:
+        # Nooit stil de complete meetgeschiedenis weggooien: hard falen zodat
+        # iemand het bestand herstelt (het staat in git).
+        sys.exit(f"FOUT: {history_file} is geen geldige JSON ({exc}); history niet bijgewerkt.")
+    if not isinstance(history, list):
+        sys.exit(f"FOUT: {history_file} moet een JSON-lijst zijn; history niet bijgewerkt.")
 
     entry = {
         "date": date_iso,
@@ -625,9 +688,7 @@ def update_history(stats, date_iso, ds):
     history.append(entry)
     history.sort(key=lambda h: h["date"])
 
-    history_file.write_text(
-        json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
+    _write_atomic(history_file, json.dumps(history, ensure_ascii=False, indent=2))
     print(f"Updated {history_file} ({len(history)} meetpunten)")
 
 
@@ -650,24 +711,71 @@ def generate_geo_assets(output, ds):
     update_history(stats, date_iso, ds)
 
 
+def _block_unneeded_resources(route):
+    """Abort requests for resources we don't need to find footer links."""
+    if route.request.resource_type in BLOCKED_RESOURCE_TYPES:
+        route.abort()
+    else:
+        route.continue_()
+
+
+def _looks_like_crash(error):
+    """True if the error string points at a dead tab/browser, not a bad site."""
+    return bool(error) and any(marker in error for marker in CRASH_MARKERS)
+
+
+def _fresh_page(p, browser, old_context=None):
+    """Return (browser, context, page), relaunching the browser if it died."""
+    if old_context is not None:
+        try:
+            old_context.close()
+        except Exception:
+            pass
+    context_opts = {
+        "user_agent": USER_AGENT,
+        "viewport": {"width": 1920, "height": 1080},
+        "locale": "nl-NL",
+    }
+    try:
+        context = browser.new_context(**context_opts)
+    except Exception:
+        # Het hele browserproces is weg; opnieuw starten.
+        try:
+            browser.close()
+        except Exception:
+            pass
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(**context_opts)
+    context.route("**/*", _block_unneeded_resources)
+    page = context.new_page()
+    return browser, context, page
+
+
 def scrape_webshops(webshops, now):
     """Scrape a list of webshops sequentially and return the result entries."""
     results = []
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(
-            user_agent=USER_AGENT,
-            viewport={"width": 1920, "height": 1080},
-            locale="nl-NL",
-        )
-        page = context.new_page()
+        browser, context, page = _fresh_page(p, browser)
 
         for i, shop in enumerate(webshops):
             name = shop["name"]
             url = shop["url"]
             print(f"  [{i + 1}/{len(webshops)}] {name} ({url})...", end=" ", flush=True)
 
+            # Periodiek een verse context: rem op geheugengroei in lange runs.
+            if i and i % CONTEXT_RECYCLE_EVERY == 0:
+                browser, context, page = _fresh_page(p, browser, context)
+
             result = check_webshop(page, url)
+
+            # Gecrashte tab/browser? Herstel en probeer deze site één keer
+            # opnieuw; anders telt elke volgende site onterecht als 'error'.
+            if result["scrape_status"] == "error" and _looks_like_crash(result["error"]):
+                print("browser-crash, herstart...", end=" ", flush=True)
+                browser, context, page = _fresh_page(p, browser, context)
+                result = check_webshop(page, url)
+
             results.append({
                 "name": name,
                 "url": url,
@@ -685,9 +793,10 @@ def scrape_webshops(webshops, now):
                 status = f"FOUT ({result['scrape_status']})"
             print(status)
 
-            # Random delay between requests (1-3 seconds)
+            # Korte pauze: elke request gaat naar een ander domein, dus
+            # per-host beleefdheid speelt hier niet.
             if i < len(webshops) - 1:
-                time.sleep(random.uniform(1, 3))
+                time.sleep(REQUEST_PAUSE_S)
 
         browser.close()
     return results
@@ -710,10 +819,17 @@ def build_output(results, now):
 
 def finalize(output, ds):
     """Write the dataset's results.json and (re)generate the GEO assets."""
+    # Sanity-drempel: een browser- of netwerkstoring halverwege de run zou
+    # anders een week vol valse 'errors' publiceren en in history vastleggen.
+    if output["total"] and output["errors"] / output["total"] > ERROR_RATE_THRESHOLD:
+        sys.exit(
+            f"FOUT: {output['errors']} van de {output['total']} checks faalden "
+            f"({output['errors'] / output['total']:.0%}, drempel {ERROR_RATE_THRESHOLD:.0%}). "
+            f"Vermoedelijk een browser- of netwerkstoring; resultaten niet gepubliceerd."
+        )
     results_file = ds["results_file"]
     results_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(results_file, "w") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+    _write_atomic(results_file, json.dumps(output, indent=2, ensure_ascii=False))
     generate_geo_assets(output, ds)
     print(f"\nKlaar! Resultaten opgeslagen in {results_file}")
     print(f"  Totaal: {output['total']}")
@@ -805,8 +921,8 @@ def main():
     if sharded:
         out = Path(args.out) if args.out else ds["results_file"].parent / f"results.part-{args.shard}.json"
         out.parent.mkdir(parents=True, exist_ok=True)
-        with open(out, "w") as f:
-            json.dump({"last_updated": now, "webshops": results}, f, indent=2, ensure_ascii=False)
+        _write_atomic(out, json.dumps({"last_updated": now, "webshops": results},
+                                      indent=2, ensure_ascii=False))
         print(f"\nShard {args.shard} klaar: {len(results)} resultaten -> {out}")
         return
 
