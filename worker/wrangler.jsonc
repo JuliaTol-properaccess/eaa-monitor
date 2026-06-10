@@ -9,6 +9,11 @@
   //   npx wrangler email sending enable eaa-monitor.nl
   "send_email": [{ "name": "EMAIL" }],
 
+  // Opslag van bevestigde nieuwsbrief-inschrijvingen (route /newsletter). Maak de
+  // namespace eenmalig aan en vul het id hieronder in (zie DEPLOY.md):
+  //   npx wrangler kv namespace create NEWSLETTER
+  "kv_namespaces": [{ "binding": "NEWSLETTER", "id": "9bee247149b64408835caa8ca1761d18" }],
+
   "vars": {
     // Alleen het dashboard mag de Worker aanroepen (CORS).
     "ALLOWED_ORIGIN": "https://eaa-monitor.nl",
@@ -16,6 +21,10 @@
     // Afzender van de bevestigingsmail. Domein moet onboarded zijn (zie boven).
     "FROM_EMAIL": "bezwaar@eaa-monitor.nl",
     "FROM_NAME": "EAA Monitor",
+
+    // Afzender van de nieuwsbrief-bevestigingsmail. Zelfde onboarded domein.
+    // Niet gezet? Dan valt /newsletter terug op FROM_EMAIL.
+    "NEWSLETTER_FROM": "nieuwsbrief@eaa-monitor.nl",
 
     // Waar handmatige-check-meldingen heen gaan (geen domeinmatch).
     // Dit adres is ook de reply-to op de bevestigingsmails. Het ontvangt mail

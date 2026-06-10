@@ -118,6 +118,24 @@
 
   <footer class="bg-navy text-white mt-24 on-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+          <p class="font-extrabold text-lg tracking-tight">Blijf op de hoogte van de EAA</p>
+          <p class="mt-2 text-sm text-white/60 max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
+        </div>
+        <form id="newsletter-form" data-endpoint="https://eaa-bezwaar.juliatol.workers.dev/newsletter" novalidate>
+          <div class="hidden" aria-hidden="true">
+            <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <label for="newsletter-email" class="block text-sm font-semibold text-white/90 mb-1.5">Je e-mailadres</label>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Inschrijven</button>
+          </div>
+          <p class="mt-2 text-xs text-white/50">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
+          <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
+        </form>
+      </div>
       <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
           <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
@@ -147,6 +165,7 @@
       </div>
       <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white/60">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
     </div>
+    <script src="/static/newsletter.js"></script>
   </footer>
 
   <script src="bezwaren.js"></script>
