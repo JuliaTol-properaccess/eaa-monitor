@@ -251,6 +251,63 @@ die mail voor `vragen@eaa-monitor.nl` naar je echte inbox stuurt. Voorwaarde:
 > te veranderen. Wil je ook vanaf `vragen@` versturen, dan moet dat adres apart
 > onboarden bij Email Sending, maar dat is voor deze functie niet nodig.
 
+## Nieuwsbrief-opt-in (`POST /newsletter`)
+
+Dezelfde Worker bedient het inschrijfformulier in de footer (op elke pagina). De
+inschrijving gaat met **dubbele opt-in**:
+
+1. `POST /newsletter` ontvangt het e-mailadres en stuurt een bevestigingsmail met
+   een HMAC-getekende link. Er wordt nog **niets** opgeslagen.
+2. `GET /newsletter/confirm?token=…` verifieert de link en slaat het adres pas dan
+   op in de KV-namespace **NEWSLETTER** (sleutel `sub:<e-mailadres>`).
+3. `GET /newsletter/unsubscribe?token=…` haalt het adres weer uit KV. De
+   bevestigingspagina toont meteen een afmeldlink; in elke nieuwsbrief hoort
+   dezelfde link onderaan te staan.
+
+### KV-namespace aanmaken (eenmalig)
+
+```bash
+cd worker
+npx wrangler kv namespace create NEWSLETTER
+```
+
+Wrangler print een `id`. Zet dat in `worker/wrangler.jsonc` op de plek van
+`VUL_KV_NAMESPACE_ID_IN`:
+
+```jsonc
+"kv_namespaces": [{ "binding": "NEWSLETTER", "id": "<het-id-uit-het-commando>" }],
+```
+
+Deploy daarna opnieuw: `npx wrangler deploy`. Zonder geldig id faalt de deploy.
+
+### Afzender
+
+De bevestigingsmail gaat standaard vanaf `NEWSLETTER_FROM`
+(`nieuwsbrief@eaa-monitor.nl`); is die niet gezet, dan valt hij terug op
+`FROM_EMAIL`. Het adres hoeft niet te bestaan als mailbox: versturen werkt zolang
+het domein onboarded is bij Email Sending (stap 2). De reply-to is `NOTIFY_EMAIL`.
+
+### Inschrijvingen bekijken / exporteren
+
+```bash
+# Alle bevestigde inschrijvingen oplijsten
+npx wrangler kv key list --binding NEWSLETTER
+# Eén adres bekijken
+npx wrangler kv key get --binding NEWSLETTER "sub:iemand@voorbeeld.nl"
+```
+
+Het versturen van de nieuwsbrief zelf is nog niet gebouwd; deze route verzamelt
+voorlopig alleen de (bevestigde) adressen.
+
+### Aandachtspunten
+
+- De frontend-constante staat in `tools/build_articles.py` (`NEWSLETTER_ENDPOINT`)
+  en wordt in de footer gebakken via `site_footer()`; submit-logica in
+  `public/static/newsletter.js`.
+- Zet in Cloudflare een **rate-limit** op `/newsletter` (zoals op `/submit`,
+  `/feedback` en `/vraag`) om misbruik te voorkomen.
+- **Na een wijziging aan de Worker opnieuw deployen** (`npx wrangler deploy`).
+
 ## Testen
 
 1. **Lokaal** (stuurt echte mail, gebruik een eigen testadres):
