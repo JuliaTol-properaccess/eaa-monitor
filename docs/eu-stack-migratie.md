@@ -94,9 +94,9 @@ De repo verhuizen naar Codeberg (Duits). Dit is alleen nodig als je de claim wil
 ### Vooraf (kan ruim voor de cutover)
 
 1. **GitHub-token op de server.** Fine-grained PAT (Contents + Pull requests: read & write op de eaa-monitor-repo) als `GITHUB_TOKEN` in `/etc/eaa-forms.env`, daarna `systemctl restart eaa-forms`. Zonder dit kan de service geen bezwaar-PR's openen.
-2. **Inkomende mail regelen.** info@, vragen@ en bezwaar@eaa-monitor.nl zijn nu doorstuuradressen in Cloudflare Email Routing; dat stopt bij de verhuizing. Vervanging: e-mail/doorsturen bij One.com aanzetten en de bijbehorende MX-records noteren voor stap 4.
+2. ✅ **Inkomende mail geregeld (10 juni 2026).** Cloudflare Email Routing is vervangen door Google Workspace: eaa-monitor.nl is secundair domein in de Proper Access-Workspace, met drie gratis groepen (info@, vragen@, bezwaar@, lid: juliatol@properaccess.nl, "iedereen op internet mag posten"). MX staat al op `1 smtp.google.com`; end-to-end getest vanaf de VPS. One.com bleek alleen het domein te leveren, geen mail.
 3. **DNS-zone exporteren uit Cloudflare** (DNS → Records → Export) als referentie.
-4. **Zone aanmaken bij Hetzner DNS** (dns.hetzner.com, zelfde login): `A eaa-monitor.nl → 128.140.50.96`, `AAAA → 2a01:4f8:c014:6c5d::1`, `CNAME www → eaa-monitor.nl`, de Brevo-records (DKIM, uit Brevo → Senders & Domains), de MX-records uit stap 2, plus wat er verder nog relevant is uit de export. De GitHub Pages-records niet meenemen.
+4. **Zone aanmaken bij Hetzner DNS** (dns.hetzner.com, zelfde login): `A eaa-monitor.nl → 128.140.50.96`, `AAAA → 2a01:4f8:c014:6c5d::1`, `CNAME www → eaa-monitor.nl`, `MX @ 1 smtp.google.com`, de Google-verificatie-TXT, de twee Brevo-DKIM-CNAME's (brevo1/brevo2._domainkey) en de brevo-code-TXT (allemaal over te nemen uit de Cloudflare-export), plus een bijgewerkte SPF: `v=spf1 include:spf.brevo.com include:_spf.google.com ~all` (de oude verwijst nog naar Cloudflare). De GitHub Pages-records niet meenemen.
 5. **Nieuwsbrief-abonnees meenemen.** Bevestigde adressen staan in de Cloudflare KV-namespace `NEWSLETTER` (sleutels `sub:<email>`). Exporteren met `wrangler kv key list/get --remote` en importeren in `/var/lib/eaa-forms/kv.json` op de server.
 
 ### De cutover zelf (rustig moment, ±30-60 minuten)
