@@ -29,19 +29,31 @@ Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 68 instellingen
 <!-- FIN-MEASUREMENT:END -->
 
 <!-- TEL-MEASUREMENT:START -->
-Telecom: nog geen meting; de eerste controle volgt op de eerstvolgende maandagochtend.
+Telecom (ACM-toezicht), laatste meting (10 juni 2026): 18 aanbieders gecontroleerd,
+14 (78%) met toegankelijkheidsverklaring,
+3 (17%) zonder, en
+1 (6%) niet te controleren.
 <!-- TEL-MEASUREMENT:END -->
 
 <!-- VERVOER-MEASUREMENT:START -->
-Personenvervoer: nog geen meting; de eerste controle volgt op de eerstvolgende maandagochtend.
+Personenvervoer (ILT-toezicht), laatste meting (10 juni 2026): 21 vervoerders gecontroleerd,
+7 (33%) met toegankelijkheidsverklaring,
+10 (48%) zonder, en
+4 (19%) niet te controleren.
 <!-- VERVOER-MEASUREMENT:END -->
 
 <!-- MEDIA-MEASUREMENT:START -->
-Media en streaming: nog geen meting; de eerste controle volgt op de eerstvolgende maandagochtend.
+Media en streaming (toezicht Commissariaat voor de Media), laatste meting (10 juni 2026): 15 mediadiensten gecontroleerd,
+9 (60%) met toegankelijkheidsverklaring,
+5 (33%) zonder, en
+1 (7%) niet te controleren.
 <!-- MEDIA-MEASUREMENT:END -->
 
 <!-- EBOOKS-MEASUREMENT:START -->
-E-books: nog geen meting; de eerste controle volgt op de eerstvolgende maandagochtend.
+E-books (ACM-toezicht), laatste meting (10 juni 2026): 10 e-bookplatforms gecontroleerd,
+5 (50%) met toegankelijkheidsverklaring,
+3 (30%) zonder, en
+2 (20%) niet te controleren.
 <!-- EBOOKS-MEASUREMENT:END -->
 
 ## Belangrijkste pagina's

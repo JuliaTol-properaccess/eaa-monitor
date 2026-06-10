@@ -1,0 +1,174 @@
+{
+  "last_updated": "2026-06-10T09:16:56.364101+00:00",
+  "total": 15,
+  "with_statement": 9,
+  "without_statement": 5,
+  "errors": 1,
+  "webshops": [
+    {
+      "name": "CineMember",
+      "url": "https://www.cinemember.nl/nl/home",
+      "category": "streaming-video",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Disney+",
+      "url": "https://www.disneyplus.com/nl-nl",
+      "category": "streaming-video",
+      "has_statement": true,
+      "statement_url": "https://help.disneyplus.com/article/disneyplus-accessibility/?utm_source=disneyplus&utm_medium=web&utm_campaign=unauthorized-site-footer&utm_content=accessibility",
+      "statement_link_text": "Toegankelijkheidsfuncties",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "HBO Max",
+      "url": "https://www.hbomax.com/nl/nl",
+      "category": "streaming-video",
+      "has_statement": true,
+      "statement_url": "https://www.hbomax.com/nl/nl/accessibility/sign-language",
+      "statement_link_text": "Gebarentaalcollectie",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "KIJK",
+      "url": "https://www.kijk.nl/",
+      "category": "omroep",
+      "has_statement": true,
+      "statement_url": "https://www.talpanetwork.com/digitale-toegankelijkheid/kijk",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/nl/",
+      "category": "streaming-video",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "NLZIET",
+      "url": "https://www.nlziet.nl/nl/",
+      "category": "streaming-video",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "NPO Start",
+      "url": "https://npo.nl/start",
+      "category": "omroep",
+      "has_statement": true,
+      "statement_url": "https://npo.nl/overnpo/toegankelijkheid/toegankelijkheidsverklaring/toegankelijkheid-npo-start",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Pathé Thuis",
+      "url": "https://www.pathe-thuis.nl",
+      "category": "streaming-video",
+      "has_statement": true,
+      "statement_url": "https://support.pathe-thuis.nl/hc/nl/articles/28355032630557-Toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Podimo",
+      "url": "https://podimo.com/nl",
+      "category": "streaming-audio",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Prime Video",
+      "url": "https://www.primevideo.com",
+      "category": "streaming-video",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "RTL.nl",
+      "url": "https://www.rtl.nl",
+      "category": "omroep",
+      "has_statement": true,
+      "statement_url": "https://rtl.nl/rtl-home/artikel/5516580/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "SkyShowtime",
+      "url": "https://www.skyshowtime.com/nl",
+      "category": "streaming-video",
+      "has_statement": true,
+      "statement_url": "https://www.skyshowtime.com/nl/accessibility-statement",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Spotify",
+      "url": "https://www.spotify.com/nl/",
+      "category": "streaming-audio",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Viaplay",
+      "url": "https://viaplay.com/nl-nl/",
+      "category": "streaming-video",
+      "has_statement": true,
+      "statement_url": "https://viaplay.com/nl-nl/accessibility",
+      "statement_link_text": "Toegankelijkheid bij Viaplay",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Videoland",
+      "url": "https://www.videoland.com",
+      "category": "streaming-video",
+      "has_statement": true,
+      "statement_url": "https://hulp.videoland.com/article/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "scrape_status": "success",
+      "error": null
+    }
+  ]
+}

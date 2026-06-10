@@ -1,0 +1,20 @@
+[
+  { "name": "KPN", "url": "https://www.kpn.com", "category": "internet-tv", "bron": "https://www.acm.nl/nl/telecom/telefonie-internet-tv-aanbieden/register-van-telecomaanbieders-en-postvervoerders" },
+  { "name": "Odido", "url": "https://www.odido.nl", "category": "internet-tv", "bron": "https://www.acm.nl/nl/telecom/telefonie-internet-tv-aanbieden/register-van-telecomaanbieders-en-postvervoerders" },
+  { "name": "Ziggo", "url": "https://www.ziggo.nl", "category": "internet-tv", "bron": "https://www.acm.nl/nl/telecom/telefonie-internet-tv-aanbieden/register-van-telecomaanbieders-en-postvervoerders" },
+  { "name": "Vodafone", "url": "https://www.vodafone.nl", "category": "internet-tv", "bron": "https://www.acm.nl/nl/telecom/telefonie-internet-tv-aanbieden/register-van-telecomaanbieders-en-postvervoerders" },
+  { "name": "DELTA", "url": "https://www.delta.nl", "category": "internet-tv", "bron": "https://www.delta.nl/" },
+  { "name": "hollandsnieuwe", "url": "https://www.hollandsnieuwe.nl", "category": "internet-tv", "bron": "https://www.vodafoneziggo.nl/nieuws/hollandsnieuwe-tapt-uit-nieuw-vaatje-nu-ook-vast-internet-en-tv/" },
+  { "name": "Freedom Internet", "url": "https://www.freedom.nl", "category": "internet-tv", "bron": "https://freedom.nl/" },
+  { "name": "Budget Thuis", "url": "https://www.budgetthuis.nl", "category": "internet-tv", "bron": "https://www.budgetthuis.nl/" },
+  { "name": "Youfone", "url": "https://www.youfone.nl", "category": "internet-tv", "bron": "https://www.youfone.nl/" },
+  { "name": "Online.nl", "url": "https://www.online.nl", "category": "internet-tv", "bron": "https://www.online.nl/" },
+  { "name": "Solcon", "url": "https://www.solcon.nl", "category": "internet-tv", "bron": "https://www.solcon.nl/" },
+  { "name": "Ben", "url": "https://www.ben.nl", "category": "mobiel", "bron": "https://www.odido.nl/over-ons/merken" },
+  { "name": "Simpel", "url": "https://www.simpel.nl", "category": "mobiel", "bron": "https://www.odido.nl/over-ons/merken" },
+  { "name": "Simyo", "url": "https://www.simyo.nl", "category": "mobiel", "bron": "https://www.simyo.nl/" },
+  { "name": "Lebara", "url": "https://www.lebara.nl", "category": "mobiel", "bron": "https://www.lebara.nl/nl/home.html" },
+  { "name": "Lyca Mobile", "url": "https://www.lycamobile.nl", "category": "mobiel", "bron": "https://www.lycamobile.nl/nl/" },
+  { "name": "50+ Mobiel", "url": "https://www.50plusmobiel.nl", "category": "mobiel", "bron": "https://www.50plusmobiel.nl/" },
+  { "name": "Let's Go Mobile", "url": "https://www.letsgomobile.com", "category": "mobiel", "bron": "https://www.letsgomobile.com/" }
+]

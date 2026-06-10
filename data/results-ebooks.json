@@ -1,0 +1,119 @@
+{
+  "last_updated": "2026-06-10T09:17:42.151151+00:00",
+  "total": 10,
+  "with_statement": 5,
+  "without_statement": 3,
+  "errors": 2,
+  "webshops": [
+    {
+      "name": "bol (e-books)",
+      "url": "https://www.bol.com",
+      "category": "verkoop",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "BookBeat",
+      "url": "https://www.bookbeat.com/nl",
+      "category": "abonnement",
+      "has_statement": true,
+      "statement_url": "https://www.bookbeat.com/nl/accessibility-at-bookbeat",
+      "statement_link_text": "Toegankelijkheid bij BookBeat",
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Bruna (e-books)",
+      "url": "https://www.bruna.nl/ebooks",
+      "category": "verkoop",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "eBook.nl",
+      "url": "https://www.ebook.nl/",
+      "category": "verkoop",
+      "has_statement": true,
+      "statement_url": "https://www.ebook.nl/accessibilite_numerique.php",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Kobo",
+      "url": "https://www.kobo.com/nl/nl",
+      "category": "verkoop",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Libris",
+      "url": "https://libris.nl/tolino-ereaders/ebookacties",
+      "category": "verkoop",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Luisterrijk",
+      "url": "https://www.luisterrijk.nl/",
+      "category": "verkoop",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Nextory",
+      "url": "https://nextory.com/nl",
+      "category": "abonnement",
+      "has_statement": true,
+      "statement_url": "https://nextory.com/nl/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Online Bibliotheek",
+      "url": "https://www.onlinebibliotheek.nl/",
+      "category": "overig",
+      "has_statement": true,
+      "statement_url": "https://www.onlinebibliotheek.nl/toegankelijkheid.html",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Storytel",
+      "url": "https://www.storytel.com/nl/nl/",
+      "category": "abonnement",
+      "has_statement": true,
+      "statement_url": "https://www.storytel.com/legal-docs/accessibility-statement/nl/latest",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:17:42.151151+00:00",
+      "scrape_status": "success",
+      "error": null
+    }
+  ]
+}

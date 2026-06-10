@@ -1,0 +1,10 @@
+[
+  {
+    "date": "2026-06-10",
+    "total": 18,
+    "with_statement": 14,
+    "without_statement": 3,
+    "errors": 1,
+    "pct_with": 78
+  }
+]
