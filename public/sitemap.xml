@@ -16,6 +16,26 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://eaa-monitor.nl/monitor-telecom.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/monitor-vervoer.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/monitor-media.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/monitor-ebooks.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://eaa-monitor.nl/artikelen.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
