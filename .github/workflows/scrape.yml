@@ -98,13 +98,26 @@ jobs:
           git pull --rebase origin main
           git push
 
-      - name: Scrape financial sector
-        # Small curated list (~tens of institutions); runs sequentially, no sharding.
-        run: python tools/scrape_footer.py --dataset financieel
-
-      - name: Commit and push financial results
+      # Kleine sectoren (tientallen sites per lijst): sequentieel, geen sharding.
+      # Eén falende sector blokkeert de andere niet (fouten worden verzameld),
+      # maar de job eindigt wél rood zodat het opvalt. Faalt een sector op de
+      # foutdrempel in finalize, dan is er voor die sector niets geschreven
+      # (atomic writes) en blijft de vorige meting live.
+      - name: Scrape kleine sectoren
         run: |
-          git add data/results-financieel.json data/history-financieel.json public/index.html public/monitor-financieel.html public/llms.txt
-          git diff --staged --quiet || git commit -m "Update financiële scrape-resultaten $(date +%Y-%m-%d)"
+          failed=""
+          for ds in financieel telecom vervoer media ebooks; do
+            python tools/scrape_footer.py --dataset "$ds" || failed="$failed $ds"
+          done
+          echo "FAILED_DATASETS=$failed" >> "$GITHUB_ENV"
+
+      - name: Commit and push sector results
+        run: |
+          git add data/results-*.json data/history-*.json public/monitor-*.html public/index.html public/llms.txt
+          git diff --staged --quiet || git commit -m "Update sector-scrapes $(date +%Y-%m-%d)"
           git pull --rebase origin main
           git push
+          if [ -n "${FAILED_DATASETS// /}" ]; then
+            echo "::error::Sector-scrape(s) mislukt:$FAILED_DATASETS"
+            exit 1
+          fi
