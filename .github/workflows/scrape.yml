@@ -12,6 +12,12 @@ on:
 permissions:
   contents: write
 
+# Nooit twee scrape-runs tegelijk (cron + handmatige trigger): die zouden om
+# dezelfde push naar main racen.
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
 jobs:
   # The webshop list grew to ~10k shops, which no longer fits a single 6-hour
   # GitHub Actions job when scraped sequentially. We shard the list across N
@@ -79,14 +85,26 @@ jobs:
       - name: Merge shards and generate assets
         run: python tools/scrape_footer.py --merge parts
 
+      # De webshop-resultaten meteen committen, vóór de financiële scrape: faalt
+      # die laatste, dan is de grote weekrun (8 shard-uren) niet verloren.
+      # `git pull --rebase` vangt het geval dat main intussen is opgeschoven
+      # (de resultaatbestanden zijn bot-eigendom, rebase is daar veilig).
+      - name: Commit and push webshop results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/results.json data/history.json public/index.html public/llms.txt
+          git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
+          git pull --rebase origin main
+          git push
+
       - name: Scrape financial sector
         # Small curated list (~tens of institutions); runs sequentially, no sharding.
         run: python tools/scrape_footer.py --dataset financieel
 
-      - name: Commit and push results
+      - name: Commit and push financial results
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json data/history.json data/results-financieel.json data/history-financieel.json public/index.html public/monitor-financieel.html public/llms.txt
-          git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
+          git add data/results-financieel.json data/history-financieel.json public/index.html public/monitor-financieel.html public/llms.txt
+          git diff --staged --quiet || git commit -m "Update financiële scrape-resultaten $(date +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
