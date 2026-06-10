@@ -28,3 +28,56 @@
     }
   });
 })();
+
+/* Dropdownmenu's (zoals Monitor): de knop toggelt het bijbehorende menu.
+   Toegankelijk: aria-expanded, sluiten met Escape en met een klik buiten het menu. */
+(function () {
+  var dropdowns = Array.prototype.slice.call(
+    document.querySelectorAll("[data-dropdown]")
+  );
+  if (!dropdowns.length) return;
+
+  function close(dd) {
+    var toggle = dd.querySelector("[data-dropdown-toggle]");
+    var menu = dd.querySelector("[data-dropdown-menu]");
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", "false");
+    menu.classList.add("hidden");
+  }
+
+  function closeAll(except) {
+    dropdowns.forEach(function (dd) {
+      if (dd !== except) close(dd);
+    });
+  }
+
+  dropdowns.forEach(function (dd) {
+    var toggle = dd.querySelector("[data-dropdown-toggle]");
+    var menu = dd.querySelector("[data-dropdown-menu]");
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      closeAll(dd);
+      toggle.setAttribute("aria-expanded", open ? "false" : "true");
+      menu.classList.toggle("hidden", open);
+    });
+  });
+
+  // Sluit alle dropdowns bij een klik buiten een dropdown.
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("[data-dropdown]")) closeAll(null);
+  });
+
+  // Sluit met Escape en geef de focus terug aan de bijbehorende knop.
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    dropdowns.forEach(function (dd) {
+      var toggle = dd.querySelector("[data-dropdown-toggle]");
+      if (toggle && toggle.getAttribute("aria-expanded") === "true") {
+        close(dd);
+        toggle.focus();
+      }
+    });
+  });
+})();
