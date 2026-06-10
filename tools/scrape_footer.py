@@ -58,7 +58,7 @@ DATASETS = {
         "hub_prefix": None,
         "toezichthouder": "ACM",
         "noun": "webshops",
-        "summary_heading": "E-commerce · ACM-toezicht",
+        "summary_heading": None,
         "dataset_id": "https://eaa-monitor.nl/#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse webshops",
         "content_url": "https://eaa-monitor.nl/data/results.json",
