@@ -30,5 +30,12 @@
     "datum": "2026-03-30",
     "thema": "praktijk",
     "bron": { "titel": "ACM: toegankelijkheid", "url": "https://www.acm.nl/toegankelijkheid" }
+  },
+  {
+    "vraag": "Moet ik mijn huisstijl en logo aanpassen als die niet aan de contrasteisen voldoen?",
+    "antwoord": "Je logo hoeft niet te worden aangepast. Een logo geldt als een kunstobject en valt daarmee buiten de contrasteisen.\n\nVoor huisstijlkleuren die niet aan de minimale contrasteisen voldoen geldt: gebruik ze in decoratieve elementen, niet in tekst. Tekst moet een contrastverhouding hebben van minimaal 4,5:1 voor gewone tekst en minimaal 3:1 voor grote tekst, zoals koppen.",
+    "datum": "2026-06-10",
+    "thema": "praktijk",
+    "bron": { "titel": "Proper Access: SC 1.4.3, wat betekent Contrast (minimum)?", "url": "https://www.properaccess.nl/blog/sc-1-4-3-wat-betekent-contrast-minimum/" }
   }
 ]
