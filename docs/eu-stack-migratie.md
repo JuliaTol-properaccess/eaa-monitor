@@ -81,6 +81,8 @@ De repo verhuizen naar Codeberg (Duits). Dit is alleen nodig als je de claim wil
 ## Aandachtspunten
 
 - De Worker-vervanger eerst live zetten en testen vóór de DNS-verhuizing, anders breken de formulieren.
+- **Inkomende mail**: info@, vragen@ en bezwaar@eaa-monitor.nl bestaan alleen als doorstuuradressen in Cloudflare Email Routing. Dat stopt zodra de DNS-zone weg is bij Cloudflare. Vóór de verhuizing een vervanger regelen, bijvoorbeeld e-mail/doorsturen bij One.com (zit vaak bij het domeinpakket) en de nieuwe MX-records meenemen in de DNS-migratie.
+- **Brevo**: het versturen werkt pas als (1) de server-IP's geautoriseerd zijn onder Security → Authorised IPs, en (2) het domein eaa-monitor.nl geverifieerd is onder Senders & Domains (DKIM-records; kan nu al, de DNS staat nog bij Cloudflare).
 - Bij de mailmigratie opnieuw SPF/DKIM instellen voor eaa-monitor.nl bij de nieuwe dienst.
 - De Dataset JSON-LD, llms.txt-regio's en sitemap blijven onveranderd werken; alleen de deploy-route verandert.
 - Per server documenteren: IP, SSH-toegang, stack en deploy-procedure (conform onze hostingstandaard).
