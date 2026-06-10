@@ -81,6 +81,10 @@ KEYWORDS_HREF = [
 
 # Playwright settings
 NAVIGATION_TIMEOUT = 15000  # 15 seconds
+
+# Minimale dekking bij --merge: onder deze fractie van de invoerlijst wordt er
+# niet gefinaliseerd (beschermt tegen publiceren van een deelmeting na shard-falen).
+MERGE_COVERAGE_THRESHOLD = 0.9
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -109,6 +113,19 @@ def find_footer_area(soup):
     return areas
 
 
+def safe_statement_url(base_url, href):
+    """Resolve href against the page URL; accept only http(s) results.
+
+    Footer content is untrusted: a malicious site could otherwise smuggle a
+    javascript:- or data:-URL into results.json, which the dashboard renders
+    as a clickable "Bekijk verklaring" link.
+    """
+    resolved = urljoin(base_url, href)
+    if resolved.lower().startswith(("http://", "https://")):
+        return resolved
+    return None
+
+
 def check_links_for_statement(links, base_url):
     """Check a list of <a> tags for accessibility statement links."""
     for link in links:
@@ -116,11 +133,15 @@ def check_links_for_statement(links, base_url):
         text = link.get_text(strip=True).lower()
         href_lower = href.lower()
 
+        statement_url = safe_statement_url(base_url, href)
+        if statement_url is None:
+            continue
+
         # Check link text
         if any(kw in text for kw in KEYWORDS_TEXT):
             return {
                 "has_statement": True,
-                "statement_url": urljoin(base_url, href),
+                "statement_url": statement_url,
                 "statement_link_text": link.get_text(strip=True),
             }
 
@@ -128,7 +149,7 @@ def check_links_for_statement(links, base_url):
         if any(kw in href_lower for kw in KEYWORDS_HREF):
             return {
                 "has_statement": True,
-                "statement_url": urljoin(base_url, href),
+                "statement_url": statement_url,
                 "statement_link_text": link.get_text(strip=True),
             }
 
@@ -304,9 +325,23 @@ def _date_nl(iso):
 
 
 def _replace_region(html, start, end, new_inner):
-    """Replace everything between two literal marker strings, keeping the markers."""
+    """Replace everything between two literal marker strings, keeping the markers.
+
+    Fails hard when the start marker is missing or duplicated, or the end marker
+    is missing: a silent mismatch would leave stale numbers live while the cron
+    stays green.
+    """
+    occurrences = html.count(start)
+    if occurrences != 1:
+        sys.exit(
+            f"FOUT: marker {start!r} komt {occurrences}x voor in de doel-HTML "
+            f"(verwacht: precies 1x). Niets gepatcht."
+        )
     pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
-    return pattern.sub(lambda _m: start + new_inner + end, html, count=1)
+    new_html, n = pattern.subn(lambda _m: start + new_inner + end, html, count=1)
+    if n != 1:
+        sys.exit(f"FOUT: eindmarker {end!r} na {start!r} niet gevonden. Niets gepatcht.")
+    return new_html
 
 
 def _geo_summary_inner(stats, date_nl, ds):
@@ -710,6 +745,22 @@ def merge_parts(merge_dir, now, ds):
             combined.append(r)
         print(f"  {part.name}: {len(entries)} entries")
     print(f"Samengevoegd: {len(combined)} unieke entries uit {len(parts)} shards")
+
+    # Dekkingsdrempel: zijn er shards mislukt (ontbrekende part-bestanden), dan
+    # zou een sterk gekrompen dataset als dé weekmeting gepubliceerd worden.
+    # Liever hard falen zodat de vorige (volledige) meting blijft staan.
+    try:
+        with open(ds["input_file"], encoding="utf-8") as f:
+            expected = len(json.load(f))
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"Waarschuwing: dekkingscheck overgeslagen, {ds['input_file']} onleesbaar: {exc}")
+        expected = 0
+    if expected and len(combined) < MERGE_COVERAGE_THRESHOLD * expected:
+        sys.exit(
+            f"FOUT: {len(combined)} van de {expected} entries aanwezig "
+            f"({len(combined) / expected:.0%}, drempel {MERGE_COVERAGE_THRESHOLD:.0%}). "
+            f"Vermoedelijk zijn een of meer shards mislukt; niet gefinaliseerd."
+        )
     finalize(build_output(combined, now), ds)
 
 

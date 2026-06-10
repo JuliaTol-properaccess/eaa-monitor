@@ -22,8 +22,9 @@
  * idempotent (al vermelde webshops en al ingediende bezwaren worden overgeslagen).
  *
  * De nieuwsbrief gebruikt wél opslag: bevestigde adressen komen in de KV-namespace
- * NEWSLETTER. Ook hier is de bevestigingslink een getekende token, dus pas na de
- * dubbele opt-in wordt een adres opgeslagen.
+ * NEWSLETTER (sleutel sub:<email>). Ook hier is de bevestigingslink een getekende
+ * token, dus pas na de dubbele opt-in wordt een adres opgeslagen. Dezelfde
+ * namespace bevat de rate-limit-tellers (sleutel rl:<route>:<ip>, met TTL).
  *
  * Vereiste secrets (via `wrangler secret put`):
  *   SIGNING_SECRET  — willekeurige string voor de HMAC-handtekening
@@ -66,6 +67,44 @@ export default {
   },
 };
 
+// ── Rate limiting ───────────────────────────────────────────────────────────
+//
+// Teller per IP per route in de bestaande KV-namespace (prefix rl:), zodat de
+// mail-endpoints niet als spam-relay of voor mail-bombing te misbruiken zijn.
+// CORS beschermt hier niet: een script kan rechtstreeks POST'en. KV is
+// eventually consistent, dus een snelle burst kan er een paar extra doorlaten;
+// dat is acceptabel. Het venster loopt vanaf de laatst getelde poging.
+
+const RATE_LIMITS = {
+  submit: { max: 5, windowSecs: 3600 },
+  newsletter: { max: 3, windowSecs: 3600 },
+  vraag: { max: 5, windowSecs: 3600 },
+  feedback: { max: 10, windowSecs: 3600 },
+};
+
+async function rateLimited(env, request, route) {
+  const limit = RATE_LIMITS[route];
+  if (!limit || !env.NEWSLETTER) return false;
+  const ip = request.headers.get("CF-Connecting-IP") || "onbekend";
+  const key = `rl:${route}:${ip}`;
+  try {
+    const count = parseInt((await env.NEWSLETTER.get(key)) || "0", 10) || 0;
+    if (count >= limit.max) return true;
+    await env.NEWSLETTER.put(key, String(count + 1), { expirationTtl: limit.windowSecs });
+  } catch (err) {
+    // Faal open: liever een mail te veel dan legitieme bezoekers blokkeren.
+    console.error("Rate-limit-check mislukt:", err && err.message);
+  }
+  return false;
+}
+
+function tooManyRequests() {
+  return json(
+    { ok: false, error: "Te veel verzoeken vanaf dit adres. Probeer het over een uur opnieuw." },
+    429
+  );
+}
+
 // ── /submit ──────────────────────────────────────────────────────────────
 
 async function handleSubmit(request, env) {
@@ -107,6 +146,9 @@ async function handleSubmit(request, env) {
       422
     );
   }
+
+  // Pas tellen als de invoer geldig is: beide routes hieronder versturen mail.
+  if (await rateLimited(env, request, "submit")) return tooManyRequests();
 
   const webDomain = registrableDomain(webHost);
   const emailDomain = registrableDomain(email.split("@")[1] || "");
@@ -179,6 +221,7 @@ async function handleFeedback(request, env) {
   if (email && !isValidEmail(email)) {
     return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
   }
+  if (await rateLimited(env, request, "feedback")) return tooManyRequests();
 
   try {
     await sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl });
@@ -220,6 +263,7 @@ async function handleVraag(request, env) {
   if (email && !isValidEmail(email)) {
     return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
   }
+  if (await rateLimited(env, request, "vraag")) return tooManyRequests();
 
   try {
     await sendVraagEmail(env, { vraag, email, sector });
@@ -307,6 +351,17 @@ async function handleNewsletter(request, env) {
   const email = (form.get("email") || "").trim().toLowerCase();
   if (!email || !isValidEmail(email)) {
     return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+  if (await rateLimited(env, request, "newsletter")) return tooManyRequests();
+
+  // Al bevestigd? Stuur dan geen nieuwe bevestigingsmail; dat houdt het adres
+  // onbruikbaar voor mail-bombing via herhaald inschrijven.
+  try {
+    if (env.NEWSLETTER && (await env.NEWSLETTER.get(`sub:${email}`)) !== null) {
+      return json({ ok: true, mode: "verify" });
+    }
+  } catch (err) {
+    console.error("KV-check bestaande inschrijving mislukt:", err && err.message);
   }
 
   // Pas na bevestiging opslaan (dubbele opt-in). De link draagt een getekende

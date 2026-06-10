@@ -495,8 +495,8 @@
           : "-";
 
         const statementLink =
-          shop.has_statement && shop.statement_url
-            ? `<a href="${escapeHtml(shop.statement_url)}" target="_blank" rel="noopener noreferrer" class="link text-sm">Bekijk verklaring</a>`
+          shop.has_statement && safeHttpUrl(shop.statement_url)
+            ? `<a href="${escapeHtml(safeHttpUrl(shop.statement_url))}" target="_blank" rel="noopener noreferrer" class="link text-sm">Bekijk verklaring</a>`
             : '<span class="text-gray-300">-</span>';
 
         const rowBg = i % 2 === 0 ? "" : "bg-gray-50";
@@ -531,6 +531,12 @@
     const div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  // Alleen http(s)-URL's als href renderen. De statement_url komt uit gescrapete
+  // footers (onbetrouwbaar); escapeHtml blokkeert geen javascript:- of data:-scheme.
+  function safeHttpUrl(url) {
+    return url && /^https?:\/\//i.test(url) ? url : "";
   }
 
   // ── Setup ──

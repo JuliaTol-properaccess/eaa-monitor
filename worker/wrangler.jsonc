@@ -9,8 +9,9 @@
   //   npx wrangler email sending enable eaa-monitor.nl
   "send_email": [{ "name": "EMAIL" }],
 
-  // Opslag van bevestigde nieuwsbrief-inschrijvingen (route /newsletter). Maak de
-  // namespace eenmalig aan en vul het id hieronder in (zie DEPLOY.md):
+  // Opslag van bevestigde nieuwsbrief-inschrijvingen (route /newsletter, sleutel
+  // sub:<email>) én van de rate-limit-tellers per IP (sleutel rl:<route>:<ip>,
+  // met TTL). Maak de namespace eenmalig aan en vul het id hieronder in (zie DEPLOY.md):
   //   npx wrangler kv namespace create NEWSLETTER
   "kv_namespaces": [{ "binding": "NEWSLETTER", "id": "9bee247149b64408835caa8ca1761d18" }],
 

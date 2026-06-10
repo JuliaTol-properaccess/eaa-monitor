@@ -242,9 +242,12 @@ def main():
         sys.exit(f"{DATA_FILE.name} moet een JSON-lijst zijn.")
 
     # Nieuwste boven; items zonder geldige datum onderaan in oorspronkelijke volgorde.
+    # Met reverse=True moet 'gedateerd' de hoogste prioriteit (1) krijgen, anders
+    # springen datumloze items juist naar de top. De stabiele sort bewaart binnen
+    # de datumloze groep de oorspronkelijke volgorde.
     def sort_key(i):
         d = _parse_date(i.get("datum"))
-        return (0, d.isoformat()) if d else (1, "")
+        return (1, d.isoformat()) if d else (0, "")
 
     vragen_sorted = sorted(vragen, key=sort_key, reverse=True)
 
