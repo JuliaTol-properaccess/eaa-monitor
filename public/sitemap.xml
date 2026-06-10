@@ -57,6 +57,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://eaa-monitor.nl/artikelen/niet-alleen-websites-digitale-kanalen.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://eaa-monitor.nl/artikelen/subsidies-voor-digitale-toegankelijkheid.html</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -81,7 +87,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://eaa-monitor.nl/artikelen/valt-mijn-webshop-onder-de-eaa.html</loc>
+    <loc>https://eaa-monitor.nl/artikelen/valt-mijn-website-onder-de-eaa.html</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

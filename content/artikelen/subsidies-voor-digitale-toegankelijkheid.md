@@ -122,4 +122,4 @@ Bel je gemeente of mail het ondernemersloket. Veel kleinere gemeenten hebben gee
 
 ## Wat betekent dit voor jou?
 
-Reken er niet op dat je je EAA-traject grotendeels gesubsidieerd krijgt. De regelingen die er zijn, zijn beperkt, regionaal en dekken vaak niet de hele rit. Beschouw subsidie als een meevaller, niet als de basis van je planning. Twijfel je of de EAA voor jou geldt? Begin bij [Valt mijn webshop onder de EAA?](/artikelen/valt-mijn-webshop-onder-de-eaa.html).
+Reken er niet op dat je je EAA-traject grotendeels gesubsidieerd krijgt. De regelingen die er zijn, zijn beperkt, regionaal en dekken vaak niet de hele rit. Beschouw subsidie als een meevaller, niet als de basis van je planning. Twijfel je of de EAA voor jou geldt? Begin bij [Valt mijn website onder de EAA?](/artikelen/valt-mijn-website-onder-de-eaa.html).

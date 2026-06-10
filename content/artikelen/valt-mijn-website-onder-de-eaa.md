@@ -1,27 +1,27 @@
 ---
-title: "Valt mijn webshop onder de EAA?"
-slug: "valt-mijn-webshop-onder-de-eaa"
-description: "Lang niet elke website valt onder de European Accessibility Act. Check met een paar vragen of de wet voor jouw webshop geldt, en begrijp de micro-vrijstelling."
+title: "Valt mijn website onder de EAA?"
+slug: "valt-mijn-website-onder-de-eaa"
+description: "Lang niet elke website valt onder de European Accessibility Act. Check met een paar vragen of de wet voor jouw website geldt, en begrijp de micro-vrijstelling."
 date: 2026-06-08
 theme: "scope"
 keywords:
   - eaa
   - scope
   - micro-vrijstelling
-  - webshop
+  - website
   - toegankelijkheid
 sources:
   - { title: "Ondernemersplein: regels voor digitale toegankelijkheid van producten en diensten", url: "https://ondernemersplein.overheid.nl/european-accessibility-act-producten-en-diensten-moeten-volledig-toegankelijk-zijn/" }
   - { title: "ACM: toegankelijkheid e-commerce en elektronische communicatie", url: "https://www.acm.nl/en/accessibility/accessibility-e-commerce-services-and-electronic-communications-services" }
 ---
 
-De European Accessibility Act geldt sinds 28 juni 2025. Sindsdien circuleert er veel onjuiste informatie. De meest hardnekkige claim: vanaf die datum zou elke website aan de wet moeten voldoen. Dat klopt niet. Lang niet elke webshop valt eronder.
+De European Accessibility Act geldt sinds 28 juni 2025. Sindsdien circuleert er veel onjuiste informatie. De meest hardnekkige claim: vanaf die datum zou elke website aan de wet moeten voldoen. Dat klopt niet. Lang niet elke website valt eronder.
 
 Dit artikel legt uit voor wie de wet geldt. Onderaan staat een korte checker waarmee je een eerste indicatie krijgt.
 
 ## Waar gaat de EAA over?
 
-De European Accessibility Act harmoniseert de Europese regels voor de toegankelijkheid van bepaalde producten en diensten. E-commerce is een van die diensten. Verkoop je online aan consumenten, dan is de kans groot dat je eronder valt. Voor webshops betekent dit dat je website en bestelproces bruikbaar moeten zijn voor mensen met een beperking.
+De European Accessibility Act harmoniseert de Europese regels voor de toegankelijkheid van bepaalde producten en diensten. E-commerce is een van die diensten. Verkoop je online aan consumenten, dan is de kans groot dat je eronder valt. Dan moeten je website en bestelproces bruikbaar zijn voor mensen met een beperking.
 
 Belangrijk: het doel van de wet is marktharmonisatie binnen Europa. Toegankelijkheid is het middel, niet een losse eis die voor iedereen automatisch geldt. Daarom valt niet elke site eronder.
 
@@ -39,7 +39,7 @@ Of de wet voor jou geldt, hangt vooral af van drie dingen.
 
 Voor dienstverleners kent de wet een vrijstelling voor micro-ondernemingen. Een micro-onderneming heeft minder dan 10 medewerkers en een jaaromzet van maximaal € 2 miljoen. Voldoe je aan beide grenzen, dan ben je als dienstverlener vrijgesteld.
 
-Let op: dit verklaart waarom de meeste webshops die nergens bij een keurmerk of vakorganisatie zijn aangesloten, buiten beeld blijven. Dat zijn vaak kleine ondernemingen onder beide grenzen.
+Let op: dit verklaart waarom de meeste websites die nergens bij een keurmerk of vakorganisatie zijn aangesloten, buiten beeld blijven. Dat zijn vaak kleine ondernemingen onder beide grenzen.
 
 > Twijfel je over je cijfers? Reken met de actuele aantallen, niet met een schatting van vorig jaar. Eén medewerker of een paar ton omzet erbij kan het verschil maken tussen vrijgesteld en verplicht.
 
@@ -54,7 +54,7 @@ Beantwoord de vragen hieronder voor een eerste indicatie. Dit is geen juridisch 
 <div class="not-prose my-8 rounded-3xl ring-1 ring-brand-light bg-softblue p-6 md:p-8" id="eaa-checker">
   <form id="eaa-checker-form">
     <fieldset class="border-0 p-0 m-0">
-      <legend class="text-lg font-bold text-navy mb-4">Valt jouw webshop onder de EAA?</legend>
+      <legend class="text-lg font-bold text-navy mb-4">Valt jouw website onder de EAA?</legend>
 
       <div class="mb-5">
         <p class="font-semibold text-navy mb-2">1. Aan wie verkoop je?</p>

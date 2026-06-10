@@ -53,5 +53,15 @@
     });
   }
 
+  // De zoekknop filtert ook expliciet; live filteren blijft werken zonder klik.
+  var searchForm = document.getElementById('bron-search-form');
+  if (searchForm) {
+    searchForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (search) query = search.value.trim().toLowerCase();
+      apply();
+    });
+  }
+
   apply();
 })();

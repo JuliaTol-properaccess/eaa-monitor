@@ -43,6 +43,7 @@ DATASETS = {
         "target_html": PUBLIC_DIR / "index.html",
         "llms_region": "MEASUREMENT",
         "noun": "webshops",
+        "summary_heading": "E-commerce · ACM-toezicht",
         "dataset_id": "https://eaa-monitor.nl/#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse webshops",
         "content_url": "https://eaa-monitor.nl/data/results.json",
@@ -56,6 +57,7 @@ DATASETS = {
         "target_html": PUBLIC_DIR / "monitor-financieel.html",
         "llms_region": "FIN-MEASUREMENT",
         "noun": "financiële instellingen",
+        "summary_heading": "Financiële sector · AFM-toezicht",
         "dataset_id": "https://eaa-monitor.nl/monitor-financieel.html#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse financiële instellingen",
         "content_url": "https://eaa-monitor.nl/data/results-financieel.json",
@@ -308,12 +310,19 @@ def _replace_region(html, start, end, new_inner):
 
 
 def _geo_summary_inner(stats, date_nl, ds):
+    """Alleen de samenvattingskaart. De section/grid-wrapper staat in de
+    doel-HTML, zodat index.html twee kaarten (e-commerce + financieel) naast
+    elkaar kan tonen en monitor-financieel.html er een toont."""
     noun = ds["noun"]
+    heading = ds.get("summary_heading", "")
+    heading_html = (
+        f'<p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">{heading}</p>\n          '
+        if heading else ""
+    )
     return f"""
-    <section aria-label="Samenvatting" class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
-      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink">
+      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
-          <p class="text-lg leading-relaxed">
+          {heading_html}<p class="text-lg leading-relaxed">
             Op <strong>{date_nl}</strong> controleerde de EAA Monitor
             <strong>{stats['total']} Nederlandse {noun}</strong> op een toegankelijkheidsverklaring:
           </p>
@@ -325,7 +334,6 @@ def _geo_summary_inner(stats, date_nl, ds):
           <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: {date_nl}. {ds['rescan_copy']}</p>
         </div>
       </div>
-    </section>
     """
 
 
@@ -412,6 +420,25 @@ def patch_hub_card(stats):
     html = _replace_region(html, "<!--STAT:finPctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
     index.write_text(html, encoding="utf-8")
     print(f"Patched {index} (financiële hub-kaart)")
+
+
+def patch_fin_index_summary(stats, date_nl):
+    """Vul de financiële samenvattingskaart op de hub-homepage (index.html).
+
+    Naast de webshop-samenvatting (GEO-SUMMARY, gevuld door de webshop-run)
+    toont index.html een tweede kaart voor de financiële sector. Eigen markers
+    (FIN-GEO-SUMMARY), zodat de twee runs elkaar niet overschrijven.
+    """
+    index = PUBLIC_DIR / "index.html"
+    if not index.exists():
+        return
+    html = index.read_text(encoding="utf-8")
+    if "<!-- FIN-GEO-SUMMARY:START -->" not in html:
+        return  # samenvattingskaart nog niet aanwezig; sla over
+    html = _replace_region(html, "<!-- FIN-GEO-SUMMARY:START -->", "<!-- FIN-GEO-SUMMARY:END -->",
+                           _geo_summary_inner(stats, date_nl, DATASETS["financieel"]))
+    index.write_text(html, encoding="utf-8")
+    print(f"Patched {index} (financiële samenvatting)")
 
 
 # llms.txt-regio's. De scraper bezit de meet-regio; tools/build_articles.py bezit
@@ -581,6 +608,7 @@ def generate_geo_assets(output, ds):
     patch_target_html(stats, date_nl, date_iso, ds)
     if ds["key"] == "financieel":
         patch_hub_card(stats)
+        patch_fin_index_summary(stats, date_nl)
         patch_llms_fin(stats, date_nl)
     else:
         write_llms_txt(stats, date_nl)

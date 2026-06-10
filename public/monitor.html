@@ -41,13 +41,20 @@
       </a>
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
-          <a href="/monitor.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Webshops</a>
-          <a href="/monitor-financieel.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Financieel</a>
+          <div class="relative" data-dropdown>
+            <button type="button" data-dropdown-toggle class="text-sm font-semibold text-brand transition-colors inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <div data-dropdown-menu class="hidden absolute left-0 top-full pt-2 z-50">
+              <div class="min-w-[12rem] bg-white rounded-xl shadow-lg ring-1 ring-line py-2">
+              <a href="/monitor.html" class="block px-4 py-2 text-sm font-semibold text-brand hover:bg-softblue transition-colors" aria-current="page">E-commerce</a>
+              <a href="/monitor-financieel.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Fin sector</a>
+              <a href="/over.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Over</a>
+              </div>
+            </div>
+          </div>
           <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
-          <a href="/over.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Over</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -55,13 +62,18 @@
     </div>
     <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
-        <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Webshops</a>
-        <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financieel</a>
+        <div data-dropdown>
+          <button type="button" data-dropdown-toggle class="w-full flex items-center justify-between py-2.5 text-base font-semibold text-brand" aria-expanded="false">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div data-dropdown-menu class="hidden pl-4 ml-1 border-l border-line">
+            <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">E-commerce</a>
+            <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Fin sector</a>
+            <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
+          </div>
+        </div>
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
-        <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over</a>
     </nav>
   </header>
 
@@ -211,7 +223,7 @@
 
   <footer class="bg-navy text-white mt-24 on-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-      <div class="grid gap-10 md:grid-cols-3">
+      <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
           <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
@@ -220,11 +232,17 @@
           <p class="mt-4 text-sm text-white/60 max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
         </div>
         <div>
-          <p class="text-sm font-semibold text-white/90 mb-3">Ontdek</p>
+          <p class="text-sm font-semibold text-white/90 mb-3">Monitor &amp; uitleg</p>
           <ul class="space-y-2 text-sm text-white/60">
-            <li><a href="/monitor.html" class="hover:text-white">Het dashboard</a></li>
+            <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
+            <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white/90 mb-3">Meedoen &amp; info</p>
+          <ul class="space-y-2 text-sm text-white/60">
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
