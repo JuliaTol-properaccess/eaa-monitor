@@ -8,21 +8,28 @@
  * een handmatige check, precies zoals het nu al gaat.
  *
  * Routes:
- *   POST /submit   — ontvangt het formulier, valideert, stuurt bevestigingsmail
- *   GET  /confirm  — verifieert de getekende token en opent een PR op objections.json
- *   POST /feedback — feedback op een kennisbank-artikel, mailt Julia rechtstreeks
- *   POST /vraag    — anonieme EAA-vraag voor de toezichthouder, mailt Julia rechtstreeks
+ *   POST /submit                 — ontvangt het bezwaarformulier, valideert, stuurt bevestigingsmail
+ *   GET  /confirm                — verifieert de getekende token en opent een PR op objections.json
+ *   POST /feedback               — feedback op een kennisbank-artikel, mailt Julia rechtstreeks
+ *   POST /vraag                  — anonieme EAA-vraag voor de toezichthouder, mailt Julia rechtstreeks
+ *   POST /newsletter             — nieuwsbrief-opt-in, stuurt een bevestigingsmail (dubbele opt-in)
+ *   GET  /newsletter/confirm     — bevestigt de inschrijving en slaat het adres op in KV
+ *   GET  /newsletter/unsubscribe — meldt het adres af en verwijdert het uit KV
  *
- * Geen database nodig: de bevestigingslink draagt een HMAC-getekende token met
- * alle bezwaargegevens. Na bevestiging opent de Worker een pull request; Julia
- * keurt die met één klik goed. De actie is idempotent (al vermelde webshops en
- * al ingediende bezwaren worden overgeslagen), dus dubbel klikken kan geen kwaad.
+ * Bezwaar, feedback en vraag hebben geen database nodig: de bevestigingslink
+ * draagt een HMAC-getekende token met alle gegevens. Na bevestiging opent de
+ * Worker een pull request; Julia keurt die met één klik goed. De actie is
+ * idempotent (al vermelde webshops en al ingediende bezwaren worden overgeslagen).
+ *
+ * De nieuwsbrief gebruikt wél opslag: bevestigde adressen komen in de KV-namespace
+ * NEWSLETTER. Ook hier is de bevestigingslink een getekende token, dus pas na de
+ * dubbele opt-in wordt een adres opgeslagen.
  *
  * Vereiste secrets (via `wrangler secret put`):
  *   SIGNING_SECRET  — willekeurige string voor de HMAC-handtekening
  *   GITHUB_TOKEN    — fine-grained PAT met Contents + Pull requests: read & write
  *
- * Vereiste vars (wrangler.jsonc): zie dat bestand.
+ * Vereiste vars en bindings (wrangler.jsonc): zie dat bestand (incl. KV NEWSLETTER).
  */
 
 const TOKEN_TTL_MS = 7 * 24 * 60 * 60 * 1000; // bevestigingslink 7 dagen geldig
@@ -45,6 +52,15 @@ export default {
     }
     if (url.pathname === "/confirm" && request.method === "GET") {
       return handleConfirm(request, env, url);
+    }
+    if (url.pathname === "/newsletter" && request.method === "POST") {
+      return withCors(env, await handleNewsletter(request, env));
+    }
+    if (url.pathname === "/newsletter/confirm" && request.method === "GET") {
+      return handleNewsletterConfirm(request, env, url);
+    }
+    if (url.pathname === "/newsletter/unsubscribe" && request.method === "GET") {
+      return handleNewsletterUnsubscribe(request, env, url);
     }
     return new Response("Not found", { status: 404 });
   },
@@ -271,6 +287,119 @@ async function handleConfirm(request, env, url) {
   return htmlPage("Bezwaar bevestigd", body, 200);
 }
 
+// ── Nieuwsbrief: opt-in met dubbele bevestiging ────────────────────────────
+
+const NEWSLETTER_UNSUB_TTL_MS = 365 * 24 * 60 * 60 * 1000; // afmeldlink een jaar geldig
+
+async function handleNewsletter(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true, mode: "verify" });
+  }
+
+  const email = (form.get("email") || "").trim().toLowerCase();
+  if (!email || !isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+
+  // Pas na bevestiging opslaan (dubbele opt-in). De link draagt een getekende
+  // token met het e-mailadres, dus tot dan slaan we niets op.
+  const token = await signToken(env, { email, type: "newsletter", exp: Date.now() + TOKEN_TTL_MS });
+  const origin = new URL(request.url).origin;
+  const confirmUrl = `${origin}/newsletter/confirm?token=${encodeURIComponent(token)}`;
+
+  try {
+    await sendNewsletterConfirmEmail(env, { email, confirmUrl });
+  } catch (err) {
+    console.error("Nieuwsbrief-bevestigingsmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "We konden de bevestigingsmail niet versturen. Probeer het later opnieuw." },
+      502
+    );
+  }
+  return json({ ok: true, mode: "verify" });
+}
+
+async function handleNewsletterConfirm(request, env, url) {
+  const payload = await verifyNewsletterToken(env, url.searchParams.get("token") || "", "newsletter");
+  if (!payload) {
+    return htmlPage(
+      "Link ongeldig of verlopen",
+      `<p>Deze bevestigingslink is niet geldig of is verlopen. Schrijf je opnieuw in via de
+       nieuwsbrief onderaan <a href="https://eaa-monitor.nl/">eaa-monitor.nl</a>.</p>`,
+      400
+    );
+  }
+
+  try {
+    await env.NEWSLETTER.put(
+      `sub:${payload.email}`,
+      JSON.stringify({ email: payload.email, confirmed_at: todayISO() })
+    );
+  } catch (err) {
+    console.error("Nieuwsbrief opslaan mislukt:", err && err.message);
+    return htmlPage(
+      "Er ging iets mis",
+      `<p>We konden je inschrijving nu niet opslaan. Probeer de link later opnieuw, of mail naar
+       <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>.</p>`,
+      502
+    );
+  }
+
+  const unsubToken = await signToken(env, {
+    email: payload.email,
+    type: "newsletter-unsub",
+    exp: Date.now() + NEWSLETTER_UNSUB_TTL_MS,
+  });
+  const unsubUrl = `${new URL(request.url).origin}/newsletter/unsubscribe?token=${encodeURIComponent(unsubToken)}`;
+
+  return htmlPage(
+    "Inschrijving bevestigd",
+    `<p><strong>Bedankt, je bent ingeschreven voor de nieuwsbrief.</strong></p>
+     <p>Je krijgt af en toe een update over de EAA. Afmelden kan altijd via de link onderaan elke
+        nieuwsbrief, of <a href="${escapeHtml(unsubUrl)}">nu meteen</a>.</p>`,
+    200
+  );
+}
+
+async function handleNewsletterUnsubscribe(request, env, url) {
+  const payload = await verifyNewsletterToken(env, url.searchParams.get("token") || "", "newsletter-unsub");
+  if (!payload) {
+    return htmlPage(
+      "Link ongeldig of verlopen",
+      `<p>Deze afmeldlink is niet geldig of is verlopen. Mail anders naar
+       <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>, dan halen we je er handmatig uit.</p>`,
+      400
+    );
+  }
+
+  try {
+    await env.NEWSLETTER.delete(`sub:${payload.email}`);
+  } catch (err) {
+    console.error("Afmelden mislukt:", err && err.message);
+    return htmlPage(
+      "Er ging iets mis",
+      `<p>We konden je afmelding nu niet verwerken. Probeer het later opnieuw.</p>`,
+      502
+    );
+  }
+
+  return htmlPage(
+    "Afgemeld",
+    `<p><strong>Je bent afgemeld voor de nieuwsbrief.</strong></p>
+     <p>Je ontvangt geen e-mails meer. Van gedachten veranderd? Je kunt je altijd opnieuw inschrijven
+        op <a href="https://eaa-monitor.nl/">eaa-monitor.nl</a>.</p>`,
+    200
+  );
+}
+
 // ── GitHub: bezwaar als pull request indienen ──────────────────────────────
 
 async function createObjectionPR(env, entry) {
@@ -382,6 +511,42 @@ function githubHeaders(env) {
 
 // ── E-mails ────────────────────────────────────────────────────────────────
 
+// Centrale verzendfunctie. Is RESEND_API_KEY gezet, dan gaat de mail via Resend
+// (transactionele provider, mag naar willekeurige adressen). Zo niet, dan valt
+// hij terug op de Cloudflare-binding env.EMAIL, die alleen naar geverifieerde
+// bestemmingen mag. Bevestigingsmails naar bezwaarmakers en nieuwsbrief-abonnees
+// gaan naar externe adressen en hebben Resend nodig; interne meldingen werken
+// met beide. Alle callers gebruiken dezelfde vorm: { to, from:{email,name},
+// replyTo, subject, text, html? }.
+async function sendEmail(env, msg) {
+  if (env.RESEND_API_KEY) {
+    const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
+    const fromName = typeof msg.from === "string" ? null : msg.from.name;
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: fromName ? `${fromName} <${fromEmail}>` : fromEmail,
+        to: [msg.to],
+        ...(msg.replyTo ? { reply_to: msg.replyTo } : {}),
+        subject: msg.subject,
+        text: msg.text,
+        ...(msg.html ? { html: msg.html } : {}),
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Resend ${res.status}: ${detail.slice(0, 300)}`);
+    }
+    return;
+  }
+  // Terugval: Cloudflare Email Sending-binding (alleen geverifieerde bestemmingen).
+  await env.EMAIL.send(msg);
+}
+
 async function sendConfirmationEmail(env, { name, email, webadres, confirmUrl }) {
   const subject = "Bevestig de verwijdering van je webshop uit de EAA Monitor";
   const text = [
@@ -416,7 +581,7 @@ async function sendConfirmationEmail(env, { name, email, webadres, confirmUrl })
       <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
     </div>`;
 
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: email,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: env.NOTIFY_EMAIL,
@@ -447,7 +612,7 @@ async function sendManualReviewEmail(env, { name, webadres, email, declared, toe
     ``,
     `Verwerk dit volgens workflows/handle_objection.md.`,
   ];
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: env.NOTIFY_EMAIL,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email,
@@ -468,7 +633,7 @@ async function sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl }) {
     `Bericht:`,
     bericht,
   ];
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to: env.NOTIFY_EMAIL,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
@@ -494,12 +659,56 @@ async function sendVraagEmail(env, { vraag, email, sector }) {
     `aan de juiste toezichthouder en publiceer het antwoord in data/vragen.json`,
     `(pagina /vragen.html). Publiceer nooit het e-mailadres of herleidbare gegevens.`,
   ];
-  await env.EMAIL.send({
+  await sendEmail(env, {
     to,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email && isValidEmail(email) ? email : to,
     subject,
     text: lines.join("\n"),
+  });
+}
+
+async function sendNewsletterConfirmEmail(env, { email, confirmUrl }) {
+  const from = env.NEWSLETTER_FROM || env.FROM_EMAIL;
+  const subject = "Bevestig je inschrijving voor de EAA Monitor nieuwsbrief";
+  const text = [
+    `Hoi,`,
+    ``,
+    `Je hebt je ingeschreven voor de nieuwsbrief van de EAA Monitor.`,
+    ``,
+    `Klik op de onderstaande link om je inschrijving te bevestigen. De link is 7 dagen geldig.`,
+    ``,
+    confirmUrl,
+    ``,
+    `Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.`,
+    ``,
+    `EAA Monitor, eaa-monitor.nl`,
+  ].join("\n");
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #1F2937; line-height: 1.6;">
+      <p>Hoi,</p>
+      <p>Je hebt je ingeschreven voor de nieuwsbrief van de <strong>EAA Monitor</strong>.</p>
+      <p>Klik op de knop om je inschrijving te bevestigen. De link is 7 dagen geldig.</p>
+      <p>
+        <a href="${escapeHtml(confirmUrl)}"
+           style="display:inline-block;background:#0052FF;color:#fff;text-decoration:none;
+                  padding:12px 20px;border-radius:8px;font-weight:bold;">
+          Inschrijving bevestigen
+        </a>
+      </p>
+      <p style="font-size:13px;color:#6B7280;">Werkt de knop niet? Kopieer dan deze link naar je browser:<br>
+        <span style="word-break:break-all;">${escapeHtml(confirmUrl)}</span></p>
+      <p>Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.</p>
+      <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
+    </div>`;
+
+  await sendEmail(env, {
+    to: email,
+    from: { email: from, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: env.NOTIFY_EMAIL,
+    subject,
+    text,
+    html,
   });
 }
 
@@ -525,6 +734,27 @@ async function verifyToken(env, token) {
   }
   if (!payload || typeof payload.exp !== "number" || Date.now() > payload.exp) return null;
   if (!payload.url || !payload.name) return null;
+  return payload;
+}
+
+// Verifieert een nieuwsbrief-token (inschrijven of afmelden). Zelfde HMAC, maar
+// andere veldcontrole dan het bezwaar-token: een geldig e-mailadres en het
+// verwachte type, zodat een inschrijflink niet als afmeldlink kan dienen.
+async function verifyNewsletterToken(env, token, expectedType) {
+  if (!token || token.indexOf(".") === -1) return null;
+  const [body, sig] = token.split(".");
+  if (!body || !sig) return null;
+  const expected = await hmac(env, body);
+  if (!timingSafeEqual(sig, expected)) return null;
+  let payload;
+  try {
+    payload = JSON.parse(b64urlDecode(body));
+  } catch {
+    return null;
+  }
+  if (!payload || typeof payload.exp !== "number" || Date.now() > payload.exp) return null;
+  if (payload.type !== expectedType) return null;
+  if (!payload.email || !isValidEmail(payload.email)) return null;
   return payload;
 }
 
