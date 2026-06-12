@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "naam": "E2E-test cutover (negeren)",
+    "url": "https://example.com",
+    "slug": "example.com",
+    "categorie": "",
+    "datum": "2026-06-12",
+    "motivatie": "Dit is een technische test van de nominatieflow direct na de DNS-cutover. Deze PR wordt gesloten zonder merge.",
+    "hulptechnologie": "geen (test)",
+    "observaties": []
+  }
+]
