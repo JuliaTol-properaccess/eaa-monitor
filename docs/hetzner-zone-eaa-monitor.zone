@@ -1,0 +1,40 @@
+; Cutover-artefact: zonebestand voor Hetzner DNS (dns.hetzner.com), opgesteld
+; 12 juni 2026 uit de live Cloudflare-zone (geverifieerd met dig).
+; Importeren: dns.hetzner.com -> Add zone -> eaa-monitor.nl -> "import zone file"
+; en dit bestand plakken. Hetzner voegt zelf SOA- en NS-records toe.
+;
+; Bewust NIET overgenomen uit de oude zone:
+; - GitHub Pages A-records (185.199.108-111.153): hosting wordt de VPS
+; - Brevo-records (brevo1/brevo2._domainkey, brevo-code-TXT): besluit is AhaSend
+; - Resend-records: vervallen met de oude Cloudflare Worker (na de naweek)
+; - cf2024-1._domainkey (Cloudflare Email Sending): vervalt met Cloudflare
+; - Het dubbele SPF-record: de oude zone heeft er twee (ongeldig); hier staat
+;   er precies een, met alleen Google (AhaSend loopt via het psrp-return-path
+;   en heeft geen include op het hoofddomein nodig)
+; - DMARC-rua naar dmarc.brevo.com: vervalt met het Brevo-account
+;
+; Na de cutover verwijderen of laten staan als referentie; de zone bij Hetzner
+; is vanaf dan de waarheid.
+
+$ORIGIN eaa-monitor.nl.
+$TTL 3600
+
+; Website (Hetzner VPS eaa-monitor-1, Falkenstein; zie docs/server.md)
+@                   IN A     128.140.50.96
+@                   IN AAAA  2a01:4f8:c014:6c5d::1
+www                 IN CNAME eaa-monitor.nl.
+
+; Inkomende mail (Google Workspace, secundair domein met groepen)
+@                   IN MX    1 smtp.google.com.
+@                   IN TXT   "google-site-verification=4sbRxCzY8aPWa4mnWUhuiUhDyZ0ri8T9qaYOqOdX7aw"
+
+; SPF: alleen Google (uitgaand via Gmail-groepen); AhaSend valt onder psrp
+@                   IN TXT   "v=spf1 include:_spf.google.com ~all"
+
+; DMARC: voorlopig alleen monitoren; aanscherpen na de migratie (opruimlijst)
+_dmarc              IN TXT   "v=DMARC1; p=none"
+
+; Uitgaande mail (AhaSend, sending domain geverifieerd 12 juni 2026)
+ahasend._domainkey  IN CNAME dfcf2098318c3bc1.setup.ahasend.com.
+ahasend2._domainkey IN CNAME 8fab7697088619c4.setup.ahasend.com.
+psrp                IN CNAME rp.ahasend.com.
