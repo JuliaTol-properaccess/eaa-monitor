@@ -79,7 +79,7 @@ DESCRIPTION = (
 
 # Basis-URL van de bezwaar-Worker (zie worker/DEPLOY.md). De stemroutes zijn
 # /hof/vote en /hof/votes; public/static/halloffame.js plakt die er zelf achter.
-HOF_ENDPOINT_BASE = "https://eaa-bezwaar.juliatol.workers.dev"
+HOF_ENDPOINT_BASE = "https://eaa-monitor.nl/api"
 
 
 def _parse_date(value):

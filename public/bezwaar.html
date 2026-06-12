@@ -176,7 +176,7 @@
           <p class="font-display font-semibold text-xl tracking-tight">De maandagmeting in je inbox</p>
           <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, geen verkooppraatjes.</p>
         </div>
-        <form id="newsletter-form" data-endpoint="https://eaa-bezwaar.juliatol.workers.dev/newsletter" novalidate>
+        <form id="newsletter-form" data-endpoint="https://eaa-monitor.nl/api/newsletter" novalidate>
           <div class="hidden" aria-hidden="true">
             <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </div>
@@ -231,7 +231,7 @@
       // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md). Zolang dit leeg is,
       // gaat het formulier via Formspree naar Julia (handmatige verwerking).
       // Zet dit op de /submit-URL van de Worker om bezwaren automatisch te verwerken.
-      const BEZWAAR_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/submit";
+      const BEZWAAR_ENDPOINT = "https://eaa-monitor.nl/api/submit";
 
       // Velden voorinvullen vanuit de querystring (vanaf de "Bezwaar maken"-knop in de tabel).
       const params = new URLSearchParams(window.location.search);

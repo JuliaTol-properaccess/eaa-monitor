@@ -61,12 +61,12 @@ BASE_URL = "https://eaa-monitor.nl"
 # /feedback-route van de bezwaar-Worker (zie worker/src/index.js). Het inline
 # feedbackformulier onder elk artikel post hier naartoe. Leeg laten valt terug
 # op een mailto in de markup.
-FEEDBACK_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/feedback"
+FEEDBACK_ENDPOINT = "https://eaa-monitor.nl/api/feedback"
 
 # /newsletter-route van de bezwaar-Worker: nieuwsbrief-opt-in met dubbele
 # opt-in. Het footerformulier post hiernaartoe; de Worker mailt een
 # bevestigingslink en slaat na bevestiging op in Cloudflare KV.
-NEWSLETTER_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/newsletter"
+NEWSLETTER_ENDPOINT = "https://eaa-monitor.nl/api/newsletter"
 
 THEMES = {
     "scope": "Voor wie geldt het",

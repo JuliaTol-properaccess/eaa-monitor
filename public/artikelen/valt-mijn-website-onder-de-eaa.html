@@ -278,7 +278,7 @@
           <p class="font-display font-semibold text-xl tracking-tight">De maandagmeting in je inbox</p>
           <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, geen verkooppraatjes.</p>
         </div>
-        <form id="newsletter-form" data-endpoint="https://eaa-bezwaar.juliatol.workers.dev/newsletter" novalidate>
+        <form id="newsletter-form" data-endpoint="https://eaa-monitor.nl/api/newsletter" novalidate>
           <div class="hidden" aria-hidden="true">
             <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </div>
@@ -331,7 +331,7 @@
   <script>
     (function () {
       "use strict";
-      const FEEDBACK_ENDPOINT = "https://eaa-bezwaar.juliatol.workers.dev/feedback";
+      const FEEDBACK_ENDPOINT = "https://eaa-monitor.nl/api/feedback";
       const form = document.getElementById("feedback-form");
       if (!form) return;
       const statusEl = document.getElementById("feedback-status");
