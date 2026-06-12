@@ -68,6 +68,18 @@ class FileKV {
     delete this.data[key];
     this._save();
   }
+  // Zelfde vorm als Cloudflare KV's list(): { keys: [{name}], list_complete }.
+  // Gebruikt door GET /hof/votes (prefix hof:count:). Het volume blijft klein,
+  // dus alles in één pagina; een cursor is niet nodig.
+  async list(opts = {}) {
+    this._prune();
+    const prefix = opts.prefix || "";
+    const keys = Object.keys(this.data)
+      .filter((k) => k.startsWith(prefix))
+      .sort()
+      .map((name) => ({ name }));
+    return { keys, list_complete: true };
+  }
 }
 
 const env = { ...process.env, NEWSLETTER: new FileKV(KV_FILE) };
