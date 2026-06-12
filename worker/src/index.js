@@ -566,13 +566,13 @@ function githubHeaders(env) {
 
 // ── E-mails ────────────────────────────────────────────────────────────────
 
-// Centrale verzendfunctie. Is RESEND_API_KEY gezet, dan gaat de mail via Resend
-// (transactionele provider, mag naar willekeurige adressen). Zo niet, dan valt
-// hij terug op de Cloudflare-binding env.EMAIL, die alleen naar geverifieerde
-// bestemmingen mag. Bevestigingsmails naar bezwaarmakers en nieuwsbrief-abonnees
-// gaan naar externe adressen en hebben Resend nodig; interne meldingen werken
-// met beide. Alle callers gebruiken dezelfde vorm: { to, from:{email,name},
-// replyTo, subject, text, html? }.
+// Centrale verzendfunctie. Providervoorkeur op volgorde van de checks hieronder:
+// AhaSend (EU-stack, besluit 12 juni 2026) > Brevo (historisch, VPS) > Resend
+// (historisch, Cloudflare Worker) > de Cloudflare-binding env.EMAIL (alleen
+// geverifieerde bestemmingen). Welke provider draait bepaal je dus per omgeving
+// met de aanwezige keys; de Brevo- en Resend-takken kunnen weg zodra de
+// EU-migratie helemaal rond is. Alle callers gebruiken dezelfde vorm:
+// { to, from:{email,name}, replyTo, subject, text, html? }.
 function publicBase(env, request) {
   // Basis voor links in mails (bevestiging, afmelden). Achter een reverse
   // proxy (de VPS, waar de service op het subpad /api hangt) klopt de
@@ -582,6 +582,33 @@ function publicBase(env, request) {
 }
 
 async function sendEmail(env, msg) {
+  if (env.AHASEND_API_KEY && env.AHASEND_ACCOUNT_ID) {
+    const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
+    const fromName = typeof msg.from === "string" ? null : msg.from.name;
+    const res = await fetch(
+      `https://api.ahasend.com/v2/accounts/${encodeURIComponent(env.AHASEND_ACCOUNT_ID)}/messages`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${env.AHASEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: fromName ? { email: fromEmail, name: fromName } : { email: fromEmail },
+          recipients: [{ email: msg.to }],
+          ...(msg.replyTo ? { reply_to: { email: msg.replyTo } } : {}),
+          subject: msg.subject,
+          text_content: msg.text,
+          ...(msg.html ? { html_content: msg.html } : {}),
+        }),
+      }
+    );
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`AhaSend ${res.status}: ${detail.slice(0, 300)}`);
+    }
+    return;
+  }
   if (env.BREVO_API_KEY) {
     const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
     const fromName = typeof msg.from === "string" ? null : msg.from.name;
