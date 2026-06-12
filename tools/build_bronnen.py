@@ -115,10 +115,10 @@ def render(sources):
 {site_header(ACTIVE_PATH)}
   <main id="main">
 
-    <section class="bg-navy text-white on-dark">
+    <section>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Bronnen over de EAA</h1>
-        <p class="mt-6 text-lg md:text-xl text-white max-w-2xl leading-relaxed">Een doorzoekbaar overzicht van artikelen en bronnen over de European Accessibility Act. Filter op brontype, van toezichthouders tot vakmedia.</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Bronnen over de EAA</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Een doorzoekbaar overzicht van artikelen en bronnen over de European Accessibility Act. Filter op brontype, van toezichthouders tot vakmedia.</p>
       </div>
     </section>
 

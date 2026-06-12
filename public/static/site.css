@@ -1,27 +1,45 @@
 /* =========================================================================
-   EAA Hub - gedeelde stijlen (Coinbase-look)
+   EAA Monitor - gedeelde stijlen ("De Telling")
    Componentclasses, animaties, focus-styles en artikel-prose.
    Tailwind levert de utilities; dit bestand vult aan wat utilities niet doen.
+   Palet en motivatie: docs/rebranding/rebranding-voorstel.md
    ========================================================================= */
 
 :root {
-  --brand: #0052FF;
-  --brand-dark: #0039B3;
-  --navy: #0A0E27;
-  --ink: #0A0B0D;
-  /* Randen: zie theme.js. 'field' haalt 3:1 (interactieve besturing),
-     'line' is de lichte decoratieve lijn. */
-  --field: #868D9C;
-  --line: #D7DEEC;
+  --papier: #FAF7F1;
+  --zachtgroen: #E9F2EA;
+  --inkt: #20281F;
+  --steungrijs: #46524B;
+  --brand: #1A5632;        /* loofgroen */
+  --brand-dark: #123E23;   /* hovergroen */
+  --navy: #0D2B1F;         /* dennengroen (donkere secties) */
+  --oker: #F4C84B;         /* telmarker; nooit als tekstkleur op licht */
+  --ink: #20281F;
+  /* Randen: 'field' haalt 3:1 (interactieve besturing), 'line' is de
+     zachte decoratieve rand. */
+  --field: #76847A;
+  --line: #C8D2C9;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+  background: var(--papier);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Koppen en grote telcijfers in Fraunces (warme display-serif) */
+h1, h2, h3, h4, .font-display {
+  font-family: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+}
+
+/* De ijzeren mono-regel: alles wat de scraper heeft gemeten staat in mono,
+   met tabulaire cijfers zodat kolommen vanzelf uitlijnen. */
+.mono, .font-mono, table {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ----- Focus: zichtbaar en consistent (WCAG 2.2) ----- */
@@ -30,28 +48,28 @@ body {
   outline-offset: 2px;
   border-radius: 4px;
 }
-/* Donkere secties: lichte focusring voor contrast */
+/* Donkere secties: okergele focusring voor contrast (9,56:1 op dennengroen) */
 .on-dark *:focus-visible {
-  outline-color: #ffffff;
+  outline-color: var(--oker);
 }
 
 /* ----- Links binnen lopende tekst ----- */
 .link {
   color: var(--brand);
-  font-weight: 600;
+  font-weight: 700;
   text-underline-offset: 2px;
 }
 .link:hover { text-decoration: underline; }
 
-/* ----- Knoppen ----- */
+/* ----- Knoppen: geen pillen, 12px hoekradius ----- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  font-weight: 600;
-  border-radius: 9999px;
-  transition: transform .12s ease, background-color .15s ease, box-shadow .15s ease;
+  font-weight: 700;
+  border-radius: .75rem;
+  transition: transform .12s ease, background-color .15s ease, border-color .15s ease;
   white-space: nowrap;
 }
 .btn:active { transform: translateY(1px); }
@@ -59,34 +77,105 @@ body {
   background: var(--brand);
   color: #fff;
   padding: .85rem 1.6rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,.08);
 }
 .btn-primary:hover { background: var(--brand-dark); }
 .btn-ghost {
-  background: transparent;
+  background: #fff;
   color: var(--brand);
   padding: .85rem 1.4rem;
   border: 1.5px solid var(--field);
 }
-.btn-ghost:hover { border-color: var(--brand); background: #f5f8ff; }
+.btn-ghost:hover { border-color: var(--brand); background: var(--zachtgroen); }
 .btn-on-dark {
-  background: #fff;
+  background: var(--papier);
   color: var(--navy);
   padding: .85rem 1.6rem;
 }
-.btn-on-dark:hover { background: #e9eefc; }
+.btn-on-dark:hover { background: #fff; }
 
-/* ----- Cards ----- */
+/* ----- Cards: dunne zichtbare rand, 12px radius, geen zwevende schaduwen ----- */
 .card {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 1.25rem;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  border-radius: .75rem;
+  transition: border-color .18s ease, background-color .18s ease;
 }
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px -18px rgba(10,14,39,.28);
-  border-color: #d6def0;
+  border-color: var(--field);
+  background: #fff;
+}
+
+/* ----- Eyebrow-labels: mono kapitaal met ruime tracking ----- */
+.eyebrow {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+/* ----- Toezichthouder-chip: mono op okergeel (inkt: 9,54:1) ----- */
+.chip-toezicht {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: var(--oker);
+  color: var(--inkt);
+  padding: .2rem .5rem;
+  border-radius: .375rem;
+}
+
+/* ----- Telmarker: okergeel vlak achter inkt-tekst (9,54:1) ----- */
+.mark-oker {
+  background: var(--oker);
+  color: var(--inkt);
+  padding: 0 .15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ----- Telbalk: het logo-motief als datavisualisatie -----
+   Decoratief (aria-hidden); het cijfer staat altijd als tekst ernaast.
+   Vulbreedte via inline style of --vul; segmenten krijgen 2px witte
+   scheiders zodat kleurenblinden de overgang zien. */
+.telbalk {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(13, 43, 31, .12); /* het spoor */
+  overflow: hidden;
+}
+.telbalk-vul {
+  height: 100%;
+  border-radius: 5px;
+  width: var(--vul, 0%);
+  transition: width .4s ease-out;
+}
+.telbalk-vul + .telbalk-vul { border-left: 2px solid #fff; }
+.telbalk-vul.is-notfound { background: #B3261E; }
+.telbalk-vul.is-found { background: #1C6B3C; }
+.telbalk-vul.is-error {
+  background: repeating-linear-gradient(135deg, #5B6560 0 4px, #8A938E 4px 8px);
+}
+.telbalk-vul.is-oker { background: var(--oker); }
+
+/* ----- Maandagstempel: de gebakken meetzin in een mono-stempelkader ----- */
+.stempel {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--steungrijs);
+  border: 1.5px solid var(--field);
+  border-radius: .5rem;
+  padding: .35rem .7rem;
+  transform: rotate(-1deg);
 }
 
 /* ----- Scroll-reveal (subtiel) ----- */
@@ -105,9 +194,10 @@ body {
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn { transition: none; }
   .card { transition: none; }
+  .telbalk-vul { transition: none; }
 }
 
-/* ----- Dashboard: statusbol ----- */
+/* ----- Dashboard: statusbol (staat altijd naast een tekstlabel) ----- */
 .status-dot {
   width: 10px; height: 10px; border-radius: 50%;
   display: inline-block; flex-shrink: 0;
@@ -116,7 +206,7 @@ body {
 /* ----- Dashboard: sorteerknoppen ----- */
 .sort-btn { cursor: pointer; user-select: none; background: none; border: 0; }
 .sort-btn:hover { text-decoration: underline; }
-.sort-btn::after { content: ' \2195'; color: #9AA3B2; font-size: .75em; }
+.sort-btn::after { content: ' \2195'; color: var(--field); font-size: .75em; }
 .sort-btn.asc::after  { content: ' \2191'; color: var(--brand); }
 .sort-btn.desc::after { content: ' \2193'; color: var(--brand); }
 
@@ -126,30 +216,35 @@ body {
 
 /* ----- Dashboard: toggle ----- */
 .toggle-btn { transition: background-color .15s, color .15s; }
-.toggle-btn.active { background-color: var(--brand); color: #fff; }
+.toggle-btn.active { background-color: var(--oker); color: var(--inkt); }
+
+/* ----- Dashboard: tabelrijen krijgen het telmoment ----- */
+#results-body tr:hover, #results-body tr:focus-within {
+  background: var(--zachtgroen);
+  box-shadow: inset 3px 0 0 var(--brand);
+}
 
 /* =========================================================================
    Artikel-prose (Kennisbank)
    ========================================================================= */
 .prose {
-  color: #1F2433;
-  font-size: 1.075rem;
-  line-height: 1.75;
+  color: var(--inkt);
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 .prose > * + * { margin-top: 1.15rem; }
 .prose h2 {
-  font-size: 1.6rem; font-weight: 800; line-height: 1.25;
+  font-size: 1.6rem; font-weight: 600; line-height: 1.25;
   color: var(--navy); margin-top: 2.5rem; margin-bottom: .25rem;
-  letter-spacing: -.01em;
 }
 .prose h3 {
-  font-size: 1.25rem; font-weight: 700; color: var(--navy);
+  font-size: 1.25rem; font-weight: 600; color: var(--navy);
   margin-top: 1.75rem;
 }
-.prose a { color: var(--brand); font-weight: 600; text-underline-offset: 2px; text-decoration: underline; }
+.prose a { color: var(--brand); font-weight: 700; text-underline-offset: 2px; text-decoration: underline; }
 .prose a:hover { color: var(--brand-dark); }
 /* Knoppen binnen artikel-prose mogen de prose-linkstijl niet erven
-   (anders blauwe tekst op een blauwe knop = onzichtbaar). */
+   (anders groene tekst op een groene knop = onzichtbaar). */
 .prose a.btn { text-decoration: none; }
 .prose a.btn-primary { color: #fff; }
 .prose a.btn-ghost { color: var(--brand); }
@@ -161,11 +256,11 @@ body {
 .prose strong { font-weight: 700; color: var(--navy); }
 .prose blockquote {
   border-left: 4px solid var(--brand);
-  background: #F5F8FF;
+  background: var(--zachtgroen);
   padding: 1rem 1.25rem;
   border-radius: 0 .75rem .75rem 0;
   font-style: normal;
-  color: #2A3242;
+  color: var(--inkt);
 }
 .prose table {
   width: 100%; border-collapse: collapse; font-size: .98rem;
@@ -176,23 +271,23 @@ body {
   vertical-align: top;
 }
 .prose thead th {
-  background: #F5F8FF; color: var(--navy); font-weight: 700;
-  border-bottom: 2px solid #E1E7F5;
+  background: var(--zachtgroen); color: var(--navy); font-weight: 700;
+  border-bottom: 2px solid var(--line);
 }
 .prose code {
-  background: #EEF1F7; padding: .15em .4em; border-radius: .35rem;
+  background: #EFECE3; padding: .15em .4em; border-radius: .35rem;
   font-size: .9em;
 }
 
 /* Notice-blokken in artikelen */
 .notice {
-  border-radius: 1rem;
+  border-radius: .75rem;
   padding: 1.1rem 1.25rem;
   margin: 1.5rem 0;
   border: 1px solid transparent;
 }
-.notice-info    { background: #F5F8FF; border-color: #D6E0FF; }
-.notice-warning { background: #FFF8EC; border-color: #F4DFB0; }
+.notice-info    { background: var(--zachtgroen); border-color: #C8D2C9; }
+.notice-warning { background: #FBF3DC; border-color: #E3CD8F; }
 
 /* =========================================================================
    Bronnenpagina: filterknoppen, badges, items
@@ -203,12 +298,12 @@ body {
   align-items: center;
   gap: .4em;
   padding: .4rem .85rem;
-  border-radius: 9999px;
-  border: 1px solid var(--line);
+  border-radius: .5rem;
+  border: 1px solid var(--field);
   background: #fff;
   color: var(--navy);
   font-size: .85rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   transition: background-color .15s, color .15s, border-color .15s;
 }
@@ -227,10 +322,10 @@ body {
 .bron-badge {
   flex-shrink: 0;
   padding: .15rem .55rem;
-  border-radius: 9999px;
-  background: var(--softblue, #F5F8FF);
+  border-radius: .5rem;
+  background: var(--zachtgroen);
   color: var(--brand-dark);
-  border: 1px solid #D6E0FF;
+  border: 1px solid var(--line);
   font-size: .7rem;
   font-weight: 700;
   white-space: nowrap;

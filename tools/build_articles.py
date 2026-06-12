@@ -10,7 +10,7 @@ artikellijst-regio in public/llms.txt.
 Server-rendered HTML is bewust: het is cruciaal voor SEO en GEO (citability door
 AI-zoekmachines). Elk artikel krijgt Article JSON-LD mee.
 
-Designrichting: Coinbase-look. Tokens staan centraal in tailwind.config.js
+Designrichting: "De Telling" (docs/rebranding/). Tokens staan centraal in tailwind.config.js
 (gebouwd naar public/static/tailwind.css via `npm run build:css`) en
 public/static/site.css; deze tool emit alleen de gedeelde head/nav/footer en
 verwijst naar die bestanden.
@@ -149,6 +149,29 @@ def shared_head(title, description, canonical, *, extra_head="", og_type="websit
 """
 
 
+# Woordmerk + telbalk-beeldmerk, inline zodat het woordmerk de Fraunces-webfont
+# gebruikt (een externe <img> kan niet bij de pagina-fonts). Bestandsversies
+# met title/desc staan in public/static/logo.svg en logo-donker.svg.
+def _logo_svg(tekstkleur, puntkleur, css_class):
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="{css_class}" '
+        f'role="img" aria-label="EAA Monitor" color="{tekstkleur}">'
+        '<g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/>'
+        '<rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/>'
+        '<rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/>'
+        '<rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/>'
+        '<rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g>'
+        '<text x="90" y="62" font-family="\'Fraunces Variable\', Georgia, \'Times New Roman\', serif" '
+        'font-size="40" letter-spacing="-0.5" fill="currentColor">'
+        '<tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan>'
+        f'<tspan fill="{puntkleur}" font-weight="600">.</tspan></text></svg>'
+    )
+
+
+LOGO_LICHT = _logo_svg("#20281F", "#1A5632", "h-9 w-auto")
+LOGO_DONKER = _logo_svg("#FAF7F1", "#F4C84B", "h-9 w-auto")
+
+
 def site_header(active_path):
     """Sticky responsieve header: nav op lg+, hamburger op tablet/mobiel.
     active_path = huidige nav-pad (of "" als de pagina niet in de nav staat)."""
@@ -206,24 +229,24 @@ def site_header(active_path):
             )
     desktop_html = "\n          ".join(desktop)
     mobile_html = "\n        ".join(mobile)
-    return f"""  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+    return f"""  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <header class="sticky top-0 z-40 bg-papier/90 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
-        <span>Monitor</span>
+      <a href="/" class="flex items-center">
+        {LOGO_LICHT}
       </a>
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           {desktop_html}
       </nav>
-      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
     <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
         {mobile_html}
     </nav>
+    <div class="h-[3px] bg-oker" aria-hidden="true"></div>
   </header>
 """
 
@@ -233,8 +256,8 @@ def site_footer():
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
       <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
         <div>
-          <p class="font-extrabold text-lg tracking-tight">Blijf op de hoogte van de EAA</p>
-          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
+          <p class="font-display font-semibold text-xl tracking-tight">De maandagmeting in je inbox</p>
+          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, geen verkooppraatjes.</p>
         </div>
         <form id="newsletter-form" data-endpoint="{NEWSLETTER_ENDPOINT}" novalidate>
           <div class="hidden" aria-hidden="true">
@@ -243,19 +266,16 @@ def site_footer():
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
             <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Inschrijven</button>
+            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
           </div>
-          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
+          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
         </form>
       </div>
       <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
-          <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
-            <span>Monitor</span>
-          </p>
-          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+          {LOGO_DONKER}
+          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">EAA Monitor is de onafhankelijke telling van digitaal toegankelijk Nederland: elke maandag een verse meting in zes sectoren, plus uitleg in gewone taal over wie de wet raakt, wie toezicht houdt en wat werkt. <span class="text-brand-bright font-semibold">Gemeten, niet beweerd.</span></p>
         </div>
         <div>
           <p class="text-sm font-semibold text-white mb-3">Monitor &amp; uitleg</p>
@@ -478,13 +498,13 @@ def render_article(meta: dict) -> str:
 {site_header("/artikelen.html")}
   <main id="main">
 
-    <div class="bg-navy text-white on-dark">
-      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
-        <a href="/artikelen.html" class="text-sm font-semibold text-white hover:text-white">&larr; Kennisbank</a>
-        <p class="mt-6 inline-block text-xs font-bold uppercase tracking-wider text-brand-bright bg-white/5 px-3 py-1 rounded-full ring-1 ring-white/15">{html.escape(theme_label)}</p>
-        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">{html.escape(meta["title"])}</h1>
-        <p class="mt-4 text-lg text-white leading-relaxed">{html.escape(meta["description"])}</p>
-        <p class="mt-6 text-sm text-white">Gepubliceerd op {nl_date(meta["date"])}</p>
+    <div>
+      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-4">
+        <a href="/artikelen.html" class="text-sm font-semibold text-brand">&larr; Kennisbank</a>
+        <p class="mt-6"><span class="chip-toezicht">{html.escape(theme_label)}</span></p>
+        <h1 class="mt-4 text-3xl md:text-5xl font-semibold text-navy leading-tight tracking-tight">{html.escape(meta["title"])}</h1>
+        <p class="mt-4 text-lg text-gray-600 leading-relaxed">{html.escape(meta["description"])}</p>
+        <p class="mt-6 font-mono text-xs font-medium uppercase tracking-[0.08em] text-gray-600">Gepubliceerd op {nl_date(meta["date"])}</p>
       </div>
     </div>
 
@@ -494,8 +514,8 @@ def render_article(meta: dict) -> str:
       </div>
 {sources_block(meta)}
 
-      <div class="mt-14 rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
-        <h2 class="text-2xl font-extrabold text-navy tracking-tight">Wil je weten waar je staat?</h2>
+      <div class="mt-14 rounded-xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
+        <h2 class="text-2xl font-semibold text-navy tracking-tight">Wil je weten waar je staat?</h2>
         <p class="mt-3 text-navy leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/wcag-audit.html" class="btn btn-primary">Bekijk auditbureaus</a>
@@ -536,10 +556,11 @@ def render_kennisbank(articles: list) -> str:
 {site_header("/artikelen.html")}
   <main id="main">
 
-    <div class="bg-navy text-white on-dark">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Alles over de<br>European Accessibility Act</h1>
-        <p class="mt-6 text-lg md:text-xl text-white max-w-2xl leading-relaxed">Heldere uitleg zonder paniek of jargon. Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
+    <div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+        <p class="eyebrow text-brand">Kennisbank</p>
+        <h1 class="mt-3 text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Alles over de<br>European Accessibility Act</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Heldere uitleg zonder paniek of jargon. Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
       </div>
     </div>
 
