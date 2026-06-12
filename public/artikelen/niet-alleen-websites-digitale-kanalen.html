@@ -61,13 +61,12 @@
   </script>
 </head>
 <body class="bg-white">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <header class="sticky top-0 z-40 bg-papier/90 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
-        <span>Monitor</span>
+      <a href="/" class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#20281F"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#1A5632" font-weight="600">.</tspan></text></svg>
       </a>
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
@@ -90,7 +89,7 @@
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
-      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
@@ -113,17 +112,18 @@
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
+    <div class="h-[3px] bg-oker" aria-hidden="true"></div>
   </header>
 
   <main id="main">
 
-    <div class="bg-navy text-white on-dark">
-      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
-        <a href="/artikelen.html" class="text-sm font-semibold text-white hover:text-white">&larr; Kennisbank</a>
-        <p class="mt-6 inline-block text-xs font-bold uppercase tracking-wider text-brand-bright bg-white/5 px-3 py-1 rounded-full ring-1 ring-white/15">Voor wie geldt het</p>
-        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">Niet alleen websites: welke digitale kanalen vallen onder de EAA?</h1>
-        <p class="mt-4 text-lg text-white leading-relaxed">De European Accessibility Act gaat over meer dan websites en apps. Ook zelfbedieningsterminals, e-readers, betaalautomaten, e-boeken en elektronische communicatie vallen eronder. Een overzicht.</p>
-        <p class="mt-6 text-sm text-white">Gepubliceerd op 9 juni 2026</p>
+    <div>
+      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-4">
+        <a href="/artikelen.html" class="text-sm font-semibold text-brand">&larr; Kennisbank</a>
+        <p class="mt-6"><span class="chip-toezicht">Voor wie geldt het</span></p>
+        <h1 class="mt-4 text-3xl md:text-5xl font-semibold text-navy leading-tight tracking-tight">Niet alleen websites: welke digitale kanalen vallen onder de EAA?</h1>
+        <p class="mt-4 text-lg text-gray-600 leading-relaxed">De European Accessibility Act gaat over meer dan websites en apps. Ook zelfbedieningsterminals, e-readers, betaalautomaten, e-boeken en elektronische communicatie vallen eronder. Een overzicht.</p>
+        <p class="mt-6 font-mono text-xs font-medium uppercase tracking-[0.08em] text-gray-600">Gepubliceerd op 9 juni 2026</p>
       </div>
     </div>
 
@@ -167,8 +167,8 @@
         </ul>
       </aside>
 
-      <div class="mt-14 rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
-        <h2 class="text-2xl font-extrabold text-navy tracking-tight">Wil je weten waar je staat?</h2>
+      <div class="mt-14 rounded-xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
+        <h2 class="text-2xl font-semibold text-navy tracking-tight">Wil je weten waar je staat?</h2>
         <p class="mt-3 text-navy leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/wcag-audit.html" class="btn btn-primary">Bekijk auditbureaus</a>
@@ -214,8 +214,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
       <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
         <div>
-          <p class="font-extrabold text-lg tracking-tight">Blijf op de hoogte van de EAA</p>
-          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
+          <p class="font-display font-semibold text-xl tracking-tight">De maandagmeting in je inbox</p>
+          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, geen verkooppraatjes.</p>
         </div>
         <form id="newsletter-form" data-endpoint="https://eaa-bezwaar.juliatol.workers.dev/newsletter" novalidate>
           <div class="hidden" aria-hidden="true">
@@ -224,19 +224,16 @@
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
             <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Inschrijven</button>
+            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
           </div>
-          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
+          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
         </form>
       </div>
       <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
-          <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
-            <span>Monitor</span>
-          </p>
-          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#FAF7F1"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#F4C84B" font-weight="600">.</tspan></text></svg>
+          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">EAA Monitor is de onafhankelijke telling van digitaal toegankelijk Nederland: elke maandag een verse meting in zes sectoren, plus uitleg in gewone taal over wie de wet raakt, wie toezicht houdt en wat werkt. <span class="text-brand-bright font-semibold">Gemeten, niet beweerd.</span></p>
         </div>
         <div>
           <p class="text-sm font-semibold text-white mb-3">Monitor &amp; uitleg</p>

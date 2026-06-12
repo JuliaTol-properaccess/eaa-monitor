@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-06-09T09:06:08.060190+00:00",
+  "last_updated": "2026-06-12T14:40:25.548509+00:00",
   "total": 68,
-  "with_statement": 44,
-  "without_statement": 23,
-  "errors": 1,
+  "with_statement": 45,
+  "without_statement": 20,
+  "errors": 3,
   "webshops": [
     {
       "name": "a.s.r.",
@@ -12,7 +12,7 @@
       "has_statement": true,
       "statement_url": "https://www.asr.nl/toegankelijkheid",
       "statement_link_text": "toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23,7 +23,7 @@
       "has_statement": true,
       "statement_url": "https://www.abnamro.nl/nl/prive/abnamro/toegankelijkheid/index.html",
       "statement_link_text": "Toegankelijkheid: bankieren",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34,7 +34,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -45,7 +45,7 @@
       "has_statement": true,
       "statement_url": "https://www.aegon.nl/toegankelijkheid",
       "statement_link_text": "toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56,7 +56,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -64,10 +64,10 @@
       "name": "Allianz",
       "url": "https://www.allianz.nl",
       "category": "verzekeraar",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "has_statement": true,
+      "statement_url": "https://www.allianz.nl/service/toegankelijkheid.html",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -78,7 +78,7 @@
       "has_statement": true,
       "statement_url": "https://www.alphabet.com/nl-nl/footer/toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -89,7 +89,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -100,7 +100,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -111,7 +111,7 @@
       "has_statement": true,
       "statement_url": "https://www.asnbank.nl/over-asn-bank/toegankelijkheid.html",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -122,7 +122,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -133,7 +133,7 @@
       "has_statement": true,
       "statement_url": "https://www.ayvensbank.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -144,7 +144,7 @@
       "has_statement": true,
       "statement_url": "https://new.brandnewday.nl/toegankelijkheid/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -155,7 +155,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -166,7 +166,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -177,7 +177,7 @@
       "has_statement": true,
       "statement_url": "https://bux.com/nl/toegankelijkheidsverklaring-voor-bux/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -188,7 +188,7 @@
       "has_statement": true,
       "statement_url": "https://www.centraalbeheer.nl/over-ons/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -199,7 +199,7 @@
       "has_statement": true,
       "statement_url": "https://www.cz.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -210,7 +210,7 @@
       "has_statement": true,
       "statement_url": "https://www.defriesland.nl/toegankelijkheid",
       "statement_link_text": "toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -221,7 +221,7 @@
       "has_statement": true,
       "statement_url": "https://www.degiro.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -232,7 +232,7 @@
       "has_statement": true,
       "statement_url": "https://www.dela.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -243,7 +243,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -254,7 +254,7 @@
       "has_statement": true,
       "statement_url": "https://www.dsw.nl/Consumenten/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -265,7 +265,7 @@
       "has_statement": true,
       "statement_url": "https://www.evivanlanschot.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -276,7 +276,7 @@
       "has_statement": true,
       "statement_url": "https://www.fbto.nl/over-ons/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -287,7 +287,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -298,7 +298,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -309,7 +309,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "error",
       "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.ing.nl/\nCall log:\n  - navigating to \"https://www.ing.nl/\", waiting until \"domcontentloaded\"\n"
     },
@@ -320,7 +320,7 @@
       "has_statement": true,
       "statement_url": "https://www.inshared.nl/toegankelijkheid",
       "statement_link_text": "ToegankelijkheidToegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -331,7 +331,7 @@
       "has_statement": true,
       "statement_url": "https://www.interpolis.nl/digitale-toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -342,7 +342,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -353,7 +353,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -364,7 +364,7 @@
       "has_statement": true,
       "statement_url": "https://www.klaverblad.nl/toegankelijkheid-dienstverlening",
       "statement_link_text": "Toegankelijkheid van onze informatie en dienstverlening",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -375,7 +375,7 @@
       "has_statement": true,
       "statement_url": "https://www.knab.nl/wat-is-knab/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -386,7 +386,7 @@
       "has_statement": true,
       "statement_url": "https://www.leasys.com/nl/dutch/toegankelijkheidsverklaring",
       "statement_link_text": "TOEGANKELIJKHEIDSVERKLARING",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -397,7 +397,7 @@
       "has_statement": true,
       "statement_url": "https://www.lynx.nl/info/accessibility-statement/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -408,7 +408,7 @@
       "has_statement": true,
       "statement_url": "https://www.meesman.nl/toegankelijkheid/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -419,7 +419,7 @@
       "has_statement": true,
       "statement_url": "https://www.menzis.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -430,7 +430,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -441,7 +441,7 @@
       "has_statement": true,
       "statement_url": "https://mobilize-fs.nl/wp-content/uploads/2025/08/Toegankelijkheidsverklaring.pdf",
       "statement_link_text": "toegankelijk",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -452,7 +452,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -463,7 +463,7 @@
       "has_statement": true,
       "statement_url": "https://www.monuta.nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -474,9 +474,9 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
-      "scrape_status": "success",
-      "error": null
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
     {
       "name": "Nationale-Nederlanden",
@@ -485,7 +485,7 @@
       "has_statement": true,
       "statement_url": "https://www.nn.nl/Digitale-toegankelijkheid.htm",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -494,9 +494,9 @@
       "url": "https://www.nibc.nl",
       "category": "bank",
       "has_statement": true,
-      "statement_url": "https://www.nibc.nl/particulieren/toegankelijkheidsverklaring",
+      "statement_url": "http://nibc.nl/particulieren/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -507,7 +507,7 @@
       "has_statement": true,
       "statement_url": "https://www.ohra.nl/over-ohra/digitale-toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -518,7 +518,7 @@
       "has_statement": true,
       "statement_url": "https://www.onvz.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -529,7 +529,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -540,9 +540,9 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
-      "scrape_status": "success",
-      "error": null
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
     {
       "name": "Reaal",
@@ -551,7 +551,7 @@
       "has_statement": true,
       "statement_url": "https://www.reaal.nl/toegankelijkheid/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -562,7 +562,7 @@
       "has_statement": true,
       "statement_url": "https://www.regiobank.nl/over-regiobank/toegankelijkheid.html",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -573,7 +573,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -584,7 +584,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -595,7 +595,7 @@
       "has_statement": true,
       "statement_url": "https://www.salland.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -604,9 +604,9 @@
       "url": "https://www.santanderconsumerbank.nl",
       "category": "bank",
       "has_statement": true,
-      "statement_url": "https://www.santanderconsumerbank.nl/nl/document/erklarung-zur-barrierefreiheit-nlpdf",
+      "statement_url": "https://www.santanderconsumerbank.nl/nl/document/tvho20260601toegankelijkheidsverklaringpdf",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -617,7 +617,7 @@
       "has_statement": true,
       "statement_url": "https://www.home.saxo/nl-nl/legal/accessibility-statement/accessibility-statement",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -628,7 +628,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -639,7 +639,7 @@
       "has_statement": true,
       "statement_url": "https://www.semmiewealth.nl/toegankelijkheid/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -650,7 +650,7 @@
       "has_statement": true,
       "statement_url": "https://www.sns.nl/particulier/over-sns/toegankelijkheid.html",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -661,7 +661,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -672,7 +672,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -683,7 +683,7 @@
       "has_statement": true,
       "statement_url": "https://www.triodos.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -694,7 +694,7 @@
       "has_statement": true,
       "statement_url": "https://www.unive.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -705,7 +705,7 @@
       "has_statement": true,
       "statement_url": "https://www.vanlanschot.nl/nl-nl/private-banking/contact/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -716,7 +716,7 @@
       "has_statement": true,
       "statement_url": "https://www.cooperatievgz.nl/cooperatie-vgz/over-ons/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -727,7 +727,7 @@
       "has_statement": true,
       "statement_url": "https://www.vwpfs.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -738,7 +738,7 @@
       "has_statement": true,
       "statement_url": "https://www.zilverenkruis.nl/consumenten/toegankelijkheid",
       "statement_link_text": "toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -749,7 +749,7 @@
       "has_statement": true,
       "statement_url": "https://www.zorgenzekerheid.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-09T09:06:08.060190+00:00",
+      "last_checked": "2026-06-12T14:40:25.548509+00:00",
       "scrape_status": "success",
       "error": null
     }

@@ -22,10 +22,10 @@ Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
 <!-- MEASUREMENT:END -->
 
 <!-- FIN-MEASUREMENT:START -->
-Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 68 instellingen gecontroleerd,
-44 (65%) met toegankelijkheidsverklaring,
-23 (34%) zonder, en
-1 (1%) niet te controleren.
+Financiële sector (AFM-toezicht), laatste meting (12 juni 2026): 68 instellingen gecontroleerd,
+45 (66%) met toegankelijkheidsverklaring,
+20 (29%) zonder, en
+3 (4%) niet te controleren.
 <!-- FIN-MEASUREMENT:END -->
 
 <!-- TEL-MEASUREMENT:START -->

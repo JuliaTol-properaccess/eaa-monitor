@@ -525,11 +525,11 @@ def _geo_summary_inner(stats, date_nl, ds):
     noun = ds["noun"]
     heading = ds.get("summary_heading", "")
     heading_html = (
-        f'<p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">{heading}</p>\n          '
+        f'<p class="eyebrow text-brand mb-3">{heading}</p>\n          '
         if heading else ""
     )
     return f"""
-      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
+      <div class="rounded-xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
           {heading_html}<p class="text-lg leading-relaxed">
             Op <strong>{date_nl}</strong> controleerde de EAA Monitor

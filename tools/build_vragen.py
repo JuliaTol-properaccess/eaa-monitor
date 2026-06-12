@@ -195,12 +195,12 @@ def render(vragen):
 {site_header(ACTIVE_PATH)}
   <main id="main">
 
-    <section class="bg-navy text-white on-dark">
+    <section>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Vragen uit de praktijk</h1>
-        <p class="mt-6 text-lg md:text-xl text-white max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Vragen uit de praktijk</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/vraag-stellen.html" class="btn btn-on-dark">Stel je vraag anoniem</a>
+          <a href="/vraag-stellen.html" class="btn btn-primary">Stel je vraag anoniem</a>
         </div>
       </div>
     </section>

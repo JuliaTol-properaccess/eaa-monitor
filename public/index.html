@@ -156,15 +156,14 @@
     plausible.init()
   </script>
 </head>
-<body class="bg-white">
+<body class="bg-papier">
 
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <header class="sticky top-0 z-40 bg-papier/90 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-navy tracking-tight">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
-        <span>Monitor</span>
+      <a href="/" class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#20281F"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#1A5632" font-weight="600">.</tspan></text></svg>
       </a>
       <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
           <a href="/" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Home</a>
@@ -187,7 +186,7 @@
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
-      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
@@ -210,108 +209,124 @@
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
+    <div class="h-[3px] bg-oker" aria-hidden="true"></div>
   </header>
 
   <main id="main">
 
-    <!-- Hero: positionering + routing naar de vier pijlers -->
-    <section class="bg-navy text-white on-dark overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-16 md:pt-24 md:pb-20">
-        <p class="text-sm font-semibold uppercase tracking-widest text-brand-bright">Onafhankelijk &middot; monitor elke maandag opnieuw gemeten</p>
-        <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-4xl">
-          Alles over de European Accessibility Act, <span class="underline decoration-brand decoration-4 underline-offset-[6px]">op één plek</span>.
-        </h1>
-        <p class="mt-6 text-lg md:text-xl text-white max-w-2xl leading-relaxed">
-          Sinds 28 juni 2025 raakt de wet webshops, banken en veel andere diensten. De officiële uitleg is verspreid en juridisch. Hier vind je het bij elkaar: uitleg in gewone taal, actuele cijfers, antwoorden op echte vragen en hulp om het op te lossen.
-        </p>
-        <p class="mt-5 text-base text-white max-w-2xl leading-relaxed">
-          Op dit moment publiceert maar <strong class="text-white font-extrabold"><!--STAT:pctWith-->2%<!--/STAT--></strong> van de Nederlandse webshops een toegankelijkheidsverklaring.
-        </p>
+    <!-- Hero: de telling, licht op papier -->
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-16 md:pt-20 md:pb-20 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+        <div>
+          <p class="eyebrow text-brand">Onafhankelijke telling &middot; elke maandag opnieuw gemeten</p>
+          <h1 class="mt-5 text-4xl sm:text-5xl md:text-[3.4rem] font-semibold leading-[1.08] tracking-tight text-navy">
+            Snap de toegankelijkheidswet.<br><span class="mark-oker">Zie waar Nederland staat.</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
+            Sinds 28 juni 2025 geldt de European Accessibility Act voor webshops, banken en veel andere diensten. De officiële uitleg is verspreid en juridisch. Hier vind je alles bij elkaar: uitleg in gewone taal, een wekelijkse telling in zes sectoren, antwoorden van toezichthouders en hulp om het op te lossen. Gratis, onafhankelijk en zonder verkooppraatje.
+          </p>
+          <p class="mt-5 text-base text-ink max-w-2xl leading-relaxed">
+            Op dit moment publiceert <strong class="font-mono font-medium"><!--STAT:pctWith-->2%<!--/STAT--></strong> van de gecontroleerde Nederlandse webshops een toegankelijkheidsverklaring. Volgende meting: maandagochtend.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#meting" class="btn btn-primary">Bekijk de maandagmeting</a>
+            <a href="/artikelen.html" class="btn btn-ghost">Begin bij de uitleg</a>
+          </div>
+          <p class="mt-4 text-sm text-gray-600">Liever eerst iets vragen? <a href="/vraag-stellen.html" class="link">Stel je vraag anoniem</a>.</p>
+        </div>
 
-        <!-- Vier pijlers: info, tools, Q&A, hulp -->
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="/artikelen.html" class="group rounded-2xl bg-white/5 ring-1 ring-white/15 p-5 hover:bg-white/10 transition-colors flex flex-col focus-visible:ring-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Info</span>
-            <span class="mt-2 text-lg font-extrabold">Snap de wet</span>
-            <span class="mt-1.5 text-sm text-white leading-relaxed flex-1">Scope, toezicht, boetes en mythes, zonder jargon.</span>
-            <span class="mt-3 text-sm font-semibold text-brand-bright">Naar de kennisbank &rarr;</span>
+        <!-- Vier pijlers: uitleg, cijfers, vragen, hulp -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="/artikelen.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Uitleg</span>
+            <span class="mt-2 text-lg font-bold text-navy">Snap de wet</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Voor wie de wet geldt, wie toezicht houdt en wat de boetes zijn. In gewone taal.</span>
+            <span class="mt-3 text-sm font-bold text-brand">Naar de kennisbank &rarr;</span>
           </a>
-          <a href="#meting" class="group rounded-2xl bg-white/5 ring-1 ring-white/15 p-5 hover:bg-white/10 transition-colors flex flex-col focus-visible:ring-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Tools</span>
-            <span class="mt-2 text-lg font-extrabold">Bekijk de cijfers</span>
-            <span class="mt-1.5 text-sm text-white leading-relaxed flex-1">Wekelijkse meting in zes sectoren.</span>
-            <span class="mt-3 text-sm font-semibold text-brand-bright">Naar de cijfers &rarr;</span>
+          <a href="#meting" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Cijfers</span>
+            <span class="mt-2 text-lg font-bold text-navy">Volg de telling</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Elke maandag controleren we zes sectoren opnieuw.</span>
+            <span class="mt-3 text-sm font-bold text-brand">Naar de cijfers &rarr;</span>
           </a>
-          <a href="/vraag-stellen.html" class="group rounded-2xl bg-white/5 ring-1 ring-white/15 p-5 hover:bg-white/10 transition-colors flex flex-col focus-visible:ring-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Q&amp;A</span>
-            <span class="mt-2 text-lg font-extrabold">Stel een vraag</span>
-            <span class="mt-1.5 text-sm text-white leading-relaxed flex-1">Anoniem. Wij leggen hem voor aan de toezichthouder.</span>
-            <span class="mt-3 text-sm font-semibold text-brand-bright">Stel je vraag &rarr;</span>
+          <a href="/vraag-stellen.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Vragen</span>
+            <span class="mt-2 text-lg font-bold text-navy">Vraag het ons</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Anoniem. Wij leggen je vraag voor aan de toezichthouder en publiceren het antwoord.</span>
+            <span class="mt-3 text-sm font-bold text-brand">Stel je vraag &rarr;</span>
           </a>
-          <a href="/wcag-audit.html" class="group rounded-2xl bg-white/5 ring-1 ring-white/15 p-5 hover:bg-white/10 transition-colors flex flex-col focus-visible:ring-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Hulp</span>
-            <span class="mt-2 text-lg font-extrabold">Vind hulp</span>
-            <span class="mt-1.5 text-sm text-white leading-relaxed flex-1">Onafhankelijke auditbureaus die je verder helpen.</span>
-            <span class="mt-3 text-sm font-semibold text-brand-bright">Vind een bureau &rarr;</span>
+          <a href="/wcag-audit.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Hulp</span>
+            <span class="mt-2 text-lg font-bold text-navy">Vind een bureau</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Onafhankelijke auditbureaus, zodat je zelf kunt kiezen.</span>
+            <span class="mt-3 text-sm font-bold text-brand">Bekijk de bureaus &rarr;</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- TOOLS: de meting (draagt de scraper-cijfers) -->
-    <section id="meting" class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 md:pt-20" aria-labelledby="meting-heading">
+    <!-- TOOLS: de maandagmeting (draagt de scraper-cijfers) -->
+    <section id="meting" class="bg-softblue mt-4" aria-labelledby="meting-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <div class="max-w-3xl">
-        <span class="text-xs font-bold uppercase tracking-wider text-brand">De cijfers</span>
-        <h2 id="meting-heading" class="mt-2 text-3xl md:text-4xl font-extrabold text-navy tracking-tight">Hoe staat Nederland ervoor?</h2>
-        <p class="mt-3 text-lg text-gray-500 leading-relaxed">Elke maandag controleren we automatisch of webshops, financiële instellingen, telecomaanbieders, vervoerders, mediadiensten en e-bookplatforms een toegankelijkheidsverklaring in hun footer hebben. Zes dashboards, wekelijks ververst.</p>
+        <span class="eyebrow text-brand">De maandagmeting</span>
+        <h2 id="meting-heading" class="mt-2 text-3xl md:text-4xl font-semibold text-navy tracking-tight">Zes sectoren, één vraag: staat de verklaring er?</h2>
+        <p class="mt-3 text-lg text-gray-600 leading-relaxed">Elke maandagochtend controleren we automatisch of organisaties een toegankelijkheidsverklaring in hun footer hebben: webshops, financiële instellingen, telecomaanbieders, personenvervoerders, mediadiensten en e-bookplatforms. Elke sector heeft een eigen dashboard en een eigen toezichthouder. De cijfers zijn nooit ouder dan een week.</p>
       </div>
 
       <!-- Zes monitoren -->
       <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <a href="/monitor.html" class="card card-hover reveal p-6 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Webshops &middot; ACM-toezicht</span>
-          <p class="mt-3 text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:pctWithout-->87%<!--/STAT--></p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-extrabold">geen</strong> toegankelijkheidsverklaring. We controleren <strong class="text-navy"><!--STAT:total-->10397<!--/STAT--></strong> webshops.</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Open de webshopmonitor &rarr;</span>
+          <span class="chip-toezicht">Webshops &middot; toezicht: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight"><!--STAT:pctWithout-->87%<!--/STAT--></p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-bold">nog geen</strong> verklaring. We tellen <strong class="text-navy font-mono font-medium"><!--STAT:total-->10397<!--/STAT--></strong> webshops, elke maandag opnieuw.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open de webshopmonitor &rarr;</span>
         </a>
         <a href="/monitor-financieel.html" class="card card-hover reveal p-6 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Financieel &middot; AFM-toezicht</span>
-          <p class="mt-3 text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:finPctWithout-->34%<!--/STAT--></p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">van de banken, verzekeraars en betaaldiensten heeft <strong class="text-navy font-extrabold">geen</strong> verklaring. We controleren <strong class="text-navy"><!--STAT:finTotal-->68<!--/STAT--></strong> instellingen.</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Open de financiële monitor &rarr;</span>
+          <span class="chip-toezicht">Financieel &middot; toezicht: AFM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight"><!--STAT:finPctWithout-->29%<!--/STAT--></p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">van de banken, verzekeraars en betaaldiensten heeft <strong class="text-navy font-bold">nog geen</strong> verklaring. We tellen <strong class="text-navy font-mono font-medium"><!--STAT:finTotal-->68<!--/STAT--></strong> instellingen, elke maandag opnieuw.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open de financiële monitor &rarr;</span>
         </a>
         <a href="/monitor-telecom.html" class="card card-hover reveal p-6 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Telecom &middot; ACM-toezicht</span>
-          <p class="mt-3 text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:telPctWithout-->17%<!--/STAT--></p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-extrabold">geen</strong> toegankelijkheidsverklaring. We controleren <strong class="text-navy"><!--STAT:telTotal-->18<!--/STAT--></strong> telecomaanbieders.</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Open de telecommonitor &rarr;</span>
+          <span class="chip-toezicht">Telecom &middot; toezicht: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight"><!--STAT:telPctWithout-->17%<!--/STAT--></p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-bold">nog geen</strong> verklaring. We tellen <strong class="text-navy font-mono font-medium"><!--STAT:telTotal-->18<!--/STAT--></strong> telecomaanbieders, elke maandag opnieuw.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open de telecommonitor &rarr;</span>
         </a>
         <a href="/monitor-vervoer.html" class="card card-hover reveal p-6 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Personenvervoer &middot; ILT-toezicht</span>
-          <p class="mt-3 text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:vervoerPctWithout-->48%<!--/STAT--></p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-extrabold">geen</strong> toegankelijkheidsverklaring. We controleren <strong class="text-navy"><!--STAT:vervoerTotal-->21<!--/STAT--></strong> vervoerders.</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Open de vervoermonitor &rarr;</span>
+          <span class="chip-toezicht">Personenvervoer &middot; toezicht: ILT</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight"><!--STAT:vervoerPctWithout-->48%<!--/STAT--></p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-bold">nog geen</strong> verklaring. We tellen <strong class="text-navy font-mono font-medium"><!--STAT:vervoerTotal-->21<!--/STAT--></strong> vervoerders, elke maandag opnieuw.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open de vervoermonitor &rarr;</span>
         </a>
         <a href="/monitor-media.html" class="card card-hover reveal p-6 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Media &amp; streaming &middot; CvdM-toezicht</span>
-          <p class="mt-3 text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:mediaPctWithout-->33%<!--/STAT--></p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-extrabold">geen</strong> toegankelijkheidsverklaring. We controleren <strong class="text-navy"><!--STAT:mediaTotal-->15<!--/STAT--></strong> mediadiensten.</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Open de mediamonitor &rarr;</span>
+          <span class="chip-toezicht">Media &amp; streaming &middot; toezicht: CvdM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight"><!--STAT:mediaPctWithout-->33%<!--/STAT--></p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-bold">nog geen</strong> verklaring. We tellen <strong class="text-navy font-mono font-medium"><!--STAT:mediaTotal-->15<!--/STAT--></strong> mediadiensten, elke maandag opnieuw.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open de mediamonitor &rarr;</span>
         </a>
         <a href="/monitor-ebooks.html" class="card card-hover reveal p-6 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">E-books &middot; ACM-toezicht</span>
-          <p class="mt-3 text-4xl md:text-5xl font-extrabold text-status-notfound tracking-tight"><!--STAT:ebooksPctWithout-->30%<!--/STAT--></p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-extrabold">geen</strong> toegankelijkheidsverklaring. We controleren <strong class="text-navy"><!--STAT:ebooksTotal-->10<!--/STAT--></strong> e-bookplatforms.</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Open de e-booksmonitor &rarr;</span>
+          <span class="chip-toezicht">E-books &middot; toezicht: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight"><!--STAT:ebooksPctWithout-->30%<!--/STAT--></p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">heeft <strong class="text-navy font-bold">nog geen</strong> verklaring. We tellen <strong class="text-navy font-mono font-medium"><!--STAT:ebooksTotal-->10<!--/STAT--></strong> e-bookplatforms, elke maandag opnieuw.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open de e-booksmonitor &rarr;</span>
         </a>
       </div>
 
       <!-- Context: ACM-bevinding + zoek + bezwaar -->
       <div class="mt-6 grid gap-6 lg:grid-cols-3">
         <a href="/artikelen/toezicht-en-boetes.html" class="card card-hover reveal p-7 flex flex-col">
-          <p class="text-4xl font-extrabold text-navy tracking-tight">~94%</p>
-          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">van de 100 grootste webshops heeft tekortkomingen in de toegankelijkheid (ACM, maart 2026).</p>
-          <span class="mt-4 text-sm font-semibold text-brand">Lees over toezicht en boetes &rarr;</span>
+          <span class="stempel self-start">Bron: ACM &middot; maart 2026</span>
+          <p class="mt-4 text-4xl font-display font-semibold text-navy tracking-tight">~94%</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">van de 100 grootste webshops heeft tekortkomingen in de toegankelijkheid. Dat stelde de ACM vast in maart 2026. Onze telling laat elke week zien of dat verandert.</p>
+          <span class="mt-4 text-sm font-bold text-brand">Lees over toezicht en boetes &rarr;</span>
         </a>
         <div class="card reveal p-7 lg:col-span-2">
           <form id="home-search" role="search">
@@ -325,15 +340,17 @@
         </div>
       </div>
 
-      <p class="mt-5 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 6 juni 2026<!--/LASTUPDATED--> (webshop-meting; elke sector heeft een eigen meetdatum op zijn monitorpagina).</p>
+      <p class="mt-7 text-sm text-gray-600" id="last-updated"><span class="stempel"><!--LASTUPDATED-->Laatst bijgewerkt: 6 juni 2026<!--/LASTUPDATED--></span> <span class="inline-block mt-2">(webshop-meting; elke sector heeft een eigen meetdatum op zijn monitorpagina)</span></p>
+      <p class="mt-4 text-sm text-gray-600 max-w-3xl">Een gevonden verklaring betekent niet dat een site ook echt toegankelijk is. Het is een eerste teken van bewustzijn, meer niet. <a href="/over.html" class="link">Lees hoe we meten</a>.</p>
+      </div>
     </section>
 
     <!-- INFO: kennisbank -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="kennisbank-heading">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
         <div class="max-w-2xl">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Info</span>
-          <h2 id="kennisbank-heading" class="mt-2 text-3xl md:text-4xl font-extrabold text-navy tracking-tight">Begrijp de EAA, zonder paniek of jargon</h2>
+          <span class="eyebrow text-brand">Info</span>
+          <h2 id="kennisbank-heading" class="mt-2 text-3xl md:text-4xl font-semibold text-navy tracking-tight">Begrijp de EAA, zonder paniek of jargon</h2>
           <p class="mt-2 text-gray-500 text-lg">Voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en wat echt werkt.</p>
         </div>
         <a href="/artikelen.html" class="text-sm font-semibold text-brand whitespace-nowrap">Alle artikelen &rarr;</a>
@@ -341,38 +358,38 @@
 
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <a href="/artikelen/valt-mijn-website-onder-de-eaa.html" class="card card-hover reveal p-7 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Voor wie geldt het</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Valt mijn website onder de EAA?</h3>
+          <span class="eyebrow text-brand">Voor wie geldt het</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Valt mijn website onder de EAA?</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Lang niet elke site valt eronder. Check het met een paar vragen.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
         <a href="/artikelen/toezicht-en-boetes.html" class="card card-hover reveal p-7 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Toezicht &amp; handhaving</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Wie houdt toezicht, en wat zijn de boetes?</h3>
+          <span class="eyebrow text-brand">Toezicht &amp; handhaving</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Wie houdt toezicht, en wat zijn de boetes?</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">De ACM is de hoofdrolspeler. Boetes tot € 900.000 of 1% van de omzet, plus meldplicht.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
         <a href="/artikelen/eaa-financiele-sector.html" class="card card-hover reveal p-7 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Toezicht &amp; handhaving</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">De EAA en de financiële sector</h3>
+          <span class="eyebrow text-brand">Toezicht &amp; handhaving</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">De EAA en de financiële sector</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Wat de AFM doet, en wat banken, verzekeraars en betaaldiensten moeten regelen.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
         <a href="/artikelen/toegankelijkheidsverklaring-schrijven.html" class="card card-hover reveal p-7 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">In de praktijk</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Zo schrijf je een toegankelijkheidsverklaring</h3>
+          <span class="eyebrow text-brand">In de praktijk</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Zo schrijf je een toegankelijkheidsverklaring</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Wat hoort erin, waar publiceer je hem, en wat is hij niet.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
         <a href="/artikelen/overlay-tools-werken-niet.html" class="card card-hover reveal p-7 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Mythes &amp; misverstanden</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Waarom overlays je probleem niet oplossen</h3>
+          <span class="eyebrow text-brand">Mythes &amp; misverstanden</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Waarom overlays je probleem niet oplossen</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Eén regel code maakt je site niet toegankelijk. Wat dan wel?</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
         <a href="/artikelen/subsidies-voor-digitale-toegankelijkheid.html" class="card card-hover reveal p-7 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">In de praktijk</span>
-          <h3 class="mt-3 text-lg font-extrabold text-navy leading-snug">Welke subsidies zijn er?</h3>
+          <span class="eyebrow text-brand">In de praktijk</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Welke subsidies zijn er?</h3>
           <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Geen landelijk fonds, maar wel een aantal gemeenten. Welke, en waarvoor.</p>
           <span class="mt-5 text-sm font-semibold text-brand">Lees verder &rarr;</span>
         </a>
@@ -383,10 +400,10 @@
 
     <!-- CALLOUT: meer dan websites -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="kanalen-heading">
-      <div class="rounded-3xl bg-navy text-white on-dark p-8 md:p-12 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+      <div class="rounded-xl bg-navy text-white on-dark p-8 md:p-12 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
         <div class="max-w-2xl">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Vaak vergeten</span>
-          <h2 id="kanalen-heading" class="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight">De EAA gaat over meer dan je website</h2>
+          <span class="eyebrow text-brand-bright">Vaak vergeten</span>
+          <h2 id="kanalen-heading" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">De EAA gaat over meer dan je website</h2>
           <p class="mt-3 text-white leading-relaxed">Ook zelfbedieningsterminals, betaalautomaten, e-readers, e-boeken en elektronische communicatie vallen onder de wet. Kijk naar elk digitaal kanaal waar een klant iets met je doet, niet alleen naar de homepage.</p>
         </div>
         <a href="/artikelen/niet-alleen-websites-digitale-kanalen.html" class="btn btn-on-dark whitespace-nowrap">Welke kanalen vallen eronder? &rarr;</a>
@@ -397,27 +414,27 @@
     <section class="bg-softblue mt-20 md:mt-24" aria-labelledby="proces-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
         <div class="max-w-2xl">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Stappenplan</span>
-          <h2 id="proces-heading" class="mt-2 text-3xl md:text-4xl font-extrabold text-navy tracking-tight">Van verplichting naar toegankelijke site</h2>
+          <span class="eyebrow text-brand">Stappenplan</span>
+          <h2 id="proces-heading" class="mt-2 text-3xl md:text-4xl font-semibold text-navy tracking-tight">Van verplichting naar toegankelijke site</h2>
           <p class="mt-3 text-lg text-gray-600 leading-relaxed">Toegankelijkheid is een proces, geen knop die je aanzet. In drie stappen weet je waar je staat en wat je te doen staat.</p>
         </div>
 
         <ol class="mt-10 grid gap-6 md:grid-cols-3">
           <li class="card reveal p-7 flex flex-col">
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white font-extrabold">1</span>
-            <h3 class="mt-4 text-lg font-extrabold text-navy">Zoek uit of de wet geldt</h3>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">1</span>
+            <h3 class="mt-4 text-lg font-semibold text-navy">Zoek uit of de wet geldt</h3>
             <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Niet elke site valt onder de EAA. Met een paar vragen weet je of je iets moet doen, en of de micro-uitzondering op jou van toepassing is.</p>
             <a href="/artikelen/valt-mijn-website-onder-de-eaa.html" class="mt-4 text-sm font-semibold text-brand">Doe de scope-check &rarr;</a>
           </li>
           <li class="card reveal p-7 flex flex-col">
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white font-extrabold">2</span>
-            <h3 class="mt-4 text-lg font-extrabold text-navy">Laat het testen</h3>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">2</span>
+            <h3 class="mt-4 text-lg font-semibold text-navy">Laat het testen</h3>
             <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Een onafhankelijke audit brengt in kaart wat niet werkt voor mensen met een beperking. Een overlay of automatische tool vindt maar een deel.</p>
             <a href="/wcag-audit.html" class="mt-4 text-sm font-semibold text-brand">Vind een auditbureau &rarr;</a>
           </li>
           <li class="card reveal p-7 flex flex-col">
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white font-extrabold">3</span>
-            <h3 class="mt-4 text-lg font-extrabold text-navy">Los op en houd het bij</h3>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">3</span>
+            <h3 class="mt-4 text-lg font-semibold text-navy">Los op en houd het bij</h3>
             <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Herstel de problemen in je code en content, publiceer een eerlijke verklaring en test opnieuw. Zo blijft je site toegankelijk.</p>
             <a href="/artikelen/toegankelijkheidsverklaring-schrijven.html" class="mt-4 text-sm font-semibold text-brand">Schrijf je verklaring &rarr;</a>
           </li>
@@ -430,18 +447,18 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="hulp-heading">
       <h2 id="hulp-heading" class="sr-only">Vragen stellen en hulp vinden</h2>
       <div class="grid gap-6 md:grid-cols-2">
-        <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand">Q&amp;A</span>
-          <h3 class="mt-2 text-2xl md:text-3xl font-extrabold text-navy tracking-tight">Stel ons je vraag, zonder de toezichthouder te alarmeren</h3>
+        <div class="rounded-xl bg-softblue ring-1 ring-brand-light p-8 md:p-10 flex flex-col">
+          <span class="eyebrow text-brand">Q&amp;A</span>
+          <h3 class="mt-2 text-2xl md:text-3xl font-semibold text-navy tracking-tight">Stel ons je vraag, zonder de toezichthouder te alarmeren</h3>
           <p class="mt-3 text-gray-600 leading-relaxed flex-1">Veel ondernemers hebben vragen, maar aarzelen om zich te melden. Stel je vraag hier anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="/vraag-stellen.html" class="btn btn-primary">Stel je vraag anoniem</a>
             <a href="/vragen.html" class="btn btn-ghost">Lees beantwoorde vragen</a>
           </div>
         </div>
-        <div class="rounded-3xl bg-navy text-white on-dark p-8 md:p-10 flex flex-col">
-          <span class="text-xs font-bold uppercase tracking-wider text-brand-bright">Hulp</span>
-          <h3 class="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight">Klaar om het op te lossen?</h3>
+        <div class="rounded-xl bg-navy text-white on-dark p-8 md:p-10 flex flex-col">
+          <span class="eyebrow text-brand-bright">Hulp</span>
+          <h3 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Klaar om het op te lossen?</h3>
           <p class="mt-3 text-white leading-relaxed flex-1">Een onafhankelijk auditbureau brengt in kaart waar je site vastloopt en helpt je het op te lossen. We verzamelen bureaus in Nederland, zodat je zelf kunt kiezen.</p>
           <div class="mt-6">
             <a href="/wcag-audit.html" class="btn btn-on-dark">Vind een auditbureau</a>
@@ -453,7 +470,7 @@
     <!-- FAQ -->
     <section class="bg-navy text-white on-dark mt-20 md:mt-24" aria-labelledby="faq-heading">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-20">
-        <h2 id="faq-heading" class="text-3xl md:text-4xl font-extrabold tracking-tight">Veelgestelde vragen</h2>
+        <h2 id="faq-heading" class="text-3xl md:text-4xl font-semibold tracking-tight">Veelgestelde vragen</h2>
         <div class="mt-8 divide-y divide-white/10 border-y border-white/10">
           <details class="group py-5">
             <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
@@ -508,8 +525,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
       <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
         <div>
-          <p class="font-extrabold text-lg tracking-tight">Blijf op de hoogte van de EAA</p>
-          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, afmelden kan altijd.</p>
+          <p class="font-display font-semibold text-xl tracking-tight">De maandagmeting in je inbox</p>
+          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, geen verkooppraatjes.</p>
         </div>
         <form id="newsletter-form" data-endpoint="https://eaa-bezwaar.juliatol.workers.dev/newsletter" novalidate>
           <div class="hidden" aria-hidden="true">
@@ -518,19 +535,16 @@
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
             <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Inschrijven</button>
+            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
           </div>
-          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor de nieuwsbrief en je kunt je op elk moment afmelden.</p>
+          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
         </form>
       </div>
       <div class="grid gap-10 md:grid-cols-4">
         <div class="md:col-span-2">
-          <p class="flex items-center gap-2 font-extrabold text-lg tracking-tight">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand text-white text-sm">EAA</span>
-            <span>Monitor</span>
-          </p>
-          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">De Nederlandse hub over de European Accessibility Act: wekelijkse data en heldere uitleg over wie de wet raakt, wie toezicht houdt en wat werkt.</p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#FAF7F1"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#F4C84B" font-weight="600">.</tspan></text></svg>
+          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">EAA Monitor is de onafhankelijke telling van digitaal toegankelijk Nederland: elke maandag een verse meting in zes sectoren, plus uitleg in gewone taal over wie de wet raakt, wie toezicht houdt en wat werkt. <span class="text-brand-bright font-semibold">Gemeten, niet beweerd.</span></p>
         </div>
         <div>
           <p class="text-sm font-semibold text-white mb-3">Monitor &amp; uitleg</p>
@@ -569,6 +583,17 @@
         e.preventDefault();
         var q = document.getElementById('home-search-input').value.trim();
         window.location.href = '/monitor.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+      });
+    })();
+  </script>
+  <script>
+    // Telbalk per sectorkaart: vul de balk met het gebakken percentage.
+    (function () {
+      document.querySelectorAll('[data-telbalk]').forEach(function (balk) {
+        var kaart = balk.closest('a');
+        var bron = kaart && kaart.querySelector('.telbalk-pct');
+        var pct = bron ? parseInt(bron.textContent, 10) : NaN;
+        if (pct >= 0 && pct <= 100) balk.firstElementChild.style.width = pct + '%';
       });
     })();
   </script>
