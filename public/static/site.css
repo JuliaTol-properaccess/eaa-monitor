@@ -332,3 +332,43 @@ h1, h2, h3, h4, .font-display {
 }
 .bron-item[hidden] { display: none !important; }
 .notice strong { color: var(--navy); }
+
+/* =========================================================================
+   Eregalerij: codevoorbeelden, uitklapbare observaties, stemformulier
+   ========================================================================= */
+.hof-code {
+  background: var(--navy, #0D2B1F);
+  color: var(--papier, #FAF7F1);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+  margin: .75rem 0 0;
+  overflow-x: auto;
+  font-size: .85rem;
+  line-height: 1.6;
+}
+.hof-code code { background: transparent; padding: 0; color: inherit; }
+
+.hof-details { margin-top: .75rem; }
+.hof-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--inkt);
+  padding: .35rem 0;
+  border-radius: .375rem;
+  list-style-position: inside;
+}
+.hof-details summary:hover { color: var(--brand); }
+.hof-details[open] summary { color: var(--brand); }
+
+/* Honeypot: verborgen voor mensen, zichtbaar voor bots (gedeeld met formulieren) */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* 'hidden'-attribuut moet winnen van de display-class op het stemblok */
+[data-hof-vote-block][hidden] { display: none !important; }

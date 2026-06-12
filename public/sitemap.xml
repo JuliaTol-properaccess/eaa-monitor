@@ -56,6 +56,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://eaa-monitor.nl/eregalerij.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/nomineren.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://eaa-monitor.nl/wcag-audit.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

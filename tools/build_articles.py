@@ -104,6 +104,7 @@ NAV_ITEMS = [
     ("Kennisbank", "/artikelen.html"),
     ("Bronnen", "/bronnen.html"),
     ("Vragen", "/vragen.html"),
+    ("Eregalerij", "/eregalerij.html"),
     ("WCAG-audit", "/wcag-audit.html"),
 ]
 
@@ -294,6 +295,8 @@ def site_footer():
           <p class="text-sm font-semibold text-white mb-3">Meedoen &amp; info</p>
           <ul class="space-y-2 text-sm text-white">
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
+            <li><a href="/eregalerij.html" class="hover:text-white">Eregalerij</a></li>
+            <li><a href="/nomineren.html" class="hover:text-white">Nomineer een website</a></li>
             <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
             <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
             <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
@@ -599,6 +602,8 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/bronnen.html", "weekly", "0.7"),
         (f"{BASE_URL}/vragen.html", "weekly", "0.7"),
         (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6"),
+        (f"{BASE_URL}/eregalerij.html", "weekly", "0.7"),
+        (f"{BASE_URL}/nomineren.html", "monthly", "0.6"),
         (f"{BASE_URL}/wcag-audit.html", "monthly", "0.7"),
         (f"{BASE_URL}/over.html", "monthly", "0.5"),
         (f"{BASE_URL}/bezwaren.html", "weekly", "0.4"),
