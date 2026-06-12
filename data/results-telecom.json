@@ -1,0 +1,207 @@
+{
+  "last_updated": "2026-06-10T09:14:57.379319+00:00",
+  "total": 18,
+  "with_statement": 14,
+  "without_statement": 3,
+  "errors": 1,
+  "webshops": [
+    {
+      "name": "50+ Mobiel",
+      "url": "https://www.50plusmobiel.nl",
+      "category": "mobiel",
+      "has_statement": true,
+      "statement_url": "https://www.50plusmobiel.nl/toegankelijkheid?hsLang=nl",
+      "statement_link_text": "Verklaring toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Ben",
+      "url": "https://www.ben.nl",
+      "category": "mobiel",
+      "has_statement": true,
+      "statement_url": "https://www.ben.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Budget Thuis",
+      "url": "https://www.budgetthuis.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.budgetthuis.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "DELTA",
+      "url": "https://www.delta.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.delta.nl/klantenservice/toegankelijkheidsverklaring-wwwdeltanl/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Freedom Internet",
+      "url": "https://www.freedom.nl",
+      "category": "internet-tv",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "hollandsnieuwe",
+      "url": "https://www.hollandsnieuwe.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.hollandsnieuwe.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "KPN",
+      "url": "https://www.kpn.com",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.kpn.com/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Lebara",
+      "url": "https://www.lebara.nl",
+      "category": "mobiel",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Let's Go Mobile",
+      "url": "https://www.letsgomobile.com",
+      "category": "mobiel",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Lyca Mobile",
+      "url": "https://www.lycamobile.nl",
+      "category": "mobiel",
+      "has_statement": true,
+      "statement_url": "https://accessibe.com/blog/knowledgebase/screen-reader-guide",
+      "statement_link_text": "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Odido",
+      "url": "https://www.odido.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.odido.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Online.nl",
+      "url": "https://www.online.nl",
+      "category": "internet-tv",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Simpel",
+      "url": "https://www.simpel.nl",
+      "category": "mobiel",
+      "has_statement": true,
+      "statement_url": "https://www.simpel.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Simyo",
+      "url": "https://www.simyo.nl",
+      "category": "mobiel",
+      "has_statement": true,
+      "statement_url": "https://www.simyo.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Solcon",
+      "url": "https://www.solcon.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.solcon.nl/toegankelijkheidsverklaring-solcon/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Vodafone",
+      "url": "https://www.vodafone.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.vodafone.nl/support/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Youfone",
+      "url": "https://www.youfone.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.youfone.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Ziggo",
+      "url": "https://www.ziggo.nl",
+      "category": "internet-tv",
+      "has_statement": true,
+      "statement_url": "https://www.ziggo.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:14:57.379319+00:00",
+      "scrape_status": "success",
+      "error": null
+    }
+  ]
+}

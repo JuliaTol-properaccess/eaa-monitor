@@ -1,0 +1,240 @@
+{
+  "last_updated": "2026-06-10T09:15:46.924809+00:00",
+  "total": 21,
+  "with_statement": 7,
+  "without_statement": 10,
+  "errors": 4,
+  "webshops": [
+    {
+      "name": "Arriva",
+      "url": "https://www.arriva.nl",
+      "category": "spoor",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Connexxion",
+      "url": "https://www.connexxion.nl",
+      "category": "bus-tram-metro",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Corendon Airlines",
+      "url": "https://www.corendonairlines.com",
+      "category": "luchtvaart",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "DFDS",
+      "url": "https://www.dfds.com/nl-nl",
+      "category": "water",
+      "has_statement": true,
+      "statement_url": "https://www.dfds.com/nl-nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "EBS",
+      "url": "https://www.ebs-ov.nl",
+      "category": "bus-tram-metro",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Eurostar",
+      "url": "https://www.eurostar.com/nl-nl",
+      "category": "overig",
+      "has_statement": true,
+      "statement_url": "https://www.eurostar.com/nl-nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "FlixBus",
+      "url": "https://www.flixbus.nl",
+      "category": "overig",
+      "has_statement": true,
+      "statement_url": "https://www.flixbus.nl/digitale-verklaring-toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "GVB",
+      "url": "https://www.gvb.nl",
+      "category": "bus-tram-metro",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "HTM",
+      "url": "https://www.htm.nl",
+      "category": "bus-tram-metro",
+      "has_statement": true,
+      "statement_url": "https://www.htm.nl/reizen/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Keolis",
+      "url": "https://www.keolis.nl",
+      "category": "spoor",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "KLM",
+      "url": "https://www.klm.com/nl/nl",
+      "category": "luchtvaart",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "error",
+      "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.klm.com/nl/nl\nCall log:\n  - navigating to \"https://www.klm.com/nl/nl\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "name": "NS",
+      "url": "https://www.ns.nl",
+      "category": "spoor",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "P&O Ferries",
+      "url": "https://www.poferries.com/en",
+      "category": "water",
+      "has_statement": true,
+      "statement_url": "https://www.poferries.com/en/terms-and-conditions/website-accessibility",
+      "statement_link_text": "P&O Ferries Accessibility",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Qbuzz",
+      "url": "https://www.qbuzz.nl",
+      "category": "bus-tram-metro",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Rederij Doeksen",
+      "url": "https://www.rederij-doeksen.nl",
+      "category": "water",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "RET",
+      "url": "https://www.ret.nl",
+      "category": "bus-tram-metro",
+      "has_statement": true,
+      "statement_url": "https://www.ret.nl/home/reizen/toegankelijkheid.html",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Stena Line",
+      "url": "https://www.stenaline.nl",
+      "category": "water",
+      "has_statement": true,
+      "statement_url": "https://www.stenaline.nl/juridisch/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "TESO",
+      "url": "https://www.teso.nl",
+      "category": "water",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Transavia",
+      "url": "https://www.transavia.com/nl-NL",
+      "category": "luchtvaart",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "TUI fly",
+      "url": "https://www.tui.nl/vliegtickets/",
+      "category": "luchtvaart",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Wagenborg Passagiersdiensten",
+      "url": "https://www.wpd.nl",
+      "category": "water",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "scrape_status": "success",
+      "error": null
+    }
+  ]
+}

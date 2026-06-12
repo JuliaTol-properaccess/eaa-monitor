@@ -195,12 +195,12 @@ def render(vragen):
 {site_header(ACTIVE_PATH)}
   <main id="main">
 
-    <section class="bg-navy text-white on-dark">
+    <section>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Vragen uit de praktijk</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Vragen uit de praktijk</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/vraag-stellen.html" class="btn btn-on-dark">Stel je vraag anoniem</a>
+          <a href="/vraag-stellen.html" class="btn btn-primary">Stel je vraag anoniem</a>
         </div>
       </div>
     </section>
@@ -220,7 +220,7 @@ def render(vragen):
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16">
       <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-extrabold text-navy tracking-tight">Heb je zelf een vraag?</h2>
-        <p class="mt-3 text-navy/70 leading-relaxed max-w-2xl">Stel hem anoniem. We controleren je vraag, leggen hem voor aan de toezichthouder en publiceren het antwoord op deze pagina. Je e-mailadres is optioneel en blijft altijd privé.</p>
+        <p class="mt-3 text-navy leading-relaxed max-w-2xl">Stel hem anoniem. We controleren je vraag, leggen hem voor aan de toezichthouder en publiceren het antwoord op deze pagina. Je e-mailadres is optioneel en blijft altijd privé.</p>
         <a href="/vraag-stellen.html" class="btn btn-primary mt-6">Stel je vraag anoniem</a>
       </div>
     </section>

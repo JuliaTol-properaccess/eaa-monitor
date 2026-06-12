@@ -1,0 +1,23 @@
+[
+  { "name": "NS", "url": "https://www.ns.nl", "category": "spoor", "bron": "https://www.spoorpro.nl/politiek/2026/03/11/nederland-in-afwachting-van-twee-juridische-procedures-over-hoofdrailnetconcessie/" },
+  { "name": "Arriva", "url": "https://www.arriva.nl", "category": "spoor", "bron": "https://www.bus-planet.com/europe/netherlands/ov-concessies-actueel/" },
+  { "name": "Keolis", "url": "https://www.keolis.nl", "category": "spoor", "bron": "https://www.bus-planet.com/europe/netherlands/ov-concessies-actueel/" },
+  { "name": "Qbuzz", "url": "https://www.qbuzz.nl", "category": "bus-tram-metro", "bron": "https://www.bus-planet.com/europe/netherlands/ov-concessies-actueel/" },
+  { "name": "GVB", "url": "https://www.gvb.nl", "category": "bus-tram-metro", "bron": "https://www.vervoerregio.nl/artikel/20251119-tarieven-connexxion-ebs-en-gvb-voor-2026-vastgesteld" },
+  { "name": "RET", "url": "https://www.ret.nl", "category": "bus-tram-metro", "bron": "https://corporate.ret.nl/nieuws/ret-htm-gvb-connexxion-en-ebs-voeren-actie-tegen-bezuiniging-op-het-ov" },
+  { "name": "HTM", "url": "https://www.htm.nl", "category": "bus-tram-metro", "bron": "https://mrdh.nl/project/concessies-openbaar-vervoer" },
+  { "name": "Connexxion", "url": "https://www.connexxion.nl", "category": "bus-tram-metro", "bron": "https://www.bus-planet.com/europe/netherlands/ov-concessies-actueel/" },
+  { "name": "EBS", "url": "https://www.ebs-ov.nl", "category": "bus-tram-metro", "bron": "https://www.bus-planet.com/europe/netherlands/ov-concessies-actueel/" },
+  { "name": "KLM", "url": "https://www.klm.com/nl/nl", "category": "luchtvaart", "bron": "https://www.upinthesky.nl/2026/04/05/corendon-tui-klm-en-transavia-starten-zomerseizoen/" },
+  { "name": "Transavia", "url": "https://www.transavia.com/nl-NL", "category": "luchtvaart", "bron": "https://www.luchtvaartnieuws.nl/nieuws/categorie/2/airlines/transavia-start-zomerverkoop-nieuwe-routes-en-vertrouwde-favorieten" },
+  { "name": "Corendon Airlines", "url": "https://www.corendonairlines.com", "category": "luchtvaart", "bron": "https://www.upinthesky.nl/2026/04/05/corendon-tui-klm-en-transavia-starten-zomerseizoen/" },
+  { "name": "TUI fly", "url": "https://www.tui.nl/vliegtickets/", "category": "luchtvaart", "bron": "https://www.upinthesky.nl/2026/04/05/corendon-tui-klm-en-transavia-starten-zomerseizoen/" },
+  { "name": "Stena Line", "url": "https://www.stenaline.nl", "category": "water", "bron": "https://www.stenaline.nl" },
+  { "name": "DFDS", "url": "https://www.dfds.com/nl-nl", "category": "water", "bron": "https://www.dfds.com/nl-nl/overtochten-passagiers/overtochten/overtochten-naar-engeland/ijmuiden-newcastle" },
+  { "name": "P&O Ferries", "url": "https://www.poferries.com/en", "category": "water", "bron": "https://www.poferries.com/en/routes/hull-to-rotterdam" },
+  { "name": "Rederij Doeksen", "url": "https://www.rederij-doeksen.nl", "category": "water", "bron": "https://www.rederij-doeksen.nl/en/tickets-vlieland-terschelling" },
+  { "name": "Wagenborg Passagiersdiensten", "url": "https://www.wpd.nl", "category": "water", "bron": "https://www.persbureau-ameland.nl/wagenborg-opent-reserveringen-voor-2026" },
+  { "name": "TESO", "url": "https://www.teso.nl", "category": "water", "bron": "https://www.teso.nl/tickets/" },
+  { "name": "FlixBus", "url": "https://www.flixbus.nl", "category": "overig", "bron": "https://www.flixbus.nl" },
+  { "name": "Eurostar", "url": "https://www.eurostar.com/nl-nl", "category": "overig", "bron": "https://www.eurostar.com/nl-nl/speciale-aanbiedingen/de-tickets-voor-deze-zomer-zijn-nu-te-koop" }
+]

@@ -1,13 +1,13 @@
 # EAA Monitor
 
-Hub over de European Accessibility Act (EAA) in Nederland. Het dashboard controleert wekelijks of Nederlandse webshops (ACM-toezicht) en financiële instellingen (AFM-toezicht) een toegankelijkheidsverklaring hebben in hun footer; de kennisbank legt uit hoe de wet werkt (scope, toezicht, boetes, mythes).
+Hub over de European Accessibility Act (EAA) in Nederland. Het dashboard controleert wekelijks in zes sectoren of Nederlandse organisaties een toegankelijkheidsverklaring in hun footer hebben: webshops en e-bookplatforms (ACM), financiële instellingen (AFM), telecomaanbieders (ACM), personenvervoerders (ILT) en mediadiensten (Commissariaat voor de Media). De kennisbank legt uit hoe de wet werkt (scope, toezicht, boetes, mythes).
 
 ## Architectuur
 
-Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailwind via CDN + vanilla JS). Design: **Coinbase-look** (navy/Coinbase-blauw, Inter), bewust losgemaakt van het Proper Access-merk; Proper Access blijft in footer-attributie en schema.
+Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaal gebouwde Tailwind + vanilla JS); geen Amerikaanse CDN's of font-diensten meer, zie `docs/eu-stack-migratie.md`. Design: **"De Telling"** (warm papier, loofgroen, okergeel; zie `docs/rebranding/rebranding-voorstel.md`), bewust losgemaakt van het Proper Access-merk; Proper Access blijft in footer-attributie en schema.
 
 ### Tools
-- `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de meet-regio in `llms.txt` bakt. **Twee datasets** via `--dataset {webshops,financieel}` (default `webshops`): `webshops` bakt in `index.html`, `financieel` in `monitor-financieel.html` + een hub-kaart op `index.html` (markers `STAT:finTotal`/`STAT:finPctWithout`)
+- `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de eigen meet-regio in `llms.txt` bakt. **Zes datasets** via `--dataset {webshops,financieel,telecom,vervoer,media,ebooks}` (default `webshops`), volledig config-gestuurd via de `DATASETS`-dict: `webshops` bakt in `index.html` (legacy ongeprefixte markers); elke andere sector bakt in zijn eigen `monitor-<sector>.html` én vult een hub-kaart op `index.html` (markers `STAT:{hub_prefix}Total`/`STAT:{hub_prefix}PctWithout`). Nieuwe sector toevoegen = DATASETS-entry + `data/<sector>.json` + monitorpagina + hub-kaart op index.html + llms-regio. Pagina's met bot-protectie of wachtrij (minder dan 5 links) tellen als "niet te controleren", nooit als "zonder verklaring"
 - `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
 - `tools/build_vragen.py` — Rendert `data/vragen.json` → `public/vragen.html` (server-rendered vraag-en-antwoord met FAQPage JSON-LD). Deelt head/header/footer met `build_articles.py`
@@ -20,7 +20,8 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels gescraped)
 - `data/results.json` — Automatisch gegenereerde scrape-resultaten (niet handmatig bewerken)
 - `data/financieel.json` — Handmatig samengestelde lijst van financiële instellingen uit de AFM/DNB-registers (velden: `name`, `url`, `category` ∈ `bank`/`verzekeraar`/`betaaldienst`/`beleggen`/`lease`, optioneel `bron`). Zelfde schema als `webshops.json`
-- `data/results-financieel.json` / `data/history-financieel.json` — Automatisch gegenereerd door de financiële scrape (niet handmatig bewerken)
+- `data/telecom.json` / `data/vervoer.json` / `data/media.json` / `data/ebooks.json` — Handmatig samengestelde sectorlijsten, zelfde schema maar **`bron` verplicht** per entry (zie `workflows/research_sector_list.md`). Categorieën staan in de `categoryLabels` van de bijbehorende monitorpagina
+- `data/results-<sector>.json` / `data/history-<sector>.json` — Automatisch gegenereerd door de sector-scrapes (niet handmatig bewerken)
 - `data/objections.json` — Webshops met bezwaar (overlay; client-side uitgesloten, geen e-mailadressen). Bijgewerkt via PR's van de bezwaar-Worker of handmatig
 - `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
 - `data/vragen.json` — Handmatig samengestelde lijst van beantwoorde praktijkvragen (velden: `vraag`, `antwoord`, optioneel `toezichthouder`, `datum`, `thema`, `bron`). Gevuld vanuit binnengekomen anonieme vragen; nooit antwoorden verzinnen
@@ -30,7 +31,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 ### Pagina's (`public/`)
 - `index.html` — Hub-homepage: cijfer-gedreven hero, kerncijfers, uitgelichte artikelen. **Bevat de scraper-markers** (zie hieronder); niet verwijderen
 - `monitor.html` + `app.js` — Het interactieve dashboard (grafiek/tabel, filters, sorteerbare tabel). Leest `?q=` uit de URL voor de zoekterm vanaf de home. `app.js` is config-gestuurd via `window.EAA_MONITOR_CONFIG` (`dataUrl`, `noun`, `categoryLabels`, `sortLabels`); zonder config gelden de webshop-defaults
-- `monitor-financieel.html` — Hetzelfde dashboard voor de financiële sector (AFM-toezicht), met eigen config (leest `data/results-financieel.json`, "Type"-kolom). **Bevat de scraper-markers**; gevuld door `scrape_footer.py --dataset financieel`. Deelt `app.js`
+- `monitor-financieel.html` / `monitor-telecom.html` / `monitor-vervoer.html` / `monitor-media.html` / `monitor-ebooks.html` — Hetzelfde dashboard per sector, elk met eigen config (`dataUrl`, `noun`, `categoryLabels`) en eigen copy. **Bevatten de scraper-markers**; gevuld door `scrape_footer.py --dataset <sector>`. Delen allemaal `app.js`
 - `artikelen.html` + `artikelen/*.html` — Kennisbank, **gegenereerd** door `build_articles.py` (niet handmatig bewerken)
 - `wcag-audit.html` — Overzicht van auditbureaus, **gegenereerd** door `build_auditbureaus.py` uit `data/auditbureaus.json` (niet handmatig bewerken)
 - `vragen.html` — Vragen uit de praktijk, **gegenereerd** door `build_vragen.py` uit `data/vragen.json` (niet handmatig bewerken)
@@ -41,22 +42,23 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 - `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
 - `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
 - `over.html` — Over het dashboard
-- `static/theme.js` — Gedeelde Tailwind-tokens (één bron van waarheid). `static/site.css` — componenten, prose, animaties. `static/reveal.js` — scroll-reveal
+- `static/tailwind.css` — **Gegenereerd** door `npm run build:css` uit `tailwind.config.js` (niet handmatig bewerken; na elke class-wijziging opnieuw bouwen, de deploy bouwt hem ook zelf als vangnet). `static/fonts.css` + `static/fonts/` — zelf-gehoste fonts via Fontsource: Fraunces (koppen/telcijfers), Atkinson Hyperlegible (lopende tekst), IBM Plex Mono (alles wat gemeten is); geen Google Fonts. `static/site.css` — componenten, prose, animaties. `static/reveal.js` — scroll-reveal
 
-### Designtokens (`public/static/theme.js`)
-- `brand` `#0052FF` (primair), `navy` `#0A0E27` (donkere secties/hero), `softblue` `#F5F8FF`, status `found`/`notfound`/`error`. Font: **Inter**. De oude PA-tokens (magenta/petrol) zijn vervangen.
+### Designtokens (`tailwind.config.js`)
+- Palet "De Telling": `papier` `#FAF7F1` (hoofdachtergrond), `inkt` `#20281F` (tekst), `loofgroen` `#1A5632` (primair), `dennengroen` `#0D2B1F` (donkere secties/footer), `oker` `#F4C84B` (telmarker; nooit als tekstkleur op licht), `zachtgroen` `#E9F2EA`, status `found`/`notfound`/`error`. De oude tokennamen (`brand`/`navy`/`softblue`) bestaan als alias zodat bestaande classes blijven werken. Fonts: **Fraunces** (koppen, via `font-display`), **Atkinson Hyperlegible** (lopende tekst), **IBM Plex Mono** (gemeten cijfers, via `font-mono`). Status communiceert nooit met kleur alleen (icoon/bol + tekstlabel; telbalk-segmenten met witte scheiders). Eén bron van waarheid: `tailwind.config.js`.
 
 ### Overig
 - `worker/` — Cloudflare Worker voor bezwaren met domein-verificatie, artikel-feedback, anonieme vragen, nieuwsbrief-opt-in én de eregalerij (zie `worker/DEPLOY.md`). Routes: `POST /submit`, `GET /confirm`, `POST /feedback`, `POST /vraag`, `POST /newsletter`, `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`, `POST /hof/nominate`, `GET /hof/nominate/confirm`, `POST /hof/vote`, `GET /hof/vote/confirm`, `GET /hof/votes`. De eregalerij-flows: nomineren = dubbele opt-in → PR op `data/halloffame.json` (zelfnominatie wordt gevlagd, nooit auto-live); stemmen = dubbele opt-in, 1 stem per gehasht e-mailadres per `slug` in KV (`hof:vote:`/`hof:count:`), eigen-domein-stemmen geweigerd; `GET /hof/votes` levert de tellers (gecachet) aan `static/halloffame.js`. `/feedback` mailt een opmerking over een artikel rechtstreeks naar `NOTIFY_EMAIL`; `/vraag` mailt een anonieme EAA-vraag naar `VRAGEN_EMAIL` (`vragen@eaa-monitor.nl`, terugval op `NOTIFY_EMAIL`) — beide zonder PR, opslag of extra secrets. `/newsletter` is een dubbele opt-in: na bevestiging via een getekende link wordt het adres opgeslagen in de KV-namespace `NEWSLETTER` (sleutel `sub:<email>`); afzender `NEWSLETTER_FROM` (terugval op `FROM_EMAIL`). Het inschrijfformulier staat in de footer (`site_footer()` in `build_articles.py`, endpoint in `NEWSLETTER_ENDPOINT`, submit-logica in `public/static/newsletter.js`). Onder elk artikel staat een bron-disclaimer + feedbackformulier dat `build_articles.py` rendert (endpoint in `FEEDBACK_ENDPOINT`). Na Worker-wijziging opnieuw deployen.
 - `workflows/handle_objection.md` — SOP voor het verwerken van een bezwaar
 - `workflows/handle_vraag.md` — SOP voor het verwerken van een binnengekomen anonieme vraag (voorleggen aan toezichthouder, antwoord in `data/vragen.json`)
 - `workflows/handle_nominatie.md` — SOP voor het verwerken van een eregalerij-nominatie (toegankelijkheidscheck, geverifieerde observaties schrijven, PR mergen)
+- `workflows/research_sector_list.md` — SOP voor het samenstellen of uitbreiden van een sectorlijst (registerbron eerst, `bron` verplicht, live-check, eerste scrape als e2e-test)
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
 - `.github/workflows/deploy.yml` — Deploy naar GitHub Pages (kopieert de hele `public/`-tree recursief)
 
 ## Auto-gegenereerde regio's (niet breken)
 
-`scrape_footer.py` vervangt bij elke scrape de inhoud tussen letterlijke markers in de doel-HTML (`index.html` voor webshops, `monitor-financieel.html` voor financieel): `GEO-SUMMARY:START/END`, `STAT:total`, `STAT:pctWith`, `STAT:pctWithout`, `LASTUPDATED`, `JSONLD-DATASET:START/END`. Elke `STAT`-marker mag maar **één keer** voorkomen (de vervanging pakt alleen de eerste match). De financiële run patcht daarnaast de hub-kaart op `index.html` (`STAT:finTotal`/`STAT:finPctWithout`). `llms.txt` heeft drie marker-regio's: `MEASUREMENT` (webshop-scraper), `FIN-MEASUREMENT` (financiële scraper) en `ARTICLES` (`build_articles.py`).
+`scrape_footer.py` vervangt bij elke scrape de inhoud tussen letterlijke markers in de doel-HTML (`index.html` voor webshops, `monitor-<sector>.html` voor de andere sectoren): `GEO-SUMMARY:START/END`, `STAT:total`, `STAT:pctWith`, `STAT:pctWithout`, `LASTUPDATED`, `JSONLD-DATASET:START/END`. Elke marker moet **precies één keer** voorkomen; bij een ontbrekende of dubbele marker faalt de run hard (bewust: stille mismatch = verouderde cijfers live). Uitzondering: de `GEO-SUMMARY`-patch staat per dataset uit te zetten met `"geo_summary": False` in `DATASETS`; voor `webshops` staat hij uit en bevat `index.html` dus géén GEO-SUMMARY-markers (de samenvattingskaart is daar in juni 2026 bewust verwijderd, de zes sectorkaarten dragen de cijfers). Elke niet-webshop-run patcht daarnaast zijn hub-kaart op `index.html` (`STAT:{hub_prefix}Total`/`STAT:{hub_prefix}PctWithout`; prefixen `fin`/`tel`/`vervoer`/`media`/`ebooks`). `llms.txt` is een **hand-onderhouden skelet** met zeven marker-regio's: per sector een meet-regio (`MEASUREMENT`, `FIN-MEASUREMENT`, `TEL-MEASUREMENT`, `VERVOER-MEASUREMENT`, `MEDIA-MEASUREMENT`, `EBOOKS-MEASUREMENT`) plus `ARTICLES` (`build_articles.py`). De scraper patcht alleen de eigen regio en faalt hard als die ontbreekt; verwijder een regio dus nooit zonder de bijbehorende dataset uit `scrape.yml` te halen.
 
 ## Commando's
 
@@ -64,8 +66,8 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + Tailw
 # Scraper draaien (volledige lijst, sequentieel)
 python tools/scrape_footer.py
 
-# Financiële sector scrapen (kleine lijst, geen sharding)
-python tools/scrape_footer.py --dataset financieel
+# Een kleine sector scrapen (kleine lijst, geen sharding)
+python tools/scrape_footer.py --dataset financieel   # of telecom/vervoer/media/ebooks
 
 # Sharded draaien (zoals de cron): 1 van de 8 delen, daarna mergen
 python tools/scrape_footer.py --shard 0 --num-shards 8 --out results.part-0.json
@@ -88,6 +90,10 @@ python tools/build_halloffame.py
 # Publicatiedatums aanvullen in data/bronnen.json (best-effort, haalt de URL's op)
 python tools/fetch_bron_dates.py            # alleen ontbrekende
 python tools/fetch_bron_dates.py --overwrite  # ook bestaande opnieuw
+
+# Tailwind-CSS (her)bouwen na een wijziging in classes of tailwind.config.js
+npm install        # eerste keer
+npm run build:css
 
 # Frontend lokaal testen
 python -m http.server 8000 -d public

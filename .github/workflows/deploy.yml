@@ -30,6 +30,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Vangnet: bouw de Tailwind-CSS vers, ook als iemand vergat
+      # `npm run build:css` te draaien na een class-wijziging. De gebouwde
+      # public/static/tailwind.css staat ook in git voor lokaal testen.
+      - name: Build Tailwind CSS
+        run: |
+          npm ci
+          npm run build:css
+
       - name: Prepare site
         run: |
           mkdir -p _site
@@ -50,3 +62,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # EU-stack: dezelfde inhoud naar de Hetzner-VPS (eaa-monitor-1), die na
+      # de DNS-cutover de site serveert. Tot die tijd draait hij warm mee.
+      # DEPLOY_SSH_KEY is een repo-secret; de host-key staat hier vastgepind.
+      - name: Deploy to VPS (Hetzner)
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "128.140.50.96 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIy0Moek4VWZPI6BGKSYIccIT2eN9uAtXhShZyDNPXnl" >> ~/.ssh/known_hosts
+          rsync -az --delete -e "ssh -i ~/.ssh/deploy_key" _site/ root@128.140.50.96:/var/www/eaa-monitor/
+          rsync -az -e "ssh -i ~/.ssh/deploy_key" worker/src worker/server.mjs worker/package.json root@128.140.50.96:/opt/eaa-forms/
+          ssh -i ~/.ssh/deploy_key root@128.140.50.96 "systemctl restart eaa-forms"

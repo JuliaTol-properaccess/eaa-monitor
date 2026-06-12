@@ -32,7 +32,7 @@ Een bruikbare verklaring is concreet en eerlijk. Zet er in elk geval het volgend
 
 <div class="not-prose my-8 rounded-3xl bg-softblue ring-1 ring-brand-light p-6 md:p-8">
   <p class="text-lg font-extrabold text-navy">Liever niet vanaf nul beginnen?</p>
-  <p class="mt-2 text-navy/70 leading-relaxed">Met de gratis generator voor toegankelijkheidsverklaringen beantwoord je een paar vragen over je situatie en krijg je een verklaring die je direct op je website kunt publiceren.</p>
+  <p class="mt-2 text-navy leading-relaxed">Met de gratis generator voor toegankelijkheidsverklaringen beantwoord je een paar vragen over je situatie en krijg je een verklaring die je direct op je website kunt publiceren.</p>
   <a href="https://www.properaccess.nl/tools/toegankelijkheidsverklaring-generator/" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-4">Open de generator</a>
 </div>
 

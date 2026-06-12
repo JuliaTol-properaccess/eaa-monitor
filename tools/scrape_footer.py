@@ -29,11 +29,22 @@ OBJECTIONS_FILE = DATA_DIR / "objections.json"   # gedeeld door beide datasets
 LLMS_FILE = PUBLIC_DIR / "llms.txt"              # gedeeld; elke dataset bezit één regio
 
 # ── Datasets ──
-# Dezelfde scrape- en bake-logica bedient twee lijsten: webshops en financiële
-# instellingen. Elke dataset wijst naar zijn eigen invoer/uitvoer, het HTML-
-# bestand waarin de cijfers worden gebakken, de llms.txt-meetregio en het
-# zelfstandig naamwoord in de samenvatting-copy. Default is "webshops", zodat
-# bestaande aanroepen zonder --dataset ongewijzigd blijven werken.
+# Dezelfde scrape- en bake-logica bedient alle sectorlijsten. Elke dataset
+# wijst naar zijn eigen invoer/uitvoer, het HTML-bestand waarin de cijfers
+# worden gebakken (target_html), de llms.txt-meetregio en de copy-velden.
+# Default is "webshops", zodat bestaande aanroepen zonder --dataset
+# ongewijzigd blijven werken.
+#
+# Sector-velden:
+# - hub_prefix: marker-prefix van de compacte sectorkaart op index.html
+#   (<!--STAT:{prefix}Total--> / <!--STAT:{prefix}PctWithout-->). None voor
+#   webshops: index.html is daar al de target_html met de legacy ongeprefixte
+#   markers (GEO-SUMMARY, STAT:total, ...).
+# - llms_label: sectorlabel in het llms.txt-meetblok; None geeft de legacy
+#   webshop-formulering "Laatste meting (...)".
+# - llms_noun: kort zelfstandig naamwoord in het llms.txt-meetblok (kan
+#   afwijken van noun, bv. fin: "instellingen").
+# - toezichthouder: label voor hub-kaart en copy.
 DATASETS = {
     "webshops": {
         "key": "webshops",
@@ -42,8 +53,16 @@ DATASETS = {
         "history_file": DATA_DIR / "history.json",
         "target_html": PUBLIC_DIR / "index.html",
         "llms_region": "MEASUREMENT",
+        "llms_label": None,
+        "llms_noun": "webshops",
+        "hub_prefix": None,
+        "toezichthouder": "ACM",
         "noun": "webshops",
-        "summary_heading": "E-commerce · ACM-toezicht",
+        # Geen meetsamenvatting op de hub-homepage; de zes sectorkaarten
+        # dragen de cijfers al. De GEO-SUMMARY-markers zijn uit index.html
+        # verwijderd, dus deze patch moet uit blijven (anders harde fail).
+        "geo_summary": False,
+        "summary_heading": None,
         "dataset_id": "https://eaa-monitor.nl/#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse webshops",
         "content_url": "https://eaa-monitor.nl/data/results.json",
@@ -56,12 +75,88 @@ DATASETS = {
         "history_file": DATA_DIR / "history-financieel.json",
         "target_html": PUBLIC_DIR / "monitor-financieel.html",
         "llms_region": "FIN-MEASUREMENT",
+        "llms_label": "Financiële sector (AFM-toezicht)",
+        "llms_noun": "instellingen",
+        "hub_prefix": "fin",
+        "toezichthouder": "AFM",
         "noun": "financiële instellingen",
         "summary_heading": "Financiële sector · AFM-toezicht",
         "dataset_id": "https://eaa-monitor.nl/monitor-financieel.html#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse financiële instellingen",
         "content_url": "https://eaa-monitor.nl/data/results-financieel.json",
         "rescan_copy": "De monitor controleert alle financiële instellingen elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
+    "telecom": {
+        "key": "telecom",
+        "input_file": DATA_DIR / "telecom.json",
+        "results_file": DATA_DIR / "results-telecom.json",
+        "history_file": DATA_DIR / "history-telecom.json",
+        "target_html": PUBLIC_DIR / "monitor-telecom.html",
+        "llms_region": "TEL-MEASUREMENT",
+        "llms_label": "Telecom (ACM-toezicht)",
+        "llms_noun": "aanbieders",
+        "hub_prefix": "tel",
+        "toezichthouder": "ACM",
+        "noun": "telecomaanbieders",
+        "summary_heading": "Telecom · ACM-toezicht",
+        "dataset_id": "https://eaa-monitor.nl/monitor-telecom.html#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse telecomaanbieders",
+        "content_url": "https://eaa-monitor.nl/data/results-telecom.json",
+        "rescan_copy": "De monitor controleert alle telecomaanbieders elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
+    "vervoer": {
+        "key": "vervoer",
+        "input_file": DATA_DIR / "vervoer.json",
+        "results_file": DATA_DIR / "results-vervoer.json",
+        "history_file": DATA_DIR / "history-vervoer.json",
+        "target_html": PUBLIC_DIR / "monitor-vervoer.html",
+        "llms_region": "VERVOER-MEASUREMENT",
+        "llms_label": "Personenvervoer (ILT-toezicht)",
+        "llms_noun": "vervoerders",
+        "hub_prefix": "vervoer",
+        "toezichthouder": "ILT",
+        "noun": "vervoerders",
+        "summary_heading": "Personenvervoer · ILT-toezicht",
+        "dataset_id": "https://eaa-monitor.nl/monitor-vervoer.html#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse personenvervoerders",
+        "content_url": "https://eaa-monitor.nl/data/results-vervoer.json",
+        "rescan_copy": "De monitor controleert alle vervoerders elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
+    "media": {
+        "key": "media",
+        "input_file": DATA_DIR / "media.json",
+        "results_file": DATA_DIR / "results-media.json",
+        "history_file": DATA_DIR / "history-media.json",
+        "target_html": PUBLIC_DIR / "monitor-media.html",
+        "llms_region": "MEDIA-MEASUREMENT",
+        "llms_label": "Media en streaming (toezicht Commissariaat voor de Media)",
+        "llms_noun": "mediadiensten",
+        "hub_prefix": "media",
+        "toezichthouder": "Commissariaat voor de Media",
+        "noun": "mediadiensten",
+        "summary_heading": "Media & streaming · Commissariaat voor de Media",
+        "dataset_id": "https://eaa-monitor.nl/monitor-media.html#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse mediadiensten",
+        "content_url": "https://eaa-monitor.nl/data/results-media.json",
+        "rescan_copy": "De monitor controleert alle mediadiensten elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
+    "ebooks": {
+        "key": "ebooks",
+        "input_file": DATA_DIR / "ebooks.json",
+        "results_file": DATA_DIR / "results-ebooks.json",
+        "history_file": DATA_DIR / "history-ebooks.json",
+        "target_html": PUBLIC_DIR / "monitor-ebooks.html",
+        "llms_region": "EBOOKS-MEASUREMENT",
+        "llms_label": "E-books (ACM-toezicht)",
+        "llms_noun": "e-bookplatforms",
+        "hub_prefix": "ebooks",
+        "toezichthouder": "ACM",
+        "noun": "e-bookplatforms",
+        "summary_heading": "E-books · ACM-toezicht",
+        "dataset_id": "https://eaa-monitor.nl/monitor-ebooks.html#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse e-bookplatforms",
+        "content_url": "https://eaa-monitor.nl/data/results-ebooks.json",
+        "rescan_copy": "De monitor controleert alle e-bookplatforms elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
     },
 }
 
@@ -93,9 +188,11 @@ ERROR_RATE_THRESHOLD = 0.25
 
 # Wachten op de footer i.p.v. een vaste 2s: de meeste sites hebben de footer al
 # bij domcontentloaded, dan kost dit vrijwel niets. De settle vangt links die
-# vlak na het verschijnen van de footer nog door JS worden gevuld.
+# ná het verschijnen van de footer nog door JS worden geïnjecteerd; 500ms bleek
+# te kort voor overlay-widgets (Lyca Mobile en Transavia flipten tussen runs),
+# 1500ms is stabiel en per site nog steeds korter dan de oude vaste 2s.
 FOOTER_WAIT_TIMEOUT = 2000
-FOOTER_SETTLE_MS = 500
+FOOTER_SETTLE_MS = 1500
 
 # Korte pauze tussen requests. Elke request gaat naar een ander domein, dus
 # per-host rate limiting speelt niet; dit ontziet alleen de runner zelf.
@@ -283,6 +380,24 @@ def check_webshop(page, url):
         result["error"] = None
         return result
 
+    # Een pagina met minder dan een handvol links is vrijwel zeker een
+    # bot-challenge ("Challenge Validation", "Attention Required!"), wachtrij
+    # ("Even geduld...") of lege render; een echte homepage heeft er
+    # tientallen. Niet op footer-aanwezigheid filteren: interstitials hebben
+    # vaak elementen met footer-achtige classes. "Geen verklaring" zou hier
+    # geen eerlijke meting zijn: rapporteer "niet te controleren".
+    if len(all_links) < 5:
+        return {
+            "has_statement": False,
+            "statement_url": None,
+            "statement_link_text": None,
+            "scrape_status": "error",
+            "error": (
+                f"Pagina heeft maar {len(all_links)} links; "
+                "vermoedelijk bot-protectie, wachtrij of lege render"
+            ),
+        }
+
     return {
         "has_statement": False,
         "statement_url": None,
@@ -393,7 +508,7 @@ def _replace_region(html, start, end, new_inner):
     occurrences = html.count(start)
     if occurrences != 1:
         sys.exit(
-            f"FOUT: marker {start!r} komt {occurrences}x voor in de doel-HTML "
+            f"FOUT: marker {start!r} komt {occurrences}x voor in het doelbestand "
             f"(verwacht: precies 1x). Niets gepatcht."
         )
     pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
@@ -410,11 +525,11 @@ def _geo_summary_inner(stats, date_nl, ds):
     noun = ds["noun"]
     heading = ds.get("summary_heading", "")
     heading_html = (
-        f'<p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">{heading}</p>\n          '
+        f'<p class="eyebrow text-brand mb-3">{heading}</p>\n          '
         if heading else ""
     )
     return f"""
-      <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
+      <div class="rounded-xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
           {heading_html}<p class="text-lg leading-relaxed">
             Op <strong>{date_nl}</strong> controleerde de EAA Monitor
@@ -484,8 +599,9 @@ def patch_target_html(stats, date_nl, date_iso, ds):
     """Bake current numbers and the Dataset JSON-LD into the dataset's served HTML."""
     target = ds["target_html"]
     html = target.read_text(encoding="utf-8")
-    html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
-                           _geo_summary_inner(stats, date_nl, ds))
+    if ds.get("geo_summary", True):
+        html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
+                               _geo_summary_inner(stats, date_nl, ds))
     html = _replace_region(html, "<!--STAT:total-->", "<!--/STAT-->", str(stats["total"]))
     html = _replace_region(html, "<!--STAT:pctWith-->", "<!--/STAT-->", f"{stats['pct_with']}%")
     html = _replace_region(html, "<!--STAT:pctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
@@ -497,162 +613,66 @@ def patch_target_html(stats, date_nl, date_iso, ds):
     print(f"Patched {target}")
 
 
-def patch_hub_card(stats):
-    """Vul de financiële kerncijfers op de hub-homepage (index.html).
+def patch_hub_card(stats, ds):
+    """Vul de compacte sectorkaart op de hub-homepage (index.html).
 
-    De financiële run vult een kleine kaart op de homepage met het aantal
-    gecontroleerde instellingen en het percentage zonder verklaring. Eigen
-    marker-namen (finTotal/finPctWithout), dus losstaand van de webshop-STATs.
+    Markers: <!--STAT:{hub_prefix}Total--> en <!--STAT:{hub_prefix}PctWithout-->.
+    Webshops (hub_prefix None) slaat dit over: index.html is daar al de
+    target_html met de legacy ongeprefixte markers. Ontbreken béide markers,
+    dan is de kaart nog niet uitgerold en slaan we over (bootstrap); bij een
+    halve kaart faalt _replace_region hard.
     """
+    prefix = ds.get("hub_prefix")
+    if not prefix:
+        return
     index = PUBLIC_DIR / "index.html"
     if not index.exists():
         return
+    total_marker = f"<!--STAT:{prefix}Total-->"
+    pct_marker = f"<!--STAT:{prefix}PctWithout-->"
     html = index.read_text(encoding="utf-8")
-    if "<!--STAT:finTotal-->" not in html:
-        return  # hub-kaart nog niet aanwezig; sla over
-    html = _replace_region(html, "<!--STAT:finTotal-->", "<!--/STAT-->", str(stats["total"]))
-    html = _replace_region(html, "<!--STAT:finPctWithout-->", "<!--/STAT-->", f"{stats['pct_without']}%")
-    _write_atomic(index, html)
-    print(f"Patched {index} (financiële hub-kaart)")
-
-
-def patch_fin_index_summary(stats, date_nl):
-    """Vul de financiële samenvattingskaart op de hub-homepage (index.html).
-
-    Naast de webshop-samenvatting (GEO-SUMMARY, gevuld door de webshop-run)
-    toont index.html een tweede kaart voor de financiële sector. Eigen markers
-    (FIN-GEO-SUMMARY), zodat de twee runs elkaar niet overschrijven.
-    """
-    index = PUBLIC_DIR / "index.html"
-    if not index.exists():
+    if total_marker not in html and pct_marker not in html:
+        print(f"Hub-kaart voor {ds['key']} nog niet aanwezig op index.html; overgeslagen")
         return
-    html = index.read_text(encoding="utf-8")
-    if "<!-- FIN-GEO-SUMMARY:START -->" not in html:
-        return  # samenvattingskaart nog niet aanwezig; sla over
-    html = _replace_region(html, "<!-- FIN-GEO-SUMMARY:START -->", "<!-- FIN-GEO-SUMMARY:END -->",
-                           _geo_summary_inner(stats, date_nl, DATASETS["financieel"]))
+    html = _replace_region(html, total_marker, "<!--/STAT-->", str(stats["total"]))
+    html = _replace_region(html, pct_marker, "<!--/STAT-->", f"{stats['pct_without']}%")
     _write_atomic(index, html)
-    print(f"Patched {index} (financiële samenvatting)")
+    print(f"Patched {index} (hub-kaart {ds['key']})")
 
 
-# llms.txt-regio's. De scraper bezit de meet-regio; tools/build_articles.py bezit
-# de artikellijst-regio. Beide patchen alleen hun eigen blok, zodat ze elkaar niet
-# overschrijven bij een wekelijkse scrape of een artikel-herbuild.
-LLMS_MEAS_START = "<!-- MEASUREMENT:START -->"
-LLMS_MEAS_END = "<!-- MEASUREMENT:END -->"
-LLMS_FIN_START = "<!-- FIN-MEASUREMENT:START -->"
-LLMS_FIN_END = "<!-- FIN-MEASUREMENT:END -->"
-LLMS_ART_START = "<!-- ARTICLES:START -->"
-LLMS_ART_END = "<!-- ARTICLES:END -->"
+# llms.txt is een hand-onderhouden skelet (in git) met per sector een eigen
+# meet-regio plus de artikellijst-regio van tools/build_articles.py. De scraper
+# patcht alleen de inhoud van de eigen regio (ds["llms_region"]) en faalt hard
+# als die regio ontbreekt: stil invoegen of het bestand herschrijven kan de
+# hand-onderhouden secties en de regio-volgorde slopen.
 
 
-def _llms_measurement_block(stats, date_nl):
-    return (
-        f"{LLMS_MEAS_START}\n"
-        f"Laatste meting ({date_nl}): {stats['total']} webshops gecontroleerd,\n"
-        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
-        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
-        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
-        f"{LLMS_MEAS_END}"
-    )
+def _llms_measurement_inner(stats, date_nl, ds):
+    """De regelinhoud van een meet-regio (tussen de markers).
 
-
-def _llms_fin_block(stats, date_nl):
-    return (
-        f"{LLMS_FIN_START}\n"
-        f"Financiële sector (AFM-toezicht), laatste meting ({date_nl}): "
-        f"{stats['total']} instellingen gecontroleerd,\n"
-        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
-        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
-        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
-        f"{LLMS_FIN_END}"
-    )
-
-
-def patch_llms_fin(stats, date_nl):
-    """Patch alleen de financiële meet-regio in public/llms.txt.
-
-    Laat de webshop-meetregio en de artikellijst-regio met rust. Bestaat het
-    bestand nog niet of mist de FIN-regio, dan wordt het blok ingevoegd direct
-    na de webshop-meetregio.
+    llms_label None geeft de legacy webshop-formulering ("Laatste meting ...");
+    met label wordt het "<label>, laatste meting ...". Byte-identiek aan de
+    blokken die de oude webshop- en fin-specifieke functies schreven.
     """
-    block = _llms_fin_block(stats, date_nl)
+    intro = f"{ds['llms_label']}, laatste meting" if ds.get("llms_label") else "Laatste meting"
+    return (
+        f"\n{intro} ({date_nl}): {stats['total']} {ds['llms_noun']} gecontroleerd,\n"
+        f"{stats['with_statement']} ({stats['pct_with']}%) met toegankelijkheidsverklaring,\n"
+        f"{stats['without_statement']} ({stats['pct_without']}%) zonder, en\n"
+        f"{stats['errors']} ({stats['pct_error']}%) niet te controleren.\n"
+    )
+
+
+def patch_llms_measurement(stats, date_nl, ds):
+    """Patch de meet-regio van deze dataset in public/llms.txt."""
     if not LLMS_FILE.exists():
-        print(f"{LLMS_FILE} bestaat nog niet; sla FIN-meetregio over")
-        return
+        sys.exit(f"FOUT: {LLMS_FILE} bestaat niet; meet-regio {ds['llms_region']} niet gepatcht.")
+    start = f"<!-- {ds['llms_region']}:START -->"
+    end = f"<!-- {ds['llms_region']}:END -->"
     text = LLMS_FILE.read_text(encoding="utf-8")
-    if LLMS_FIN_START in text and LLMS_FIN_END in text:
-        text = re.sub(
-            re.escape(LLMS_FIN_START) + r".*?" + re.escape(LLMS_FIN_END),
-            lambda _m: block,
-            text,
-            count=1,
-            flags=re.DOTALL,
-        )
-    elif LLMS_MEAS_END in text:
-        text = text.replace(LLMS_MEAS_END, LLMS_MEAS_END + "\n\n" + block, 1)
-    else:
-        text = text.rstrip() + "\n\n" + block + "\n"
+    text = _replace_region(text, start, end, _llms_measurement_inner(stats, date_nl, ds))
     _write_atomic(LLMS_FILE, text)
-    print(f"Patched {LLMS_FILE} (FIN-meetregio)")
-
-
-def write_llms_txt(stats, date_nl):
-    """Patch de meet-regio in public/llms.txt en laat de artikellijst-regio met rust."""
-    meas = _llms_measurement_block(stats, date_nl)
-
-    # Bestaat het bestand al met meet-markers, patch dan alleen dat blok.
-    if LLMS_FILE.exists():
-        text = LLMS_FILE.read_text(encoding="utf-8")
-        if LLMS_MEAS_START in text and LLMS_MEAS_END in text:
-            text = re.sub(
-                re.escape(LLMS_MEAS_START) + r".*?" + re.escape(LLMS_MEAS_END),
-                lambda _m: meas,
-                text,
-                count=1,
-                flags=re.DOTALL,
-            )
-            _write_atomic(LLMS_FILE, text)
-            print(f"Patched {LLMS_FILE} (meet-regio)")
-            return
-        # Geen meet-markers: schrijf het sjabloon, maar bewaar een bestaande
-        # artikellijst-regio als die er al staat.
-        art_match = re.search(
-            re.escape(LLMS_ART_START) + r".*?" + re.escape(LLMS_ART_END),
-            text,
-            flags=re.DOTALL,
-        )
-        articles_block = art_match.group(0) if art_match else f"{LLMS_ART_START}\n{LLMS_ART_END}"
-    else:
-        articles_block = f"{LLMS_ART_START}\n{LLMS_ART_END}"
-
-    fin_block = f"{LLMS_FIN_START}\n{LLMS_FIN_END}"
-    content = f"""# EAA Monitor
-
-> Onafhankelijke hub over de European Accessibility Act (EAA) in Nederland.
-> Monitort wekelijks of Nederlandse webshops en financiële instellingen een
-> toegankelijkheidsverklaring publiceren en legt uit hoe de wet werkt.
-
-{meas}
-
-{fin_block}
-
-## Belangrijkste pagina's
-- [Dashboard](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops
-- [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
-- [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
-- [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland
-- [Over dit dashboard](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
-- [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
-
-## Data
-- [Volledige resultaten webshops (JSON)](https://eaa-monitor.nl/data/results.json)
-- [Volledige resultaten financiële instellingen (JSON)](https://eaa-monitor.nl/data/results-financieel.json)
-
-{articles_block}
-"""
-    _write_atomic(LLMS_FILE, content)
-    print(f"Wrote {LLMS_FILE}")
+    print(f"Patched {LLMS_FILE} ({ds['llms_region']})")
 
 
 def update_history(stats, date_iso, ds):
@@ -702,12 +722,8 @@ def generate_geo_assets(output, ds):
     date_nl = _date_nl(output["last_updated"])
     date_iso = output["last_updated"][:10]
     patch_target_html(stats, date_nl, date_iso, ds)
-    if ds["key"] == "financieel":
-        patch_hub_card(stats)
-        patch_fin_index_summary(stats, date_nl)
-        patch_llms_fin(stats, date_nl)
-    else:
-        write_llms_txt(stats, date_nl)
+    patch_hub_card(stats, ds)
+    patch_llms_measurement(stats, date_nl, ds)
     update_history(stats, date_iso, ds)
 
 
@@ -774,6 +790,13 @@ def scrape_webshops(webshops, now):
             if result["scrape_status"] == "error" and _looks_like_crash(result["error"]):
                 print("browser-crash, herstart...", end=" ", flush=True)
                 browser, context, page = _fresh_page(p, browser, context)
+                result = check_webshop(page, url)
+
+            # Wachtrij-/challenge-pagina's lossen vaak vanzelf op; één keer
+            # opnieuw proberen na een korte pauze haalt dan de echte pagina op.
+            if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
+                print("interstitial, retry...", end=" ", flush=True)
+                time.sleep(3)
                 result = check_webshop(page, url)
 
             results.append({

@@ -25,3 +25,6 @@ node_modules/
 
 # Temporary files
 .tmp/
+
+# Claude Code sessie-state (o.a. worktrees)
+.claude/

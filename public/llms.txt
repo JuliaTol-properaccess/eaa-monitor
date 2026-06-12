@@ -1,14 +1,15 @@
 # EAA Monitor
 
 > De Nederlandse hub over de European Accessibility Act (EAA): alle informatie over de wet op één plek.
-> Heldere uitleg in gewone taal, wekelijkse cijfers over webshops en financiële instellingen,
-> antwoorden van toezichthouders op anonieme vragen van ondernemers, en een overzicht van auditbureaus.
+> Heldere uitleg in gewone taal, wekelijkse cijfers over zes sectoren (webshops, financiële
+> instellingen, telecom, personenvervoer, media en e-books), antwoorden van toezichthouders op
+> anonieme vragen van ondernemers, en een overzicht van auditbureaus.
 > Onafhankelijk, zonder commercieel belang.
 
 ## Wat is de EAA Monitor?
 De EAA Monitor brengt alle praktische informatie over de European Accessibility Act in Nederland samen:
 - Uitleg: voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en welke oplossingen wel en niet werken (kennisbank en doorzoekbaar bronnenoverzicht).
-- Cijfers: een wekelijkse meting of Nederlandse webshops (ACM-toezicht) en financiële instellingen (AFM-toezicht) een toegankelijkheidsverklaring publiceren.
+- Cijfers: een wekelijkse meting per sector of Nederlandse webshops (ACM), financiële instellingen (AFM), telecomaanbieders (ACM), personenvervoerders (ILT), mediadiensten (Commissariaat voor de Media) en e-bookplatforms (ACM) een toegankelijkheidsverklaring publiceren.
 - Antwoorden: ondernemers stellen anoniem vragen die wij voorleggen aan de toezichthouder; de antwoorden publiceren we.
 - Hulp: een overzicht van onafhankelijke auditbureaus in Nederland.
 
@@ -21,15 +22,47 @@ Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
 <!-- MEASUREMENT:END -->
 
 <!-- FIN-MEASUREMENT:START -->
-Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 68 instellingen gecontroleerd,
-44 (65%) met toegankelijkheidsverklaring,
-23 (34%) zonder, en
-1 (1%) niet te controleren.
+Financiële sector (AFM-toezicht), laatste meting (12 juni 2026): 68 instellingen gecontroleerd,
+45 (66%) met toegankelijkheidsverklaring,
+20 (29%) zonder, en
+3 (4%) niet te controleren.
 <!-- FIN-MEASUREMENT:END -->
+
+<!-- TEL-MEASUREMENT:START -->
+Telecom (ACM-toezicht), laatste meting (10 juni 2026): 18 aanbieders gecontroleerd,
+14 (78%) met toegankelijkheidsverklaring,
+3 (17%) zonder, en
+1 (6%) niet te controleren.
+<!-- TEL-MEASUREMENT:END -->
+
+<!-- VERVOER-MEASUREMENT:START -->
+Personenvervoer (ILT-toezicht), laatste meting (10 juni 2026): 21 vervoerders gecontroleerd,
+7 (33%) met toegankelijkheidsverklaring,
+10 (48%) zonder, en
+4 (19%) niet te controleren.
+<!-- VERVOER-MEASUREMENT:END -->
+
+<!-- MEDIA-MEASUREMENT:START -->
+Media en streaming (toezicht Commissariaat voor de Media), laatste meting (10 juni 2026): 15 mediadiensten gecontroleerd,
+9 (60%) met toegankelijkheidsverklaring,
+5 (33%) zonder, en
+1 (7%) niet te controleren.
+<!-- MEDIA-MEASUREMENT:END -->
+
+<!-- EBOOKS-MEASUREMENT:START -->
+E-books (ACM-toezicht), laatste meting (10 juni 2026): 10 e-bookplatforms gecontroleerd,
+5 (50%) met toegankelijkheidsverklaring,
+3 (30%) zonder, en
+2 (20%) niet te controleren.
+<!-- EBOOKS-MEASUREMENT:END -->
 
 ## Belangrijkste pagina's
 - [Webshopmonitor](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops (ACM-toezicht)
 - [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
+- [Telecommonitor](https://eaa-monitor.nl/monitor-telecom.html): telecomaanbieders met consumentendiensten (ACM-toezicht)
+- [Vervoermonitor](https://eaa-monitor.nl/monitor-vervoer.html): personenvervoer per spoor, weg, water en lucht (ILT-toezicht)
+- [Mediamonitor](https://eaa-monitor.nl/monitor-media.html): streaming- en mediadiensten (toezicht Commissariaat voor de Media)
+- [E-booksmonitor](https://eaa-monitor.nl/monitor-ebooks.html): e-bookplatforms en -verkopers (ACM-toezicht)
 - [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
 - [Bronnen](https://eaa-monitor.nl/bronnen.html): doorzoekbaar overzicht van bronnen over de EAA (toezichthouders, overheid, juristen, bureaus, vakmedia)
 - [Vragen uit de praktijk](https://eaa-monitor.nl/vragen.html): antwoorden van toezichthouders (ACM, AFM) op anonieme vragen van ondernemers over de EAA
@@ -41,6 +74,10 @@ Financiële sector (AFM-toezicht), laatste meting (9 juni 2026): 68 instellingen
 ## Data
 - [Volledige resultaten webshops (JSON)](https://eaa-monitor.nl/data/results.json)
 - [Volledige resultaten financiële instellingen (JSON)](https://eaa-monitor.nl/data/results-financieel.json)
+- [Volledige resultaten telecom (JSON)](https://eaa-monitor.nl/data/results-telecom.json)
+- [Volledige resultaten personenvervoer (JSON)](https://eaa-monitor.nl/data/results-vervoer.json)
+- [Volledige resultaten media en streaming (JSON)](https://eaa-monitor.nl/data/results-media.json)
+- [Volledige resultaten e-books (JSON)](https://eaa-monitor.nl/data/results-ebooks.json)
 
 <!-- ARTICLES:START -->
 ## Artikelen (Kennisbank)

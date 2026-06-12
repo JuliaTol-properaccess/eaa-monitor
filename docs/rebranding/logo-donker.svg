@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" role="img" aria-labelledby="eaamTitleD eaamDescD" color="#FAF7F1">
+  <title id="eaamTitleD">EAA Monitor</title>
+  <desc id="eaamDescD">Beeldmerk: een donkergroen vierkant met lichte rand, twee lichte tekstregels en een telbalk die deels okergeel is gevuld, naast het woordmerk EAA Monitor met een okergele punt. Variant voor donkere achtergrond.</desc>
+  <!-- Beeldmerk "de telbalk": los bruikbaar als favicon (vierkant x=6..70, y=16..80) -->
+  <g>
+    <rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/>
+    <rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/>
+    <rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/>
+    <rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/>
+    <rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/>
+  </g>
+  <text x="90" y="62" font-family="Georgia, 'Times New Roman', Times, serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="700">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#F4C84B" font-weight="700">.</tspan></text>
+</svg>

@@ -35,21 +35,21 @@
   const STATUS_CONFIG = {
     found: {
       label: "Met verklaring",
-      color: "#15803D",
-      bgColor: "#F0FDF4",
+      color: "#1C6B3C",
+      bgColor: "#EAF4EC",
       dotClass: "bg-status-found",
     },
     notfound: {
       label: "Zonder verklaring",
-      color: "#CF202F",
-      bgColor: "#FEF2F2",
+      color: "#B3261E",
+      bgColor: "#FBEDEB",
       dotClass: "bg-status-notfound",
     },
     error: {
       label: "Fout bij controle",
-      color: "#6B7280",
-      bgColor: "#F9FAFB",
-      dotClass: "bg-gray-400",
+      color: "#5B6560",
+      bgColor: "#F2F4F1",
+      dotClass: "bg-status-error",
     },
   };
 
@@ -191,10 +191,10 @@
             </div>
           </div>
           <div class="flex-1 flex items-center gap-3 min-w-0">
-            <div class="flex-1 bg-white/10 rounded-full h-8 overflow-hidden">
+            <div class="flex-1 bg-navy/10 rounded-full h-8 overflow-hidden">
               <div class="chart-bar h-full rounded-full" style="width: ${barWidth}%; background-color: ${cfg.color};"></div>
             </div>
-            <span class="text-sm font-bold text-white w-24 text-right tabular-nums whitespace-nowrap">${row.count.toLocaleString("nl-NL")} <span class="font-semibold text-white/60">(${row.pct}%)</span></span>
+            <span class="text-sm font-bold text-navy w-24 text-right font-mono whitespace-nowrap">${row.count.toLocaleString("nl-NL")} <span class="font-medium text-gray-600">(${row.pct}%)</span></span>
           </div>
         </div>`;
       })
@@ -206,7 +206,7 @@
       .map((row) => {
         const cfg = STATUS_CONFIG[row.key];
         return `
-        <tr class="border-b border-white/10">
+        <tr class="border-b border-line">
           <td class="py-3 px-2">
             <span class="flex items-center gap-2">
               <span class="status-dot ${cfg.dotClass}" aria-hidden="true"></span>
@@ -221,7 +221,7 @@
 
     // Total row
     tableBody.innerHTML += `
-      <tr class="border-t-2 border-white/25 font-bold">
+      <tr class="border-t-2 border-line font-bold">
         <td class="py-3 px-2">Totaal</td>
         <td class="py-3 px-2 text-right tabular-nums">${stats.total.toLocaleString("nl-NL")}</td>
         <td class="py-3 px-2 text-right">100%</td>

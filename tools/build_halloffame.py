@@ -253,12 +253,12 @@ def render(entries):
 {site_header(ACTIVE_PATH)}
   <main id="main" data-hof-endpoint="{HOF_ENDPOINT_BASE}">
 
-    <section class="bg-navy text-white on-dark">
+    <section>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">Eregalerij</h1>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">Een toegankelijkheidsverklaring zegt niets over hoe toegankelijk een website echt is. In deze hall of fame staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met echte codevoorbeelden voor ontwikkelaars.</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Eregalerij</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Een toegankelijkheidsverklaring zegt niets over hoe toegankelijk een website echt is. In deze hall of fame staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met echte codevoorbeelden voor ontwikkelaars.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/nomineren.html" class="btn btn-on-dark">Nomineer een website</a>
+          <a href="/nomineren.html" class="btn btn-primary">Nomineer een website</a>
         </div>
       </div>
     </section>
