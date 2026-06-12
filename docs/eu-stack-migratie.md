@@ -1,115 +1,119 @@
 # Migratie naar een Europese stack
 
-*Stand: 10 juni 2026. Prijzen zijn indicatief en exclusief btw; controleer ze op het moment van keuze.*
+*Stand: 12 juni 2026. Prijzen zijn indicatief en exclusief btw; controleer ze op het moment van keuze.*
 
 ## Waarom dit document
 
-We willen in de footer kunnen zeggen dat eaa-monitor.nl op Europese diensten draait. Dat kan nu niet: alleen het domein is Europees, de rest van de stack is Amerikaans. Dit document beschrijft per onderdeel wat er moet gebeuren, wat het kost en hoeveel werk het is.
+We willen in de footer kunnen zeggen dat eaa-monitor.nl op Europese diensten draait. Dit document beschrijft per onderdeel wat er moet gebeuren, wat het kost en hoeveel werk het is, en bevat het draaiboek voor de resterende stappen.
 
 ## Huidige stack
 
-| Onderdeel | Dienst | Herkomst |
-|---|---|---|
-| Domeinregistratie | One.com (registrar), SIDN (.nl-register) | Denemarken / Nederland |
-| Statistieken | Plausible Analytics | Estland (hosting in Duitsland) |
-| DNS | Cloudflare | VS |
-| Hosting | GitHub Pages (Microsoft) | VS |
-| Formulieren en nieuwsbrief | Cloudflare Worker + KV | VS |
-| E-mailverzending | Resend | VS |
-| Fonts | Google Fonts (CDN) | VS |
-| CSS | Tailwind via cdn.tailwindcss.com | VS |
-| Code en wekelijkse scrape | GitHub + GitHub Actions | VS |
-
-Alleen de domeinlaag is dus al Europees. Alles wat een bezoeker raakt (hosting, DNS, fonts, formulieren, mail) loopt via Amerikaanse bedrijven.
-
-## Wat er per onderdeel moet gebeuren
-
-### 1. Fonts zelf hosten — €0, 0,5 tot 1 uur — ✅ gedaan (10 juni 2026)
-
-Download Montserrat en serveer hem vanaf de eigen site (`public/static/fonts/`). Daarmee verdwijnt het verzoek naar Google volledig. Dit is ook los van de EU-claim verstandig: Duitse rechters oordeelden al dat het doorsturen van bezoekers-IP's naar Google Fonts een AVG-probleem is. Alternatief zonder zelf hosten: Bunny Fonts (Sloveens, gratis, drop-in vervanger), maar zelf hosten is netter en sneller.
-
-### 2. Tailwind lokaal bouwen — €0, 1 tot 2 uur — ✅ gedaan (10 juni 2026)
-
-`cdn.tailwindcss.com` is bedoeld voor ontwikkeling, niet voor productie. Vervang het door een lokale Tailwind-build die één CSS-bestand genereert (build-stap in de deploy). Sneller voor bezoekers en weer een Amerikaans verzoek minder.
-
-### 3. DNS verhuizen — €0, ongeveer 0,5 uur
-
-Verhuis de DNS van Cloudflare naar Hetzner DNS (gratis) of naar One.com (zit bij de registrar inbegrepen). Let op: dit kan pas nadat de Worker is vervangen (stap 5), want de Worker draait op Cloudflare.
-
-### 4. Hosting naar Hetzner — circa €4,50 per maand, 2 tot 4 uur
-
-Eén Hetzner Cloud VPS (CX22, instapmodel, conform onze standaard) in Falkenstein of Neurenberg, met Caddy of nginx voor de statische site. De deploy wordt: build draaien en `public/` naar de server synchroniseren. HTTPS regelt Caddy automatisch.
-
-Gratis EU-alternatief: Codeberg Pages (Duitse non-profit). Maar omdat we toch een server nodig hebben voor de formulieren en de scraper (stap 5 en 7), is één VPS die alles doet logischer.
-
-### 5. Formulieren-Worker vervangen — €0 extra, 4 tot 8 uur
-
-De Cloudflare Worker (bezwaar, anonieme vragen, artikel-feedback, nieuwsbrief met dubbele opt-in) wordt een klein Node-dienstje op dezelfde VPS. De KV-opslag voor nieuwsbriefadressen wordt SQLite of een JSON-bestand op de server. De routes en de domein-verificatielogica verhuizen één-op-één mee; de frontend hoeft alleen andere endpoint-URL's.
-
-### 6. E-mail van Resend naar een Europese dienst — €0 tot €1 per maand, 1 tot 2 uur
-
-Ons volume is klein (bevestigingsmails en notificaties). Twee geverifieerde opties:
-
-- **Scaleway TEM** (Frans): 300 mails per maand gratis, daarna €0,25 per 1.000. Pay-as-you-go, geen vast bedrag.
-- **Brevo** (Frans): 300 mails per dag gratis (campagne- en transactiemail delen die limiet).
-
-Beide hebben een gewone REST-API; de centrale verzendfunctie in de Worker-code hoeft alleen een ander endpoint en andere headers.
-
-### 7. Wekelijkse scrape van GitHub Actions naar de VPS — €0 extra, 2 tot 4 uur
-
-De maandag-cron draait nu op GitHub Actions met 8 shards. Op de VPS wordt dat een cronjob die `scrape_footer.py` draait (Playwright en Chromium werken prima op een Linux-VPS) en de resultaten naar de repo pusht. De 10.000 webshops kunnen 's nachts sequentieel of met een paar parallelle processen; het hoeft niet binnen een Actions-tijdslimiet te passen.
-
-### 8. Optioneel, strengste variant: code weg van GitHub — €0, 4 tot 8 uur
-
-De repo verhuizen naar Codeberg (Duits). Dit is alleen nodig als je de claim wilt oprekken naar "alles, ook onze eigen ontwikkeltools". Voor de footer-claim is het niet nodig: de code is openbaar en bevat geen bezoekersdata.
-
-## Kosten en uren samengevat
-
-| Fase | Wat | Kosten | Werk |
+| Onderdeel | Dienst | Herkomst | Status |
 |---|---|---|---|
-| 1. Quick wins | Fonts zelf hosten, Tailwind lokaal | €0 | 2 tot 3 uur |
-| 2. Kern | VPS, site-hosting, Worker-vervanger, EU-mail, DNS, scraper-cron | circa €4,50/mnd (~€54/jr) + €0 tot €1/mnd mail | 10 tot 18 uur |
-| 3. Optioneel | Code naar Codeberg | €0 | 4 tot 8 uur |
+| Domeinregistratie | One.com (registrar), SIDN (.nl-register) | Denemarken / Nederland | ✅ EU |
+| Statistieken | Plausible Analytics | Estland (hosting in Duitsland) | ✅ EU |
+| Fonts en CSS | Zelf-gehost (Fontsource) + lokale Tailwind-build | eigen server | ✅ gedaan (10 juni) |
+| Hosting (doel) | Hetzner VPS `eaa-monitor-1`, Falkenstein (zie `server.md`) | Duitsland | ✅ draait, wacht op DNS |
+| Formulieren-service (doel) | Node-service `eaa-forms` op de VPS | Duitsland | ✅ draait, wacht op DNS |
+| Inkomende mail | Google Workspace (groepen info@, vragen@, bezwaar@) | VS | ✅ werkt; bewust geaccepteerd, zie onderaan |
+| **DNS** | Cloudflare | VS | ⏳ verhuizen naar Hetzner DNS |
+| **Hosting (live)** | GitHub Pages (Microsoft) | VS | ⏳ vervalt bij DNS-cutover |
+| **Formulieren (live)** | Cloudflare Worker + KV | VS | ⏳ vervalt bij DNS-cutover |
+| **E-mailverzending** | Resend (live Worker), Brevo (op de VPS) | VS / Frankrijk | ⏳ wordt AhaSend, zie hieronder |
+| **Code en wekelijkse scrape** | GitHub + GitHub Actions | VS | ⏳ fase 3: naar Codeberg + VPS-cron |
+
+## Besluiten (bijgewerkt 12 juni 2026)
+
+1. **E-mailverzending: AhaSend** (Nederland) in plaats van Brevo. Op 10 juni was Brevo op de VPS ingericht; op 12 juni is na vergelijking definitief voor AhaSend gekozen: puur transactioneel, Nederlands, gratis tot 1.000 mails per maand, API-vorm vrijwel gelijk aan Resend. Het sending domain `eaa-monitor.nl` is geverifieerd en getest: DKIM-CNAME's (`ahasend._domainkey`, `ahasend2._domainkey`) en return-path `psrp.eaa-monitor.nl → rp.ahasend.com` staan in de DNS, en een testmail kwam binnen met SPF, DKIM én DMARC op pass. Let op: het psrp-CNAME moet **DNS only** zijn, niet Proxied (dat was de enige instelfout). `AHASEND_API_KEY` (alleen send-scope) en `AHASEND_ACCOUNT_ID` staan in `.env`; API: `POST https://api.ahasend.com/v2/accounts/{account_id}/messages` met Bearer-auth en payload `{from:{email,name}, recipients:[{email,name}], subject, text_content, html_content}`.
+2. **Code-hosting: Codeberg** (Duitse non-profit, Forgejo). Een GitLab-account was al aangemaakt, maar gitlab.com is een Amerikaans bedrijf met hosting op Google Cloud in de VS; voor de claim "volledig Europees" is Codeberg de zuivere keuze. CI-werk (deploys, scrape) draait niet bij Codeberg maar op de eigen VPS.
+3. **DNS: Hetzner DNS** (gratis, zelfde console als de server).
+4. **Inkomende mail blijft voorlopig bij Google Workspace.** Bewust geaccepteerd om de migratie behapbaar te houden; EU-alternatieven (mailbox.org, Infomaniak) staan onderaan als vervolgstap.
+
+## Wat er al af is
+
+- **Fase 1 (10 juni):** fonts zelf-gehost via Fontsource, Tailwind lokaal gebouwd. De browser van een bezoeker maakt geen enkel verzoek meer naar een Amerikaanse dienst.
+- **Server (10 juni):** Hetzner CX23 `eaa-monitor-1` in Falkenstein met Caddy en de formulieren-service `eaa-forms` (zelfde code als de Worker, via de Node-adapter `worker/server.mjs`, opslag in `/var/lib/eaa-forms/kv.json`). Zie `docs/server.md` voor IP, toegang en deploy.
+- **Inkomende mail (10 juni):** eaa-monitor.nl is secundair domein in de Proper Access-Workspace met drie gratis groepen (info@, vragen@, bezwaar@); MX staat op `smtp.google.com` en is end-to-end getest.
+- **Deploy (10 juni):** elke push naar `main` deployt via GitHub Actions naar GitHub Pages én naar de VPS.
+- **AhaSend (12 juni):** domein geverifieerd, testmail met alle checks op pass (zie besluit 1).
+
+## Restplan A: laatste voorbereidingen vóór de DNS-cutover
+
+1. **Eregalerij-PR mergen (PR #44).** Die bevat de eregalerij (nomineren en stemmen) plus een refactor van de PR-helper in de Worker-code. Mergen vóór de cutover, dan verhuist alles in één keer mee en testen we de nieuwe routes meteen op de VPS. Na de merge heeft de frontend twee éxtra endpoint-constanten die in cutover-stap 6 mee moeten: `NOMINATIE_ENDPOINT` in `public/nomineren.html` en `HOF_ENDPOINT_BASE` in `tools/build_halloffame.py`. De service heeft de var `HOF_DATA_URL` nodig in `/etc/eaa-forms.env`.
+2. **`sendEmail()` omzetten naar AhaSend.** Een AhaSend-tak toevoegen in `worker/src/index.js` (vóór de Brevo-tak), op de VPS `AHASEND_API_KEY` en `AHASEND_ACCOUNT_ID` in `/etc/eaa-forms.env` zetten en `BREVO_API_KEY` verwijderen, service herstarten, één bevestigingsflow end-to-end testen. De Cloudflare Worker blijft tot de cutover gewoon op Resend draaien (die heeft geen Brevo/AhaSend-keys), dus de live site merkt hier niets van.
+3. **PR-token op de server.** De formulieren-service opent PR's (bezwaren, nominaties) en heeft daarvoor een token nodig in `/etc/eaa-forms.env`. Tot de Codeberg-verhuizing (restplan B) is dat een fine-grained GitHub-PAT (`GITHUB_TOKEN`, Contents + Pull requests: read & write op de eaa-monitor-repo); na de verhuizing vervangt een Codeberg-token hem. Vijf minuten werk, twee keer; dat is de prijs van de DNS eerder verhuizen dan de code.
+4. **DNS-zone exporteren uit Cloudflare** (DNS → Records → Export) als referentie.
+5. **Zone aanmaken bij Hetzner DNS** (dns.hetzner.com, zelfde login):
+   - `A eaa-monitor.nl → 128.140.50.96` en `AAAA → 2a01:4f8:c014:6c5d::1`
+   - `CNAME www → eaa-monitor.nl`
+   - `MX @ 1 smtp.google.com` + de Google-verificatie-TXT
+   - **AhaSend:** `CNAME ahasend._domainkey → dfcf2098318c3bc1.setup.ahasend.com`, `CNAME ahasend2._domainkey → 8fab7697088619c4.setup.ahasend.com`, `CNAME psrp → rp.ahasend.com`
+   - SPF: `v=spf1 include:_spf.google.com ~all` (AhaSend hoeft hier niet in: de SPF-check loopt via het psrp-return-path; de oude verwijzingen naar Cloudflare en Brevo vervallen)
+   - `_dmarc` TXT overnemen (blijft voorlopig `p=none`)
+   - **Niet meenemen:** de GitHub Pages-A-records, de Brevo-records (brevo1/brevo2._domainkey en de brevo-code-TXT) en de Resend-records. De Resend-records in de **Cloudflare**-zone wél laten staan zolang de Worker nog draait (de naweek van stap 10).
+6. **Nieuwsbrief-abonnees meenemen.** Bevestigde adressen staan in de Cloudflare KV-namespace `NEWSLETTER` (sleutels `sub:<email>`). Exporteren met `wrangler kv key list/get --remote` (let op de quoted-key gotchas, zie `friction-log.md`) en importeren in `/var/lib/eaa-forms/kv.json`. Aantallen voor en na vergelijken.
+
+## Restplan A: de cutover zelf (rustig moment, 30 tot 60 minuten)
+
+7. **Frontend-endpoints omzetten** van `https://eaa-bezwaar.juliatol.workers.dev/...` naar `https://eaa-monitor.nl/api/...` op zes plekken: `FEEDBACK_ENDPOINT` en `NEWSLETTER_ENDPOINT` in `tools/build_articles.py`, `BEZWAAR_ENDPOINT` in `public/bezwaar.html`, `VRAAG_ENDPOINT` in `public/vraag-stellen.html`, `NOMINATIE_ENDPOINT` in `public/nomineren.html` en `HOF_ENDPOINT_BASE` in `tools/build_halloffame.py`. Alle builders draaien, committen, pushen (deploy zet het op Pages én VPS).
+8. **Caddy op het domein zetten:** in `/etc/caddy/Caddyfile` het blok `:80` vervangen door `eaa-monitor.nl` en het www-redirect-blok aanzetten, daarna `systemctl reload caddy`. Caddy haalt automatisch een TLS-certificaat zodra de DNS wijst.
+9. **Nameservers omzetten bij One.com:** van `renan/maya.ns.cloudflare.com` naar de drie Hetzner-nameservers die de zone uit stap 5 opgeeft.
+10. **Controleren:** `dig eaa-monitor.nl` wijst naar de VPS, https werkt met geldig certificaat, nieuwsbrief-, vraag-, bezwaar- en nominatieformulier doen het (bevestigingsmails komen nu van AhaSend), mail naar info@ komt aan, Plausible telt nog, en een proefbezwaar opent een PR.
+11. **Cloudflare Worker een week laten draaien** voor bevestigingslinks die nog onderweg zijn (tokens zijn 7 dagen geldig). Daarna de Worker en de KV-namespace verwijderen en stap 6 desgewenst nog één keer draaien voor nakomers.
+12. **De footer-sectie "Europese infrastructuur" toevoegen.** Formuleer eerlijk: hosting, formulieren, statistieken en e-mailverzending zijn Europees en bezoekersverkeer raakt geen Amerikaanse dienst; wie ons mailt of een formulier instuurt, bereikt een postbus die (voorlopig) bij Google draait. Zie ook "Welke claim mag wanneer".
+
+## Restplan B: ontwikkelketen naar Codeberg (fase 3)
+
+Kan los van de cutover, ervoor of erna; erna is aan te raden zodat niet alles tegelijk verandert.
+
+1. **Repo aanmaken op Codeberg** (zelfde naam, openbaar) en de GitHub-repo pushen (`git push --mirror`). Vanaf dan is Codeberg de bron van waarheid; GitHub wordt alleen-lezen.
+2. **PR-helper omzetten naar de Forgejo-API.** `createDataPR` in `worker/src/index.js` gebruikt nu de GitHub-API. De Forgejo-API van Codeberg kan hetzelfde, zelfs simpeler (geverifieerd op 12 juni tegen `codeberg.org/swagger.v1.json`): `PUT /api/v1/repos/{owner}/{repo}/contents/{filepath}` accepteert een `new_branch`-veld, dus bestand-ophalen, branch-maken en committen worden samen twee calls (GET contents voor de sha, PUT met `new_branch`), en `POST /api/v1/repos/{owner}/{repo}/pulls` opent de PR. Idempotentie blijft: een tweede commit naar dezelfde `new_branch` faalt en wordt "already_submitted". Auth: header `Authorization: token <CODEBERG_TOKEN>`. Token aanmaken met alleen repo-schrijfrechten, in `/etc/eaa-forms.env`, en `GITHUB_TOKEN` daar verwijderen. Eerst de endpoints met een kleine handmatige call testen (werkregel: API's eerst verifiëren), dan één proefbezwaar end-to-end.
+3. **Deploy van Codeberg naar de VPS.** De GitHub Action vervalt. In de plaats: een Codeberg-webhook (push op `main`, met HMAC-secret) naar een klein deploy-endpoint op de VPS dat `git pull`, de builders, `npm run build:css` en de rsync naar `/var/www/eaa-monitor` draait, plus een herstart van `eaa-forms` als de worker-bestanden wijzigden. Terugvaloptie als webhooks gedoe geven: een cron die elke tien minuten `git fetch` doet en alleen bij nieuwe commits deployt. Handmatige deploy blijft altijd mogelijk (zie `server.md`).
+4. **Wekelijkse scrape naar de VPS.** De maandag-cron (08:00 UTC, nu GitHub Actions met 8 shards) wordt een cronjob op de VPS die `scrape_footer.py` per dataset draait (Playwright en Chromium staan dan lokaal; sequentieel of met een paar parallelle processen, er is geen Actions-tijdslimiet meer) en de resultaten naar Codeberg pusht met een deploy key. De push triggert via stap 3 vanzelf de site-deploy. De shard-logica blijft in de tool zitten maar is op de VPS niet nodig.
+5. **GitHub afronden.** Workflows verwijderen, repo archiveren met een README-verwijzing naar Codeberg. GitHub Pages vervalt vanzelf (de DNS wijst er na de cutover al niet meer heen).
+6. **Documentatie bijwerken:** `CLAUDE.md` (deploy, cron, PR-flows), `server.md`, `worker/DEPLOY.md`, de SOP's (`handle_objection.md`, `handle_nominatie.md`: PR's staan voortaan op Codeberg) en het friction-log.
+
+## Opruimlijst (na afloop)
+
+- Cloudflare: Worker, KV-namespace en daarna de hele DNS-zone verwijderen; account kan weg.
+- Resend: account opzeggen (na de naweek van cutover-stap 11).
+- Brevo: account opzeggen; de Brevo-DNS-records komen al niet mee naar Hetzner.
+- GitLab-account: ongebruikt, kan weg (besluit 2).
+- DMARC aanscherpen van `p=none` naar `p=quarantine` en later `p=reject`, zodra een paar weken alle mail netjes via AhaSend en Google loopt.
+
+## Kosten na de migratie
+
+| Wat | Kosten |
+|---|---|
+| Hetzner CX23 (server, incl. btw) | €3,99/mnd |
+| Hetzner DNS | gratis |
+| AhaSend (tot 1.000 mails/mnd) | gratis |
+| Codeberg (non-profit; doneren is sympathiek) | gratis |
+| Plausible | bestaand abonnement |
+| Vervallen: Cloudflare, Resend, Brevo, GitHub | €0 |
 
 ## Welke claim mag wanneer
 
-- **Nu:** alleen "ons .nl-domein is geregistreerd bij een Europese registrar". Te mager voor een footer-sectie.
-- **Na fase 1 (✅ 10 juni 2026):** de browser van een bezoeker maakt geen enkel verzoek meer naar een Amerikaanse dienst (fonts zelf-gehost, Tailwind lokaal gebouwd, statistieken via het Europese Plausible). Maar de site wordt nog steeds gesérveerd vanaf Amerikaanse hosting, dus nog geen volledige EU-claim.
-- **Na fase 2:** "Deze website draait volledig op Europese infrastructuur: hosting in Duitsland (Hetzner), Nederlands domein (SIDN), Europese e-mail." Dit is de eerlijke ondergrens voor de footer-sectie; bezoekersdata raakt dan geen enkele Amerikaanse dienst meer.
-- **Na fase 3:** ook de ontwikkelketen is Europees.
+- **Nu (na fase 1):** de browser van een bezoeker maakt geen enkel verzoek meer naar een Amerikaanse dienst, maar de site wordt nog gesérveerd vanaf Amerikaanse hosting. Nog geen volledige EU-claim.
+- **Na restplan A:** "Deze website draait volledig op Europese infrastructuur: hosting in Duitsland (Hetzner), Nederlands domein (SIDN), Europese statistieken (Plausible) en e-mailverzending (AhaSend, Nederland)." Bezoekersverkeer en formulierverwerking raken geen Amerikaanse dienst meer. Eerlijke kanttekening die we niet in de footer hoeven te zetten maar wel moeten weten: de póstbus achter info@/vragen@/bezwaar@ draait bij Google, dus de inhoud van binnengekomen mail (waaronder formulier-notificaties) staat daar.
+- **Na restplan B:** ook de ontwikkelketen (code, CI, cron) is Europees.
+- **Helemaal compleet** wordt het pas als ook de inkomende mail naar een EU-provider gaat, zie hieronder.
+
+## Vervolgstap (los van deze migratie): inkomende mail naar de EU
+
+De Google Workspace-groepen werken en blijven voorlopig. Wil je later ook dit stuk Europees: mailbox.org (Duits, ~€3/mnd) of Infomaniak (Zwitsers, gratis instap) kunnen postbus plus aliassen voor de drie adressen leveren; de wissel is dan alleen MX-records omzetten in de Hetzner-zone en de groepen opheffen. Daarna kan ook de DMARC-policy strakker.
 
 ## Aandachtspunten
 
-- De Worker-vervanger eerst live zetten en testen vóór de DNS-verhuizing, anders breken de formulieren.
-- **Inkomende mail**: info@, vragen@ en bezwaar@eaa-monitor.nl bestaan alleen als doorstuuradressen in Cloudflare Email Routing. Dat stopt zodra de DNS-zone weg is bij Cloudflare. Vóór de verhuizing een vervanger regelen, bijvoorbeeld e-mail/doorsturen bij One.com (zit vaak bij het domeinpakket) en de nieuwe MX-records meenemen in de DNS-migratie.
-- **Brevo**: het versturen werkt pas als (1) de server-IP's geautoriseerd zijn onder Security → Authorised IPs, en (2) het domein eaa-monitor.nl geverifieerd is onder Senders & Domains (DKIM-records; kan nu al, de DNS staat nog bij Cloudflare).
-- Bij de mailmigratie opnieuw SPF/DKIM instellen voor eaa-monitor.nl bij de nieuwe dienst.
+- De formulieren-service eerst volledig getest hebben (incl. AhaSend en het PR-token) vóór de DNS-verhuizing, anders breken de formulieren.
+- Bij elke mailwijziging één echte end-to-end-test doen en de headers controleren (SPF/DKIM/DMARC op pass), niet alleen op de API-respons vertrouwen.
 - De Dataset JSON-LD, llms.txt-regio's en sitemap blijven onveranderd werken; alleen de deploy-route verandert.
-- Per server documenteren: IP, SSH-toegang, stack en deploy-procedure (conform onze hostingstandaard).
-
-## Cutover-draaiboek (DNS-verhuizing)
-
-*Stand van de voorbereiding: server, site, formulieren-service en Brevo-mail draaien en zijn getest (10 juni 2026). De stappen hieronder zijn wat er nog rest.*
-
-### Vooraf (kan ruim voor de cutover)
-
-1. **GitHub-token op de server.** Fine-grained PAT (Contents + Pull requests: read & write op de eaa-monitor-repo) als `GITHUB_TOKEN` in `/etc/eaa-forms.env`, daarna `systemctl restart eaa-forms`. Zonder dit kan de service geen bezwaar-PR's openen.
-2. ✅ **Inkomende mail geregeld (10 juni 2026).** Cloudflare Email Routing is vervangen door Google Workspace: eaa-monitor.nl is secundair domein in de Proper Access-Workspace, met drie gratis groepen (info@, vragen@, bezwaar@, lid: juliatol@properaccess.nl, "iedereen op internet mag posten"). MX staat al op `1 smtp.google.com`; end-to-end getest vanaf de VPS. One.com bleek alleen het domein te leveren, geen mail.
-3. **DNS-zone exporteren uit Cloudflare** (DNS → Records → Export) als referentie.
-4. **Zone aanmaken bij Hetzner DNS** (dns.hetzner.com, zelfde login): `A eaa-monitor.nl → 128.140.50.96`, `AAAA → 2a01:4f8:c014:6c5d::1`, `CNAME www → eaa-monitor.nl`, `MX @ 1 smtp.google.com`, de Google-verificatie-TXT, de twee Brevo-DKIM-CNAME's (brevo1/brevo2._domainkey) en de brevo-code-TXT (allemaal over te nemen uit de Cloudflare-export), plus een bijgewerkte SPF: `v=spf1 include:spf.brevo.com include:_spf.google.com ~all` (de oude verwijst nog naar Cloudflare). De GitHub Pages-records niet meenemen.
-5. **Nieuwsbrief-abonnees meenemen.** Bevestigde adressen staan in de Cloudflare KV-namespace `NEWSLETTER` (sleutels `sub:<email>`). Exporteren met `wrangler kv key list/get --remote` en importeren in `/var/lib/eaa-forms/kv.json` op de server.
-
-### De cutover zelf (rustig moment, ±30-60 minuten)
-
-6. **Frontend-endpoints omzetten** van `https://eaa-bezwaar.juliatol.workers.dev/...` naar `https://eaa-monitor.nl/api/...` op vier plekken: `FEEDBACK_ENDPOINT` en `NEWSLETTER_ENDPOINT` in `tools/build_articles.py`, `BEZWAAR_ENDPOINT` in `public/bezwaar.html`, `VRAAG_ENDPOINT` in `public/vraag-stellen.html`, en de gebakken `data-endpoint`-attributen in de footers van de handgeschreven pagina's. Builders draaien, committen, pushen (deploy zet het op Pages én VPS).
-7. **Caddy op het domein zetten:** in `/etc/caddy/Caddyfile` het blok `:80` vervangen door `eaa-monitor.nl` en het www-redirect-blok aanzetten, daarna `systemctl reload caddy`. Caddy haalt automatisch een TLS-certificaat zodra de DNS wijst.
-8. **Nameservers omzetten bij One.com:** van `renan/maya.ns.cloudflare.com` naar de drie Hetzner-nameservers die de zone uit stap 4 opgeeft.
-9. **Controleren:** `dig eaa-monitor.nl` wijst naar de VPS, https werkt met geldig certificaat, nieuwsbrief- en vraagformulier doen het, mail naar info@ komt aan, Plausible telt nog.
-10. **Cloudflare Worker een week laten draaien** voor bevestigingslinks die nog onderweg zijn (tokens zijn 7 dagen geldig). Daarna kan de Worker uit en kan stap 5 desgewenst nog één keer voor nakomers.
-11. **De footer-sectie "Europese infrastructuur" toevoegen**: het oorspronkelijke doel. Pas nu klopt de claim helemaal.
+- Per server documenteren: IP, SSH-toegang, stack en deploy-procedure (staat in `server.md`; actueel houden).
+- Backups: de site en data staan in git, maar `/var/lib/eaa-forms/kv.json` (abonnees, straks stemmen) niet. Bij restplan B een nachtelijke dump van dat bestand meenemen (bijvoorbeeld versleuteld naar Hetzner Storage Box of een tweede locatie), plus Hetzner-server-backups aanzetten (±20% van de serverprijs).
 
 ## Bronnen
 
-- [Brevo: limieten gratis plan](https://help.brevo.com/hc/en-us/articles/208580669-FAQs-What-are-the-limits-of-the-Free-plan)
-- [Scaleway TEM-prijzen](https://www.scaleway.com/en/pricing/managed-services/)
-- [Scaleway TEM-mogelijkheden en limieten](https://www.scaleway.com/en/docs/transactional-email/reference-content/tem-capabilities-and-limits/)
+- [AhaSend API: send message](https://ahasend.com/docs/send-api/send-email)
+- [Forgejo API (Codeberg): swagger](https://codeberg.org/swagger.v1.json) — contents-PUT met `new_branch`, pulls-POST, branches-POST geverifieerd 12 juni 2026
+- [Hetzner DNS](https://dns.hetzner.com)
+- [Brevo: limieten gratis plan](https://help.brevo.com/hc/en-us/articles/208580669-FAQs-What-are-the-limits-of-the-Free-plan) (historisch; besluit is AhaSend)
