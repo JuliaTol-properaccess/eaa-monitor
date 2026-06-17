@@ -109,8 +109,45 @@ def _items(sources):
     return "\n".join(rows)
 
 
+def _jsonld(sources):
+    """CollectionPage met ItemList van de bronnen, voor AI- en zoekmachines."""
+    items = []
+    for s in sources:
+        url = str(s.get("url", "")).strip()
+        if not url:
+            continue
+        title = str(s.get("title", "")).strip()
+        items.append({
+            "@type": "ListItem",
+            "position": len(items) + 1,
+            "url": url,
+            "name": title or url,
+        })
+    page = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": f"{URL}#page",
+        "url": URL,
+        "name": "Bronnen over de EAA",
+        "description": DESCRIPTION,
+        "inLanguage": "nl-NL",
+        "isPartOf": {"@type": "WebSite", "name": "EAA Monitor", "url": BASE_URL},
+    }
+    if items:
+        page["mainEntity"] = {
+            "@type": "ItemList",
+            "numberOfItems": len(items),
+            "itemListElement": items,
+        }
+    return (
+        '  <script type="application/ld+json">\n  '
+        + json.dumps(page, ensure_ascii=False, indent=2)
+        + "\n  </script>\n"
+    )
+
+
 def render(sources):
-    head = shared_head(TITLE, DESCRIPTION, URL)
+    head = shared_head(TITLE, DESCRIPTION, URL, extra_head=_jsonld(sources))
     return f"""{head}<body class="bg-white">
 {site_header(ACTIVE_PATH)}
   <main id="main">

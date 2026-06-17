@@ -33,6 +33,22 @@
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
   </script>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://eaa-monitor.nl/wcag-audit.html#page",
+  "url": "https://eaa-monitor.nl/wcag-audit.html",
+  "name": "WCAG-audit: auditbureaus in Nederland",
+  "description": "Wil je weten of je website voldoet aan de WCAG en de European Accessibility Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van auditbureaus in Nederland.",
+  "inLanguage": "nl-NL",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "EAA Monitor",
+    "url": "https://eaa-monitor.nl"
+  }
+}
+  </script>
 </head>
 <body class="bg-white">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
@@ -167,7 +183,16 @@
           </ul>
         </div>
       </div>
-      <p class="mt-12 pt-6 border-t border-white/10 text-xs text-white">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+      <div class="mt-12 pt-8 border-t border-white/10 grid gap-8 md:grid-cols-2 text-xs text-white leading-relaxed">
+        <div>
+          <p class="font-semibold mb-2">Europese infrastructuur</p>
+          <p class="max-w-md">Deze website draait volledig op Europese diensten. De servers staan bij Hetzner in Duitsland, het domein loopt via SIDN in Nederland, de bezoekersstatistieken komen van Plausible in Europa en e-mail versturen we met AhaSend uit Nederland. Je bezoek raakt geen Amerikaanse dienst.</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Goed om te weten</p>
+          <p class="max-w-md">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+        </div>
+      </div>
     </div>
     <script src="/static/newsletter.js"></script>
   </footer>

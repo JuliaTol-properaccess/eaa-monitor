@@ -103,8 +103,47 @@ def _table_or_empty(bureaus):
       </div>"""
 
 
+def _jsonld(bureaus):
+    """CollectionPage met ItemList van auditbureaus (alleen als er bureaus zijn)."""
+    items = []
+    for b in bureaus:
+        naam = str(b.get("naam", "")).strip()
+        if not naam:
+            continue
+        org = {"@type": "Organization", "name": naam}
+        website = str(b.get("website", "")).strip()
+        if website:
+            org["url"] = website
+        items.append({
+            "@type": "ListItem",
+            "position": len(items) + 1,
+            "item": org,
+        })
+    page = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": f"{URL}#page",
+        "url": URL,
+        "name": "WCAG-audit: auditbureaus in Nederland",
+        "description": DESCRIPTION,
+        "inLanguage": "nl-NL",
+        "isPartOf": {"@type": "WebSite", "name": "EAA Monitor", "url": BASE_URL},
+    }
+    if items:
+        page["mainEntity"] = {
+            "@type": "ItemList",
+            "numberOfItems": len(items),
+            "itemListElement": items,
+        }
+    return (
+        '  <script type="application/ld+json">\n  '
+        + json.dumps(page, ensure_ascii=False, indent=2)
+        + "\n  </script>\n"
+    )
+
+
 def render(bureaus):
-    head = shared_head(TITLE, DESCRIPTION, URL)
+    head = shared_head(TITLE, DESCRIPTION, URL, extra_head=_jsonld(bureaus))
     return f"""{head}<body class="bg-white">
 {site_header(ACTIVE_PATH)}
   <main id="main">
