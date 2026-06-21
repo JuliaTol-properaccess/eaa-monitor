@@ -1322,7 +1322,7 @@ async function sendPactAanmeldingEmail(env, { type, naam, contact, website, emai
     bericht || "(geen)",
     ``,
     `Verwerk dit handmatig: check de referentie of het voorbeeldrapport, voeg het bureau`,
-    `toe aan data/auditbureaus.json en koppel terug per mail (2 maanden gratis, daarna het jaartarief).`,
+    `toe aan data/auditbureaus.json en koppel terug per mail (2 maanden gratis, daarna € 295/jaar voor een zelfstandige auditor of € 495/jaar voor een bureau).`,
   ];
   await sendEmail(env, {
     to: env.NOTIFY_EMAIL,
