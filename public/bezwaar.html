@@ -107,7 +107,7 @@
 
       <div id="form-status" role="status" aria-live="polite" tabindex="-1" class="mb-6"></div>
 
-      <form id="bezwaar-form" action="https://formspree.io/f/mdavapbl" method="POST" novalidate>
+      <form id="bezwaar-form" action="https://eaa-monitor.nl/api/submit" method="POST" novalidate>
 
         <div class="hp-field" aria-hidden="true">
           <label for="hp-website">Laat dit veld leeg</label>
@@ -237,9 +237,9 @@
     (function () {
       "use strict";
 
-      // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md). Zolang dit leeg is,
-      // gaat het formulier via Formspree naar Julia (handmatige verwerking).
-      // Zet dit op de /submit-URL van de Worker om bezwaren automatisch te verwerken.
+      // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md). Gelijk aan het
+      // action-attribuut van het formulier, zodat ook een no-JS-verzending naar
+      // de EU-Worker gaat (geen Amerikaanse dienst meer in de flow).
       const BEZWAAR_ENDPOINT = "https://eaa-monitor.nl/api/submit";
 
       // Velden voorinvullen vanuit de querystring (vanaf de "Bezwaar maken"-knop in de tabel).

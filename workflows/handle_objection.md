@@ -18,7 +18,7 @@ De stappen in dit document gelden voor de handmatige route, en als naslag voor w
 
 ## Inputs
 
-- Een e-mail van Formspree met de velden uit `public/bezwaar.html`:
+- Een e-mail van de bezwaar-Worker (handmatige route) met de velden uit `public/bezwaar.html`:
   - bedrijfsnaam
   - webadres
   - e-mailadres
@@ -76,5 +76,5 @@ Wil een webshop terug in het dashboard? Verwijder het bijbehorende object uit `d
 
 - Verwerk een bezwaar nooit zonder dat alle drie de verklaringen zijn aangevinkt.
 - Zet nooit een e-mailadres in `data/objections.json`; de repo is openbaar.
-- De automatische route loopt via de bezwaar-Worker. Code en uitrolinstructies staan in `worker/` (zie `worker/DEPLOY.md`). De frontend wijst naar de Worker via de constante `BEZWAAR_ENDPOINT` in `public/bezwaar.html`. Is die leeg, dan valt het formulier terug op Formspree (`https://formspree.io/f/mdavapbl`).
+- De automatische route loopt via de bezwaar-Worker. Code en uitrolinstructies staan in `worker/` (zie `worker/DEPLOY.md`). De frontend wijst naar de Worker via de constante `BEZWAAR_ENDPOINT` in `public/bezwaar.html`. Het `action`-attribuut van het formulier wijst naar dezelfde Worker-URL, zodat ook een verzending zonder JavaScript bij de Worker uitkomt (geen Formspree meer).
 - De Worker dedupliceert: een al vermelde webshop of een al ingediend bezwaar levert geen tweede PR op. Bij een PR uit de automatische route hoef je de entry niet zelf te schrijven, alleen te controleren en te mergen.
