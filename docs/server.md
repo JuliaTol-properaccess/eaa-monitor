@@ -49,7 +49,7 @@ Node-adapter `worker/server.mjs`, als systemd-service `eaa-forms` op poort
 8787, achter Caddy op het pad `/api/*`.
 
 - **Code:** `/opt/eaa-forms/` (rsync vanaf de repo: `worker/src`, `worker/server.mjs`, `worker/package.json`)
-- **Config/secrets:** `/etc/eaa-forms.env` (chmod 600; SIGNING_SECRET, AHASEND_API_KEY + AHASEND_ACCOUNT_ID; GITHUB_TOKEN nog toevoegen vóór de DNS-verhuizing). De oude BREVO_API_KEY kan eruit zodra de AhaSend-versie draait; de code kiest AhaSend zodra beide AhaSend-vars er staan (zie `sendEmail()` in `worker/src/index.js` en `docs/eu-stack-migratie.md`, besluit 12 juni 2026)
+- **Config/secrets:** `/etc/eaa-forms.env` (chmod 600; SIGNING_SECRET, AHASEND_API_KEY + AHASEND_ACCOUNT_ID; GITHUB_TOKEN nog toevoegen vóór de DNS-verhuizing). Mail loopt via AhaSend zodra beide AhaSend-vars er staan; de Brevo- en Resend-takken zijn uit `sendEmail()` verwijderd (juni 2026), dus een eventuele oude BREVO_API_KEY/RESEND_API_KEY in `/etc/eaa-forms.env` doet niets meer en kan eruit (zie `sendEmail()` in `worker/src/index.js` en `docs/eu-stack-migratie.md`, besluit 12 juni 2026)
 - **Opslag:** `/var/lib/eaa-forms/kv.json` (nieuwsbrief + rate-limit-tellers)
 - **Logs:** `journalctl -u eaa-forms`
 - **Herstarten na code-update:** `systemctl restart eaa-forms`

@@ -1125,13 +1125,12 @@ function githubHeaders(env) {
 
 // ── E-mails ────────────────────────────────────────────────────────────────
 
-// Centrale verzendfunctie. Providervoorkeur op volgorde van de checks hieronder:
-// AhaSend (EU-stack, besluit 12 juni 2026) > Brevo (historisch, VPS) > Resend
-// (historisch, Cloudflare Worker) > de Cloudflare-binding env.EMAIL (alleen
-// geverifieerde bestemmingen). Welke provider draait bepaal je dus per omgeving
-// met de aanwezige keys; de Brevo- en Resend-takken kunnen weg zodra de
-// EU-migratie helemaal rond is. Alle callers gebruiken dezelfde vorm:
-// { to, from:{email,name}, replyTo, subject, text, html? }.
+// Centrale verzendfunctie. EU-stack: mail loopt via AhaSend (Nederland, besluit
+// 12 juni 2026). De Cloudflare-binding env.EMAIL blijft als laatste terugval voor
+// een eventuele Cloudflare-deploy (alleen geverifieerde bestemmingen); op de VPS
+// bestaat die binding niet, dus daar is AhaSend verplicht. De oude Brevo- en
+// Resend-takken zijn verwijderd nu de migratie rond is. Alle callers gebruiken
+// dezelfde vorm: { to, from:{email,name}, replyTo, subject, text, html? }.
 function publicBase(env, request) {
   // Basis voor links in mails (bevestiging, afmelden). Achter een reverse
   // proxy (de VPS, waar de service op het subpad /api hangt) klopt de
@@ -1168,55 +1167,12 @@ async function sendEmail(env, msg) {
     }
     return;
   }
-  if (env.BREVO_API_KEY) {
-    const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
-    const fromName = typeof msg.from === "string" ? null : msg.from.name;
-    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: {
-        "api-key": env.BREVO_API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        sender: fromName ? { email: fromEmail, name: fromName } : { email: fromEmail },
-        to: [{ email: msg.to }],
-        ...(msg.replyTo ? { replyTo: { email: msg.replyTo } } : {}),
-        subject: msg.subject,
-        textContent: msg.text,
-        ...(msg.html ? { htmlContent: msg.html } : {}),
-      }),
-    });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      throw new Error(`Brevo ${res.status}: ${detail.slice(0, 300)}`);
-    }
-    return;
-  }
-  if (env.RESEND_API_KEY) {
-    const fromEmail = typeof msg.from === "string" ? msg.from : msg.from.email;
-    const fromName = typeof msg.from === "string" ? null : msg.from.name;
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: fromName ? `${fromName} <${fromEmail}>` : fromEmail,
-        to: [msg.to],
-        ...(msg.replyTo ? { reply_to: msg.replyTo } : {}),
-        subject: msg.subject,
-        text: msg.text,
-        ...(msg.html ? { html: msg.html } : {}),
-      }),
-    });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      throw new Error(`Resend ${res.status}: ${detail.slice(0, 300)}`);
-    }
-    return;
-  }
   // Terugval: Cloudflare Email Sending-binding (alleen geverifieerde bestemmingen).
+  // Op de VPS bestaat deze binding niet; ontbreekt AhaSend daar, dan is dat een
+  // configuratiefout en geven we een duidelijke melding in plaats van een crash.
+  if (!env.EMAIL || typeof env.EMAIL.send !== "function") {
+    throw new Error("Geen e-mailprovider geconfigureerd (AHASEND_API_KEY/AHASEND_ACCOUNT_ID ontbreken).");
+  }
   await env.EMAIL.send(msg);
 }
 
