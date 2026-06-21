@@ -3,11 +3,11 @@
 Generator voor de Eregalerij (WAT-framework, Layer 3: Tool).
 
 Rendert data/halloffame.json naar public/eregalerij.html: een server-rendered
-overzicht van websites die aantoonbaar toegankelijk zijn. Consumenten nomineren
-via public/nomineren.html (Worker-route POST /hof/nominate); na e-mailbevestiging
-opent de Worker een PR op data/halloffame.json. Julia controleert de site,
-schrijft geverifieerde observaties met codevoorbeelden en merget. Pas dan staat
-de entry op de pagina.
+overzicht van websites die bezoekers als digitaal toegankelijk ervaren.
+Consumenten nomineren via public/nomineren.html (Worker-route POST /hof/nominate);
+na e-mailbevestiging commit de Worker de nominatie direct naar data/halloffame.json
+op main (geen PR, geen controle, besluit 21 juni 2026) en de CI bouwt deze pagina
+opnieuw. Julia kan een entry later verrijken met geverifieerde observaties.
 
 Stemmen lopen via de Worker (POST /hof/vote, dubbele opt-in per e-mail) en staan
 in KV, niet in dit databestand. De pagina haalt de tellers client-side op via
@@ -41,11 +41,11 @@ op datum, nieuwste boven):
       }
     ]
 
-Verplicht voor rendering: naam, url, slug, datum en minstens 1 observatie.
-Entries zonder observaties worden met een waarschuwing overgeslagen: zo kan
-een te vroeg gemergde nominatie-PR nooit een ongeverifieerde entry publiceren.
-De slug komt van de Worker en is het anker voor de stemtellers; wijzig hem
-niet na publicatie. Nooit e-mailadressen in dit bestand (de repo is openbaar).
+Verplicht voor rendering: naam, url, slug en datum. Observaties zijn optioneel;
+staan ze er, dan tonen we het blok "Wat doet deze website goed?" met
+codevoorbeelden. De slug komt van de Worker en is het anker voor de stemtellers;
+wijzig hem niet na publicatie. Nooit e-mailadressen in dit bestand (de repo is
+openbaar).
 """
 
 import html
@@ -73,8 +73,8 @@ URL = f"{BASE_URL}/eregalerij.html"
 TITLE = "Eregalerij: websites die echt toegankelijk zijn — EAA Monitor"
 DESCRIPTION = (
     "Een toegankelijkheidsverklaring zegt niets over echte toegankelijkheid. "
-    "In de eregalerij staan websites die het aantoonbaar goed doen: genomineerd "
-    "door bezoekers, gecontroleerd door een senior auditor, met codevoorbeelden."
+    "In de eregalerij staan websites die bezoekers als digitaal toegankelijk "
+    "ervaren en daarom nomineren."
 )
 
 # Basis-URL van de bezwaar-Worker (zie worker/DEPLOY.md). De stemroutes zijn
@@ -97,8 +97,9 @@ def _parse_date(value):
 def _valid_entries(entries):
     """Filtert entries die compleet genoeg zijn om te publiceren.
 
-    Een entry zonder geverifieerde observaties is per definitie nog niet door
-    de review heen en wordt overgeslagen, ook als de PR al gemerged is.
+    Nominaties worden zonder controle geplaatst (besluit 21 juni 2026), dus een
+    ontbrekende observatie is geen reden meer om over te slaan. Naam, url, slug
+    en datum blijven verplicht; zonder die kan de kaart niet gerenderd worden.
     """
     ok = []
     for item in entries:
@@ -106,15 +107,8 @@ def _valid_entries(entries):
         url = str(item.get("url", "")).strip()
         slug = str(item.get("slug", "")).strip()
         datum = _parse_date(item.get("datum"))
-        observaties = [
-            o for o in item.get("observaties") or []
-            if isinstance(o, dict) and str(o.get("titel", "")).strip()
-        ]
         if not (naam and url and slug and datum):
             print(f"Waarschuwing: entry overgeslagen (naam/url/slug/datum mist): {naam or url or slug or '?'}")
-            continue
-        if not observaties:
-            print(f"Waarschuwing: '{naam}' overgeslagen: nog geen geverifieerde observaties (zie workflows/handle_nominatie.md)")
             continue
         ok.append(item)
     return ok
@@ -165,10 +159,19 @@ def _entry_html(item):
           <figcaption class="mt-1 text-sm text-gray-500">Uit de nominatie van een bezoeker</figcaption>
         </figure>"""
 
-    observaties = "\n".join(
-        _observatie_html(o) for o in item.get("observaties") or []
+    observaties_items = [
+        o for o in item.get("observaties") or []
         if isinstance(o, dict) and str(o.get("titel", "")).strip()
-    )
+    ]
+    observaties_block = ""
+    if observaties_items:
+        observaties_html = "\n".join(_observatie_html(o) for o in observaties_items)
+        observaties_block = f"""
+        <div class="mt-5">
+          <h4 class="text-sm font-bold text-navy uppercase tracking-wide">Wat doet deze website goed?</h4>
+          <p class="mt-1 text-sm text-gray-500">Met voorbeelden uit de code van de site zelf.</p>
+{observaties_html}
+        </div>"""
 
     return f"""      <article class="card reveal p-7 md:p-8" id="{slug_attr}">
         <div class="flex items-start justify-between gap-4">
@@ -178,12 +181,7 @@ def _entry_html(item):
           {badge}
         </div>
         <p class="mt-1 text-sm text-gray-500">{meta}</p>
-{quote}
-        <div class="mt-5">
-          <h4 class="text-sm font-bold text-navy uppercase tracking-wide">Wat doet deze website goed?</h4>
-          <p class="mt-1 text-sm text-gray-500">Geverifieerd door een senior auditor, met code van de site zelf.</p>
-{observaties}
-        </div>
+{quote}{observaties_block}
         <div class="mt-6 pt-5 border-t border-line flex flex-wrap items-center gap-4" data-hof-vote-block hidden>
           <span class="text-sm font-semibold text-navy" data-hof-count="{slug_attr}"></span>
           <details class="hof-details hof-vote">
@@ -210,7 +208,7 @@ def _list_or_empty(entries):
         return """
       <div class="card p-10 text-center text-gray-600">
         <p class="text-lg">Er staat nog niemand in de eregalerij.</p>
-        <p class="mt-2">Ken jij een website die echt toegankelijk is? Nomineer hem, dan controleren we hem en zetten we hem hier in het zonnetje.</p>
+        <p class="mt-2">Ken jij een website die echt toegankelijk is? Nomineer hem, dan zetten we hem hier in het zonnetje.</p>
         <a href="/nomineren.html" class="btn btn-primary mt-6">Nomineer een website</a>
       </div>"""
     return f"""
@@ -256,7 +254,7 @@ def render(entries):
     <section>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
         <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Eregalerij</h1>
-        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Een toegankelijkheidsverklaring zegt niets over hoe toegankelijk een website echt is. In deze hall of fame staan websites die het aantoonbaar goed doen: genomineerd door bezoekers, gecontroleerd door een senior auditor, met echte codevoorbeelden voor ontwikkelaars.</p>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Een toegankelijkheidsverklaring zegt niets over hoe toegankelijk een website echt is. In deze hall of fame staan websites die bezoekers als digitaal toegankelijk ervaren en daarom nomineren.</p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="/nomineren.html" class="btn btn-primary">Nomineer een website</a>
         </div>
@@ -266,8 +264,8 @@ def render(entries):
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12 pb-4">
       <div class="prose max-w-prose">
         <h2>Hoe het werkt</h2>
-        <p>Kom je een website tegen die uitstekend werkt met een schermlezer, alleen het toetsenbord of een andere hulptechnologie? Nomineer hem via het formulier. Je bevestigt je nominatie via een link in je mail. Daarna bekijkt een senior auditor de website: werkt hij echt zo goed als de nominatie zegt? Pas dan komt de website in de eregalerij, met geverifieerde voorbeelden uit de code. Zo zien ontwikkelaars niet alleen dát het kan, maar ook hóe.</p>
-        <p>Iedereen kan daarna op een vermelding stemmen. Eén stem per e-mailadres, bevestigd via je mail. Stemmen vanaf het domein van de website zelf tellen we niet mee.</p>
+        <p>Kom je een website tegen die je als digitaal toegankelijk ervaart? Nomineer hem via het formulier. Je bevestigt je nominatie via een link in je mail en daarna plaatsen we de website in de eregalerij.</p>
+        <p>Iedereen kan op een vermelding stemmen. Eén stem per e-mailadres, bevestigd via je mail. Stemmen vanaf het domein van de website zelf tellen we niet mee.</p>
       </div>
     </section>
 
@@ -279,7 +277,7 @@ def render(entries):
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16">
       <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-extrabold text-navy tracking-tight">Ken jij een website die hier hoort?</h2>
-        <p class="mt-3 text-navy/70 leading-relaxed max-w-2xl">Nomineer hem. Vertel wat de website goed doet en met welke hulptechnologie je hem gebruikte. Wij controleren elke nominatie voordat hij op deze pagina komt; je e-mailadres gebruiken we alleen voor de bevestiging en publiceren we nooit.</p>
+        <p class="mt-3 text-navy/70 leading-relaxed max-w-2xl">Nomineer hem. Vertel wat de website goed doet en met welke hulptechnologie je hem gebruikte. Na je bevestiging plaatsen we de nominatie; je e-mailadres gebruiken we alleen voor de bevestiging en publiceren we nooit.</p>
         <a href="/nomineren.html" class="btn btn-primary mt-6">Nomineer een website</a>
       </div>
     </section>
