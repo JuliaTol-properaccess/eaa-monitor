@@ -673,12 +673,12 @@ async function handleHofNominateConfirm(request, env, url) {
 
   let result;
   try {
-    result = await createHofPR(env, pending);
+    result = await publishHofEntry(env, pending);
   } catch (err) {
-    console.error("Nominatie-PR aanmaken mislukt:", err && err.message);
+    console.error("Nominatie plaatsen mislukt:", err && err.message);
     return htmlPage(
       "Er ging iets mis",
-      `<p>We konden je nominatie nu niet verwerken. Probeer de link later opnieuw, of mail naar
+      `<p>We konden je nominatie nu niet plaatsen. Probeer de link later opnieuw, of mail naar
        <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>.</p>`,
       502
     );
@@ -689,20 +689,20 @@ async function handleHofNominateConfirm(request, env, url) {
     body = `<p><strong>Deze website staat al in de eregalerij.</strong></p>
             <p>Goed nieuws dus: anderen vonden hem ook toegankelijk. Je vindt hem op de
             <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>.</p>`;
-  } else if (result.status === "already_submitted") {
-    body = `<p><strong>Deze website is al genomineerd.</strong></p>
-            <p>De nominatie wacht op een controle door onze auditor. Houd de
-            <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a> in de gaten.</p>`;
   } else {
-    body = `<p><strong>Bedankt, je nominatie is bevestigd.</strong></p>
-            <p>Een senior auditor bekijkt de website nu eerst zelf. Klopt je nominatie, dan komt de
-            website in de <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>, met
-            voorbeelden uit de code zodat ontwikkelaars ervan kunnen leren.</p>`;
+    body = `<p><strong>Bedankt, je nominatie staat in de eregalerij.</strong></p>
+            <p>Je vindt de website op de
+            <a href="https://eaa-monitor.nl/eregalerij.html">eregalerij</a>. Het kan een paar
+            minuten duren voordat de pagina is bijgewerkt.</p>`;
   }
   return htmlPage("Nominatie bevestigd", body, 200);
 }
 
-async function createHofPR(env, pending) {
+// Plaatst een bevestigde nominatie direct in de eregalerij: commit naar
+// data/halloffame.json op main, zonder PR en zonder controle (bewuste keuze,
+// 21 juni 2026). De CI bouwt eregalerij.html opnieuw bij de eerstvolgende
+// deploy, die de commit naar main zelf triggert.
+async function publishHofEntry(env, pending) {
   const entry = {
     naam: pending.naam,
     url: pending.url,
@@ -714,36 +714,11 @@ async function createHofPR(env, pending) {
     observaties: [],
   };
   const norm = normalizeUrl(pending.url);
-  return createDataPR(env, {
+  return commitDataEntry(env, {
     path: "data/halloffame.json",
-    branchPrefix: "hof",
-    slug: pending.slug,
     entry,
     isDuplicate: (e) => normalizeUrl(e.url) === norm,
     commitMessage: `Nominatie eregalerij (per mail bevestigd): ${pending.naam}`,
-    prTitle: `Nominatie eregalerij: ${pending.naam}`,
-    prBody: [
-      `Nominatie voor de eregalerij, per e-mail bevestigd door de inzender.`,
-      ``,
-      `- Website: ${pending.naam} (${pending.url})`,
-      `- Hulptechnologie van de inzender: ${pending.hulptechnologie || "(niet opgegeven)"}`,
-      `- Datum: ${pending.datum}`,
-      `- Zelfnominatie (e-maildomein = site-domein): ${pending.zelfnominatie ? "ja" : "nee"}`,
-      ``,
-      `Motivatie van de inzender (mag als anonieme quote gepubliceerd worden):`,
-      ``,
-      ...pending.motivatie.split("\n").map((line) => `> ${line}`),
-      ``,
-      `Reviewstappen (workflows/handle_nominatie.md):`,
-      ``,
-      `- [ ] Korte toegankelijkheidscheck gedaan (toetsenbord, schermlezer, structuur, formulieren)`,
-      `- [ ] 2-3 geverifieerde observaties met codevoorbeeld toegevoegd aan de entry`,
-      `- [ ] Motivatie geredigeerd (geen herleidbare gegevens) en categorie gezet`,
-      `- [ ] python tools/build_halloffame.py gedraaid en eregalerij.html mee-gecommit`,
-      ``,
-      `Zonder merge verschijnt er niets op de site. Entries zonder observaties slaat de`,
-      `build-tool over, dus een te vroege merge publiceert nooit een ongecontroleerde entry.`,
-    ].join("\n"),
   });
 }
 
@@ -925,7 +900,7 @@ async function sendHofNominateConfirmEmail(env, { naam, webadres, email, confirm
     ``,
     confirmUrl,
     ``,
-    `Na je bevestiging controleert een senior auditor de website. Pas daarna komt hij in de eregalerij.`,
+    `Na je bevestiging komt de website in de eregalerij.`,
     ``,
     `Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.`,
     ``,
@@ -946,7 +921,7 @@ async function sendHofNominateConfirmEmail(env, { naam, webadres, email, confirm
       </p>
       <p style="font-size:13px;color:#6B7280;">Werkt de knop niet? Kopieer dan deze link naar je browser:<br>
         <span style="word-break:break-all;">${escapeHtml(confirmUrl)}</span></p>
-      <p>Na je bevestiging controleert een senior auditor de website. Pas daarna komt hij in de eregalerij.</p>
+      <p>Na je bevestiging komt de website in de eregalerij.</p>
       <p>Heb jij dit niet aangevraagd? Dan hoef je niets te doen. Zonder bevestiging gebeurt er niets.</p>
       <p style="color:#6B7280;font-size:13px;">EAA Monitor, eaa-monitor.nl</p>
     </div>`;
@@ -1002,6 +977,53 @@ async function sendHofVoteConfirmEmail(env, { naam, email, confirmUrl }) {
     text,
     html,
   });
+}
+
+// ── GitHub: data-wijziging direct naar main committen ──────────────────────
+
+// Voegt een entry toe aan een JSON-lijstbestand en commit dat rechtstreeks naar
+// de basisbranch (main), zonder PR. Bestand ophalen, dedupliceren, entry
+// toevoegen, committen. Eén retry bij een 409 (iemand committe tussen GET en
+// PUT). Retourneert { status: "already_listed" | "committed" }.
+async function commitDataEntry(env, { path, entry, isDuplicate, commitMessage }) {
+  const repo = env.GITHUB_REPO;
+  const base = env.GITHUB_BRANCH || "main";
+  const contentsApi = `https://api.github.com/repos/${repo}/contents/${path}`;
+
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const getRes = await fetch(`${contentsApi}?ref=${encodeURIComponent(base)}`, {
+      headers: githubHeaders(env),
+    });
+    if (!getRes.ok) throw new Error(`GitHub GET contents ${getRes.status}`);
+    const file = await getRes.json();
+
+    let current;
+    try {
+      current = JSON.parse(b64decode(file.content || ""));
+    } catch {
+      current = [];
+    }
+    if (!Array.isArray(current)) current = [];
+    if (current.some(isDuplicate)) {
+      return { status: "already_listed" };
+    }
+
+    current.push(entry);
+    const putRes = await fetch(contentsApi, {
+      method: "PUT",
+      headers: githubHeaders(env),
+      body: JSON.stringify({
+        message: commitMessage,
+        content: b64encode(JSON.stringify(current, null, 2) + "\n"),
+        sha: file.sha,
+        branch: base,
+      }),
+    });
+    if (putRes.ok) return { status: "committed" };
+    if (putRes.status === 409 && attempt === 0) continue; // verse sha en opnieuw
+    throw new Error(`GitHub PUT ${putRes.status}`);
+  }
+  throw new Error("GitHub PUT 409 (na retry)");
 }
 
 // ── GitHub: data-wijziging als pull request indienen ───────────────────────

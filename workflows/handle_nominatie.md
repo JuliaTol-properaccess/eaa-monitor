@@ -1,55 +1,33 @@
-# Workflow: Eregalerij-nominatie verwerken
+# Workflow: Eregalerij-nominatie verrijken of modereren
 
 ## Doel
 
-Een per e-mail bevestigde nominatie voor de [eregalerij](../public/eregalerij.html)
-beoordelen en, als de website het verdient, publiceren met geverifieerde
-observaties en codevoorbeelden. De PR is de poort: zonder merge verschijnt er
-niets op de site, en de build-tool slaat entries zonder observaties over. Alleen
-websites die een senior auditor zelf heeft gecontroleerd komen erin.
+Sinds 21 juni 2026 komen bevestigde nominaties **automatisch** in de
+[eregalerij](../public/eregalerij.html): na de dubbele e-mail-opt-in commit de
+Worker de nominatie direct naar `data/halloffame.json` op main (geen PR, geen
+controle vooraf) en de deploy herbouwt de pagina. Er is dus geen poort meer om
+doorheen te komen.
 
-Het tweede doel van de eregalerij is ontwikkelaars laten zien hóe het kan: elke
-vermelding bevat 2-3 concrete observaties met echte code van de site.
+Deze workflow gaat over twee dingen die je *achteraf* kunt doen:
 
-## Inputs
+1. een al geplaatste vermelding **verrijken** met geverifieerde observaties en
+   codevoorbeelden, zodat ontwikkelaars zien hóe het kan;
+2. een vermelding **modereren** (verwijderen) als het spam of misbruik is.
 
-Een pull request van de bezwaar-Worker met branchprefix `hof/` op
-`data/halloffame.json` (route `GET /hof/nominate/confirm`, zie
-`worker/src/index.js`). De PR-body bevat:
+Beide zijn gewone wijzigingen op `data/halloffame.json`, via een commit of PR.
 
-- naam en URL van de genomineerde website,
-- de motivatie van de inzender (mag als anonieme quote gepubliceerd worden;
-  de inzender heeft daarvoor een vinkje gezet),
-- de hulptechnologie waarmee de inzender de site gebruikte (optioneel),
-- de vlag **zelfnominatie**: ja betekent dat het e-maildomein van de inzender
-  gelijk is aan het domein van de site. Dat is geen diskwalificatie, maar weeg
-  het mee: een zelfnominatie moet de check dubbel zo overtuigend doorstaan.
+## Een vermelding verrijken met observaties (optioneel)
 
-Het e-mailadres van de inzender staat **nooit** in de PR of de repo; het leeft
-alleen kort in KV (`hof:pending:<uuid>`, TTL 7 dagen) en in de bevestigingsmail.
+Een nominatie staat live met alleen de motivatie-quote van de inzender. Wil je er
+de waardevolle code-voorbeelden bij zetten:
 
-## Stappen
+1. **Doe een korte toegankelijkheidscheck.** Mini-auditniveau: werkt de site met
+   alleen het toetsenbord (focus zichtbaar, geen vallen), klopt de basis voor
+   schermlezers (koppen, landmarks, labels, alt-teksten), en klopt de flow die de
+   inzender noemt?
 
-1. **Beoordeel de nominatie.** Is het een echte website, geen spam, en staat hij
-   niet al in de eregalerij of in een open `hof/`-PR? Is de motivatie serieus?
-   Twijfel of duidelijk misbruik: sluit de PR met een korte, vriendelijke
-   toelichting.
-
-2. **Doe een korte toegankelijkheidscheck.** Mini-auditniveau, geen volledige
-   audit. Controleer minimaal:
-
-   - werkt de site volledig met alleen het toetsenbord (focus zichtbaar, geen
-     vallen, logische volgorde);
-   - klopt de basis voor schermlezers (koppenstructuur, landmarks, labels op
-     formuliervelden en knoppen, alternatieve teksten);
-   - de flow die de inzender noemt in de motivatie (bijvoorbeeld afrekenen met
-     VoiceOver): klopt die claim?
-
-   Onvoldoende? Sluit de PR met een vriendelijke toelichting. De lat ligt hoog:
-   de eregalerij is alleen geloofwaardig als elke vermelding klopt.
-
-3. **Schrijf 2-3 geverifieerde observaties.** Vul in de PR-branch het veld
-   `observaties` van de entry in `data/halloffame.json`:
+2. **Schrijf 2-3 geverifieerde observaties** in het veld `observaties` van de
+   entry in `data/halloffame.json`:
 
    ```json
    {
@@ -63,39 +41,43 @@ alleen kort in KV (`hof:pending:<uuid>`, TTL 7 dagen) en in de bevestigingsmail.
    - **Verzin nooit code.** Knip de snippet uit de echte broncode van de site;
      inkorten en opschonen mag, verzinnen niet.
    - `titel` is verplicht; `beschrijving`, `code` en `wcag` zijn optioneel maar
-     maken de observatie veel waardevoller voor ontwikkelaars.
-   - Schrijf de beschrijving zo dat een ontwikkelaar zonder WCAG-kennis snapt
-     waarom dit goed is.
+     maken de observatie veel waardevoller.
 
-4. **Redigeer de rest van de entry.** Haal herleidbare gegevens uit de
-   `motivatie`-quote, breng hem op nlds-toon en zet een `categorie` (vrij label,
-   bijvoorbeeld `webshop`, `bank`, `overheid`, `media`). Controleer dat `slug`
-   ongewijzigd blijft: de stemtellers hangen eraan.
+3. **Redigeer de rest van de entry.** Haal herleidbare gegevens uit de
+   `motivatie`-quote, breng hem op nlds-toon en zet eventueel een `categorie`
+   (vrij label, bijvoorbeeld `webshop`, `bank`, `overheid`, `media`). Laat `slug`
+   ongewijzigd: de stemtellers hangen eraan.
 
-5. **Bouw de pagina opnieuw** op de PR-branch en commit het resultaat mee:
+4. **Bouw de pagina opnieuw en commit:**
 
    ```bash
    python tools/build_halloffame.py
    python tools/build_articles.py   # ververst de sitemap
    ```
 
-   De build-tool waarschuwt en slaat de entry over zolang `observaties` leeg is;
-   dat hoort, het is de vangrail tegen te vroeg mergen.
+## Een vermelding modereren (verwijderen)
 
-6. **Merge de PR.** De deploy-workflow zet de nieuwe eregalerij live. Vanaf dat
-   moment kan er op de vermelding gestemd worden (de stemroute valideert tegen
-   de live `data/halloffame.json`).
+Omdat er geen controle vooraf is, kan er spam of een ongepaste vermelding tussen
+staan. Verwijderen:
 
-7. **Bedank de inzender (optioneel).** Het adres staat alleen in de
-   oorspronkelijke Worker-flow, niet in de repo; bewaar het nergens.
+1. Haal de entry uit `data/halloffame.json`.
+2. Draai `python tools/build_halloffame.py` en commit (de deploy zet de
+   bijgewerkte pagina live; de CI bouwt de eregalerij ook zelf opnieuw).
+3. Eventuele stemmen op die `slug` blijven in KV staan maar tellen nergens meer
+   mee; je kunt ze laten staan.
+
+De dubbele e-mail-opt-in is de enige rem op de instroom: zonder klik op de
+bevestigingslink komt een nominatie niet live.
 
 ## Let op
 
 - De toon volgt de nlds-schrijfwijzer: je-vorm, geen jargon, geen em-dashes.
-- **Nooit e-mailadressen** in `data/halloffame.json` of de PR; de repo is openbaar.
+- **Nooit e-mailadressen** in `data/halloffame.json`; de repo is openbaar. Het
+  adres van de inzender leeft alleen kort in KV (`hof:pending:<uuid>`, TTL 7
+  dagen) en in de bevestigingsmail.
 - Stemmen zijn sociaal bewijs, geen ranglijst met gevolgen. Ziet een teller er
   verdacht uit (plotselinge piek), dan kun je de KV-sleutels `hof:vote:<slug>:*`
-  en `hof:count:<slug>` bekijken en de teller handmatig bijstellen met
-  `npx wrangler kv key put` (let op de quoted-key gotchas, zie memory/DEPLOY.md).
-- Eigen-domein-stemmen weigert de Worker al; zelfnominaties komen wel door maar
-  gevlagd. Jij bent de laatste poort.
+  en `hof:count:<slug>` bekijken en de teller handmatig bijstellen (let op de
+  quoted-key gotchas, zie memory/DEPLOY.md).
+- Eigen-domein-stemmen weigert de Worker al; een zelfnominatie komt wel gewoon
+  live (de Worker vlagt hem niet meer apart, want er is geen reviewstap).

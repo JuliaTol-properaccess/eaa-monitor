@@ -42,6 +42,17 @@ jobs:
           npm ci
           npm run build:css
 
+      # Bevestigde nominaties commit de Worker direct naar data/halloffame.json
+      # op main (zonder PR). Die commit triggert deze deploy; we bouwen de
+      # eregalerij hier opnieuw zodat de nieuwe vermelding meteen live staat.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build eregalerij uit data/halloffame.json
+        run: |
+          pip install markdown pyyaml
+          python tools/build_halloffame.py
+
       - name: Prepare site
         run: |
           mkdir -p _site
