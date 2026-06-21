@@ -12,6 +12,7 @@
  *   GET  /confirm                — verifieert de getekende token en opent een PR op objections.json
  *   POST /feedback               — feedback op een kennisbank-artikel, mailt Julia rechtstreeks
  *   POST /vraag                  — anonieme EAA-vraag voor de toezichthouder, mailt Julia rechtstreeks
+ *   POST /pact/aanmelden         — aanmelding voor Het Vierogen-pact (auditor of bureau), mailt Julia rechtstreeks
  *   POST /newsletter             — nieuwsbrief-opt-in, stuurt een bevestigingsmail (dubbele opt-in)
  *   GET  /newsletter/confirm     — bevestigt de inschrijving en slaat het adres op in KV
  *   GET  /newsletter/unsubscribe — meldt het adres af en verwijdert het uit KV
@@ -66,6 +67,9 @@ export default {
     if (url.pathname === "/vraag" && request.method === "POST") {
       return withCors(env, await handleVraag(request, env));
     }
+    if (url.pathname === "/pact/aanmelden" && request.method === "POST") {
+      return withCors(env, await handlePactAanmelden(request, env));
+    }
     if (url.pathname === "/confirm" && request.method === "GET") {
       return handleConfirm(request, env, url);
     }
@@ -109,6 +113,7 @@ const RATE_LIMITS = {
   submit: { max: 5, windowSecs: 3600 },
   newsletter: { max: 3, windowSecs: 3600 },
   vraag: { max: 5, windowSecs: 3600 },
+  pact: { max: 5, windowSecs: 3600 },
   feedback: { max: 10, windowSecs: 3600 },
   hofnominate: { max: 3, windowSecs: 3600 },
   hofvote: { max: 5, windowSecs: 3600 },
@@ -303,6 +308,62 @@ async function handleVraag(request, env) {
     console.error("Vraagmail mislukt:", err && err.message);
     return json(
       { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar vragen@eaa-monitor.nl." },
+      502
+    );
+  }
+  return json({ ok: true });
+}
+
+// ── /pact/aanmelden ──────────────────────────────────────────────────────────
+//
+// Aanmelding voor Het Vierogen-pact (zie docs/vierogen-pact.md). Mail-only, net
+// als /vraag: geen opslag, geen PR. Julia neemt de aanmelding handmatig in
+// behandeling (versie 1: terugkoppeling per mail). Welkom voor zowel
+// auditbureaus als freelance auditors.
+
+async function handlePactAanmelden(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true });
+  }
+
+  const type = (form.get("type") || "").trim();
+  const naam = (form.get("naam") || "").trim();
+  const contact = (form.get("contact") || "").trim();
+  const website = (form.get("website") || "").trim();
+  const email = (form.get("email") || "").trim();
+  const talen = (form.get("talen") || "").trim();
+  const referentie = (form.get("referentie") || "").trim();
+  const bericht = (form.get("bericht") || "").trim();
+  const akkoord = form.get("akkoord_pact") === "ja";
+
+  if (!naam || !email) {
+    return json({ ok: false, error: "Vul in elk geval een naam en je e-mailadres in." }, 422);
+  }
+  if (!isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+  if (!akkoord) {
+    return json({ ok: false, error: "Vink aan dat je je verbindt aan de vier punten van het pact." }, 422);
+  }
+  if (bericht.length > 4000) {
+    return json({ ok: false, error: "Je toelichting is te lang. Houd het onder de 4000 tekens." }, 422);
+  }
+  if (await rateLimited(env, request, "pact")) return tooManyRequests();
+
+  try {
+    await sendPactAanmeldingEmail(env, { type, naam, contact, website, email, talen, referentie, bericht });
+  } catch (err) {
+    console.error("Pact-aanmeldmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
       502
     );
   }
@@ -1275,6 +1336,42 @@ async function sendVraagEmail(env, { vraag, email, sector }) {
     to,
     from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
     replyTo: email && isValidEmail(email) ? email : to,
+    subject,
+    text: lines.join("\n"),
+  });
+}
+
+async function sendPactAanmeldingEmail(env, { type, naam, contact, website, email, talen, referentie, bericht }) {
+  const typeLabel =
+    type === "freelance"
+      ? "Freelance auditor"
+      : type === "bureau"
+      ? "Auditbureau"
+      : type || "(niet opgegeven)";
+  const subject = `Aanmelding Vierogen-pact: ${naam}`;
+  const lines = [
+    `Er is een aanmelding voor Het Vierogen-pact binnengekomen.`,
+    ``,
+    `Type: ${typeLabel}`,
+    `Naam: ${naam}`,
+    `Contactpersoon: ${contact || "(niet opgegeven)"}`,
+    `Website: ${website || "(niet opgegeven)"}`,
+    `E-mailadres: ${email}`,
+    `Talen: ${talen || "(niet opgegeven)"}`,
+    `Referentie of voorbeeldrapport: ${referentie || "(niet opgegeven)"}`,
+    ``,
+    `De aanmelder verbindt zich aan de vier punten van het pact (zie docs/vierogen-pact.md).`,
+    ``,
+    `Toelichting:`,
+    bericht || "(geen)",
+    ``,
+    `Verwerk dit handmatig: check de referentie of het voorbeeldrapport, voeg het bureau`,
+    `toe aan data/auditbureaus.json en koppel terug per mail (2 maanden gratis, daarna het jaartarief).`,
+  ];
+  await sendEmail(env, {
+    to: env.NOTIFY_EMAIL,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
     subject,
     text: lines.join("\n"),
   });
