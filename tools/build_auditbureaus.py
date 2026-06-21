@@ -165,7 +165,7 @@ def render(bureaus):
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-6" aria-label="Auditbureaus">
       <h2 class="text-2xl md:text-3xl font-extrabold text-navy tracking-tight mb-6">Auditbureaus in Nederland</h2>
 {_table_or_empty(bureaus)}
-      <p class="mt-4 text-sm text-gray-600">Ben je auditbureau of freelance auditor en wil je meedoen aan collegiale toetsing? <a href="/vierogen-pact.html" class="link font-semibold">Plaatsing op deze pagina</a>.</p>
+      <p class="mt-4 text-sm text-gray-600">Ben je auditbureau of freelance auditor en wil je hier vermeld staan, vindbaar voor klanten? <a href="/vierogen-pact.html" class="link font-semibold">Plaatsing op deze pagina</a>.</p>
     </section>
 
   </main>

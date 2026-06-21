@@ -31,9 +31,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Koppen en grote telcijfers in Fraunces (warme display-serif) */
+/* Koppen en grote telcijfers in Fraunces (warme display-serif).
+   WONK 0 zet de grillige alternatieve f/j/g-vormen uit, SOFT 0 houdt de
+   terminals strak. font-weight blijft de wght-as sturen (niet hier gezet). */
 h1, h2, h3, h4, .font-display {
   font-family: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  font-variation-settings: "WONK" 0, "SOFT" 0;
 }
 
 /* De ijzeren mono-regel: alles wat de scraper heeft gemeten staat in mono,
