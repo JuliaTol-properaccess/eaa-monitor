@@ -39,8 +39,8 @@ op let.
 
 De vermelding kost € 295 per jaar voor een zelfstandige auditor en € 495 per
 jaar voor een auditbureau (excl. btw). De eerste twee maanden zijn gratis,
-zonder verplichting. Bij aanmelding vragen we kort één referentie of een
-voorbeeldrapport, puur als teken dat het serieus werk is.
+zonder verplichting. Bij aanmelding vragen we kort één voorbeeldrapport, puur
+als teken dat het serieus werk is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
@@ -79,7 +79,7 @@ serieuze opdrachtgever op let.
 
 De vermelding kost voor een auditbureau € 495 per jaar (excl. btw). De eerste
 twee maanden zijn gratis, zonder verplichting. Bij aanmelding vragen we kort één
-referentie of een voorbeeldrapport, puur als teken dat het serieus werk is.
+voorbeeldrapport, puur als teken dat het serieus werk is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
@@ -119,8 +119,7 @@ sparren en je staat er niet meer alleen voor.
 
 De vermelding kost voor een zelfstandige auditor € 295 per jaar (excl. btw). De
 eerste twee maanden zijn gratis, zonder verplichting. Bij aanmelding vragen we
-kort één referentie of een voorbeeldrapport, puur als teken dat het serieus werk
-is.
+kort één voorbeeldrapport, puur als teken dat het serieus werk is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
@@ -142,5 +141,5 @@ EAA Monitor
 - **Personaliseren.** Eén concrete zin per ontvanger (waarom juist zij) verhoogt
   de respons. Vul de aanhef en die zin per ontvanger aan.
 - **De twee voorwaarden zijn de kern.** Jaarabonnement en openstaan voor peer
-  review. De referentie bij aanmelding is geen derde voorwaarde maar een lichte
-  check; presenteer het zo.
+  review. Het voorbeeldrapport bij aanmelding is geen derde voorwaarde maar een
+  lichte check; presenteer het zo.

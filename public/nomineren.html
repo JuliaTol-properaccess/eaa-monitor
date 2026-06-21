@@ -97,7 +97,7 @@
       <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
         <a href="/eregalerij.html" class="text-sm font-semibold text-brand">&larr; Eregalerij</a>
         <h1 class="mt-6 text-3xl md:text-5xl font-semibold text-navy tracking-tight">Nomineer een toegankelijke website</h1>
-        <p class="mt-4 text-lg text-gray-600 leading-relaxed">Kom je een website tegen die uitstekend werkt met een schermlezer, alleen het toetsenbord of een andere hulptechnologie? Vertel het ons. Na een check door een senior auditor komt hij in de eregalerij.</p>
+        <p class="mt-4 text-lg text-gray-600 leading-relaxed">Kom je een website tegen die je als digitaal toegankelijk ervaart? Vertel het ons. We plaatsen het graag in onze eregalerij.</p>
       </div>
     </section>
 
@@ -107,10 +107,9 @@
         <h2 class="text-xl font-bold text-navy mb-4">Hoe het werkt</h2>
         <ul class="mt-2 space-y-2 list-disc list-inside leading-relaxed text-gray-700">
           <li>Je vult het formulier in en bevestigt je nominatie via een link in je mail.</li>
-          <li>Een senior auditor controleert de website: werkt hij echt zo goed als jij zegt?</li>
-          <li>Klopt het, dan komt de website in de <a href="/eregalerij.html" class="link">eregalerij</a>, met voorbeelden uit de code zodat ontwikkelaars ervan kunnen leren.</li>
+          <li>Na je bevestiging plaatsen we de website in de <a href="/eregalerij.html" class="link">eregalerij</a>.</li>
           <li>Je e-mailadres gebruiken we alleen voor de bevestiging. We publiceren het nooit en delen het met niemand.</li>
-          <li>Werk je zelf bij de website die je nomineert? Dat mag, maar zeg het er eerlijk bij in je motivatie. We zien het toch en wegen het mee.</li>
+          <li>Werk je zelf bij de website die je nomineert? Dat mag, maar zeg het er eerlijk bij in je motivatie.</li>
         </ul>
       </section>
 
@@ -137,8 +136,8 @@
         </div>
 
         <div class="mb-5">
-          <label for="motivatie" class="block text-sm font-semibold text-navy mb-1">Wat doet deze website goed? <span class="text-status-notfound" aria-hidden="true">*</span></label>
-          <textarea id="motivatie" name="motivatie" rows="6" required maxlength="2000" aria-describedby="motivatie-hint"
+          <label for="motivatie" class="block text-sm font-semibold text-navy mb-1">Wat doet deze website goed? <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <textarea id="motivatie" name="motivatie" rows="6" maxlength="2000" aria-describedby="motivatie-hint"
             class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand"
             placeholder="Bijvoorbeeld: ik kon met VoiceOver zonder hulp afrekenen, inclusief het kiezen van een bezorgmoment."></textarea>
           <p id="motivatie-hint" class="text-sm text-gray-500 mt-1">Wees zo concreet mogelijk: wat lukte er dat op andere websites vaak misgaat? Zet er geen gegevens in die naar jou te herleiden zijn.</p>
@@ -276,7 +275,7 @@
             form.classList.add("hidden");
             showStatus(
               "success",
-              "<strong>Bijna klaar.</strong> We hebben je een mail gestuurd. Klik op de link daarin om je nominatie te bevestigen. Daarna controleren we de website en zetten we hem bij goedkeuring in de eregalerij."
+              "<strong>Bijna klaar.</strong> We hebben je een mail gestuurd. Klik op de link daarin om je nominatie te bevestigen. Daarna plaatsen we de website in de eregalerij."
             );
           } else {
             const data = await response.json().catch(() => ({}));

@@ -128,15 +128,15 @@
 
       <section class="mb-10">
         <h2 class="text-xl font-bold text-navy mb-4">Voor wie</h2>
-        <p class="text-gray-700 leading-relaxed">Voor auditbureaus en voor <strong>freelance auditors</strong>. Werk je zelfstandig en sta je achter je werk, dan ben je net zo welkom als een bureau. Het gaat om vakmanschap, niet om de grootte van je organisatie.</p>
+        <p class="text-gray-700 leading-relaxed">Voor auditbureaus en voor freelance auditors. Werk je zelfstandig en sta je achter je werk, dan ben je net zo welkom als een bureau. Het gaat om vakmanschap, niet om de grootte van je organisatie.</p>
       </section>
 
       <section class="mb-10">
         <h2 class="text-xl font-bold text-navy mb-4">Aanmelden en toelating</h2>
         <ul class="mt-2 space-y-2 list-disc list-inside leading-relaxed text-gray-700">
           <li>Je meldt je aan via het formulier hieronder.</li>
-          <li>We vragen één referentie van een collega of opdrachtgever, of een voorbeeldrapport. We beoordelen de inhoud niet; het is alleen een teken dat het echt vakwerk is.</li>
-          <li>Klopt dat, dan kom je op de <a href="/wcag-audit.html" class="link">WCAG-audit-pagina</a> met het label dat je meedoet aan collegiale toetsing.</li>
+          <li>We vragen één voorbeeldrapport. We beoordelen de inhoud niet; het is alleen een teken dat het echt vakwerk is.</li>
+          <li>Je bedrijf wordt op de <a href="/wcag-audit.html" class="link">WCAG-audit-pagina</a> geplaatst.</li>
         </ul>
       </section>
 
@@ -203,10 +203,10 @@
         </div>
 
         <div class="mb-6">
-          <label for="referentie" class="block text-sm font-semibold text-navy mb-1">Referentie of voorbeeldrapport <span class="font-normal text-gray-500">(optioneel)</span></label>
-          <input type="text" id="referentie" name="referentie" maxlength="500" aria-describedby="referentie-hint" placeholder="Naam van een referent, of een link naar een voorbeeldrapport"
+          <label for="referentie" class="block text-sm font-semibold text-navy mb-1">Voorbeeldrapport <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <input type="text" id="referentie" name="referentie" maxlength="500" aria-describedby="referentie-hint" placeholder="Link naar of korte beschrijving van een voorbeeldrapport"
             class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
-          <p id="referentie-hint" class="text-sm text-gray-500 mt-1">Eén referentie van een collega of opdrachtgever, of een voorbeeldrapport. Liever per mail? Dan vragen we het na je aanmelding op.</p>
+          <p id="referentie-hint" class="text-sm text-gray-500 mt-1">Eén voorbeeldrapport. Liever per mail? Dan vragen we het na je aanmelding op.</p>
         </div>
 
         <div class="mb-6">
@@ -334,7 +334,7 @@
             form.classList.add("hidden");
             showStatus(
               "success",
-              "<strong>Bedankt, je aanmelding is verstuurd.</strong> We nemen contact met je op over de referentie of het voorbeeldrapport en de plaatsing. De eerste twee maanden zijn gratis."
+              "<strong>Bedankt, je aanmelding is verstuurd.</strong> We nemen contact met je op over het voorbeeldrapport en de plaatsing. De eerste twee maanden zijn gratis."
             );
           } else {
             const data = await response.json().catch(() => ({}));

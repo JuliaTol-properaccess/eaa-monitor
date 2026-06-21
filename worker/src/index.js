@@ -578,8 +578,8 @@ async function handleHofNominate(request, env) {
   const email = (form.get("email") || "").trim();
   const toestemming = form.get("toestemming_quote") === "ja";
 
-  if (!naam || !webadres || !motivatie || !email) {
-    return json({ ok: false, error: "Vul de naam, het webadres, je motivatie en je e-mailadres in." }, 422);
+  if (!naam || !webadres || !email) {
+    return json({ ok: false, error: "Vul de naam, het webadres en je e-mailadres in." }, 422);
   }
   if (motivatie.length > 2000) {
     return json({ ok: false, error: "Je motivatie is te lang. Houd het onder de 2000 tekens." }, 422);
@@ -1314,14 +1314,14 @@ async function sendPactAanmeldingEmail(env, { type, naam, contact, website, emai
     `Website: ${website || "(niet opgegeven)"}`,
     `E-mailadres: ${email}`,
     `Talen: ${talen || "(niet opgegeven)"}`,
-    `Referentie of voorbeeldrapport: ${referentie || "(niet opgegeven)"}`,
+    `Voorbeeldrapport: ${referentie || "(niet opgegeven)"}`,
     ``,
     `De aanmelder verbindt zich aan de vier punten van het pact (zie docs/vierogen-pact.md).`,
     ``,
     `Toelichting:`,
     bericht || "(geen)",
     ``,
-    `Verwerk dit handmatig: check de referentie of het voorbeeldrapport, voeg het bureau`,
+    `Verwerk dit handmatig: check het voorbeeldrapport, voeg het bureau`,
     `toe aan data/auditbureaus.json en koppel terug per mail (2 maanden gratis, daarna € 295/jaar voor een zelfstandige auditor of € 495/jaar voor een bureau).`,
   ];
   await sendEmail(env, {
