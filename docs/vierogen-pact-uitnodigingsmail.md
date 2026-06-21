@@ -4,54 +4,129 @@ Voor de eerste wervingsronde (juni 2026). Verstuur per ontvanger, met een
 gepersonaliseerde aanhef. Zie het concept in [vierogen-pact.md](vierogen-pact.md).
 Toon volgens de nlds-schrijfwijzer: je-vorm, geen jargon, geen em-dashes.
 
+**Insteek:** de vermelding op de WCAG-audit-pagina van EAA Monitor. Doel is
+naamsbekendheid en nieuwe leads voor bureaus en freelancers die serieus bezig
+zijn met digitale toegankelijkheid. We promoten de site breed. Meedoen kent
+twee voorwaarden: een jaarabonnement en openstaan voor peer review.
+
 ---
 
-**Onderwerp:** Doe je mee aan Het Vierogen-pact?
+## Basismail
 
-*(alternatief: "Durf jij je audit te laten meelezen?")*
-
----
+**Onderwerp:** Een vermelding op EAA Monitor: word gevonden door klanten
 
 Hoi [naam],
 
-Sinds de European Accessibility Act zijn er veel partijen bijgekomen die
-toegankelijkheidsaudits aanbieden. Een deel doet het er serieus bij, een ander
-deel even snel naast het marketing- of ontwikkelwerk. Voor een opdrachtgever is
-dat verschil bijna niet te zien. Dat is jammer, juist voor iedereen die hier al
-jaren met hart en ziel aan werkt.
+Wij bouwen aan EAA Monitor, de onafhankelijke hub over de European Accessibility
+Act in Nederland, en we gaan de site de komende tijd breed promoten. Op de
+pagina over WCAG-audits brengen we auditbureaus en freelance auditors samen die
+digitale toegankelijkheid serieus nemen. Een vermelding daar maakt je vindbaar
+voor opdrachtgevers die een professionele audit zoeken, en kan je nieuwe leads
+opleveren.
 
-Daarom start ik vanuit EAA Monitor **Het Vierogen-pact**: een openbare groep
-auditbureaus en freelance auditors die achter hun werk staan en het durven te
-laten meelezen door een vakgenoot van een ander bureau.
+We zetten dit bewust op als een kwaliteitsplek. Sinds de EAA zijn er veel
+partijen bijgekomen die audits er even bij doen; wij willen juist de bureaus
+laten zien die er serieus mee bezig zijn. Daarom kent meedoen twee voorwaarden:
 
-Wie meedoet, verbindt zich aan vier punten:
+1. Een jaarabonnement op de vermelding.
+2. Je staat open voor peer review: een afgerond rapport laat je achteraf
+   meelezen door een vakgenoot van een ander aangesloten bureau, en je werkt mee
+   aan een second opinion als een klant een bevinding betwist.
 
-1. Je staat achter de kwaliteit van je rapporten en durft ze te laten meelezen.
-2. Je laat een afgerond rapport achteraf toetsen door een vakgenoot van een
-   ander aangesloten bureau, en je doet die toetsing ook voor anderen.
-3. Loopt een discussie met een klant vast op een bevinding, dan werk je mee aan
-   een onafhankelijke second opinion door een collega uit het netwerk.
-4. Je werkt aantoonbaar volgens WCAG-EM en toetst WCAG 2.1, WCAG 2.2 en indien
-   van toepassing EN 301 549.
+Die tweede voorwaarde onderscheidt je van een gelegenheidsauditeur: je durft je
+werk te laten toetsen. Dat is precies het signaal waar een serieuze opdrachtgever
+op let.
 
-Geen keuring en geen controle vooraf. De kracht zit in de openbare belofte op
-naam: dit is precies wat een serieuze auditor wel aandurft en een
-gelegenheidsauditeur niet. Zo kan een klant het koren van het kaf scheiden.
-
-Je komt op de WCAG-audit-pagina van EAA Monitor te staan, met het label dat je
-meedoet aan collegiale toetsing. De eerste **twee maanden zijn gratis**, daarna
-is het € 395 per jaar (excl. btw). Stap je in deze eerste ronde in, dan geldt
-het founding-tarief van € 295 per jaar, en dat houd je.
-
-Meedoen is laagdrempelig. We vragen alleen één referentie van een collega of
-opdrachtgever, of een voorbeeldrapport. We beoordelen de inhoud niet; het is een
-teken dat het echt vakwerk is.
+De vermelding kost € 395 per jaar (excl. btw). De eerste twee maanden zijn
+gratis, zonder verplichting, en wie in deze eerste ronde instapt houdt het
+founding-tarief van € 295 per jaar. Bij aanmelding vragen we kort één referentie
+of een voorbeeldrapport, puur als teken dat het serieus werk is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
 
-Heb je vragen of denk je liever even mee over de opzet? Mail of bel gerust, ik
-hoor het graag.
+Vragen, of even sparren over de opzet? Mail of bel gerust.
+
+Hartelijke groet,
+Julia Tol
+EAA Monitor
+
+---
+
+## Variant: auditbureau
+
+**Onderwerp:** Word met je bureau gevonden via EAA Monitor
+
+Hoi [naam],
+
+Jullie zijn al jaren serieus bezig met digitale toegankelijkheid, en dat is
+precies waarom ik je benader. Wij bouwen aan EAA Monitor, de onafhankelijke hub
+over de European Accessibility Act, en we gaan de site de komende tijd breed
+promoten. Op de WCAG-audit-pagina brengen we auditbureaus samen die dit werk
+serieus nemen. Een vermelding daar maakt je vindbaar voor opdrachtgevers die een
+professionele audit zoeken, en kan je nieuwe leads opleveren.
+
+Meedoen vraagt twee dingen:
+
+1. Een jaarabonnement op de vermelding.
+2. Je staat open voor peer review: een afgerond rapport laat je achteraf
+   meelezen door een vakgenoot van een ander aangesloten bureau, en je werkt mee
+   aan een second opinion als een klant een bevinding betwist.
+
+Die tweede voorwaarde onderscheidt je van de partijen die sinds de EAA audits er
+even bij doen. Jij durft je werk te laten toetsen, en dat is het signaal waar een
+serieuze opdrachtgever op let.
+
+De vermelding kost € 395 per jaar (excl. btw). De eerste twee maanden zijn gratis
+en wie nu instapt houdt het founding-tarief van € 295 per jaar. Bij aanmelding
+vragen we kort één referentie of een voorbeeldrapport, puur als teken dat het
+serieus werk is.
+
+Lees de details en meld je aan op:
+**https://eaa-monitor.nl/vierogen-pact.html**
+
+Vragen of even meedenken over de opzet? Mail of bel gerust.
+
+Hartelijke groet,
+Julia Tol
+EAA Monitor
+
+---
+
+## Variant: freelance auditor
+
+**Onderwerp:** Word als zelfstandig auditor gevonden via EAA Monitor
+
+Hoi [naam],
+
+Je werkt zelfstandig en je bent serieus bezig met digitale toegankelijkheid.
+Juist voor jou is dit interessant. Wij bouwen aan EAA Monitor, de onafhankelijke
+hub over de European Accessibility Act, en we gaan de site breed promoten. Op de
+WCAG-audit-pagina brengen we auditbureaus en freelance auditors samen die dit vak
+serieus nemen. Een vermelding maakt je vindbaar voor opdrachtgevers die een
+professionele audit zoeken, en kan je nieuwe leads opleveren. Je staat er op
+gelijke voet met de bureaus; het gaat om vakmanschap, niet om de grootte van je
+organisatie.
+
+Meedoen vraagt twee dingen:
+
+1. Een jaarabonnement op de vermelding.
+2. Je staat open voor peer review: een afgerond rapport laat je achteraf
+   meelezen door een vakgenoot van een ander aangesloten bureau, en je werkt mee
+   aan een second opinion als een klant een bevinding betwist.
+
+Voor een zelfstandige is dat netwerk ook praktisch: je hebt collega's om mee te
+sparren en je staat er niet meer alleen voor.
+
+De vermelding kost € 395 per jaar (excl. btw). De eerste twee maanden zijn gratis
+en wie nu instapt houdt het founding-tarief van € 295 per jaar. Bij aanmelding
+vragen we kort één referentie of een voorbeeldrapport, puur als teken dat het
+serieus werk is.
+
+Lees de details en meld je aan op:
+**https://eaa-monitor.nl/vierogen-pact.html**
+
+Vragen of even sparren over de opzet? Mail of bel gerust.
 
 Hartelijke groet,
 Julia Tol
@@ -66,96 +141,7 @@ EAA Monitor
   open. In de mail kun je het kort benoemen: Proper Access doet op gelijke voet
   en tegen hetzelfde tarief mee.
 - **Personaliseren.** Eén concrete zin per ontvanger (waarom juist zij) verhoogt
-  de respons. De twee doelgroepvarianten staan hieronder; vul de aanhef en
-  eventueel één concrete zin per ontvanger aan.
-
----
-
-## Variant: auditbureau
-
-**Onderwerp:** Doe je met je bureau mee aan Het Vierogen-pact?
-
-Hoi [naam],
-
-Jullie doen dit werk al jaren goed, en dat is precies waarom ik je benader.
-Sinds de European Accessibility Act zijn er veel partijen bijgekomen die audits
-erbij doen, naast hun marketing- of ontwikkelwerk. Voor een opdrachtgever is het
-verschil met een ervaren bureau bijna niet te zien. Dat ondergraaft de waarde
-van wat jullie hebben opgebouwd.
-
-Daarom start ik vanuit EAA Monitor **Het Vierogen-pact**: een openbare groep
-bureaus en freelance auditors die achter hun werk staan en het durven te laten
-meelezen door een vakgenoot van een ander bureau.
-
-Je verbindt je aan vier punten: je staat achter je rapporten, je laat een
-afgerond rapport achteraf toetsen door een vakgenoot van een ander aangesloten
-bureau, je werkt mee aan een second opinion als een klant een bevinding
-betwist, en je werkt aantoonbaar volgens WCAG-EM (WCAG 2.1, WCAG 2.2 en waar
-nodig EN 301 549).
-
-Geen keuring vooraf. De kracht zit in de openbare belofte op naam: dit durft een
-serieus bureau wel, een gelegenheidsauditeur niet. Zo kan een klant het koren
-van het kaf scheiden, en sta jij tussen de bureaus die kwaliteit als uitgangspunt
-nemen. Praktisch levert het je ook een netwerk op: collega's voor een
-onafhankelijke second opinion bij discussie, en collegiale toetsing die je eigen
-kwaliteit scherp houdt.
-
-Je komt op de WCAG-audit-pagina van EAA Monitor te staan, met het label dat je
-meedoet aan collegiale toetsing. De eerste twee maanden zijn gratis, daarna is
-het € 395 per jaar (excl. btw). Stap je in deze eerste ronde in, dan geldt het
-founding-tarief van € 295 per jaar, en dat houd je. We vragen alleen één
-referentie of een voorbeeldrapport; de inhoud beoordelen we niet.
-
-Lees de details en meld je aan op:
-**https://eaa-monitor.nl/vierogen-pact.html**
-
-Vragen, of denk je liever even mee over de opzet? Mail of bel gerust.
-
-Hartelijke groet,
-Julia Tol
-EAA Monitor
-
----
-
-## Variant: freelance auditor
-
-**Onderwerp:** Doe je als zelfstandig auditor mee aan Het Vierogen-pact?
-
-Hoi [naam],
-
-Je werkt zelfstandig en je staat achter je werk. Juist voor jou heb ik dit
-opgezet. Sinds de European Accessibility Act zijn er veel partijen bijgekomen
-die audits er even bij doen. Voor een opdrachtgever is jouw vakmanschap dan
-moeilijk te onderscheiden van een snelle scan.
-
-Vanuit EAA Monitor start ik **Het Vierogen-pact**: een openbare groep
-auditbureaus en freelance auditors die hun werk durven te laten meelezen door
-een vakgenoot van een ander bureau. Of je nu in je eentje werkt of met een team,
-het gaat om vakmanschap, niet om de grootte van je organisatie. Je staat op de
-pagina op gelijke voet met de bureaus.
-
-Je verbindt je aan vier punten: je staat achter je rapporten, je laat een
-afgerond rapport achteraf toetsen door een vakgenoot van een ander aangesloten
-bureau, je werkt mee aan een second opinion als een klant een bevinding
-betwist, en je werkt aantoonbaar volgens WCAG-EM (WCAG 2.1, WCAG 2.2 en waar
-nodig EN 301 549).
-
-Geen keuring vooraf. De kracht zit in de openbare belofte op naam. Voor een
-zelfstandige is het netwerk extra waardevol: je hebt collega's van andere
-bureaus om mee te sparren en om een onafhankelijke second opinion te geven als
-een klant een bevinding betwist. Je staat er niet meer alleen voor.
-
-Je komt op de WCAG-audit-pagina van EAA Monitor te staan, met het label dat je
-meedoet aan collegiale toetsing. De eerste twee maanden zijn gratis, daarna is
-het € 395 per jaar (excl. btw). Stap je in deze eerste ronde in, dan geldt het
-founding-tarief van € 295 per jaar, en dat houd je. We vragen alleen één
-referentie of een voorbeeldrapport; de inhoud beoordelen we niet.
-
-Lees de details en meld je aan op:
-**https://eaa-monitor.nl/vierogen-pact.html**
-
-Vragen, of wil je even sparren over de opzet? Mail of bel gerust.
-
-Hartelijke groet,
-Julia Tol
-EAA Monitor
+  de respons. Vul de aanhef en die zin per ontvanger aan.
+- **De twee voorwaarden zijn de kern.** Jaarabonnement en openstaan voor peer
+  review. De referentie bij aanmelding is geen derde voorwaarde maar een lichte
+  check; presenteer het zo.
