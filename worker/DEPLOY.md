@@ -185,9 +185,10 @@ Zet in `public/bezwaar.html` de constante `BEZWAAR_ENDPOINT` op de
 const BEZWAAR_ENDPOINT = "https://eaa-bezwaar.<jouw-subdomein>.workers.dev/submit";
 ```
 
-Zolang die leeg is, blijft het formulier via Formspree naar Julia mailen, dus de
-site blijft werken tot je klaar bent om de Worker live te zetten. Commit en push
-deze wijziging pas als de Worker draait.
+Zet ook het `action`-attribuut van het formulier op diezelfde `/submit`-URL,
+zodat een verzending zonder JavaScript eveneens bij de Worker (in de EU) uitkomt.
+De oude Formspree-fallback is verwijderd. Commit en push deze wijziging pas als
+de Worker draait.
 
 ## Feedback op artikelen (`POST /feedback`)
 

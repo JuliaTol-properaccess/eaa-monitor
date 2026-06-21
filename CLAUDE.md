@@ -39,7 +39,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `bronnen.html` — Doorzoekbaar bronnenoverzicht met categoriefilters, **gegenereerd** door `build_bronnen.py` uit `data/bronnen.json` (niet handmatig bewerken)
 - `eregalerij.html` — Hall of fame van aantoonbaar toegankelijke websites, **gegenereerd** door `build_halloffame.py` uit `data/halloffame.json` (niet handmatig bewerken). Stemtellers en stemformulieren via `static/halloffame.js` (progressive enhancement: zonder JS verborgen)
 - `nomineren.html` — Nominatieformulier voor de eregalerij → bezwaar-Worker (`NOMINATIE_ENDPOINT`, route `/hof/nominate`). Handgeschreven
-- `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`), valt terug op Formspree
+- `bezwaar.html` — Bezwaarformulier → bezwaar-Worker (`BEZWAAR_ENDPOINT`); het `action`-attribuut wijst naar dezelfde Worker, zodat ook een no-JS-verzending in de EU blijft (geen Formspree meer)
 - `bezwaren.html` + `bezwaren.js` — Openbare lijst van bezwaren
 - `over.html` — Over het dashboard
 - `static/tailwind.css` — **Gegenereerd** door `npm run build:css` uit `tailwind.config.js` (niet handmatig bewerken; na elke class-wijziging opnieuw bouwen, de deploy bouwt hem ook zelf als vangnet). `static/fonts.css` + `static/fonts/` — zelf-gehoste fonts via Fontsource: Fraunces (koppen/telcijfers), Atkinson Hyperlegible (lopende tekst), IBM Plex Mono (alles wat gemeten is); geen Google Fonts. `static/site.css` — componenten, prose, animaties. `static/reveal.js` — scroll-reveal
