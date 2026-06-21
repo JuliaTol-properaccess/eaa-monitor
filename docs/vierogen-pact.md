@@ -95,11 +95,10 @@ Uitbreiden van het huidige schema (`naam`, `website`, `specialisatie`, `talen`) 
 ## Prijs
 
 - **2 maanden gratis** bij de start, zonder verplichting. Lost het kip-ei-probleem op:
-  bureaus stappen makkelijker in als de pagina nog leeg is.
-- Daarna een **jaartarief van € 395 (excl. btw)**, in lijn met de € 385 die Julia eerder
-  zelf voor een vergelijkbare plaatsing betaalde.
-- **Founding-tarief € 295/jaar** voor iedereen die in deze eerste ronde (2026) instapt, en
-  dat tarief houden ze. Beloont de eerste lichting die het netwerk geloofwaardig maakt.
+  bureaus en freelancers stappen makkelijker in als de pagina nog leeg is.
+- Daarna twee vaste jaartarieven (excl. btw):
+  - **Zelfstandige auditor: € 295/jaar.**
+  - **Auditbureau: € 495/jaar.**
 - Eén jaarfactuur, stilzwijgend verlengd met opzegtermijn. Maandfacturatie is bij dit
   bedrag niet de moeite waard.
 

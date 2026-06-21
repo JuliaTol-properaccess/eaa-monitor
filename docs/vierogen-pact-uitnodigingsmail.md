@@ -37,10 +37,10 @@ Die tweede voorwaarde onderscheidt je van een gelegenheidsauditeur: je durft je
 werk te laten toetsen. Dat is precies het signaal waar een serieuze opdrachtgever
 op let.
 
-De vermelding kost € 395 per jaar (excl. btw). De eerste twee maanden zijn
-gratis, zonder verplichting, en wie in deze eerste ronde instapt houdt het
-founding-tarief van € 295 per jaar. Bij aanmelding vragen we kort één referentie
-of een voorbeeldrapport, puur als teken dat het serieus werk is.
+De vermelding kost € 295 per jaar voor een zelfstandige auditor en € 495 per
+jaar voor een auditbureau (excl. btw). De eerste twee maanden zijn gratis,
+zonder verplichting. Bij aanmelding vragen we kort één referentie of een
+voorbeeldrapport, puur als teken dat het serieus werk is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
@@ -77,10 +77,9 @@ Die tweede voorwaarde onderscheidt je van de partijen die sinds de EAA audits er
 even bij doen. Jij durft je werk te laten toetsen, en dat is het signaal waar een
 serieuze opdrachtgever op let.
 
-De vermelding kost € 395 per jaar (excl. btw). De eerste twee maanden zijn gratis
-en wie nu instapt houdt het founding-tarief van € 295 per jaar. Bij aanmelding
-vragen we kort één referentie of een voorbeeldrapport, puur als teken dat het
-serieus werk is.
+De vermelding kost voor een auditbureau € 495 per jaar (excl. btw). De eerste
+twee maanden zijn gratis, zonder verplichting. Bij aanmelding vragen we kort één
+referentie of een voorbeeldrapport, puur als teken dat het serieus werk is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
@@ -118,10 +117,10 @@ Meedoen vraagt twee dingen:
 Voor een zelfstandige is dat netwerk ook praktisch: je hebt collega's om mee te
 sparren en je staat er niet meer alleen voor.
 
-De vermelding kost € 395 per jaar (excl. btw). De eerste twee maanden zijn gratis
-en wie nu instapt houdt het founding-tarief van € 295 per jaar. Bij aanmelding
-vragen we kort één referentie of een voorbeeldrapport, puur als teken dat het
-serieus werk is.
+De vermelding kost voor een zelfstandige auditor € 295 per jaar (excl. btw). De
+eerste twee maanden zijn gratis, zonder verplichting. Bij aanmelding vragen we
+kort één referentie of een voorbeeldrapport, puur als teken dat het serieus werk
+is.
 
 Lees de details en meld je aan op:
 **https://eaa-monitor.nl/vierogen-pact.html**
