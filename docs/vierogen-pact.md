@@ -56,9 +56,8 @@ EAA Monitor is matchmaker, geen partij. Zo blijf je buiten aansprakelijkheid.
 
 ## Toelating
 
-Lichte drempel, geen beoordeling. Bij aanmelding vraag je om één referentie van een
-collega-bureau of opdrachtgever, of een voorbeeldrapport. Dat is genoeg teken dat het echt
-vakwerk is. Je controleert de inhoud niet, je houdt alleen de gelegenheidsauditeur buiten
+Lichte drempel, geen beoordeling. Bij aanmelding vraag je om één voorbeeldrapport.
+Dat is genoeg teken dat het echt vakwerk is. Je controleert de inhoud niet, je houdt alleen de gelegenheidsauditeur buiten
 de deur. Zo blijft het pact geloofwaardig zonder dat jij iets keurt.
 
 ## Proper Access
