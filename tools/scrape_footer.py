@@ -16,7 +16,7 @@ import time
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
@@ -173,6 +173,14 @@ KEYWORDS_HREF = [
     "accessibility",
     "a11y",
 ]
+# Strenge subset voor de ruwe-HTML-fallback. Daar scannen we ook asset-URL's
+# (a11y.js, accessibility.css), dus "accessibility"/"a11y" alleen zou massaal
+# vals-positief zijn. Het volledige woord in een URL is vrijwel altijd echt.
+KEYWORDS_HREF_STRONG = [
+    "toegankelijkheidsverklaring",
+    "accessibility-statement",
+    "accessibilitystatement",
+]
 
 # Playwright settings
 NAVIGATION_TIMEOUT = 15000  # 15 seconds
@@ -284,6 +292,67 @@ def check_links_for_statement(links, base_url):
     return None
 
 
+def _same_site(base_url, candidate_url):
+    """True if candidate lives on the same registrable-ish domain as base.
+
+    Vergelijkt de laatste twee host-labels, zodat www.shop.nl en shop.nl matchen.
+    Houdt de raw-HTML-fallback hieronder behoudend: een echte verklaring staat op
+    het eigen domein van de winkel, niet op een externe toegankelijkheids-overlay
+    (accessibe.com, userway.org), die anders een vals 'gevonden' zou opleveren.
+    """
+    try:
+        a = (urlparse(base_url).hostname or "").lower()
+        b = (urlparse(candidate_url).hostname or "").lower()
+    except ValueError:
+        return False
+    if not a or not b:
+        return False
+    return a.split(".")[-2:] == b.split(".")[-2:]
+
+
+# URL-fragmenten in embedded JSON gebruiken vaak / of \/ als slash; die
+# normaliseren we eerst. Daarna pakken we absolute of root-relatieve URL's.
+_RAW_URL_RE = re.compile(r"""(https?://[^\s"'<>\\)]+|/[A-Za-z0-9._~%/\-]+)""")
+# Statische assets: een a11y.js of accessibility.css is code, geen verklaring.
+_ASSET_EXT_RE = re.compile(
+    r"\.(?:js|mjs|cjs|css|map|json|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|mp4|webm)(?:$|[?#])",
+    re.I,
+)
+_ASSET_DIR_RE = re.compile(
+    r"/(?:wp-content|wp-includes|assets|static|dist|build|node_modules|js|css|fonts?)/",
+    re.I,
+)
+
+
+def find_statement_in_raw_html(html, base_url):
+    """Sterke fallback voor JS-framework-footers zonder platte <a>.
+
+    Sommige sites (bv. de PWA van MediaMarkt) renderen de verklaring-link als
+    knop of bewaren hem in embedded JSON, dus de <a>-scan mist hem. Hier zoeken
+    we een URL waarvan het pad het volledige woord 'toegankelijkheidsverklaring'
+    (of accessibility-statement) bevat. Behoudend om valse treffers te vermijden:
+    nooit losse marketingtekst of de losse termen 'accessibility'/'a11y' (die in
+    asset-bestanden zitten), alleen het eigen domein, en geen statische assets.
+    """
+    unescaped = html.replace("\\u002F", "/").replace("\\u002f", "/").replace("\\/", "/")
+    for match in _RAW_URL_RE.finditer(unescaped):
+        candidate = match.group(1).rstrip('",.')
+        if not any(kw in candidate.lower() for kw in KEYWORDS_HREF_STRONG):
+            continue
+        resolved = safe_statement_url(base_url, candidate)
+        if resolved is None or not _same_site(base_url, resolved):
+            continue
+        path = urlparse(resolved).path
+        if _ASSET_EXT_RE.search(path) or _ASSET_DIR_RE.search(path):
+            continue
+        return {
+            "has_statement": True,
+            "statement_url": resolved,
+            "statement_link_text": "Toegankelijkheidsverklaring",
+        }
+    return None
+
+
 def _write_atomic(path, text):
     """Write via a tmp file + os.replace so a crash or kill mid-write never
     leaves a truncated (unparseable) file behind."""
@@ -375,6 +444,14 @@ def check_webshop(page, url):
     # Fallback: check all links on the page
     all_links = soup.find_all("a", href=True)
     result = check_links_for_statement(all_links, url)
+    if result:
+        result["scrape_status"] = "success"
+        result["error"] = None
+        return result
+
+    # Fallback 2: link verstopt in een JS-framework (knop/embedded JSON) in
+    # plaats van een platte <a>. Vangt o.a. de PWA-footer van MediaMarkt.
+    result = find_statement_in_raw_html(html, url)
     if result:
         result["scrape_status"] = "success"
         result["error"] = None
@@ -767,6 +844,40 @@ def _fresh_page(p, browser, old_context=None):
     return browser, context, page
 
 
+def recheck_unblocked(browser, url):
+    """Haal één URL opnieuw op met alle resources toegestaan (geen route-blok).
+
+    Sites achter bot-management (bv. bol.com) zien onze geblokkeerde
+    image/css/font-requests als bot-signatuur en serveren een vrijwel lege
+    challenge-pagina. Dezelfde URL één keer met alle resources ophalen levert dan
+    de echte pagina op. Alleen als fallback voor challenge-achtige resultaten, dus
+    de extra kosten blijven klein.
+    """
+    context = None
+    try:
+        context = browser.new_context(
+            user_agent=USER_AGENT,
+            viewport={"width": 1920, "height": 1080},
+            locale="nl-NL",
+        )
+        page = context.new_page()
+        return check_webshop(page, url)
+    except Exception as e:
+        return {
+            "has_statement": False,
+            "statement_url": None,
+            "statement_link_text": None,
+            "scrape_status": "error",
+            "error": str(e),
+        }
+    finally:
+        if context is not None:
+            try:
+                context.close()
+            except Exception:
+                pass
+
+
 def scrape_webshops(webshops, now):
     """Scrape a list of webshops sequentially and return the result entries."""
     results = []
@@ -798,6 +909,15 @@ def scrape_webshops(webshops, now):
                 print("interstitial, retry...", end=" ", flush=True)
                 time.sleep(3)
                 result = check_webshop(page, url)
+
+            # Nog steeds een challenge/lege render? Onze geblokkeerde resources
+            # kunnen zelf de bot-signatuur zijn (bv. bol.com). Eén keer ophalen
+            # met alle resources toegestaan haalt dan de echte pagina op.
+            if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
+                print("no-block retry...", end=" ", flush=True)
+                alt = recheck_unblocked(browser, url)
+                if alt["scrape_status"] == "success":
+                    result = alt
 
             results.append({
                 "name": name,
