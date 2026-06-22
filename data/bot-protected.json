@@ -1,0 +1,18 @@
+{
+  "_comment": "Grote, EAA-plichtige sites achter zwaar bot-management (Akamai/Cloudflare/DataDome). Headless Chromium krijgt hier consequent een challenge-pagina (0-2 links) i.p.v. de echte site, dus scrape_footer.py kan ze niet betrouwbaar checken; ze landen op 'niet te controleren'. Deze lijst voedt een aparte checker (zie docs/bot-protected-monitoring.md) die via een anti-bot-dienst alsnog de footer ophaalt. Status is onze meetervaring op 22 juni 2026: 'hard' = challenge in elke poging (ook zonder resource-blocking); 'stochastisch' = rendert soms wel, soms challenge. Verzin nooit een has_statement; alleen een geverifieerde verklaring-URL telt.",
+  "sites": [
+    { "name": "Kruidvat",  "url": "https://www.kruidvat.nl",            "category": "drogisterij", "barrier": "hard" },
+    { "name": "Etos",      "url": "https://www.etos.nl",                "category": "drogisterij", "barrier": "hard" },
+    { "name": "Jumbo",     "url": "https://www.jumbo.com",              "category": "supermarkt",  "barrier": "hard" },
+    { "name": "Decathlon", "url": "https://www.decathlon.nl",          "category": "sport",       "barrier": "hard" },
+    { "name": "Zalando",   "url": "https://www.zalando.nl",            "category": "mode",        "barrier": "hard" },
+    { "name": "Zara",      "url": "https://www.zara.com/nl/",          "category": "mode",        "barrier": "hard" },
+    { "name": "H&M",       "url": "https://www2.hm.com/nl_nl/index.html", "category": "mode",     "barrier": "hard" },
+    { "name": "Douglas",   "url": "https://www.douglas.nl",            "category": "drogisterij", "barrier": "hard" },
+    { "name": "Bristol",   "url": "https://www.bristol.nl",            "category": "mode",        "barrier": "hard" },
+    { "name": "BCC",       "url": "https://www.bcc.nl",                "category": "elektronica", "barrier": "stochastisch" },
+    { "name": "Dirk",      "url": "https://www.dirk.nl",               "category": "supermarkt",  "barrier": "stochastisch" },
+    { "name": "Expert",    "url": "https://www.expert.nl",            "category": "elektronica", "barrier": "stochastisch" },
+    { "name": "GAMMA",     "url": "https://www.gamma.nl",              "category": "wonen",       "barrier": "stochastisch" }
+  ]
+}
