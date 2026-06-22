@@ -1,8 +1,8 @@
 {
   "last_updated": "2026-06-06T21:57:44.610133+00:00",
   "total": 10397,
-  "with_statement": 248,
-  "without_statement": 9036,
+  "with_statement": 249,
+  "without_statement": 9035,
   "errors": 1113,
   "webshops": [
     {
@@ -12428,10 +12428,10 @@
       "name": "bol.com",
       "url": "https://www.bol.com",
       "category": "marketplace",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "has_statement": true,
+      "statement_url": "https://www.bol.com/nl/nl/tc/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-22T12:51:06.438611+00:00",
       "scrape_status": "success",
       "error": null
     },
