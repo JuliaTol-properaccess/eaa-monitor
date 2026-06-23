@@ -402,6 +402,51 @@ def _write_atomic(path, text):
     os.replace(tmp, path)
 
 
+# Veelvoorkomende "accepteer cookies"-knoppen (grote consent-managers + losse
+# tekstvarianten). Best-effort: een verkeerde of ontbrekende knop is onschadelijk.
+COOKIE_ACCEPT_SELECTORS = [
+    "#onetrust-accept-btn-handler",
+    "#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll",
+    "#CybotCookiebotDialogBodyButtonAccept",
+    "[data-testid='uc-accept-all-button']",
+    "button[aria-label*='accept' i]",
+    "button[aria-label*='akkoord' i]",
+    ".cc-allow",
+    ".cookie-accept",
+]
+
+
+def _dismiss_cookie_wall(page):
+    """Best-effort: klik een veelvoorkomende cookie-accept-knop weg.
+
+    Sommige consent-overlays renderen de footer (of de footerlinks) pas na een
+    keuze. Kort getimed en in try/except: mislukt het, dan gaan we gewoon door,
+    want de footer staat meestal toch al in de DOM.
+    """
+    for sel in COOKIE_ACCEPT_SELECTORS:
+        try:
+            btn = page.query_selector(sel)
+            if btn and btn.is_visible():
+                btn.click(timeout=1000)
+                page.wait_for_timeout(300)
+                return
+        except Exception:
+            continue
+
+
+def _scroll_to_bottom(page):
+    """Scroll naar beneden zodat lazy-loaded footers/links renderen.
+
+    Veel footers (en hun links) hangen aan een IntersectionObserver en verschijnen
+    pas als ze in beeld komen. Eenmalig en goedkoop; de settle in _wait_for_footer
+    vangt de render daarna op.
+    """
+    try:
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    except Exception:
+        pass
+
+
 def _wait_for_footer(page):
     """Wait until a footer(-like) element is in the DOM instead of a fixed 2s.
 
@@ -411,6 +456,7 @@ def _wait_for_footer(page):
     appears. No footer-like element at all: fall through, check_webshop scans
     all links on the page anyway.
     """
+    _scroll_to_bottom(page)
     try:
         page.wait_for_selector(
             "footer, [class*='footer' i], [id*='footer' i]",
@@ -426,11 +472,13 @@ def check_webshop(page, url):
     """Check a single webshop for an accessibility statement link."""
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
+        _dismiss_cookie_wall(page)
         _wait_for_footer(page)
     except PlaywrightTimeout:
         # Retry once
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
+            _dismiss_cookie_wall(page)
             _wait_for_footer(page)
         except PlaywrightTimeout:
             return {
