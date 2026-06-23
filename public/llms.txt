@@ -22,37 +22,37 @@ Laatste meting (23 juni 2026): 10397 webshops gecontroleerd,
 <!-- MEASUREMENT:END -->
 
 <!-- FIN-MEASUREMENT:START -->
-Financiële sector (AFM-toezicht), laatste meting (12 juni 2026): 68 instellingen gecontroleerd,
-45 (66%) met toegankelijkheidsverklaring,
-20 (29%) zonder, en
-3 (4%) niet te controleren.
+Financiële sector (AFM-toezicht), laatste meting (23 juni 2026): 68 instellingen gecontroleerd,
+33 (49%) met toegankelijkheidsverklaring,
+28 (41%) zonder, en
+7 (10%) niet te controleren.
 <!-- FIN-MEASUREMENT:END -->
 
 <!-- TEL-MEASUREMENT:START -->
-Telecom (ACM-toezicht), laatste meting (10 juni 2026): 18 aanbieders gecontroleerd,
-14 (78%) met toegankelijkheidsverklaring,
-3 (17%) zonder, en
+Telecom (ACM-toezicht), laatste meting (23 juni 2026): 18 aanbieders gecontroleerd,
+9 (50%) met toegankelijkheidsverklaring,
+8 (44%) zonder, en
 1 (6%) niet te controleren.
 <!-- TEL-MEASUREMENT:END -->
 
 <!-- VERVOER-MEASUREMENT:START -->
-Personenvervoer (ILT-toezicht), laatste meting (10 juni 2026): 21 vervoerders gecontroleerd,
-7 (33%) met toegankelijkheidsverklaring,
-10 (48%) zonder, en
-4 (19%) niet te controleren.
+Personenvervoer (ILT-toezicht), laatste meting (23 juni 2026): 21 vervoerders gecontroleerd,
+5 (24%) met toegankelijkheidsverklaring,
+11 (52%) zonder, en
+5 (24%) niet te controleren.
 <!-- VERVOER-MEASUREMENT:END -->
 
 <!-- MEDIA-MEASUREMENT:START -->
-Media en streaming (toezicht Commissariaat voor de Media), laatste meting (10 juni 2026): 15 mediadiensten gecontroleerd,
-9 (60%) met toegankelijkheidsverklaring,
-5 (33%) zonder, en
-1 (7%) niet te controleren.
+Media en streaming (toezicht Commissariaat voor de Media), laatste meting (23 juni 2026): 15 mediadiensten gecontroleerd,
+5 (33%) met toegankelijkheidsverklaring,
+10 (67%) zonder, en
+0 (0%) niet te controleren.
 <!-- MEDIA-MEASUREMENT:END -->
 
 <!-- EBOOKS-MEASUREMENT:START -->
-E-books (ACM-toezicht), laatste meting (10 juni 2026): 10 e-bookplatforms gecontroleerd,
-5 (50%) met toegankelijkheidsverklaring,
-3 (30%) zonder, en
+E-books (ACM-toezicht), laatste meting (23 juni 2026): 10 e-bookplatforms gecontroleerd,
+4 (40%) met toegankelijkheidsverklaring,
+4 (40%) zonder, en
 2 (20%) niet te controleren.
 <!-- EBOOKS-MEASUREMENT:END -->
 

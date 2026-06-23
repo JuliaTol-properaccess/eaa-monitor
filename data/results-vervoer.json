@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-06-10T09:15:46.924809+00:00",
+  "last_updated": "2026-06-23T17:37:22.860334+00:00",
   "total": 21,
-  "with_statement": 7,
-  "without_statement": 10,
-  "errors": 4,
+  "with_statement": 5,
+  "without_statement": 11,
+  "errors": 5,
   "webshops": [
     {
       "name": "Arriva",
@@ -12,7 +12,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "error",
       "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
@@ -23,7 +23,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34,9 +34,9 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
-      "scrape_status": "success",
-      "error": null
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
     {
       "name": "DFDS",
@@ -45,7 +45,7 @@
       "has_statement": true,
       "statement_url": "https://www.dfds.com/nl-nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56,7 +56,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -67,7 +67,7 @@
       "has_statement": true,
       "statement_url": "https://www.eurostar.com/nl-nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -76,9 +76,9 @@
       "url": "https://www.flixbus.nl",
       "category": "overig",
       "has_statement": true,
-      "statement_url": "https://www.flixbus.nl/digitale-verklaring-toegankelijkheid",
-      "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "statement_url": "https://www.flixbus.nl/digital-accessibility-statement",
+      "statement_link_text": "Accessibility Statement",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -89,7 +89,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -97,12 +97,14 @@
       "name": "HTM",
       "url": "https://www.htm.nl",
       "category": "bus-tram-metro",
-      "has_statement": true,
-      "statement_url": "https://www.htm.nl/reizen/toegankelijkheid/",
-      "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
-      "error": null
+      "error": null,
+      "statement_link_url": "https://www.htm.nl/reizen/toegankelijkheid/",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "Keolis",
@@ -111,9 +113,9 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
-      "scrape_status": "success",
-      "error": null
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 1 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
     {
       "name": "KLM",
@@ -122,7 +124,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "error",
       "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.klm.com/nl/nl\nCall log:\n  - navigating to \"https://www.klm.com/nl/nl\", waiting until \"domcontentloaded\"\n"
     },
@@ -133,7 +135,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -144,7 +146,7 @@
       "has_statement": true,
       "statement_url": "https://www.poferries.com/en/terms-and-conditions/website-accessibility",
       "statement_link_text": "P&O Ferries Accessibility",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -155,7 +157,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -166,7 +168,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -174,12 +176,14 @@
       "name": "RET",
       "url": "https://www.ret.nl",
       "category": "bus-tram-metro",
-      "has_statement": true,
-      "statement_url": "https://www.ret.nl/home/reizen/toegankelijkheid.html",
-      "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
-      "error": null
+      "error": null,
+      "statement_link_url": "https://www.ret.nl/home/reizen/toegankelijkheid.html",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "Stena Line",
@@ -188,7 +192,7 @@
       "has_statement": true,
       "statement_url": "https://www.stenaline.nl/juridisch/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -199,7 +203,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -210,9 +214,11 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
-      "scrape_status": "error",
-      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
+      "scrape_status": "success",
+      "error": null,
+      "statement_link_url": "https://www.transavia.com/nl-NL/voorwaarden/toegankelijkheidsverklaring/",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "TUI fly",
@@ -221,7 +227,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "error",
       "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
@@ -232,7 +238,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:15:46.924809+00:00",
+      "last_checked": "2026-06-23T17:37:22.860334+00:00",
       "scrape_status": "success",
       "error": null
     }

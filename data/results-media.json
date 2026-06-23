@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-06-10T09:16:56.364101+00:00",
+  "last_updated": "2026-06-23T17:40:05.626086+00:00",
   "total": 15,
-  "with_statement": 9,
-  "without_statement": 5,
-  "errors": 1,
+  "with_statement": 5,
+  "without_statement": 10,
+  "errors": 0,
   "webshops": [
     {
       "name": "CineMember",
@@ -12,7 +12,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -20,10 +20,10 @@
       "name": "Disney+",
       "url": "https://www.disneyplus.com/nl-nl",
       "category": "streaming-video",
-      "has_statement": true,
-      "statement_url": "https://help.disneyplus.com/article/disneyplus-accessibility/?utm_source=disneyplus&utm_medium=web&utm_campaign=unauthorized-site-footer&utm_content=accessibility",
-      "statement_link_text": "Toegankelijkheidsfuncties",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -31,12 +31,14 @@
       "name": "HBO Max",
       "url": "https://www.hbomax.com/nl/nl",
       "category": "streaming-video",
-      "has_statement": true,
-      "statement_url": "https://www.hbomax.com/nl/nl/accessibility/sign-language",
-      "statement_link_text": "Gebarentaalcollectie",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
-      "error": null
+      "error": null,
+      "statement_link_url": "https://www.hbomax.com/accessibility/asl",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "KIJK",
@@ -45,7 +47,7 @@
       "has_statement": true,
       "statement_url": "https://www.talpanetwork.com/digitale-toegankelijkheid/kijk",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56,7 +58,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -67,7 +69,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -78,7 +80,7 @@
       "has_statement": true,
       "statement_url": "https://npo.nl/overnpo/toegankelijkheid/toegankelijkheidsverklaring/toegankelijkheid-npo-start",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -86,12 +88,14 @@
       "name": "Pathé Thuis",
       "url": "https://www.pathe-thuis.nl",
       "category": "streaming-video",
-      "has_statement": true,
-      "statement_url": "https://support.pathe-thuis.nl/hc/nl/articles/28355032630557-Toegankelijkheid",
-      "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
-      "error": null
+      "error": null,
+      "statement_link_url": "https://support.pathe-thuis.nl/hc/nl/articles/28355032630557-Toegankelijkheid",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "Podimo",
@@ -100,7 +104,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -111,7 +115,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -119,21 +123,23 @@
       "name": "RTL.nl",
       "url": "https://www.rtl.nl",
       "category": "omroep",
-      "has_statement": true,
-      "statement_url": "https://rtl.nl/rtl-home/artikel/5516580/toegankelijkheid",
-      "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
-      "error": null
+      "error": null,
+      "statement_link_url": "https://rtl.nl/rtl-home/artikel/5516580/toegankelijkheid",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "SkyShowtime",
       "url": "https://www.skyshowtime.com/nl",
       "category": "streaming-video",
       "has_statement": true,
-      "statement_url": "https://www.skyshowtime.com/nl/accessibility-statement",
-      "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "statement_url": "https://www.skyshowtime.com/accessibility-statement",
+      "statement_link_text": "SkyShowtime Accessibility Statement",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -141,23 +147,25 @@
       "name": "Spotify",
       "url": "https://www.spotify.com/nl/",
       "category": "streaming-audio",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
-      "scrape_status": "error",
-      "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
+      "has_statement": true,
+      "statement_url": "https://www.spotify.com/us/accessibility/",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
+      "scrape_status": "success",
+      "error": null
     },
     {
       "name": "Viaplay",
       "url": "https://viaplay.com/nl-nl/",
       "category": "streaming-video",
-      "has_statement": true,
-      "statement_url": "https://viaplay.com/nl-nl/accessibility",
-      "statement_link_text": "Toegankelijkheid bij Viaplay",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
-      "error": null
+      "error": null,
+      "statement_link_url": "https://viaplay.com/nl-nl/accessibility",
+      "note": "link gevonden, geen verklaring op de pagina"
     },
     {
       "name": "Videoland",
@@ -166,7 +174,7 @@
       "has_statement": true,
       "statement_url": "https://hulp.videoland.com/article/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-10T09:16:56.364101+00:00",
+      "last_checked": "2026-06-23T17:40:05.626086+00:00",
       "scrape_status": "success",
       "error": null
     }

@@ -39,17 +39,28 @@
   "@type": "Dataset",
   "@id": "https://eaa-monitor.nl/monitor-media.html#dataset",
   "name": "Toegankelijkheidsverklaringen Nederlandse mediadiensten",
-  "description": "Wekelijkse meting of 15 Nederlandse mediadiensten een toegankelijkheidsverklaring publiceren. Op 10 juni 2026: 9 met verklaring, 5 zonder, 1 niet te controleren.",
-  "url": "https://eaa-monitor.nl/",
+  "description": "Wekelijkse meting of 15 Nederlandse mediadiensten een toegankelijkheidsverklaring publiceren. Op 23 juni 2026: 5 met verklaring, 10 zonder, 0 niet te controleren.",
+  "url": "https://eaa-monitor.nl/monitor-media.html",
   "creator": {
     "@type": "Organization",
+    "@id": "https://eaa-monitor.nl/#organization",
     "name": "EAA Monitor",
     "url": "https://eaa-monitor.nl/"
   },
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Nederland"
+  },
+  "keywords": [
+    "European Accessibility Act",
+    "toegankelijkheidsverklaring",
+    "mediadiensten",
+    "digitale toegankelijkheid"
+  ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "isAccessibleForFree": true,
   "inLanguage": "nl-NL",
-  "dateModified": "2026-06-10",
+  "dateModified": "2026-06-23",
   "temporalCoverage": "2026-03/2026-06",
   "measurementTechnique": "Geautomatiseerde controle van de footer op links naar een toegankelijkheidsverklaring",
   "variableMeasured": [
@@ -61,22 +72,22 @@
     {
       "@type": "PropertyValue",
       "name": "Mediadiensten met toegankelijkheidsverklaring",
-      "value": 9
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Mediadiensten zonder toegankelijkheidsverklaring",
       "value": 5
     },
     {
       "@type": "PropertyValue",
+      "name": "Mediadiensten zonder toegankelijkheidsverklaring",
+      "value": 10
+    },
+    {
+      "@type": "PropertyValue",
       "name": "Mediadiensten niet te controleren",
-      "value": 1
+      "value": 0
     },
     {
       "@type": "PropertyValue",
       "name": "Percentage met verklaring",
-      "value": 60,
+      "value": 33,
       "unitText": "PERCENT"
     }
   ],
@@ -213,15 +224,15 @@
           <p class="mt-1 text-sm font-semibold text-gray-500">mediadiensten gecontroleerd</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-display font-semibold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->60%<!--/STAT--></p>
+          <p class="text-4xl font-display font-semibold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->33%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft een verklaring</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-display font-semibold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->33%<!--/STAT--></p>
+          <p class="text-4xl font-display font-semibold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->67%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft geen verklaring</p>
         </div>
       </div>
-      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 10 juni 2026<!--/LASTUPDATED--></p>
+      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 23 juni 2026<!--/LASTUPDATED--></p>
     </section>
 
     <!-- Disclaimer: verklaring betekent niet automatisch toegankelijk -->
@@ -237,17 +248,17 @@
       <!-- GEO-SUMMARY:START -->
       <div class="rounded-xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
-          <p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">Media & streaming · Commissariaat voor de Media</p>
+          <p class="eyebrow text-brand mb-3">Media & streaming · Commissariaat voor de Media</p>
           <p class="text-lg leading-relaxed">
-            Op <strong>10 juni 2026</strong> controleerde de EAA Monitor
+            Op <strong>23 juni 2026</strong> controleerde de EAA Monitor
             <strong>15 Nederlandse mediadiensten</strong> op een toegankelijkheidsverklaring:
           </p>
           <ul class="mt-4 space-y-2.5">
-            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>9 mediadiensten (60%)</strong> publiceren een verklaring</span></li>
-            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>5 (33%)</strong> doen dat niet</span></li>
-            <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>1 (7%)</strong> kon de controle niet worden voltooid</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>5 mediadiensten (33%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>10 (67%)</strong> doen dat niet</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>0 (0%)</strong> kon de controle niet worden voltooid</span></li>
           </ul>
-          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 10 juni 2026. De monitor controleert alle mediadiensten elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 23 juni 2026. De monitor controleert alle mediadiensten elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
         </div>
       </div>
     <!-- GEO-SUMMARY:END -->

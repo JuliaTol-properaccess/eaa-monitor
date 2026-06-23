@@ -39,17 +39,28 @@
   "@type": "Dataset",
   "@id": "https://eaa-monitor.nl/monitor-telecom.html#dataset",
   "name": "Toegankelijkheidsverklaringen Nederlandse telecomaanbieders",
-  "description": "Wekelijkse meting of 18 Nederlandse telecomaanbieders een toegankelijkheidsverklaring publiceren. Op 10 juni 2026: 14 met verklaring, 3 zonder, 1 niet te controleren.",
-  "url": "https://eaa-monitor.nl/",
+  "description": "Wekelijkse meting of 18 Nederlandse telecomaanbieders een toegankelijkheidsverklaring publiceren. Op 23 juni 2026: 9 met verklaring, 8 zonder, 1 niet te controleren.",
+  "url": "https://eaa-monitor.nl/monitor-telecom.html",
   "creator": {
     "@type": "Organization",
+    "@id": "https://eaa-monitor.nl/#organization",
     "name": "EAA Monitor",
     "url": "https://eaa-monitor.nl/"
   },
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Nederland"
+  },
+  "keywords": [
+    "European Accessibility Act",
+    "toegankelijkheidsverklaring",
+    "telecomaanbieders",
+    "digitale toegankelijkheid"
+  ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "isAccessibleForFree": true,
   "inLanguage": "nl-NL",
-  "dateModified": "2026-06-10",
+  "dateModified": "2026-06-23",
   "temporalCoverage": "2026-03/2026-06",
   "measurementTechnique": "Geautomatiseerde controle van de footer op links naar een toegankelijkheidsverklaring",
   "variableMeasured": [
@@ -61,12 +72,12 @@
     {
       "@type": "PropertyValue",
       "name": "Telecomaanbieders met toegankelijkheidsverklaring",
-      "value": 14
+      "value": 9
     },
     {
       "@type": "PropertyValue",
       "name": "Telecomaanbieders zonder toegankelijkheidsverklaring",
-      "value": 3
+      "value": 8
     },
     {
       "@type": "PropertyValue",
@@ -76,7 +87,7 @@
     {
       "@type": "PropertyValue",
       "name": "Percentage met verklaring",
-      "value": 78,
+      "value": 50,
       "unitText": "PERCENT"
     }
   ],
@@ -213,15 +224,15 @@
           <p class="mt-1 text-sm font-semibold text-gray-500">aanbieders gecontroleerd</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-display font-semibold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->78%<!--/STAT--></p>
+          <p class="text-4xl font-display font-semibold text-status-found tracking-tight" id="stat-percentage"><!--STAT:pctWith-->50%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft een verklaring</p>
         </div>
         <div class="card p-6 text-center">
-          <p class="text-4xl font-display font-semibold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->17%<!--/STAT--></p>
+          <p class="text-4xl font-display font-semibold text-status-notfound tracking-tight" id="stat-percentage-without"><!--STAT:pctWithout-->44%<!--/STAT--></p>
           <p class="mt-1 text-sm font-semibold text-gray-500">heeft geen verklaring</p>
         </div>
       </div>
-      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 10 juni 2026<!--/LASTUPDATED--></p>
+      <p class="mt-4 text-sm text-gray-600" id="last-updated"><!--LASTUPDATED-->Laatst bijgewerkt: 23 juni 2026<!--/LASTUPDATED--></p>
     </section>
 
     <!-- Disclaimer: verklaring betekent niet automatisch toegankelijk -->
@@ -237,17 +248,17 @@
       <!-- GEO-SUMMARY:START -->
       <div class="rounded-xl bg-softblue ring-1 ring-brand-light p-7 md:p-9 text-ink h-full">
         <div class="max-w-3xl">
-          <p class="text-xs font-bold uppercase tracking-wider text-brand mb-3">Telecom · ACM-toezicht</p>
+          <p class="eyebrow text-brand mb-3">Telecom · ACM-toezicht</p>
           <p class="text-lg leading-relaxed">
-            Op <strong>10 juni 2026</strong> controleerde de EAA Monitor
+            Op <strong>23 juni 2026</strong> controleerde de EAA Monitor
             <strong>18 Nederlandse telecomaanbieders</strong> op een toegankelijkheidsverklaring:
           </p>
           <ul class="mt-4 space-y-2.5">
-            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>14 telecomaanbieders (78%)</strong> publiceren een verklaring</span></li>
-            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>3 (17%)</strong> doen dat niet</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-found mt-[7px]" aria-hidden="true"></span><span><strong>9 telecomaanbieders (50%)</strong> publiceren een verklaring</span></li>
+            <li class="flex items-start gap-3"><span class="status-dot bg-status-notfound mt-[7px]" aria-hidden="true"></span><span><strong>8 (44%)</strong> doen dat niet</span></li>
             <li class="flex items-start gap-3"><span class="status-dot bg-status-error mt-[7px]" aria-hidden="true"></span><span>bij <strong>1 (6%)</strong> kon de controle niet worden voltooid</span></li>
           </ul>
-          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 10 juni 2026. De monitor controleert alle telecomaanbieders elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
+          <p class="mt-4 text-sm text-gray-500">Laatst bijgewerkt: 23 juni 2026. De monitor controleert alle telecomaanbieders elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.</p>
         </div>
       </div>
     <!-- GEO-SUMMARY:END -->
