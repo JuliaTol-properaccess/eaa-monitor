@@ -2,7 +2,9 @@
 title: "De EAA en de financiële sector: wat doet de AFM?"
 slug: "eaa-financiele-sector"
 description: "Banken, verzekeraars, betaaldiensten en leasemaatschappijen vallen onder de European Accessibility Act. Niet de ACM maar de Autoriteit Financiële Markten houdt toezicht. Lees wat dat betekent en hoe de sector ervoor staat."
+answer: "Banken, verzekeraars, betaaldiensten en leasemaatschappijen vallen onder de European Accessibility Act. Niet de ACM maar de Autoriteit Financiële Markten (AFM) houdt toezicht. Onze meting van 12 juni 2026 laat zien dat 45 van de 68 gecontroleerde instellingen (66%) een toegankelijkheidsverklaring publiceren."
 date: 2026-06-09
+updated: 2026-06-23
 theme: "toezicht"
 keywords:
   - eaa

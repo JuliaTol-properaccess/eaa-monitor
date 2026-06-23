@@ -2,6 +2,7 @@
 title: "Welke subsidies zijn er voor digitale toegankelijkheid?"
 slug: "subsidies-voor-digitale-toegankelijkheid"
 description: "Online overzichten van EAA-subsidies zitten vol fouten. We checkten welke regelingen er écht zijn. Een landelijke pot is er niet. Wel een handvol gemeentelijke regelingen, met flinke verschillen in wat ze dekken."
+answer: "Een landelijke subsidiepot voor digitale toegankelijkheid bestaat niet. Wel zijn er een handvol gemeentelijke regelingen, met flinke verschillen in wat ze dekken. Online overzichten zitten vol fouten; wij checkten welke regelingen er echt zijn en wat ze vergoeden."
 date: 2026-06-09
 theme: "praktijk"
 keywords:

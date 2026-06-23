@@ -86,3 +86,30 @@ jobs:
           rsync -az --delete -e "ssh -i ~/.ssh/deploy_key" _site/ root@128.140.50.96:/var/www/eaa-monitor/
           rsync -az -e "ssh -i ~/.ssh/deploy_key" worker/src worker/server.mjs worker/package.json root@128.140.50.96:/opt/eaa-forms/
           ssh -i ~/.ssh/deploy_key root@128.140.50.96 "systemctl restart eaa-forms"
+
+      # IndexNow: meld de belangrijkste (wekelijks verversende) pagina's aan bij
+      # zoekmachines die het protocol ondersteunen (onder andere Bing, dat
+      # ChatGPT search en Copilot voedt). De sleutel staat als keyfile in public/.
+      # Faalt de ping, dan mag de deploy niet rood worden.
+      - name: Ping IndexNow
+        run: |
+          curl -sS -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "eaa-monitor.nl",
+              "key": "80dc7574d9b5690e7d2fa51210c01bc9",
+              "keyLocation": "https://eaa-monitor.nl/80dc7574d9b5690e7d2fa51210c01bc9.txt",
+              "urlList": [
+                "https://eaa-monitor.nl/",
+                "https://eaa-monitor.nl/monitor.html",
+                "https://eaa-monitor.nl/monitor-financieel.html",
+                "https://eaa-monitor.nl/monitor-telecom.html",
+                "https://eaa-monitor.nl/monitor-vervoer.html",
+                "https://eaa-monitor.nl/monitor-media.html",
+                "https://eaa-monitor.nl/monitor-ebooks.html",
+                "https://eaa-monitor.nl/artikelen.html",
+                "https://eaa-monitor.nl/bronnen.html",
+                "https://eaa-monitor.nl/vragen.html",
+                "https://eaa-monitor.nl/eregalerij.html"
+              ]
+            }' || true

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="utrecht-theme theme-telling">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,16 +33,30 @@
         "@id": "https://eaa-monitor.nl/#website",
         "url": "https://eaa-monitor.nl/",
         "name": "EAA Monitor",
-        "description": "Hub over de European Accessibility Act: heldere uitleg, wekelijkse meting of Nederlandse webshops, financiële instellingen, telecomaanbieders, vervoerders, mediadiensten en e-bookplatforms een toegankelijkheidsverklaring publiceren, antwoorden op praktijkvragen en een overzicht van auditbureaus.",
+        "description": "Hub over de European Accessibility Act: heldere uitleg, wekelijkse meting of Nederlandse webshops, financiële instellingen, telecomaanbieders, vervoerders, mediadiensten en e-bookplatforms een toegankelijkheidsverklaring publiceren, en antwoorden op praktijkvragen.",
         "inLanguage": "nl-NL",
-        "publisher": { "@id": "https://eaa-monitor.nl/#organization" }
+        "publisher": { "@id": "https://eaa-monitor.nl/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://eaa-monitor.nl/monitor.html?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
       },
       {
         "@type": "Organization",
         "@id": "https://eaa-monitor.nl/#organization",
         "name": "EAA Monitor",
         "url": "https://eaa-monitor.nl/",
-        "description": "Onafhankelijke Nederlandse hub over de European Accessibility Act: heldere uitleg, wekelijkse cijfers over zes sectoren, antwoorden van toezichthouders op anonieme vragen, en een overzicht van auditbureaus.",
+        "logo": "https://eaa-monitor.nl/static/og.png",
+        "foundingDate": "2026",
+        "email": "info@eaa-monitor.nl",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@eaa-monitor.nl",
+          "contactType": "redactie",
+          "availableLanguage": ["nl"]
+        },
+        "description": "Onafhankelijke Nederlandse hub over de European Accessibility Act: heldere uitleg, wekelijkse cijfers over zes sectoren en antwoorden van toezichthouders op anonieme vragen.",
         "knowsAbout": ["Digitale toegankelijkheid", "WCAG", "European Accessibility Act", "Toegankelijkheidsverklaringen", "ACM-toezicht", "AFM-toezicht", "ILT-toezicht", "Commissariaat voor de Media", "Financiële sector", "Webshops", "Telecom", "Personenvervoer", "Streamingdiensten", "E-books", "Onevenredige last", "WCAG-audit"]
       },
       {
@@ -97,9 +111,20 @@
   "url": "https://eaa-monitor.nl/",
   "creator": {
     "@type": "Organization",
+    "@id": "https://eaa-monitor.nl/#organization",
     "name": "EAA Monitor",
     "url": "https://eaa-monitor.nl/"
   },
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Nederland"
+  },
+  "keywords": [
+    "European Accessibility Act",
+    "toegankelijkheidsverklaring",
+    "webshops",
+    "digitale toegankelijkheid"
+  ],
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "isAccessibleForFree": true,
   "inLanguage": "nl-NL",
@@ -145,8 +170,13 @@
   </script>
   <!-- JSONLD-DATASET:END -->
 
+  <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/static/fonts.css">
   <link rel="stylesheet" href="/static/tailwind.css">
+  <link rel="stylesheet" href="/static/utrecht-tokens.css">
+  <link rel="stylesheet" href="/static/utrecht.css">
+  <link rel="stylesheet" href="/static/utrecht-theme.css">
   <link rel="stylesheet" href="/static/site.css">
 
   <!-- Privacy-friendly analytics by Plausible -->
@@ -185,7 +215,6 @@
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
-          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -209,7 +238,6 @@
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
-        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
     <div class="h-[3px] bg-oker" aria-hidden="true"></div>
   </header>
@@ -231,8 +259,8 @@
             Op dit moment publiceert <strong class="font-mono font-medium"><!--STAT:pctWith-->2%<!--/STAT--></strong> van de gecontroleerde Nederlandse webshops een toegankelijkheidsverklaring. Volgende meting: maandagochtend.
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#meting" class="btn btn-primary">Bekijk de maandagmeting</a>
-            <a href="/artikelen.html" class="btn btn-ghost">Begin bij de uitleg</a>
+            <a href="#meting" class="utrecht-button utrecht-button--primary-action">Bekijk de maandagmeting</a>
+            <a href="/artikelen.html" class="utrecht-button utrecht-button--secondary-action">Begin bij de uitleg</a>
           </div>
           <p class="mt-4 text-sm text-gray-600">Liever eerst iets vragen? <a href="/vraag-stellen.html" class="link">Stel je vraag anoniem</a>.</p>
         </div>
@@ -257,11 +285,11 @@
             <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Anoniem. Wij leggen je vraag voor aan de toezichthouder en publiceren het antwoord.</span>
             <span class="mt-3 text-sm font-bold text-brand">Stel je vraag &rarr;</span>
           </a>
-          <a href="/wcag-audit.html" class="card card-hover p-5 flex flex-col">
-            <span class="eyebrow text-brand">Hulp</span>
-            <span class="mt-2 text-lg font-bold text-navy">Vind een bureau</span>
-            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Onafhankelijke auditbureaus, zodat je zelf kunt kiezen.</span>
-            <span class="mt-3 text-sm font-bold text-brand">Bekijk de bureaus &rarr;</span>
+          <a href="/artikelen.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Uitleg</span>
+            <span class="mt-2 text-lg font-bold text-navy">Lees hoe het zit</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Praktische uitleg over de wet, de scope en wat echt werkt.</span>
+            <span class="mt-3 text-sm font-bold text-brand">Naar de kennisbank &rarr;</span>
           </a>
         </div>
       </div>
@@ -339,7 +367,7 @@
             <label for="home-search-input" class="block text-sm font-semibold text-navy mb-2">Zoek een webshop in de monitor</label>
             <div class="flex flex-col sm:flex-row gap-2">
               <input type="search" id="home-search-input" name="q" placeholder="bijv. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-xl border border-field text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-              <button type="submit" class="btn btn-primary">Zoeken</button>
+              <button type="submit" class="utrecht-button utrecht-button--primary-action">Zoeken</button>
             </div>
           </form>
           <p class="mt-4 text-sm text-gray-500 leading-relaxed">Staat jouw webshop er onterecht in, bijvoorbeeld omdat je buiten de EAA valt? <a href="/bezwaar.html" class="link">Maak bezwaar tegen vermelding</a>.</p>
@@ -412,7 +440,7 @@
           <h2 id="kanalen-heading" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">De EAA gaat over meer dan je website</h2>
           <p class="mt-3 text-white leading-relaxed">Ook zelfbedieningsterminals, betaalautomaten, e-readers, e-boeken en elektronische communicatie vallen onder de wet. Kijk naar elk digitaal kanaal waar een klant iets met je doet, niet alleen naar de homepage.</p>
         </div>
-        <a href="/artikelen/niet-alleen-websites-digitale-kanalen.html" class="btn btn-on-dark whitespace-nowrap">Welke kanalen vallen eronder? &rarr;</a>
+        <a href="/artikelen/niet-alleen-websites-digitale-kanalen.html" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Welke kanalen vallen eronder? &rarr;</a>
       </div>
     </section>
 
@@ -436,7 +464,7 @@
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">2</span>
             <h3 class="mt-4 text-lg font-semibold text-navy">Laat het testen</h3>
             <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Een onafhankelijke audit brengt in kaart wat niet werkt voor mensen met een beperking. Een overlay of automatische tool vindt maar een deel.</p>
-            <a href="/wcag-audit.html" class="mt-4 text-sm font-semibold text-brand">Vind een auditbureau &rarr;</a>
+            <a href="/artikelen/overlay-tools-werken-niet.html" class="mt-4 text-sm font-semibold text-brand">Waarom overlays tekortschieten &rarr;</a>
           </li>
           <li class="card reveal p-7 flex flex-col">
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">3</span>
@@ -458,16 +486,16 @@
           <h3 class="mt-2 text-2xl md:text-3xl font-semibold text-navy tracking-tight">Stel ons je vraag, zonder de toezichthouder te alarmeren</h3>
           <p class="mt-3 text-gray-600 leading-relaxed flex-1">Veel ondernemers hebben vragen, maar aarzelen om zich te melden. Stel je vraag hier anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="/vraag-stellen.html" class="btn btn-primary">Stel je vraag anoniem</a>
-            <a href="/vragen.html" class="btn btn-ghost">Lees beantwoorde vragen</a>
+            <a href="/vraag-stellen.html" class="utrecht-button utrecht-button--primary-action">Stel je vraag anoniem</a>
+            <a href="/vragen.html" class="utrecht-button utrecht-button--secondary-action">Lees beantwoorde vragen</a>
           </div>
         </div>
         <div class="rounded-xl bg-navy text-white on-dark p-8 md:p-10 flex flex-col">
-          <span class="eyebrow text-brand-bright">Hulp</span>
+          <span class="eyebrow text-brand-bright">Uitleg</span>
           <h3 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Klaar om het op te lossen?</h3>
-          <p class="mt-3 text-white leading-relaxed flex-1">Een onafhankelijk auditbureau brengt in kaart waar je site vastloopt en helpt je het op te lossen. We verzamelen bureaus in Nederland, zodat je zelf kunt kiezen.</p>
+          <p class="mt-3 text-white leading-relaxed flex-1">In de kennisbank lees je in gewone taal wat de wet vraagt, hoe je een toegankelijkheidsverklaring schrijft en waarom snelle lapmiddelen niet werken.</p>
           <div class="mt-6">
-            <a href="/wcag-audit.html" class="btn btn-on-dark">Vind een auditbureau</a>
+            <a href="/artikelen.html" class="utrecht-button utrecht-button--primary-action">Naar de kennisbank</a>
           </div>
         </div>
       </div>
@@ -540,8 +568,8 @@
           </div>
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
-            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="utrecht-textbox flex-1">
+            <button type="submit" id="newsletter-submit" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Houd me op de hoogte</button>
           </div>
           <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
@@ -586,6 +614,14 @@
           <p class="font-semibold mb-2">Goed om te weten</p>
           <p class="max-w-md">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
         </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white">
+        <p>Vragen of een correctie? Mail <a href="mailto:info@eaa-monitor.nl" class="font-semibold underline underline-offset-2 hover:text-white">info@eaa-monitor.nl</a></p>
+        <nav aria-label="Juridisch" class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/colofon.html" class="hover:text-white">Colofon</a>
+          <a href="/privacy.html" class="hover:text-white">Privacy</a>
+          <a href="/over.html" class="hover:text-white">Over de monitor</a>
+        </nav>
       </div>
     </div>
     <script src="/static/newsletter.js"></script>

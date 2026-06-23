@@ -193,7 +193,7 @@ def _entry_html(item):
               <label for="vote-email-{slug_attr}" class="block text-sm font-semibold text-navy mb-1">Je e-mailadres</label>
               <div class="flex flex-col sm:flex-row gap-2">
                 <input type="email" id="vote-email-{slug_attr}" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
-                <button type="submit" class="btn btn-primary whitespace-nowrap">Stem</button>
+                <button type="submit" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Stem</button>
               </div>
               <p class="mt-2 text-xs text-gray-500">Je bevestigt je stem via een link in je mail. Eén stem per adres; we publiceren je adres nooit. Stemmen vanaf het domein van de website zelf tellen niet mee.</p>
               <div role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm" data-hof-status></div>
@@ -209,7 +209,7 @@ def _list_or_empty(entries):
       <div class="card p-10 text-center text-gray-600">
         <p class="text-lg">Er staat nog niemand in de eregalerij.</p>
         <p class="mt-2">Ken jij een website die echt toegankelijk is? Nomineer hem, dan zetten we hem hier in het zonnetje.</p>
-        <a href="/nomineren.html" class="btn btn-primary mt-6">Nomineer een website</a>
+        <a href="/nomineren.html" class="utrecht-button utrecht-button--primary-action mt-6">Nomineer een website</a>
       </div>"""
     return f"""
       <div class="grid gap-6">
@@ -256,7 +256,7 @@ def render(entries):
         <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Eregalerij</h1>
         <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Een toegankelijkheidsverklaring zegt niets over hoe toegankelijk een website echt is. In deze hall of fame staan websites die bezoekers als digitaal toegankelijk ervaren en daarom nomineren.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/nomineren.html" class="btn btn-primary">Nomineer een website</a>
+          <a href="/nomineren.html" class="utrecht-button utrecht-button--primary-action">Nomineer een website</a>
         </div>
       </div>
     </section>
@@ -278,7 +278,7 @@ def render(entries):
       <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-extrabold text-navy tracking-tight">Ken jij een website die hier hoort?</h2>
         <p class="mt-3 text-navy/70 leading-relaxed max-w-2xl">Nomineer hem. Vertel wat de website goed doet en met welke hulptechnologie je hem gebruikte. Na je bevestiging plaatsen we de nominatie; je e-mailadres gebruiken we alleen voor de bevestiging en publiceren we nooit.</p>
-        <a href="/nomineren.html" class="btn btn-primary mt-6">Nomineer een website</a>
+        <a href="/nomineren.html" class="utrecht-button utrecht-button--primary-action mt-6">Nomineer een website</a>
       </div>
     </section>
 

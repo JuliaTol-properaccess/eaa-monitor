@@ -63,7 +63,13 @@ DATASETS = {
         # dragen de cijfers al. De GEO-SUMMARY-markers zijn uit index.html
         # verwijderd, dus deze patch moet uit blijven (anders harde fail).
         "geo_summary": False,
-        "summary_heading": None,
+        "summary_heading": "E-commerce · ACM-toezicht",
+        # Secundaire bake: het webshop-dashboard (monitor.html) zelf bevat geen
+        # gebakken cijfers en is daardoor zonder JavaScript leeg voor crawlers.
+        # We bakken er een GEO-SUMMARY-blok in (alleen de samenvatting; de
+        # Dataset JSON-LD blijft op de homepage, monitor.html linkt ernaar via
+        # mainEntity). Markers: GEO-SUMMARY:START/END in public/monitor.html.
+        "summary_html": PUBLIC_DIR / "monitor.html",
         "dataset_id": "https://eaa-monitor.nl/#dataset",
         "dataset_name": "Toegankelijkheidsverklaringen Nederlandse webshops",
         "content_url": "https://eaa-monitor.nl/data/results.json",
@@ -765,6 +771,10 @@ def _geo_summary_inner(stats, date_nl, ds):
 def _dataset_jsonld(stats, date_nl, date_iso, ds):
     noun = ds["noun"]
     noun_cap = noun[0].upper() + noun[1:]
+    # De pagina waar deze dataset gedocumenteerd staat: het deel van dataset_id
+    # vóór het #-fragment (homepage voor webshops, de eigen monitorpagina voor de
+    # sectoren). Zo wijst Dataset.url niet langer altijd naar de homepage.
+    page_url = ds["dataset_id"].rsplit("#", 1)[0]
     obj = {
         "@context": "https://schema.org",
         "@type": "Dataset",
@@ -776,12 +786,20 @@ def _dataset_jsonld(stats, date_nl, date_iso, ds):
             f"{stats['with_statement']} met verklaring, {stats['without_statement']} zonder, "
             f"{stats['errors']} niet te controleren."
         ),
-        "url": "https://eaa-monitor.nl/",
+        "url": page_url,
         "creator": {
             "@type": "Organization",
+            "@id": "https://eaa-monitor.nl/#organization",
             "name": "EAA Monitor",
             "url": "https://eaa-monitor.nl/",
         },
+        "spatialCoverage": {"@type": "Place", "name": "Nederland"},
+        "keywords": [
+            "European Accessibility Act",
+            "toegankelijkheidsverklaring",
+            noun,
+            "digitale toegankelijkheid",
+        ],
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "isAccessibleForFree": True,
         "inLanguage": "nl-NL",
@@ -827,6 +845,27 @@ def patch_target_html(stats, date_nl, date_iso, ds):
                            _dataset_jsonld(stats, date_nl, date_iso, ds))
     _write_atomic(target, html)
     print(f"Patched {target}")
+
+
+def patch_secondary_summary(stats, date_nl, ds):
+    """Bak een GEO-SUMMARY-blok in een tweede HTML-bestand (ds['summary_html']).
+
+    Gebruikt voor de webshops: de Dataset JSON-LD en de hero-cijfers staan op de
+    homepage, maar het dashboard monitor.html had zelf geen gebakken cijfers en
+    was daardoor zonder JavaScript leeg voor crawlers. We patchen hier alleen de
+    GEO-SUMMARY-regio; ontbreekt die, dan faalt _replace_region hard (bewust).
+    """
+    target = ds.get("summary_html")
+    if not target:
+        return
+    if not target.exists():
+        print(f"Secundaire samenvatting overgeslagen: {target} bestaat niet")
+        return
+    html = target.read_text(encoding="utf-8")
+    html = _replace_region(html, "<!-- GEO-SUMMARY:START -->", "<!-- GEO-SUMMARY:END -->",
+                           _geo_summary_inner(stats, date_nl, ds))
+    _write_atomic(target, html)
+    print(f"Patched {target} (secundaire samenvatting)")
 
 
 def patch_hub_card(stats, ds):
@@ -938,6 +977,7 @@ def generate_geo_assets(output, ds):
     date_nl = _date_nl(output["last_updated"])
     date_iso = output["last_updated"][:10]
     patch_target_html(stats, date_nl, date_iso, ds)
+    patch_secondary_summary(stats, date_nl, ds)
     patch_hub_card(stats, ds)
     patch_llms_measurement(stats, date_nl, ds)
     update_history(stats, date_iso, ds)

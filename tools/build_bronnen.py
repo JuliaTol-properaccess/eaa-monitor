@@ -166,7 +166,7 @@ def render(sources):
           <form id="bron-search-form" role="search" class="flex flex-col sm:flex-row gap-2 sm:max-w-md">
             <input type="search" id="bron-search" placeholder="Zoek op titel of organisatie" autocomplete="off"
                    class="flex-1 rounded-lg border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
-            <button type="submit" class="btn btn-primary">Zoeken</button>
+            <button type="submit" class="utrecht-button utrecht-button--primary-action">Zoeken</button>
           </form>
         </div>
         <div class="flex flex-wrap gap-2" role="group" aria-label="Filter op brontype" id="bron-filters">

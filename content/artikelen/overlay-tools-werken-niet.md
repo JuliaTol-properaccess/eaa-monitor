@@ -2,6 +2,7 @@
 title: "Waarom accessibility-overlays je probleem niet oplossen"
 slug: "overlay-tools-werken-niet"
 description: "Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt."
+answer: "Een overlay belooft je website in één regel code toegankelijk te maken, maar lost de echte barrières niet op. Vakpartijen zijn er kritisch op: de onderliggende code blijft ontoegankelijk en sommige overlays hinderen hulpsoftware juist. Echte toegankelijkheid begint bij de broncode zelf."
 date: 2026-06-08
 theme: "mythes"
 keywords:

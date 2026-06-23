@@ -105,14 +105,13 @@ NAV_ITEMS = [
     ("Bronnen", "/bronnen.html"),
     ("Vragen", "/vragen.html"),
     ("Eregalerij", "/eregalerij.html"),
-    ("WCAG-audit", "/wcag-audit.html"),
 ]
 
 
 def shared_head(title, description, canonical, *, extra_head="", og_type="website"):
     """Gedeelde <head>. depth-onafhankelijk via absolute /static-paden."""
     return f"""<!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="utrecht-theme theme-telling">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,8 +135,13 @@ def shared_head(title, description, canonical, *, extra_head="", og_type="websit
   <meta name="twitter:description" content="{html.escape(description)}">
   <meta name="twitter:image" content="{BASE_URL}/static/og.png">
 
+  <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/static/fonts.css">
   <link rel="stylesheet" href="/static/tailwind.css">
+  <link rel="stylesheet" href="/static/utrecht-tokens.css">
+  <link rel="stylesheet" href="/static/utrecht.css">
+  <link rel="stylesheet" href="/static/utrecht-theme.css">
   <link rel="stylesheet" href="/static/site.css">
 
   <!-- Privacy-friendly analytics by Plausible -->
@@ -266,8 +270,8 @@ def site_footer():
           </div>
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
-            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="utrecht-textbox flex-1">
+            <button type="submit" id="newsletter-submit" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Houd me op de hoogte</button>
           </div>
           <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
@@ -313,6 +317,14 @@ def site_footer():
           <p class="max-w-md">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
         </div>
       </div>
+      <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white">
+        <p>Vragen of een correctie? Mail <a href="mailto:info@eaa-monitor.nl" class="font-semibold underline underline-offset-2 hover:text-white">info@eaa-monitor.nl</a></p>
+        <nav aria-label="Juridisch" class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/colofon.html" class="hover:text-white">Colofon</a>
+          <a href="/privacy.html" class="hover:text-white">Privacy</a>
+          <a href="/over.html" class="hover:text-white">Over de monitor</a>
+        </nav>
+      </div>
     </div>
     <script src="/static/newsletter.js"></script>
   </footer>
@@ -349,29 +361,55 @@ def parse_article(path: Path) -> dict:
     meta["_path"] = path
     if isinstance(meta["date"], str):
         meta["date"] = _date.fromisoformat(meta["date"])
+    if meta.get("updated") and isinstance(meta["updated"], str):
+        meta["updated"] = _date.fromisoformat(meta["updated"])
     return meta
 
 
+ORG_ID = f"{BASE_URL}/#organization"
+
+
 def article_jsonld(meta: dict, url: str) -> str:
-    obj = {
+    """Article + BreadcrumbList JSON-LD. Auteur en uitgever verwijzen via @id
+    naar de Organization-node op de homepage (één entiteit, één keer beschreven).
+    dateModified komt uit het optionele frontmatter-veld 'updated'."""
+    modified = meta.get("updated") or meta["date"]
+    article = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": meta["title"],
         "description": meta["description"],
+        "image": f"{BASE_URL}/static/og.png",
         "datePublished": meta["date"].isoformat(),
-        "dateModified": meta["date"].isoformat(),
+        "dateModified": modified.isoformat(),
         "inLanguage": "nl-NL",
         "mainEntityOfPage": {"@type": "WebPage", "@id": url},
-        "author": {"@type": "Organization", "name": "EAA Monitor", "url": BASE_URL},
-        "publisher": {"@type": "Organization", "name": "EAA Monitor", "url": BASE_URL},
+        "author": {"@id": ORG_ID},
+        "publisher": {"@id": ORG_ID},
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["h1", ".article-answer"],
+        },
     }
     if meta.get("keywords"):
-        obj["keywords"] = ", ".join(meta["keywords"])
-    return (
-        '  <script type="application/ld+json">\n  '
-        + json.dumps(obj, ensure_ascii=False, indent=2)
-        + "\n  </script>\n"
-    )
+        article["keywords"] = ", ".join(meta["keywords"])
+    breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+            {"@type": "ListItem", "position": 2, "name": "Kennisbank", "item": f"{BASE_URL}/artikelen.html"},
+            {"@type": "ListItem", "position": 3, "name": meta["title"], "item": url},
+        ],
+    }
+    out = []
+    for obj in (article, breadcrumb):
+        out.append(
+            '  <script type="application/ld+json">\n  '
+            + json.dumps(obj, ensure_ascii=False, indent=2)
+            + "\n  </script>\n"
+        )
+    return "".join(out)
 
 
 def sources_block(meta: dict) -> str:
@@ -426,17 +464,17 @@ def feedback_block(meta: dict) -> str:
               <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
             </div>
 
-            <div>
-              <label for="feedback-bericht" class="block text-sm font-semibold text-navy mb-1.5">Wat klopt er niet?</label>
-              <textarea id="feedback-bericht" name="bericht" rows="4" required class="w-full rounded-xl border border-field px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
+            <div class="utrecht-form-field">
+              <label for="feedback-bericht" class="utrecht-form-label">Wat klopt er niet?</label>
+              <textarea id="feedback-bericht" name="bericht" rows="4" required class="utrecht-textarea w-full" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
             </div>
 
-            <div>
-              <label for="feedback-email" class="block text-sm font-semibold text-navy mb-1.5">E-mailadres <span class="font-normal text-gray-500">(optioneel, alleen als je een reactie wilt)</span></label>
-              <input type="email" id="feedback-email" name="email" autocomplete="email" class="w-full rounded-xl border border-field px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="jij@voorbeeld.nl">
+            <div class="utrecht-form-field">
+              <label for="feedback-email" class="utrecht-form-label">E-mailadres <span class="font-normal text-gray-500">(optioneel, alleen als je een reactie wilt)</span></label>
+              <input type="email" id="feedback-email" name="email" autocomplete="email" class="utrecht-textbox w-full" placeholder="jij@voorbeeld.nl">
             </div>
 
-            <button type="submit" id="feedback-submit" class="btn btn-primary">Versturen</button>
+            <button type="submit" id="feedback-submit" class="utrecht-button utrecht-button--primary-action">Versturen</button>
           </form>
         </div>
       </section>"""
@@ -506,6 +544,20 @@ def render_article(meta: dict) -> str:
         og_type="article",
     )
 
+    # Samenvattend antwoord direct onder de H1: het eerste wat een lezer (en een
+    # AI-zoekmachine) ziet, los citeerbaar. Optioneel via frontmatter 'answer'.
+    answer_html = ""
+    if meta.get("answer"):
+        answer_html = (
+            '\n        <p class="article-answer mt-5 text-lg text-inkt leading-relaxed '
+            'border-l-4 border-brand bg-softblue rounded-r-xl px-5 py-4">'
+            f'{html.escape(meta["answer"])}</p>'
+        )
+
+    datum_html = f"Gepubliceerd op {nl_date(meta['date'])}"
+    if meta.get("updated") and meta["updated"] != meta["date"]:
+        datum_html += f" · bijgewerkt op {nl_date(meta['updated'])}"
+
     return f"""{head}<body class="bg-white">
 {site_header("/artikelen.html")}
   <main id="main">
@@ -515,8 +567,8 @@ def render_article(meta: dict) -> str:
         <a href="/artikelen.html" class="text-sm font-semibold text-brand">&larr; Kennisbank</a>
         <p class="mt-6"><span class="chip-toezicht">{html.escape(theme_label)}</span></p>
         <h1 class="mt-4 text-3xl md:text-5xl font-semibold text-navy leading-tight tracking-tight">{html.escape(meta["title"])}</h1>
-        <p class="mt-4 text-lg text-gray-600 leading-relaxed">{html.escape(meta["description"])}</p>
-        <p class="mt-6 font-mono text-xs font-medium uppercase tracking-[0.08em] text-gray-600">Gepubliceerd op {nl_date(meta["date"])}</p>
+        <p class="mt-4 text-lg text-gray-600 leading-relaxed">{html.escape(meta["description"])}</p>{answer_html}
+        <p class="mt-6 font-mono text-xs font-medium uppercase tracking-[0.08em] text-gray-600">{datum_html}</p>
       </div>
     </div>
 
@@ -528,10 +580,10 @@ def render_article(meta: dict) -> str:
 
       <div class="mt-14 rounded-xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-semibold text-navy tracking-tight">Wil je weten waar je staat?</h2>
-        <p class="mt-3 text-navy leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
+        <p class="mt-3 text-navy leading-relaxed">De monitor meet wekelijks of organisaties in zes sectoren een toegankelijkheidsverklaring publiceren. Zoek je eigen organisatie op, of lees verder in de kennisbank.</p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/wcag-audit.html" class="btn btn-primary">Bekijk auditbureaus</a>
-          <a href="/monitor.html" class="btn btn-ghost">Check jouw webshop in de monitor</a>
+          <a href="/monitor.html" class="utrecht-button utrecht-button--primary-action">Zoek je organisatie in de monitor</a>
+          <a href="/artikelen.html" class="utrecht-button utrecht-button--secondary-action">Naar de kennisbank</a>
         </div>
       </div>
 {feedback_block(meta)}
@@ -585,7 +637,7 @@ def render_kennisbank(articles: list) -> str:
           <h2 class="text-lg font-extrabold text-navy tracking-tight">Op zoek naar de oorspronkelijke bronnen?</h2>
           <p class="mt-1.5 text-sm text-gray-600 leading-relaxed">Bekijk ons doorzoekbare overzicht van artikelen en publicaties over de EAA, van toezichthouders en overheid tot juristen, bureaus en vakmedia.</p>
         </div>
-        <a href="/bronnen.html" class="btn btn-primary whitespace-nowrap self-start sm:self-auto">Naar de bronnen</a>
+        <a href="/bronnen.html" class="utrecht-button utrecht-button--primary-action whitespace-nowrap self-start sm:self-auto">Naar de bronnen</a>
       </div>
       <p class="mt-10 text-sm text-gray-500 leading-relaxed max-w-2xl">Deze kennisbank is samengesteld uit openbare bronnen: publicaties van toezichthouders, nieuwsberichten en vakartikelen. Het is algemene uitleg, geen juridisch advies. Zie je een fout? Onderaan elk artikel kun je het ons laten weten.</p>
     </section>
@@ -596,38 +648,125 @@ def render_kennisbank(articles: list) -> str:
 """
 
 
+# ── Losse pagina's (colofon, privacy) ───────────────────────────────────────────
+
+def render_simple_page(title: str, description: str, slug: str, body_html: str) -> str:
+    """Eenvoudige inhoudspagina die head/header/footer deelt met de rest van de
+    site. Gebruikt voor colofon en privacy, zodat die automatisch het NLDS-
+    fundament, de actuele navigatie en de footer met contact erven."""
+    url = f"{BASE_URL}/{slug}.html"
+    head = shared_head(f"{title} — EAA Monitor", description, url)
+    return f"""{head}<body class="bg-papier">
+{site_header("")}
+  <main id="main">
+    <section>
+      <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-4">
+        <h1 class="mt-3 text-3xl md:text-5xl font-semibold text-navy tracking-tight">{html.escape(title)}</h1>
+      </div>
+    </section>
+    <article class="max-w-prose mx-auto px-4 sm:px-6 py-10 prose">
+{body_html}
+    </article>
+  </main>
+{site_footer()}</body>
+</html>
+"""
+
+
+COLOFON_BODY = """      <p>De EAA Monitor is de onafhankelijke telling van digitaal toegankelijk Nederland. De site brengt alle praktische informatie over de European Accessibility Act samen: wekelijkse metingen in zes sectoren, uitleg in gewone taal, antwoorden van toezichthouders en een doorzoekbaar bronnenoverzicht.</p>
+
+      <h2>Wie maakt de EAA Monitor?</h2>
+      <p>De monitor wordt samengesteld en onderhouden door een klein team met jarenlange ervaring in digitale toegankelijkheid. We noemen geen namen, maar je kunt ons altijd bereiken. Hoe we meten en wat we wel en niet beweren, lees je op de pagina <a href="/over.html">over de monitor</a>.</p>
+
+      <h2>Gebruik van de data</h2>
+      <p>De meetcijfers en de onderliggende data zijn vrij te gebruiken onder de licentie Creative Commons Naamsvermelding 4.0 (CC BY 4.0). Verwijs bij gebruik naar de EAA Monitor met een link. De ruwe meetresultaten staan als open JSON op de site.</p>
+
+      <h2>Techniek</h2>
+      <p>De website draait volledig op Europese diensten: de servers staan bij Hetzner in Duitsland, het domein loopt via SIDN in Nederland, de bezoekersstatistieken komen van Plausible in Europa en e-mail versturen we met AhaSend uit Nederland. We gebruiken geen Amerikaanse diensten en geen volgcookies.</p>
+
+      <h2>Contact</h2>
+      <p>Vragen, een correctie of een tip? Mail <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>. Hoe we omgaan met je gegevens lees je in de <a href="/privacy.html">privacyverklaring</a>.</p>"""
+
+
+PRIVACY_BODY = """      <p>De EAA Monitor verzamelt zo min mogelijk gegevens. Op deze pagina lees je wat we wel en niet bewaren, en welke rechten je hebt.</p>
+
+      <h2>Bezoekersstatistieken</h2>
+      <p>We meten bezoek met Plausible, een privacyvriendelijke dienst in Europa. Plausible gebruikt geen cookies en verzamelt geen persoonsgegevens waarmee we je kunnen herkennen. We zien alleen geanonimiseerde aantallen, zoals welke pagina's bezocht worden.</p>
+
+      <h2>Nieuwsbrief</h2>
+      <p>Schrijf je je in voor de nieuwsbrief, dan vragen we je e-mailadres. We sturen je eerst een bevestigingsmail; pas als je daarop klikt, slaan we je adres op. We gebruiken het alleen voor de nieuwsbrief. Afmelden kan met één klik in elke mail, op elk moment. Je adres wordt versleuteld opgeslagen bij onze Europese diensten en niet gedeeld met anderen.</p>
+
+      <h2>Formulieren</h2>
+      <p>Stuur je een bezwaar, een vraag, een nominatie of feedback via een formulier, dan komt dat als e-mail bij ons binnen. We bewaren die berichten niet in een database en delen ze niet met anderen. Een e-mailadres in een formulier is altijd optioneel, behalve waar we het nodig hebben om je een bevestiging te sturen.</p>
+
+      <h2>Stemmen in de eregalerij</h2>
+      <p>Stem je op een website in de eregalerij, dan slaan we een versleutelde (gehashte) versie van je e-mailadres op. Zo voorkomen we dubbele stemmen, zonder je echte adres te bewaren.</p>
+
+      <h2>Geen volgcookies</h2>
+      <p>We plaatsen geen volgcookies en gebruiken geen advertentienetwerken. Je bezoek raakt geen Amerikaanse dienst.</p>
+
+      <h2>Je rechten</h2>
+      <p>Je hebt recht op inzage, correctie en verwijdering van je gegevens. Wil je weten wat we van je hebben, of wil je dat we iets verwijderen? Mail <a href="mailto:info@eaa-monitor.nl">info@eaa-monitor.nl</a>, dan regelen we dat.</p>"""
+
+
 # ── Sitemap & llms.txt ─────────────────────────────────────────────────────────
 
+DATA_DIR = ROOT / "data"
+
+
+def _results_lastmod(filename: str):
+    """Best-effort: lees de scrape-datum (YYYY-MM-DD) uit een results-bestand.
+    Geeft None als het bestand ontbreekt of geen geldige datum heeft."""
+    f = DATA_DIR / filename
+    try:
+        with open(f, encoding="utf-8") as fh:
+            stamp = json.load(fh).get("last_updated")
+        return stamp[:10] if stamp else None
+    except (FileNotFoundError, json.JSONDecodeError, KeyError, TypeError):
+        return None
+
+
 def write_sitemap(articles: list):
+    # lastmod: voor home/monitorpagina's de scrape-datum uit het results-bestand;
+    # voor de kennisbank de datum van het nieuwste artikel. lastmod is het enige
+    # sitemapveld dat zoekmachines echt gebruiken voor recrawl-prioriteit, dus
+    # juist bij wekelijks verversende cijfers waardevol.
+    newest_article = (
+        max(articles, key=lambda m: m["date"])["date"].isoformat() if articles else None
+    )
+    # (loc, changefreq, priority, lastmod)
     static_urls = [
-        (f"{BASE_URL}/", "weekly", "1.0"),
-        (f"{BASE_URL}/monitor.html", "weekly", "0.9"),
-        (f"{BASE_URL}/monitor-financieel.html", "weekly", "0.9"),
-        (f"{BASE_URL}/monitor-telecom.html", "weekly", "0.9"),
-        (f"{BASE_URL}/monitor-vervoer.html", "weekly", "0.9"),
-        (f"{BASE_URL}/monitor-media.html", "weekly", "0.9"),
-        (f"{BASE_URL}/monitor-ebooks.html", "weekly", "0.9"),
-        (f"{BASE_URL}/artikelen.html", "weekly", "0.8"),
-        (f"{BASE_URL}/bronnen.html", "weekly", "0.7"),
-        (f"{BASE_URL}/vragen.html", "weekly", "0.7"),
-        (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6"),
-        (f"{BASE_URL}/eregalerij.html", "weekly", "0.7"),
-        (f"{BASE_URL}/nomineren.html", "monthly", "0.6"),
-        (f"{BASE_URL}/wcag-audit.html", "monthly", "0.7"),
-        (f"{BASE_URL}/over.html", "monthly", "0.5"),
-        (f"{BASE_URL}/bezwaren.html", "weekly", "0.4"),
+        (f"{BASE_URL}/", "weekly", "1.0", _results_lastmod("results.json")),
+        (f"{BASE_URL}/monitor.html", "weekly", "0.9", _results_lastmod("results.json")),
+        (f"{BASE_URL}/monitor-financieel.html", "weekly", "0.9", _results_lastmod("results-financieel.json")),
+        (f"{BASE_URL}/monitor-telecom.html", "weekly", "0.9", _results_lastmod("results-telecom.json")),
+        (f"{BASE_URL}/monitor-vervoer.html", "weekly", "0.9", _results_lastmod("results-vervoer.json")),
+        (f"{BASE_URL}/monitor-media.html", "weekly", "0.9", _results_lastmod("results-media.json")),
+        (f"{BASE_URL}/monitor-ebooks.html", "weekly", "0.9", _results_lastmod("results-ebooks.json")),
+        (f"{BASE_URL}/artikelen.html", "weekly", "0.8", newest_article),
+        (f"{BASE_URL}/bronnen.html", "weekly", "0.7", None),
+        (f"{BASE_URL}/vragen.html", "weekly", "0.7", None),
+        (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6", None),
+        (f"{BASE_URL}/eregalerij.html", "weekly", "0.7", None),
+        (f"{BASE_URL}/nomineren.html", "monthly", "0.6", None),
+        (f"{BASE_URL}/over.html", "monthly", "0.5", None),
+        (f"{BASE_URL}/colofon.html", "yearly", "0.3", None),
+        (f"{BASE_URL}/privacy.html", "yearly", "0.3", None),
+        (f"{BASE_URL}/bezwaren.html", "weekly", "0.4", None),
     ]
     rows = []
-    for loc, freq, prio in static_urls:
+    for loc, freq, prio, lastmod in static_urls:
+        lastmod_xml = f"<lastmod>{lastmod}</lastmod>\n    " if lastmod else ""
         rows.append(
             f"  <url>\n    <loc>{loc}</loc>\n    "
-            f"<changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>"
+            f"{lastmod_xml}<changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>"
         )
     for meta in articles:
         loc = f"{BASE_URL}/artikelen/{meta['slug']}.html"
+        lastmod = (meta.get("updated") or meta["date"]).isoformat()
         rows.append(
             f"  <url>\n    <loc>{loc}</loc>\n    "
-            f"<lastmod>{meta['date'].isoformat()}</lastmod>\n    "
+            f"<lastmod>{lastmod}</lastmod>\n    "
             f"<changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>"
         )
     xml = (
@@ -710,6 +849,22 @@ def main():
 
     KENNISBANK_FILE.write_text(render_kennisbank(articles_sorted), encoding="utf-8")
     print(f"Geschreven: {KENNISBANK_FILE.relative_to(ROOT)}")
+
+    colofon = render_simple_page(
+        "Colofon",
+        "Colofon van de EAA Monitor: wie de onafhankelijke telling maakt, hoe je de data mag gebruiken en hoe je ons bereikt.",
+        "colofon", COLOFON_BODY,
+    )
+    (ROOT / "public" / "colofon.html").write_text(colofon, encoding="utf-8")
+    print("Geschreven: public/colofon.html")
+
+    privacy = render_simple_page(
+        "Privacyverklaring",
+        "Privacyverklaring van de EAA Monitor: welke gegevens we verzamelen, hoe we ermee omgaan en welke rechten je hebt. Zo min mogelijk, zonder volgcookies.",
+        "privacy", PRIVACY_BODY,
+    )
+    (ROOT / "public" / "privacy.html").write_text(privacy, encoding="utf-8")
+    print("Geschreven: public/privacy.html")
 
     write_sitemap(articles_sorted)
     patch_llms_articles(articles_sorted)
