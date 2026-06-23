@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="utrecht-theme theme-telling">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +23,13 @@
   <meta name="twitter:description" content="Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.">
   <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
 
+  <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/static/fonts.css">
   <link rel="stylesheet" href="/static/tailwind.css">
+  <link rel="stylesheet" href="/static/utrecht-tokens.css">
+  <link rel="stylesheet" href="/static/utrecht.css">
+  <link rel="stylesheet" href="/static/utrecht-theme.css">
   <link rel="stylesheet" href="/static/site.css">
 
   <!-- Privacy-friendly analytics by Plausible -->
@@ -39,6 +44,7 @@
   "@type": "Article",
   "headline": "Waarom accessibility-overlays je probleem niet oplossen",
   "description": "Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.",
+  "image": "https://eaa-monitor.nl/static/og.png",
   "datePublished": "2026-06-08",
   "dateModified": "2026-06-08",
   "inLanguage": "nl-NL",
@@ -47,16 +53,45 @@
     "@id": "https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html"
   },
   "author": {
-    "@type": "Organization",
-    "name": "EAA Monitor",
-    "url": "https://eaa-monitor.nl"
+    "@id": "https://eaa-monitor.nl/#organization"
   },
   "publisher": {
-    "@type": "Organization",
-    "name": "EAA Monitor",
-    "url": "https://eaa-monitor.nl"
+    "@id": "https://eaa-monitor.nl/#organization"
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      "h1",
+      ".article-answer"
+    ]
   },
   "keywords": "overlay, accessibility overlay, eaa, wcag, toegankelijkheid"
+}
+  </script>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://eaa-monitor.nl/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kennisbank",
+      "item": "https://eaa-monitor.nl/artikelen.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Waarom accessibility-overlays je probleem niet oplossen",
+      "item": "https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html"
+    }
+  ]
 }
   </script>
 </head>
@@ -88,7 +123,6 @@
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
-          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -112,7 +146,6 @@
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
-        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
     <div class="h-[3px] bg-oker" aria-hidden="true"></div>
   </header>
@@ -125,6 +158,7 @@
         <p class="mt-6"><span class="chip-toezicht">Mythes &amp; misverstanden</span></p>
         <h1 class="mt-4 text-3xl md:text-5xl font-semibold text-navy leading-tight tracking-tight">Waarom accessibility-overlays je probleem niet oplossen</h1>
         <p class="mt-4 text-lg text-gray-600 leading-relaxed">Een overlay belooft je webshop in één regel code toegankelijk te maken. In de praktijk lost het de echte barrières niet op. Lees waarom vakpartijen er kritisch op zijn en wat wél werkt.</p>
+        <p class="article-answer mt-5 text-lg text-inkt leading-relaxed border-l-4 border-brand bg-softblue rounded-r-xl px-5 py-4">Een overlay belooft je website in één regel code toegankelijk te maken, maar lost de echte barrières niet op. Vakpartijen zijn er kritisch op: de onderliggende code blijft ontoegankelijk en sommige overlays hinderen hulpsoftware juist. Echte toegankelijkheid begint bij de broncode zelf.</p>
         <p class="mt-6 font-mono text-xs font-medium uppercase tracking-[0.08em] text-gray-600">Gepubliceerd op 8 juni 2026</p>
       </div>
     </div>
@@ -170,10 +204,10 @@
 
       <div class="mt-14 rounded-xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-semibold text-navy tracking-tight">Wil je weten waar je staat?</h2>
-        <p class="mt-3 text-navy leading-relaxed">Een onafhankelijke audit brengt in kaart of je website voldoet aan de WCAG en de European Accessibility Act. Bekijk de auditbureaus in Nederland, of zoek je eigen webshop op in de monitor.</p>
+        <p class="mt-3 text-navy leading-relaxed">De monitor meet wekelijks of organisaties in zes sectoren een toegankelijkheidsverklaring publiceren. Zoek je eigen organisatie op, of lees verder in de kennisbank.</p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/wcag-audit.html" class="btn btn-primary">Bekijk auditbureaus</a>
-          <a href="/monitor.html" class="btn btn-ghost">Check jouw webshop in de monitor</a>
+          <a href="/monitor.html" class="utrecht-button utrecht-button--primary-action">Zoek je organisatie in de monitor</a>
+          <a href="/artikelen.html" class="utrecht-button utrecht-button--secondary-action">Naar de kennisbank</a>
         </div>
       </div>
 
@@ -194,17 +228,17 @@
               <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
             </div>
 
-            <div>
-              <label for="feedback-bericht" class="block text-sm font-semibold text-navy mb-1.5">Wat klopt er niet?</label>
-              <textarea id="feedback-bericht" name="bericht" rows="4" required class="w-full rounded-xl border border-field px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
+            <div class="utrecht-form-field">
+              <label for="feedback-bericht" class="utrecht-form-label">Wat klopt er niet?</label>
+              <textarea id="feedback-bericht" name="bericht" rows="4" required class="utrecht-textarea w-full" placeholder="Beschrijf kort wat er niet klopt. Heb je een bron? Plak die er gerust bij."></textarea>
             </div>
 
-            <div>
-              <label for="feedback-email" class="block text-sm font-semibold text-navy mb-1.5">E-mailadres <span class="font-normal text-gray-500">(optioneel, alleen als je een reactie wilt)</span></label>
-              <input type="email" id="feedback-email" name="email" autocomplete="email" class="w-full rounded-xl border border-field px-4 py-3 text-navy placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand" placeholder="jij@voorbeeld.nl">
+            <div class="utrecht-form-field">
+              <label for="feedback-email" class="utrecht-form-label">E-mailadres <span class="font-normal text-gray-500">(optioneel, alleen als je een reactie wilt)</span></label>
+              <input type="email" id="feedback-email" name="email" autocomplete="email" class="utrecht-textbox w-full" placeholder="jij@voorbeeld.nl">
             </div>
 
-            <button type="submit" id="feedback-submit" class="btn btn-primary">Versturen</button>
+            <button type="submit" id="feedback-submit" class="utrecht-button utrecht-button--primary-action">Versturen</button>
           </form>
         </div>
       </section>
@@ -224,8 +258,8 @@
           </div>
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
-            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="utrecht-textbox flex-1">
+            <button type="submit" id="newsletter-submit" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Houd me op de hoogte</button>
           </div>
           <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
@@ -270,6 +304,14 @@
           <p class="font-semibold mb-2">Goed om te weten</p>
           <p class="max-w-md">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
         </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white">
+        <p>Vragen of een correctie? Mail <a href="mailto:info@eaa-monitor.nl" class="font-semibold underline underline-offset-2 hover:text-white">info@eaa-monitor.nl</a></p>
+        <nav aria-label="Juridisch" class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/colofon.html" class="hover:text-white">Colofon</a>
+          <a href="/privacy.html" class="hover:text-white">Privacy</a>
+          <a href="/over.html" class="hover:text-white">Over de monitor</a>
+        </nav>
       </div>
     </div>
     <script src="/static/newsletter.js"></script>

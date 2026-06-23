@@ -64,37 +64,9 @@ h1, h2, h3, h4, .font-display {
 }
 .link:hover { text-decoration: underline; }
 
-/* ----- Knoppen: geen pillen, 12px hoekradius ----- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  font-weight: 700;
-  border-radius: .75rem;
-  transition: transform .12s ease, background-color .15s ease, border-color .15s ease;
-  white-space: nowrap;
-}
-.btn:active { transform: translateY(1px); }
-.btn-primary {
-  background: var(--brand);
-  color: #fff;
-  padding: .85rem 1.6rem;
-}
-.btn-primary:hover { background: var(--brand-dark); }
-.btn-ghost {
-  background: #fff;
-  color: var(--brand);
-  padding: .85rem 1.4rem;
-  border: 1.5px solid var(--field);
-}
-.btn-ghost:hover { border-color: var(--brand); background: var(--zachtgroen); }
-.btn-on-dark {
-  background: var(--papier);
-  color: var(--navy);
-  padding: .85rem 1.6rem;
-}
-.btn-on-dark:hover { background: #fff; }
+/* Knoppen zijn gemigreerd naar NL Design System / Utrecht-componenten
+   (.utrecht-button met --primary-action / --secondary-action). De thema-tokens
+   en de donkere-sectie-override staan in public/static/utrecht-theme.css. */
 
 /* ----- Cards: dunne zichtbare rand, 12px radius, geen zwevende schaduwen ----- */
 .card {
@@ -195,7 +167,6 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn { transition: none; }
   .card { transition: none; }
   .telbalk-vul { transition: none; }
 }
@@ -246,12 +217,9 @@ h1, h2, h3, h4, .font-display {
 }
 .prose a { color: var(--brand); font-weight: 700; text-underline-offset: 2px; text-decoration: underline; }
 .prose a:hover { color: var(--brand-dark); }
-/* Knoppen binnen artikel-prose mogen de prose-linkstijl niet erven
-   (anders groene tekst op een groene knop = onzichtbaar). */
-.prose a.btn { text-decoration: none; }
-.prose a.btn-primary { color: #fff; }
-.prose a.btn-ghost { color: var(--brand); }
-.prose a.btn-on-dark { color: var(--navy); }
+/* Utrecht-knoppen binnen artikel-prose mogen de prose-linkstijl (onderstreping,
+   groene tekst) niet erven; de Utrecht-component bepaalt de eigen kleuren. */
+.prose a.utrecht-button { text-decoration: none; }
 .prose ul, .prose ol { padding-left: 1.4rem; }
 .prose ul { list-style: disc; }
 .prose ol { list-style: decimal; }

@@ -2,7 +2,9 @@
 title: "Wie houdt toezicht op de EAA, en wat zijn de boetes?"
 slug: "toezicht-en-boetes"
 description: "Het toezicht op de European Accessibility Act is in Nederland verdeeld over meerdere toezichthouders. De ACM is de hoofdrolspeler voor webshops. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet."
+answer: "In Nederland houdt vooral de ACM toezicht op de European Accessibility Act, met daarnaast de AFM voor de financiële sector en andere toezichthouders per domein. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet. Sinds oktober 2025 geldt bovendien een meldplicht."
 date: 2026-06-08
+updated: 2026-06-23
 theme: "toezicht"
 keywords:
   - eaa
@@ -44,6 +46,8 @@ De ACM is de hoofdrolspeler voor webshops en is sinds 28 juni 2025 actief gaan c
 De ACM heeft e-commerce bovendien expliciet benoemd als speerpunt in haar toezicht op de digitale economie in 2026. Dat onderwerp blijft dus hoog op de agenda staan.
 
 In maart 2026 publiceerde de ACM een onderzoek onder de circa 100 grootste Nederlandse webshops. Daaruit bleek dat 61% niet toegankelijk is en dat bij nog eens 33% serieuze problemen zijn. Opgeteld heeft ongeveer 94% tekortkomingen.
+
+Onze eigen wekelijkse meting wijst dezelfde kant op. Op 6 juni 2026 publiceerde slechts 2% van de 10.397 gecontroleerde webshops een toegankelijkheidsverklaring in de footer. Een verklaring is niet hetzelfde als echt toegankelijk zijn, maar het laat wel zien hoeveel werk er nog ligt. Bekijk de actuele stand in de [webshopmonitor](/monitor.html).
 
 ## Meldplicht sinds oktober 2025
 

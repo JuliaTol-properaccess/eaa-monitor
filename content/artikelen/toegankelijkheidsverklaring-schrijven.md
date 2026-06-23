@@ -2,6 +2,7 @@
 title: "Zo schrijf je een toegankelijkheidsverklaring voor je webshop"
 slug: "toegankelijkheidsverklaring-schrijven"
 description: "Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Lees wat erin hoort, hoe je hem publiceert en waarom hij niet los staat van echte toegankelijkheid."
+answer: "Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Je beschrijft de stand van zaken, bekende knelpunten en hoe bezoekers een probleem kunnen melden. Een verklaring hoort bij de European Accessibility Act, maar vervangt echte toegankelijkheid niet."
 date: 2026-06-08
 theme: "praktijk"
 keywords:
@@ -33,7 +34,7 @@ Een bruikbare verklaring is concreet en eerlijk. Zet er in elk geval het volgend
 <div class="not-prose my-8 rounded-3xl bg-softblue ring-1 ring-brand-light p-6 md:p-8">
   <p class="text-lg font-extrabold text-navy">Liever niet vanaf nul beginnen?</p>
   <p class="mt-2 text-navy leading-relaxed">Met de gratis generator voor toegankelijkheidsverklaringen beantwoord je een paar vragen over je situatie en krijg je een verklaring die je direct op je website kunt publiceren.</p>
-  <a href="https://www.properaccess.nl/tools/toegankelijkheidsverklaring-generator/" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-4">Open de generator</a>
+  <a href="https://www.properaccess.nl/tools/toegankelijkheidsverklaring-generator/" target="_blank" rel="noopener noreferrer" class="utrecht-button utrecht-button--primary-action mt-4">Open de generator</a>
 </div>
 
 ## Wees concreet, niet vaag

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="utrecht-theme theme-telling">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,13 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/static/fonts.css">
   <link rel="stylesheet" href="/static/tailwind.css">
+  <link rel="stylesheet" href="/static/utrecht-tokens.css">
+  <link rel="stylesheet" href="/static/utrecht.css">
+  <link rel="stylesheet" href="/static/utrecht-theme.css">
   <link rel="stylesheet" href="/static/site.css">
   <style>
     /* Honeypot: verborgen voor mensen, zichtbaar voor bots */
@@ -54,7 +59,6 @@
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
           <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
-          <a href="/wcag-audit.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">WCAG-audit</a>
       </nav>
       <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -78,7 +82,6 @@
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
         <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
-        <a href="/wcag-audit.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">WCAG-audit</a>
     </nav>
     <div class="h-[3px] bg-oker" aria-hidden="true"></div>
   </header>
@@ -115,21 +118,21 @@
         </div>
 
         <div class="mb-5">
-          <label for="bedrijfsnaam" class="block text-sm font-semibold text-navy mb-1">Bedrijfsnaam <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <label for="bedrijfsnaam" class="utrecht-form-label">Bedrijfsnaam <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="text" id="bedrijfsnaam" name="bedrijfsnaam" required autocomplete="organization"
-            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            class="utrecht-textbox w-full">
         </div>
 
         <div class="mb-5">
-          <label for="webadres" class="block text-sm font-semibold text-navy mb-1">Webadres van je webshop <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <label for="webadres" class="utrecht-form-label">Webadres van je webshop <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="url" id="webadres" name="webadres" required placeholder="https://www.voorbeeld.nl" autocomplete="url"
-            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            class="utrecht-textbox w-full">
         </div>
 
         <div class="mb-6">
-          <label for="email" class="block text-sm font-semibold text-navy mb-1">Je e-mailadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <label for="email" class="utrecht-form-label">Je e-mailadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-hint"
-            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            class="utrecht-textbox w-full">
           <p id="email-hint" class="text-sm text-gray-500 mt-1">We gebruiken dit alleen om contact met je op te nemen over je bezwaar. Het komt niet op de openbare pagina.</p>
         </div>
 
@@ -155,13 +158,13 @@
         </fieldset>
 
         <div class="mb-6">
-          <label for="toelichting" class="block text-sm font-semibold text-navy mb-1">Toelichting</label>
+          <label for="toelichting" class="utrecht-form-label">Toelichting</label>
           <textarea id="toelichting" name="toelichting" rows="3"
-            class="w-full border border-field rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand"></textarea>
+            class="utrecht-textarea w-full"></textarea>
           <p class="text-sm text-gray-500 mt-1">Optioneel. Heb je iets toe te voegen aan je bezwaar?</p>
         </div>
 
-        <button type="submit" id="submit-btn" class="btn btn-primary">Bezwaar versturen</button>
+        <button type="submit" id="submit-btn" class="utrecht-button utrecht-button--primary-action">Bezwaar versturen</button>
         <p class="text-sm text-gray-500 mt-3">De velden met een <span class="text-status-notfound">*</span> zijn verplicht.</p>
       </form>
 
@@ -182,8 +185,8 @@
           </div>
           <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
           <div class="flex flex-col sm:flex-row gap-2">
-            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="flex-1 rounded-xl px-4 py-3 bg-white text-ink placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
-            <button type="submit" id="newsletter-submit" class="btn btn-on-dark whitespace-nowrap">Houd me op de hoogte</button>
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="utrecht-textbox flex-1">
+            <button type="submit" id="newsletter-submit" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Houd me op de hoogte</button>
           </div>
           <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
           <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
@@ -228,6 +231,14 @@
           <p class="font-semibold mb-2">Goed om te weten</p>
           <p class="max-w-md">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
         </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white">
+        <p>Vragen of een correctie? Mail <a href="mailto:info@eaa-monitor.nl" class="font-semibold underline underline-offset-2 hover:text-white">info@eaa-monitor.nl</a></p>
+        <nav aria-label="Juridisch" class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/colofon.html" class="hover:text-white">Colofon</a>
+          <a href="/privacy.html" class="hover:text-white">Privacy</a>
+          <a href="/over.html" class="hover:text-white">Over de monitor</a>
+        </nav>
       </div>
     </div>
     <script src="/static/newsletter.js"></script>

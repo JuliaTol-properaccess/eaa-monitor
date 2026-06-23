@@ -148,7 +148,7 @@ def _list_or_empty(vragen):
       <div class="card p-10 text-center text-gray-600">
         <p class="text-lg">Er zijn nog geen vragen beantwoord.</p>
         <p class="mt-2">Stel als eerste je vraag, dan leggen we hem voor aan de toezichthouder en publiceren we het antwoord hier.</p>
-        <a href="/vraag-stellen.html" class="btn btn-primary mt-6">Stel je vraag anoniem</a>
+        <a href="/vraag-stellen.html" class="utrecht-button utrecht-button--primary-action mt-6">Stel je vraag anoniem</a>
       </div>"""
     return f"""
       <div class="grid gap-6">
@@ -200,7 +200,7 @@ def render(vragen):
         <h1 class="text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Vragen uit de praktijk</h1>
         <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">Veel ondernemers hebben vragen over de European Accessibility Act, maar aarzelen om zich bij de toezichthouder te melden. Hier stel je je vraag anoniem. Wij leggen hem namens jou voor aan de juiste toezichthouder en publiceren het antwoord, zonder je naam.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/vraag-stellen.html" class="btn btn-primary">Stel je vraag anoniem</a>
+          <a href="/vraag-stellen.html" class="utrecht-button utrecht-button--primary-action">Stel je vraag anoniem</a>
         </div>
       </div>
     </section>
@@ -221,7 +221,7 @@ def render(vragen):
       <div class="rounded-3xl bg-softblue ring-1 ring-brand-light p-8 md:p-10">
         <h2 class="text-2xl font-extrabold text-navy tracking-tight">Heb je zelf een vraag?</h2>
         <p class="mt-3 text-navy leading-relaxed max-w-2xl">Stel hem anoniem. We controleren je vraag, leggen hem voor aan de toezichthouder en publiceren het antwoord op deze pagina. Je e-mailadres is optioneel en blijft altijd privé.</p>
-        <a href="/vraag-stellen.html" class="btn btn-primary mt-6">Stel je vraag anoniem</a>
+        <a href="/vraag-stellen.html" class="utrecht-button utrecht-button--primary-action mt-6">Stel je vraag anoniem</a>
       </div>
     </section>
 

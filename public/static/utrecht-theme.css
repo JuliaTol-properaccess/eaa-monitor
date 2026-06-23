@@ -1,0 +1,180 @@
+/* =========================================================================
+   EAA Monitor — Utrecht-thema "De Telling"
+   Overschrijft de NL Design System / Utrecht design tokens met het eigen
+   palet en de eigen fonts. De kleurwaarden komen uit site.css (:root), die op
+   zijn beurt tailwind.config.js volgt: dat blijft de enige bron van waarheid.
+
+   Laadvolgorde (zie shared_head in tools/build_articles.py):
+     fonts.css -> tailwind.css -> utrecht-tokens.css -> utrecht.css ->
+     utrecht-theme.css -> site.css
+   Beide thema-classes staan op <html>: `utrecht-theme` (basistokens) en
+   `theme-telling` (deze overrides). Bij gelijke specificiteit wint dit bestand
+   omdat het later laadt.
+
+   De componenten zijn opt-in: ze gelden alleen voor elementen met een
+   utrecht-*-class. Zonder zulke classes verandert er niets aan de weergave.
+   ========================================================================= */
+
+.theme-telling {
+  /* ----- Fonts (Atkinson voor tekst, Fraunces voor koppen, IBM Plex Mono voor cijfers) ----- */
+  --utrecht-document-font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+  --utrecht-paragraph-font-family: var(--utrecht-document-font-family);
+  --utrecht-heading-1-font-family: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --utrecht-heading-2-font-family: var(--utrecht-heading-1-font-family);
+  --utrecht-heading-3-font-family: var(--utrecht-heading-1-font-family);
+  --utrecht-heading-4-font-family: var(--utrecht-heading-1-font-family);
+  --utrecht-heading-5-font-family: var(--utrecht-heading-1-font-family);
+  --utrecht-heading-6-font-family: var(--utrecht-heading-1-font-family);
+  --utrecht-button-font-family: var(--utrecht-document-font-family);
+  --utrecht-form-label-font-family: var(--utrecht-document-font-family);
+  --utrecht-code-font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --utrecht-number-data-font-family: var(--utrecht-code-font-family);
+
+  /* ----- Document en tekst ----- */
+  --utrecht-document-background-color: var(--papier);
+  --utrecht-document-color: var(--inkt);
+  --utrecht-paragraph-color: var(--inkt);
+
+  /* ----- Koppen: dennengroen, Fraunces 600 ----- */
+  --utrecht-heading-1-color: var(--navy);
+  --utrecht-heading-2-color: var(--navy);
+  --utrecht-heading-3-color: var(--navy);
+  --utrecht-heading-4-color: var(--navy);
+  --utrecht-heading-5-color: var(--navy);
+  --utrecht-heading-6-color: var(--navy);
+  --utrecht-heading-1-font-weight: 600;
+  --utrecht-heading-2-font-weight: 600;
+  --utrecht-heading-3-font-weight: 600;
+  --utrecht-heading-4-font-weight: 600;
+  --utrecht-heading-5-font-weight: 600;
+  --utrecht-heading-6-font-weight: 600;
+
+  /* ----- Links: loofgroen, hover hovergroen ----- */
+  --utrecht-link-color: var(--brand);
+  --utrecht-link-hover-color: var(--brand-dark);
+  --utrecht-link-active-color: var(--brand-dark);
+  --utrecht-link-focus-color: var(--brand-dark);
+  --utrecht-link-visited-color: var(--brand);
+  --utrecht-link-text-decoration-color: currentColor;
+  --utrecht-link-text-underline-offset: 2px;
+
+  /* ----- Knopvorm: gelijk aan de oude .btn (12px radius, ruime padding, bold) ----- */
+  --utrecht-button-border-radius: 0.75rem;
+  --utrecht-button-padding-block-start: 0.85rem;
+  --utrecht-button-padding-block-end: 0.85rem;
+  --utrecht-button-padding-inline-start: 1.6rem;
+  --utrecht-button-padding-inline-end: 1.6rem;
+  --utrecht-button-font-weight: 700;
+
+  /* ----- Primaire knop: loofgroen vlak, witte tekst ----- */
+  --utrecht-button-primary-action-background-color: var(--brand);
+  --utrecht-button-primary-action-color: #ffffff;
+  --utrecht-button-primary-action-border-color: var(--brand);
+  --utrecht-button-primary-action-hover-background-color: var(--brand-dark);
+  --utrecht-button-primary-action-hover-border-color: var(--brand-dark);
+  --utrecht-button-primary-action-hover-color: #ffffff;
+  --utrecht-button-primary-action-active-background-color: var(--brand-dark);
+  --utrecht-button-primary-action-active-border-color: var(--brand-dark);
+  --utrecht-button-primary-action-active-color: #ffffff;
+  --utrecht-button-primary-action-focus-background-color: var(--brand);
+  --utrecht-button-primary-action-focus-border-color: var(--brand);
+  --utrecht-button-primary-action-focus-color: #ffffff;
+
+  /* ----- Secundaire knop ("ghost"): wit vlak, loofgroene tekst, grijze rand ----- */
+  --utrecht-button-secondary-action-background-color: #ffffff;
+  --utrecht-button-secondary-action-color: var(--brand);
+  --utrecht-button-secondary-action-border-color: var(--field);
+  --utrecht-button-secondary-action-hover-background-color: var(--zachtgroen);
+  --utrecht-button-secondary-action-hover-border-color: var(--brand);
+  --utrecht-button-secondary-action-hover-color: var(--brand-dark);
+  --utrecht-button-secondary-action-active-background-color: var(--zachtgroen);
+  --utrecht-button-secondary-action-active-border-color: var(--brand);
+  --utrecht-button-secondary-action-active-color: var(--brand-dark);
+
+  /* ----- Subtiele knop ----- */
+  --utrecht-button-subtle-action-color: var(--brand);
+  --utrecht-button-subtle-action-hover-background-color: var(--zachtgroen);
+  --utrecht-button-subtle-action-hover-color: var(--brand-dark);
+
+  /* ----- Focus: loofgroene ring (3px), okergeel op donker ----- */
+  --utrecht-focus-outline-color: var(--brand);
+  --utrecht-focus-inverse-outline-color: var(--oker);
+  --utrecht-focus-outline-width: 3px;
+  --utrecht-focus-outline-offset: 2px;
+  --utrecht-focus-outline-style: solid;
+
+  /* ----- Formuliervelden (zelfde 12px hoekradius als de oude velden) ----- */
+  --utrecht-form-label-color: var(--navy);
+  --utrecht-form-label-font-weight: 600;
+  --utrecht-textbox-color: var(--inkt);
+  --utrecht-textbox-border-color: var(--field);
+  --utrecht-textbox-focus-border-color: var(--brand);
+  --utrecht-textbox-border-radius: 0.75rem;
+  --utrecht-textarea-color: var(--inkt);
+  --utrecht-textarea-border-color: var(--field);
+  --utrecht-textarea-border-radius: 0.75rem;
+  --utrecht-select-border-color: var(--field);
+  --utrecht-select-border-radius: 0.75rem;
+  --utrecht-form-field-error-message-color: #B3261E;
+  --utrecht-form-field-description-color: var(--steungrijs);
+
+  /* ----- Tabellen ----- */
+  --utrecht-table-color: var(--inkt);
+  --utrecht-table-header-cell-color: var(--navy);
+  --utrecht-table-row-border-color: var(--line);
+  --utrecht-table-header-row-border-color: var(--line);
+  --utrecht-table-footer-row-border-color: var(--line);
+
+  /* ----- Scheidingslijn ----- */
+  --utrecht-separator-color: var(--line);
+
+  /* ----- Skip-link: okergeel op inkt (consistent met de bestaande skip-link) ----- */
+  --utrecht-skip-link-background-color: var(--oker);
+  --utrecht-skip-link-color: var(--inkt);
+
+  /* ----- Alert: zachtgroen voor info, behoudt eigen statuskleuren ----- */
+  --utrecht-alert-info-background-color: var(--zachtgroen);
+  --utrecht-alert-info-border-color: var(--line);
+  --utrecht-alert-ok-background-color: var(--zachtgroen);
+  --utrecht-alert-warning-background-color: #FBF3DC;
+  --utrecht-alert-warning-border-color: #E3CD8F;
+}
+
+/* Form-label boven het veld. Utrecht laat de display van het label bewust aan de
+   gebruiker; zonder display:block blijft een <label> inline en schuift naast een
+   smal veld. Wij willen het label altijd boven het veld. */
+.theme-telling .utrecht-form-label {
+  display: block;
+  margin-block-end: 0.375rem;
+}
+
+/* Velden die met Tailwind op volle breedte zijn gezet (w-full / flex-1) mogen de
+   Utrecht max-inline-size-cap negeren, zodat ze de kaart/het formulier vullen
+   zoals in het oude ontwerp. */
+.theme-telling .utrecht-textbox.w-full,
+.theme-telling .utrecht-textarea.w-full,
+.theme-telling .utrecht-select.w-full {
+  inline-size: 100%;
+  max-inline-size: 100%;
+}
+.theme-telling .utrecht-textbox.flex-1 {
+  max-inline-size: 100%;
+}
+
+/* Primaire knop op donkere secties (.on-dark): licht vlak met donkere tekst,
+   zoals de oude .btn-on-dark. Loofgroen op dennengroen zou te weinig contrast
+   geven; papier op dennengroen haalt ruim voldoende. */
+.theme-telling .on-dark .utrecht-button--primary-action {
+  --utrecht-button-primary-action-background-color: var(--papier);
+  --utrecht-button-primary-action-color: var(--navy);
+  --utrecht-button-primary-action-border-color: var(--papier);
+  --utrecht-button-primary-action-hover-background-color: #ffffff;
+  --utrecht-button-primary-action-hover-border-color: #ffffff;
+  --utrecht-button-primary-action-hover-color: var(--navy);
+  --utrecht-button-primary-action-active-background-color: #ffffff;
+  --utrecht-button-primary-action-active-border-color: #ffffff;
+  --utrecht-button-primary-action-active-color: var(--navy);
+  --utrecht-button-primary-action-focus-background-color: var(--papier);
+  --utrecht-button-primary-action-focus-border-color: var(--papier);
+  --utrecht-button-primary-action-focus-color: var(--navy);
+}

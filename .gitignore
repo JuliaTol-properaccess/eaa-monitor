@@ -28,3 +28,6 @@ node_modules/
 
 # Claude Code sessie-state (o.a. worktrees)
 .claude/
+
+# Lokale preview: data wordt bij deploy naar de site-root gekopieerd
+public/data
