@@ -6,8 +6,6 @@
     "build:css": "tailwindcss -c tailwind.config.js -i assets/tailwind.in.css -o public/static/tailwind.css --minify"
   },
   "devDependencies": {
-    "@utrecht/component-library-css": "9.0.12",
-    "@utrecht/design-tokens": "6.2.1",
     "tailwindcss": "3.4.16"
   }
 }
