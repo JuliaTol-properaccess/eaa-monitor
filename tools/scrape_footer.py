@@ -468,6 +468,17 @@ def check_webshop(page, url):
             "error": str(e),
         }
 
+    return classify_html(html, url)
+
+
+def classify_html(html, url):
+    """Bepaal de verklaring-status uit gerenderde HTML (geen Playwright nodig).
+
+    Apart van check_webshop zodat de detectielogica deterministisch te testen is
+    tegen opgeslagen HTML-fixtures (zie tests/). Volgorde: footer-area's eerst,
+    dan alle <a> op de pagina, dan de ruwe-HTML-fallback voor JS-framework-links,
+    en als laatste de bot-challenge-/lege-render-detectie.
+    """
     soup = BeautifulSoup(html, "html.parser")
 
     # Try footer areas first

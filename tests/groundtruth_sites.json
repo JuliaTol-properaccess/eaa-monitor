@@ -1,0 +1,19 @@
+{
+  "_comment": "Handmatig geverifieerde ground-truth voor periodieke live-validatie van de detector (tests/check_live.py). 'statement' = heeft aantoonbaar een verklaring; 'none' = aantoonbaar geen; 'bot-protected' = zit achter bot-management, status wisselt per run (alleen ter info, geen pass/fail). Geverifieerd 22-23 juni 2026. Houd klein en actueel.",
+  "sites": [
+    { "url": "https://www.bol.com",        "expect": "statement",     "note": "footer /tc/toegankelijkheidsverklaring (alleen zonder resource-blocking)" },
+    { "url": "https://www.mediamarkt.nl",   "expect": "statement",     "note": "PWA-footer JSON, raw-HTML-fallback" },
+    { "url": "https://www.hema.nl",         "expect": "statement",     "note": "/klantenservice/digitale-toegankelijkheidsverklaring" },
+    { "url": "https://www.debijenkorf.nl",  "expect": "statement",     "note": "/over-de-bijenkorf/toegankelijkheid" },
+    { "url": "https://www.swisssense.nl",   "expect": "statement",     "note": "/toegankelijkheid" },
+    { "url": "https://www.wibra.nl",        "expect": "statement",     "note": "/toegankelijkheidsverklaring/" },
+    { "url": "https://www.coolblue.nl",     "expect": "statement",     "note": "/c/toegankelijkheidsverklaring.html" },
+    { "url": "https://www.gamma.nl",        "expect": "none",          "note": "rendert volledig, geen verklaring gevonden" },
+    { "url": "https://www.blokker.nl",      "expect": "none",          "note": "rendert, geen verklaring" },
+    { "url": "https://wijnen.nl",           "expect": "none",          "note": "had FP op marketingtekst; echt zonder" },
+    { "url": "https://casadelvino.nl",      "expect": "none",          "note": "had FP op marketingtekst; echt zonder" },
+    { "url": "https://www.kruidvat.nl",     "expect": "bot-protected", "note": "Akamai/DataDome challenge" },
+    { "url": "https://www.jumbo.com",       "expect": "bot-protected", "note": "challenge/timeout" },
+    { "url": "https://www.zalando.nl",      "expect": "bot-protected", "note": "challenge" }
+  ]
+}
