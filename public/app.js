@@ -476,6 +476,22 @@
         ? `${filtered.length} ${NOUN}`
         : `${filtered.length} van ${allWebshops.length} ${NOUN}`;
 
+    // Zoek-/filterfeedback direct onder de zoekbalk (boven de vouw), met
+    // aria-live zodat ook screenreaders de uitkomst horen. De resultatentabel
+    // staat vaak onder de vouw; zonder deze melding lijkt zoeken niets te doen.
+    const searchStatus = document.getElementById("search-status");
+    if (searchStatus) {
+      if (filtered.length === allWebshops.length) {
+        searchStatus.textContent = "";
+      } else if (filtered.length === 0) {
+        searchStatus.textContent = "Geen resultaten gevonden";
+      } else if (filtered.length === 1) {
+        searchStatus.textContent = "1 resultaat gevonden";
+      } else {
+        searchStatus.textContent = `${filtered.length.toLocaleString("nl-NL")} resultaten gevonden`;
+      }
+    }
+
     if (sorted.length === 0) {
       tbody.innerHTML =
         '<tr><td colspan="6" class="py-12 text-center text-gray-600">Geen resultaten gevonden</td></tr>';
