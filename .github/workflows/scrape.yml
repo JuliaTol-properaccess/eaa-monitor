@@ -85,6 +85,12 @@ jobs:
       - name: Merge shards and generate assets
         run: python tools/scrape_footer.py --merge parts
 
+      # Bevestigd-groen-lijst bijwerken: nieuwe greens toevoegen, herbevestigde
+      # verversen, weggehaalde verklaringen verwijderen. Eén keer na de merge,
+      # dus shard-veilig (de shards lazen confirmed.json alleen).
+      - name: Sync bevestigd-groen-lijst
+        run: python tools/sync_confirmed.py --dataset webshops
+
       # De webshop-resultaten meteen committen, vóór de financiële scrape: faalt
       # die laatste, dan is de grote weekrun (8 shard-uren) niet verloren.
       # `git pull --rebase` vangt het geval dat main intussen is opgeschoven
@@ -93,7 +99,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/results.json data/history.json public/index.html public/llms.txt
+          git add data/results.json data/history.json data/confirmed.json public/index.html public/llms.txt
           git diff --staged --quiet || git commit -m "Update scrape results $(date +%Y-%m-%d)"
           git pull --rebase origin main
           git push

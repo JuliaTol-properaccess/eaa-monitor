@@ -51,6 +51,7 @@ DATASETS = {
         "input_file": DATA_DIR / "webshops.json",
         "results_file": DATA_DIR / "results.json",
         "history_file": DATA_DIR / "history.json",
+        "confirmed_file": DATA_DIR / "confirmed.json",
         "target_html": PUBLIC_DIR / "index.html",
         "llms_region": "MEASUREMENT",
         "llms_label": None,
@@ -249,6 +250,13 @@ CRASH_MARKERS = (
 
 # Vers context+page elke N sites, als rem op geheugengroei in lange runs.
 CONTEXT_RECYCLE_EVERY = 200
+
+# Bevestigd-groen-lijst: sites met een geverifieerde verklaring slaan we op de
+# wekelijkse run over en herverifieren we pas na zoveel dagen. Bespaart werk en
+# beschermt handmatig geverifieerde greens (bv. bol.com) tegen wegvallen door een
+# transiente bot-challenge. Een verklaring die later weggehaald wordt, valt
+# binnen dit venster alsnog op.
+REVERIFY_DAYS = 30
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -633,6 +641,38 @@ def _load_objection_urls():
     return set()
 
 
+def _load_confirmed(ds):
+    """Lees de bevestigd-groen-lijst van een dataset als dict op genormaliseerde URL.
+
+    Vorm per entry: {url, statement_url, statement_link_text, confirmed (YYYY-MM-DD)}.
+    Geen bestand of geen confirmed_file in de dataset: lege dict (geen overslaan).
+    """
+    path = ds.get("confirmed_file")
+    if not path:
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+    sites = data.get("sites", data) if isinstance(data, dict) else data
+    out = {}
+    for e in sites if isinstance(sites, list) else []:
+        if e.get("url") and e.get("confirmed"):
+            out[_normalize_url(e["url"])] = e
+    return out
+
+
+def _confirmed_is_fresh(confirmed_date, now_iso):
+    """True als de verklaring binnen REVERIFY_DAYS opnieuw is geverifieerd."""
+    try:
+        d = datetime.strptime(str(confirmed_date)[:10], "%Y-%m-%d").date()
+        today = datetime.fromisoformat(now_iso).date()
+    except ValueError:
+        return False
+    return (today - d).days < REVERIFY_DAYS
+
+
 def _pct(n, total):
     return round(n / total * 100) if total else 0
 
@@ -977,9 +1017,38 @@ def recheck_unblocked(browser, url):
                 pass
 
 
-def scrape_webshops(webshops, now):
-    """Scrape a list of webshops sequentially and return the result entries."""
+def _confirmed_result_for(shop, entry):
+    """Bouw een resultaat-entry uit de bevestigd-groen-lijst, zonder te scrapen.
+
+    Markeert met "confirmed": True zodat sync_confirmed weet dat dit een
+    overgeslagen (cache-)resultaat is en de bevestigingsdatum niet aanraakt.
+    """
+    confirmed_iso = f"{str(entry['confirmed'])[:10]}T00:00:00+00:00"
+    return {
+        "name": shop["name"],
+        "url": shop["url"],
+        "category": shop.get("category", "overig"),
+        "has_statement": True,
+        "statement_url": entry.get("statement_url"),
+        "statement_link_text": entry.get("statement_link_text"),
+        "last_checked": confirmed_iso,
+        "scrape_status": "success",
+        "error": None,
+        "confirmed": True,
+    }
+
+
+def scrape_webshops(webshops, now, confirmed=None):
+    """Scrape a list of webshops sequentially and return the result entries.
+
+    Sites op de bevestigd-groen-lijst (confirmed) die binnen REVERIFY_DAYS
+    geverifieerd zijn, slaan we over: we nemen het bewaarde resultaat direct over
+    zonder browser. Zo blijft de wekelijkse run licht en blijven geverifieerde
+    greens stabiel; na REVERIFY_DAYS valt de site vanzelf weer in de scrape.
+    """
+    confirmed = confirmed or {}
     results = []
+    skipped = 0
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         browser, context, page = _fresh_page(p, browser)
@@ -987,6 +1056,14 @@ def scrape_webshops(webshops, now):
         for i, shop in enumerate(webshops):
             name = shop["name"]
             url = shop["url"]
+
+            # Bevestigd groen en nog vers? Overslaan, bewaarde status overnemen.
+            entry = confirmed.get(_normalize_url(url))
+            if entry and _confirmed_is_fresh(entry.get("confirmed"), now):
+                results.append(_confirmed_result_for(shop, entry))
+                skipped += 1
+                continue
+
             print(f"  [{i + 1}/{len(webshops)}] {name} ({url})...", end=" ", flush=True)
 
             # Periodiek een verse context: rem op geheugengroei in lange runs.
@@ -1041,6 +1118,8 @@ def scrape_webshops(webshops, now):
                 time.sleep(REQUEST_PAUSE_S)
 
         browser.close()
+    if skipped:
+        print(f"  ({skipped} overgeslagen: bevestigd groen, vers binnen {REVERIFY_DAYS} dagen)")
     return results
 
 
@@ -1156,7 +1235,10 @@ def main():
     else:
         print(f"Checking {len(entries)} entries ({args.dataset})...")
 
-    results = scrape_webshops(entries, now)
+    confirmed = _load_confirmed(ds)
+    if confirmed:
+        print(f"Bevestigd-groen-lijst: {len(confirmed)} sites (overslaan indien vers)")
+    results = scrape_webshops(entries, now, confirmed)
 
     # Shard mode writes a partial file for the merge step; it must NOT finalize
     # (that would clobber results.json and regenerate assets from a partial set).

@@ -1,8 +1,8 @@
 {
   "last_updated": "2026-06-06T21:57:44.610133+00:00",
   "total": 10397,
-  "with_statement": 246,
-  "without_statement": 9039,
+  "with_statement": 243,
+  "without_statement": 9042,
   "errors": 1112,
   "webshops": [
     {
@@ -243,7 +243,7 @@
       "has_statement": true,
       "statement_url": "https://www.123-3D.nl/page/digitale-toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -265,7 +265,7 @@
       "has_statement": true,
       "statement_url": "https://www.123accu.nl/page/digitale-toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -441,7 +441,7 @@
       "has_statement": true,
       "statement_url": "https://www.123inkt.nl/page/digitale-toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -518,7 +518,7 @@
       "has_statement": true,
       "statement_url": "https://www.123led.nl/page/digitale-toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -606,7 +606,7 @@
       "has_statement": true,
       "statement_url": "https://www.123schoon.nl/page/digitale-toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -958,7 +958,7 @@
       "has_statement": true,
       "statement_url": "https://www.2wheels-shop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -1684,7 +1684,7 @@
       "has_statement": true,
       "statement_url": "https://www.aboutyou.nl/accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -1695,7 +1695,7 @@
       "has_statement": true,
       "statement_url": "https://en.aboutyou.nl/accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -2564,7 +2564,7 @@
       "has_statement": true,
       "statement_url": "https://www.agrishop.nl/info/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -3048,7 +3048,7 @@
       "has_statement": true,
       "statement_url": "https://www.ah.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -3268,7 +3268,7 @@
       "has_statement": true,
       "statement_url": "https://www.allcam.be/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -3279,7 +3279,7 @@
       "has_statement": true,
       "statement_url": "https://www.allcam.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -3290,7 +3290,7 @@
       "has_statement": true,
       "statement_url": "https://www.alleafstandsbedieningen.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -3939,7 +3939,7 @@
       "has_statement": true,
       "statement_url": "https://www.amagard.com/nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -4005,7 +4005,7 @@
       "has_statement": true,
       "statement_url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=GUUVBZ8WGVFP8R8X&ref_=nav_foot_accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -4038,7 +4038,7 @@
       "has_statement": true,
       "statement_url": "https://www.amefa.nl/pages/digitale-toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -4610,7 +4610,7 @@
       "has_statement": true,
       "statement_url": "https://www.apple.com/nl/accessibility/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -4676,7 +4676,7 @@
       "has_statement": true,
       "statement_url": "https://www.aq-living.com/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -4827,10 +4827,10 @@
       "name": "Arc Living",
       "url": "https://www.arc-living.nl",
       "category": "overig",
-      "has_statement": true,
-      "statement_url": "https://www.arc-living.nl/cart",
-      "statement_link_text": "components.miniCartComponent.cartIcon.accessibilityLabel",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -4896,7 +4896,7 @@
       "has_statement": true,
       "statement_url": "https://arctic-living.com/toegankelijkheid/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -6007,7 +6007,7 @@
       "has_statement": true,
       "statement_url": "https://cdn.autoverzekering.nl/doc/Toegankelijkheidsverklaring-Autoverzekering.nl_.pdf",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -6821,7 +6821,7 @@
       "has_statement": true,
       "statement_url": "https://www.babywinkel.be/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -6832,7 +6832,7 @@
       "has_statement": true,
       "statement_url": "https://www.babywinkel.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -7228,7 +7228,7 @@
       "has_statement": true,
       "statement_url": "https://www.baldur-nederland.nl/onion/content/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -8526,7 +8526,7 @@
       "has_statement": true,
       "statement_url": "https://www.beddenreus.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -9043,7 +9043,7 @@
       "has_statement": true,
       "statement_url": "https://www.belsimpel.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -9307,7 +9307,7 @@
       "has_statement": true,
       "statement_url": "https://www.bergfreunde.nl/toegankelijkheid/",
       "statement_link_text": "Verklaring inzake toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -9857,7 +9857,7 @@
       "has_statement": true,
       "statement_url": "https://www.betersport.nl/digitale-toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -10429,7 +10429,7 @@
       "has_statement": true,
       "statement_url": "https://www.debijenkorf.nl/over-de-bijenkorf/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-22T13:54:46.743903+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -11562,7 +11562,7 @@
       "has_statement": true,
       "statement_url": "https://bloommondays.nl#main-content",
       "statement_link_text": "Translation missing: nl.accessibility.skip_to_text",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -11815,7 +11815,7 @@
       "has_statement": true,
       "statement_url": "https://lifestyle.bmw.com/nl/nl/accessibility-act.html",
       "statement_link_text": "Accessibility Act",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -12431,7 +12431,7 @@
       "has_statement": true,
       "statement_url": "https://www.bol.com/nl/nl/tc/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-22T12:51:06.438611+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -12682,9 +12682,9 @@
       "url": "https://www.booking.com",
       "category": "overig",
       "has_statement": true,
-      "statement_url": "https://www.booking.com/content/accessibility_statement.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaLcCiAEBmAEzuAEHyAEM2AED6AEB-AEBiAIBqAIBuALI45HRBsACAdICJGUyNjM5YmY1LTExNTgtNDBmYy1hOWMzLWI3MjlhZDNmYWFjZNgCAeACAQ&sid=b380480b3df91171b83fe90f2995ca4b",
-      "statement_link_text": "Accessibility Statement",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "statement_url": "https://www.booking.com/content/accessibility_statement.nl.html?label=gen173nr-10CAEoggI46AdIM1gEaKkBiAEBmAEzuAEHyAEM2AED6AEB-AEBiAIBqAIBuALbxujRBsACAdICJGU3ODlhNmQ2LTRhNTItNDU2OS1hMzg4LWYwZmQ1Mjg2NTc5MNgCAeACAQ&aid=304142&sid=39cbe93df06e981d0c469da736f91f93",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -12981,7 +12981,7 @@
       "has_statement": true,
       "statement_url": "https://www.bosch-home.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -13487,7 +13487,7 @@
       "has_statement": true,
       "statement_url": "https://www.brabantia.com/nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -14411,7 +14411,7 @@
       "has_statement": true,
       "statement_url": "https://webwinkel.bruynzeelkeukens.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -14708,7 +14708,7 @@
       "has_statement": true,
       "statement_url": "https://www.buffalo.nl/nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -14928,7 +14928,7 @@
       "has_statement": true,
       "statement_url": "https://buitiqo.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -15060,7 +15060,7 @@
       "has_statement": true,
       "statement_url": "https://www.burnedsports.com/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -15500,7 +15500,7 @@
       "has_statement": true,
       "statement_url": "https://www.bytwinnies.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -15588,7 +15588,7 @@
       "has_statement": true,
       "statement_url": "https://www.bymetz.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -15654,7 +15654,7 @@
       "has_statement": true,
       "statement_url": "https://www.c-and-a.com/nl/nl/shop/service/juridisch/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -15951,7 +15951,7 @@
       "has_statement": true,
       "statement_url": "https://camguard.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -16215,7 +16215,7 @@
       "has_statement": true,
       "statement_url": "https://canvasso.com/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -16292,7 +16292,7 @@
       "has_statement": true,
       "statement_url": "https://www.caraudiogigant.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -16787,7 +16787,7 @@
       "has_statement": true,
       "statement_url": "https://www.modecastelijn.nl/nl/pages/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -17139,7 +17139,7 @@
       "has_statement": true,
       "statement_url": "https://www.celticwebmerchant.com/en#MainContent",
       "statement_link_text": "Translation missing: en.accessibility.skip_to_text",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -17149,8 +17149,8 @@
       "category": "overig",
       "has_statement": true,
       "statement_url": "https://www.celticwebmerchant.co.uk#MainContent",
-      "statement_link_text": "Translation missing: en.accessibility.skip_to_text",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "statement_link_text": "Translation missing: nl.accessibility.skip_to_text",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -17205,7 +17205,7 @@
       "has_statement": true,
       "statement_url": "https://www.centraalbeheer.nl/over-ons/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -19064,7 +19064,7 @@
       "has_statement": true,
       "statement_url": "https://confynederland.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -19185,7 +19185,7 @@
       "has_statement": true,
       "statement_url": "https://www.contorion.nl/toegankelijkheid?vct=ho_ftr_acs",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -19284,7 +19284,7 @@
       "has_statement": true,
       "statement_url": "https://www.coolblue.nl/c/toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -20164,7 +20164,7 @@
       "has_statement": true,
       "statement_url": "https://www.crisp.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -20329,7 +20329,7 @@
       "has_statement": true,
       "statement_url": "https://www.cunavo.nl/pages/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -21525,10 +21525,10 @@
       "name": "DB Musicstore",
       "url": "https://dbmusicstore.com",
       "category": "overig",
-      "has_statement": true,
-      "statement_url": "https://dbmusicstore.com#MainContent",
-      "statement_link_text": "Translation missing: nl.accessibility.skip_to_text",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -22265,7 +22265,7 @@
       "has_statement": true,
       "statement_url": "https://www.dehuidshop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -22848,7 +22848,7 @@
       "has_statement": true,
       "statement_url": "https://www.deonlinedrogist.nl/accessibility-statement",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23387,7 +23387,7 @@
       "has_statement": true,
       "statement_url": "https://webshop.telegraaf.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23453,7 +23453,7 @@
       "has_statement": true,
       "statement_url": "https://www.lossetheekopen.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23519,7 +23519,7 @@
       "has_statement": true,
       "statement_url": "https://www.detrendkamer.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23970,7 +23970,7 @@
       "has_statement": true,
       "statement_url": "https://dealzzz.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -24619,7 +24619,7 @@
       "has_statement": true,
       "statement_url": "https://demassageshop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -24905,7 +24905,7 @@
       "has_statement": true,
       "statement_url": "https://www.dermaskinshop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -25774,7 +25774,7 @@
       "has_statement": true,
       "statement_url": "https://www.dierapotheker.nl/dierapotheker.nl/european-accessibility-act/",
       "statement_link_text": "European Accessibility Act",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -26104,7 +26104,7 @@
       "has_statement": true,
       "statement_url": "https://www.discounty.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -26676,7 +26676,7 @@
       "has_statement": true,
       "statement_url": "https://dominikq.com/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -28315,7 +28315,7 @@
       "has_statement": true,
       "statement_url": "https://www.dutchbone.com/nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -28931,7 +28931,7 @@
       "has_statement": true,
       "statement_url": "https://123accessoire.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -29349,7 +29349,7 @@
       "has_statement": true,
       "statement_url": "https://www.ecostyle.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -29492,7 +29492,7 @@
       "has_statement": true,
       "statement_url": "https://www.educatheek.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -30372,7 +30372,7 @@
       "has_statement": true,
       "statement_url": "https://www.elizawashere.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -30614,7 +30614,7 @@
       "has_statement": true,
       "statement_url": "https://www.emma-sleep.nl/verklaring-toegankelijkheid/",
       "statement_link_text": "Verklaring inzake toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -31007,10 +31007,10 @@
       "name": "Equiconnect",
       "url": "https://equiconnect.store",
       "category": "overig",
-      "has_statement": true,
-      "statement_url": "https://equiconnect.store/",
-      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -31417,7 +31417,7 @@
       "has_statement": true,
       "statement_url": "https://www.essenzahome.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -31824,7 +31824,7 @@
       "has_statement": true,
       "statement_url": "https://www.exterioo.nl/nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -32440,7 +32440,7 @@
       "has_statement": true,
       "statement_url": "https://www.fbto.nl/over-ons/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -32495,7 +32495,7 @@
       "has_statement": true,
       "statement_url": "https://feelgoodsupplements.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -32824,8 +32824,8 @@
       "category": "overig",
       "has_statement": true,
       "statement_url": "https://www.fidello.nl/",
-      "statement_link_text": "Toggle accessibility mode (a)",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -33131,9 +33131,9 @@
       "url": "https://www.fifty-cal.com",
       "category": "overig",
       "has_statement": true,
-      "statement_url": "https://www.fifty-cal.com",
+      "statement_url": "https://www.fifty-cal.com#",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -33463,7 +33463,7 @@
       "has_statement": true,
       "statement_url": "https://fitforlife.shop/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -33935,8 +33935,8 @@
       "category": "overig",
       "has_statement": true,
       "statement_url": "https://www.flightsimwebshop.com/",
-      "statement_link_text": "Toggle accessibility mode (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34464,7 +34464,7 @@
       "has_statement": true,
       "statement_url": "https://images.footlocker.com/content/dam/final/footlockereurope/Online_activations/downloads/2025_12_24_accessibility_statements/Accessibility_Statement_2025_NL.pdf",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34552,7 +34552,7 @@
       "has_statement": true,
       "statement_url": "https://forcomponents.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34937,7 +34937,7 @@
       "has_statement": true,
       "statement_url": "https://www.fransebulldogloversshop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -35564,7 +35564,7 @@
       "has_statement": true,
       "statement_url": "https://www.gall.nl/over/toegankelijkheidsverklaring-web/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -36202,7 +36202,7 @@
       "has_statement": true,
       "statement_url": "https://www.geelswoonwarenhuis.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -36532,7 +36532,7 @@
       "has_statement": true,
       "statement_url": "https://www.georgenapoli.nl/",
       "statement_link_text": "Vink toegankelijkheid aan (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -36598,7 +36598,7 @@
       "has_statement": true,
       "statement_url": "https://www.gereedschappelijk.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -36620,7 +36620,7 @@
       "has_statement": true,
       "statement_url": "https://gereedschapxxl.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -38061,7 +38061,7 @@
       "has_statement": true,
       "statement_url": "https://www.goldner-fashion.com/nl/c/verklaring-van-toegankelijkheid",
       "statement_link_text": "Verklaring van toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -38083,7 +38083,7 @@
       "has_statement": true,
       "statement_url": "https://golfballen.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -39117,7 +39117,7 @@
       "has_statement": true,
       "statement_url": "https://www.greetz.nl/nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Verklaring toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -39480,7 +39480,7 @@
       "has_statement": true,
       "statement_url": "https://www.boomschors.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -39766,7 +39766,7 @@
       "has_statement": true,
       "statement_url": "https://www.premiumxl24.nl/pages/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -40162,7 +40162,7 @@
       "has_statement": true,
       "statement_url": "https://www.hallovitaal.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -41174,7 +41174,7 @@
       "has_statement": true,
       "statement_url": "https://hayesbrothers.nl/klantenservice/digitale-toegankelijkheid/",
       "statement_link_text": "Digitale toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -41614,7 +41614,7 @@
       "has_statement": true,
       "statement_url": "https://www.heine-shop.nl/content/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -41922,7 +41922,7 @@
       "has_statement": true,
       "statement_url": "https://www.hema.nl/klantenservice/digitale-toegankelijkheidsverklaring",
       "statement_link_text": "toegankelijkheid",
-      "last_checked": "2026-06-22T13:54:46.743903+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -43077,7 +43077,7 @@
       "has_statement": true,
       "statement_url": "https://hipishet.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -44045,7 +44045,7 @@
       "has_statement": true,
       "statement_url": "https://www.homewall.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -44529,7 +44529,7 @@
       "has_statement": true,
       "statement_url": "https://www.hornbach.nl/services/privacyverklaring/#d0fac970d9c69c7bdfc5e002fe9e14e1",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -45266,7 +45266,7 @@
       "has_statement": true,
       "statement_url": "https://houtsnippers.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -45552,7 +45552,7 @@
       "has_statement": true,
       "statement_url": "https://nl.hudsonreed.com/hudson-reed-toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -45860,7 +45860,7 @@
       "has_statement": true,
       "statement_url": "https://www.hulpmedi.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -46465,7 +46465,7 @@
       "has_statement": true,
       "statement_url": "https://iear.nl/over-iear/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -46663,7 +46663,7 @@
       "has_statement": true,
       "statement_url": "https://www.ikea.com/nl/nl/customer-service/accessibility/",
       "statement_link_text": "Verklaring digitale toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -47576,7 +47576,7 @@
       "has_statement": true,
       "statement_url": "https://www.insetto.eu/be/Informatie/Toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -47587,7 +47587,7 @@
       "has_statement": true,
       "statement_url": "https://www.insetto.eu/nl/Informatie/Toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -47598,7 +47598,7 @@
       "has_statement": true,
       "statement_url": "https://www.inshared.nl/toegankelijkheid",
       "statement_link_text": "ToegankelijkheidToegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -47818,7 +47818,7 @@
       "has_statement": true,
       "statement_url": "https://www.intertoys.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -47906,7 +47906,7 @@
       "has_statement": true,
       "statement_url": "https://www.intratuin.nl/over-intratuin/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -48456,7 +48456,7 @@
       "has_statement": true,
       "statement_url": "https://www.jackjones.com/nl-nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -48500,7 +48500,7 @@
       "has_statement": true,
       "statement_url": "https://www.jaghead.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -48874,7 +48874,7 @@
       "has_statement": true,
       "statement_url": "https://www.jdplc.com/accessibility/default.aspx",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -49270,7 +49270,7 @@
       "has_statement": true,
       "statement_url": "https://www.jimmiesleeps.nl/pages/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -49545,7 +49545,7 @@
       "has_statement": true,
       "statement_url": "https://www.joliefashion.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -50095,7 +50095,7 @@
       "has_statement": true,
       "statement_url": "https://www.nl.jura.com/nl/koopadvies/online-kopen-voorwaarden/declaration-on-accessibility",
       "statement_link_text": "Verklaring over toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:23.609991+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -50392,7 +50392,7 @@
       "has_statement": true,
       "statement_url": "https://www.jysk.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -50656,7 +50656,7 @@
       "has_statement": true,
       "statement_url": "https://www.kabelshop.nl/page/digitale_toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -50953,7 +50953,7 @@
       "has_statement": true,
       "statement_url": "https://www.kameionline.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:28.163292+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -51514,7 +51514,7 @@
       "has_statement": true,
       "statement_url": "https://www.keessmit.nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -51886,9 +51886,9 @@
       "url": "https://www.keter.com",
       "category": "overig",
       "has_statement": true,
-      "statement_url": "https://www.keter.com/en-us/accessibility.html",
-      "statement_link_text": "Accessibility Statement",
-      "last_checked": "2026-06-06T18:58:25.903645+00:00",
+      "statement_url": "https://www.keter.com/nl-nl/accessibility.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -53109,7 +53109,7 @@
       "has_statement": true,
       "statement_url": "https://www.kleertjes.com/klantenservice/categorie/gegevens-en-voorwaarden/vraag/toegankelijkheidsverklaring",
       "statement_link_text": "toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -53516,7 +53516,7 @@
       "has_statement": true,
       "statement_url": "https://www.klium.com/nl/content/45-toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -53692,7 +53692,7 @@
       "has_statement": true,
       "statement_url": "https://www.knm.nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -53714,7 +53714,7 @@
       "has_statement": true,
       "statement_url": "https://knusliving.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -55452,7 +55452,7 @@
       "has_statement": true,
       "statement_url": "https://www.kwantum.nl/informatie-en-service/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -55606,7 +55606,7 @@
       "has_statement": true,
       "statement_url": "https://www.kyndalight.com/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:32.222988+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56442,7 +56442,7 @@
       "has_statement": true,
       "statement_url": "https://www.laptop.nl/informatie/veiligheid-toegankelijkheid/",
       "statement_link_text": "Veiligheid & Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56453,7 +56453,7 @@
       "has_statement": true,
       "statement_url": "https://www.large.nl/accessibility/terms-accessibility.html/",
       "statement_link_text": "Informatie over toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56915,7 +56915,7 @@
       "has_statement": true,
       "statement_url": "https://lederwarenwebshop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -57146,7 +57146,7 @@
       "has_statement": true,
       "statement_url": "https://www.leenbakker.nl/klantenservice/toegankelijkheid/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:32.882234+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -57476,7 +57476,7 @@
       "has_statement": true,
       "statement_url": "https://leondo.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -58059,7 +58059,7 @@
       "has_statement": true,
       "statement_url": "https://www.lidl.nl/c/toegankelijkheidsverklaring/s10074127",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:35.587823+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -59533,7 +59533,7 @@
       "has_statement": true,
       "statement_url": "https://www.loberon.nl/Service-wettelijke-informatie/Toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-06T18:58:29.525702+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -60468,7 +60468,7 @@
       "has_statement": true,
       "statement_url": "https://www.luckytouch.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "last_checked": "2026-06-06T18:58:36.340336+00:00",
+      "last_checked": "2026-06-23T06:08:59.299534+00:00",
       "scrape_status": "success",
       "error": null
     },

@@ -15,10 +15,13 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `tools/build_halloffame.py` — Rendert `data/halloffame.json` → `public/eregalerij.html` (server-rendered, met ItemList JSON-LD). Observaties zijn optioneel; staan ze er, dan toont de kaart het blok "Wat doet deze website goed?" met codevoorbeelden. **Draait ook in `deploy.yml`**, zodat een nominatie die de Worker naar main commit meteen live komt. Stemtellers komen client-side van de Worker via `public/static/halloffame.js`. Deelt head/header/footer met `build_articles.py`
 - `tools/fetch_bron_dates.py` — Best-effort: haalt elke bron-URL op en vult `date` aan in `data/bronnen.json` (uit `datePublished`/`article:published_time`/`<time>`). Verzint nooit een datum; vindt het niets, dan blijft het veld leeg
 - `tools/scrape_thuiswinkel.py` / `tools/scrape_webwinkelkeur.py` — Bouwen `webshops.json` aan met keurmerk-leden
+- `tools/sync_confirmed.py` — Onderhoudt de bevestigd-groen-lijst (`data/confirmed.json`) na een scrape: nieuwe greens toevoegen, herbevestigde verversen (datum vandaag), weggehaalde verklaringen verwijderen; error/timeout laat de bestaande bevestiging staan. Draait in `scrape.yml` na de merge (shard-veilig). De scraper zelf **slaat** bevestigd-groene sites op de wekelijkse run **over** zolang `confirmed` < `REVERIFY_DAYS` (30) oud is, en herverifieert ze daarna vanzelf. Beschermt ook handmatig geverifieerde greens (bv. bol.com) tegen wegvallen door een transiente bot-challenge
+- `tests/test_detector.py` (deterministische detector-fixtures, confusion matrix), `tests/test_confirmed.py` (overslaan + sync), `tests/check_live.py` + `tests/groundtruth_sites.json` (periodieke live-validatie tegen echte sites)
 
 ### Data
 - `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels gescraped)
 - `data/results.json` — Automatisch gegenereerde scrape-resultaten (niet handmatig bewerken)
+- `data/confirmed.json` — Bevestigd-groen-lijst (`sites` met `url`, `statement_url`, `statement_link_text`, `confirmed`-datum). Onderhouden door `tools/sync_confirmed.py`; de scraper slaat verse entries over en herverifieert na 30 dagen. Handmatig toevoegen mag (geverifieerde verklaring-URL, `confirmed`-datum), nooit verzinnen
 - `data/financieel.json` — Handmatig samengestelde lijst van financiële instellingen uit de AFM/DNB-registers (velden: `name`, `url`, `category` ∈ `bank`/`verzekeraar`/`betaaldienst`/`beleggen`/`lease`, optioneel `bron`). Zelfde schema als `webshops.json`
 - `data/telecom.json` / `data/vervoer.json` / `data/media.json` / `data/ebooks.json` — Handmatig samengestelde sectorlijsten, zelfde schema maar **`bron` verplicht** per entry (zie `workflows/research_sector_list.md`). Categorieën staan in de `categoryLabels` van de bijbehorende monitorpagina
 - `data/results-<sector>.json` / `data/history-<sector>.json` — Automatisch gegenereerd door de sector-scrapes (niet handmatig bewerken)
@@ -72,6 +75,15 @@ python tools/scrape_footer.py --dataset financieel   # of telecom/vervoer/media/
 # Sharded draaien (zoals de cron): 1 van de 8 delen, daarna mergen
 python tools/scrape_footer.py --shard 0 --num-shards 8 --out results.part-0.json
 python tools/scrape_footer.py --merge <map-met-part-bestanden>
+
+# Bevestigd-groen-lijst bijwerken na een scrape (cron doet dit na de merge)
+python tools/sync_confirmed.py --dataset webshops
+
+# Detector-tests draaien (deterministisch; geen netwerk)
+python tests/test_detector.py
+python tests/test_confirmed.py
+# Live ground-truth-validatie tegen echte sites (kan wisselen door bot-challenges)
+python tests/check_live.py
 
 # Artikelen (her)bouwen na een wijziging in content/artikelen/
 python tools/build_articles.py

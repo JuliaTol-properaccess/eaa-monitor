@@ -1,0 +1,1706 @@
+{
+  "_comment": "Bevestigd-groen-lijst: sites met geverifieerde toegankelijkheidsverklaring. scrape_footer.py slaat deze op de wekelijkse run over zolang 'confirmed' < REVERIFY_DAYS (30) oud is; daarna herverifieert hij vanzelf. tools/sync_confirmed.py onderhoudt dit bestand na elke scrape. 'confirmed' = datum laatst echt geverifieerd (YYYY-MM-DD).",
+  "sites": [
+    {
+      "name": "123 3D B.V.",
+      "url": "https://www.123-3D.nl",
+      "statement_url": "https://www.123-3D.nl/page/digitale-toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "123Accu B.V.",
+      "url": "https://www.123accu.nl",
+      "statement_url": "https://www.123accu.nl/page/digitale-toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "123inkt.nl",
+      "url": "https://www.123inkt.nl",
+      "statement_url": "https://www.123inkt.nl/page/digitale-toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "123led B.V.",
+      "url": "https://www.123led.nl",
+      "statement_url": "https://www.123led.nl/page/digitale-toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "123schoon B.V.",
+      "url": "https://www.123schoon.nl",
+      "statement_url": "https://www.123schoon.nl/page/digitale-toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "2wheels-shop.nl",
+      "url": "https://www.2wheels-shop.nl",
+      "statement_url": "https://www.2wheels-shop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "About You",
+      "url": "https://www.aboutyou.nl",
+      "statement_url": "https://www.aboutyou.nl/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "About You - ENG",
+      "url": "https://en.aboutyou.nl",
+      "statement_url": "https://en.aboutyou.nl/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Agrishop.nl",
+      "url": "https://www.agrishop.nl",
+      "statement_url": "https://www.agrishop.nl/info/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Albert Heijn",
+      "url": "https://www.ah.nl",
+      "statement_url": "https://www.ah.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Allcam.be",
+      "url": "https://www.allcam.be",
+      "statement_url": "https://www.allcam.be/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Allcam.nl",
+      "url": "https://www.allcam.nl",
+      "statement_url": "https://www.allcam.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "AlleAfstandsbedieningen.nl",
+      "url": "https://www.alleafstandsbedieningen.nl",
+      "statement_url": "https://www.alleafstandsbedieningen.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "amagard.com",
+      "url": "https://www.amagard.com/nl",
+      "statement_url": "https://www.amagard.com/nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Amazon.nl",
+      "url": "https://www.amazon.nl",
+      "statement_url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=GUUVBZ8WGVFP8R8X&ref_=nav_foot_accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Amefa.nl",
+      "url": "https://www.amefa.nl",
+      "statement_url": "https://www.amefa.nl/pages/digitale-toegankelijkheid",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Apple",
+      "url": "https://www.apple.com/nl/",
+      "statement_url": "https://www.apple.com/nl/accessibility/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "AQ Living BV",
+      "url": "https://www.aq-living.com",
+      "statement_url": "https://www.aq-living.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Arctic-living",
+      "url": "https://www.arctic-living.com",
+      "statement_url": "https://arctic-living.com/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Autoverzekering.nl",
+      "url": "https://www.autoverzekering.nl",
+      "statement_url": "https://cdn.autoverzekering.nl/doc/Toegankelijkheidsverklaring-Autoverzekering.nl_.pdf",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Azerty",
+      "url": "https://www.azerty.nl",
+      "statement_url": "https://www.azerty.nl/klantenservice/voorwaarden/toegankelijkheidsverklaring",
+      "statement_link_text": "",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Babywinkel.be",
+      "url": "https://www.babywinkel.be",
+      "statement_url": "https://www.babywinkel.be/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Babywinkel.nl",
+      "url": "https://www.babywinkel.nl",
+      "statement_url": "https://www.babywinkel.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Baldur-Nederland",
+      "url": "https://www.baldur-nederland.nl",
+      "statement_url": "https://www.baldur-nederland.nl/onion/content/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Beddenreus.nl",
+      "url": "https://www.beddenreus.nl",
+      "statement_url": "https://www.beddenreus.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Belsimpel",
+      "url": "https://www.belsimpel.nl",
+      "statement_url": "https://www.belsimpel.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Bergfreunde GmbH",
+      "url": "https://bergfreunde.nl",
+      "statement_url": "https://www.bergfreunde.nl/toegankelijkheid/",
+      "statement_link_text": "Verklaring inzake toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Betersport.nl",
+      "url": "https://www.betersport.nl",
+      "statement_url": "https://www.betersport.nl/digitale-toegankelijkheid",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Bijenkorf",
+      "url": "https://www.debijenkorf.nl",
+      "statement_url": "https://www.debijenkorf.nl/over-de-bijenkorf/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Bloom Mondays",
+      "url": "https://bloommondays.nl",
+      "statement_url": "https://bloommondays.nl#main-content",
+      "statement_link_text": "Translation missing: nl.accessibility.skip_to_text",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "BMW",
+      "url": "https://lifestyle.bmw.com/nl/nl/home",
+      "statement_url": "https://lifestyle.bmw.com/nl/nl/accessibility-act.html",
+      "statement_link_text": "Accessibility Act",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "bol.com",
+      "url": "https://www.bol.com",
+      "statement_url": "https://www.bol.com/nl/nl/tc/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Bold Monkey",
+      "url": "https://www.boldmonkey.com/nl",
+      "statement_url": "https://www.boldmonkey.com/nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Bon Prix France",
+      "url": "https://www.bonprix.nl",
+      "statement_url": "https://www.bonprix.nl/klantenservice/toegankelijkheid/",
+      "statement_link_text": "Partial accessible",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Booking.com",
+      "url": "https://www.booking.com",
+      "statement_url": "https://www.booking.com/content/accessibility_statement.nl.html?label=gen173nr-10CAEoggI46AdIM1gEaKkBiAEBmAEzuAEHyAEM2AED6AEB-AEBiAIBqAIBuALbxujRBsACAdICJGU3ODlhNmQ2LTRhNTItNDU2OS1hMzg4LWYwZmQ1Mjg2NTc5MNgCAeACAQ&aid=304142&sid=39cbe93df06e981d0c469da736f91f93",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Bosch-Home.nl",
+      "url": "https://www.bosch-home.nl/store",
+      "statement_url": "https://www.bosch-home.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Brabantia",
+      "url": "https://www.brabantia.com/nl",
+      "statement_url": "https://www.brabantia.com/nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Bruynzeel Keukens webwinkel",
+      "url": "https://webwinkel.bruynzeelkeukens.nl",
+      "statement_url": "https://webwinkel.bruynzeelkeukens.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Buffalo.nl",
+      "url": "https://www.Buffalo.nl",
+      "statement_url": "https://www.buffalo.nl/nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Buitiqo.nl",
+      "url": "https://buitiqo.nl",
+      "statement_url": "https://buitiqo.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Burned Sports",
+      "url": "https://www.burnedsports.com",
+      "statement_url": "https://www.burnedsports.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "By Twinnies",
+      "url": "https://www.bytwinnies.nl",
+      "statement_url": "https://www.bytwinnies.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "ByMetz Tassen & Koffers",
+      "url": "https://www.bymetz.nl",
+      "statement_url": "https://www.bymetz.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "C&A",
+      "url": "https://www.c-and-a.com/nl/nl/",
+      "statement_url": "https://www.c-and-a.com/nl/nl/shop/service/juridisch/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Camguard.nl",
+      "url": "https://camguard.nl",
+      "statement_url": "https://camguard.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Canvasso",
+      "url": "https://canvasso.com",
+      "statement_url": "https://canvasso.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Caraudiogigant.nl",
+      "url": "https://www.caraudiogigant.nl",
+      "statement_url": "https://www.caraudiogigant.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Castelijn Beek",
+      "url": "https://www.modecastelijn.nl",
+      "statement_url": "https://www.modecastelijn.nl/nl/pages/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Celtic WebMerchant",
+      "url": "https://www.celticwebmerchant.com/en",
+      "statement_url": "https://www.celticwebmerchant.com/en#MainContent",
+      "statement_link_text": "Translation missing: en.accessibility.skip_to_text",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Celtic WebMerchant VOF UK",
+      "url": "https://www.celticwebmerchant.co.uk",
+      "statement_url": "https://www.celticwebmerchant.co.uk#MainContent",
+      "statement_link_text": "Translation missing: nl.accessibility.skip_to_text",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Centraal Beheer",
+      "url": "https://www.centraalbeheer.nl",
+      "statement_url": "https://www.centraalbeheer.nl/over-ons/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Confy Nederland",
+      "url": "https://confynederland.nl",
+      "statement_url": "https://confynederland.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Contorion",
+      "url": "https://www.contorion.nl",
+      "statement_url": "https://www.contorion.nl/toegankelijkheid?vct=ho_ftr_acs",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Coolblue",
+      "url": "https://www.coolblue.nl",
+      "statement_url": "https://www.coolblue.nl/c/toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Crisp",
+      "url": "https://www.crisp.nl",
+      "statement_url": "https://www.crisp.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Cunavo",
+      "url": "https://www.cunavo.nl",
+      "statement_url": "https://www.cunavo.nl/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "De Huid Shop - Mesoestetic",
+      "url": "https://www.dehuidshop.nl",
+      "statement_url": "https://www.dehuidshop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "De Online Drogist",
+      "url": "https://www.deonlinedrogist.nl",
+      "statement_url": "https://www.deonlinedrogist.nl/accessibility-statement",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "De Telegraaf Webshop",
+      "url": "https://webshop.telegraaf.nl",
+      "statement_url": "https://webshop.telegraaf.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "De Theeplantage",
+      "url": "https://www.lossetheekopen.nl",
+      "statement_url": "https://www.lossetheekopen.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "De Trendkamer",
+      "url": "https://www.detrendkamer.nl",
+      "statement_url": "https://www.detrendkamer.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Dealzzz",
+      "url": "https://dealzzz.nl",
+      "statement_url": "https://dealzzz.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "DeMassageShop",
+      "url": "https://demassageshop.nl",
+      "statement_url": "https://demassageshop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Dermaskin Shops",
+      "url": "https://www.dermaskinshop.nl",
+      "statement_url": "https://www.dermaskinshop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Dierapotheker.nl",
+      "url": "https://www.dierapotheker.nl",
+      "statement_url": "https://www.dierapotheker.nl/dierapotheker.nl/european-accessibility-act/",
+      "statement_link_text": "European Accessibility Act",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Discounty",
+      "url": "https://www.discounty.nl",
+      "statement_url": "https://www.discounty.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Dominikq",
+      "url": "https://dominikq.com",
+      "statement_url": "https://dominikq.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Dutchbone",
+      "url": "https://www.dutchbone.com",
+      "statement_url": "https://www.dutchbone.com/nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Easycheck Com",
+      "url": "https://123accessoire.nl",
+      "statement_url": "https://123accessoire.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "ECOstyle B.V.",
+      "url": "https://www.ecostyle.nl",
+      "statement_url": "https://www.ecostyle.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Educatheek.nl",
+      "url": "https://www.educatheek.nl",
+      "statement_url": "https://www.educatheek.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Eliza was here",
+      "url": "https://www.elizawashere.nl",
+      "statement_url": "https://www.elizawashere.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Emma Sleep",
+      "url": "https://www.emma-sleep.nl",
+      "statement_url": "https://www.emma-sleep.nl/verklaring-toegankelijkheid/",
+      "statement_link_text": "Verklaring inzake toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Essenza Home",
+      "url": "https://www.essenzahome.nl",
+      "statement_url": "https://www.essenzahome.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Exterioo.nl",
+      "url": "https://www.exterioo.nl",
+      "statement_url": "https://www.exterioo.nl/nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "FBTO",
+      "url": "https://www.fbto.nl",
+      "statement_url": "https://www.fbto.nl/over-ons/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Feel Good Supplements",
+      "url": "https://feelgoodsupplements.nl",
+      "statement_url": "https://feelgoodsupplements.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Fidello",
+      "url": "https://www.fidello.nl",
+      "statement_url": "https://www.fidello.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Fifty Cal",
+      "url": "https://www.fifty-cal.com",
+      "statement_url": "https://www.fifty-cal.com#",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Fit for Life shop",
+      "url": "https://fitforlife.shop",
+      "statement_url": "https://fitforlife.shop/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "FlightsimWebshop",
+      "url": "https://www.flightsimwebshop.com",
+      "statement_url": "https://www.flightsimwebshop.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Foot Locker",
+      "url": "https://www.footlocker.nl",
+      "statement_url": "https://images.footlocker.com/content/dam/final/footlockereurope/Online_activations/downloads/2025_12_24_accessibility_statements/Accessibility_Statement_2025_NL.pdf",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "forComponents",
+      "url": "https://forcomponents.nl",
+      "statement_url": "https://forcomponents.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Fransebulldogloversshop",
+      "url": "https://www.fransebulldogloversshop.nl",
+      "statement_url": "https://www.fransebulldogloversshop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Gall.nl",
+      "url": "https://www.gall.nl",
+      "statement_url": "https://www.gall.nl/over/toegankelijkheidsverklaring-web/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Geels woonwarenhuis",
+      "url": "https://www.geelswoonwarenhuis.nl",
+      "statement_url": "https://www.geelswoonwarenhuis.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "George Napoli",
+      "url": "https://www.georgenapoli.nl",
+      "statement_url": "https://www.georgenapoli.nl/",
+      "statement_link_text": "Vink toegankelijkheid aan (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Gereedschappelijk",
+      "url": "https://www.gereedschappelijk.nl",
+      "statement_url": "https://www.gereedschappelijk.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "GereedschapXXL",
+      "url": "https://gereedschapxxl.nl",
+      "statement_url": "https://gereedschapxxl.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "GOLDNER",
+      "url": "https://www.goldner-fashion.com/nl",
+      "statement_url": "https://www.goldner-fashion.com/nl/c/verklaring-van-toegankelijkheid",
+      "statement_link_text": "Verklaring van toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Golfballen.nl",
+      "url": "https://golfballen.nl",
+      "statement_url": "https://golfballen.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Greetz",
+      "url": "https://www.greetz.nl",
+      "statement_url": "https://www.greetz.nl/nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Verklaring toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Ground Cover Group - Boomschors.nl - Houtsnippers.nl - Potgrond.nl - Tuinaarde.nl - Cacaodoppen.nl - Zand.nl",
+      "url": "https://www.boomschors.nl",
+      "statement_url": "https://www.boomschors.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "H.T. Trade Service GmbH & Co. KG",
+      "url": "https://www.premiumxl24.nl",
+      "statement_url": "https://www.premiumxl24.nl/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "HalloVitaal",
+      "url": "https://www.hallovitaal.nl",
+      "statement_url": "https://www.hallovitaal.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Hayes Brothers",
+      "url": "https://www.hayesbrothers.nl",
+      "statement_url": "https://hayesbrothers.nl/klantenservice/digitale-toegankelijkheid/",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Heine-shop.nl",
+      "url": "https://www.heine-shop.nl",
+      "statement_url": "https://www.heine-shop.nl/content/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "HEMA.nl",
+      "url": "https://www.HEMA.nl",
+      "statement_url": "https://www.hema.nl/klantenservice/digitale-toegankelijkheidsverklaring",
+      "statement_link_text": "toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Hip is Het",
+      "url": "https://hipishet.nl",
+      "statement_url": "https://hipishet.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Homewall B.V.",
+      "url": "https://www.homewall.nl",
+      "statement_url": "https://www.homewall.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Hornbach",
+      "url": "https://www.hornbach.nl",
+      "statement_url": "https://www.hornbach.nl/services/privacyverklaring/#d0fac970d9c69c7bdfc5e002fe9e14e1",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Houtsnippers.nl",
+      "url": "https://houtsnippers.nl",
+      "statement_url": "https://houtsnippers.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Hudson Reed",
+      "url": "https://nl.hudsonreed.com",
+      "statement_url": "https://nl.hudsonreed.com/hudson-reed-toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Hulpmedi.nl",
+      "url": "https://www.hulpmedi.nl",
+      "statement_url": "https://www.hulpmedi.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "iEar | Ultimate sound and vision",
+      "url": "https://www.iear.nl",
+      "statement_url": "https://iear.nl/over-iear/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "IKEA",
+      "url": "https://www.ikea.com/nl/nl/",
+      "statement_url": "https://www.ikea.com/nl/nl/customer-service/accessibility/",
+      "statement_link_text": "Verklaring digitale toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Insetto",
+      "url": "https://www.insetto.be",
+      "statement_url": "https://www.insetto.eu/be/Informatie/Toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Insetto.nl",
+      "url": "https://www.insetto.nl",
+      "statement_url": "https://www.insetto.eu/nl/Informatie/Toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Inshared.nl",
+      "url": "https://www.inshared.nl",
+      "statement_url": "https://www.inshared.nl/toegankelijkheid",
+      "statement_link_text": "ToegankelijkheidToegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Intertoys",
+      "url": "https://www.intertoys.nl",
+      "statement_url": "https://www.intertoys.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Intratuin Webshop",
+      "url": "https://www.intratuin.nl",
+      "statement_url": "https://www.intratuin.nl/over-intratuin/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Jack & Jones",
+      "url": "https://www.jackjones.com/nl/nl/",
+      "statement_url": "https://www.jackjones.com/nl-nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Jaghead.nl",
+      "url": "https://www.jaghead.nl",
+      "statement_url": "https://www.jaghead.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "JD Sports",
+      "url": "https://www.jdsports.nl",
+      "statement_url": "https://www.jdplc.com/accessibility/default.aspx",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Jimmie Sleeps",
+      "url": "https://www.jimmiesleeps.nl",
+      "statement_url": "https://www.jimmiesleeps.nl/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Jolie Fashion",
+      "url": "https://www.joliefashion.nl",
+      "statement_url": "https://www.joliefashion.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "JURA Nederland BV",
+      "url": "https://www.nl.jura.com",
+      "statement_url": "https://www.nl.jura.com/nl/koopadvies/online-kopen-voorwaarden/declaration-on-accessibility",
+      "statement_link_text": "Verklaring over toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Jysk",
+      "url": "https://www.jysk.nl",
+      "statement_url": "https://www.jysk.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Kabelshop.nl",
+      "url": "https://www.kabelshop.nl",
+      "statement_url": "https://www.kabelshop.nl/page/digitale_toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Kameionline.nl",
+      "url": "https://www.kameionline.nl",
+      "statement_url": "https://www.kameionline.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Kees Smit Tuinmeubelen",
+      "url": "https://www.keessmit.nl",
+      "statement_url": "https://www.keessmit.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Keter Benelux B.V.",
+      "url": "https://www.keter.com",
+      "statement_url": "https://www.keter.com/nl-nl/accessibility.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Kleertjes.com",
+      "url": "https://www.kleertjes.com",
+      "statement_url": "https://www.kleertjes.com/klantenservice/categorie/gegevens-en-voorwaarden/vraag/toegankelijkheidsverklaring",
+      "statement_link_text": "toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Klium.com",
+      "url": "https://Klium.com",
+      "statement_url": "https://www.klium.com/nl/content/45-toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "knm.nl",
+      "url": "https://www.knm.nl",
+      "statement_url": "https://www.knm.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "KNUS Living",
+      "url": "https://knusliving.nl",
+      "statement_url": "https://knusliving.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Kwantum",
+      "url": "https://www.kwantum.nl",
+      "statement_url": "https://www.kwantum.nl/informatie-en-service/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Kynda Light",
+      "url": "https://www.kyndalight.com",
+      "statement_url": "https://www.kyndalight.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "LAPTOP.NL",
+      "url": "https://www.laptop.nl",
+      "statement_url": "https://www.laptop.nl/informatie/veiligheid-toegankelijkheid/",
+      "statement_link_text": "Veiligheid & Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Large Popmerchandising",
+      "url": "https://www.large.nl",
+      "statement_url": "https://www.large.nl/accessibility/terms-accessibility.html/",
+      "statement_link_text": "Informatie over toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Lederwarenwebshop",
+      "url": "https://lederwarenwebshop.nl",
+      "statement_url": "https://lederwarenwebshop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Leen Bakker",
+      "url": "https://www.leenbakker.nl",
+      "statement_url": "https://www.leenbakker.nl/klantenservice/toegankelijkheid/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Leondo",
+      "url": "https://leondo.nl",
+      "statement_url": "https://leondo.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Lidl",
+      "url": "https://www.lidl.nl",
+      "statement_url": "https://www.lidl.nl/c/toegankelijkheidsverklaring/s10074127",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "LOBERON GmbH",
+      "url": "https://www.loberon.nl",
+      "statement_url": "https://www.loberon.nl/Service-wettelijke-informatie/Toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Lucky Touch",
+      "url": "https://www.luckytouch.nl",
+      "statement_url": "https://www.luckytouch.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Managementboek.nl",
+      "url": "https://www.managementboek.nl",
+      "statement_url": "https://www.managementboek.nl/klantenservice/juridisch/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Marocstore.nl",
+      "url": "https://www.marocstore.nl",
+      "statement_url": "https://www.marocstore.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "MBDeals.nl",
+      "url": "https://mbdeals.nl",
+      "statement_url": "https://mbdeals.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "MediaMarkt",
+      "url": "https://www.mediamarkt.nl",
+      "statement_url": "https://www.mediamarkt.nl/nl/legal/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-22"
+    },
+    {
+      "name": "Megekko",
+      "url": "https://www.megekko.nl",
+      "statement_url": "https://www.megekko.nl/info/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Met Meubels",
+      "url": "https://metmeubel.nl",
+      "statement_url": "https://metmeubel.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Metal-Animal",
+      "url": "https://www.metal-animal.com",
+      "statement_url": "https://www.metal-animal.com/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Muntex BV",
+      "url": "https://muntex.nl",
+      "statement_url": "https://muntex.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Nelson",
+      "url": "https://www.nelson.nl",
+      "statement_url": "https://www.nelson.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Neofollics Hair Technology",
+      "url": "https://neofollics.com/nl",
+      "statement_url": "https://neofollics.com/nl/pages/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Netwerkkabel.eu",
+      "url": "https://netwerkkabel.eu",
+      "statement_url": "https://netwerkkabel.eu/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Nike",
+      "url": "https://www.nike.com/nl/",
+      "statement_url": "https://www.nike.com/nl/accessibility/statement",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Omoda",
+      "url": "https://www.omoda.nl",
+      "statement_url": "https://www.omoda.nl/toegankelijkheidsverklaring-Toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "ONLY",
+      "url": "https://www.only.com/nl/nl/",
+      "statement_url": "https://www.only.com/nl-nl/content/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Optimaal Plus",
+      "url": "https://www.optimaalplus.nl",
+      "statement_url": "https://www.optimaalplus.nl/drempelhulpen,-drempelhulp,-scheggen,-toegankelijkheid,-rubberen-drempelhulp,-gummy-ramp",
+      "statement_link_text": "Drempelhulpen, scheggen & toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Optiphar",
+      "url": "https://optiphar.com",
+      "statement_url": "https://optiphar.com/nl-be/klantenservice/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Otrium.nl",
+      "url": "https://www.otrium.nl",
+      "statement_url": "https://www.otrium.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Overhemden.com",
+      "url": "https://www.overhemden.com",
+      "statement_url": "https://www.overhemden.com/verklaring-over-toegankelijkheid",
+      "statement_link_text": "Verklaring over toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Overstappen.nl",
+      "url": "https://www.overstappen.nl",
+      "statement_url": "https://www.overstappen.nl/toegankelijkheidsverklaring-overstappen-nl/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Ozotof",
+      "url": "https://ozotof.nl",
+      "statement_url": "https://ozotof.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Pannenhuis",
+      "url": "https://www.pannenhuis.nl",
+      "statement_url": "https://www.pannenhuis.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Paradigit",
+      "url": "https://www.paradigit.nl",
+      "statement_url": "https://www.paradigit.nl/informatie/veiligheid-toegankelijkheid/",
+      "statement_link_text": "Veiligheid & Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "PARSHIP.nl",
+      "url": "https://www.parship.nl",
+      "statement_url": "https://www.parship.nl/accessibility/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Partywinkel.be",
+      "url": "https://www.partywinkel.be",
+      "statement_url": "https://www.partywinkel.be/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Partywinkel.nl",
+      "url": "https://www.partywinkel.nl",
+      "statement_url": "https://www.partywinkel.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Pelletvoordeel.nl",
+      "url": "https://www.pelletvoordeel.nl",
+      "statement_url": "https://www.pelletvoordeel.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Peter Hahn",
+      "url": "https://www.peterhahn.nl",
+      "statement_url": "https://www.peterhahn.nl/verklaring-over-toegankelijheid",
+      "statement_link_text": "Verklaring over toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Petfactor.nl",
+      "url": "https://petfactor.nl",
+      "statement_url": "https://petfactor.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Pixum",
+      "url": "https://www.pixum.nl",
+      "statement_url": "https://www.pixum.nl/over-ons/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Plamuren.com",
+      "url": "https://www.plamuren.com",
+      "statement_url": "https://www.plamuren.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Plus",
+      "url": "https://www.plus.nl",
+      "statement_url": "https://www.plus.nl/organisatie/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Praxis",
+      "url": "https://www.praxis.nl",
+      "statement_url": "https://www.praxis.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Pretty Polish",
+      "url": "https://prettypolish.nl",
+      "statement_url": "https://prettypolish.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "PrikkabelXL",
+      "url": "https://prikkabelxl.nl",
+      "statement_url": "https://prikkabelxl.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "reBuy",
+      "url": "https://www.rebuy.nl",
+      "statement_url": "https://www.rebuy.nl/legal/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Rephone",
+      "url": "https://www.rephone.nl",
+      "statement_url": "https://www.rephone.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "RISK Direct",
+      "url": "https://www.risk-direct.nl",
+      "statement_url": "https://www.risk-direct.nl/wp-content/uploads/2025/07/Toegankelijkheidsverklaring-RISK-Direct.pdf",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Rituals",
+      "url": "https://www.rituals.com/nl-nl/",
+      "statement_url": "https://www.rituals.com/nl-nl/accessibility-statement.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Rituals",
+      "url": "https://www.rituals.com/nl-nl/home",
+      "statement_url": "https://www.rituals.com/nl-nl/accessibility-statement.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "roastmarket",
+      "url": "https://www.roastmarket.nl",
+      "statement_url": "https://www.roastmarket.nl/barrierefreiheitserklaerung",
+      "statement_link_text": "Barrierefreiheitserklärung",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Rok&Billie",
+      "url": "https://www.rok-en-billie.nl",
+      "statement_url": "https://www.rok-en-billie.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Rootcorner",
+      "url": "https://rootcorner.com",
+      "statement_url": "https://rootcorner.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "RORUVERA B.V.",
+      "url": "https://www.roruvera.com",
+      "statement_url": "https://www.roruvera.com/pages/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Royal Canin",
+      "url": "https://www.royalcanin.com/nl",
+      "statement_url": "https://www.mars.com/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Scotch & Soda",
+      "url": "https://www.scotchandsoda.com/nl-nl/",
+      "statement_url": "https://www.scotchandsoda.com/pages/accessibility-statement",
+      "statement_link_text": "Accessibility",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Secrid",
+      "url": "https://www.secrid.com",
+      "statement_url": "https://www.secrid.com/en-us/legal/accessibility-statement/",
+      "statement_link_text": "Accessibility statement",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Sheluxe",
+      "url": "https://www.sheluxe.nl",
+      "statement_url": "https://www.sheluxe.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Shoemixx.nl",
+      "url": "https://www.shoemixx.nl",
+      "statement_url": "https://www.shoemixx.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Shop Friesland",
+      "url": "https://shopfriesland.nl",
+      "statement_url": "https://shopfriesland.nl/pages/digitale-toegankelijkheid",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Siemens-home.bsh-group.com",
+      "url": "https://Siemens-home.bsh-group.com",
+      "statement_url": "https://Siemens-home.bsh-group.com/accessibility",
+      "statement_link_text": "Accessibility",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "simGame.shop",
+      "url": "https://www.simgame.shop",
+      "statement_url": "https://www.simgame.shop/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "SkinTrends",
+      "url": "https://www.skintrends.nl",
+      "statement_url": "https://www.skintrends.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Smartphonepolis",
+      "url": "https://www.smartphonepolis.nl",
+      "statement_url": "https://www.smartphonepolis.nl/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsrichtlijn",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Sneltoner.nl",
+      "url": "https://www.sneltoner.nl",
+      "statement_url": "https://www.sneltoner.nl/info/toegankelijkheidsverklaring.htm",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Snipes",
+      "url": "https://www.snipes.nl",
+      "statement_url": "https://www.snipes.nl/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "solago GmbH",
+      "url": "https://www.solago.nl",
+      "statement_url": "https://www.solago.nl/pages/barrierefreiheitserklarung",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "sportdeal.nl",
+      "url": "https://www.sportdeal.nl",
+      "statement_url": "https://www.sportdeal.nl/sport-en-gezondheid/mobility-accessibility",
+      "statement_link_text": "Mobiliteit en toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Suitable",
+      "url": "https://www.suitableshop.nl",
+      "statement_url": "https://www.suitableshop.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Sunweb",
+      "url": "https://www.sunweb.nl",
+      "statement_url": "https://www.sunweb.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Suotu.nl",
+      "url": "https://www.suotu.nl",
+      "statement_url": "https://www.suotu.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "SuperfoodShop",
+      "url": "https://www.superfoodshop.nl",
+      "statement_url": "https://www.superfoodshop.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Supportshop.eu",
+      "url": "https://www.supportshop.eu",
+      "statement_url": "https://www.supportshop.eu/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Swiss Sense",
+      "url": "https://www.swisssense.nl",
+      "statement_url": "https://www.swisssense.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-22"
+    },
+    {
+      "name": "Tables & More",
+      "url": "https://www.tablesandmore.nl",
+      "statement_url": "https://www.tablesandmore.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Tectake",
+      "url": "https://www.tectake.nl",
+      "statement_url": "https://www.tectake.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "ten Cate | L. ten Cate BV",
+      "url": "https://www.tencate1952.com",
+      "statement_url": "https://tencate1952.com/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Teufel",
+      "url": "https://teufelaudio.nl",
+      "statement_url": "https://teufelaudio.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "The-Twosisters",
+      "url": "https://www.the-twosisters.nl",
+      "statement_url": "https://www.the-twosisters.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Thuiszorg-bed.nl (onderdeel van Used Hospitalbeds)",
+      "url": "https://www.thuiszorg-bed.nl",
+      "statement_url": "https://www.thuiszorg-bed.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Toolsvoordelig.nl",
+      "url": "https://www.toolsvoordelig.nl",
+      "statement_url": "https://www.toolsvoordelig.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "TopTierParts",
+      "url": "https://toptierparts.nl/nl",
+      "statement_url": "https://toptierparts.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Tummy Tub",
+      "url": "https://tummytuboriginal.com",
+      "statement_url": "https://tummytuboriginal.com/privacy-policy/",
+      "statement_link_text": "Privacy, Cookies & Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Uitgeverij Zwijsen Webshop",
+      "url": "https://www.zwijsen.nl",
+      "statement_url": "https://www.zwijsen.nl/klantenservice/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Unoxovens.nl",
+      "url": "https://unoxovens.nl",
+      "statement_url": "https://unoxovens.nl/accessibility-statement-2/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Van der Garde tuinmeubelen",
+      "url": "https://www.vdgarde.nl",
+      "statement_url": "https://www.vdgarde.nl/toegankelijkheidverklaring",
+      "statement_link_text": "Toegankelijkheisdverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Van Haren",
+      "url": "https://www.vanharen.nl",
+      "statement_url": "https://www.vanharen.nl/accessibility",
+      "statement_link_text": "Informatie over toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "VanSprint",
+      "url": "https://vansprint.nl",
+      "statement_url": "https://vansprint.nl/vansprint/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "VCTparts",
+      "url": "https://vctparts.nl",
+      "statement_url": "https://vctparts.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vegro Verpleegartikelen",
+      "url": "https://www.vegro.nl",
+      "statement_url": "https://www.vegro.nl/digitale-toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "VELUXshop.nl",
+      "url": "https://www.VELUXshop.nl",
+      "statement_url": "https://www.VELUXshop.nl/klantenservice/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Ventilatieshop.com",
+      "url": "https://www.ventilatieshop.com",
+      "statement_url": "https://www.ventilatieshop.com/digitale-toegankelijkheid-bij-ventilatieshop",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vergelijkdirect.com",
+      "url": "https://vergelijkdirect.com",
+      "statement_url": "https://vergelijkdirect.com/over-ons/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vero Moda",
+      "url": "https://www.veromoda.com/nl/nl/",
+      "statement_url": "https://www.veromoda.com/nl-nl/content/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vidaxl",
+      "url": "https://www.vidaxl.nl",
+      "statement_url": "https://www.vidaxl.nl/accessibility_statement.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vodafone",
+      "url": "https://www.vodafone.nl",
+      "statement_url": "https://www.vodafone.nl/support/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Voetbalshop.nl",
+      "url": "https://www.voetbalshop.nl",
+      "statement_url": "https://www.voetbalshop.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Voordeelstore.nl",
+      "url": "https://www.voordeelstore.nl",
+      "statement_url": "https://www.voordeelstore.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vossen Greener Chemicals",
+      "url": "https://vossenchemicals.com",
+      "statement_url": "https://vossenchemicals.com/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Vuur & Rook",
+      "url": "https://www.vuurenrook.nl",
+      "statement_url": "https://www.vuurenrook.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "WE Fashion",
+      "url": "https://www.wefashion.com/nl-NL/",
+      "statement_url": "https://www.wefashion.com/nl_NL/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Webshop Auping",
+      "url": "https://www.auping.com/nl",
+      "statement_url": "https://www.auping.com/nl/klantenservice/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Webwinkel.kellerkeukens.nl",
+      "url": "https://webwinkel.kellerkeukens.nl",
+      "statement_url": "https://webwinkel.kellerkeukens.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Wehkamp",
+      "url": "https://www.wehkamp.nl",
+      "statement_url": "https://www.wehkamp.nl/klantenservice/categorie/gegevens-en-voorwaarden/vraag/toegankelijkheidsverklaring",
+      "statement_link_text": "toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Weleda",
+      "url": "https://www.weleda.nl",
+      "statement_url": "https://www.weleda.nl/footer/juridisch/informatie-toegankelijkheid",
+      "statement_link_text": "Informatie over toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Wertgarantie.nl",
+      "url": "https://www.wertgarantie.nl",
+      "statement_url": "https://www.wertgarantie.nl/toegankelijkheidsrichtlijn",
+      "statement_link_text": "Toegankelijkheidsrichtlijn",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Wibra",
+      "url": "https://www.wibra.nl",
+      "statement_url": "https://www.wibra.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-22"
+    },
+    {
+      "name": "Wijnjuweel.nl",
+      "url": "https://www.wijnjuweel.nl",
+      "statement_url": "https://www.wijnjuweel.nl/pages/accessibility-statement",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "WineInBlack.nl",
+      "url": "https://www.wineinblack.nl",
+      "statement_url": "https://www.wineinblack.nl/pages/accessibility-statement",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Witt International",
+      "url": "https://www.witt-international.nl",
+      "statement_url": "https://www.witt-international.nl/content/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Wooof.com",
+      "url": "https://www.wooof.com",
+      "statement_url": "https://wooof.com/Klantenservice/Digitale-toegankelijkheid/",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "www.drempelhulpkopen.nl",
+      "url": "https://www.drempelhulpkopen.nl",
+      "statement_url": "https://www.drempelhulpkopen.nl/toegankelijkheid-blog-drempelhulp-kopen",
+      "statement_link_text": "Blog & Nieuws",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Your Look for less!",
+      "url": "https://www.your-look-for-less.nl",
+      "statement_url": "https://www.your-look-for-less.nl/content/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Yourdog",
+      "url": "https://www.yourdog.nl",
+      "statement_url": "https://yourdog.nl/klantenservice/digitale-toegankelijkheid/",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "ZenXstore",
+      "url": "https://www.zenxstore.nl",
+      "statement_url": "https://www.zenxstore.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Zooplus",
+      "url": "https://www.zooplus.nl",
+      "statement_url": "https://www.zooplus.nl/info/legal/accessibility-statement",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Zorgoo",
+      "url": "https://www.zorgoo.com",
+      "statement_url": "https://www.zorgoo.com/pages/contact",
+      "statement_link_text": "Toegankelijkheid & onderweg",
+      "confirmed": "2026-06-06"
+    },
+    {
+      "name": "Zuiver.com",
+      "url": "https://www.zuiver.com/nl",
+      "statement_url": "https://www.zuiver.com/nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidverklaring",
+      "confirmed": "2026-06-06"
+    }
+  ]
+}

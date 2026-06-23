@@ -16,8 +16,8 @@ De EAA Monitor brengt alle praktische informatie over de European Accessibility 
 ## Actuele cijfers
 <!-- MEASUREMENT:START -->
 Laatste meting (6 juni 2026): 10397 webshops gecontroleerd,
-246 (2%) met toegankelijkheidsverklaring,
-9039 (87%) zonder, en
+243 (2%) met toegankelijkheidsverklaring,
+9042 (87%) zonder, en
 1112 (11%) niet te controleren.
 <!-- MEASUREMENT:END -->
 
