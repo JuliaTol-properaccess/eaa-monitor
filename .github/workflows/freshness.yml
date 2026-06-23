@@ -1,0 +1,60 @@
+name: Data freshness check
+
+# Vangt het geval dat de wekelijkse scrape stil niet doorkomt (zoals 8/15/22 juni
+# 2026): controleert dagelijks hoe oud de gecommitte results-bestanden zijn en
+# mailt een waarschuwing via de Worker-/alert-route als er iets te oud is. Dit
+# vangt ook een run die nooit startte (dat doet de faal-alert in scrape.yml niet).
+on:
+  schedule:
+    - cron: '0 9 * * *' # dagelijks 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Controleer ouderdom van de results-bestanden
+        run: |
+          python3 - <<'PY'
+          import datetime, json, pathlib
+          MAX_DAYS = 9  # wekelijkse meting + 2 dagen marge
+          datasets = {
+              "webshops": "data/results.json",
+              "financieel": "data/results-financieel.json",
+              "telecom": "data/results-telecom.json",
+              "vervoer": "data/results-vervoer.json",
+              "media": "data/results-media.json",
+              "ebooks": "data/results-ebooks.json",
+          }
+          now = datetime.datetime.now(datetime.timezone.utc)
+          stale = []
+          for name, path in datasets.items():
+              try:
+                  ts = json.loads(pathlib.Path(path).read_text())["last_updated"]
+                  age = (now - datetime.datetime.fromisoformat(ts)).days
+              except Exception as exc:
+                  stale.append(f"{name}: onleesbaar ({exc})")
+                  continue
+              if age > MAX_DAYS:
+                  stale.append(f"{name}: {age} dagen oud")
+          if stale:
+              pathlib.Path("stale.txt").write_text("; ".join(stale))
+              print("VEROUDERD:", "; ".join(stale))
+          else:
+              print("Alle datasets zijn vers.")
+          PY
+
+      - name: Waarschuw bij verouderde data
+        if: ${{ hashFiles('stale.txt') != '' }}
+        run: |
+          MSG=$(cat stale.txt)
+          curl -sS -X POST "https://eaa-monitor.nl/api/alert" \
+            -H "Content-Type: application/json" \
+            -H "X-Alert-Token: ${{ secrets.ALERT_TOKEN }}" \
+            -d "{\"subject\":\"EAA Monitor: data verouderd\",\"body\":\"Verouderde datasets: ${MSG}. De wekelijkse scrape komt waarschijnlijk niet door; controleer GitHub Actions.\"}" || true

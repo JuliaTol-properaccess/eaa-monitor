@@ -25,10 +25,15 @@ jobs:
   # final step. Each shard handles ~1.3k shops, well under the time limit.
   scrape:
     runs-on: ubuntu-latest
+    # Gezonde shards zijn klaar in ~2u; een shard die desondanks blijft hangen
+    # faalt hier i.p.v. de default 6u te tikken (waarna GitHub de hele run zou
+    # annuleren). Samen met de per-site-cap in de scraper en fail-fast: false
+    # loopt de rest gewoon door en draait de merge.
+    timeout-minutes: 200
     strategy:
       fail-fast: false # one failed shard shouldn't drop the others
       matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     steps:
       - uses: actions/checkout@v4
 
@@ -44,9 +49,12 @@ jobs:
           playwright install-deps chromium
 
       - name: Run scraper shard
-        run: python tools/scrape_footer.py --shard ${{ matrix.shard }} --num-shards 8 --out results.part-${{ matrix.shard }}.json
+        run: python tools/scrape_footer.py --shard ${{ matrix.shard }} --num-shards 12 --out results.part-${{ matrix.shard }}.json
 
+      # always(): ook een gefaalde/getimede shard uploadt zijn (incrementeel
+      # geflushte) deelbestand, zodat de merge zoveel mogelijk dekking houdt.
       - name: Upload partial results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: results-part-${{ matrix.shard }}
@@ -60,6 +68,9 @@ jobs:
     needs: scrape
     if: ${{ always() }}
     runs-on: ubuntu-latest
+    # De merge zelf is snel; de kleine sector-scrapes erna kosten de meeste tijd.
+    # Cap zodat een hangende sector-site de merge-job niet 6u laat tikken.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -127,3 +138,15 @@ jobs:
             echo "::error::Sector-scrape(s) mislukt:$FAILED_DATASETS"
             exit 1
           fi
+
+      # Faalt de merge of een sector, mail dan een waarschuwing zodat de run niet
+      # stil mislukt (zoals 8/15/22 juni). De staleness-cron (freshness.yml) is de
+      # tweede vangnet en pakt ook een run die nooit startte. ALERT_TOKEN is een
+      # repo-secret; ontbreekt het, dan weigert de Worker en faalt de curl stil.
+      - name: Waarschuw bij mislukte run
+        if: failure()
+        run: |
+          curl -sS -X POST "https://eaa-monitor.nl/api/alert" \
+            -H "Content-Type: application/json" \
+            -H "X-Alert-Token: ${{ secrets.ALERT_TOKEN }}" \
+            -d '{"subject":"EAA Monitor: wekelijkse scrape mislukt","body":"De scrape-run is rood geëindigd. Bekijk de GitHub Actions-logs en draai eventueel handmatig opnieuw."}' || true

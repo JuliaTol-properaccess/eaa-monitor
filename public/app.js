@@ -519,6 +519,13 @@
 
         const objectionLink = `<a href="/bezwaar.html?name=${encodeURIComponent(shop.name)}&url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="Bezwaar maken tegen vermelding van ${escapeHtml(shop.name)}">Bezwaar maken</a>`;
 
+        // "Zonder verklaring"-rij: nodig de eigenaar uit hun verklaring te melden
+        // als wij die gemist hebben (link verstopt, achter cookiemelding, in pdf).
+        const isZonderVerklaring = shop.scrape_status === "success" && !shop.has_statement;
+        const meldLink = isZonderVerklaring
+          ? `<a href="/melden.html?url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="Verklaring melden voor ${escapeHtml(shop.name)}">Verklaring melden</a>`
+          : "";
+
         return `<tr class="${rowBg} border-b border-line hover:bg-softblue transition-colors">
           <td class="py-3 px-4">
             <a href="${escapeHtml(shop.url)}" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark font-semibold">${escapeHtml(shop.name)}</a>
@@ -532,7 +539,9 @@
           </td>
           <td class="py-3 px-4 hidden md:table-cell">${statementLink}</td>
           <td class="py-3 px-4 hidden lg:table-cell text-sm text-gray-600">${checkedDate}</td>
-          <td class="py-3 px-4 hidden md:table-cell">${objectionLink}</td>
+          <td class="py-3 px-4 hidden md:table-cell">
+            <div class="flex flex-col gap-1">${objectionLink}${meldLink}</div>
+          </td>
         </tr>`;
       })
       .join("");

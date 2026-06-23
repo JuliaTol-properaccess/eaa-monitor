@@ -331,6 +331,7 @@ def site_footer():
 
   <script src="/static/nav.js"></script>
   <script src="/static/reveal.js"></script>
+  <script src="/static/feedback-widget.js"></script>
 """
 
 
@@ -747,6 +748,7 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/bronnen.html", "weekly", "0.7", None),
         (f"{BASE_URL}/vragen.html", "weekly", "0.7", None),
         (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6", None),
+        (f"{BASE_URL}/melden.html", "monthly", "0.5", None),
         (f"{BASE_URL}/eregalerij.html", "weekly", "0.7", None),
         (f"{BASE_URL}/nomineren.html", "monthly", "0.6", None),
         (f"{BASE_URL}/over.html", "monthly", "0.5", None),
