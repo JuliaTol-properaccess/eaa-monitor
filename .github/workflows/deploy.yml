@@ -85,7 +85,10 @@ jobs:
           echo "128.140.50.96 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIy0Moek4VWZPI6BGKSYIccIT2eN9uAtXhShZyDNPXnl" >> ~/.ssh/known_hosts
           rsync -az --delete -e "ssh -i ~/.ssh/deploy_key" _site/ root@128.140.50.96:/var/www/eaa-monitor/
           rsync -az -e "ssh -i ~/.ssh/deploy_key" worker/src worker/server.mjs worker/package.json root@128.140.50.96:/opt/eaa-forms/
-          ssh -i ~/.ssh/deploy_key root@128.140.50.96 "systemctl restart eaa-forms"
+          # ALERT_TOKEN (uit het GitHub-secret) in de Worker-env zetten zodat de
+          # /alert-route de faal- en staleness-meldingen kan versturen. Idempotent:
+          # eventuele oude regel eruit, verse waarde erin. Daarna pas herstarten.
+          ssh -i ~/.ssh/deploy_key root@128.140.50.96 "touch /etc/eaa-forms.env && sed -i '/^ALERT_TOKEN=/d' /etc/eaa-forms.env && printf 'ALERT_TOKEN=%s\n' '${{ secrets.ALERT_TOKEN }}' >> /etc/eaa-forms.env && systemctl restart eaa-forms"
 
       # IndexNow: meld de belangrijkste (wekelijks verversende) pagina's aan bij
       # zoekmachines die het protocol ondersteunen (onder andere Bing, dat
