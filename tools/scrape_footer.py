@@ -182,6 +182,34 @@ KEYWORDS_HREF_STRONG = [
     "accessibilitystatement",
 ]
 
+# Toegankelijkheids-overlay-widgets en plugin-vendors. Een link naar zo'n
+# leverancier is een knop/marketingverwijzing, GEEN toegankelijkheidsverklaring;
+# een treffer hier is altijd vals-positief. Host-suffix-match (ook subdomeinen).
+OVERLAY_VENDOR_DOMAINS = {
+    "accessibe.com",
+    "acsbapp.com",
+    "acsbap.com",
+    "userway.org",
+    "userway.com",
+    "audioeye.com",
+    "equalweb.com",
+    "reciteme.com",
+    "recite.me",
+    "user1st.com",
+    "allyable.com",
+    "adally.com",
+    "useaccessibility.com",
+    "max-access.com",
+    "dj-extensions.com",
+}
+
+# Een echt footer-/navigatielabel is kort ("Toegankelijkheidsverklaring"). Matcht
+# het trefwoord in een veel langere linktekst, dan zit het woord in marketing- of
+# bodytekst (bv. "...de populariteit komt voort uit de toegankelijkheid ervan"):
+# dat is geen verklaring-link. Alleen op linktekst matchen onder deze lengte; de
+# href-match (URL bevat het trefwoord) heeft geen lengtegrens nodig.
+MAX_LINK_TEXT_LEN = 60
+
 # Playwright settings
 NAVIGATION_TIMEOUT = 15000  # 15 seconds
 
@@ -262,31 +290,43 @@ def safe_statement_url(base_url, href):
     return None
 
 
+def is_overlay_vendor(url):
+    """True als de URL naar een toegankelijkheids-overlay/plugin-vendor wijst."""
+    host = (urlparse(url).hostname or "").lower()
+    return any(host == d or host.endswith("." + d) for d in OVERLAY_VENDOR_DOMAINS)
+
+
 def check_links_for_statement(links, base_url):
     """Check a list of <a> tags for accessibility statement links."""
     for link in links:
         href = link.get("href", "")
-        text = link.get_text(strip=True).lower()
+        raw_text = link.get_text(strip=True)
+        text = raw_text.lower()
         href_lower = href.lower()
 
         statement_url = safe_statement_url(base_url, href)
         if statement_url is None:
             continue
 
-        # Check link text
-        if any(kw in text for kw in KEYWORDS_TEXT):
+        # Overlay-widget/plugin-vendor: nooit een verklaring, dus overslaan.
+        if is_overlay_vendor(statement_url):
+            continue
+
+        # Linktekst: alleen een kort, label-achtig label telt (anders matcht het
+        # woord ook in lange marketing-/bodytekst).
+        if len(raw_text) <= MAX_LINK_TEXT_LEN and any(kw in text for kw in KEYWORDS_TEXT):
             return {
                 "has_statement": True,
                 "statement_url": statement_url,
-                "statement_link_text": link.get_text(strip=True),
+                "statement_link_text": raw_text,
             }
 
-        # Check href
+        # Check href (URL bevat het trefwoord) - geen lengtegrens nodig.
         if any(kw in href_lower for kw in KEYWORDS_HREF):
             return {
                 "has_statement": True,
                 "statement_url": statement_url,
-                "statement_link_text": link.get_text(strip=True),
+                "statement_link_text": raw_text,
             }
 
     return None
