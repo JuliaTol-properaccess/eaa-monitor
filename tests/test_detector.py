@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from tools.scrape_footer import classify_html  # noqa: E402
+from tools.scrape_footer import classify_html, statement_page_has_statement  # noqa: E402
 
 # Een gewone footer met genoeg links zodat de <5-links-challengeregel niet afgaat.
 _FILLER_LINKS = "".join(f'<a href="/p/{i}">Item {i}</a>' for i in range(8))
@@ -87,6 +87,28 @@ CASES = [
 ]
 
 
+# Content-check op de gelinkte verklaringspagina (statement_page_has_statement):
+# (naam, paginatekst, verwacht_verklaring). Een footer-link is gevonden; de vraag
+# is of de DOELPAGINA echt een verklaring bevat.
+# (naam, paginatekst, verwacht_verklaring)
+CONTENT_CASES = [
+    ("echte verklaring (NL)",
+     "Toegankelijkheidsverklaring. Wij streven ernaar dat onze website voldoet aan "
+     "de toegankelijkheidsnorm WCAG 2.1 niveau AA en EN 301 549.", True),
+    ("echte verklaring (EN)",
+     "Accessibility statement. This website aims to conform to WCAG 2.1 level AA.", True),
+    ("minimale verklaring zonder het woord 'verklaring'",
+     "Deze website voldoet gedeeltelijk aan de toegankelijkheidsnorm. We werken aan "
+     "de bekende tekortkomingen.", True),
+    ("Decathlon-geval: alleen een aanvraagformulier",
+     "Toegankelijkheid website. Vraag hier een toegankelijke versie van een document "
+     "aan. Naam. E-mailadres. Welk document heb je nodig? Versturen.", False),
+    ("cookie-/privacypagina (geen verklaring)",
+     "Cookiebeleid. We gebruiken cookies om je ervaring te verbeteren. Beheer je "
+     "voorkeuren. Privacyverklaring.", False),
+]
+
+
 def run():
     rows = []
     ok = True
@@ -117,6 +139,15 @@ def run():
         print("  WAARSCHUWING: false positive(s) - de monitor zou een verklaring claimen die er niet is.")
     if fn:
         print("  WAARSCHUWING: false negative(s) - de monitor zou een echte verklaring missen.")
+
+    # Content-check op de gelinkte verklaringspagina (Decathlon-geval)
+    print("\n  Content-check verklaringspagina:")
+    for name, text, expected in CONTENT_CASES:
+        got = statement_page_has_statement(text)
+        passed = got == expected
+        ok = ok and passed
+        print(f"  [{'PASS' if passed else 'FAIL'}] {name:48} verwacht={expected!s:5} kreeg={got!s:5}")
+
     print("\n  " + ("ALLES GOED" if ok else "REGRESSIE GEDETECTEERD"))
     return ok
 
@@ -129,6 +160,11 @@ def test_detector_cases():
         assert r["scrape_status"] == exp_status, f"{name}: scrape_status"
         if contains:
             assert contains in (r.get("statement_url") or ""), f"{name}: url bevat {contains}"
+
+
+def test_statement_page_content():
+    for name, text, expected in CONTENT_CASES:
+        assert statement_page_has_statement(text) == expected, name
 
 
 if __name__ == "__main__":

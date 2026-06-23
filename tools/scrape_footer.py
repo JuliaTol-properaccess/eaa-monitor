@@ -11,6 +11,7 @@ Usage:
 import json
 import os
 import re
+import signal
 import sys
 import time
 import argparse
@@ -256,6 +257,58 @@ CRASH_MARKERS = (
 
 # Vers context+page elke N sites, als rem op geheugengroei in lange runs.
 CONTEXT_RECYCLE_EVERY = 200
+
+# Tussentijds de verzamelde resultaten naar het shard-bestand wegschrijven elke N
+# sites, zodat een shard die alsnog faalt of getimed wordt zijn werk niet verliest
+# (de merge gebruikt dan het laatst geflushte deelbestand).
+FLUSH_EVERY = 100
+
+# Harde wall-clock-limiet per site, ongeacht welke operatie hangt (goto,
+# wait_for_selector, cookie-wall-clicks, retries, recheck_unblocked). Zonder dit
+# kon één trage of bot-beschermde site een shard tot de 6-uurslimiet van GitHub
+# Actions laten hangen, waardoor de hele run werd geannuleerd en niets werd
+# gepubliceerd (de oorzaak van de mislukte crons van 8, 15 en 22 juni 2026). Een
+# cap-hit telt als "timeout" (= niet te controleren), nooit als "zonder verklaring".
+PER_SITE_CAP_S = 90
+
+
+class SiteTimeout(Exception):
+    """Opgeworpen door de per-site-watchdog wanneer PER_SITE_CAP_S verstrijkt."""
+
+
+def _raise_site_timeout(signum, frame):
+    raise SiteTimeout()
+
+
+class site_deadline:
+    """Contextmanager: harde per-site wall-clock-cap via SIGALRM.
+
+    Werkt in de main thread op Unix (zo draait de scrape in CI en op de VPS).
+    Valt elders (geen SIGALRM, of niet de main thread) stil terug op alleen de
+    per-call-timeouts van Playwright, zodat de tool overal blijft werken.
+    """
+
+    def __init__(self, seconds):
+        self.seconds = seconds
+        self.enabled = hasattr(signal, "SIGALRM")
+        self._old_handler = None
+
+    def __enter__(self):
+        if self.enabled:
+            try:
+                self._old_handler = signal.signal(signal.SIGALRM, _raise_site_timeout)
+                signal.alarm(self.seconds)
+            except (ValueError, OSError):
+                # Niet de main thread: cap uitschakelen, per-call-timeouts blijven.
+                self.enabled = False
+        return self
+
+    def __exit__(self, *exc):
+        if self.enabled:
+            signal.alarm(0)
+            if self._old_handler is not None:
+                signal.signal(signal.SIGALRM, self._old_handler)
+        return False
 
 # Bevestigd-groen-lijst: sites met een geverifieerde verklaring slaan we op de
 # wekelijkse run over en herverifieren we pas na zoveel dagen. Bespaart werk en
@@ -531,6 +584,42 @@ def check_webshop(page, url):
         }
 
     return classify_html(html, url)
+
+
+# Woorden die op een echte toegankelijkheidsverklaring wijzen. Bewust ruim, maar
+# specifiek genoeg dat een aanvraag-/contactformulier (zoals de "Toegankelijkheid
+# website"-pagina van Decathlon, die alleen een formulier toont) niet matcht. Eén
+# treffer volstaat. We laten bewust de losse term "verklaring" weg: die staat ook
+# op privacy-/cookie-pagina's en op aanvraagformulieren ("verklaring aanvragen").
+STATEMENT_CONTENT_MARKERS = [
+    "toegankelijkheidsverklaring",
+    "accessibility statement",
+    "barrierefreiheitserklärung",
+    "wcag",
+    "en 301 549",
+    "web content accessibility",
+    "voldoet aan",
+    "voldoet niet",
+    "voldoet gedeeltelijk",
+    "nalevingsstatus",
+    "compliance status",
+    "toegankelijkheidsnorm",
+    "tekortkomingen",
+    "handhavingsprocedure",
+    "feedback en contactgegevens",
+]
+
+
+def statement_page_has_statement(text: str) -> bool:
+    """True als de tekst van een gelinkte pagina verklaring-inhoud bevat.
+
+    Pure, deterministisch testbare functie (geen netwerk). Gebruikt door de
+    content-check die een footer-link naar een 'toegankelijkheid'-pagina verifieert:
+    staat er alleen een aanvraag-/contactformulier en geen verklaring, dan telt het
+    niet als 'met verklaring'.
+    """
+    low = (text or "").lower()
+    return any(marker in low for marker in STATEMENT_CONTENT_MARKERS)
 
 
 def classify_html(html, url):
@@ -1019,6 +1108,8 @@ def _fresh_page(p, browser, old_context=None):
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(**context_opts)
     context.route("**/*", _block_unneeded_resources)
+    context.set_default_navigation_timeout(NAVIGATION_TIMEOUT)
+    context.set_default_timeout(NAVIGATION_TIMEOUT)
     page = context.new_page()
     return browser, context, page
 
@@ -1039,6 +1130,8 @@ def recheck_unblocked(browser, url):
             viewport={"width": 1920, "height": 1080},
             locale="nl-NL",
         )
+        context.set_default_navigation_timeout(NAVIGATION_TIMEOUT)
+        context.set_default_timeout(NAVIGATION_TIMEOUT)
         page = context.new_page()
         return check_webshop(page, url)
     except Exception as e:
@@ -1055,6 +1148,62 @@ def recheck_unblocked(browser, url):
                 context.close()
             except Exception:
                 pass
+
+
+def _verify_statement_page(browser, base_url, result):
+    """Controleer dat een gevonden verklaring-link ook echt naar een verklaring leidt.
+
+    Decathlon linkt in de footer naar een 'Toegankelijkheid website'-pagina die geen
+    verklaring bevat, alleen een aanvraagformulier; dat telde toch als 'met verklaring'.
+    Voor een kandidaat op het EIGEN domein (HTML, geen PDF) halen we de pagina op met een
+    NIET-geblokkeerde context (net als recheck_unblocked; anders kan resource-blocking een
+    challenge/lege render triggeren bij bot-gevoelige sites zoals bol.com) en checken de
+    tekst op verklaring-inhoud. Geen inhoud -> telt als 'zonder verklaring', met de gevonden
+    link bewaard in `statement_link_url`. PDF- en cross-domein-links blijven sterk bewijs
+    (gedrag ongewijzigd; die halen we niet op).
+    """
+    if not result.get("has_statement") or not result.get("statement_url"):
+        return result
+    statement_url = result["statement_url"]
+    path = urlparse(statement_url).path.lower()
+    if path.endswith(".pdf") or not _same_site(base_url, statement_url):
+        return result
+    context = None
+    try:
+        context = browser.new_context(
+            user_agent=USER_AGENT,
+            viewport={"width": 1920, "height": 1080},
+            locale="nl-NL",
+        )
+        context.set_default_navigation_timeout(NAVIGATION_TIMEOUT)
+        context.set_default_timeout(NAVIGATION_TIMEOUT)
+        page = context.new_page()
+        page.goto(statement_url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
+        _dismiss_cookie_wall(page)
+        page.wait_for_timeout(FOOTER_SETTLE_MS)
+        text = BeautifulSoup(page.content(), "html.parser").get_text(" ", strip=True)
+    except Exception:
+        # Konden de pagina niet ophalen: geef de link het voordeel van de twijfel
+        # (gedrag ongewijzigd t.o.v. vóór de content-check).
+        return result
+    finally:
+        if context is not None:
+            try:
+                context.close()
+            except Exception:
+                pass
+    if statement_page_has_statement(text):
+        return result
+    print("link zonder verklaring...", end=" ", flush=True)
+    return {
+        "has_statement": False,
+        "statement_url": None,
+        "statement_link_text": None,
+        "statement_link_url": statement_url,
+        "scrape_status": "success",
+        "error": None,
+        "note": "link gevonden, geen verklaring op de pagina",
+    }
 
 
 def _confirmed_result_for(shop, entry):
@@ -1078,7 +1227,7 @@ def _confirmed_result_for(shop, entry):
     }
 
 
-def scrape_webshops(webshops, now, confirmed=None):
+def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
     """Scrape a list of webshops sequentially and return the result entries.
 
     Sites op de bevestigd-groen-lijst (confirmed) die binnen REVERIFY_DAYS
@@ -1110,32 +1259,53 @@ def scrape_webshops(webshops, now, confirmed=None):
             if i and i % CONTEXT_RECYCLE_EVERY == 0:
                 browser, context, page = _fresh_page(p, browser, context)
 
-            result = check_webshop(page, url)
+            # Harde per-site-cap rond de hele retry-keten: geen enkele site mag
+            # een shard laten hangen (zie PER_SITE_CAP_S).
+            try:
+                with site_deadline(PER_SITE_CAP_S):
+                    result = check_webshop(page, url)
 
-            # Gecrashte tab/browser? Herstel en probeer deze site één keer
-            # opnieuw; anders telt elke volgende site onterecht als 'error'.
-            if result["scrape_status"] == "error" and _looks_like_crash(result["error"]):
-                print("browser-crash, herstart...", end=" ", flush=True)
+                    # Gecrashte tab/browser? Herstel en probeer deze site één keer
+                    # opnieuw; anders telt elke volgende site onterecht als 'error'.
+                    if result["scrape_status"] == "error" and _looks_like_crash(result["error"]):
+                        print("browser-crash, herstart...", end=" ", flush=True)
+                        browser, context, page = _fresh_page(p, browser, context)
+                        result = check_webshop(page, url)
+
+                    # Wachtrij-/challenge-pagina's lossen vaak vanzelf op; één keer
+                    # opnieuw proberen na een korte pauze haalt dan de echte pagina op.
+                    if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
+                        print("interstitial, retry...", end=" ", flush=True)
+                        time.sleep(3)
+                        result = check_webshop(page, url)
+
+                    # Nog steeds een challenge/lege render? Onze geblokkeerde resources
+                    # kunnen zelf de bot-signatuur zijn (bv. bol.com). Eén keer ophalen
+                    # met alle resources toegestaan haalt dan de echte pagina op.
+                    if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
+                        print("no-block retry...", end=" ", flush=True)
+                        alt = recheck_unblocked(browser, url)
+                        if alt["scrape_status"] == "success":
+                            result = alt
+
+                    # Content-check: een gevonden verklaring-link op het eigen domein
+                    # verifiëren op echte verklaring-inhoud (Decathlon-geval). Valt
+                    # binnen de per-site-cap; gebruikt een niet-geblokkeerde context.
+                    if result.get("has_statement") and result.get("statement_url"):
+                        result = _verify_statement_page(browser, url, result)
+            except SiteTimeout:
+                print(f"per-site cap ({PER_SITE_CAP_S}s)...", end=" ", flush=True)
+                result = {
+                    "has_statement": False,
+                    "statement_url": None,
+                    "statement_link_text": None,
+                    "scrape_status": "timeout",
+                    "error": f"Per-site cap {PER_SITE_CAP_S}s overschreden",
+                }
+                # De page/context kan corrupt zijn na het alarm: vers beginnen.
                 browser, context, page = _fresh_page(p, browser, context)
-                result = check_webshop(page, url)
 
-            # Wachtrij-/challenge-pagina's lossen vaak vanzelf op; één keer
-            # opnieuw proberen na een korte pauze haalt dan de echte pagina op.
-            if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
-                print("interstitial, retry...", end=" ", flush=True)
-                time.sleep(3)
-                result = check_webshop(page, url)
-
-            # Nog steeds een challenge/lege render? Onze geblokkeerde resources
-            # kunnen zelf de bot-signatuur zijn (bv. bol.com). Eén keer ophalen
-            # met alle resources toegestaan haalt dan de echte pagina op.
-            if result["scrape_status"] == "error" and "wachtrij of lege render" in (result["error"] or ""):
-                print("no-block retry...", end=" ", flush=True)
-                alt = recheck_unblocked(browser, url)
-                if alt["scrape_status"] == "success":
-                    result = alt
-
-            results.append({
+            entry = {
                 "name": name,
                 "url": url,
                 "category": shop.get("category", "overig"),
@@ -1145,12 +1315,25 @@ def scrape_webshops(webshops, now, confirmed=None):
                 "last_checked": now,
                 "scrape_status": result["scrape_status"],
                 "error": result["error"],
-            })
+            }
+            # Alleen aanwezig bij een link-zonder-verklaring (Decathlon-geval),
+            # zodat results.json voor de andere sites onveranderd blijft.
+            if result.get("statement_link_url"):
+                entry["statement_link_url"] = result["statement_link_url"]
+            if result.get("note"):
+                entry["note"] = result["note"]
+            results.append(entry)
 
             status = "GEVONDEN" if result["has_statement"] else "niet gevonden"
             if result["scrape_status"] != "success":
                 status = f"FOUT ({result['scrape_status']})"
             print(status)
+
+            # Tussentijds het deelbestand wegschrijven, zodat een shard die later
+            # alsnog faalt of getimed wordt zijn werk tot hier niet verliest.
+            if flush_path and len(results) % FLUSH_EVERY == 0:
+                _write_atomic(Path(flush_path), json.dumps(
+                    {"last_updated": now, "webshops": results}, indent=2, ensure_ascii=False))
 
             # Korte pauze: elke request gaat naar een ander domein, dus
             # per-host beleefdheid speelt hier niet.
@@ -1278,16 +1461,22 @@ def main():
     confirmed = _load_confirmed(ds)
     if confirmed:
         print(f"Bevestigd-groen-lijst: {len(confirmed)} sites (overslaan indien vers)")
-    results = scrape_webshops(entries, now, confirmed)
+
+    # In shard-modus schrijven we tussentijds naar het deelbestand, zodat een
+    # shard die later faalt of getimed wordt zijn werk tot dan toe behoudt.
+    flush_path = None
+    if sharded:
+        flush_path = Path(args.out) if args.out else ds["results_file"].parent / f"results.part-{args.shard}.json"
+        flush_path.parent.mkdir(parents=True, exist_ok=True)
+
+    results = scrape_webshops(entries, now, confirmed, flush_path=flush_path)
 
     # Shard mode writes a partial file for the merge step; it must NOT finalize
     # (that would clobber results.json and regenerate assets from a partial set).
     if sharded:
-        out = Path(args.out) if args.out else ds["results_file"].parent / f"results.part-{args.shard}.json"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        _write_atomic(out, json.dumps({"last_updated": now, "webshops": results},
-                                      indent=2, ensure_ascii=False))
-        print(f"\nShard {args.shard} klaar: {len(results)} resultaten -> {out}")
+        _write_atomic(flush_path, json.dumps({"last_updated": now, "webshops": results},
+                                             indent=2, ensure_ascii=False))
+        print(f"\nShard {args.shard} klaar: {len(results)} resultaten -> {flush_path}")
         return
 
     finalize(build_output(results, now), ds)

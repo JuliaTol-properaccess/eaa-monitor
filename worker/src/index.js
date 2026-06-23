@@ -67,6 +67,12 @@ export default {
     if (url.pathname === "/vraag" && request.method === "POST") {
       return withCors(env, await handleVraag(request, env));
     }
+    if (url.pathname === "/melden" && request.method === "POST") {
+      return withCors(env, await handleMelden(request, env));
+    }
+    if (url.pathname === "/alert" && request.method === "POST") {
+      return withCors(env, await handleAlert(request, env));
+    }
     if (url.pathname === "/pact/aanmelden" && request.method === "POST") {
       return withCors(env, await handlePactAanmelden(request, env));
     }
@@ -115,6 +121,7 @@ const RATE_LIMITS = {
   vraag: { max: 5, windowSecs: 3600 },
   pact: { max: 5, windowSecs: 3600 },
   feedback: { max: 10, windowSecs: 3600 },
+  melden: { max: 10, windowSecs: 3600 },
   hofnominate: { max: 3, windowSecs: 3600 },
   hofvote: { max: 5, windowSecs: 3600 },
 };
@@ -268,6 +275,83 @@ async function handleFeedback(request, env) {
       { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
       502
     );
+  }
+  return json({ ok: true });
+}
+
+// ── /melden ──────────────────────────────────────────────────────────────────
+// "Klopt iets niet?" en het meldkanaal voor eigenaren die op 'zonder verklaring'
+// staan om hun verklaring-URL door te geven. Mail-only naar NOTIFY_EMAIL; Julia
+// verifieert en zet de site eventueel op de bevestigd-groen-lijst
+// (workflows/handle_melding.md). Geen opslag, geen PR.
+async function handleMelden(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true });
+  }
+
+  const websiteUrl = (form.get("website_url") || "").trim();
+  const verklaringUrl = (form.get("verklaring_url") || "").trim();
+  const bericht = (form.get("bericht") || "").trim();
+  const email = (form.get("email") || "").trim();
+
+  if (!websiteUrl && !bericht) {
+    return json({ ok: false, error: "Vul in om welke website het gaat, of beschrijf kort wat er niet klopt." }, 422);
+  }
+  if (bericht.length > 4000) {
+    return json({ ok: false, error: "Je bericht is te lang. Houd het onder de 4000 tekens." }, 422);
+  }
+  if (email && !isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+  if (await rateLimited(env, request, "melden")) return tooManyRequests();
+
+  try {
+    await sendMeldingEmail(env, { websiteUrl, verklaringUrl, bericht, email });
+  } catch (err) {
+    console.error("Meldingmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
+      502
+    );
+  }
+  return json({ ok: true });
+}
+
+// ── /alert ───────────────────────────────────────────────────────────────────
+// Interne waarschuwingen vanuit de CI (mislukte of verouderde scrape). Beveiligd
+// met een gedeeld token in de X-Alert-Token-header; geen formulier. Mailt naar
+// NOTIFY_EMAIL via dezelfde AhaSend-flow.
+async function handleAlert(request, env) {
+  const token = request.headers.get("X-Alert-Token") || "";
+  if (!env.ALERT_TOKEN || token !== env.ALERT_TOKEN) {
+    return json({ ok: false, error: "Niet geautoriseerd." }, 401);
+  }
+  let body = {};
+  try {
+    body = await request.json();
+  } catch {
+    body = {};
+  }
+  const subject = String(body.subject || "EAA Monitor: waarschuwing").slice(0, 200);
+  const text = String(body.body || "Waarschuwing van de monitor-infrastructuur.").slice(0, 4000);
+  try {
+    await sendEmail(env, {
+      to: env.NOTIFY_EMAIL,
+      from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+      subject,
+      text,
+    });
+  } catch (err) {
+    console.error("Alertmail mislukt:", err && err.message);
+    return json({ ok: false, error: "Mail mislukt." }, 502);
   }
   return json({ ok: true });
 }
@@ -1283,6 +1367,30 @@ async function sendFeedbackEmail(env, { bericht, email, artikel, artikelUrl }) {
     ``,
     `Bericht:`,
     bericht,
+  ];
+  await sendEmail(env, {
+    to: env.NOTIFY_EMAIL,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
+    subject,
+    text: lines.join("\n"),
+  });
+}
+
+async function sendMeldingEmail(env, { websiteUrl, verklaringUrl, bericht, email }) {
+  const subject = `Melding via "Klopt iets niet?"${websiteUrl ? `: ${websiteUrl}` : ""}`;
+  const lines = [
+    `Er is een melding binnengekomen via het meldformulier ("Klopt iets niet?").`,
+    ``,
+    `Website: ${websiteUrl || "(niet opgegeven)"}`,
+    `Opgegeven verklaring-URL: ${verklaringUrl || "(geen)"}`,
+    `Reageren kan naar: ${email || "(geen e-mailadres opgegeven)"}`,
+    ``,
+    `Bericht:`,
+    bericht || "(geen toelichting)",
+    ``,
+    `Verwerk dit volgens workflows/handle_melding.md: verifieer de verklaring-URL`,
+    `en zet de site eventueel op data/confirmed.json.`,
   ];
   await sendEmail(env, {
     to: env.NOTIFY_EMAIL,
