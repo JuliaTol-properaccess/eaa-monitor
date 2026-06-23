@@ -6,5 +6,13 @@
     "without_statement": 9036,
     "errors": 1113,
     "pct_with": 2
+  },
+  {
+    "date": "2026-06-23",
+    "total": 10397,
+    "with_statement": 272,
+    "without_statement": 8497,
+    "errors": 1628,
+    "pct_with": 3
   }
 ]
