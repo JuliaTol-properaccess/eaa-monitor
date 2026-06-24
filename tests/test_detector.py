@@ -100,6 +100,11 @@ CONTENT_CASES = [
     ("minimale verklaring zonder het woord 'verklaring'",
      "Deze website voldoet gedeeltelijk aan de toegankelijkheidsnorm. We werken aan "
      "de bekende tekortkomingen.", True),
+    ("echte verklaring in gewone taal (Klaverblad-achtig, geen formele termen)",
+     "Toegankelijkheid van onze informatie en dienstverlening. We maken onze website zo "
+     "duidelijk en toegankelijk mogelijk, ook voor mensen die een schermlezer of ander "
+     "hulpmiddel gebruiken. Video's voorzien we van ondertiteling. Ervaar je dat iets niet "
+     "goed toegankelijk is? Meld het ons, dan verbeteren we het.", True),
     ("Decathlon-geval: alleen een aanvraagformulier",
      "Toegankelijkheid website. Vraag hier een toegankelijke versie van een document "
      "aan. Naam. E-mailadres. Welk document heb je nodig? Versturen.", False),

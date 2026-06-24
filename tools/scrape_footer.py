@@ -586,12 +586,18 @@ def check_webshop(page, url):
     return classify_html(html, url)
 
 
-# Woorden die op een echte toegankelijkheidsverklaring wijzen. Bewust ruim, maar
-# specifiek genoeg dat een aanvraag-/contactformulier (zoals de "Toegankelijkheid
-# website"-pagina van Decathlon, die alleen een formulier toont) niet matcht. Eén
-# treffer volstaat. We laten bewust de losse term "verklaring" weg: die staat ook
-# op privacy-/cookie-pagina's en op aanvraagformulieren ("verklaring aanvragen").
+# Woorden die op een echte toegankelijkheidsverklaring of -pagina wijzen. Eén
+# treffer volstaat. Twee groepen:
+# 1. Formele verklaring-termen (WCAG, EN 301 549, nalevingsstatus, ...).
+# 2. Inhoudelijke toegankelijkheidstermen in gewone taal (schermlezer, hulpmiddel,
+#    ondertiteling, ...). Die tweede groep vangt echte verklaringen die de formele
+#    woorden mijden, zoals Klaverblads "Toegankelijkheid van onze dienstverlening".
+# Een aanvraag-/contactformulier (Decathlon: "vraag een toegankelijke versie aan")
+# of een cart-/homepage bevat geen van deze inhoudelijke termen en sneuvelt dus.
+# De losse termen "verklaring"/"toegankelijk" laten we bewust weg: die staan ook
+# op privacy-/cookiepagina's en aanvraagformulieren.
 STATEMENT_CONTENT_MARKERS = [
+    # Formele verklaring-vocabulaire
     "toegankelijkheidsverklaring",
     "accessibility statement",
     "barrierefreiheitserklärung",
@@ -607,6 +613,19 @@ STATEMENT_CONTENT_MARKERS = [
     "tekortkomingen",
     "handhavingsprocedure",
     "feedback en contactgegevens",
+    # Inhoudelijke toegankelijkheidstermen (gewone taal)
+    "schermlezer",
+    "screenreader",
+    "voorleessoftware",
+    "hulptechnologie",
+    "assistieve technologie",
+    "ondertiteling",
+    "gebarentaal",
+    "braille",
+    "toetsenbedien",
+    "met het toetsenbord",
+    "tekst vergroten",
+    "lettergrootte",
 ]
 
 
