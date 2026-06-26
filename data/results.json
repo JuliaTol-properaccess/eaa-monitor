@@ -1,9 +1,9 @@
 {
   "last_updated": "2026-06-23T17:27:25.297467+00:00",
   "total": 10397,
-  "with_statement": 272,
+  "with_statement": 273,
   "without_statement": 8497,
-  "errors": 1628,
+  "errors": 1627,
   "webshops": [
     {
       "name": " Mijn Hemeltje",
@@ -31562,12 +31562,13 @@
       "name": "Etos",
       "url": "https://www.etos.nl",
       "category": "drogisterij",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-06-23T15:43:49.834964+00:00",
-      "scrape_status": "error",
-      "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.etos.nl/\nCall log:\n  - navigating to \"https://www.etos.nl/\", waiting until \"domcontentloaded\"\n"
+      "has_statement": true,
+      "statement_url": "https://www.etos.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-26T00:00:00+00:00",
+      "scrape_status": "success",
+      "error": null,
+      "confirmed": true
     },
     {
       "name": "Etos Kloosterveen",

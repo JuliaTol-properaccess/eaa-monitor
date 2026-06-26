@@ -562,6 +562,13 @@
       "confirmed": "2026-06-23"
     },
     {
+      "name": "Etos",
+      "url": "https://www.etos.nl",
+      "statement_url": "https://www.etos.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-06-26"
+    },
+    {
       "name": "Exterioo.nl",
       "url": "https://www.exterioo.nl",
       "statement_url": "https://www.exterioo.nl/nl/toegankelijkheid",
