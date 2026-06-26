@@ -1,8 +1,8 @@
 {
   "last_updated": "2026-06-23T17:27:25.297467+00:00",
-  "total": 10397,
+  "total": 10395,
   "with_statement": 273,
-  "without_statement": 8497,
+  "without_statement": 8495,
   "errors": 1627,
   "webshops": [
     {
@@ -1970,17 +1970,6 @@
       "statement_url": null,
       "statement_link_text": null,
       "last_checked": "2026-06-23T15:43:38.877807+00:00",
-      "scrape_status": "success",
-      "error": null
-    },
-    {
-      "name": "Action Nederland B.V.",
-      "url": "https://shop.action.com",
-      "category": "overig",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-06-23T15:43:42.767253+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -31569,17 +31558,6 @@
       "scrape_status": "success",
       "error": null,
       "confirmed": true
-    },
-    {
-      "name": "Etos Kloosterveen",
-      "url": "https://etosdrogistonlineassen.nl",
-      "category": "overig",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-06-23T15:43:43.974254+00:00",
-      "scrape_status": "success",
-      "error": null
     },
     {
       "name": "etpwebshop.nl",
