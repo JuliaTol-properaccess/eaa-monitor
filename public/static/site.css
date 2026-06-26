@@ -219,7 +219,8 @@ h1, h2, h3, h4, .font-display {
 .prose a:hover { color: var(--brand-dark); }
 /* Utrecht-knoppen binnen artikel-prose mogen de prose-linkstijl (onderstreping,
    groene tekst) niet erven; de Utrecht-component bepaalt de eigen kleuren. */
-.prose a.utrecht-button { text-decoration: none; }
+.prose a.utrecht-button { color: var(--_utrecht-button-color); font-weight: var(--utrecht-button-font-weight, 600); text-decoration: none; }
+.prose a.utrecht-button:hover { color: var(--_utrecht-button-color); }
 .prose ul, .prose ol { padding-left: 1.4rem; }
 .prose ul { list-style: disc; }
 .prose ol { list-style: decimal; }
