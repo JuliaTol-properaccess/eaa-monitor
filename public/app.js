@@ -12,6 +12,12 @@
   let currentPage = 1;
   const PAGE_SIZE = 25;
 
+  // WCAG-scan-overlay (data/axe-results.json): url -> "fouten"|"schoon"|
+  // "niet-scanbaar". Alleen voor sites met een verklaring; los van de
+  // footer-scrape zodat een nieuwe scrape de scanuitslag niet overschrijft.
+  let axeStatusByUrl = {};
+  let axeDetailUrl = "https://wcag-scan.eu/";
+
   // Dezelfde dashboard-logica bedient twee datasets (webshops en financiële
   // instellingen). De pagina zet window.EAA_MONITOR_CONFIG; zonder config gelden
   // de webshop-defaults, zodat monitor.html zich ongewijzigd gedraagt.
@@ -82,6 +88,21 @@
       // Geen bezwaren-bestand of niet leesbaar: behandel als leeg.
       console.warn("Kan bezwaren niet laden, ga verder zonder:", err);
       return [];
+    }
+  }
+
+  async function loadAxe() {
+    try {
+      let response = await fetch("data/axe-results.json");
+      if (!response.ok) {
+        response = await fetch("../data/axe-results.json");
+      }
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.json();
+    } catch (err) {
+      // Geen scan-overlay of niet leesbaar: kolom blijft leeg, geen breuk.
+      console.warn("Kan WCAG-scan-data niet laden, ga verder zonder:", err);
+      return null;
     }
   }
 
@@ -344,6 +365,69 @@
     };
   }
 
+  // ── WCAG-scan-kolom ──
+
+  // Status van de WCAG-scan voor deze site, of "" als er geen verklaring is of
+  // de site niet gescand is. We tonen het alleen bij sites met een verklaring.
+  function axeStatus(shop) {
+    if (!shop.has_statement) return "";
+    return axeStatusByUrl[normalizeUrl(shop.url)] || "";
+  }
+
+  function axeSortValue(shop) {
+    const order = { fouten: 0, schoon: 1, "niet-scanbaar": 2 };
+    const v = order[axeStatus(shop)];
+    return v === undefined ? 3 : v;
+  }
+
+  function axeCellHtml(shop) {
+    const st = axeStatus(shop);
+    if (st === "fouten") {
+      return `<span class="inline-flex items-center gap-2 text-status-notfound">
+            <span class="status-dot bg-status-notfound" aria-hidden="true"></span>
+            <span class="text-sm font-semibold">Fouten gevonden</span>
+          </span>
+          <a href="${escapeHtml(axeDetailUrl)}" target="_blank" rel="noopener noreferrer" class="link text-xs block mt-1" aria-label="Bekijk de gevonden toegankelijkheidsfouten van ${escapeHtml(shop.name)} op wcag-scan.eu">Bekijk fouten</a>`;
+    }
+    if (st === "schoon") {
+      return `<span class="inline-flex items-center gap-2 text-status-found">
+            <span class="status-dot bg-status-found" aria-hidden="true"></span>
+            <span class="text-sm font-semibold">Geen fouten gevonden</span>
+          </span>`;
+    }
+    if (st === "niet-scanbaar") {
+      return `<span class="inline-flex items-center gap-2 text-gray-500">
+            <span class="status-dot bg-status-error" aria-hidden="true"></span>
+            <span class="text-sm">Niet te scannen</span>
+          </span>`;
+    }
+    return '<span class="text-gray-300">-</span>';
+  }
+
+  // Vult de samenvattingsnoot onder de tabel (#axe-note), als die bestaat.
+  function renderAxeNote(axe) {
+    const el = document.getElementById("axe-note");
+    if (!el || !axe.summary) return;
+    const s = axe.summary;
+    const scanned = s.fouten + s.schoon;
+    const datum = axe.generated
+      ? new Date(axe.generated).toLocaleDateString("nl-NL", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      : "";
+    el.innerHTML =
+      `Van de ${scanned} sites met een verklaring die we konden scannen, bevat ` +
+      `<strong>${s.pct_fouten_van_gescand}%</strong> minstens één automatisch ` +
+      `detecteerbare WCAG-fout. Gemeten met ${escapeHtml(axe.engine || "axe-core")}` +
+      (datum ? ` op ${datum}` : "") +
+      `. Automatische checks dekken niet alle WCAG-eisen, dus "geen fouten gevonden" ` +
+      `betekent niet automatisch volledig toegankelijk. Wil je weten wélke fouten een ` +
+      `site bevat, gebruik dan <a href="${escapeHtml(axeDetailUrl)}" target="_blank" ` +
+      `rel="noopener noreferrer" class="link">wcag-scan.eu</a>.`;
+  }
+
   function filterWebshops() {
     const search = document
       .getElementById("filter-search")
@@ -351,6 +435,8 @@
       .trim();
     const category = document.getElementById("filter-category").value;
     const status = document.getElementById("filter-status").value;
+    const wcagEl = document.getElementById("filter-wcag");
+    const wcag = wcagEl ? wcagEl.value : "";
 
     let filtered = allWebshops;
 
@@ -370,6 +456,10 @@
       );
     } else if (status === "error") {
       filtered = filtered.filter((s) => s.scrape_status !== "success");
+    }
+
+    if (wcag) {
+      filtered = filtered.filter((s) => axeStatus(s) === wcag);
     }
 
     return filtered;
@@ -392,6 +482,10 @@
         case "status":
           vA = getStatusInfo(a).sortValue;
           vB = getStatusInfo(b).sortValue;
+          break;
+        case "wcag":
+          vA = axeSortValue(a);
+          vB = axeSortValue(b);
           break;
         case "date":
           vA = a.last_checked || "";
@@ -494,7 +588,7 @@
 
     if (sorted.length === 0) {
       tbody.innerHTML =
-        '<tr><td colspan="6" class="py-12 text-center text-gray-600">Geen resultaten gevonden</td></tr>';
+        '<tr><td colspan="7" class="py-12 text-center text-gray-600">Geen resultaten gevonden</td></tr>';
       renderPagination(0);
       return;
     }
@@ -538,6 +632,7 @@
             </span>
           </td>
           <td class="py-3 px-4 hidden md:table-cell">${statementLink}</td>
+          <td class="py-3 px-4 hidden md:table-cell">${axeCellHtml(shop)}</td>
           <td class="py-3 px-4 hidden lg:table-cell text-sm text-gray-600">${checkedDate}</td>
           <td class="py-3 px-4 hidden md:table-cell">
             <div class="flex flex-col gap-1">${objectionLink}${meldLink}</div>
@@ -574,6 +669,8 @@
     status: "Status",
     date: "Gecontroleerd",
   };
+  // Geldt op alle pagina's, ook die met een eigen sortLabels-config.
+  if (!SORT_LABELS.wcag) SORT_LABELS.wcag = "WCAG-scan";
 
   function updateSortAriaLabels() {
     document.querySelectorAll(".sort-btn").forEach((btn) => {
@@ -632,19 +729,34 @@
     document
       .getElementById("filter-status")
       .addEventListener("change", resetPageAndRender);
+    const wcagFilter = document.getElementById("filter-wcag");
+    if (wcagFilter) {
+      wcagFilter.addEventListener("change", resetPageAndRender);
+    }
   }
 
   // ── Init ──
 
   async function init() {
-    const [data, objections] = await Promise.all([
+    const [data, objections, axe] = await Promise.all([
       loadData(),
       loadObjections(),
+      loadAxe(),
     ]);
     if (!data) {
       document.getElementById("results-body").innerHTML =
-        '<tr><td colspan="6" class="py-12 text-center text-red-600">Fout bij het laden van data.</td></tr>';
+        '<tr><td colspan="7" class="py-12 text-center text-red-600">Fout bij het laden van data.</td></tr>';
       return;
+    }
+
+    // WCAG-scan-overlay indexeren op genormaliseerde URL en de samenvattingsnoot
+    // vullen. Ontbreekt de overlay, dan blijft de kolom leeg (streepjes).
+    if (axe && axe.sites) {
+      if (axe.detail_url) axeDetailUrl = axe.detail_url;
+      Object.values(axe.sites).forEach((entry) => {
+        axeStatusByUrl[normalizeUrl(entry.url)] = entry.status;
+      });
+      renderAxeNote(axe);
     }
 
     // Webshops die bezwaar hebben gemaakt uitsluiten van tabel en cijfers.

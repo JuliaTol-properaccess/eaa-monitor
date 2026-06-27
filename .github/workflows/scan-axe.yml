@@ -1,0 +1,54 @@
+name: WCAG-scan sites met verklaring
+
+on:
+  schedule:
+    # Dinsdag 06:00 UTC, na de maandag-scrape die data/results*.json (en dus de
+    # doellijst van sites met een verklaring) vult.
+    - cron: '0 6 * * 2'
+  workflow_dispatch:
+
+# Nodig zodat github-actions[bot] de overlay + gebakken cijfer terug kan pushen.
+permissions:
+  contents: write
+
+# Niet twee scans tegelijk (cron + handmatig): die zouden om dezelfde push racen.
+concurrency:
+  group: scan-axe
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    # ~325 sites sequentieel met render-waarborg duurt ~20-40 min; cap ruim erboven.
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Bouw doellijst (sites met verklaring)
+        run: python tools/build_axe_targets.py --out .tmp/verklaring-sites.json
+
+      - name: Draai axe-scan
+        run: python tools/scan_axe.py --list .tmp/verklaring-sites.json --out .tmp/axe-verklaring.json
+
+      - name: Bouw overlay + bak kerncijfer
+        run: python tools/build_axe_overlay.py --in .tmp/axe-verklaring.json --patch-html public/monitor.html
+
+      - name: Commit en push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/axe-results.json public/monitor.html
+          git diff --staged --quiet || git commit -m "Update WCAG-scan $(date +%Y-%m-%d)"
+          git pull --rebase origin main
+          git push
