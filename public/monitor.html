@@ -255,6 +255,15 @@
             <option value="error">Fout bij controle</option>
           </select>
         </div>
+        <div>
+          <label for="filter-wcag" class="block text-sm font-semibold text-navy mb-1">WCAG-scan</label>
+          <select id="filter-wcag" class="border border-field rounded-xl px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand">
+            <option value="">Alle scanuitslagen</option>
+            <option value="fouten">Fouten gevonden</option>
+            <option value="schoon">Geen fouten gevonden</option>
+            <option value="niet-scanbaar">Niet te scannen</option>
+          </select>
+        </div>
       </div>
 
       <div class="card overflow-hidden">
@@ -273,6 +282,9 @@
                   <button class="sort-btn font-bold text-navy" data-sort="status" aria-label="Sorteer op Status">Status</button>
                 </th>
                 <th scope="col" class="py-3 px-4 hidden md:table-cell font-bold text-navy">Verklaring</th>
+                <th scope="col" class="py-3 px-4 hidden md:table-cell" aria-sort="none">
+                  <button class="sort-btn font-bold text-navy" data-sort="wcag" aria-label="Sorteer op WCAG-scan">WCAG-scan</button>
+                </th>
                 <th scope="col" class="py-3 px-4 hidden lg:table-cell" aria-sort="none">
                   <button class="sort-btn font-bold text-navy" data-sort="date" aria-label="Sorteer op Gecontroleerd">Gecontroleerd</button>
                 </th>
@@ -281,13 +293,15 @@
             </thead>
             <tbody id="results-body">
               <tr>
-                <td colspan="6" class="py-12 text-center text-gray-600">Data laden...</td>
+                <td colspan="7" class="py-12 text-center text-gray-600">Data laden...</td>
               </tr>
             </tbody>
           </table>
         </div>
         <nav aria-label="Paginering" id="pagination" class="flex items-center justify-between border-t border-line px-4 py-3 sm:px-6"></nav>
       </div>
+
+      <p id="axe-note" class="mt-3 text-sm text-gray-600 leading-relaxed"><!--AXE-STAT:START-->Van de 320 sites met een verklaring die we konden scannen, bevat <strong>87%</strong> minstens één automatisch detecteerbare WCAG-fout. Gemeten met axe-core 4.11.4 op 27 juni 2026. Automatische checks dekken niet alle WCAG-eisen, dus "geen fouten gevonden" betekent niet automatisch volledig toegankelijk. Wil je weten wélke fouten een site bevat, gebruik dan <a href="https://wcag-scan.eu/" target="_blank" rel="noopener noreferrer" class="link">wcag-scan.eu</a>.<!--AXE-STAT:END--></p>
     </section>
 
   </main>
