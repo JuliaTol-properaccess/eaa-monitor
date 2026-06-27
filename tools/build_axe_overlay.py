@@ -21,7 +21,7 @@ from pathlib import Path
 
 MONTHS = ["januari", "februari", "maart", "april", "mei", "juni", "juli",
           "augustus", "september", "oktober", "november", "december"]
-DETAIL_URL = "https://wcag-scan.eu/"
+DETAIL_URL = "https://wcag-scan.nl/"
 START = "<!--AXE-STAT:START-->"
 END = "<!--AXE-STAT:END-->"
 
@@ -45,7 +45,7 @@ def stat_sentence(summary, generated, engine, detail_url):
         f'dus "geen fouten gevonden" betekent niet automatisch volledig toegankelijk. '
         f'Wil je weten wélke fouten een site bevat, gebruik dan '
         f'<a href="{detail_url}" target="_blank" rel="noopener noreferrer" '
-        f'class="link">wcag-scan.eu</a>.'
+        f'class="link">wcag-scan.nl</a>.'
     )
 
 

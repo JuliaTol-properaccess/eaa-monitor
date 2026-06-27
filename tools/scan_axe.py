@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Batch-toegankelijkheidsscan met axe-core (dezelfde engine als wcag-scan.eu).
+"""Batch-toegankelijkheidsscan met axe-core (dezelfde engine als wcag-scan.nl).
 
 Draait axe-core 4.11 in headless Chromium via Playwright over een lijst sites en
 aggregeert de violations. Standaard alleen WCAG A/AA-regels: best-practice-regels

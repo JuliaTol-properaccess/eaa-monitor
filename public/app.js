@@ -16,7 +16,7 @@
   // "niet-scanbaar". Alleen voor sites met een verklaring; los van de
   // footer-scrape zodat een nieuwe scrape de scanuitslag niet overschrijft.
   let axeStatusByUrl = {};
-  let axeDetailUrl = "https://wcag-scan.eu/";
+  let axeDetailUrl = "https://wcag-scan.nl/";
 
   // Dezelfde dashboard-logica bedient twee datasets (webshops en financiële
   // instellingen). De pagina zet window.EAA_MONITOR_CONFIG; zonder config gelden
@@ -387,7 +387,7 @@
             <span class="status-dot bg-status-notfound" aria-hidden="true"></span>
             <span class="text-sm font-semibold">Fouten gevonden</span>
           </span>
-          <a href="${escapeHtml(axeDetailUrl)}" target="_blank" rel="noopener noreferrer" class="link text-xs block mt-1" aria-label="Bekijk de gevonden toegankelijkheidsfouten van ${escapeHtml(shop.name)} op wcag-scan.eu">Bekijk fouten</a>`;
+          <a href="${escapeHtml(axeDetailUrl)}" target="_blank" rel="noopener noreferrer" class="link text-xs block mt-1" aria-label="Bekijk de gevonden toegankelijkheidsfouten van ${escapeHtml(shop.name)} op wcag-scan.nl">Bekijk fouten</a>`;
     }
     if (st === "schoon") {
       return `<span class="inline-flex items-center gap-2 text-status-found">
@@ -425,7 +425,7 @@
       `. Automatische checks dekken niet alle WCAG-eisen, dus "geen fouten gevonden" ` +
       `betekent niet automatisch volledig toegankelijk. Wil je weten wélke fouten een ` +
       `site bevat, gebruik dan <a href="${escapeHtml(axeDetailUrl)}" target="_blank" ` +
-      `rel="noopener noreferrer" class="link">wcag-scan.eu</a>.`;
+      `rel="noopener noreferrer" class="link">wcag-scan.nl</a>.`;
   }
 
   function filterWebshops() {
