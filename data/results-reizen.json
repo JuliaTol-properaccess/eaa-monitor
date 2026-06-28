@@ -1,0 +1,273 @@
+{
+  "last_updated": "2026-06-28T16:50:05.105312+00:00",
+  "total": 24,
+  "with_statement": 4,
+  "without_statement": 17,
+  "errors": 3,
+  "webshops": [
+    {
+      "name": "333travel",
+      "url": "https://www.333travel.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "ANWB Reizen",
+      "url": "https://reizen.anwb.nl",
+      "category": "touroperator",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Baobab Travel",
+      "url": "https://www.baobabtravel.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Better Places",
+      "url": "https://www.betterplaces.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "BizzTravel",
+      "url": "https://www.bizztravel.nl",
+      "category": "touroperator",
+      "has_statement": true,
+      "statement_url": "https://www.bizztravel.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Buro Scanbrit",
+      "url": "https://www.scanbrit.com",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 4 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Corendon",
+      "url": "https://www.corendon.nl",
+      "category": "touroperator",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "de Jong Intra Vakanties",
+      "url": "https://www.dejongintra.nl",
+      "category": "touroperator",
+      "has_statement": true,
+      "statement_url": "https://www.dejongintra.nl/toegankelijkheid-website",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Djoser",
+      "url": "https://www.djoser.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Eliza was here",
+      "url": "https://www.elizawashere.nl",
+      "category": "touroperator",
+      "has_statement": true,
+      "statement_url": "https://www.elizawashere.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Koning Aap",
+      "url": "https://www.koningaap.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Kras",
+      "url": "https://www.kras.nl",
+      "category": "touroperator",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "timeout",
+      "error": "Timeout after 15000ms (2 attempts)"
+    },
+    {
+      "name": "Original Asia",
+      "url": "https://www.originalasia.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Pelikaan Reizen",
+      "url": "https://www.pelikaan.nl",
+      "category": "touroperator",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Prijsvrij Vakanties",
+      "url": "https://www.prijsvrij.nl",
+      "category": "online",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Riksja Travel",
+      "url": "https://www.riksjatravel.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Sawadee Reizen",
+      "url": "https://www.sawadee.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Shoestring",
+      "url": "https://www.shoestring.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "SNP Natuurreizen",
+      "url": "https://www.snp.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Sunweb",
+      "url": "https://www.sunweb.nl",
+      "category": "touroperator",
+      "has_statement": true,
+      "statement_url": "https://www.sunweb.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "Tjingo",
+      "url": "https://www.tjingo.nl",
+      "category": "online",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "TravelEssence",
+      "url": "https://www.travelessence.nl",
+      "category": "verre-reizen",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    },
+    {
+      "name": "TUI",
+      "url": "https://www.tui.nl",
+      "category": "touroperator",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "error",
+      "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
+    },
+    {
+      "name": "Vakantiediscounter",
+      "url": "https://www.vakantiediscounter.nl",
+      "category": "online",
+      "has_statement": false,
+      "statement_url": null,
+      "statement_link_text": null,
+      "last_checked": "2026-06-28T16:50:05.105312+00:00",
+      "scrape_status": "success",
+      "error": null
+    }
+  ]
+}

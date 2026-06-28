@@ -1,15 +1,15 @@
 # EAA Monitor
 
 > De Nederlandse hub over de European Accessibility Act (EAA): alle informatie over de wet op één plek.
-> Heldere uitleg in gewone taal, wekelijkse cijfers over zes sectoren (webshops, financiële
-> instellingen, telecom, personenvervoer, media en e-books), antwoorden van toezichthouders op
+> Heldere uitleg in gewone taal, wekelijkse cijfers over zeven sectoren (webshops, financiële
+> instellingen, telecom, personenvervoer, media, e-books en reisorganisaties), antwoorden van toezichthouders op
 > anonieme vragen van ondernemers, en een overzicht van auditbureaus.
 > Onafhankelijk, zonder commercieel belang.
 
 ## Wat is de EAA Monitor?
 De EAA Monitor brengt alle praktische informatie over de European Accessibility Act in Nederland samen:
 - Uitleg: voor wie de wet geldt, wie toezicht houdt, wat de boetes zijn en welke oplossingen wel en niet werken (kennisbank en doorzoekbaar bronnenoverzicht).
-- Cijfers: een wekelijkse meting per sector of Nederlandse webshops (ACM), financiële instellingen (AFM), telecomaanbieders (ACM), personenvervoerders (ILT), mediadiensten (Commissariaat voor de Media) en e-bookplatforms (ACM) een toegankelijkheidsverklaring publiceren.
+- Cijfers: een wekelijkse meting per sector of Nederlandse webshops (ACM), financiële instellingen (AFM), telecomaanbieders (ACM), personenvervoerders (ILT), mediadiensten (Commissariaat voor de Media), e-bookplatforms (ACM) en reisorganisaties (ACM) een toegankelijkheidsverklaring publiceren.
 - Antwoorden: ondernemers stellen anoniem vragen die wij voorleggen aan de toezichthouder; de antwoorden publiceren we.
 - Hulp: een overzicht van onafhankelijke auditbureaus in Nederland.
 
@@ -56,6 +56,13 @@ E-books (ACM-toezicht), laatste meting (23 juni 2026): 10 e-bookplatforms gecont
 2 (20%) niet te controleren.
 <!-- EBOOKS-MEASUREMENT:END -->
 
+<!-- REIZEN-MEASUREMENT:START -->
+Reisorganisaties (ACM-toezicht), laatste meting (28 juni 2026): 24 reisorganisaties gecontroleerd,
+4 (17%) met toegankelijkheidsverklaring,
+17 (71%) zonder, en
+3 (12%) niet te controleren.
+<!-- REIZEN-MEASUREMENT:END -->
+
 ## Belangrijkste pagina's
 - [Webshopmonitor](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops (ACM-toezicht)
 - [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
@@ -63,6 +70,7 @@ E-books (ACM-toezicht), laatste meting (23 juni 2026): 10 e-bookplatforms gecont
 - [Vervoermonitor](https://eaa-monitor.nl/monitor-vervoer.html): personenvervoer per spoor, weg, water en lucht (ILT-toezicht)
 - [Mediamonitor](https://eaa-monitor.nl/monitor-media.html): streaming- en mediadiensten (toezicht Commissariaat voor de Media)
 - [E-booksmonitor](https://eaa-monitor.nl/monitor-ebooks.html): e-bookplatforms en -verkopers (ACM-toezicht)
+- [Reismonitor](https://eaa-monitor.nl/monitor-reizen.html): touroperators en online reisbureaus, als e-commercedienst (ACM-toezicht)
 - [Kennisbank](https://eaa-monitor.nl/artikelen.html): uitleg over scope, toezicht, boetes en mythes
 - [Bronnen](https://eaa-monitor.nl/bronnen.html): doorzoekbaar overzicht van bronnen over de EAA (toezichthouders, overheid, juristen, bureaus, vakmedia)
 - [Vragen uit de praktijk](https://eaa-monitor.nl/vragen.html): antwoorden van toezichthouders (ACM, AFM) op anonieme vragen van ondernemers over de EAA
