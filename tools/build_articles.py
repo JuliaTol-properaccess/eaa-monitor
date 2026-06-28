@@ -89,7 +89,7 @@ def nl_date(d: _date) -> str:
 # ── Gedeelde HTML-partials (single source of truth voor de hele site) ──────────
 
 # Nav-items: (label, href) voor een gewone link, of (label, [kinderen]) voor een
-# dropdown. De Monitor-dropdown bundelt de zes sectordashboards plus de over-pagina.
+# dropdown. De Monitor-dropdown bundelt de zeven sectordashboards plus de over-pagina.
 NAV_ITEMS = [
     ("Home", "/"),
     ("Monitor", [
@@ -99,6 +99,7 @@ NAV_ITEMS = [
         ("Personenvervoer", "/monitor-vervoer.html"),
         ("Media & streaming", "/monitor-media.html"),
         ("E-books", "/monitor-ebooks.html"),
+        ("Reizen", "/monitor-reizen.html"),
         ("Over de monitor", "/over.html"),
     ]),
     ("Kennisbank", "/artikelen.html"),
@@ -291,6 +292,7 @@ def site_footer():
             <li><a href="/monitor-vervoer.html" class="hover:text-white">Vervoermonitor</a></li>
             <li><a href="/monitor-media.html" class="hover:text-white">Mediamonitor</a></li>
             <li><a href="/monitor-ebooks.html" class="hover:text-white">E-booksmonitor</a></li>
+            <li><a href="/monitor-reizen.html" class="hover:text-white">Reismonitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
           </ul>
@@ -744,6 +746,7 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/monitor-vervoer.html", "weekly", "0.9", _results_lastmod("results-vervoer.json")),
         (f"{BASE_URL}/monitor-media.html", "weekly", "0.9", _results_lastmod("results-media.json")),
         (f"{BASE_URL}/monitor-ebooks.html", "weekly", "0.9", _results_lastmod("results-ebooks.json")),
+        (f"{BASE_URL}/monitor-reizen.html", "weekly", "0.9", _results_lastmod("results-reizen.json")),
         (f"{BASE_URL}/artikelen.html", "weekly", "0.8", newest_article),
         (f"{BASE_URL}/bronnen.html", "weekly", "0.7", None),
         (f"{BASE_URL}/vragen.html", "weekly", "0.7", None),

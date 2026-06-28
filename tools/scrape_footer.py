@@ -166,6 +166,24 @@ DATASETS = {
         "content_url": "https://eaa-monitor.nl/data/results-ebooks.json",
         "rescan_copy": "De monitor controleert alle e-bookplatforms elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
     },
+    "reizen": {
+        "key": "reizen",
+        "input_file": DATA_DIR / "reizen.json",
+        "results_file": DATA_DIR / "results-reizen.json",
+        "history_file": DATA_DIR / "history-reizen.json",
+        "target_html": PUBLIC_DIR / "monitor-reizen.html",
+        "llms_region": "REIZEN-MEASUREMENT",
+        "llms_label": "Reisorganisaties (ACM-toezicht)",
+        "llms_noun": "reisorganisaties",
+        "hub_prefix": "reizen",
+        "toezichthouder": "ACM",
+        "noun": "reisorganisaties",
+        "summary_heading": "Reisorganisaties · ACM-toezicht",
+        "dataset_id": "https://eaa-monitor.nl/monitor-reizen.html#dataset",
+        "dataset_name": "Toegankelijkheidsverklaringen Nederlandse reisorganisaties",
+        "content_url": "https://eaa-monitor.nl/data/results-reizen.json",
+        "rescan_copy": "De monitor controleert alle reisorganisaties elke maandagochtend automatisch opnieuw, dus deze cijfers zijn nooit ouder dan een week.",
+    },
 }
 
 # Keywords to detect accessibility statement links (case-insensitive)

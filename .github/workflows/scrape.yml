@@ -123,7 +123,7 @@ jobs:
       - name: Scrape kleine sectoren
         run: |
           failed=""
-          for ds in financieel telecom vervoer media ebooks; do
+          for ds in financieel telecom vervoer media ebooks reizen; do
             python tools/scrape_footer.py --dataset "$ds" || failed="$failed $ds"
           done
           echo "FAILED_DATASETS=$failed" >> "$GITHUB_ENV"
