@@ -368,8 +368,16 @@ def safe_statement_url(base_url, href):
     Footer content is untrusted: a malicious site could otherwise smuggle a
     javascript:- or data:-URL into results.json, which the dashboard renders
     as a clickable "Bekijk verklaring" link.
+
+    Een kapotte href (bv. een onafgesloten IPv6-haakje als ``http://[``) laat
+    ``urljoin`` een ``ValueError: Invalid IPv6 URL`` opwerpen. Onafgevangen sloopte
+    dat een hele scrape-shard (29 juni 2026): één foute footer-link nam ~850 shops
+    mee. We behandelen zo'n href net als een geweigerde scheme: geen link.
     """
-    resolved = urljoin(base_url, href)
+    try:
+        resolved = urljoin(base_url, href)
+    except ValueError:
+        return None
     if resolved.lower().startswith(("http://", "https://")):
         return resolved
     return None
@@ -1340,6 +1348,20 @@ def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
                     "error": f"Per-site cap {PER_SITE_CAP_S}s overschreden",
                 }
                 # De page/context kan corrupt zijn na het alarm: vers beginnen.
+                browser, context, page = _fresh_page(p, browser, context)
+            except Exception as e:
+                # Vangnet: geen enkele losse site-fout mag een hele shard doden
+                # (zie de IPv6-href-crash van 29 juni 2026, die 3 shards meenam).
+                # Leg de site vast als 'error' en ga door; de page/context kan
+                # corrupt zijn, dus vers beginnen.
+                print(f"onverwachte fout, doorgaan... ({type(e).__name__})", end=" ", flush=True)
+                result = {
+                    "has_statement": False,
+                    "statement_url": None,
+                    "statement_link_text": None,
+                    "scrape_status": "error",
+                    "error": f"{type(e).__name__}: {e}",
+                }
                 browser, context, page = _fresh_page(p, browser, context)
 
             entry = {

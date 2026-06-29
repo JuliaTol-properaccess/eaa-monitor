@@ -84,6 +84,17 @@ CASES = [
     ("bot-challenge, weinig links", "https://www.kruidvat.nl",
      "<html><body><div class='footer'><a href='/verify'>Even geduld</a></div></body></html>",
      False, "error", None),
+
+    # ---- Kapotte href mag de detector niet laten crashen (29 juni 2026) ----
+    # urljoin() wierp op een onafgesloten IPv6-haakje een ValueError op die,
+    # onafgevangen, een hele scrape-shard meenam. Zo'n link telt als geen link.
+    ("kapotte IPv6-href in footer", "https://shop.nl",
+     _page('<a href="http://[">Toegankelijkheidsverklaring</a>'),
+     False, "success", None),
+    ("kapotte IPv6-href naast echte verklaring", "https://shop.nl",
+     _page('<a href="//[2001:db8">Iets</a>'
+           '<a href="/toegankelijkheidsverklaring">Toegankelijkheidsverklaring</a>'),
+     True, "success", "toegankelijkheidsverklaring"),
 ]
 
 
