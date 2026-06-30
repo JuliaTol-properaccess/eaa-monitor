@@ -90,11 +90,37 @@ def test_kill_is_noop_without_psutil():
         assert sf._kill_browser_processes() is False
 
 
+def test_reaper_fires_after_double_grace():
+    """Breekt niets de hang, dan roept de reaper (on_giveup) na 2x grace aan.
+
+    De echte reaper doet os._exit(0); hier geven we een onschadelijke on_giveup
+    mee en controleren dat hij vuurt. seconds=0 zet SIGALRM uit, geen psutil zodat
+    de kill-laag niets doet -> alleen de reaper kan de hang nog opvangen.
+    """
+    fired = threading.Event()
+    with _patch(psutil=None, KILL_GRACE_S=0.2):
+        with sf.site_deadline(0, on_giveup=fired.set):
+            time.sleep(0.7)  # voorbij 2x grace (0.4s)
+    assert fired.is_set(), "reaper had moeten vuren"
+
+
+def test_reaper_cancelled_on_clean_exit():
+    """Loopt de site netjes klaar, dan reapt hij niet."""
+    fired = threading.Event()
+    with _patch(psutil=None, KILL_GRACE_S=0.3):
+        with sf.site_deadline(0, on_giveup=fired.set):
+            pass  # meteen klaar
+        time.sleep(0.9)  # ruim voorbij 2x grace
+    assert not fired.is_set(), "reaper had gecanceld moeten zijn"
+
+
 CASES = [
     test_sigalrm_breaks_a_plain_hang,
     test_kill_watchdog_escalates_when_sigalrm_cannot,
     test_kill_watchdog_cancelled_on_clean_exit,
     test_kill_is_noop_without_psutil,
+    test_reaper_fires_after_double_grace,
+    test_reaper_cancelled_on_clean_exit,
 ]
 
 
