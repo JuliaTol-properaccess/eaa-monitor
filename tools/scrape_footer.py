@@ -13,6 +13,7 @@ import os
 import re
 import signal
 import sys
+import threading
 import time
 import argparse
 from datetime import datetime, timezone
@@ -21,6 +22,14 @@ from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+
+# Optioneel: psutil laat de per-site-watchdog een wedged chromium-proces killen
+# (zie _kill_browser_processes). Ontbreekt het, dan valt de cap stil terug op
+# alleen SIGALRM, zodat de tool zonder psutil blijft werken.
+try:
+    import psutil
+except ImportError:
+    psutil = None
 
 # Paths
 ROOT = Path(__file__).resolve().parent.parent
@@ -289,6 +298,11 @@ FLUSH_EVERY = 100
 # cap-hit telt als "timeout" (= niet te controleren), nooit als "zonder verklaring".
 PER_SITE_CAP_S = 90
 
+# Extra marge bovenop PER_SITE_CAP_S waarna de watchdog-thread chromium hard
+# kilt. SIGALRM krijgt zo eerst de kans op een nette Python-timeout; pas als dat
+# de hang niet breekt (de wedge zit in de Playwright-driver), escaleert de kill.
+KILL_GRACE_S = 30
+
 
 class SiteTimeout(Exception):
     """Opgeworpen door de per-site-watchdog wanneer PER_SITE_CAP_S verstrijkt."""
@@ -298,26 +312,74 @@ def _raise_site_timeout(signum, frame):
     raise SiteTimeout()
 
 
-class site_deadline:
-    """Contextmanager: harde per-site wall-clock-cap via SIGALRM.
+def _kill_browser_processes():
+    """Kill de chromium-childprocessen van deze shard. Returnt True als er één omging.
 
-    Werkt in de main thread op Unix (zo draait de scrape in CI en op de VPS).
-    Valt elders (geen SIGALRM, of niet de main thread) stil terug op alleen de
-    per-call-timeouts van Playwright, zodat de tool overal blijft werken.
+    Tweede verdedigingslinie naast SIGALRM. Hangt een site diep in de
+    Playwright-driver (wedged chromium of een vastgelopen IPC-kanaal), dan kan
+    SIGALRM de geblokkeerde sync-call in de main thread niet breken: de exception
+    belandt in de asyncio-greenlet i.p.v. op de call-site. Zo bleef shard 9 op
+    29 juni 2026 bijna 3 uur hangen tot de 200-min-jobcap hem cancelde.
+
+    Een aparte thread die het chromium-proces kilt, laat de IPC-wait wél
+    terugkeren, met een disconnect-fout ("browser has been disconnected" /
+    "Connection closed") die als crash herkend wordt en via _fresh_page herstelt.
+    We raken bewust geen Playwright-objecten aan (die zijn niet thread-safe) en
+    laten de node-driver leven, zodat chromium opnieuw gestart kan worden.
+    """
+    if psutil is None:
+        return False
+    killed = False
+    try:
+        children = psutil.Process().children(recursive=True)
+    except psutil.Error:
+        return False
+    for child in children:
+        try:
+            name = (child.name() or "").lower()
+        except psutil.Error:
+            continue
+        if "chrom" in name or "headless_shell" in name:
+            try:
+                child.kill()
+                killed = True
+            except psutil.Error:
+                pass
+    return killed
+
+
+class site_deadline:
+    """Contextmanager: harde per-site wall-clock-cap.
+
+    Twee lagen, want één is niet genoeg:
+    - SIGALRM (main thread, Unix) breekt pure-Python- en netwerk-hangs netjes af
+      met een SiteTimeout. Zo draait de scrape in CI en op de VPS.
+    - Een watchdog-thread kilt na KILL_GRACE_S extra het chromium-proces, voor het
+      geval de hang in de Playwright-driver zit (die SIGALRM niet kan breken).
+
+    Valt SIGALRM weg (geen SIGALRM, of niet de main thread), dan blijft de
+    kill-watchdog over; ontbreekt psutil, dan de per-call-timeouts van Playwright.
+    Zo blijft de tool overal werken.
     """
 
     def __init__(self, seconds):
         self.seconds = seconds
         self.enabled = hasattr(signal, "SIGALRM")
         self._old_handler = None
+        self._killer = None
 
     def __enter__(self):
+        # Kill-watchdog als laatste vangnet; cancelt vanzelf bij nette afloop.
+        if psutil is not None:
+            self._killer = threading.Timer(self.seconds + KILL_GRACE_S, _kill_browser_processes)
+            self._killer.daemon = True
+            self._killer.start()
         if self.enabled:
             try:
                 self._old_handler = signal.signal(signal.SIGALRM, _raise_site_timeout)
                 signal.alarm(self.seconds)
             except (ValueError, OSError):
-                # Niet de main thread: cap uitschakelen, per-call-timeouts blijven.
+                # Niet de main thread: cap uitschakelen, kill-watchdog blijft.
                 self.enabled = False
         return self
 
@@ -326,6 +388,8 @@ class site_deadline:
             signal.alarm(0)
             if self._old_handler is not None:
                 signal.signal(signal.SIGALRM, self._old_handler)
+        if self._killer is not None:
+            self._killer.cancel()
         return False
 
 # Bevestigd-groen-lijst: sites met een geverifieerde verklaring slaan we op de
