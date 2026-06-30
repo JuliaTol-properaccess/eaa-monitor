@@ -1,14 +1,14 @@
 {
-  "generated": "2026-06-27",
+  "generated": "2026-06-30",
   "engine": "axe-core 4.11.4",
   "scope": "WCAG 2.2 A/AA (best-practice uitgesloten)",
-  "detail_url": "https://wcag-scan.eu/",
+  "detail_url": "https://wcag-scan.nl/",
   "summary": {
     "total": 325,
-    "fouten": 278,
-    "schoon": 42,
-    "niet_scanbaar": 5,
-    "pct_fouten_van_gescand": 87
+    "fouten": 273,
+    "schoon": 45,
+    "niet_scanbaar": 7,
+    "pct_fouten_van_gescand": 86
   },
   "sites": {
     "https://www.123-3d.nl": {
@@ -68,7 +68,7 @@
       "url": "https://www.alleafstandsbedieningen.nl"
     },
     "https://www.allnatura.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.allnatura.nl"
     },
     "https://www.amagard.com/nl": {
@@ -188,7 +188,7 @@
       "url": "https://www.bytwinnies.nl"
     },
     "https://www.bymetz.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.bymetz.nl"
     },
     "https://www.c-and-a.com/nl/nl": {
@@ -228,7 +228,7 @@
       "url": "https://confynederland.nl"
     },
     "https://www.contorion.nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.contorion.nl"
     },
     "https://www.coolblue.nl": {
@@ -248,7 +248,7 @@
       "url": "https://www.dehuidshop.nl"
     },
     "https://www.deonlinedrogist.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.deonlinedrogist.nl"
     },
     "https://webshop.telegraaf.nl": {
@@ -296,7 +296,7 @@
       "url": "https://www.dqahealthandbeauty.nl"
     },
     "https://drank.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://drank.nl"
     },
     "https://www.dutchbone.com": {
@@ -332,7 +332,7 @@
       "url": "https://www.essenzahome.nl"
     },
     "https://www.etos.nl": {
-      "status": "schoon",
+      "status": "niet-scanbaar",
       "url": "https://www.etos.nl"
     },
     "https://www.exterioo.nl": {
@@ -460,7 +460,7 @@
       "url": "https://houtsnippers.nl"
     },
     "https://nl.hudsonreed.com": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://nl.hudsonreed.com"
     },
     "https://www.hulpmedi.nl": {
@@ -764,7 +764,7 @@
       "url": "https://www.plamuren.com"
     },
     "https://www.plus.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.plus.nl"
     },
     "https://www.praxis.nl": {
@@ -780,7 +780,7 @@
       "url": "https://prikkabelxl.nl"
     },
     "https://www.rebuy.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.rebuy.nl"
     },
     "https://www.rephone.nl": {
@@ -908,7 +908,7 @@
       "url": "https://www.supportshop.eu"
     },
     "https://www.swisssense.nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.swisssense.nl"
     },
     "https://www.tablesandmore.nl": {
@@ -960,7 +960,7 @@
       "url": "https://tummytuboriginal.com"
     },
     "https://www.zwijsen.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.zwijsen.nl"
     },
     "https://unoxovens.nl": {
@@ -1040,7 +1040,7 @@
       "url": "https://www.auping.com/nl"
     },
     "https://webwinkel.kellerkeukens.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://webwinkel.kellerkeukens.nl"
     },
     "https://www.wehkamp.nl": {
@@ -1056,7 +1056,7 @@
       "url": "https://www.wertgarantie.nl"
     },
     "https://www.wibra.nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.wibra.nl"
     },
     "https://www.wijnjuweel.nl": {
@@ -1160,7 +1160,7 @@
       "url": "https://www.menzis.nl"
     },
     "https://mobilize-fs.nl": {
-      "status": "niet-scanbaar",
+      "status": "fouten",
       "url": "https://mobilize-fs.nl"
     },
     "https://www.nibc.nl": {
@@ -1172,7 +1172,7 @@
       "url": "https://www.ohra.nl"
     },
     "https://www.onvz.nl": {
-      "status": "niet-scanbaar",
+      "status": "fouten",
       "url": "https://www.onvz.nl"
     },
     "https://www.reaal.nl": {
@@ -1252,7 +1252,7 @@
       "url": "https://www.solcon.nl"
     },
     "https://www.youfone.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.youfone.nl"
     },
     "https://www.dfds.com/nl-nl": {
