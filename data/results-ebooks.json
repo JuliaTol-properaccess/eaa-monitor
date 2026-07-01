@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-30T09:31:23.477231+00:00",
+  "last_updated": "2026-07-01T08:42:35.812380+00:00",
   "total": 10,
   "with_statement": 5,
   "without_statement": 3,
@@ -12,7 +12,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "error",
       "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
@@ -23,7 +23,7 @@
       "has_statement": true,
       "statement_url": "https://www.bookbeat.com/nl/accessibility-at-bookbeat",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34,7 +34,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -45,7 +45,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "error",
       "error": "Pagina heeft maar 2 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
@@ -56,7 +56,7 @@
       "has_statement": true,
       "statement_url": "https://authorize.kobo.com/terms/accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -67,7 +67,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -78,7 +78,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -89,7 +89,7 @@
       "has_statement": true,
       "statement_url": "https://nextory.com/nl/accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -100,7 +100,7 @@
       "has_statement": true,
       "statement_url": "https://www.onlinebibliotheek.nl/toegankelijkheid.html",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -111,7 +111,7 @@
       "has_statement": true,
       "statement_url": "https://www.storytel.com/legal-docs/accessibility-statement/nl/latest",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-06-30T09:31:23.477231+00:00",
+      "last_checked": "2026-07-01T08:42:35.812380+00:00",
       "scrape_status": "success",
       "error": null
     }
