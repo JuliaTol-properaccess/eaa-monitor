@@ -282,6 +282,13 @@
       "confirmed": "2026-06-30"
     },
     {
+      "name": "boxers.nl",
+      "url": "https://www.boxers.nl",
+      "statement_url": "https://www.boxers.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "toegankelijkheidsverklaring",
+      "confirmed": "2026-07-01"
+    },
+    {
       "name": "Brabantia",
       "url": "https://www.brabantia.com/nl",
       "statement_url": "https://www.brabantia.com/nl/toegankelijkheidsverklaring",
@@ -1535,6 +1542,13 @@
       "confirmed": "2026-06-06"
     },
     {
+      "name": "Sokken.be",
+      "url": "https://www.sokken.be",
+      "statement_url": "https://www.sokken.be/toegankelijkheidsverklaring",
+      "statement_link_text": "toegankelijkheidsverklaring",
+      "confirmed": "2026-07-01"
+    },
+    {
       "name": "solago GmbH",
       "url": "https://www.solago.nl",
       "statement_url": "https://www.solago.nl/pages/barrierefreiheitserklarung",
@@ -1946,6 +1960,13 @@
       "statement_url": "https://www.zuiver.com/nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidverklaring",
       "confirmed": "2026-06-06"
+    },
+    {
+      "name": "zwembroeken.nl",
+      "url": "https://www.zwembroeken.nl",
+      "statement_url": "https://www.zwembroeken.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "toegankelijkheidsverklaring",
+      "confirmed": "2026-07-01"
     }
   ]
 }
