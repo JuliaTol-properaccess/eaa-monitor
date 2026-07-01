@@ -298,9 +298,10 @@ FLUSH_EVERY = 100
 # cap-hit telt als "timeout" (= niet te controleren), nooit als "zonder verklaring".
 PER_SITE_CAP_S = 90
 
-# Extra marge bovenop PER_SITE_CAP_S waarna de watchdog-thread chromium hard
-# kilt. SIGALRM krijgt zo eerst de kans op een nette Python-timeout; pas als dat
-# de hang niet breekt (de wedge zit in de Playwright-driver), escaleert de kill.
+# Trapsgewijze marge bovenop PER_SITE_CAP_S. Na 1x grace kilt de watchdog-thread
+# chromium; na 2x grace sluit een reaper de hele shard af. SIGALRM krijgt zo
+# eerst de kans op een nette Python-timeout, dan de chromium-kill (voor een
+# driver-wedge), en pas als ook dat de hang niet breekt de harde reaper.
 KILL_GRACE_S = 30
 
 
@@ -349,37 +350,51 @@ def _kill_browser_processes():
 
 
 class site_deadline:
-    """Contextmanager: harde per-site wall-clock-cap.
+    """Contextmanager: harde per-site wall-clock-cap in drie lagen.
 
-    Twee lagen, want één is niet genoeg:
+    Eén laag is niet genoeg gebleken (shard 9, 29 + 30 juni 2026):
     - SIGALRM (main thread, Unix) breekt pure-Python- en netwerk-hangs netjes af
-      met een SiteTimeout. Zo draait de scrape in CI en op de VPS.
-    - Een watchdog-thread kilt na KILL_GRACE_S extra het chromium-proces, voor het
-      geval de hang in de Playwright-driver zit (die SIGALRM niet kan breken).
+      met een SiteTimeout. Vuurt niet tijdens een C-call (bv. een geblokkeerde
+      Playwright-IPC-wait of een lange parse).
+    - Een watchdog-thread kilt na KILL_GRACE_S het chromium-proces, voor een
+      driver-wedge die SIGALRM niet kan breken. Helpt niet bij een CPU-hang die
+      niet op chromium wacht.
+    - Een reaper-thread sluit na 2x KILL_GRACE_S de hele shard af (on_giveup):
+      flusht de tot dan verzamelde resultaten en doet os._exit(0). Een aparte
+      thread werkt ongeacht waar de main thread vastzit, dus dit vangt ELKE
+      onbreekbare hang. De shard eindigt schoon (exit 0, geflushte deel-data
+      gaat mee in de merge) i.p.v. de 200-min-jobcap te tikken en rood te gaan.
 
-    Valt SIGALRM weg (geen SIGALRM, of niet de main thread), dan blijft de
-    kill-watchdog over; ontbreekt psutil, dan de per-call-timeouts van Playwright.
-    Zo blijft de tool overal werken.
+    Valt SIGALRM weg (geen SIGALRM, of niet de main thread), dan blijven de
+    thread-lagen over; ontbreekt psutil, dan de per-call-timeouts van Playwright
+    plus de reaper. Zo blijft de tool overal werken.
     """
 
-    def __init__(self, seconds):
+    def __init__(self, seconds, on_giveup=None):
         self.seconds = seconds
+        self.on_giveup = on_giveup
         self.enabled = hasattr(signal, "SIGALRM")
         self._old_handler = None
         self._killer = None
+        self._reaper = None
 
     def __enter__(self):
-        # Kill-watchdog als laatste vangnet; cancelt vanzelf bij nette afloop.
+        # Laag 2: kill chromium. Laag 3: reap de shard. Beide cancelen vanzelf
+        # bij nette afloop (__exit__), dus ze raken alleen een echte hang.
         if psutil is not None:
             self._killer = threading.Timer(self.seconds + KILL_GRACE_S, _kill_browser_processes)
             self._killer.daemon = True
             self._killer.start()
+        if self.on_giveup is not None:
+            self._reaper = threading.Timer(self.seconds + 2 * KILL_GRACE_S, self.on_giveup)
+            self._reaper.daemon = True
+            self._reaper.start()
         if self.enabled:
             try:
                 self._old_handler = signal.signal(signal.SIGALRM, _raise_site_timeout)
                 signal.alarm(self.seconds)
             except (ValueError, OSError):
-                # Niet de main thread: cap uitschakelen, kill-watchdog blijft.
+                # Niet de main thread: cap uitschakelen, thread-lagen blijven.
                 self.enabled = False
         return self
 
@@ -390,6 +405,8 @@ class site_deadline:
                 signal.signal(signal.SIGALRM, self._old_handler)
         if self._killer is not None:
             self._killer.cancel()
+        if self._reaper is not None:
+            self._reaper.cancel()
         return False
 
 # Bevestigd-groen-lijst: sites met een geverifieerde verklaring slaan we op de
@@ -1347,6 +1364,25 @@ def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
     confirmed = confirmed or {}
     results = []
     skipped = 0
+
+    def _reap_shard():
+        """Laatste vangnet: één site hangt onbreekbaar (SIGALRM noch chromium-kill
+        kreeg de main thread los). Flush wat we hebben en sluit de shard schoon af,
+        zodat hij niet de 200-min-jobcap tikt. De geflushte deel-data gaat mee in
+        de merge; os._exit(0) i.p.v. sys.exit omdat we vanuit een thread de hele
+        process moeten beëindigen terwijl de main thread vastzit."""
+        print(f"\nWATCHDOG: site hangt > {PER_SITE_CAP_S + 2 * KILL_GRACE_S}s en is "
+              f"niet te breken; shard afgesloten met {len(results)} resultaten.", flush=True)
+        if flush_path:
+            try:
+                _write_atomic(Path(flush_path), json.dumps(
+                    {"last_updated": now, "webshops": results}, indent=2, ensure_ascii=False))
+            except Exception:
+                pass
+        sys.stdout.flush()
+        sys.stderr.flush()
+        os._exit(0)
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         browser, context, page = _fresh_page(p, browser)
@@ -1369,9 +1405,10 @@ def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
                 browser, context, page = _fresh_page(p, browser, context)
 
             # Harde per-site-cap rond de hele retry-keten: geen enkele site mag
-            # een shard laten hangen (zie PER_SITE_CAP_S).
+            # een shard laten hangen (zie PER_SITE_CAP_S). De reaper (on_giveup)
+            # is het vangnet voor een hang die SIGALRM noch de chromium-kill breekt.
             try:
-                with site_deadline(PER_SITE_CAP_S):
+                with site_deadline(PER_SITE_CAP_S, on_giveup=_reap_shard):
                     result = check_webshop(page, url)
 
                     # Gecrashte tab/browser? Herstel en probeer deze site één keer
