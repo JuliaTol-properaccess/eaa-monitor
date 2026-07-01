@@ -25,6 +25,104 @@
   const DATA_URL = CFG.dataUrl || "data/results.json";
   const NOUN = CFG.noun || "webshops";
 
+  // ── i18n ──
+  // De taal (en bijbehorende locale) komt uit de paginaconfig; zonder config
+  // gelden de Nederlandse defaults, zodat bestaande pagina's ongewijzigd blijven.
+  const LANG = CFG.lang === "en" ? "en" : "nl";
+  const LOCALE = CFG.locale || (LANG === "en" ? "en-GB" : "nl-NL");
+
+  // De bezwaar-/meldformulieren zijn (nog) niet vertaald; standaard verwijzen we
+  // naar de Nederlandse pagina's, maar een pagina kan dit overschrijven.
+  const OBJECTION_PATH = CFG.objectionPath || "/bezwaar.html";
+  const REPORT_PATH = CFG.reportPath || "/melden.html";
+
+  const STRINGS = {
+    nl: {
+      statusFound: "Met verklaring",
+      statusNotFound: "Zonder verklaring",
+      statusError: "Fout bij controle",
+      total: "Totaal",
+      lastUpdated: "Laatst bijgewerkt: ",
+      ofWithStatement: (found, total) => `${found} van ${total} met verklaring`,
+      viewStatement: "Bekijk verklaring",
+      makeObjection: "Bezwaar maken",
+      makeObjectionAria: (name) => `Bezwaar maken tegen vermelding van ${name}`,
+      reportStatement: "Verklaring melden",
+      reportStatementAria: (name) => `Verklaring melden voor ${name}`,
+      axeErrors: "Fouten gevonden",
+      axeViewErrors: "Bekijk fouten",
+      axeViewErrorsAria: (name, host) =>
+        `Bekijk de gevonden toegankelijkheidsfouten van ${name} op ${host}`,
+      axeClean: "Geen fouten gevonden",
+      axeUnscannable: "Niet te scannen",
+      axeNote: (scanned, pct, engine, datum, host, url) =>
+        `Van de ${scanned} sites met een verklaring die we konden scannen, bevat ` +
+        `<strong>${pct}%</strong> minstens één automatisch detecteerbare WCAG-fout. ` +
+        `Gemeten met ${engine}${datum ? ` op ${datum}` : ""}. Automatische checks ` +
+        `dekken niet alle WCAG-eisen, dus "geen fouten gevonden" betekent niet ` +
+        `automatisch volledig toegankelijk. Wil je weten wélke fouten een site ` +
+        `bevat, gebruik dan <a href="${url}" target="_blank" rel="noopener noreferrer" class="link">${host}</a>.`,
+      paginationInfo: (start, end, total, noun) =>
+        `${start}–${end} van ${total} ${noun}`,
+      prevPage: "Vorige pagina",
+      nextPage: "Volgende pagina",
+      goToPage: (p) => `Ga naar pagina ${p}`,
+      countAll: (n, noun) => `${n} ${noun}`,
+      countFiltered: (n, total, noun) => `${n} van ${total} ${noun}`,
+      noResults: "Geen resultaten gevonden",
+      oneResult: "1 resultaat gevonden",
+      manyResults: (n) => `${n.toLocaleString(LOCALE)} resultaten gevonden`,
+      loadError: "Fout bij het laden van data.",
+      sortAsc: "oplopend",
+      sortDesc: "aflopend",
+      sortBy: (label) => `Sorteer op ${label}`,
+      sortByCurrent: (label, dir) =>
+        `Sorteer op ${label}, huidige sortering: ${dir}`,
+    },
+    en: {
+      statusFound: "Has a statement",
+      statusNotFound: "No statement",
+      statusError: "Check failed",
+      total: "Total",
+      lastUpdated: "Last updated: ",
+      ofWithStatement: (found, total) => `${found} of ${total} with a statement`,
+      viewStatement: "View statement",
+      makeObjection: "Object to listing",
+      makeObjectionAria: (name) => `Object to the listing of ${name}`,
+      reportStatement: "Report a statement",
+      reportStatementAria: (name) => `Report a statement for ${name}`,
+      axeErrors: "Errors found",
+      axeViewErrors: "View errors",
+      axeViewErrorsAria: (name, host) =>
+        `View the accessibility errors found for ${name} on ${host}`,
+      axeClean: "No errors found",
+      axeUnscannable: "Cannot be scanned",
+      axeNote: (scanned, pct, engine, datum, host, url) =>
+        `Of the ${scanned} sites with a statement that we could scan, ` +
+        `<strong>${pct}%</strong> contain at least one automatically detectable ` +
+        `WCAG error. Measured with ${engine}${datum ? ` on ${datum}` : ""}. ` +
+        `Automated checks don't cover every WCAG requirement, so "no errors found" ` +
+        `doesn't automatically mean fully accessible. To see which errors a site ` +
+        `has, use <a href="${url}" target="_blank" rel="noopener noreferrer" class="link">${host}</a>.`,
+      paginationInfo: (start, end, total, noun) =>
+        `${start}–${end} of ${total} ${noun}`,
+      prevPage: "Previous page",
+      nextPage: "Next page",
+      goToPage: (p) => `Go to page ${p}`,
+      countAll: (n, noun) => `${n} ${noun}`,
+      countFiltered: (n, total, noun) => `${n} of ${total} ${noun}`,
+      noResults: "No results found",
+      oneResult: "1 result found",
+      manyResults: (n) => `${n.toLocaleString(LOCALE)} results found`,
+      loadError: "Error loading data.",
+      sortAsc: "ascending",
+      sortDesc: "descending",
+      sortBy: (label) => `Sort by ${label}`,
+      sortByCurrent: (label, dir) => `Sort by ${label}, current sort: ${dir}`,
+    },
+  };
+  const T = STRINGS[LANG];
+
   const CATEGORY_LABELS = CFG.categoryLabels || {
     marketplace: "Marketplace",
     elektronica: "Elektronica",
@@ -40,24 +138,33 @@
 
   const STATUS_CONFIG = {
     found: {
-      label: "Met verklaring",
+      label: T.statusFound,
       color: "#1C6B3C",
       bgColor: "#EAF4EC",
       dotClass: "bg-status-found",
     },
     notfound: {
-      label: "Zonder verklaring",
+      label: T.statusNotFound,
       color: "#B3261E",
       bgColor: "#FBEDEB",
       dotClass: "bg-status-notfound",
     },
     error: {
-      label: "Fout bij controle",
+      label: T.statusError,
       color: "#5B6560",
       bgColor: "#F2F4F1",
       dotClass: "bg-status-error",
     },
   };
+
+  // Hostnaam van de detail-URL (bijv. "wcag-scan.nl") voor in de tekst.
+  function detailHost() {
+    try {
+      return new URL(axeDetailUrl).host.replace(/^www\./, "");
+    } catch (_) {
+      return "wcag-scan.nl";
+    }
+  }
 
   // ── Data loading ──
 
@@ -77,7 +184,7 @@
 
   async function loadObjections() {
     try {
-      let response = await fetch("data/objections.json");
+      let response = await fetch(CFG.objectionsUrl || "data/objections.json");
       if (!response.ok) {
         response = await fetch("../data/objections.json");
       }
@@ -93,7 +200,7 @@
 
   async function loadAxe() {
     try {
-      let response = await fetch("data/axe-results.json");
+      let response = await fetch(CFG.axeUrl || "data/axe-results.json");
       if (!response.ok) {
         response = await fetch("../data/axe-results.json");
       }
@@ -160,12 +267,12 @@
 
     if (lastUpdated) {
       const date = new Date(lastUpdated);
-      const formatted = date.toLocaleDateString("nl-NL", {
+      const formatted = date.toLocaleDateString(LOCALE, {
         year: "numeric",
         month: "long",
         day: "numeric",
       });
-      setText("last-updated", "Laatst bijgewerkt: " + formatted);
+      setText("last-updated", T.lastUpdated + formatted);
     }
   }
 
@@ -215,7 +322,7 @@
             <div class="flex-1 bg-navy/10 rounded-full h-8 overflow-hidden">
               <div class="chart-bar h-full rounded-full" style="width: ${barWidth}%; background-color: ${cfg.color};"></div>
             </div>
-            <span class="text-sm font-bold text-navy w-24 text-right font-mono whitespace-nowrap">${row.count.toLocaleString("nl-NL")} <span class="font-medium text-gray-600">(${row.pct}%)</span></span>
+            <span class="text-sm font-bold text-navy w-24 text-right font-mono whitespace-nowrap">${row.count.toLocaleString(LOCALE)} <span class="font-medium text-gray-600">(${row.pct}%)</span></span>
           </div>
         </div>`;
       })
@@ -234,7 +341,7 @@
               ${cfg.label}
             </span>
           </td>
-          <td class="py-3 px-2 text-right font-semibold tabular-nums">${row.count.toLocaleString("nl-NL")}</td>
+          <td class="py-3 px-2 text-right font-semibold tabular-nums">${row.count.toLocaleString(LOCALE)}</td>
           <td class="py-3 px-2 text-right tabular-nums">${row.pct}%</td>
         </tr>`;
       })
@@ -243,8 +350,8 @@
     // Total row
     tableBody.innerHTML += `
       <tr class="border-t-2 border-line font-bold">
-        <td class="py-3 px-2">Totaal</td>
-        <td class="py-3 px-2 text-right tabular-nums">${stats.total.toLocaleString("nl-NL")}</td>
+        <td class="py-3 px-2">${T.total}</td>
+        <td class="py-3 px-2 text-right tabular-nums">${stats.total.toLocaleString(LOCALE)}</td>
         <td class="py-3 px-2 text-right">100%</td>
       </tr>`;
   }
@@ -281,7 +388,7 @@
           <div class="mt-2 w-full bg-gray-100 rounded-full h-2 overflow-hidden">
             <div class="h-full rounded-full bg-status-found" style="width: ${pct}%;"></div>
           </div>
-          <p class="text-xs text-gray-500 mt-1">${data.found} van ${data.total} met verklaring</p>
+          <p class="text-xs text-gray-500 mt-1">${T.ofWithStatement(data.found, data.total)}</p>
         </div>`;
       })
       .join("");
@@ -385,20 +492,20 @@
     if (st === "fouten") {
       return `<span class="inline-flex items-center gap-2 text-status-notfound">
             <span class="status-dot bg-status-notfound" aria-hidden="true"></span>
-            <span class="text-sm font-semibold">Fouten gevonden</span>
+            <span class="text-sm font-semibold">${T.axeErrors}</span>
           </span>
-          <a href="${escapeHtml(axeDetailUrl)}" target="_blank" rel="noopener noreferrer" class="link text-xs block mt-1" aria-label="Bekijk de gevonden toegankelijkheidsfouten van ${escapeHtml(shop.name)} op wcag-scan.nl">Bekijk fouten</a>`;
+          <a href="${escapeHtml(axeDetailUrl)}" target="_blank" rel="noopener noreferrer" class="link text-xs block mt-1" aria-label="${escapeHtml(T.axeViewErrorsAria(shop.name, detailHost()))}">${T.axeViewErrors}</a>`;
     }
     if (st === "schoon") {
       return `<span class="inline-flex items-center gap-2 text-status-found">
             <span class="status-dot bg-status-found" aria-hidden="true"></span>
-            <span class="text-sm font-semibold">Geen fouten gevonden</span>
+            <span class="text-sm font-semibold">${T.axeClean}</span>
           </span>`;
     }
     if (st === "niet-scanbaar") {
       return `<span class="inline-flex items-center gap-2 text-gray-500">
             <span class="status-dot bg-status-error" aria-hidden="true"></span>
-            <span class="text-sm">Niet te scannen</span>
+            <span class="text-sm">${T.axeUnscannable}</span>
           </span>`;
     }
     return '<span class="text-gray-300">-</span>';
@@ -411,21 +518,20 @@
     const s = axe.summary;
     const scanned = s.fouten + s.schoon;
     const datum = axe.generated
-      ? new Date(axe.generated).toLocaleDateString("nl-NL", {
+      ? new Date(axe.generated).toLocaleDateString(LOCALE, {
           year: "numeric",
           month: "long",
           day: "numeric",
         })
       : "";
-    el.innerHTML =
-      `Van de ${scanned} sites met een verklaring die we konden scannen, bevat ` +
-      `<strong>${s.pct_fouten_van_gescand}%</strong> minstens één automatisch ` +
-      `detecteerbare WCAG-fout. Gemeten met ${escapeHtml(axe.engine || "axe-core")}` +
-      (datum ? ` op ${datum}` : "") +
-      `. Automatische checks dekken niet alle WCAG-eisen, dus "geen fouten gevonden" ` +
-      `betekent niet automatisch volledig toegankelijk. Wil je weten wélke fouten een ` +
-      `site bevat, gebruik dan <a href="${escapeHtml(axeDetailUrl)}" target="_blank" ` +
-      `rel="noopener noreferrer" class="link">wcag-scan.nl</a>.`;
+    el.innerHTML = T.axeNote(
+      scanned,
+      s.pct_fouten_van_gescand,
+      escapeHtml(axe.engine || "axe-core"),
+      datum,
+      detailHost(),
+      escapeHtml(axeDetailUrl)
+    );
   }
 
   function filterWebshops() {
@@ -524,7 +630,7 @@
       if (p === currentPage) {
         pages.push(`<span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand text-white font-semibold text-sm" aria-current="page">${p}</span>`);
       } else {
-        pages.push(`<button class="page-btn inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100" data-page="${p}" aria-label="Ga naar pagina ${p}">${p}</button>`);
+        pages.push(`<button class="page-btn inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100" data-page="${p}" aria-label="${escapeHtml(T.goToPage(p))}">${p}</button>`);
       }
     };
 
@@ -540,11 +646,11 @@
     const nextDisabled = currentPage === totalPages;
 
     nav.innerHTML = `
-      <p class="text-sm text-gray-600">${start}–${end} van ${totalItems} ${NOUN}</p>
+      <p class="text-sm text-gray-600">${T.paginationInfo(start, end, totalItems, NOUN)}</p>
       <div class="flex items-center gap-1">
-        <button class="page-prev inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${prevDisabled ? "opacity-40 cursor-default" : ""}" ${prevDisabled ? "disabled" : ""} aria-label="Vorige pagina">&lsaquo;</button>
+        <button class="page-prev inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${prevDisabled ? "opacity-40 cursor-default" : ""}" ${prevDisabled ? "disabled" : ""} aria-label="${escapeHtml(T.prevPage)}">&lsaquo;</button>
         ${pages.join("")}
-        <button class="page-next inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${nextDisabled ? "opacity-40 cursor-default" : ""}" ${nextDisabled ? "disabled" : ""} aria-label="Volgende pagina">&rsaquo;</button>
+        <button class="page-next inline-flex items-center justify-center w-9 h-9 rounded-lg border border-field text-sm text-navy hover:bg-gray-100 ${nextDisabled ? "opacity-40 cursor-default" : ""}" ${nextDisabled ? "disabled" : ""} aria-label="${escapeHtml(T.nextPage)}">&rsaquo;</button>
       </div>`;
 
     nav.querySelectorAll(".page-btn").forEach((btn) =>
@@ -567,8 +673,8 @@
 
     document.getElementById("filter-count").textContent =
       filtered.length === allWebshops.length
-        ? `${filtered.length} ${NOUN}`
-        : `${filtered.length} van ${allWebshops.length} ${NOUN}`;
+        ? T.countAll(filtered.length, NOUN)
+        : T.countFiltered(filtered.length, allWebshops.length, NOUN);
 
     // Zoek-/filterfeedback direct onder de zoekbalk (boven de vouw), met
     // aria-live zodat ook screenreaders de uitkomst horen. De resultatentabel
@@ -578,17 +684,17 @@
       if (filtered.length === allWebshops.length) {
         searchStatus.textContent = "";
       } else if (filtered.length === 0) {
-        searchStatus.textContent = "Geen resultaten gevonden";
+        searchStatus.textContent = T.noResults;
       } else if (filtered.length === 1) {
-        searchStatus.textContent = "1 resultaat gevonden";
+        searchStatus.textContent = T.oneResult;
       } else {
-        searchStatus.textContent = `${filtered.length.toLocaleString("nl-NL")} resultaten gevonden`;
+        searchStatus.textContent = T.manyResults(filtered.length);
       }
     }
 
     if (sorted.length === 0) {
       tbody.innerHTML =
-        '<tr><td colspan="7" class="py-12 text-center text-gray-600">Geen resultaten gevonden</td></tr>';
+        `<tr><td colspan="7" class="py-12 text-center text-gray-600">${T.noResults}</td></tr>`;
       renderPagination(0);
       return;
     }
@@ -601,23 +707,23 @@
         const status = getStatusInfo(shop);
         const catLabel = CATEGORY_LABELS[shop.category] || shop.category;
         const checkedDate = shop.last_checked
-          ? new Date(shop.last_checked).toLocaleDateString("nl-NL")
+          ? new Date(shop.last_checked).toLocaleDateString(LOCALE)
           : "-";
 
         const statementLink =
           shop.has_statement && safeHttpUrl(shop.statement_url)
-            ? `<a href="${escapeHtml(safeHttpUrl(shop.statement_url))}" target="_blank" rel="noopener noreferrer" class="link text-sm">Bekijk verklaring</a>`
+            ? `<a href="${escapeHtml(safeHttpUrl(shop.statement_url))}" target="_blank" rel="noopener noreferrer" class="link text-sm">${T.viewStatement}</a>`
             : '<span class="text-gray-300">-</span>';
 
         const rowBg = i % 2 === 0 ? "" : "bg-gray-50";
 
-        const objectionLink = `<a href="/bezwaar.html?name=${encodeURIComponent(shop.name)}&url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="Bezwaar maken tegen vermelding van ${escapeHtml(shop.name)}">Bezwaar maken</a>`;
+        const objectionLink = `<a href="${OBJECTION_PATH}?name=${encodeURIComponent(shop.name)}&url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="${escapeHtml(T.makeObjectionAria(shop.name))}">${T.makeObjection}</a>`;
 
         // "Zonder verklaring"-rij: nodig de eigenaar uit hun verklaring te melden
         // als wij die gemist hebben (link verstopt, achter cookiemelding, in pdf).
         const isZonderVerklaring = shop.scrape_status === "success" && !shop.has_statement;
         const meldLink = isZonderVerklaring
-          ? `<a href="/melden.html?url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="Verklaring melden voor ${escapeHtml(shop.name)}">Verklaring melden</a>`
+          ? `<a href="${REPORT_PATH}?url=${encodeURIComponent(shop.url)}" class="link text-sm" aria-label="${escapeHtml(T.reportStatementAria(shop.name))}">${T.reportStatement}</a>`
           : "";
 
         return `<tr class="${rowBg} border-b border-line hover:bg-softblue transition-colors">
@@ -670,7 +776,7 @@
     date: "Gecontroleerd",
   };
   // Geldt op alle pagina's, ook die met een eigen sortLabels-config.
-  if (!SORT_LABELS.wcag) SORT_LABELS.wcag = "WCAG-scan";
+  if (!SORT_LABELS.wcag) SORT_LABELS.wcag = LANG === "en" ? "WCAG scan" : "WCAG-scan";
 
   function updateSortAriaLabels() {
     document.querySelectorAll(".sort-btn").forEach((btn) => {
@@ -678,11 +784,11 @@
       const label = SORT_LABELS[key] || key;
       const th = btn.closest("th");
       if (currentSort.key === key) {
-        const dir = currentSort.direction === "asc" ? "oplopend" : "aflopend";
-        btn.setAttribute("aria-label", `Sorteer op ${label}, huidige sortering: ${dir}`);
+        const dir = currentSort.direction === "asc" ? T.sortAsc : T.sortDesc;
+        btn.setAttribute("aria-label", T.sortByCurrent(label, dir));
         if (th) th.setAttribute("aria-sort", currentSort.direction === "asc" ? "ascending" : "descending");
       } else {
-        btn.setAttribute("aria-label", `Sorteer op ${label}`);
+        btn.setAttribute("aria-label", T.sortBy(label));
         if (th) th.setAttribute("aria-sort", "none");
       }
     });
@@ -745,7 +851,7 @@
     ]);
     if (!data) {
       document.getElementById("results-body").innerHTML =
-        '<tr><td colspan="7" class="py-12 text-center text-red-600">Fout bij het laden van data.</td></tr>';
+        `<tr><td colspan="7" class="py-12 text-center text-red-600">${T.loadError}</td></tr>`;
       return;
     }
 

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" class="utrecht-theme theme-telling">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAA Monitor — everything about the European Accessibility Act in the Netherlands</title>
+  <meta name="description" content="The Dutch hub on the European Accessibility Act: clear explanation, weekly figures across seven sectors (web shops, financial, telecom, transport, media, e-books and travel), answers to real questions and help to make your site accessible.">
+  <link rel="canonical" href="https://eaa-monitor.nl/en/">
+  <link rel="alternate" hreflang="nl" href="https://eaa-monitor.nl/">
+  <link rel="alternate" hreflang="en" href="https://eaa-monitor.nl/en/">
+  <link rel="alternate" hreflang="x-default" href="https://eaa-monitor.nl/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eaa-monitor.nl/en/">
+  <meta property="og:title" content="EAA Monitor — everything about the European Accessibility Act">
+  <meta property="og:description" content="Everything about the European Accessibility Act in one place: explanation, weekly figures, answers to real questions and help to fix it.">
+  <meta property="og:site_name" content="EAA Monitor">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EAA Monitor — everything about the European Accessibility Act">
+  <meta name="twitter:description" content="Everything about the European Accessibility Act in the Netherlands: explanation, figures, answers and help.">
+  <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
+
+  <!-- Structured data: entity graph (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://eaa-monitor.nl/#website",
+        "url": "https://eaa-monitor.nl/",
+        "name": "EAA Monitor",
+        "description": "Hub on the European Accessibility Act: clear explanation, a weekly measurement of whether Dutch web shops, financial institutions, telecom providers, carriers, media services, e-book platforms and travel companies publish an accessibility statement, and answers to practical questions.",
+        "inLanguage": "en-GB",
+        "publisher": { "@id": "https://eaa-monitor.nl/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://eaa-monitor.nl/en/monitor.html?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://eaa-monitor.nl/#organization",
+        "name": "EAA Monitor",
+        "url": "https://eaa-monitor.nl/",
+        "logo": "https://eaa-monitor.nl/static/og.png",
+        "foundingDate": "2026",
+        "email": "info@eaa-monitor.nl",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@eaa-monitor.nl",
+          "contactType": "editorial",
+          "availableLanguage": ["nl", "en"]
+        },
+        "description": "Independent Dutch hub on the European Accessibility Act: clear explanation, weekly figures across seven sectors and answers from regulators to anonymous questions."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://eaa-monitor.nl/en/#faq",
+        "inLanguage": "en-GB",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the European Accessibility Act (EAA)?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The European Accessibility Act requires commercial organisations that offer products or services to consumers to make their digital channels accessible. In the Netherlands the law has been in force since 28 June 2025. One of the requirements is publishing an accessibility statement on the website, describing how accessible the service is and what steps the organisation is taking." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the EAA apply to my web shop too?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Not every site is covered. The law targets businesses that sell products or services to consumers online. Micro-enterprises offering services, with fewer than ten employees and less than two million euros in turnover, are exempt. In doubt? A few questions usually make it clear." }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the fines if I do nothing?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The ACM supervises web shops and can impose fines up to 900,000 euros or 1% of annual turnover. For the financial sector the AFM is the regulator. A notification duty has also applied since October 2025. No enforcement cases are known yet in the Netherlands, but the first procedures are already under way in France and Germany, among others." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is an accessibility statement enough?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. A statement describes how accessible your site is, but does not make it accessible. The law requires that your site actually works for people with a disability. The statement is the finishing touch of the work, not the solution. An honest statement also names what does not work yet and when you will fix it." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do accessibility overlays work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A single line of code that adds a button or widget does not solve the underlying problems. Overlays often even introduce new barriers and are usually switched off by experienced assistive-technology users. Real accessibility comes from fixing problems in the source code and content, not from adding a layer on top." }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the EAA Monitor measure this?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Every Monday the monitor automatically checks the footer of Dutch web shops, financial institutions, telecom providers, carriers, media services, e-book platforms and travel companies for a link to an accessibility statement. We look for keywords such as toegankelijkheid and accessibility in link text and URL. Note: a link does not mean the site is actually accessible. It is a first indication of awareness and compliance." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/fonts.css">
+  <link rel="stylesheet" href="/static/tailwind.css">
+  <link rel="stylesheet" href="/static/utrecht-tokens.css">
+  <link rel="stylesheet" href="/static/utrecht.css">
+  <link rel="stylesheet" href="/static/utrecht-theme.css">
+  <link rel="stylesheet" href="/static/site.css">
+
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-oCJ6R9bzu6l8fcjrJ8_xA.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+</head>
+<body class="bg-papier">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Skip to main content</a>
+
+  <header class="sticky top-0 z-40 bg-papier/90 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="/en/" class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#20281F"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#1A5632" font-weight="600">.</tspan></text></svg>
+      </a>
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-7">
+          <a href="/en/" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Home</a>
+          <div class="relative" data-dropdown>
+            <button type="button" data-dropdown-toggle class="text-sm font-semibold text-navy hover:text-brand transition-colors inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <div data-dropdown-menu class="hidden absolute left-0 top-full pt-2 z-50">
+              <div class="min-w-[12rem] bg-white rounded-xl shadow-lg ring-1 ring-line py-2">
+              <a href="/en/monitor.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-commerce</a>
+              <a href="/en/monitor-financieel.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Financial sector</a>
+              <a href="/en/monitor-telecom.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Telecom</a>
+              <a href="/en/monitor-vervoer.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Passenger transport</a>
+              <a href="/en/monitor-media.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Media &amp; streaming</a>
+              <a href="/en/monitor-ebooks.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-books</a>
+              <a href="/en/monitor-reizen.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Travel</a>
+              </div>
+            </div>
+          </div>
+          <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Knowledge base</a>
+          <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Sources</a>
+          <a href="/" class="lang-switch inline-flex items-center gap-1.5 text-sm font-semibold text-navy border border-field rounded-lg px-2.5 py-1 hover:text-brand hover:border-brand transition-colors" hreflang="nl" aria-label="Deze pagina in het Nederlands" lang="nl">
+            <span aria-hidden="true">🌐</span> NL
+          </a>
+      </nav>
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav id="mobile-nav" aria-label="Main navigation (mobile)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
+        <a href="/en/" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Home</a>
+        <div data-dropdown>
+          <button type="button" data-dropdown-toggle class="w-full flex items-center justify-between py-2.5 text-base font-semibold text-navy hover:text-brand" aria-expanded="false">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div data-dropdown-menu class="hidden pl-4 ml-1 border-l border-line">
+            <a href="/en/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-commerce</a>
+            <a href="/en/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financial sector</a>
+            <a href="/en/monitor-telecom.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Telecom</a>
+            <a href="/en/monitor-vervoer.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Passenger transport</a>
+            <a href="/en/monitor-media.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Media &amp; streaming</a>
+            <a href="/en/monitor-ebooks.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-books</a>
+            <a href="/en/monitor-reizen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Travel</a>
+          </div>
+        </div>
+        <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Knowledge base</a>
+        <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Sources</a>
+        <a href="/" class="lang-switch block py-2.5 text-base font-semibold text-navy hover:text-brand" hreflang="nl" lang="nl">🌐 Nederlands</a>
+    </nav>
+    <div class="h-[3px] bg-oker" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-16 md:pt-20 md:pb-20 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+        <div>
+          <p class="eyebrow text-brand">Independent count &middot; measured again every Monday</p>
+          <h1 class="mt-5 text-4xl sm:text-5xl md:text-[3.4rem] font-semibold leading-[1.08] tracking-tight text-navy">
+            Understand the accessibility law.<br><span class="mark-oker">See where the Netherlands stands.</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
+            Since 28 June 2025 the European Accessibility Act has applied to web shops, banks and many other services. The official explanation is scattered and legalistic. Here you find it all together: plain-language explanation, a weekly count across seven sectors, answers from regulators and help to fix it. Free, independent and without a sales pitch.
+          </p>
+          <p class="mt-5 text-base text-ink max-w-2xl leading-relaxed">
+            Right now <strong class="font-mono font-medium" data-figure="pctWith" data-src="/data/results.json">—</strong> of the Dutch web shops checked publish an accessibility statement. Next measurement: Monday morning.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#meting" class="utrecht-button utrecht-button--primary-action">See the Monday measurement</a>
+            <a href="/artikelen.html" class="utrecht-button utrecht-button--secondary-action">Start with the explanation</a>
+          </div>
+          <p class="mt-4 text-sm text-gray-600">Rather ask something first? <a href="/vraag-stellen.html" class="link">Ask your question anonymously</a>.</p>
+        </div>
+
+        <!-- Four pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="/artikelen.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Explanation</span>
+            <span class="mt-2 text-lg font-bold text-navy">Understand the law</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Who the law applies to, who supervises and what the fines are. In plain language.</span>
+            <span class="mt-3 text-sm font-bold text-brand">To the knowledge base &rarr;</span>
+          </a>
+          <a href="#meting" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Figures</span>
+            <span class="mt-2 text-lg font-bold text-navy">Follow the count</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Every Monday we check seven sectors again.</span>
+            <span class="mt-3 text-sm font-bold text-brand">To the figures &rarr;</span>
+          </a>
+          <a href="/vraag-stellen.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Questions</span>
+            <span class="mt-2 text-lg font-bold text-navy">Ask us</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Anonymously. We put your question to the regulator and publish the answer.</span>
+            <span class="mt-3 text-sm font-bold text-brand">Ask your question &rarr;</span>
+          </a>
+          <a href="/artikelen.html" class="card card-hover p-5 flex flex-col">
+            <span class="eyebrow text-brand">Explanation</span>
+            <span class="mt-2 text-lg font-bold text-navy">Read how it works</span>
+            <span class="mt-1.5 text-sm text-gray-600 leading-relaxed flex-1">Practical explanation of the law, the scope and what really works.</span>
+            <span class="mt-3 text-sm font-bold text-brand">To the knowledge base &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Monday measurement -->
+    <section id="meting" class="bg-softblue mt-4" aria-labelledby="meting-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <span class="eyebrow text-brand">The Monday measurement</span>
+        <h2 id="meting-heading" class="mt-2 text-3xl md:text-4xl font-semibold text-navy tracking-tight">Seven sectors, one question: is the statement there?</h2>
+        <p class="mt-3 text-lg text-gray-600 leading-relaxed">Every Monday morning we automatically check whether organisations have an accessibility statement in their footer: web shops, financial institutions, telecom providers, passenger carriers, media services, e-book platforms and travel companies. Each sector has its own dashboard and its own regulator. The figures are never more than a week old.</p>
+      </div>
+
+      <div class="notice notice-warning mt-8 max-w-3xl">
+        <strong>Important:</strong> an accessibility statement is a promise, not proof. Whether a website really works for people with a disability only shows in a substantive test of the site itself. This monitor only checks whether the statement is in the footer, not whether it is accurate or how accessible the site really is.
+      </div>
+
+      <!-- Seven monitors -->
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="/en/monitor.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">Web shops &middot; supervision: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results.json">—</strong> web shops, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the web shop monitor &rarr;</span>
+        </a>
+        <a href="/en/monitor-financieel.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">Financial &middot; supervision: AFM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results-financieel.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">of banks, insurers and payment services have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results-financieel.json">—</strong> institutions, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the financial monitor &rarr;</span>
+        </a>
+        <a href="/en/monitor-telecom.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">Telecom &middot; supervision: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results-telecom.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results-telecom.json">—</strong> telecom providers, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the telecom monitor &rarr;</span>
+        </a>
+        <a href="/en/monitor-vervoer.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">Passenger transport &middot; supervision: ILT</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results-vervoer.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results-vervoer.json">—</strong> carriers, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the transport monitor &rarr;</span>
+        </a>
+        <a href="/en/monitor-media.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">Media &amp; streaming &middot; supervision: CvdM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results-media.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results-media.json">—</strong> media services, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the media monitor &rarr;</span>
+        </a>
+        <a href="/en/monitor-ebooks.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">E-books &middot; supervision: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results-ebooks.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results-ebooks.json">—</strong> e-book platforms, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the e-books monitor &rarr;</span>
+        </a>
+        <a href="/en/monitor-reizen.html" class="card card-hover reveal p-6 flex flex-col">
+          <span class="chip-toezicht">Travel &middot; supervision: ACM</span>
+          <p class="telbalk-pct mt-3 text-4xl md:text-5xl font-display font-semibold text-status-notfound tracking-tight" data-figure="pctWithout" data-src="/data/results-reizen.json">—</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">of tour operators and online travel agencies have <strong class="text-navy font-bold">no</strong> statement yet. We count <strong class="text-navy font-mono font-medium" data-figure="total" data-src="/data/results-reizen.json">—</strong> travel companies, every Monday.</p>
+          <span class="telbalk mt-4" data-telbalk aria-hidden="true"><span class="telbalk-vul is-notfound"></span></span>
+          <span class="mt-3 text-sm font-bold text-brand">Open the travel monitor &rarr;</span>
+        </a>
+      </div>
+
+      <!-- Context: ACM finding + search -->
+      <div class="mt-6 grid gap-6 lg:grid-cols-3">
+        <a href="/artikelen/toezicht-en-boetes.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="stempel self-start">Source: ACM &middot; March 2026</span>
+          <p class="mt-4 text-4xl font-display font-semibold text-navy tracking-tight">~94%</p>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">of the 100 largest web shops have accessibility shortcomings. The ACM established this in March 2026. Our count shows every week whether that changes.</p>
+          <span class="mt-4 text-sm font-bold text-brand">Read about supervision and fines &rarr;</span>
+        </a>
+        <div class="card reveal p-7 lg:col-span-2">
+          <form id="home-search" role="search">
+            <label for="home-search-input" class="block text-sm font-semibold text-navy mb-2">Search for a web shop in the monitor</label>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input type="search" id="home-search-input" name="q" placeholder="e.g. bol.com, Coolblue..." class="flex-1 px-4 py-3 rounded-xl border border-field text-ink text-base placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-brand/40">
+              <button type="submit" class="utrecht-button utrecht-button--primary-action">Search</button>
+            </div>
+          </form>
+          <p class="mt-4 text-sm text-gray-500 leading-relaxed">Is your web shop wrongly listed, for example because you fall outside the EAA? <a href="/bezwaar.html" class="link">Object to being listed</a>.</p>
+        </div>
+      </div>
+
+      <p class="mt-7 text-sm text-gray-600"><span class="stempel" data-lastupdated-src="/data/results.json">Loading...</span> <span class="inline-block mt-2">(web shop measurement; each sector has its own measurement date on its monitor page)</span></p>
+      <p class="mt-4 text-sm text-gray-600 max-w-3xl">A statement being present doesn't mean a site is actually accessible. It's a first sign of awareness, nothing more. <a href="/over.html" class="link">Read how we measure</a>.</p>
+      </div>
+    </section>
+
+    <!-- Knowledge base -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="kennisbank-heading">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+        <div class="max-w-2xl">
+          <span class="eyebrow text-brand">Info</span>
+          <h2 id="kennisbank-heading" class="mt-2 text-3xl md:text-4xl font-semibold text-navy tracking-tight">Understand the EAA, without panic or jargon</h2>
+          <p class="mt-2 text-gray-500 text-lg">Who the law applies to, who supervises, the fines, and what really works. The knowledge base is currently in Dutch.</p>
+        </div>
+        <a href="/artikelen.html" class="text-sm font-semibold text-brand whitespace-nowrap">All articles &rarr;</a>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <a href="/artikelen/valt-mijn-website-onder-de-eaa.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="eyebrow text-brand">Who it applies to</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Does my website fall under the EAA?</h3>
+          <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">Far from every site is covered. Check it with a few questions.</p>
+          <span class="mt-5 text-sm font-semibold text-brand">Read more &rarr;</span>
+        </a>
+        <a href="/artikelen/toezicht-en-boetes.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="eyebrow text-brand">Supervision &amp; enforcement</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Who supervises, and what are the fines?</h3>
+          <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">The ACM is the main player. Fines up to &euro; 900,000 or 1% of turnover, plus a notification duty.</p>
+          <span class="mt-5 text-sm font-semibold text-brand">Read more &rarr;</span>
+        </a>
+        <a href="/artikelen/eaa-financiele-sector.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="eyebrow text-brand">Supervision &amp; enforcement</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">The EAA and the financial sector</h3>
+          <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">What the AFM does, and what banks, insurers and payment services must arrange.</p>
+          <span class="mt-5 text-sm font-semibold text-brand">Read more &rarr;</span>
+        </a>
+        <a href="/artikelen/toegankelijkheidsverklaring-schrijven.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="eyebrow text-brand">In practice</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">How to write an accessibility statement</h3>
+          <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">What belongs in it, where you publish it, and what it is not.</p>
+          <span class="mt-5 text-sm font-semibold text-brand">Read more &rarr;</span>
+        </a>
+        <a href="/artikelen/overlay-tools-werken-niet.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="eyebrow text-brand">Myths &amp; misconceptions</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">Why overlays don't solve your problem</h3>
+          <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">One line of code doesn't make your site accessible. So what does?</p>
+          <span class="mt-5 text-sm font-semibold text-brand">Read more &rarr;</span>
+        </a>
+        <a href="/artikelen/subsidies-voor-digitale-toegankelijkheid.html" class="card card-hover reveal p-7 flex flex-col">
+          <span class="eyebrow text-brand">In practice</span>
+          <h3 class="mt-3 text-lg font-semibold text-navy leading-snug">What subsidies are there?</h3>
+          <p class="mt-3 text-sm text-gray-600 leading-relaxed flex-1">No national fund, but a number of municipalities. Which ones, and for what.</p>
+          <span class="mt-5 text-sm font-semibold text-brand">Read more &rarr;</span>
+        </a>
+      </div>
+
+      <p class="mt-6 text-gray-600">Rather go to the source? The <a href="/bronnen.html" class="link">source overview</a> lists regulators, legislation, lawyers and trade media, searchable by type.</p>
+    </section>
+
+    <!-- Callout: more than websites -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="kanalen-heading">
+      <div class="rounded-xl bg-navy text-white on-dark p-8 md:p-12 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+        <div class="max-w-2xl">
+          <span class="eyebrow text-brand-bright">Often forgotten</span>
+          <h2 id="kanalen-heading" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">The EAA is about more than your website</h2>
+          <p class="mt-3 text-white leading-relaxed">Self-service terminals, payment machines, e-readers, e-books and electronic communication are covered by the law too. Look at every digital channel where a customer does something with you, not just the homepage.</p>
+        </div>
+        <a href="/artikelen/niet-alleen-websites-digitale-kanalen.html" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Which channels are covered? &rarr;</a>
+      </div>
+    </section>
+
+    <!-- The process of improving -->
+    <section class="bg-softblue mt-20 md:mt-24" aria-labelledby="proces-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+        <div class="max-w-2xl">
+          <span class="eyebrow text-brand">Step-by-step</span>
+          <h2 id="proces-heading" class="mt-2 text-3xl md:text-4xl font-semibold text-navy tracking-tight">From obligation to accessible site</h2>
+          <p class="mt-3 text-lg text-gray-600 leading-relaxed">Accessibility is a process, not a button you switch on. In three steps you know where you stand and what needs doing.</p>
+        </div>
+
+        <ol class="mt-10 grid gap-6 md:grid-cols-3">
+          <li class="card reveal p-7 flex flex-col">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">1</span>
+            <h3 class="mt-4 text-lg font-semibold text-navy">Find out if the law applies</h3>
+            <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Not every site falls under the EAA. A few questions tell you whether you need to act, and whether the micro-exemption applies to you.</p>
+            <a href="/artikelen/valt-mijn-website-onder-de-eaa.html" class="mt-4 text-sm font-semibold text-brand">Do the scope check &rarr;</a>
+          </li>
+          <li class="card reveal p-7 flex flex-col">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">2</span>
+            <h3 class="mt-4 text-lg font-semibold text-navy">Have it tested</h3>
+            <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">An independent audit maps what doesn't work for people with a disability. An overlay or automated tool finds only part of it.</p>
+            <a href="/artikelen/overlay-tools-werken-niet.html" class="mt-4 text-sm font-semibold text-brand">Why overlays fall short &rarr;</a>
+          </li>
+          <li class="card reveal p-7 flex flex-col">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-oker text-inkt font-display font-semibold text-lg">3</span>
+            <h3 class="mt-4 text-lg font-semibold text-navy">Fix it and keep it up</h3>
+            <p class="mt-2 text-sm text-gray-600 leading-relaxed flex-1">Repair the problems in your code and content, publish an honest statement and test again. That keeps your site accessible.</p>
+            <a href="/artikelen/toegankelijkheidsverklaring-schrijven.html" class="mt-4 text-sm font-semibold text-brand">Write your statement &rarr;</a>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- Q&A + help -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20 md:mt-24" aria-labelledby="hulp-heading">
+      <h2 id="hulp-heading" class="sr-only">Asking questions and finding help</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="rounded-xl bg-softblue ring-1 ring-brand-light p-8 md:p-10 flex flex-col">
+          <span class="eyebrow text-brand">Q&amp;A</span>
+          <h3 class="mt-2 text-2xl md:text-3xl font-semibold text-navy tracking-tight">Ask us your question, without alarming the regulator</h3>
+          <p class="mt-3 text-gray-600 leading-relaxed flex-1">Many entrepreneurs have questions but hesitate to come forward. Ask your question here anonymously. We put it to the right regulator on your behalf and publish the answer, without your name.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/vraag-stellen.html" class="utrecht-button utrecht-button--primary-action">Ask your question anonymously</a>
+            <a href="/vragen.html" class="utrecht-button utrecht-button--secondary-action">Read answered questions</a>
+          </div>
+        </div>
+        <div class="rounded-xl bg-navy text-white on-dark p-8 md:p-10 flex flex-col">
+          <span class="eyebrow text-brand-bright">Explanation</span>
+          <h3 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Ready to fix it?</h3>
+          <p class="mt-3 text-white leading-relaxed flex-1">The knowledge base explains in plain language what the law requires, how to write an accessibility statement and why quick fixes don't work.</p>
+          <div class="mt-6">
+            <a href="/artikelen.html" class="utrecht-button utrecht-button--primary-action">To the knowledge base</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-navy text-white on-dark mt-20 md:mt-24" aria-labelledby="faq-heading">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+        <h2 id="faq-heading" class="text-3xl md:text-4xl font-semibold tracking-tight">Frequently asked questions</h2>
+        <div class="mt-8 divide-y divide-white/10 border-y border-white/10">
+          <details class="group py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
+              <span>What is the European Accessibility Act?</span>
+              <span class="shrink-0 text-brand-bright text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-white leading-relaxed">The European Accessibility Act requires commercial organisations that offer products or services to consumers to make their digital channels accessible. In the Netherlands the law has been in force since 28 June 2025. One of the requirements is publishing an accessibility statement on the website, describing how accessible the service is and what steps the organisation is taking.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
+              <span>Does the EAA apply to my web shop too?</span>
+              <span class="shrink-0 text-brand-bright text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-white leading-relaxed">Not every site is covered. The law targets businesses that sell products or services to consumers online. Micro-enterprises offering services, with fewer than ten employees and less than two million euros in turnover, are exempt. In doubt? A few questions usually make it clear.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
+              <span>What are the fines if I do nothing?</span>
+              <span class="shrink-0 text-brand-bright text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-white leading-relaxed">The ACM supervises web shops and can impose fines up to &euro; 900,000 or 1% of annual turnover. For the financial sector the AFM is the regulator. A notification duty has also applied since October 2025. No enforcement cases are known yet in the Netherlands, but the first procedures are already under way in France and Germany, among others.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
+              <span>Is an accessibility statement enough?</span>
+              <span class="shrink-0 text-brand-bright text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-white leading-relaxed">No. A statement describes how accessible your site is, but does not make it accessible. The law requires that your site actually works for people with a disability. The statement is the finishing touch of the work, not the solution. An honest statement also names what does not work yet and when you will fix it.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
+              <span>Do accessibility overlays work?</span>
+              <span class="shrink-0 text-brand-bright text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-white leading-relaxed">A single line of code that adds a button or widget does not solve the underlying problems. Overlays often even introduce new barriers and are usually switched off by experienced assistive-technology users. Real accessibility comes from fixing problems in the source code and content, not from adding a layer on top.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-lg">
+              <span>How does the EAA Monitor measure this?</span>
+              <span class="shrink-0 text-brand-bright text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-white leading-relaxed">Every Monday the monitor automatically checks the footer of Dutch web shops, financial institutions, telecom providers, carriers, media services, e-book platforms and travel companies for a link to an accessibility statement. We look for keywords such as toegankelijkheid and accessibility in link text and URL. Note: a link does not mean the site is actually accessible. It is a first indication of awareness and compliance.</p>
+          </details>
+        </div>
+        <p class="mt-8 text-white">Not seeing your question? <a href="/vraag-stellen.html" class="font-semibold text-brand-bright underline underline-offset-2">Ask it anonymously</a> and we'll look into it.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-navy text-white mt-24 on-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#FAF7F1"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#F4C84B" font-weight="600">.</tspan></text></svg>
+          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">EAA Monitor is the independent count of digitally accessible Netherlands: a fresh measurement across seven sectors every Monday, plus plain-language explanation of who the law affects, who supervises it and what works. <span class="text-brand-bright font-semibold">Measured, not claimed.</span></p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white mb-3">Monitor &amp; explanation</p>
+          <ul class="space-y-2 text-sm text-white">
+            <li><a href="/en/monitor.html" class="hover:text-white">Web shop monitor</a></li>
+            <li><a href="/en/monitor-financieel.html" class="hover:text-white">Financial monitor</a></li>
+            <li><a href="/en/monitor-telecom.html" class="hover:text-white">Telecom monitor</a></li>
+            <li><a href="/en/monitor-vervoer.html" class="hover:text-white">Transport monitor</a></li>
+            <li><a href="/en/monitor-media.html" class="hover:text-white">Media monitor</a></li>
+            <li><a href="/en/monitor-ebooks.html" class="hover:text-white">E-books monitor</a></li>
+            <li><a href="/en/monitor-reizen.html" class="hover:text-white">Travel monitor</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white mb-3">More</p>
+          <ul class="space-y-2 text-sm text-white">
+            <li><a href="/" class="hover:text-white" hreflang="nl">Nederlandse versie</a></li>
+            <li><a href="/artikelen.html" class="hover:text-white" hreflang="nl">Knowledge base (NL)</a></li>
+            <li><a href="/bronnen.html" class="hover:text-white" hreflang="nl">Sources (NL)</a></li>
+            <li><a href="/vragen.html" class="hover:text-white" hreflang="nl">Questions (NL)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-white/10 grid gap-8 md:grid-cols-2 text-xs text-white leading-relaxed">
+        <div>
+          <p class="font-semibold mb-2">European infrastructure</p>
+          <p class="max-w-md">This website runs entirely on European services. The servers are at Hetzner in Germany, the domain runs through SIDN in the Netherlands, the visitor statistics come from Plausible in Europe and we send email with AhaSend from the Netherlands. Your visit touches no US service.</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Good to know</p>
+          <p class="max-w-md">The check runs weekly. A link to a statement doesn't automatically mean a website is actually accessible.</p>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white">
+        <p>Questions or a correction? Email <a href="mailto:info@eaa-monitor.nl" class="font-semibold underline underline-offset-2 hover:text-white">info@eaa-monitor.nl</a></p>
+        <nav aria-label="Legal" class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/colofon.html" class="hover:text-white" hreflang="nl">Colophon</a>
+          <a href="/privacy.html" class="hover:text-white" hreflang="nl">Privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // The home search box forwards to the monitor with the search term.
+    (function () {
+      var form = document.getElementById('home-search');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var q = document.getElementById('home-search-input').value.trim();
+        window.location.href = '/en/monitor.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+      });
+    })();
+  </script>
+  <script src="/static/home-figures.js"></script>
+  <script src="/static/reveal.js"></script>
+  <script src="/static/nav.js"></script>
+</body>
+</html>
