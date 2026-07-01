@@ -737,6 +737,29 @@ def write_sitemap(articles: list):
     newest_article = (
         max(articles, key=lambda m: m["date"])["date"].isoformat() if articles else None
     )
+    # Tweetalige paginaparen (NL-pad, EN-pad). Beide leden krijgen xhtml:link
+    # alternates in de sitemap zodat zoekmachines de EN-variant koppelen.
+    bilingual_pairs = [
+        ("/", "/en/"),
+        ("/monitor.html", "/en/monitor.html"),
+        ("/monitor-financieel.html", "/en/monitor-financieel.html"),
+        ("/monitor-telecom.html", "/en/monitor-telecom.html"),
+        ("/monitor-vervoer.html", "/en/monitor-vervoer.html"),
+        ("/monitor-media.html", "/en/monitor-media.html"),
+        ("/monitor-ebooks.html", "/en/monitor-ebooks.html"),
+        ("/monitor-reizen.html", "/en/monitor-reizen.html"),
+    ]
+    # loc -> lijst xhtml:link-regels (nl, en, x-default), voor beide leden.
+    alt_map: dict = {}
+    for nl_path, en_path in bilingual_pairs:
+        links = (
+            f'    <xhtml:link rel="alternate" hreflang="nl" href="{BASE_URL}{nl_path}"/>\n'
+            f'    <xhtml:link rel="alternate" hreflang="en" href="{BASE_URL}{en_path}"/>\n'
+            f'    <xhtml:link rel="alternate" hreflang="x-default" href="{BASE_URL}{nl_path}"/>\n'
+        )
+        alt_map[f"{BASE_URL}{nl_path}"] = links
+        alt_map[f"{BASE_URL}{en_path}"] = links
+
     # (loc, changefreq, priority, lastmod)
     static_urls = [
         (f"{BASE_URL}/", "weekly", "1.0", _results_lastmod("results.json")),
@@ -747,6 +770,15 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/monitor-media.html", "weekly", "0.9", _results_lastmod("results-media.json")),
         (f"{BASE_URL}/monitor-ebooks.html", "weekly", "0.9", _results_lastmod("results-ebooks.json")),
         (f"{BASE_URL}/monitor-reizen.html", "weekly", "0.9", _results_lastmod("results-reizen.json")),
+        # Engelse tegenhangers (monitor + hub); zelfde meetdata via dezelfde JSON.
+        (f"{BASE_URL}/en/", "weekly", "0.9", _results_lastmod("results.json")),
+        (f"{BASE_URL}/en/monitor.html", "weekly", "0.8", _results_lastmod("results.json")),
+        (f"{BASE_URL}/en/monitor-financieel.html", "weekly", "0.8", _results_lastmod("results-financieel.json")),
+        (f"{BASE_URL}/en/monitor-telecom.html", "weekly", "0.8", _results_lastmod("results-telecom.json")),
+        (f"{BASE_URL}/en/monitor-vervoer.html", "weekly", "0.8", _results_lastmod("results-vervoer.json")),
+        (f"{BASE_URL}/en/monitor-media.html", "weekly", "0.8", _results_lastmod("results-media.json")),
+        (f"{BASE_URL}/en/monitor-ebooks.html", "weekly", "0.8", _results_lastmod("results-ebooks.json")),
+        (f"{BASE_URL}/en/monitor-reizen.html", "weekly", "0.8", _results_lastmod("results-reizen.json")),
         (f"{BASE_URL}/artikelen.html", "weekly", "0.8", newest_article),
         (f"{BASE_URL}/bronnen.html", "weekly", "0.7", None),
         (f"{BASE_URL}/vragen.html", "weekly", "0.7", None),
@@ -762,9 +794,10 @@ def write_sitemap(articles: list):
     rows = []
     for loc, freq, prio, lastmod in static_urls:
         lastmod_xml = f"<lastmod>{lastmod}</lastmod>\n    " if lastmod else ""
+        alt_xml = alt_map.get(loc, "")
         rows.append(
             f"  <url>\n    <loc>{loc}</loc>\n    "
-            f"{lastmod_xml}<changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>"
+            f"{lastmod_xml}<changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n{alt_xml}  </url>"
         )
     for meta in articles:
         loc = f"{BASE_URL}/artikelen/{meta['slug']}.html"
@@ -776,7 +809,7 @@ def write_sitemap(articles: list):
         )
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
         + "\n".join(rows)
         + "\n</urlset>\n"
     )

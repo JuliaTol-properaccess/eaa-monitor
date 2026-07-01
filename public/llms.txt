@@ -79,6 +79,17 @@ Reisorganisaties (ACM-toezicht), laatste meting (1 juli 2026): 24 reisorganisati
 - [Over de EAA Monitor](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
 - [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen
 
+## English pages
+The monitor dashboards and the hub homepage are also available in English (same weekly data, live figures). The knowledge base and forms remain in Dutch.
+- [EAA Monitor (English hub)](https://eaa-monitor.nl/en/): the European Accessibility Act in the Netherlands, explained, with weekly figures across seven sectors
+- [Web shop monitor](https://eaa-monitor.nl/en/monitor.html): figures and full list of Dutch web shops (ACM supervision)
+- [Financial monitor](https://eaa-monitor.nl/en/monitor-financieel.html): banks, insurers, payment services and leasing companies (AFM supervision)
+- [Telecom monitor](https://eaa-monitor.nl/en/monitor-telecom.html): telecom providers with consumer services (ACM supervision)
+- [Transport monitor](https://eaa-monitor.nl/en/monitor-vervoer.html): passenger transport by rail, road, water and air (ILT supervision)
+- [Media monitor](https://eaa-monitor.nl/en/monitor-media.html): streaming and media services (Dutch Media Authority supervision)
+- [E-books monitor](https://eaa-monitor.nl/en/monitor-ebooks.html): e-book platforms and sellers (ACM supervision)
+- [Travel monitor](https://eaa-monitor.nl/en/monitor-reizen.html): tour operators and online travel agencies (ACM supervision)
+
 ## Data
 - [Volledige resultaten webshops (JSON)](https://eaa-monitor.nl/data/results.json)
 - [Volledige resultaten financiële instellingen (JSON)](https://eaa-monitor.nl/data/results-financieel.json)
