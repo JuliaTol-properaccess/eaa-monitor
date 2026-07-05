@@ -5,10 +5,10 @@
   "detail_url": "https://wcag-scan.nl/",
   "summary": {
     "total": 325,
-    "fouten": 273,
-    "schoon": 45,
+    "fouten": 271,
+    "schoon": 47,
     "niet_scanbaar": 7,
-    "pct_fouten_van_gescand": 86
+    "pct_fouten_van_gescand": 85
   },
   "sites": {
     "https://www.123-3d.nl": {
@@ -220,7 +220,7 @@
       "url": "https://www.celticwebmerchant.co.uk"
     },
     "https://www.centraalbeheer.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.centraalbeheer.nl"
     },
     "https://confynederland.nl": {
@@ -1256,7 +1256,7 @@
       "url": "https://www.youfone.nl"
     },
     "https://www.dfds.com/nl-nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.dfds.com/nl-nl"
     },
     "https://www.eurostar.com/nl-nl": {
