@@ -258,7 +258,7 @@
       "url": "https://www.bonprix.nl",
       "statement_url": "https://www.bonprix.nl/klantenservice/toegankelijkheid/",
       "statement_link_text": "Partial accessible",
-      "confirmed": "2026-06-06"
+      "confirmed": "2026-07-13"
     },
     {
       "name": "Booking.com",
@@ -665,6 +665,13 @@
       "statement_url": "https://www.fransebulldogloversshop.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
       "confirmed": "2026-06-23"
+    },
+    {
+      "name": "Fresh 'n Rebel",
+      "url": "https://freshnrebel.com/nl",
+      "statement_url": "https://freshnrebel.com/nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-07-13"
     },
     {
       "name": "Gall.nl",
@@ -1143,6 +1150,13 @@
       "confirmed": "2026-07-06"
     },
     {
+      "name": "Miss Mary of Sweden AB",
+      "url": "https://www.missmary.com/nl",
+      "statement_url": "https://www.missmary.com/nl/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-07-13"
+    },
+    {
       "name": "Nelson",
       "url": "https://www.nelson.nl",
       "statement_url": "https://www.nelson.nl/toegankelijkheidsverklaring/",
@@ -1203,14 +1217,7 @@
       "url": "https://www.only.com/nl/nl/",
       "statement_url": "https://www.only.com/nl-nl/content/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-06-06"
-    },
-    {
-      "name": "Optimaal Plus",
-      "url": "https://www.optimaalplus.nl",
-      "statement_url": "https://www.optimaalplus.nl/drempelhulpen,-drempelhulp,-scheggen,-toegankelijkheid,-rubberen-drempelhulp,-gummy-ramp",
-      "statement_link_text": "Drempelhulpen, scheggen & toegankelijkheid",
-      "confirmed": "2026-06-06"
+      "confirmed": "2026-07-13"
     },
     {
       "name": "Optiphar",
@@ -1281,6 +1288,13 @@
       "statement_url": "https://www.pixum.nl/over-ons/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-07-06"
+    },
+    {
+      "name": "Plus",
+      "url": "https://www.plus.nl",
+      "statement_url": "https://www.plus.nl/organisatie/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-07-13"
     },
     {
       "name": "Praxis",
@@ -1598,6 +1612,13 @@
       "confirmed": "2026-07-06"
     },
     {
+      "name": "VoetbalDirect.nl",
+      "url": "https://www.voetbaldirect.nl",
+      "statement_url": "https://www.voetbaldirect.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-07-13"
+    },
+    {
       "name": "Voetbalshop.nl",
       "url": "https://www.voetbalshop.nl",
       "statement_url": "https://www.voetbalshop.nl/toegankelijkheidsverklaring",
@@ -1610,6 +1631,13 @@
       "statement_url": "https://www.volleybalshop.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-06-23"
+    },
+    {
+      "name": "VVV Cadeaukaarten",
+      "url": "https://www.vvvcadeaukaarten.nl",
+      "statement_url": "https://www.vvvcadeaukaarten.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-07-13"
     },
     {
       "name": "Waterpompshop",
@@ -1708,6 +1736,20 @@
       "statement_url": "https://yourdog.nl/klantenservice/digitale-toegankelijkheid/",
       "statement_link_text": "Digitale toegankelijkheid",
       "confirmed": "2026-07-06"
+    },
+    {
+      "name": "Zeeman",
+      "url": "https://www.zeeman.com/nl/",
+      "statement_url": "https://www.zeeman.com/nl-nl/juridisch/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-07-13"
+    },
+    {
+      "name": "ZEEMAN Webshop",
+      "url": "https://www.zeeman.com",
+      "statement_url": "https://www.zeeman.com/nl-nl/juridisch/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-07-13"
     },
     {
       "name": "Zooplus",

@@ -38,5 +38,13 @@
     "without_statement": 8365,
     "errors": 1262,
     "pct_with": 2
+  },
+  {
+    "date": "2026-07-13",
+    "total": 9459,
+    "with_statement": 225,
+    "without_statement": 7909,
+    "errors": 1325,
+    "pct_with": 2
   }
 ]
