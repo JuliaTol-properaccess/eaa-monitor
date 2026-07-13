@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-06T11:39:43.549537+00:00",
+  "last_updated": "2026-07-13T13:18:42.311433+00:00",
   "total": 15,
   "with_statement": 7,
   "without_statement": 8,
@@ -12,7 +12,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23,7 +23,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34,7 +34,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null,
       "statement_link_url": "https://www.hbomax.com/accessibility/asl",
@@ -47,7 +47,7 @@
       "has_statement": true,
       "statement_url": "https://www.talpanetwork.com/digitale-toegankelijkheid/kijk",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -58,7 +58,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -69,7 +69,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -80,7 +80,7 @@
       "has_statement": true,
       "statement_url": "https://npo.nl/overnpo/toegankelijkheid/toegankelijkheidsverklaring/toegankelijkheid-npo-start",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -91,7 +91,7 @@
       "has_statement": true,
       "statement_url": "https://support.pathe-thuis.nl/hc/nl/articles/28355032630557-Toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -102,7 +102,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -113,7 +113,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -124,7 +124,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null,
       "statement_link_url": "https://rtl.nl/rtl-home/artikel/5516580/toegankelijkheid",
@@ -137,7 +137,7 @@
       "has_statement": true,
       "statement_url": "https://www.skyshowtime.com/accessibility-statement",
       "statement_link_text": "SkyShowtime Accessibility Statement",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -148,7 +148,7 @@
       "has_statement": true,
       "statement_url": "https://www.spotify.com/us/accessibility/",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -159,7 +159,7 @@
       "has_statement": true,
       "statement_url": "https://viaplay.com/nl-nl/accessibility",
       "statement_link_text": "Toegankelijkheid bij Viaplay",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -170,7 +170,7 @@
       "has_statement": true,
       "statement_url": "https://hulp.videoland.com/article/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-07-06T11:39:43.549537+00:00",
+      "last_checked": "2026-07-13T13:18:42.311433+00:00",
       "scrape_status": "success",
       "error": null
     }
