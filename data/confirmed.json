@@ -968,6 +968,13 @@
       "confirmed": "2026-06-23"
     },
     {
+      "name": "Keizers.nu",
+      "url": "https://keizers.nu",
+      "statement_url": "https://keizers.nu/pages/digitale-toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-07-20"
+    },
+    {
       "name": "Kerstpakkettenplaza.nl",
       "url": "https://www.kerstpakkettenplaza.nl",
       "statement_url": "https://www.kerstpakkettenplaza.nl/toegankelijkheidsverklaring",
@@ -1750,6 +1757,20 @@
       "statement_url": "https://www.zeeman.com/nl-nl/juridisch/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
       "confirmed": "2026-07-13"
+    },
+    {
+      "name": "Zenon portretschilderen",
+      "url": "https://zenon-portretschilderen.nl",
+      "statement_url": "https://www.amazon.com/b?node=15701038011&ie=UTF8",
+      "statement_link_text": "Accessibility",
+      "confirmed": "2026-07-20"
+    },
+    {
+      "name": "Zilte Zusjes",
+      "url": "https://www.ziltezusjes.nl",
+      "statement_url": "https://www.ozbaredisco.com/accessibility-statement",
+      "statement_link_text": "https://www.ozbaredisco.com/accessibility-statement",
+      "confirmed": "2026-07-20"
     },
     {
       "name": "Zooplus",
