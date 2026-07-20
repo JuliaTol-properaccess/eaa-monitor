@@ -22,28 +22,28 @@ Laatste meting (20 juli 2026): 9459 webshops gecontroleerd,
 <!-- MEASUREMENT:END -->
 
 <!-- FIN-MEASUREMENT:START -->
-Financiële sector (AFM-toezicht), laatste meting (13 juli 2026): 68 instellingen gecontroleerd,
-40 (59%) met toegankelijkheidsverklaring,
-22 (32%) zonder, en
+Financiële sector (AFM-toezicht), laatste meting (20 juli 2026): 68 instellingen gecontroleerd,
+39 (57%) met toegankelijkheidsverklaring,
+23 (34%) zonder, en
 6 (9%) niet te controleren.
 <!-- FIN-MEASUREMENT:END -->
 
 <!-- TEL-MEASUREMENT:START -->
-Telecom (ACM-toezicht), laatste meting (13 juli 2026): 18 aanbieders gecontroleerd,
-11 (61%) met toegankelijkheidsverklaring,
-6 (33%) zonder, en
+Telecom (ACM-toezicht), laatste meting (20 juli 2026): 18 aanbieders gecontroleerd,
+10 (56%) met toegankelijkheidsverklaring,
+7 (39%) zonder, en
 1 (6%) niet te controleren.
 <!-- TEL-MEASUREMENT:END -->
 
 <!-- VERVOER-MEASUREMENT:START -->
-Personenvervoer (ILT-toezicht), laatste meting (13 juli 2026): 21 vervoerders gecontroleerd,
+Personenvervoer (ILT-toezicht), laatste meting (20 juli 2026): 21 vervoerders gecontroleerd,
 5 (24%) met toegankelijkheidsverklaring,
 11 (52%) zonder, en
 5 (24%) niet te controleren.
 <!-- VERVOER-MEASUREMENT:END -->
 
 <!-- MEDIA-MEASUREMENT:START -->
-Media en streaming (toezicht Commissariaat voor de Media), laatste meting (13 juli 2026): 15 mediadiensten gecontroleerd,
+Media en streaming (toezicht Commissariaat voor de Media), laatste meting (20 juli 2026): 15 mediadiensten gecontroleerd,
 7 (47%) met toegankelijkheidsverklaring,
 8 (53%) zonder, en
 0 (0%) niet te controleren.
@@ -57,10 +57,10 @@ E-books (ACM-toezicht), laatste meting (6 juli 2026): 10 e-bookplatforms gecontr
 <!-- EBOOKS-MEASUREMENT:END -->
 
 <!-- REIZEN-MEASUREMENT:START -->
-Reisorganisaties (ACM-toezicht), laatste meting (13 juli 2026): 24 reisorganisaties gecontroleerd,
+Reisorganisaties (ACM-toezicht), laatste meting (20 juli 2026): 24 reisorganisaties gecontroleerd,
 4 (17%) met toegankelijkheidsverklaring,
-17 (71%) zonder, en
-3 (12%) niet te controleren.
+18 (75%) zonder, en
+2 (8%) niet te controleren.
 <!-- REIZEN-MEASUREMENT:END -->
 
 ## Belangrijkste pagina's

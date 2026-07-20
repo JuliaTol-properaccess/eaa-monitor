@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-07-13T13:21:46.289301+00:00",
+  "last_updated": "2026-07-20T13:04:19.902389+00:00",
   "total": 24,
   "with_statement": 4,
-  "without_statement": 17,
-  "errors": 3,
+  "without_statement": 18,
+  "errors": 2,
   "webshops": [
     {
       "name": "333travel",
@@ -12,7 +12,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -23,7 +23,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -34,7 +34,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -45,7 +45,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -56,7 +56,7 @@
       "has_statement": true,
       "statement_url": "https://www.bizztravel.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -67,9 +67,9 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
-      "scrape_status": "error",
-      "error": "Pagina heeft maar 4 links; vermoedelijk bot-protectie, wachtrij of lege render"
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
+      "scrape_status": "success",
+      "error": null
     },
     {
       "name": "Corendon",
@@ -78,7 +78,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -89,7 +89,7 @@
       "has_statement": true,
       "statement_url": "https://www.dejongintra.nl/toegankelijkheid-website",
       "statement_link_text": "Digitale toegankelijkheid",
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -100,7 +100,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -111,7 +111,7 @@
       "has_statement": true,
       "statement_url": "https://www.elizawashere.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -122,7 +122,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -133,7 +133,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "timeout",
       "error": "Timeout after 15000ms (2 attempts)"
     },
@@ -144,7 +144,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -155,7 +155,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -166,7 +166,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -177,7 +177,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -188,7 +188,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -199,7 +199,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -210,7 +210,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -221,7 +221,7 @@
       "has_statement": true,
       "statement_url": "https://www.sunweb.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -232,7 +232,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -243,7 +243,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -254,7 +254,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "error",
       "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
     },
@@ -265,7 +265,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-13T13:21:46.289301+00:00",
+      "last_checked": "2026-07-20T13:04:19.902389+00:00",
       "scrape_status": "success",
       "error": null
     }
