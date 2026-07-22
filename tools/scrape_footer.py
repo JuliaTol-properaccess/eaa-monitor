@@ -257,6 +257,15 @@ MERGE_COVERAGE_THRESHOLD = 0.9
 # 'errors' live bakken en in history.json vastleggen. Normaal is ~10%.
 ERROR_RATE_THRESHOLD = 0.25
 
+# De foutdrempel is een storings-vangnet, geen bot-wall-detector. Op een kleine
+# sectorlijst (bv. ebooks: 10 sites) vormen een paar permanent bot-beschermde
+# sites al 25%+, waardoor de guard elke week aansloeg en niets meer publiceerde.
+# Naast het percentage eisen we daarom een absolute foutenondergrens: pas boven
+# dit aantal fouten is een echte storing aannemelijk. Kleine lijsten met een
+# handvol bekende bot-walls publiceren zo gewoon door; een storm op de
+# webshoplijst (honderden fouten) trekt de guard nog steeds.
+ERROR_COUNT_FLOOR = 8
+
 # Wachten op de footer i.p.v. een vaste 2s: de meeste sites hebben de footer al
 # bij domcontentloaded, dan kost dit vrijwel niets. De settle vangt links die
 # ná het verschijnen van de footer nog door JS worden geïnjecteerd; 500ms bleek
@@ -1525,10 +1534,15 @@ def finalize(output, ds):
     """Write the dataset's results.json and (re)generate the GEO assets."""
     # Sanity-drempel: een browser- of netwerkstoring halverwege de run zou
     # anders een week vol valse 'errors' publiceren en in history vastleggen.
-    if output["total"] and output["errors"] / output["total"] > ERROR_RATE_THRESHOLD:
+    if (
+        output["total"]
+        and output["errors"] > ERROR_COUNT_FLOOR
+        and output["errors"] / output["total"] > ERROR_RATE_THRESHOLD
+    ):
         sys.exit(
             f"FOUT: {output['errors']} van de {output['total']} checks faalden "
-            f"({output['errors'] / output['total']:.0%}, drempel {ERROR_RATE_THRESHOLD:.0%}). "
+            f"({output['errors'] / output['total']:.0%}, drempel {ERROR_RATE_THRESHOLD:.0%} "
+            f"boven {ERROR_COUNT_FLOOR} fouten). "
             f"Vermoedelijk een browser- of netwerkstoring; resultaten niet gepubliceerd."
         )
     results_file = ds["results_file"]
