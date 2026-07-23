@@ -50,10 +50,10 @@ Media en streaming (toezicht Commissariaat voor de Media), laatste meting (20 ju
 <!-- MEDIA-MEASUREMENT:END -->
 
 <!-- EBOOKS-MEASUREMENT:START -->
-E-books (ACM-toezicht), laatste meting (6 juli 2026): 10 e-bookplatforms gecontroleerd,
-4 (40%) met toegankelijkheidsverklaring,
-4 (40%) zonder, en
-2 (20%) niet te controleren.
+E-books (ACM-toezicht), laatste meting (22 juli 2026): 10 e-bookplatforms gecontroleerd,
+7 (70%) met toegankelijkheidsverklaring,
+2 (20%) zonder, en
+1 (10%) niet te controleren.
 <!-- EBOOKS-MEASUREMENT:END -->
 
 <!-- REIZEN-MEASUREMENT:START -->
