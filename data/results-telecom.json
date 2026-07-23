@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-07-20T12:56:21.463883+00:00",
+  "last_updated": "2026-07-22T16:58:19.681055+00:00",
   "total": 18,
-  "with_statement": 10,
-  "without_statement": 7,
-  "errors": 1,
+  "with_statement": 13,
+  "without_statement": 5,
+  "errors": 0,
   "webshops": [
     {
       "name": "50+ Mobiel",
@@ -12,7 +12,7 @@
       "has_statement": true,
       "statement_url": "https://www.50plusmobiel.nl/toegankelijkheid?hsLang=nl",
       "statement_link_text": "Verklaring toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -20,12 +20,12 @@
       "name": "Ben",
       "url": "https://www.ben.nl",
       "category": "mobiel",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
-      "scrape_status": "error",
-      "error": "Pagina heeft maar 0 links; vermoedelijk bot-protectie, wachtrij of lege render"
+      "has_statement": true,
+      "statement_url": "https://www.ben.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
+      "scrape_status": "success",
+      "error": null
     },
     {
       "name": "Budget Thuis",
@@ -34,7 +34,7 @@
       "has_statement": true,
       "statement_url": "https://www.budgetthuis.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -42,14 +42,12 @@
       "name": "DELTA",
       "url": "https://www.delta.nl",
       "category": "internet-tv",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "has_statement": true,
+      "statement_url": "https://www.delta.nl/klantenservice/toegankelijkheidsverklaring-wwwdeltanl/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
-      "error": null,
-      "statement_link_url": "https://www.delta.nl/klantenservice/toegankelijkheidsverklaring-wwwdeltanl/",
-      "note": "link gevonden, geen verklaring op de pagina"
+      "error": null
     },
     {
       "name": "Freedom Internet",
@@ -58,7 +56,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -69,7 +67,7 @@
       "has_statement": true,
       "statement_url": "https://www.hollandsnieuwe.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -80,7 +78,7 @@
       "has_statement": true,
       "statement_url": "https://www.kpn.com/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -91,7 +89,7 @@
       "has_statement": true,
       "statement_url": "https://www.lebara.nl/nl/toegankelijkheid.html",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -102,7 +100,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -113,7 +111,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -124,7 +122,7 @@
       "has_statement": true,
       "statement_url": "https://www.odido.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -135,7 +133,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -146,7 +144,7 @@
       "has_statement": true,
       "statement_url": "https://www.simpel.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -157,7 +155,7 @@
       "has_statement": true,
       "statement_url": "https://www.simyo.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -168,7 +166,7 @@
       "has_statement": true,
       "statement_url": "https://www.solcon.nl/toegankelijkheidsverklaring-solcon/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -179,7 +177,7 @@
       "has_statement": false,
       "statement_url": null,
       "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null,
       "statement_link_url": "https://www.vodafone.nl/support/toegankelijkheid",
@@ -192,7 +190,7 @@
       "has_statement": true,
       "statement_url": "https://www.youfone.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null
     },
@@ -200,14 +198,13 @@
       "name": "Ziggo",
       "url": "https://www.ziggo.nl",
       "category": "internet-tv",
-      "has_statement": false,
-      "statement_url": null,
-      "statement_link_text": null,
-      "last_checked": "2026-07-20T12:56:21.463883+00:00",
+      "has_statement": true,
+      "statement_url": "https://www.ziggo.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "last_checked": "2026-07-22T16:58:19.681055+00:00",
       "scrape_status": "success",
       "error": null,
-      "statement_link_url": "https://www.ziggo.nl/toegankelijkheid",
-      "note": "link gevonden, geen verklaring op de pagina"
+      "statement_link_url": "https://www.ziggo.nl/toegankelijkheid/visuele-toegankelijkheid"
     }
   ]
 }

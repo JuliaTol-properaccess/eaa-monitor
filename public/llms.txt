@@ -29,10 +29,10 @@ Financiële sector (AFM-toezicht), laatste meting (20 juli 2026): 68 instellinge
 <!-- FIN-MEASUREMENT:END -->
 
 <!-- TEL-MEASUREMENT:START -->
-Telecom (ACM-toezicht), laatste meting (20 juli 2026): 18 aanbieders gecontroleerd,
-10 (56%) met toegankelijkheidsverklaring,
-7 (39%) zonder, en
-1 (6%) niet te controleren.
+Telecom (ACM-toezicht), laatste meting (22 juli 2026): 18 aanbieders gecontroleerd,
+13 (72%) met toegankelijkheidsverklaring,
+5 (28%) zonder, en
+0 (0%) niet te controleren.
 <!-- TEL-MEASUREMENT:END -->
 
 <!-- VERVOER-MEASUREMENT:START -->

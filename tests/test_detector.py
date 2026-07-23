@@ -17,7 +17,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from tools.scrape_footer import classify_html, statement_page_has_statement  # noqa: E402
+from tools.scrape_footer import (  # noqa: E402
+    accessibility_subpages,
+    classify_html,
+    statement_page_has_statement,
+)
 
 # Een gewone footer met genoeg links zodat de <5-links-challengeregel niet afgaat.
 _FILLER_LINKS = "".join(f'<a href="/p/{i}">Item {i}</a>' for i in range(8))
@@ -125,6 +129,35 @@ CONTENT_CASES = [
 ]
 
 
+# Subpagina-selectie voor de hub-content-check (Ziggo-geval): welke kinderen van
+# een toegankelijkheidshub loopt de content-check na? (naam, hub_url, html, verwachte URLs)
+SUBPAGE_CASES = [
+    ("Ziggo-hub: volgt de vier categorie-subpagina's",
+     "https://www.ziggo.nl/toegankelijkheid",
+     '<a href="/toegankelijkheid/visuele-toegankelijkheid">Visueel</a>'
+     '<a href="/toegankelijkheid/auditieve-toegankelijkheid">Auditief</a>'
+     '<a href="/toegankelijkheid/fysieke-toegankelijkheid">Fysiek</a>'
+     '<a href="/toegankelijkheid/cognitieve-toegankelijkheid">Cognitief</a>'
+     '<a href="/">Home</a><a href="/klantenservice">Klantenservice</a>',
+     ["https://www.ziggo.nl/toegankelijkheid/visuele-toegankelijkheid",
+      "https://www.ziggo.nl/toegankelijkheid/auditieve-toegankelijkheid",
+      "https://www.ziggo.nl/toegankelijkheid/fysieke-toegankelijkheid",
+      "https://www.ziggo.nl/toegankelijkheid/cognitieve-toegankelijkheid"]),
+    ("globale nav/footer buiten het hubpad wordt niet gevolgd",
+     "https://voorbeeld.nl/toegankelijkheid",
+     '<a href="/">Home</a><a href="/contact">Contact</a>'
+     '<a href="https://ander.nl/toegankelijkheid/x">Extern</a>'
+     '<a href="/toegankelijkheid">De hub zelf</a>',
+     []),
+    ("dedupe, fragment en PDF: alleen de echte subpagina blijft",
+     "https://voorbeeld.nl/toegankelijkheid",
+     '<a href="/toegankelijkheid/verklaring">Verklaring</a>'
+     '<a href="/toegankelijkheid/verklaring#top">Zelfde, fragment</a>'
+     '<a href="/toegankelijkheid/verklaring.pdf">PDF</a>',
+     ["https://voorbeeld.nl/toegankelijkheid/verklaring"]),
+]
+
+
 def run():
     rows = []
     ok = True
@@ -164,6 +197,16 @@ def run():
         ok = ok and passed
         print(f"  [{'PASS' if passed else 'FAIL'}] {name:48} verwacht={expected!s:5} kreeg={got!s:5}")
 
+    # Subpagina-selectie voor de hub-content-check (Ziggo-geval)
+    print("\n  Hub-subpagina-selectie:")
+    for name, hub, html, expected in SUBPAGE_CASES:
+        got = accessibility_subpages(hub, html)
+        passed = got == expected
+        ok = ok and passed
+        print(f"  [{'PASS' if passed else 'FAIL'}] {name:52} kreeg={len(got)} subpagina('s)")
+        if not passed:
+            print(f"         -> verwacht={expected!r}\n         -> kreeg={got!r}")
+
     print("\n  " + ("ALLES GOED" if ok else "REGRESSIE GEDETECTEERD"))
     return ok
 
@@ -181,6 +224,11 @@ def test_detector_cases():
 def test_statement_page_content():
     for name, text, expected in CONTENT_CASES:
         assert statement_page_has_statement(text) == expected, name
+
+
+def test_accessibility_subpages():
+    for name, hub, html, expected in SUBPAGE_CASES:
+        assert accessibility_subpages(hub, html) == expected, name
 
 
 if __name__ == "__main__":

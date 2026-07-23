@@ -18,7 +18,7 @@ import time
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urldefrag, urljoin, urlparse
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
@@ -757,6 +757,51 @@ def statement_page_has_statement(text: str) -> bool:
     return any(marker in low for marker in STATEMENT_CONTENT_MARKERS)
 
 
+# Maximaal aantal subpagina's dat de content-check naloopt onder een hub.
+STATEMENT_SUBPAGE_LIMIT = 5
+
+
+def accessibility_subpages(hub_url, html, limit=STATEMENT_SUBPAGE_LIMIT):
+    """Kind-pagina's van een toegankelijkheidshub op hetzelfde domein.
+
+    Sommige sites (bv. Ziggo) linken vanuit één /toegankelijkheid-hub door naar
+    losse subpagina's (visuele/auditieve/... toegankelijkheid) die pas de echte
+    verklaring-inhoud bevatten; de hub zelf zakt dan voor de content-check.
+    Deze functie levert de subpagina-URL's op zodat de content-check ze kan
+    nalopen voordat hij 'zonder verklaring' concludeert: alleen kinderen van het
+    hubpad (zelfde domein, PDF's uitgezonderd, gededupliceerd), in bronvolgorde
+    en afgetopt op ``limit``. Puur/deterministisch testbaar (geen netwerk).
+
+    Het kind-van-hubpad-criterium houdt dit strak op de hub-en-subpagina-vorm:
+    globale navigatie- of footerlinks (ander pad) worden niet gevolgd, dus de
+    check kan een 'zonder' alleen opwaarderen bij een echte doorverwijzing.
+    """
+    hub_path = urlparse(hub_url).path.rstrip("/").lower()
+    if not hub_path:
+        return []
+    prefix = hub_path + "/"
+    soup = BeautifulSoup(html, "html.parser")
+    seen = set()
+    out = []
+    for a in soup.find_all("a", href=True):
+        sub, _ = urldefrag(urljoin(hub_url, a["href"]))
+        if not _same_site(hub_url, sub):
+            continue
+        sub_path = urlparse(sub).path
+        if sub_path.lower().endswith(".pdf"):
+            continue
+        if not sub_path.rstrip("/").lower().startswith(prefix):
+            continue
+        key = _normalize_url(sub)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(sub)
+        if len(out) >= limit:
+            break
+    return out
+
+
 def classify_html(html, url):
     """Bepaal de verklaring-status uit gerenderde HTML (geen Playwright nodig).
 
@@ -1316,7 +1361,25 @@ def _verify_statement_page(browser, base_url, result):
         page.goto(statement_url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
         _dismiss_cookie_wall(page)
         page.wait_for_timeout(FOOTER_SETTLE_MS)
-        text = BeautifulSoup(page.content(), "html.parser").get_text(" ", strip=True)
+        hub_html = page.content()
+        text = BeautifulSoup(hub_html, "html.parser").get_text(" ", strip=True)
+        if statement_page_has_statement(text):
+            return result
+        # De gelinkte pagina zelf heeft geen verklaring-inhoud. Sommige sites
+        # (bv. Ziggo) verdelen de verklaring over subpagina's van een
+        # toegankelijkheidshub. Loop die kinderen na voordat we 'zonder
+        # verklaring' concluderen; de hub blijft de bewaarde statement_url.
+        for sub in accessibility_subpages(statement_url, hub_html):
+            try:
+                page.goto(sub, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
+                _dismiss_cookie_wall(page)
+                page.wait_for_timeout(FOOTER_SETTLE_MS)
+                sub_text = BeautifulSoup(page.content(), "html.parser").get_text(" ", strip=True)
+            except Exception:
+                continue
+            if statement_page_has_statement(sub_text):
+                print("verklaring op subpagina...", end=" ", flush=True)
+                return {**result, "statement_link_url": sub}
     except Exception:
         # Konden de pagina niet ophalen: geef de link het voordeel van de twijfel
         # (gedrag ongewijzigd t.o.v. vóór de content-check).
@@ -1327,8 +1390,6 @@ def _verify_statement_page(browser, base_url, result):
                 context.close()
             except Exception:
                 pass
-    if statement_page_has_statement(text):
-        return result
     print("link zonder verklaring...", end=" ", flush=True)
     return {
         "has_statement": False,
