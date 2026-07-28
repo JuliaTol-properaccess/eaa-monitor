@@ -1,14 +1,14 @@
 {
-  "generated": "2026-07-21",
+  "generated": "2026-07-28",
   "engine": "axe-core 4.11.4",
   "scope": "WCAG 2.2 A/AA (best-practice uitgesloten)",
   "detail_url": "https://wcag-scan.nl/",
   "summary": {
-    "total": 288,
-    "fouten": 158,
-    "schoon": 50,
-    "niet_scanbaar": 80,
-    "pct_fouten_van_gescand": 76
+    "total": 293,
+    "fouten": 160,
+    "schoon": 55,
+    "niet_scanbaar": 78,
+    "pct_fouten_van_gescand": 74
   },
   "sites": {
     "https://www.123-3d.nl": {
@@ -40,7 +40,7 @@
       "url": "https://www.aboutyou.nl"
     },
     "https://en.aboutyou.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://en.aboutyou.nl"
     },
     "https://www.absoluteteamsport.nl": {
@@ -76,7 +76,7 @@
       "url": "https://www.amagard.com/nl"
     },
     "https://www.amazon.nl": {
-      "status": "niet-scanbaar",
+      "status": "fouten",
       "url": "https://www.amazon.nl"
     },
     "https://www.amefa.nl": {
@@ -132,7 +132,7 @@
       "url": "https://www.betersport.nl"
     },
     "https://www.debijenkorf.nl": {
-      "status": "niet-scanbaar",
+      "status": "schoon",
       "url": "https://www.debijenkorf.nl"
     },
     "https://bloommondays.nl": {
@@ -288,7 +288,7 @@
       "url": "https://www.dermaskinshop.nl"
     },
     "https://www.dierapotheker.nl": {
-      "status": "niet-scanbaar",
+      "status": "fouten",
       "url": "https://www.dierapotheker.nl"
     },
     "https://www.discounty.nl": {
@@ -304,7 +304,7 @@
       "url": "https://www.dqahealthandbeauty.nl"
     },
     "https://drank.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://drank.nl"
     },
     "https://www.dutchbone.com": {
@@ -472,7 +472,7 @@
       "url": "https://houtsnippers.nl"
     },
     "https://nl.hudsonreed.com": {
-      "status": "niet-scanbaar",
+      "status": "schoon",
       "url": "https://nl.hudsonreed.com"
     },
     "https://www.hulpmedi.nl": {
@@ -1012,7 +1012,7 @@
       "url": "https://www.onvz.nl"
     },
     "https://www.reaal.nl": {
-      "status": "niet-scanbaar",
+      "status": "fouten",
       "url": "https://www.reaal.nl"
     },
     "https://www.regiobank.nl": {
@@ -1067,9 +1067,17 @@
       "status": "fouten",
       "url": "https://www.50plusmobiel.nl"
     },
+    "https://www.ben.nl": {
+      "status": "niet-scanbaar",
+      "url": "https://www.ben.nl"
+    },
     "https://www.budgetthuis.nl": {
       "status": "schoon",
       "url": "https://www.budgetthuis.nl"
+    },
+    "https://www.delta.nl": {
+      "status": "fouten",
+      "url": "https://www.delta.nl"
     },
     "https://www.hollandsnieuwe.nl": {
       "status": "schoon",
@@ -1098,6 +1106,10 @@
     "https://www.youfone.nl": {
       "status": "fouten",
       "url": "https://www.youfone.nl"
+    },
+    "https://www.ziggo.nl": {
+      "status": "schoon",
+      "url": "https://www.ziggo.nl"
     },
     "https://www.dfds.com/nl-nl": {
       "status": "fouten",
@@ -1150,6 +1162,14 @@
     "https://www.bookbeat.com/nl": {
       "status": "schoon",
       "url": "https://www.bookbeat.com/nl"
+    },
+    "https://www.ebook.nl": {
+      "status": "niet-scanbaar",
+      "url": "https://www.ebook.nl/"
+    },
+    "https://www.kobo.com/nl/nl": {
+      "status": "niet-scanbaar",
+      "url": "https://www.kobo.com/nl/nl"
     },
     "https://nextory.com/nl": {
       "status": "fouten",
