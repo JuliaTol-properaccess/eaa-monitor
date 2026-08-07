@@ -19,8 +19,10 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    # ~325 sites sequentieel met render-waarborg duurt ~20-40 min; cap ruim erboven.
-    timeout-minutes: 60
+    # ~300 sites sequentieel met render-waarborg duurt 21-25 min. De cap ligt
+    # ruim daarboven, zodat een paar cap-hits of een zelfherstart (zie
+    # SCAN_CAP_S in scan_axe.py) er nog makkelijk binnen passen.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
