@@ -66,9 +66,9 @@
   {
     "date": "2026-08-07",
     "total": 68,
-    "with_statement": 40,
-    "without_statement": 22,
-    "errors": 6,
-    "pct_with": 59
+    "with_statement": 41,
+    "without_statement": 20,
+    "errors": 7,
+    "pct_with": 60
   }
 ]
