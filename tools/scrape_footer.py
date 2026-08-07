@@ -274,6 +274,15 @@ ERROR_COUNT_FLOOR = 8
 FOOTER_WAIT_TIMEOUT = 2000
 FOOTER_SETTLE_MS = 1500
 
+# Render-waarborg voor de verklaring-pagina (zie _verify_statement_page). Onder
+# beide drempels tegelijk beschouwen we de pagina als niet gerenderd, en telt de
+# site als "niet te controleren" i.p.v. "zonder verklaring". De link-drempel is
+# dezelfde als in classify_html; de tekstdrempel ligt ver onder een echte
+# verklaring (HEMA 2253 tekens, Roostershop 2381) en ver boven een lege render
+# (Bruynzeel 33, De Telegraaf 19).
+MIN_RENDERED_TEXT = 200
+MIN_RENDERED_LINKS = 5
+
 # Korte pauze tussen requests. Elke request gaat naar een ander domein, dus
 # per-host rate limiting speelt niet; dit ontziet alleen de runner zelf.
 REQUEST_PAUSE_S = 0.2
@@ -768,6 +777,22 @@ STATEMENT_CONTENT_MARKERS = [
 ]
 
 
+def page_looks_unrendered(soup, text: str) -> bool:
+    """Rendert deze pagina echt, of kijken we naar een lege huls?
+
+    Een bot-challenge, wachtrij of JS-only pagina levert bijna geen tekst en
+    bijna geen links. Zo'n pagina bewijst niets: we hebben de verklaring niet
+    gezien, niet vastgesteld dat hij ontbreekt.
+
+    Beide signalen moeten wijzen op een lege render, niet één van de twee. Een
+    echte pagina zonder verklaring-inhoud (het Decathlon-geval, waar de
+    content-check voor gebouwd is) heeft juist wél tekst en links, en moet
+    afgekeurd blijven worden.
+    """
+    return (len(text) < MIN_RENDERED_TEXT
+            and len(soup.find_all("a", href=True)) < MIN_RENDERED_LINKS)
+
+
 def statement_page_has_statement(text: str) -> bool:
     """True als de tekst van een gelinkte pagina verklaring-inhoud bevat.
 
@@ -868,7 +893,7 @@ def classify_html(html, url):
     # tientallen. Niet op footer-aanwezigheid filteren: interstitials hebben
     # vaak elementen met footer-achtige classes. "Geen verklaring" zou hier
     # geen eerlijke meting zijn: rapporteer "niet te controleren".
-    if len(all_links) < 5:
+    if len(all_links) < MIN_RENDERED_LINKS:
         return {
             "has_statement": False,
             "statement_url": None,
@@ -1429,7 +1454,28 @@ def _verify_statement_page(browser, base_url, result):
         _dismiss_cookie_wall(page)
         page.wait_for_timeout(FOOTER_SETTLE_MS)
         hub_html = page.content()
-        text = BeautifulSoup(hub_html, "html.parser").get_text(" ", strip=True)
+        hub_soup = BeautifulSoup(hub_html, "html.parser")
+        text = hub_soup.get_text(" ", strip=True)
+
+        # Render-waarborg. Een pagina die niet echt rendert (bot-challenge,
+        # wachtrij, JS-only pagina) levert bijna geen tekst en bijna geen links
+        # op. Die mag niet als "zonder verklaring" tellen: we hebben de
+        # verklaring niet gezien, niet vastgesteld dat hij ontbreekt. Zelfde
+        # regel als in classify_html (< 5 links = niet te controleren) en de
+        # axe-scan (< 50 DOM-elementen = niet gerenderd).
+        #
+        # Beide signalen moeten wijzen op een lege render, niet één van de
+        # twee: een echte pagina zonder verklaring-inhoud (het Decathlon-geval,
+        # waar deze check voor gebouwd is) heeft juist wél tekst en links en
+        # moet afgekeurd blijven worden.
+        #
+        # Gemeten op de run van 7 augustus 2026: Bruynzeel Keukens leverde 33
+        # tekens, De Telegraaf Webshop 19. Beide telden als "zonder verklaring"
+        # terwijl ze een echte verklaring-pagina hebben.
+        if page_looks_unrendered(hub_soup, text):
+            print("verklaring-pagina niet gerenderd...", end=" ", flush=True)
+            return result
+
         if statement_page_has_statement(text):
             return result
         # De gelinkte pagina zelf heeft geen verklaring-inhoud. Sommige sites
