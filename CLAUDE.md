@@ -18,7 +18,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `tools/sync_confirmed.py` — Onderhoudt de bevestigd-groen-lijst (`data/confirmed.json`) na een scrape: nieuwe greens toevoegen, herbevestigde verversen (datum vandaag), weggehaalde verklaringen verwijderen; error/timeout laat de bestaande bevestiging staan. Draait in `scrape.yml` na de merge (shard-veilig). De scraper zelf **slaat** bevestigd-groene sites op de wekelijkse run **over** zolang `confirmed` < `REVERIFY_DAYS` (30) oud is, en herverifieert ze daarna vanzelf. Beschermt ook handmatig geverifieerde greens (bv. bol.com) tegen wegvallen door een transiente bot-challenge
 - `tools/scan_axe.py` — WCAG-scanner: draait **axe-core 4.11** (lokaal gevendord in `tools/vendor/axe.min.js`, dezelfde engine als wcag-scan.eu) in headless Chromium over een lijst sites en aggregeert de violations. Standaard **alleen WCAG A/AA** (best-practice zoals landmarks uitgesloten, want in NL geen WCAG-falen). **Render-waarborg**: een pagina met < 50 DOM-elementen na laden geldt als niet gerenderd (redirect/consent/bot-muur) → status `niet-gerenderd`, nooit "geen fouten"; axe wordt via `page.evaluate` geïnjecteerd (CSP-proof), niet via `add_script_tag`. `tools/build_axe_targets.py` bouwt de doellijst (elke site met `has_statement=True`, gededupliceerd op URL). `tools/gen_axe_rules.js` genereert de regelcatalogus `data/axe-rules.json` (welke regels meetellen vs. uitgesloten)
 - `tools/build_axe_overlay.py` — Rendert een scan-output → de overlay `data/axe-results.json` (url → `fouten`/`schoon`/`niet-scanbaar`). Met `--patch-html public/monitor.html` bakt het ook het kerncijfer tussen de `<!--AXE-STAT:START/END-->`-markers (GEO/no-JS). Draait wekelijks via `scan-axe.yml`
-- `tests/test_detector.py` (deterministische detector-fixtures, confusion matrix), `tests/test_confirmed.py` (overslaan + sync), `tests/check_live.py` + `tests/groundtruth_sites.json` (periodieke live-validatie tegen echte sites)
+- `tests/test_detector.py` (deterministische detector-fixtures, confusion matrix), `tests/test_confirmed.py` (overslaan + sync), `tests/test_site_timeout.py` (per-site-cap + shard-zelfherstart), `tests/check_live.py` + `tests/groundtruth_sites.json` (periodieke live-validatie tegen echte sites)
 
 ### Data
 - `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels gescraped)
@@ -86,6 +86,7 @@ python tools/sync_confirmed.py --dataset webshops
 # Detector-tests draaien (deterministisch; geen netwerk)
 python tests/test_detector.py
 python tests/test_confirmed.py
+python tests/test_site_timeout.py
 # Live ground-truth-validatie tegen echte sites (kan wisselen door bot-challenges)
 python tests/check_live.py
 
