@@ -57,10 +57,10 @@
   },
   {
     "date": "2026-08-07",
-    "total": 9359,
-    "with_statement": 166,
-    "without_statement": 7976,
-    "errors": 1217,
+    "total": 10271,
+    "with_statement": 188,
+    "without_statement": 8723,
+    "errors": 1360,
     "pct_with": 2
   }
 ]
