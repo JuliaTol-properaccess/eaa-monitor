@@ -11,6 +11,7 @@ het browserherstel draaide niet en elke volgende site liep de volle 90s vol.
 """
 
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -96,6 +97,58 @@ def test_resume_argv_stapelt_niet():
 
 def test_restart_budget_is_begrensd():
     assert 0 < sf.MAX_SHARD_RESTARTS <= 10
+
+
+class _WedgedPlaywright:
+    """Playwright-mock waarbij ook een verse browser niet meer omhoog komt."""
+
+    class chromium:
+        @staticmethod
+        def launch(**kw):
+            time.sleep(30)
+
+
+def test_recover_page_lekt_geen_cap_naar_buiten():
+    """Shard 4 en 9 sneuvelden hierop in de run van 7 augustus 2026.
+
+    Als zowel het nette herstel als de verse browser de cap raakt, moet
+    _recover_page de reaper aanroepen. Lekt de SiteTimeout in plaats daarvan
+    naar buiten, dan neemt hij de hele shard mee: de reaper van het
+    site_deadline is op dat moment al gecanceld.
+    """
+    orig_cap, orig_fresh, orig_kill = (
+        sf.RECOVERY_CAP_S, sf._fresh_page, sf._kill_browser_processes)
+    giveup_calls = []
+    sf.RECOVERY_CAP_S = 1
+    sf._fresh_page = lambda *a, **kw: time.sleep(30)
+    sf._kill_browser_processes = lambda: False
+    try:
+        try:
+            sf._recover_page(_WedgedPlaywright(), object(), object(),
+                             lambda: giveup_calls.append(1))
+        except sf.SiteTimeout:
+            # Toegestaan, maar alleen nadat de reaper is aangeroepen: in
+            # productie keert die niet terug (execv/os._exit).
+            pass
+        assert giveup_calls == [1], \
+            "reaper is niet aangeroepen; de cap zou de shard meenemen"
+    finally:
+        sf.RECOVERY_CAP_S, sf._fresh_page, sf._kill_browser_processes = (
+            orig_cap, orig_fresh, orig_kill)
+
+
+def test_recover_page_herstelt_normaal_zonder_reaper():
+    """Tegenhanger: lukt het herstel gewoon, dan blijft de reaper ongemoeid."""
+    orig_fresh = sf._fresh_page
+    giveup_calls = []
+    sf._fresh_page = lambda p, browser, ctx: ("B", "C", "P")
+    try:
+        got = sf._recover_page(object(), object(), object(),
+                               lambda: giveup_calls.append(1))
+        assert got == ("B", "C", "P")
+        assert giveup_calls == []
+    finally:
+        sf._fresh_page = orig_fresh
 
 
 def _run():

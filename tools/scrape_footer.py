@@ -1328,14 +1328,24 @@ def _recover_page(p, browser, old_context, on_giveup):
     hangt de shard daar voorgoed, precies de hang die we juist wilden opheffen.
 
     Lukt netjes sluiten niet binnen de cap, dan laten we de oude context los,
-    killen we chromium en starten we een verse browser. Hangt ook dat, dan pakt
-    on_giveup (de reaper) het over en herstart de shard.
+    killen we chromium en starten we een verse browser. Komt ook die niet op
+    tijd omhoog, dan is de playwright-driver zelf stuk en is er binnen dit
+    proces niets meer te redden: dan roepen we on_giveup aan, die de shard
+    herstart.
+
+    Die laatste tak is geen theorie. In de run van 7 augustus 2026 sneuvelden
+    shard 4 (Managementboek.nl) en shard 9 (Life Outdoor Living) er allebei op:
+    de cap tijdens p.chromium.launch ontsnapte ongevangen en nam de shard mee,
+    want de reaper van dit site_deadline was bij het verlaten van de with-block
+    al gecanceld. Een SiteTimeout mag hier dus nooit naar buiten lekken.
     """
     try:
         with site_deadline(RECOVERY_CAP_S, on_giveup=on_giveup):
             return _fresh_page(p, browser, old_context)
     except SiteTimeout:
         print("herstel hangt, verse browser...", end=" ", flush=True)
+
+    try:
         with site_deadline(RECOVERY_CAP_S, on_giveup=on_giveup):
             try:
                 _kill_browser_processes()
@@ -1343,6 +1353,12 @@ def _recover_page(p, browser, old_context, on_giveup):
                 pass
             browser = p.chromium.launch(headless=True)
             return _fresh_page(p, browser, None)
+    except SiteTimeout:
+        print("herstel mislukt, shard herstart...", flush=True)
+        on_giveup()
+        # on_giveup hoort niet terug te keren (execv of os._exit). Doet hij dat
+        # toch, faal dan luid i.p.v. None terug te geven aan de hoofdlus.
+        raise
 
 
 def recheck_unblocked(browser, url):
