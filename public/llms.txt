@@ -24,8 +24,8 @@ Laatste meting (7 augustus 2026): 10271 webshops gecontroleerd,
 <!-- FIN-MEASUREMENT:START -->
 Financiële sector (AFM-toezicht), laatste meting (7 augustus 2026): 68 instellingen gecontroleerd,
 41 (60%) met toegankelijkheidsverklaring,
-20 (29%) zonder, en
-7 (10%) niet te controleren.
+21 (31%) zonder, en
+6 (9%) niet te controleren.
 <!-- FIN-MEASUREMENT:END -->
 
 <!-- TEL-MEASUREMENT:START -->
@@ -44,15 +44,15 @@ Personenvervoer (ILT-toezicht), laatste meting (7 augustus 2026): 21 vervoerders
 
 <!-- MEDIA-MEASUREMENT:START -->
 Media en streaming (toezicht Commissariaat voor de Media), laatste meting (7 augustus 2026): 15 mediadiensten gecontroleerd,
-6 (40%) met toegankelijkheidsverklaring,
-9 (60%) zonder, en
-0 (0%) niet te controleren.
+8 (53%) met toegankelijkheidsverklaring,
+6 (40%) zonder, en
+1 (7%) niet te controleren.
 <!-- MEDIA-MEASUREMENT:END -->
 
 <!-- EBOOKS-MEASUREMENT:START -->
 E-books (ACM-toezicht), laatste meting (7 augustus 2026): 10 e-bookplatforms gecontroleerd,
-5 (50%) met toegankelijkheidsverklaring,
-2 (20%) zonder, en
+4 (40%) met toegankelijkheidsverklaring,
+3 (30%) zonder, en
 3 (30%) niet te controleren.
 <!-- EBOOKS-MEASUREMENT:END -->
 
