@@ -17,9 +17,12 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from bs4 import BeautifulSoup  # noqa: E402
+
 from tools.scrape_footer import (  # noqa: E402
     accessibility_subpages,
     classify_html,
+    page_looks_unrendered,
     statement_page_has_statement,
 )
 
@@ -106,6 +109,39 @@ CASES = [
 # (naam, paginatekst, verwacht_verklaring). Een footer-link is gevonden; de vraag
 # is of de DOELPAGINA echt een verklaring bevat.
 # (naam, paginatekst, verwacht_verklaring)
+
+# Rendert de opgehaalde verklaring-pagina echt? Een lege huls (bot-challenge,
+# wachtrij, JS-only) mag niet als "zonder verklaring" tellen; een echte pagina
+# zonder verklaring-inhoud (Decathlon) moet juist afgekeurd blijven.
+# De tekens-aantallen komen uit de meting van 7 augustus 2026.
+RENDER_CASES = [
+    (
+        "bot-challenge: 19 tekens, geen links (De Telegraaf Webshop)",
+        "<html><body><div>Even geduld alstublieft</div></body></html>",
+        True,
+    ),
+    (
+        "lege huls: 33 tekens, twee links (Bruynzeel Keukens)",
+        '<html><body><p>Je wordt doorgestuurd, moment.</p>'
+        '<a href="/a">a</a><a href="/b">b</a></body></html>',
+        True,
+    ),
+    (
+        "echte pagina zonder verklaring blijft afgekeurd (Decathlon-geval)",
+        "<html><body><nav>NAV</nav><main><h1>Toegankelijkheid website</h1>"
+        "<p>" + "Vul het formulier in en wij nemen contact met je op. " * 6 + "</p>"
+        "</main><footer>FOOTER</footer></body></html>",
+        False,
+    ),
+    (
+        "korte tekst maar volledige navigatie: wel gerenderd",
+        '<html><body><nav>'
+        + ''.join(f'<a href="/p{n}">Pagina {n}</a>' for n in range(8))
+        + '</nav><main><p>Kort.</p></main></body></html>',
+        False,
+    ),
+]
+
 CONTENT_CASES = [
     ("echte verklaring (NL)",
      "Toegankelijkheidsverklaring. Wij streven ernaar dat onze website voldoet aan "
@@ -207,6 +243,14 @@ def run():
         if not passed:
             print(f"         -> verwacht={expected!r}\n         -> kreeg={got!r}")
 
+    print("\n  Render-waarborg verklaring-pagina:")
+    for name, html, expected in RENDER_CASES:
+        soup = BeautifulSoup(html, "html.parser")
+        got = page_looks_unrendered(soup, soup.get_text(" ", strip=True))
+        passed = got == expected
+        ok = ok and passed
+        print(f"  [{'PASS' if passed else 'FAIL'}] {name:52} niet-gerenderd={got!s:5} verwacht={expected!s:5}")
+
     print("\n  " + ("ALLES GOED" if ok else "REGRESSIE GEDETECTEERD"))
     return ok
 
@@ -224,6 +268,12 @@ def test_detector_cases():
 def test_statement_page_content():
     for name, text, expected in CONTENT_CASES:
         assert statement_page_has_statement(text) == expected, name
+
+
+def test_page_looks_unrendered():
+    for name, html, expected in RENDER_CASES:
+        soup = BeautifulSoup(html, "html.parser")
+        assert page_looks_unrendered(soup, soup.get_text(" ", strip=True)) == expected, name
 
 
 def test_accessibility_subpages():
