@@ -15,11 +15,21 @@ en staat in data/axe-rules.json.
 """
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Dezelfde watchdog als de scraper. Bewust hergebruikt in plaats van een tweede
+# variant: de drie lagen (SIGALRM -> chromium-kill -> reaper) zijn daar duur
+# betaald en uitgetest, en een kopie zou apart verrotten.
+from tools.scrape_footer import (  # noqa: E402
+    SiteTimeout, site_deadline, _kill_browser_processes, _resume_argv,
+    RECOVERY_CAP_S,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 AXE_JS = ROOT / "tools" / "vendor" / "axe.min.js"
@@ -30,6 +40,19 @@ WCAG_AA_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag22aa
 NAVIGATION_TIMEOUT = 30_000  # ms per goto
 SETTLE_MS = 1_500            # even laten renderen na domcontentloaded
 MIN_DOM = 50                 # minder elementen = pagina niet echt gerenderd
+
+# Harde wall-clock-cap per site. De losse Playwright-timeouts dekken goto en
+# wait_for_load_state, maar niet een hang in page.evaluate (de axe-run zelf) of
+# een wedged driver. Zonder deze cap hield één site de scan van 4 augustus 2026
+# tegen tot de jobcap van 60 minuten; alle runs ervoor deden 21-25 minuten.
+# Ruim boven een trage-maar-echte scan (goto 30s + settle + networkidle + axe).
+SCAN_CAP_S = 120
+
+# Tussentijds wegschrijven, zodat een afgebroken run zijn werk niet verliest.
+FLUSH_EVERY = 25
+
+# Hoe vaak de scan zichzelf mag herstarten na een onbreekbare hang.
+MAX_SCAN_RESTARTS = 5
 
 DEFAULT_SITES = [
     {"name": "bol", "url": "https://www.bol.com"},
@@ -100,6 +123,45 @@ def scan_site(page, url, axe_source, tags):
     return violations, dom
 
 
+def aggregate(results):
+    """Bouw de regelfrequentie op uit de resultaten.
+
+    Uit de scan-lus gehaald zodat een hervatte run (zie --resume-from) de
+    aggregatie gewoon opnieuw kan berekenen uit de teruggelezen resultaten,
+    in plaats van een half opgebouwde teller mee te moeten slepen.
+    """
+    rule_agg = {}
+    for rec in results:
+        if rec.get("status") != "ok":
+            continue
+        for v in rec.get("violations", []):
+            a = rule_agg.setdefault(
+                v["id"],
+                {"sites": 0, "nodes": 0, "impact": v["impact"],
+                 "sc": v["sc"], "help": v["help"]},
+            )
+            a["sites"] += 1
+            a["nodes"] += v["nodes"]
+    return dict(sorted(rule_agg.items(), key=lambda kv: kv[1]["sites"], reverse=True))
+
+
+def build_payload(results, tags):
+    return {
+        "axe_tags": tags or "all",
+        "scanned": len(results),
+        "rule_frequency": aggregate(results),
+        "results": results,
+    }
+
+
+def write_payload(out_path, results, tags):
+    out = Path(out_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = out.with_suffix(out.suffix + ".tmp")
+    tmp.write_text(json.dumps(build_payload(results, tags), indent=2, ensure_ascii=False))
+    tmp.replace(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", help="JSON-bestand met [{name,url}, ...]")
@@ -110,6 +172,9 @@ def main():
         action="store_true",
         help="ook best-practice-regels (landmarks e.d.) meetellen",
     )
+    # Zelfherstart na een onbreekbare hang; zet de reaper zelf.
+    ap.add_argument("--resume-from", type=int, default=0, help=argparse.SUPPRESS)
+    ap.add_argument("--restarts", type=int, default=0, help=argparse.SUPPRESS)
     args = ap.parse_args()
 
     if not AXE_JS.exists():
@@ -130,10 +195,64 @@ def main():
 
     tags = None if args.include_best_practice else WCAG_AA_TAGS
     print(f"axe-core scan | {len(sites)} sites | "
-          f"{'alle regels incl. best-practice' if not tags else 'alleen WCAG A/AA'}")
+          f"{'alle regels incl. best-practice' if not tags else 'alleen WCAG A/AA'}",
+          flush=True)
 
+    # Hervat na een zelfherstart: de reaper heeft alles tot en met de hangende
+    # site al weggeschreven, dus die lezen we terug.
     results = []
-    rule_agg = {}  # id -> {sites, nodes, impact, sc, help}
+    if args.resume_from and Path(args.out).exists():
+        try:
+            results = json.loads(Path(args.out).read_text()).get("results", [])
+            print(f"Hervat bij site {args.resume_from + 1}/{len(sites)} met "
+                  f"{len(results)} eerdere resultaten "
+                  f"(herstart {args.restarts}/{MAX_SCAN_RESTARTS})", flush=True)
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"Waarschuwing: deelbestand onleesbaar ({exc}); "
+                  f"begin opnieuw vanaf site {args.resume_from + 1}", flush=True)
+
+    # Waar de main thread nu mee bezig is; de reaper leest dit uit een eigen thread.
+    current = {"index": args.resume_from, "site": None}
+
+    def _reap_scan():
+        """Laatste vangnet: een site hangt zo dat noch SIGALRM noch de
+        chromium-kill de main thread lostrekt. Leg hem vast als timeout, schrijf
+        weg en herstart de scan vanaf de site erna. Zie _reap_shard in
+        scrape_footer.py voor dezelfde aanpak en de achtergrond."""
+        hanger = current["site"]
+        if hanger is not None:
+            results.append({
+                "name": hanger.get("name", hanger["url"]),
+                "url": hanger["url"],
+                "status": "timeout",
+                "error": f"Onbreekbare hang > {SCAN_CAP_S}s; scan hervat",
+            })
+        naam = hanger["url"] if hanger else "onbekend"
+        try:
+            write_payload(args.out, results, tags)
+        except Exception:  # noqa: BLE001
+            pass
+
+        resume_at = current["index"] + 1
+        if args.restarts >= MAX_SCAN_RESTARTS or resume_at >= len(sites):
+            print(f"\nWATCHDOG: {naam} hangt onbreekbaar; scan afgesloten met "
+                  f"{len(results)} resultaten (geen herstart meer over).", flush=True)
+            sys.stdout.flush()
+            sys.stderr.flush()
+            os._exit(0)
+
+        print(f"\nWATCHDOG: {naam} hangt onbreekbaar; scan hervat bij site "
+              f"{resume_at + 1}/{len(sites)} "
+              f"(herstart {args.restarts + 1}/{MAX_SCAN_RESTARTS}).", flush=True)
+        sys.stdout.flush()
+        sys.stderr.flush()
+        try:
+            _kill_browser_processes()
+        except Exception:  # noqa: BLE001
+            pass
+        os.execv(sys.executable,
+                 [sys.executable] + _resume_argv(sys.argv, resume_at, args.restarts + 1))
+
     UA = (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -144,11 +263,31 @@ def main():
             b = p.chromium.launch(headless=True)
             return b, b.new_context(user_agent=UA)
 
+        def safe_new_browser():
+            """new_browser onder een eigen cap.
+
+            Een verse browser starten kan zélf hangen op een wedged driver, en
+            dit draait in de except-tak, dus buiten de per-site-deadline. Dat is
+            precies waar shard 4 en 9 van de scraper op sneuvelden (zie
+            _recover_page in scrape_footer.py). Lukt het niet, dan is er binnen
+            dit proces niets meer te redden en herstart de reaper de scan.
+            """
+            try:
+                with site_deadline(RECOVERY_CAP_S, on_giveup=_reap_scan):
+                    return new_browser()
+            except SiteTimeout:
+                print("  (browserherstel mislukt, scan herstart)", flush=True)
+                _reap_scan()
+                raise  # _reap_scan hoort niet terug te keren
+
         browser, context = new_browser()
         for i, site in enumerate(sites, 1):
+            if i <= args.resume_from:
+                continue
+            current["index"], current["site"] = i - 1, site
             if not browser.is_connected():  # herstart na een crash
-                print("  (browser herstart)")
-                browser, context = new_browser()
+                print("  (browser herstart)", flush=True)
+                browser, context = safe_new_browser()
             url = site["url"]
             name = site.get("name", url)
             page = context.new_page()
@@ -156,61 +295,59 @@ def main():
             rec = {"name": name, "url": url}
             t0 = time.time()
             try:
-                violations, dom_elements = scan_site(page, url, axe_source, tags)
+                # Harde wall-clock-cap om de losse Playwright-timeouts heen: die
+                # dekken de axe-run in page.evaluate niet. Zie SCAN_CAP_S.
+                with site_deadline(SCAN_CAP_S, on_giveup=_reap_scan):
+                    violations, dom_elements = scan_site(page, url, axe_source, tags)
                 rec["dom_elements"] = dom_elements
                 rec["load_ms"] = int((time.time() - t0) * 1000)
                 if violations is None:
                     rec["status"] = "niet-gerenderd"
                     print(f"[{i}/{len(sites)}] {name:<16} NIET GERENDERD "
-                          f"({dom_elements} elem)")
+                          f"({dom_elements} elem)", flush=True)
                 else:
                     rec["status"] = "ok"
                     rec["violations"] = violations
                     rec["total_nodes"] = sum(v["nodes"] for v in violations)
-                    for v in violations:
-                        a = rule_agg.setdefault(
-                            v["id"],
-                            {"sites": 0, "nodes": 0, "impact": v["impact"],
-                             "sc": v["sc"], "help": v["help"]},
-                        )
-                        a["sites"] += 1
-                        a["nodes"] += v["nodes"]
                     print(f"[{i}/{len(sites)}] {name:<16} {len(violations):>3} regels, "
                           f"{rec['total_nodes']:>4} elem, dom={dom_elements} "
-                          f"({time.time()-t0:.1f}s)")
+                          f"({time.time()-t0:.1f}s)", flush=True)
+            except SiteTimeout:
+                # Cap-hit: niet te scannen, nooit "geen fouten gevonden". De
+                # browser kan corrupt zijn, dus vers beginnen.
+                rec["status"] = "timeout"
+                rec["error"] = f"Per-site cap {SCAN_CAP_S}s overschreden"
+                print(f"[{i}/{len(sites)}] {name:<16} CAP ({SCAN_CAP_S}s)", flush=True)
+                try:
+                    _kill_browser_processes()
+                except Exception:  # noqa: BLE001
+                    pass
+                browser, context = safe_new_browser()
             except PlaywrightTimeout:
                 rec["status"] = "timeout"
-                print(f"[{i}/{len(sites)}] {name:<16} TIMEOUT")
+                print(f"[{i}/{len(sites)}] {name:<16} TIMEOUT", flush=True)
             except Exception as e:  # noqa: BLE001
                 rec["status"] = "error"
                 rec["error"] = str(e)[:200]
-                print(f"[{i}/{len(sites)}] {name:<16} ERROR: {str(e)[:80]}")
+                print(f"[{i}/{len(sites)}] {name:<16} ERROR: {str(e)[:80]}", flush=True)
             finally:
                 try:
                     page.close()
                 except Exception:  # noqa: BLE001
                     pass
             results.append(rec)
+            if len(results) % FLUSH_EVERY == 0:
+                write_payload(args.out, results, tags)
         browser.close()
 
-    out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "axe_tags": tags or "all",
-        "scanned": len(results),
-        "rule_frequency": dict(
-            sorted(rule_agg.items(), key=lambda kv: kv[1]["sites"], reverse=True)
-        ),
-        "results": results,
-    }
-    out.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+    write_payload(args.out, results, tags)
 
+    rule_agg = aggregate(results)
     ok = [r for r in results if r["status"] == "ok"]
-    print(f"\nGescand: {len(ok)}/{len(results)} geslaagd. Detail: {out}")
+    print(f"\nGescand: {len(ok)}/{len(results)} geslaagd. Detail: {args.out}", flush=True)
     if ok:
         print("\nMeest voorkomende fouten (op hoeveel sites):")
-        top = sorted(rule_agg.items(), key=lambda kv: kv[1]["sites"], reverse=True)
-        for rid, a in top[:15]:
+        for rid, a in list(rule_agg.items())[:15]:
             sc = f"SC {a['sc']}" if a["sc"] else ""
             print(f"  {a['sites']:>2} sites  {a['nodes']:>5} elem  "
                   f"{(a['impact'] or '?'):<8} {rid}  {sc}")
