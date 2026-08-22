@@ -23,14 +23,16 @@ Format van data/hulptools.json (lijst van objecten, volgorde = volgorde op pagin
         "wat": "Wat de tool doet.",
         "grens": "Wat de tool niet doet of niet vindt.",
         "prijs": "Gratis.",
-        "platform": "Chrome, Firefox",
-        "eigen": true
+        "platform": "Chrome, Firefox"
       }
     ]
 
-Het veld "eigen" markeert een tool van Proper Access, de maker van EAA Monitor.
-Die vermelding is bewust zichtbaar: de monitor staat los van dat merk, dus een
-lezer moet kunnen zien waar een tool vandaan komt.
+"categorie" mag ook een lijst zijn. De tool verschijnt dan in elke genoemde
+categorie. Met "varianten" geef je per categorie een eigen "wat" en "grens",
+zodat een kaart vertelt wat de tool in dat rijtje doet:
+
+    "categorie": ["in-pagina", "contrast"],
+    "varianten": { "contrast": { "wat": "...", "grens": "..." } }
 """
 
 import html
@@ -96,15 +98,25 @@ def _badge(text, extra=""):
     return f'<span class="bron-badge {extra}">{html.escape(text)}</span>'
 
 
-def _card(tool):
+def _categorieen(tool):
+    """categorie mag een string of een lijst zijn."""
+    waarde = tool.get("categorie", "")
+    if isinstance(waarde, list):
+        return [str(c).strip() for c in waarde if str(c).strip()]
+    return [str(waarde).strip()] if str(waarde).strip() else []
+
+
+def _card(tool, categorie):
+    # Een tool die in meerdere categorieën staat, kan per categorie een eigen
+    # tekst hebben: in het contrastrijtje vertel je wat hij met contrast doet.
+    variant = (tool.get("varianten") or {}).get(categorie, {})
     naam = html.escape(str(tool.get("naam", "")).strip())
     url = str(tool.get("url", "")).strip()
     aanbieder = html.escape(str(tool.get("aanbieder", "")).strip())
-    wat = html.escape(str(tool.get("wat", "")).strip())
-    grens = html.escape(str(tool.get("grens", "")).strip())
+    wat = html.escape(str(variant.get("wat") or tool.get("wat", "")).strip())
+    grens = html.escape(str(variant.get("grens") or tool.get("grens", "")).strip())
     prijs = html.escape(str(tool.get("prijs", "")).strip())
     platform = html.escape(str(tool.get("platform", "")).strip())
-    eigen = bool(tool.get("eigen"))
 
     titel = (
         f'<a href="{html.escape(url)}" target="_blank" rel="noopener noreferrer" '
@@ -113,19 +125,12 @@ def _card(tool):
         if url
         else naam
     )
-    eigen_regel = (
-        '\n          <p class="mt-3 text-sm text-gray-700 bg-zachtgroen rounded-lg px-3 py-2">'
-        "Van Proper Access, de maker van EAA Monitor. We noemen het erbij, zodat je weet "
-        "waar deze tool vandaan komt.</p>"
-        if eigen
-        else ""
-    )
     meta = " &middot; ".join(p for p in (aanbieder, platform) if p)
     return f"""        <li class="card p-6 flex flex-col">
           <h3 class="font-display text-xl font-semibold text-navy leading-snug">{titel}</h3>
           <p class="mt-1 text-sm text-gray-600">{meta}</p>
           <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">{wat}</p>
-          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> {grens}</p>{eigen_regel}
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> {grens}</p>
           <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> {prijs}</p>
         </li>"""
 
@@ -133,10 +138,10 @@ def _card(tool):
 def _sections(tools):
     blocks = []
     for slug, kop, intro in CATEGORIES:
-        groep = [t for t in tools if str(t.get("categorie", "")).strip() == slug]
+        groep = [t for t in tools if slug in _categorieen(t)]
         if not groep:
             continue
-        cards = "\n".join(_card(t) for t in groep)
+        cards = "\n".join(_card(t, slug) for t in groep)
         blocks.append(
             f"""    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="cat-{slug}">
       <h2 id="cat-{slug}" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">{html.escape(kop)}</h2>
@@ -203,29 +208,27 @@ def render(tools):
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12">
         <p class="eyebrow">Zelf aan de slag</p>
         <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Hulp bij digitale toegankelijkheid</h1>
-        <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">Je site of je PDF moet toegankelijk zijn, en je weet nog niet waar je staat. Hieronder staan de tools waarmee je dat zelf kunt nakijken, gegroepeerd naar wat je wilt weten. Bij elke tool staat er ook bij wat hij niet vindt, want dat is het deel waar het misgaat.</p>
+        <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">Je site of je PDF moet toegankelijk zijn, en je weet nog niet waar je staat. Hieronder staan de tools waarmee je dat zelf kunt nakijken, met bij elke tool erbij wat hij niet vindt.</p>
       </div>
     </section>
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="notice notice-warning max-w-3xl">
-        <p><strong>Een tool ziet ongeveer 30% van de succescriteria.</strong> WCAG 2.2 telt op niveau A en AA samen 55 succescriteria. Een geautomatiseerde scan herkent daar ongeveer 30% van. Dat cijfer is een schatting uit het vakgebied en geen meting van ons, dus neem het als orde van grootte.</p>
-        <p class="mt-3">Wat een tool kan meten is wat meetbaar is: ontbreekt er een alt-attribuut, zakt de contrastverhouding onder 4,5:1, heeft een knop een toegankelijke naam. Wat geen tool beoordeelt is betekenis. Of die alt-tekst klopt bij de afbeelding. Of de volgorde waarin een schermlezer voorleest logisch is. Of je met het toetsenbord weer uit een dialoogvenster komt.</p>
-        <p class="mt-3">Nul fouten in een scan is dus geen bewijs. <a href="/artikelen/toezicht-en-boetes.html" class="link">Wat de toezichthouder wel doet</a>, staat in de kennisbank.</p>
-      </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12">
-      <div class="prose max-w-prose">
-        <h2 class="mt-0">Wat de combinatie is die werkt</h2>
-        <p>Wil je het zelf doen, dan kom je het verst met drie dingen naast elkaar: een tool die de meetbare fouten voor je opzoekt, een schermlezer erbij, en een doorloop van je pagina met alleen je toetsenbord. Die laatste kost niets en vindt de problemen die het zwaarst wegen voor je bezoeker.</p>
-        <p>Begin bij de pagina's waar het om gaat. Voor een webshop is dat het hele afrekenproces, van product in het mandje tot betaling. Dat is ook het pad dat de Autoriteit Consument en Markt doorloopt bij een controle.</p>
+        <p><strong>Een tool ziet ongeveer 30% van de checkpunten.</strong> Een geautomatiseerde scan herkent ongeveer 30% van alle checkpunten onder WCAG. Dat cijfer is een schatting uit het vakgebied en geen meting van ons. Wat overblijft is alles waar betekenis bij komt kijken: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt. Nul fouten in een scan is dus geen bewijs.</p>
       </div>
     </section>
 
 {_sections(tools)}
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-20">
+      <div class="prose max-w-prose">
+        <h2 class="mt-0">De combinatie die werkt</h2>
+        <p>Wil je het zelf doen, dan kom je het verst met drie dingen naast elkaar: een tool die de meetbare fouten voor je opzoekt, een schermlezer erbij, en een doorloop van je pagina met alleen je toetsenbord. Die laatste kost niets en vindt de problemen die het zwaarst wegen voor je bezoeker.</p>
+        <p>Begin bij de pagina's waar het om gaat. Voor een webshop is dat het hele afrekenproces, van product in het mandje tot betaling. Dat is ook het pad dat de Autoriteit Consument en Markt doorloopt bij een controle. <a href="/artikelen/toezicht-en-boetes.html" class="link">Wat de toezichthouder verder doet</a>, staat in de kennisbank.</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12">
       <div class="grid gap-6 md:grid-cols-2">
         <div class="card p-6">
           <h2 class="font-display text-xl font-semibold text-navy">Overlays staan er niet bij</h2>
@@ -244,7 +247,6 @@ def render(tools):
       <div class="prose max-w-prose">
         <h2 class="mt-0">Hoe een tool op deze lijst komt</h2>
         <p>Niemand betaalt voor een plek hier. De lijst bestaat uit tools die in de Nederlandse auditpraktijk worden gebruikt, en bij elke tool staat wat hij niet vindt. Zonder die tweede regel wordt een lijst als deze een reclamefolder.</p>
-        <p>Twee tools op deze pagina komen van Proper Access, de maker van EAA Monitor: de WCAG Radar en pdf-toegankelijk.nl. Die staan er met dezelfde vermelding als de rest, en met een label erbij zodat je ziet waar ze vandaan komen. Deze monitor staat verder los van dat merk.</p>
         <p>Mis je een tool, of klopt er iets niet meer? <a href="/melden.html" class="link">Laat het weten</a>.</p>
       </div>
     </section>
@@ -266,16 +268,15 @@ def main():
         sys.exit(f"{DATA_FILE.name} moet een JSON-lijst zijn.")
 
     bekend = {slug for slug, _, _ in CATEGORIES}
-    onbekend = sorted(
-        {str(t.get("categorie", "")).strip() for t in tools} - bekend - {""}
-    )
+    gebruikt = {c for t in tools for c in _categorieen(t)}
+    onbekend = sorted(gebruikt - bekend)
     if onbekend:
         sys.exit(
             "Onbekende categorie in hulptools.json: "
             + ", ".join(onbekend)
             + ". Voeg hem toe aan CATEGORIES in build_hulp.py."
         )
-    zonder = [str(t.get("naam", "?")) for t in tools if not str(t.get("categorie", "")).strip()]
+    zonder = [str(t.get("naam", "?")) for t in tools if not _categorieen(t)]
     if zonder:
         sys.exit("Tool zonder categorie: " + ", ".join(zonder))
 

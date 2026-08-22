@@ -105,7 +105,7 @@ NAV_ITEMS = [
     ("Kennisbank", "/artikelen.html"),
     ("Bronnen", "/bronnen.html"),
     ("Vragen", "/vragen.html"),
-    ("Hulp", "/hulp.html"),
+    ("Tools", "/hulp.html"),
     ("Eregalerij", "/eregalerij.html"),
 ]
 
@@ -296,7 +296,7 @@ def site_footer():
             <li><a href="/monitor-reizen.html" class="hover:text-white">Reismonitor</a></li>
             <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
             <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
-            <li><a href="/hulp.html" class="hover:text-white">Hulp en tools</a></li>
+            <li><a href="/hulp.html" class="hover:text-white">Tools</a></li>
           </ul>
         </div>
         <div>
