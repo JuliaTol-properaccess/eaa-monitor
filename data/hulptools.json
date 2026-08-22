@@ -162,5 +162,15 @@
     "grens": "Controleert wat meetbaar is in de tagstructuur. Of de volgorde van die tags klopt met hoe het document gelezen moet worden, beoordeel je zelf.",
     "prijs": "Gratis.",
     "platform": "Windows"
+  },
+  {
+    "naam": "Adobe Acrobat Pro",
+    "url": "https://www.adobe.com/nl/acrobat.html",
+    "aanbieder": "Adobe",
+    "categorie": "documenten",
+    "wat": "Hiermee werk je de tagstructuur van een bestaande PDF handmatig bij, via het paneel Toegankelijkheidstags, en pas je de leesvolgorde aan. Arbeidsintensief werk, en bij een document dat al af is soms de enige route.",
+    "grens": "De ingebouwde toegankelijkheidscontrole meldt wat meetbaar is in de tagstructuur. Of de leesvolgorde klopt en of een alternatieve tekst de afbeelding dekt, beoordeel je zelf. Een document zonder meldingen in Acrobat is dus nog geen toegankelijk document.",
+    "prijs": "€ 285 per jaar.",
+    "platform": "Windows, macOS"
   }
 ]

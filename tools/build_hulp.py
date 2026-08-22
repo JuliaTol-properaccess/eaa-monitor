@@ -214,7 +214,7 @@ def render(tools):
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="notice notice-warning max-w-3xl">
-        <p><strong>Een tool ziet ongeveer 30% van de checkpunten.</strong> Een geautomatiseerde scan herkent ongeveer 30% van alle checkpunten onder WCAG. Dat cijfer is een schatting uit het vakgebied en geen meting van ons. Wat overblijft is alles waar betekenis bij komt kijken: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt. Nul fouten in een scan is dus geen bewijs.</p>
+        <p><strong>Een tool ziet ongeveer 30% van de checkpunten.</strong> Een geautomatiseerde scan herkent ongeveer 30% van alle checkpunten onder WCAG. Dat cijfer is een schatting uit het vakgebied en geen meting van ons. Wat overblijft is alles waar betekenis bij komt kijken: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt. Nul fouten in een scan is dus geen bewijs: Proper Access onderzocht een site die in de scan nul fouten gaf en leverde een rapport op met <a href="https://www.properaccess.nl/blog/nul-fouten-scan-ruim-honderd-bevindingen-audit/" target="_blank" rel="noopener noreferrer" class="link">ruim honderd bevindingen<span class="sr-only"> (opent in een nieuw tabblad)</span></a>.</p>
       </div>
     </section>
 
@@ -236,7 +236,7 @@ def render(tools):
           <p class="mt-3 text-[15px] text-gray-700 leading-relaxed"><a href="/artikelen/overlay-tools-werken-niet.html" class="link font-semibold">Lees waarom een overlay je probleem niet oplost</a></p>
         </div>
         <div class="card p-6">
-          <h2 class="font-display text-xl font-semibold text-navy">Liever iemand die het voor je doet</h2>
+          <h2 class="font-display text-xl font-semibold text-navy">Liever een compleet beeld door een expert?</h2>
           <p class="mt-3 text-[15px] text-gray-700 leading-relaxed">Een onderzoek door een mens vindt de andere 70%: de leesvolgorde, de foutmeldingen, de bediening met alleen een toetsenbord, en of een alternatief klopt. Val je onder het Besluit digitale toegankelijkheid overheid, dan is dat ook de enige route naar een verklaring in het Register, want dat accepteert alleen onderzoek volgens WCAG-EM.</p>
           <p class="mt-3 text-[15px] text-gray-700 leading-relaxed"><a href="/wcag-audit.html" class="link font-semibold">Vind een auditbureau</a></p>
         </div>
