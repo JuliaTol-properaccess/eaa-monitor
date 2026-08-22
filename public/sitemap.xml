@@ -424,6 +424,29 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://eaa-monitor.nl/en/articles.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/en/articles/does-the-eaa-apply-to-my-website.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/en/articles/what-the-eaa-actually-requires.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/en/articles/who-enforces-the-eaa-in-the-netherlands.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://eaa-monitor.nl/artikelen/eaa-financiele-sector.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
