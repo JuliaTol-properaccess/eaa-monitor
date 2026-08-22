@@ -138,8 +138,9 @@ FAQ = [
     ),
     (
         "Welke tool kan ik gebruiken als ik geen developer ben?",
-        "Begin met de WCAG Radar. Die heeft een apart tabblad voor redactie, met de controles die horen "
-        "bij alt-teksten, koppen en linkteksten, en zet het resultaat in de pagina zelf. WAVE geeft het "
+        "Begin met de gratis versie van de WCAG Radar. Die heeft een apart tabblad voor redactie, met "
+        "de controles die horen bij alt-teksten, koppen en linkteksten, en zet het resultaat in de "
+        "pagina zelf. Je hebt er geen account voor nodig. WAVE geeft het "
         "snelste visuele overzicht, maar om te beoordelen wat een melding daar betekent heb je "
         "behoorlijk wat technische kennis nodig.",
     ),
