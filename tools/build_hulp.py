@@ -37,6 +37,7 @@ zodat een kaart vertelt wat de tool in dat rijtje doet:
 
 import html
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -92,6 +93,35 @@ CATEGORIES = [
         "dit het onderdeel dat het vaakst wordt overgeslagen.",
     ),
 ]
+
+
+NL_MAANDEN = [
+    "", "januari", "februari", "maart", "april", "mei", "juni",
+    "juli", "augustus", "september", "oktober", "november", "december",
+]
+
+
+def _laatst_gewijzigd():
+    """Datum van de laatste inhoudelijke wijziging aan data/hulptools.json.
+
+    Uit git, niet uit de klok: een herbouw zonder wijziging mag de pagina niet
+    verser laten lijken dan hij is. Lukt git niet, dan komt er geen datum op de
+    pagina en geen dateModified in de JSON-LD. Een ontbrekende datum is beter
+    dan een datum die niet klopt.
+    """
+    try:
+        uit = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", str(DATA_FILE)],
+            cwd=str(ROOT), capture_output=True, text=True, timeout=10, check=True,
+        ).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return uit or None
+
+
+def _nl_datum(iso):
+    jaar, maand, dag = iso.split("-")
+    return f"{int(dag)} {NL_MAANDEN[int(maand)]} {jaar}"
 
 
 def _badge(text, extra=""):
@@ -185,6 +215,9 @@ def _jsonld(tools):
         "inLanguage": "nl-NL",
         "isPartOf": {"@type": "WebSite", "name": "EAA Monitor", "url": BASE_URL},
     }
+    gewijzigd = _laatst_gewijzigd()
+    if gewijzigd:
+        page["dateModified"] = gewijzigd
     if items:
         page["mainEntity"] = {
             "@type": "ItemList",
@@ -200,6 +233,14 @@ def _jsonld(tools):
 
 def render(tools):
     head = shared_head(TITLE, DESCRIPTION, URL, extra_head=_jsonld(tools))
+    gewijzigd = _laatst_gewijzigd()
+    datumregel = (
+        f'\n        <p class="mt-4 text-sm text-gray-600">Deze lijst telt {len(tools)} tools '
+        f'en is bijgewerkt op <time datetime="{gewijzigd}">{_nl_datum(gewijzigd)}</time>. '
+        "Prijzen en functies veranderen; controleer ze bij de aanbieder zelf.</p>"
+        if gewijzigd
+        else ""
+    )
     return f"""{head}<body class="bg-papier">
 {site_header(ACTIVE_PATH)}
   <main id="main">
@@ -208,7 +249,7 @@ def render(tools):
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12">
         <p class="eyebrow">Zelf aan de slag</p>
         <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Hulp bij digitale toegankelijkheid</h1>
-        <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">Je site of je PDF moet toegankelijk zijn, en je weet nog niet waar je staat. Hieronder staan de tools waarmee je dat zelf kunt nakijken, met bij elke tool erbij wat hij niet vindt.</p>
+        <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">Je site of je PDF moet toegankelijk zijn, en je weet nog niet waar je staat. Hieronder staan de tools waarmee je dat zelf kunt nakijken, met de beperkingen die elke tool heeft.</p>{datumregel}
       </div>
     </section>
 
