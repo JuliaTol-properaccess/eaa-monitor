@@ -10,6 +10,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de eigen meet-regio in `llms.txt` bakt. **Zes datasets** via `--dataset {webshops,financieel,telecom,vervoer,media,ebooks}` (default `webshops`), volledig config-gestuurd via de `DATASETS`-dict: `webshops` bakt in `index.html` (legacy ongeprefixte markers); elke andere sector bakt in zijn eigen `monitor-<sector>.html` én vult een hub-kaart op `index.html` (markers `STAT:{hub_prefix}Total`/`STAT:{hub_prefix}PctWithout`). Nieuwe sector toevoegen = DATASETS-entry + `data/<sector>.json` + monitorpagina + hub-kaart op index.html + llms-regio. Pagina's met bot-protectie of wachtrij (minder dan 5 links) tellen als "niet te controleren", nooit als "zonder verklaring"
 - `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
+- `tools/build_hulp.py` — Rendert `data/hulptools.json` → `public/hulp.html` (server-rendered toolsoverzicht per categorie, met SoftwareApplication ItemList JSON-LD). Categorieën staan in `CATEGORIES` in de tool; een onbekende categorie laat de build hard falen. Deelt head/header/footer met `build_articles.py`
 - `tools/build_vragen.py` — Rendert `data/vragen.json` → `public/vragen.html` (server-rendered vraag-en-antwoord met FAQPage JSON-LD). Deelt head/header/footer met `build_articles.py`
 - `tools/build_bronnen.py` — Rendert `data/bronnen.json` → `public/bronnen.html` (server-rendered, filterbaar bronnenoverzicht). Deelt head/header/footer met `build_articles.py`; de filters/zoek werken client-side via `public/static/bronnen.js`
 - `tools/build_halloffame.py` — Rendert `data/halloffame.json` → `public/eregalerij.html` (server-rendered, met ItemList JSON-LD). Observaties zijn optioneel; staan ze er, dan toont de kaart het blok "Wat doet deze website goed?" met codevoorbeelden. **Draait ook in `deploy.yml`**, zodat een nominatie die de Worker naar main commit meteen live komt. Stemtellers komen client-side van de Worker via `public/static/halloffame.js`. Deelt head/header/footer met `build_articles.py`
@@ -30,6 +31,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `data/objections.json` — Webshops met bezwaar (overlay; client-side uitgesloten, geen e-mailadressen). Bijgewerkt via PR's van de bezwaar-Worker of handmatig
 - `data/auditbureaus.json` — Handmatig samengestelde lijst van auditbureaus voor de WCAG-audit-pagina (velden: `naam`, `website`, `specialisatie`, `talen`)
 - `data/vragen.json` — Handmatig samengestelde lijst van beantwoorde praktijkvragen (velden: `vraag`, `antwoord`, optioneel `toezichthouder`, `datum`, `thema`, `bron`). Gevuld vanuit binnengekomen anonieme vragen; nooit antwoorden verzinnen
+- `data/hulptools.json` — Handmatig samengestelde lijst van tools voor de hulppagina (velden: `naam`, `url`, `aanbieder`, `categorie`, `wat`, `grens`, `prijs`, `platform`, optioneel `eigen`). `grens` is verplicht: elke tool krijgt erbij wat hij *niet* vindt. `eigen: true` markeert een tool van Proper Access (WCAG Radar, pdf-toegankelijk.nl) en rendert de zichtbare herkomstvermelding; niemand betaalt voor een plek
 - `data/bronnen.json` — Externe bronnen over de EAA voor de bronnenpagina (velden: `title`, `url`, `author`, `category`, optioneel `date`). `category` uit de vaste lijst in `build_bronnen.py`. `date` wordt aangevuld door `fetch_bron_dates.py`
 - `data/axe-results.json` — Automatisch gegenereerde **WCAG-scan-overlay** (door `build_axe_overlay.py`): per site met verklaring een `status` (`fouten`/`schoon`/`niet-scanbaar`) plus een `summary`. `app.js` koppelt dit client-side op `normalizeUrl`, **los van de footer-scrape** (zoals `objections.json`), zodat een nieuwe scrape de scanuitslag niet overschrijft. Niet handmatig bewerken. `data/axe-rules.json` is de regelcatalogus (welke axe-regels meetellen)
 - `data/halloffame.json` — Eregalerij-vermeldingen (velden: `naam`, `url`, `slug`, `datum`, `motivatie`, optioneel `observaties` met `titel`/`beschrijving`/`code`/`wcag`, `categorie`, `hulptechnologie`). De Worker commit bevestigde nominaties **direct naar main** (geen PR, geen controle, besluit 21 juni 2026); de deploy bouwt de eregalerij opnieuw. Julia kan een entry later verrijken met `observaties`. **Nooit e-mailadressen** in dit bestand; `slug` na publicatie niet wijzigen (stemtellers hangen eraan)
@@ -39,6 +41,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `monitor.html` + `app.js` — Het interactieve dashboard (grafiek/tabel, filters, sorteerbare tabel). Leest `?q=` uit de URL voor de zoekterm vanaf de home. `app.js` is config-gestuurd via `window.EAA_MONITOR_CONFIG` (`dataUrl`, `noun`, `categoryLabels`, `sortLabels`); zonder config gelden de webshop-defaults. Bevat de kolom **WCAG-scan** (fouten gevonden / geen fouten gevonden / niet te scannen, met doorverwijzing naar wcag-scan.eu voor detail), gevoed door de overlay `data/axe-results.json` en alleen gevuld bij sites met een verklaring. `monitor.html` heeft de `AXE-STAT`-markers voor het gebakken kerncijfer
 - `monitor-financieel.html` / `monitor-telecom.html` / `monitor-vervoer.html` / `monitor-media.html` / `monitor-ebooks.html` — Hetzelfde dashboard per sector, elk met eigen config (`dataUrl`, `noun`, `categoryLabels`) en eigen copy. **Bevatten de scraper-markers**; gevuld door `scrape_footer.py --dataset <sector>`. Delen allemaal `app.js`
 - `artikelen.html` + `artikelen/*.html` — Kennisbank, **gegenereerd** door `build_articles.py` (niet handmatig bewerken)
+- `hulp.html` — Hulp bij digitale toegankelijkheid: toolsoverzicht per categorie (in-pagina checkers, contrast, structuur, schermlezers, documenten), **gegenereerd** door `build_hulp.py` uit `data/hulptools.json` (niet handmatig bewerken). Staat in de hoofdnavigatie als "Hulp"
 - `wcag-audit.html` — Overzicht van auditbureaus, **gegenereerd** door `build_auditbureaus.py` uit `data/auditbureaus.json` (niet handmatig bewerken)
 - `vragen.html` — Vragen uit de praktijk, **gegenereerd** door `build_vragen.py` uit `data/vragen.json` (niet handmatig bewerken)
 - `vraag-stellen.html` — Anoniem vraagformulier → bezwaar-Worker (`VRAAG_ENDPOINT`, route `/vraag`). Handgeschreven
@@ -62,6 +65,15 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `.github/workflows/scrape.yml` — Wekelijkse cron die scrapt en resultaten commit
 - `.github/workflows/scan-axe.yml` — Wekelijkse cron (dinsdag, na de maandag-scrape) die `build_axe_targets` → `scan_axe` → `build_axe_overlay --patch-html` draait en `data/axe-results.json` + `public/monitor.html` commit
 - `.github/workflows/deploy.yml` — Deploy naar GitHub Pages (kopieert de hele `public/`-tree recursief)
+
+## Navigatie: twee plekken, geen één
+
+`NAV_ITEMS` in `tools/build_articles.py` is de bron voor de gegenereerde pagina's (kennisbank,
+artikelen, bronnen, vragen, eregalerij, wcag-audit, hulp, colofon, privacy). De handgeschreven
+pagina's (`index.html`, alle `monitor*.html`, `over.html`, de formulierpagina's) hebben elk een
+eigen kopie van diezelfde header en footer in de HTML. Voeg je een nav-item toe, dan moet je die
+kopieën apart patchen, anders loopt de navigatie per pagina uiteen. De Engelse pagina's in
+`public/en/` hebben een eigen nav en blijven buiten een NL-only toevoeging.
 
 ## Auto-gegenereerde regio's (niet breken)
 
@@ -97,6 +109,8 @@ python tools/build_auditbureaus.py
 
 # Praktijkvragen-pagina (her)bouwen na een wijziging in data/vragen.json
 python tools/build_vragen.py
+# Hulppagina (her)bouwen na een wijziging in data/hulptools.json
+python tools/build_hulp.py
 # Bronnenpagina (her)bouwen na een wijziging in data/bronnen.json
 python tools/build_bronnen.py
 

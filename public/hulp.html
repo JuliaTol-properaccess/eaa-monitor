@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="nl" class="utrecht-theme theme-telling">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hulp bij digitale toegankelijkheid: tools en waar je begint — EAA Monitor</title>
+  <meta name="description" content="Waar begin je als je website of PDF toegankelijk moet zijn? Een overzicht van tools om zelf te controleren: in-pagina checkers, contrastmeters, schermlezers en documenttools, met per tool wat hij niet vindt.">
+  <link rel="canonical" href="https://eaa-monitor.nl/hulp.html">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eaa-monitor.nl/hulp.html">
+  <meta property="og:title" content="Hulp bij digitale toegankelijkheid: tools en waar je begint — EAA Monitor">
+  <meta property="og:description" content="Waar begin je als je website of PDF toegankelijk moet zijn? Een overzicht van tools om zelf te controleren: in-pagina checkers, contrastmeters, schermlezers en documenttools, met per tool wat hij niet vindt.">
+  <meta property="og:site_name" content="EAA Monitor">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hulp bij digitale toegankelijkheid: tools en waar je begint — EAA Monitor">
+  <meta name="twitter:description" content="Waar begin je als je website of PDF toegankelijk moet zijn? Een overzicht van tools om zelf te controleren: in-pagina checkers, contrastmeters, schermlezers en documenttools, met per tool wat hij niet vindt.">
+  <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
+
+  <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/fonts.css">
+  <link rel="stylesheet" href="/static/tailwind.css">
+  <link rel="stylesheet" href="/static/utrecht-tokens.css">
+  <link rel="stylesheet" href="/static/utrecht.css">
+  <link rel="stylesheet" href="/static/utrecht-theme.css">
+  <link rel="stylesheet" href="/static/site.css">
+
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-oCJ6R9bzu6l8fcjrJ8_xA.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://eaa-monitor.nl/hulp.html#page",
+  "url": "https://eaa-monitor.nl/hulp.html",
+  "name": "Hulp bij digitale toegankelijkheid",
+  "description": "Waar begin je als je website of PDF toegankelijk moet zijn? Een overzicht van tools om zelf te controleren: in-pagina checkers, contrastmeters, schermlezers en documenttools, met per tool wat hij niet vindt.",
+  "inLanguage": "nl-NL",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "EAA Monitor",
+    "url": "https://eaa-monitor.nl"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 15,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "WCAG Radar",
+          "url": "https://testtoegankelijkheid.nl/wcag-radar",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Bookmarklet en browserextensie met drie tabbladen: redactie, design en development. Markeert alt-teksten, koppen, linkteksten, contrast, focus en ARIA in de pagina die je op dat moment bekijkt. Alles rekent in je eigen browser, dus je kunt ook testen achter een login, op een acceptatieomgeving en op localhost.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Proper Access"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "axe DevTools",
+          "url": "https://www.deque.com/axe/devtools/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Browserextensie die de meetbare fouten in je code opzoekt en per bevinding uitlegt wat er mis is. Weinig valse meldingen. De engine eronder, axe-core, draait ook onder de wekelijkse WCAG-scan van deze monitor.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Deque"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "WAVE",
+          "url": "https://wave.webaim.org/extension/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Zet iconen in de pagina zelf, zodat je zonder technische kennis ziet waar iets mis is. Het snelste visuele overzicht van deze lijst.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "WebAIM"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Accessibility Insights for Web",
+          "url": "https://accessibilityinsights.io/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Combineert een automatische scan met een geleide handmatige toets. Die toets loopt stap voor stap langs de checks die een tool niet zelf kan doen, zoals de toetsenbordbediening en de focusvolgorde.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Microsoft"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Lighthouse",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Zit al in Chrome, onder de ontwikkelaarstools. Geeft in een paar seconden een indruk van de meetbare fouten.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Google"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "ANDI",
+          "url": "https://www.ssa.gov/accessibility/andi/help/install.html",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Bookmarklet die niets installeert. Bruikbaar op een werkplek waar je geen extensies mag installeren.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Social Security Administration"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "WebAIM Contrast Checker",
+          "url": "https://webaim.org/resources/contrastchecker/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Twee kleuren invullen, contrastverhouding eruit, met een oordeel over niveau AA en AAA. De snelste manier om een kleurenpaar te controleren.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "WebAIM"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Colour Contrast Analyser",
+          "url": "https://www.tpgi.com/color-contrast-checker/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Desktopprogramma met een pipet waarmee je kleuren van je scherm plukt. Precies wat je nodig hebt bij tekst op een foto of op een verloop, waar geen kleurwaarde in de code te vinden is.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "TPGi"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "HeadingsMap",
+          "url": "https://addons.mozilla.org/nl/firefox/addon/headingsmap/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Toont de koppenstructuur van een pagina als boom. In één blik zie je of je van een kop op niveau 2 naar niveau 4 springt of dat er twee koppen op niveau 1 staan.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Browserextensie"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "NVDA",
+          "url": "https://www.nvaccess.org/download/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Gratis en open source schermlezer voor Windows. Dit is de schermlezer waarmee in de Nederlandse auditpraktijk het meest wordt getoetst.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "NV Access"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "VoiceOver",
+          "url": "https://support.apple.com/nl-nl/guide/voiceover/welcome/mac",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Zit ingebouwd in macOS en iOS. Op de Mac zet je hem aan met Cmd + F5. Op iOS is dit de schermlezer waarmee je een app op een echt toestel toetst.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Apple"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "TalkBack",
+          "url": "https://support.google.com/accessibility/android/answer/6283677",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Zit ingebouwd in Android. Nodig zodra je een Android-app onderzoekt.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Google"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 13,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "JAWS",
+          "url": "https://www.freedomscientific.com/products/software/jaws/",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Betaalde schermlezer voor Windows, veel gebruikt binnen grotere organisaties. Werkt je publiek in zo'n omgeving, dan is dit de software waarmee ze je site openen.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Freedom Scientific"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 14,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "pdf-toegankelijk.nl",
+          "url": "https://pdf-toegankelijk.nl",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Je uploadt een PDF en krijgt je eigen document terug, met een tagstructuur waar die ontbrak en met de titel, de taal en de bijbehorende instellingen erin. Je krijgt er een verslag bij: wat er is opgelost, wat er nog open staat en welke controles niet zijn gedraaid omdat er een mens naar moet kijken.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Proper Access"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 15,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "PAC 2024",
+          "url": "https://pac.pdf-accessibility.org/en/download",
+          "applicationCategory": "DeveloperApplication",
+          "description": "Controleprogramma voor PDF's. Met de schermlezer-voorvertoning zie je wat een schermlezer van je document maakt, en daarmee herken je tekst die geen tag heeft gekregen.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "axes4"
+          }
+        }
+      }
+    ]
+  }
+}
+  </script>
+</head>
+<body class="bg-papier">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
+
+  <header class="sticky top-0 z-40 bg-papier/90 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#20281F"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#1A5632" font-weight="600">.</tspan></text></svg>
+      </a>
+      <nav aria-label="Hoofdnavigatie" class="hidden lg:flex items-center gap-7">
+          <a href="/" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Home</a>
+          <div class="relative" data-dropdown>
+            <button type="button" data-dropdown-toggle class="text-sm font-semibold text-navy hover:text-brand transition-colors inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <div data-dropdown-menu class="hidden absolute left-0 top-full pt-2 z-50">
+              <div class="min-w-[12rem] bg-white rounded-xl shadow-lg ring-1 ring-line py-2">
+              <a href="/monitor.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-commerce</a>
+              <a href="/monitor-financieel.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Financiële sector</a>
+              <a href="/monitor-telecom.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Telecom</a>
+              <a href="/monitor-vervoer.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Personenvervoer</a>
+              <a href="/monitor-media.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Media & streaming</a>
+              <a href="/monitor-ebooks.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-books</a>
+              <a href="/monitor-reizen.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Reizen</a>
+              <a href="/over.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Over de monitor</a>
+              </div>
+            </div>
+          </div>
+          <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
+          <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
+          <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
+          <a href="/hulp.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Hulp</a>
+          <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
+      </nav>
+      <button type="button" id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-lg text-navy hover:bg-zachtgroen focus:outline-none focus:ring-2 focus:ring-brand" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav id="mobile-nav" aria-label="Hoofdnavigatie (mobiel)" class="lg:hidden hidden border-t border-line px-4 sm:px-6 py-2">
+        <a href="/" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Home</a>
+        <div data-dropdown>
+          <button type="button" data-dropdown-toggle class="w-full flex items-center justify-between py-2.5 text-base font-semibold text-navy hover:text-brand" aria-expanded="false">Monitor<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div data-dropdown-menu class="hidden pl-4 ml-1 border-l border-line">
+            <a href="/monitor.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-commerce</a>
+            <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financiële sector</a>
+            <a href="/monitor-telecom.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Telecom</a>
+            <a href="/monitor-vervoer.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Personenvervoer</a>
+            <a href="/monitor-media.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Media & streaming</a>
+            <a href="/monitor-ebooks.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-books</a>
+            <a href="/monitor-reizen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Reizen</a>
+            <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over de monitor</a>
+          </div>
+        </div>
+        <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
+        <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
+        <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
+        <a href="/hulp.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Hulp</a>
+        <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
+    </nav>
+    <div class="h-[3px] bg-oker" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+
+    <section>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12">
+        <p class="eyebrow">Zelf aan de slag</p>
+        <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold text-navy leading-[1.08] tracking-tight max-w-3xl">Hulp bij digitale toegankelijkheid</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">Je site of je PDF moet toegankelijk zijn, en je weet nog niet waar je staat. Hieronder staan de tools waarmee je dat zelf kunt nakijken, gegroepeerd naar wat je wilt weten. Bij elke tool staat er ook bij wat hij niet vindt, want dat is het deel waar het misgaat.</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="notice notice-warning max-w-3xl">
+        <p><strong>Een tool ziet ongeveer 30% van de succescriteria.</strong> WCAG 2.2 telt op niveau A en AA samen 55 succescriteria. Een geautomatiseerde scan herkent daar ongeveer 30% van. Dat cijfer is een schatting uit het vakgebied en geen meting van ons, dus neem het als orde van grootte.</p>
+        <p class="mt-3">Wat een tool kan meten is wat meetbaar is: ontbreekt er een alt-attribuut, zakt de contrastverhouding onder 4,5:1, heeft een knop een toegankelijke naam. Wat geen tool beoordeelt is betekenis. Of die alt-tekst klopt bij de afbeelding. Of de volgorde waarin een schermlezer voorleest logisch is. Of je met het toetsenbord weer uit een dialoogvenster komt.</p>
+        <p class="mt-3">Nul fouten in een scan is dus geen bewijs. <a href="/artikelen/toezicht-en-boetes.html" class="link">Wat de toezichthouder wel doet</a>, staat in de kennisbank.</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-12">
+      <div class="prose max-w-prose">
+        <h2 class="mt-0">Wat de combinatie is die werkt</h2>
+        <p>Wil je het zelf doen, dan kom je het verst met drie dingen naast elkaar: een tool die de meetbare fouten voor je opzoekt, een schermlezer erbij, en een doorloop van je pagina met alleen je toetsenbord. Die laatste kost niets en vindt de problemen die het zwaarst wegen voor je bezoeker.</p>
+        <p>Begin bij de pagina's waar het om gaat. Voor een webshop is dat het hele afrekenproces, van product in het mandje tot betaling. Dat is ook het pad dat de Autoriteit Consument en Markt doorloopt bij een controle.</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="cat-in-pagina">
+      <h2 id="cat-in-pagina" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">Een pagina zelf controleren</h2>
+      <p class="mt-3 text-gray-700 max-w-2xl leading-relaxed">Deze zet je aan op de pagina die je op dat moment bekijkt. Je ziet het resultaat meteen in de pagina zelf. Begin hier als je nog niet weet waar je staat.</p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://testtoegankelijkheid.nl/wcag-radar" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">WCAG Radar<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Proper Access &middot; Chrome, Firefox</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Bookmarklet en browserextensie met drie tabbladen: redactie, design en development. Markeert alt-teksten, koppen, linkteksten, contrast, focus en ARIA in de pagina die je op dat moment bekijkt. Alles rekent in je eigen browser, dus je kunt ook testen achter een login, op een acceptatieomgeving en op localhost.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Het is geen crawler die je hele site afloopt en geen vervanging van een handmatig onderzoek. Bij een streng Content Security Policy werkt alleen de extensie en niet de bookmarklet.</p>
+          <p class="mt-3 text-sm text-gray-700 bg-zachtgroen rounded-lg px-3 py-2">Van Proper Access, de maker van EAA Monitor. We noemen het erbij, zodat je weet waar deze tool vandaan komt.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis basisversie zonder account. Voor alle checks en de export is een licentie nodig, vanaf € 119 per jaar.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">axe DevTools<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Deque &middot; Chrome, Firefox, Edge</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Browserextensie die de meetbare fouten in je code opzoekt en per bevinding uitlegt wat er mis is. Weinig valse meldingen. De engine eronder, axe-core, draait ook onder de wekelijkse WCAG-scan van deze monitor.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Alles waar een oordeel bij hoort blijft buiten beeld: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis, met betaalde uitbreidingen.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://wave.webaim.org/extension/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">WAVE<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">WebAIM &middot; Chrome, Firefox, Edge</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Zet iconen in de pagina zelf, zodat je zonder technische kennis ziet waar iets mis is. Het snelste visuele overzicht van deze lijst.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Meldt regelmatig dingen die geen echt probleem zijn. Elke melding moet je dus zelf nalopen.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://accessibilityinsights.io/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">Accessibility Insights for Web<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Microsoft &middot; Chrome, Edge</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Combineert een automatische scan met een geleide handmatige toets. Die toets loopt stap voor stap langs de checks die een tool niet zelf kan doen, zoals de toetsenbordbediening en de focusvolgorde.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> De geleide toets kost tijd en vraagt kennis van WCAG. De tool stelt de vragen, jij geeft het oordeel.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">Lighthouse<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Google &middot; Chrome</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Zit al in Chrome, onder de ontwikkelaarstools. Geeft in een paar seconden een indruk van de meetbare fouten.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> De score van 0 tot 100 is misleidend. Een 100 betekent dat Lighthouse niets vond in wat het kan controleren, en niet dat je site toegankelijk is. Wij zien die 100 met enige regelmaat langskomen als bewijs in een aanbesteding, en dat is het niet.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://www.ssa.gov/accessibility/andi/help/install.html" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">ANDI<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Social Security Administration &middot; Elke browser</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Bookmarklet die niets installeert. Bruikbaar op een werkplek waar je geen extensies mag installeren.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Engelstalig, en de uitleg verwijst naar de Amerikaanse regelgeving in plaats van naar de norm die hier geldt.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="cat-contrast">
+      <h2 id="cat-contrast" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">Kleur en contrast meten</h2>
+      <p class="mt-3 text-gray-700 max-w-2xl leading-relaxed">Voor tekst op een effen achtergrond doet een in-pagina checker dit al. Deze twee heb je nodig zodra tekst op een foto of op een verloop staat.</p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">WebAIM Contrast Checker<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">WebAIM &middot; Website</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Twee kleuren invullen, contrastverhouding eruit, met een oordeel over niveau AA en AAA. De snelste manier om een kleurenpaar te controleren.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Werkt met kleurwaarden die je zelf invult. Staat je tekst op een foto of een verloop, dan moet je de kleur eerst ergens anders meten.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">Colour Contrast Analyser<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">TPGi &middot; Windows, macOS</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Desktopprogramma met een pipet waarmee je kleuren van je scherm plukt. Precies wat je nodig hebt bij tekst op een foto of op een verloop, waar geen kleurwaarde in de code te vinden is.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> De tool bepaalt niet welke twee kleuren je moet vergelijken. Halftransparante lagen, schaduwen en achtergrondafbeeldingen maken dat lastiger dan het lijkt.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="cat-structuur">
+      <h2 id="cat-structuur" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">Koppen en structuur bekijken</h2>
+      <p class="mt-3 text-gray-700 max-w-2xl leading-relaxed">De koppenstructuur bepaalt hoe iemand met een schermlezer door je pagina navigeert. Fouten daarin zie je niet aan de opmaak.</p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://addons.mozilla.org/nl/firefox/addon/headingsmap/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">HeadingsMap<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Browserextensie &middot; Chrome, Firefox</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Toont de koppenstructuur van een pagina als boom. In één blik zie je of je van een kop op niveau 2 naar niveau 4 springt of dat er twee koppen op niveau 1 staan.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Een kloppende hiërarchie zegt niets over de inhoud van je koppen. Een pagina waar elke kop &quot;Meer informatie&quot; heet, komt er foutloos doorheen en helpt niemand.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="cat-schermlezer">
+      <h2 id="cat-schermlezer" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">Schermlezers</h2>
+      <p class="mt-3 text-gray-700 max-w-2xl leading-relaxed">Een schermlezer is geen meetinstrument. Het is de manier waarop een deel van je bezoekers je site werkelijk gebruikt. Je zet hem dus niet aan om iets af te vinken, maar om te horen wat er gebeurt.</p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://www.nvaccess.org/download/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">NVDA<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">NV Access &middot; Windows</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Gratis en open source schermlezer voor Windows. Dit is de schermlezer waarmee in de Nederlandse auditpraktijk het meest wordt getoetst.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Een schermlezer is geen meetinstrument. Het is de manier waarop een deel van je bezoekers je site gebruikt. Reken erop dat de eerste keer tegenvalt: bedienen is een vaardigheid, en wie hem voor het eerst aanzet hoort vooral ruis.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://support.apple.com/nl-nl/guide/voiceover/welcome/mac" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">VoiceOver<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Apple &middot; macOS, iOS</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Zit ingebouwd in macOS en iOS. Op de Mac zet je hem aan met Cmd + F5. Op iOS is dit de schermlezer waarmee je een app op een echt toestel toetst.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> VoiceOver op de Mac gedraagt zich anders dan VoiceOver op iOS. Een test op je laptop zegt dus niets over je app.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis, zit in het besturingssysteem.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://support.google.com/accessibility/android/answer/6283677" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">TalkBack<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Google &middot; Android</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Zit ingebouwd in Android. Nodig zodra je een Android-app onderzoekt.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Toestellen en Android-versies verschillen onderling. Test op het toestel dat je doelgroep gebruikt en niet alleen in een emulator.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis, zit in het besturingssysteem.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://www.freedomscientific.com/products/software/jaws/" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">JAWS<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Freedom Scientific &middot; Windows</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Betaalde schermlezer voor Windows, veel gebruikt binnen grotere organisaties. Werkt je publiek in zo&#x27;n omgeving, dan is dit de software waarmee ze je site openen.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Schermlezers gedragen zich onderling verschillend. Toets je alleen in JAWS, dan mis je wat NVDA en VoiceOver van dezelfde pagina maken.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Betaald.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="cat-documenten">
+      <h2 id="cat-documenten" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">PDF en documenten</h2>
+      <p class="mt-3 text-gray-700 max-w-2xl leading-relaxed">Een PDF op je site valt onder dezelfde eisen als de site zelf. In de auditpraktijk is dit het onderdeel dat het vaakst wordt overgeslagen.</p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://pdf-toegankelijk.nl" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">pdf-toegankelijk.nl<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">Proper Access &middot; Website</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Je uploadt een PDF en krijgt je eigen document terug, met een tagstructuur waar die ontbrak en met de titel, de taal en de bijbehorende instellingen erin. Je krijgt er een verslag bij: wat er is opgelost, wat er nog open staat en welke controles niet zijn gedraaid omdat er een mens naar moet kijken.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Een gerepareerde codelaag is nog geen toegankelijk document. Of de leesorde klopt, of een tabelkop op de goede plek staat en of een beschrijving de afbeelding dekt, stelt geen tool vast. Je krijgt dus geen verklaring dat je document aan WCAG of aan de wet voldoet.</p>
+          <p class="mt-3 text-sm text-gray-700 bg-zachtgroen rounded-lg px-3 py-2">Van Proper Access, de maker van EAA Monitor. We noemen het erbij, zodat je weet waar deze tool vandaan komt.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> 2 documenten per maand gratis. Betaalde abonnementen vanaf € 29 per maand.</p>
+        </li>
+        <li class="card p-6 flex flex-col">
+          <h3 class="font-display text-xl font-semibold text-navy leading-snug"><a href="https://pac.pdf-accessibility.org/en/download" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-dark">PAC 2024<span class="sr-only"> (opent in een nieuw tabblad)</span></a></h3>
+          <p class="mt-1 text-sm text-gray-600">axes4 &middot; Windows</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">Controleprogramma voor PDF&#x27;s. Met de schermlezer-voorvertoning zie je wat een schermlezer van je document maakt, en daarmee herken je tekst die geen tag heeft gekregen.</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> Controleert wat meetbaar is in de tagstructuur. Of de volgorde van die tags klopt met hoe het document gelezen moet worden, beoordeel je zelf.</p>
+          <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> Gratis.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="card p-6">
+          <h2 class="font-display text-xl font-semibold text-navy">Overlays staan er niet bij</h2>
+          <p class="mt-3 text-[15px] text-gray-700 leading-relaxed">Een overlay is een stuk JavaScript dat bovenop je site draait en daar dingen aanpast: contrast verhogen, tekst vergroten, een voorleesknop toevoegen. Wat het niet doet, is de code eronder repareren. Een knop zonder toegankelijke naam blijft een knop zonder toegankelijke naam.</p>
+          <p class="mt-3 text-[15px] text-gray-700 leading-relaxed"><a href="/artikelen/overlay-tools-werken-niet.html" class="link font-semibold">Lees waarom een overlay je probleem niet oplost</a></p>
+        </div>
+        <div class="card p-6">
+          <h2 class="font-display text-xl font-semibold text-navy">Liever iemand die het voor je doet</h2>
+          <p class="mt-3 text-[15px] text-gray-700 leading-relaxed">Een onderzoek door een mens vindt de andere 70%: de leesvolgorde, de foutmeldingen, de bediening met alleen een toetsenbord, en of een alternatief klopt. Val je onder het Besluit digitale toegankelijkheid overheid, dan is dat ook de enige route naar een verklaring in het Register, want dat accepteert alleen onderzoek volgens WCAG-EM.</p>
+          <p class="mt-3 text-[15px] text-gray-700 leading-relaxed"><a href="/wcag-audit.html" class="link font-semibold">Vind een auditbureau</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 mb-4">
+      <div class="prose max-w-prose">
+        <h2 class="mt-0">Hoe een tool op deze lijst komt</h2>
+        <p>Niemand betaalt voor een plek hier. De lijst bestaat uit tools die in de Nederlandse auditpraktijk worden gebruikt, en bij elke tool staat wat hij niet vindt. Zonder die tweede regel wordt een lijst als deze een reclamefolder.</p>
+        <p>Twee tools op deze pagina komen van Proper Access, de maker van EAA Monitor: de WCAG Radar en pdf-toegankelijk.nl. Die staan er met dezelfde vermelding als de rest, en met een label erbij zodat je ziet waar ze vandaan komen. Deze monitor staat verder los van dat merk.</p>
+        <p>Mis je een tool, of klopt er iets niet meer? <a href="/melden.html" class="link">Laat het weten</a>.</p>
+      </div>
+    </section>
+
+  </main>
+  <footer class="bg-navy text-white mt-24 on-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <div class="mb-10 pb-10 border-b border-white/10 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+          <p class="font-display font-semibold text-xl tracking-tight">De maandagmeting in je inbox</p>
+          <p class="mt-2 text-sm text-white max-w-sm leading-relaxed">Af en toe een update: nieuwe cijfers, antwoorden van toezichthouders en praktische uitleg. Geen spam, geen verkooppraatjes.</p>
+        </div>
+        <form id="newsletter-form" data-endpoint="https://eaa-monitor.nl/api/newsletter" novalidate>
+          <div class="hidden" aria-hidden="true">
+            <label>Laat dit veld leeg<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <label for="newsletter-email" class="block text-sm font-semibold text-white mb-1.5">Je e-mailadres</label>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="jij@voorbeeld.nl" class="utrecht-textbox flex-1">
+            <button type="submit" id="newsletter-submit" class="utrecht-button utrecht-button--primary-action whitespace-nowrap">Houd me op de hoogte</button>
+          </div>
+          <p class="mt-2 text-xs text-white">We gebruiken je adres alleen voor deze nieuwsbrief. Afmelden kan met één klik, op elk moment.</p>
+          <div id="newsletter-status" role="status" aria-live="polite" tabindex="-1" class="empty:hidden mt-3 text-sm"></div>
+        </form>
+      </div>
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 96" class="h-9 w-auto" role="img" aria-label="EAA Monitor" color="#FAF7F1"><g><rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/><rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/><rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/><rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/></g><text x="90" y="62" font-family="'Fraunces Variable', Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="600">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#F4C84B" font-weight="600">.</tspan></text></svg>
+          <p class="mt-4 text-sm text-white max-w-sm leading-relaxed">EAA Monitor is de onafhankelijke telling van digitaal toegankelijk Nederland: elke maandag een verse meting in zes sectoren, plus uitleg in gewone taal over wie de wet raakt, wie toezicht houdt en wat werkt. <span class="text-brand-bright font-semibold">Gemeten, niet beweerd.</span></p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white mb-3">Monitor &amp; uitleg</p>
+          <ul class="space-y-2 text-sm text-white">
+            <li><a href="/monitor.html" class="hover:text-white">Webshopmonitor</a></li>
+            <li><a href="/monitor-financieel.html" class="hover:text-white">Financiële monitor</a></li>
+            <li><a href="/monitor-telecom.html" class="hover:text-white">Telecommonitor</a></li>
+            <li><a href="/monitor-vervoer.html" class="hover:text-white">Vervoermonitor</a></li>
+            <li><a href="/monitor-media.html" class="hover:text-white">Mediamonitor</a></li>
+            <li><a href="/monitor-ebooks.html" class="hover:text-white">E-booksmonitor</a></li>
+            <li><a href="/monitor-reizen.html" class="hover:text-white">Reismonitor</a></li>
+            <li><a href="/artikelen.html" class="hover:text-white">Kennisbank</a></li>
+            <li><a href="/bronnen.html" class="hover:text-white">Bronnen</a></li>
+            <li><a href="/hulp.html" class="hover:text-white">Hulp en tools</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white mb-3">Meedoen &amp; info</p>
+          <ul class="space-y-2 text-sm text-white">
+            <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
+            <li><a href="/eregalerij.html" class="hover:text-white">Eregalerij</a></li>
+            <li><a href="/nomineren.html" class="hover:text-white">Nomineer een website</a></li>
+            <li><a href="/over.html" class="hover:text-white">Over dit dashboard</a></li>
+            <li><a href="/bezwaren.html" class="hover:text-white">Ingediende bezwaren</a></li>
+            <li><a href="/bezwaar.html" class="hover:text-white">Bezwaar maken</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-white/10 grid gap-8 md:grid-cols-2 text-xs text-white leading-relaxed">
+        <div>
+          <p class="font-semibold mb-2">Europese infrastructuur</p>
+          <p class="max-w-md">Deze website draait volledig op Europese diensten. De servers staan bij Hetzner in Duitsland, het domein loopt via SIDN in Nederland, de bezoekersstatistieken komen van Plausible in Europa en e-mail versturen we met AhaSend uit Nederland. Je bezoek raakt geen Amerikaanse dienst.</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Goed om te weten</p>
+          <p class="max-w-md">De controle vindt wekelijks plaats. Een link naar een verklaring betekent niet automatisch dat een website ook daadwerkelijk toegankelijk is.</p>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white">
+        <p>Vragen of een correctie? Mail <a href="mailto:info@eaa-monitor.nl" class="font-semibold underline underline-offset-2 hover:text-white">info@eaa-monitor.nl</a></p>
+        <nav aria-label="Juridisch" class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="/colofon.html" class="hover:text-white">Colofon</a>
+          <a href="/privacy.html" class="hover:text-white">Privacy</a>
+          <a href="/over.html" class="hover:text-white">Over de monitor</a>
+        </nav>
+      </div>
+    </div>
+    <script src="/static/newsletter.js"></script>
+  </footer>
+
+  <script src="/static/nav.js"></script>
+  <script src="/static/reveal.js"></script>
+  <script src="/static/feedback-widget.js"></script>
+</body>
+</html>
