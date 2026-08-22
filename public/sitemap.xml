@@ -211,6 +211,16 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://eaa-monitor.nl/bezwaar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://eaa-monitor.nl/vierogen-pact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://eaa-monitor.nl/artikelen/eaa-financiele-sector.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>

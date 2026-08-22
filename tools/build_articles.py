@@ -794,6 +794,8 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/colofon.html", "yearly", "0.3", None),
         (f"{BASE_URL}/privacy.html", "yearly", "0.3", None),
         (f"{BASE_URL}/bezwaren.html", "weekly", "0.4", None),
+        (f"{BASE_URL}/bezwaar.html", "monthly", "0.4", None),
+        (f"{BASE_URL}/vierogen-pact.html", "monthly", "0.4", None),
     ]
     rows = []
     for loc, freq, prio, lastmod in static_urls:

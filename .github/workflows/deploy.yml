@@ -114,6 +114,8 @@ jobs:
                 "https://eaa-monitor.nl/bronnen.html",
                 "https://eaa-monitor.nl/vragen.html",
                 "https://eaa-monitor.nl/tools.html",
-                "https://eaa-monitor.nl/eregalerij.html"
+                "https://eaa-monitor.nl/eregalerij.html",
+                "https://eaa-monitor.nl/wcag-audit.html",
+                "https://eaa-monitor.nl/artikelen.html"
               ]
             }' || true
