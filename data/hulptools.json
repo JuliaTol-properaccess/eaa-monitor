@@ -8,7 +8,7 @@
       "contrast",
       "structuur"
     ],
-    "wat": "Bookmarklet en browserextensie met drie tabbladen: redactie, design en development. Markeert alt-teksten, koppen, linkteksten, contrast, focus en ARIA in de pagina die je op dat moment bekijkt. Alles rekent in je eigen browser, dus je kunt ook testen achter een login, op een acceptatieomgeving en op localhost.",
+    "wat": "Bookmarklet en browserextensie met drie tabbladen: redactie, design en development. Samen 45 checks, van alt-teksten, koppen en linkteksten tot contrast, focus en ARIA, gemarkeerd in de pagina die je op dat moment bekijkt. Alles rekent in je eigen browser, dus je kunt ook testen achter een login, op een acceptatieomgeving en op localhost.",
     "grens": "Het is geen crawler die je hele site afloopt en geen vervanging van een handmatig onderzoek. Bij een streng Content Security Policy werkt alleen de extensie en niet de bookmarklet.",
     "prijs": "Gratis basisversie zonder account. Voor alle checks en de export is een licentie nodig, vanaf € 119 per jaar.",
     "platform": "Chrome, Firefox",

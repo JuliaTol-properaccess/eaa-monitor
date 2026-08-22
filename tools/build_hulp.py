@@ -354,18 +354,10 @@ def render(tools):
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="vragen">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 mb-4" aria-labelledby="vragen">
       <h2 id="vragen" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">Veelgestelde vragen</h2>
       <div class="mt-8 grid gap-6 md:grid-cols-2">
 {_faq_html()}
-      </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 mb-4">
-      <div class="prose max-w-prose">
-        <h2 class="mt-0">Hoe een tool op deze lijst komt</h2>
-        <p>Niemand betaalt voor een plek hier. De lijst bestaat uit tools die in Nederland worden gebruikt om websites en documenten te testen, en bij elke tool staat wat hij niet vindt. Zonder die tweede regel wordt een lijst als deze een reclamefolder.</p>
-        <p>Mis je een tool, of klopt er iets niet meer? <a href="/melden.html" class="link">Laat het weten</a>.</p>
       </div>
     </section>
 
