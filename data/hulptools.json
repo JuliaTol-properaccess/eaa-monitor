@@ -38,8 +38,8 @@
     "url": "https://wave.webaim.org/extension/",
     "aanbieder": "WebAIM",
     "categorie": "in-pagina",
-    "wat": "Zet iconen in de pagina zelf, zodat je zonder technische kennis ziet waar iets mis is. Het snelste visuele overzicht van deze lijst.",
-    "grens": "Meldt regelmatig dingen die geen echt probleem zijn. Elke melding moet je dus zelf nalopen.",
+    "wat": "Zet iconen en markeringen in de pagina zelf, dus je ziet meteen waar iets zit. Het snelste visuele overzicht van deze lijst.",
+    "grens": "Om te begrijpen wat een melding betekent heb je behoorlijk wat technische kennis nodig. Daar komt bij dat WAVE regelmatig dingen meldt die geen echt probleem zijn, dus elke melding moet je zelf nalopen en beoordelen.",
     "prijs": "Gratis.",
     "platform": "Chrome, Firefox, Edge"
   },

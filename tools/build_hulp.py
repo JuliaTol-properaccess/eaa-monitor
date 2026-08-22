@@ -138,9 +138,10 @@ FAQ = [
     ),
     (
         "Welke tool kan ik gebruiken als ik geen developer ben?",
-        "Begin met WAVE of de WCAG Radar. Allebei zetten ze hun resultaat in de pagina zelf, dus je hoeft "
-        "geen broncode te lezen. WAVE geeft het snelste visuele overzicht. De WCAG Radar heeft een apart "
-        "tabblad voor redactie, met de controles die horen bij alt-teksten, koppen en linkteksten.",
+        "Begin met de WCAG Radar. Die heeft een apart tabblad voor redactie, met de controles die horen "
+        "bij alt-teksten, koppen en linkteksten, en zet het resultaat in de pagina zelf. WAVE geeft het "
+        "snelste visuele overzicht, maar om te beoordelen wat een melding daar betekent heb je "
+        "behoorlijk wat technische kennis nodig.",
     ),
     (
         "Wat kost een toegankelijkheidstool?",
