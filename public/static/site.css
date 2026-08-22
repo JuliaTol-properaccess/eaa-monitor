@@ -379,3 +379,14 @@ h1, h2, h3, h4, .font-display {
   .feedback-fab { padding: .6rem; }
 }
 @media (prefers-reduced-motion: reduce) { .feedback-fab { transition: none; } }
+
+/* Volledige meetlijsten (public/lijst/). De opmaak staat hier en niet als
+   klassen per cel: op een letterpagina met ruim 900 rijen scheelt dat
+   honderden kilobytes aan herhaalde class-attributen. */
+.lijst-tabel { width: 100%; font-size: .875rem; }
+.lijst-tabel thead tr { background: var(--zachtgroen); border-bottom: 1px solid var(--line); text-align: left; }
+.lijst-tabel th, .lijst-tabel td { padding: .75rem; vertical-align: top; }
+.lijst-tabel thead th { font-weight: 700; color: var(--navy); }
+.lijst-tabel tbody tr { border-bottom: 1px solid var(--line); }
+.lijst-tabel tbody th { text-align: left; font-weight: 600; }
+.lijst-tabel tbody td { color: #374151; }

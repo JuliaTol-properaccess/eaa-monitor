@@ -794,7 +794,20 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/colofon.html", "yearly", "0.3", None),
         (f"{BASE_URL}/privacy.html", "yearly", "0.3", None),
         (f"{BASE_URL}/bezwaren.html", "weekly", "0.4", None),
+        (f"{BASE_URL}/bezwaar.html", "monthly", "0.4", None),
+        (f"{BASE_URL}/vierogen-pact.html", "monthly", "0.4", None),
     ]
+    # De volledige meetlijsten (public/lijst/) worden in de deploy gebouwd en
+    # staan niet in git. De URL's komen uit dezelfde configuratie als die
+    # generator, zodat de sitemap nooit naar een letterpagina wijst die er niet is.
+    try:
+        from build_lijsten import lijst_urls  # noqa: PLC0415
+
+        for pad, lastmod_lijst in lijst_urls():
+            static_urls.append((f"{BASE_URL}{pad}", "weekly", "0.6", lastmod_lijst))
+    except Exception as exc:  # pragma: no cover
+        print(f"Waarschuwing: lijstpagina's niet in de sitemap ({exc})")
+
     rows = []
     for loc, freq, prio, lastmod in static_urls:
         lastmod_xml = f"<lastmod>{lastmod}</lastmod>\n    " if lastmod else ""
