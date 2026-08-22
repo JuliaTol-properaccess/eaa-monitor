@@ -54,5 +54,29 @@
     "without_statement": 11,
     "errors": 5,
     "pct_with": 24
+  },
+  {
+    "date": "2026-08-07",
+    "total": 21,
+    "with_statement": 6,
+    "without_statement": 10,
+    "errors": 5,
+    "pct_with": 29
+  },
+  {
+    "date": "2026-08-10",
+    "total": 21,
+    "with_statement": 6,
+    "without_statement": 10,
+    "errors": 5,
+    "pct_with": 29
+  },
+  {
+    "date": "2026-08-17",
+    "total": 21,
+    "with_statement": 6,
+    "without_statement": 11,
+    "errors": 4,
+    "pct_with": 29
   }
 ]

@@ -274,6 +274,15 @@ ERROR_COUNT_FLOOR = 8
 FOOTER_WAIT_TIMEOUT = 2000
 FOOTER_SETTLE_MS = 1500
 
+# Render-waarborg voor de verklaring-pagina (zie _verify_statement_page). Onder
+# beide drempels tegelijk beschouwen we de pagina als niet gerenderd, en telt de
+# site als "niet te controleren" i.p.v. "zonder verklaring". De link-drempel is
+# dezelfde als in classify_html; de tekstdrempel ligt ver onder een echte
+# verklaring (HEMA 2253 tekens, Roostershop 2381) en ver boven een lege render
+# (Bruynzeel 33, De Telegraaf 19).
+MIN_RENDERED_TEXT = 200
+MIN_RENDERED_LINKS = 5
+
 # Korte pauze tussen requests. Elke request gaat naar een ander domein, dus
 # per-host rate limiting speelt niet; dit ontziet alleen de runner zelf.
 REQUEST_PAUSE_S = 0.2
@@ -308,14 +317,37 @@ FLUSH_EVERY = 100
 PER_SITE_CAP_S = 90
 
 # Trapsgewijze marge bovenop PER_SITE_CAP_S. Na 1x grace kilt de watchdog-thread
-# chromium; na 2x grace sluit een reaper de hele shard af. SIGALRM krijgt zo
-# eerst de kans op een nette Python-timeout, dan de chromium-kill (voor een
-# driver-wedge), en pas als ook dat de hang niet breekt de harde reaper.
+# chromium; na 2x grace herstart een reaper de shard vanaf de volgende site.
+# SIGALRM krijgt zo eerst de kans op een nette Python-timeout, dan de
+# chromium-kill (voor een driver-wedge), en pas als ook dat de hang niet breekt
+# de harde reaper.
 KILL_GRACE_S = 30
 
+# Cap op het browserherstel na een cap-hit of fout (zie _recover_page). Ruimer
+# dan een normale context.close() nodig heeft, krap genoeg dat een wedged
+# browser de shard niet ophoudt.
+RECOVERY_CAP_S = 20
 
-class SiteTimeout(Exception):
-    """Opgeworpen door de per-site-watchdog wanneer PER_SITE_CAP_S verstrijkt."""
+# Hoe vaak een shard zichzelf mag herstarten na een onbreekbare hang. Ruim boven
+# de 1-2 hangers die we per shard zien, laag genoeg dat een pathologische lijst
+# niet eindeloos doorstart. Daarboven sluit de shard af met wat hij heeft.
+MAX_SHARD_RESTARTS = 5
+
+
+class SiteTimeout(BaseException):
+    """Opgeworpen door de per-site-watchdog wanneer PER_SITE_CAP_S verstrijkt.
+
+    Erft bewust van BaseException, niet van Exception. check_webshop en de
+    helpers eromheen vangen brede `except Exception` af om losse site-fouten op
+    te vangen; een Exception-subclass werd daar opgeslokt en teruggegeven als
+    gewoon 'error'-resultaat. De `except SiteTimeout` in de hoofdlus vuurde dan
+    nooit, en dus draaide ook het browserherstel (_fresh_page) niet. Eén wedged
+    browser bleef zo wedged: elke volgende site liep de volle cap vol, waarna de
+    shard de jobcap tikte en rood ging (crons van 27 juli en 3 augustus 2026,
+    shard 6 resp. shard 1). Als BaseException glipt de cap net als
+    KeyboardInterrupt door elk `except Exception`-vangnet heen, ook door
+    vangnetten die later worden toegevoegd.
+    """
 
 
 def _raise_site_timeout(signum, frame):
@@ -745,6 +777,22 @@ STATEMENT_CONTENT_MARKERS = [
 ]
 
 
+def page_looks_unrendered(soup, text: str) -> bool:
+    """Rendert deze pagina echt, of kijken we naar een lege huls?
+
+    Een bot-challenge, wachtrij of JS-only pagina levert bijna geen tekst en
+    bijna geen links. Zo'n pagina bewijst niets: we hebben de verklaring niet
+    gezien, niet vastgesteld dat hij ontbreekt.
+
+    Beide signalen moeten wijzen op een lege render, niet één van de twee. Een
+    echte pagina zonder verklaring-inhoud (het Decathlon-geval, waar de
+    content-check voor gebouwd is) heeft juist wél tekst en links, en moet
+    afgekeurd blijven worden.
+    """
+    return (len(text) < MIN_RENDERED_TEXT
+            and len(soup.find_all("a", href=True)) < MIN_RENDERED_LINKS)
+
+
 def statement_page_has_statement(text: str) -> bool:
     """True als de tekst van een gelinkte pagina verklaring-inhoud bevat.
 
@@ -845,7 +893,7 @@ def classify_html(html, url):
     # tientallen. Niet op footer-aanwezigheid filteren: interstitials hebben
     # vaak elementen met footer-achtige classes. "Geen verklaring" zou hier
     # geen eerlijke meting zijn: rapporteer "niet te controleren".
-    if len(all_links) < 5:
+    if len(all_links) < MIN_RENDERED_LINKS:
         return {
             "has_statement": False,
             "statement_url": None,
@@ -1294,6 +1342,50 @@ def _fresh_page(p, browser, old_context=None):
     return browser, context, page
 
 
+def _recover_page(p, browser, old_context, on_giveup):
+    """Verse (browser, context, page) na een cap-hit of fout, zelf onder een cap.
+
+    _fresh_page draait in de except-takken van de hoofdlus, dus buiten de
+    per-site-deadline: die is bij het verlaten van de with-block al opgeheven.
+    En _fresh_page kan wel degelijk blijven hangen, want old_context.close()
+    blokkeert op een wedged browser (gemeten met faulthandler: de main thread
+    staat stil in playwright's _sync vanuit context.close()). Zonder eigen cap
+    hangt de shard daar voorgoed, precies de hang die we juist wilden opheffen.
+
+    Lukt netjes sluiten niet binnen de cap, dan laten we de oude context los,
+    killen we chromium en starten we een verse browser. Komt ook die niet op
+    tijd omhoog, dan is de playwright-driver zelf stuk en is er binnen dit
+    proces niets meer te redden: dan roepen we on_giveup aan, die de shard
+    herstart.
+
+    Die laatste tak is geen theorie. In de run van 7 augustus 2026 sneuvelden
+    shard 4 (Managementboek.nl) en shard 9 (Life Outdoor Living) er allebei op:
+    de cap tijdens p.chromium.launch ontsnapte ongevangen en nam de shard mee,
+    want de reaper van dit site_deadline was bij het verlaten van de with-block
+    al gecanceld. Een SiteTimeout mag hier dus nooit naar buiten lekken.
+    """
+    try:
+        with site_deadline(RECOVERY_CAP_S, on_giveup=on_giveup):
+            return _fresh_page(p, browser, old_context)
+    except SiteTimeout:
+        print("herstel hangt, verse browser...", end=" ", flush=True)
+
+    try:
+        with site_deadline(RECOVERY_CAP_S, on_giveup=on_giveup):
+            try:
+                _kill_browser_processes()
+            except Exception:
+                pass
+            browser = p.chromium.launch(headless=True)
+            return _fresh_page(p, browser, None)
+    except SiteTimeout:
+        print("herstel mislukt, shard herstart...", flush=True)
+        on_giveup()
+        # on_giveup hoort niet terug te keren (execv of os._exit). Doet hij dat
+        # toch, faal dan luid i.p.v. None terug te geven aan de hoofdlus.
+        raise
+
+
 def recheck_unblocked(browser, url):
     """Haal één URL opnieuw op met alle resources toegestaan (geen route-blok).
 
@@ -1362,7 +1454,28 @@ def _verify_statement_page(browser, base_url, result):
         _dismiss_cookie_wall(page)
         page.wait_for_timeout(FOOTER_SETTLE_MS)
         hub_html = page.content()
-        text = BeautifulSoup(hub_html, "html.parser").get_text(" ", strip=True)
+        hub_soup = BeautifulSoup(hub_html, "html.parser")
+        text = hub_soup.get_text(" ", strip=True)
+
+        # Render-waarborg. Een pagina die niet echt rendert (bot-challenge,
+        # wachtrij, JS-only pagina) levert bijna geen tekst en bijna geen links
+        # op. Die mag niet als "zonder verklaring" tellen: we hebben de
+        # verklaring niet gezien, niet vastgesteld dat hij ontbreekt. Zelfde
+        # regel als in classify_html (< 5 links = niet te controleren) en de
+        # axe-scan (< 50 DOM-elementen = niet gerenderd).
+        #
+        # Beide signalen moeten wijzen op een lege render, niet één van de
+        # twee: een echte pagina zonder verklaring-inhoud (het Decathlon-geval,
+        # waar deze check voor gebouwd is) heeft juist wél tekst en links en
+        # moet afgekeurd blijven worden.
+        #
+        # Gemeten op de run van 7 augustus 2026: Bruynzeel Keukens leverde 33
+        # tekens, De Telegraaf Webshop 19. Beide telden als "zonder verklaring"
+        # terwijl ze een echte verklaring-pagina hebben.
+        if page_looks_unrendered(hub_soup, text):
+            print("verklaring-pagina niet gerenderd...", end=" ", flush=True)
+            return result
+
         if statement_page_has_statement(text):
             return result
         # De gelinkte pagina zelf heeft geen verklaring-inhoud. Sommige sites
@@ -1423,43 +1536,130 @@ def _confirmed_result_for(shop, entry):
     }
 
 
-def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
+def _resume_argv(argv, resume_at, restarts):
+    """Bouw de argv voor een zelfherstart: eigen vlaggen eruit, verse erin.
+
+    Strippen is nodig omdat een tweede hang anders een tweede --resume-from op
+    de commandline zou stapelen; argparse pakt dan de laatste, maar de lijst
+    groeit bij elke herstart. Hanteert zowel "--resume-from=5" als de
+    losse-waardevorm "--resume-from 5".
+    """
+    out = []
+    skip_next = False
+    for arg in argv:
+        if skip_next:
+            skip_next = False
+            continue
+        if arg in ("--resume-from", "--restarts"):
+            skip_next = True
+            continue
+        if arg.startswith("--resume-from=") or arg.startswith("--restarts="):
+            continue
+        out.append(arg)
+    return out + [f"--resume-from={resume_at}", f"--restarts={restarts}"]
+
+
+def _timeout_entry(shop, now, error):
+    """Resultaat-entry voor een site die we niet konden controleren.
+
+    'timeout' (= niet te controleren), nooit "zonder verklaring": een site die
+    hangt of ons blokkeert mag niet als overtreder in de cijfers belanden.
+    """
+    return {
+        "name": shop["name"],
+        "url": shop["url"],
+        "category": shop.get("category", "overig"),
+        "has_statement": False,
+        "statement_url": None,
+        "statement_link_text": None,
+        "last_checked": now,
+        "scrape_status": "timeout",
+        "error": error,
+    }
+
+
+def scrape_webshops(webshops, now, confirmed=None, flush_path=None,
+                    resume_from=0, prior_results=None, restarts=0):
     """Scrape a list of webshops sequentially and return the result entries.
 
     Sites op de bevestigd-groen-lijst (confirmed) die binnen REVERIFY_DAYS
     geverifieerd zijn, slaan we over: we nemen het bewaarde resultaat direct over
     zonder browser. Zo blijft de wekelijkse run licht en blijven geverifieerde
     greens stabiel; na REVERIFY_DAYS valt de site vanzelf weer in de scrape.
+
+    resume_from/prior_results dienen de zelfherstart na een onbreekbare hang
+    (zie _reap_shard): de lijst blijft dezelfde, we beginnen alleen verderop en
+    nemen de al verzamelde resultaten mee.
     """
     confirmed = confirmed or {}
-    results = []
+    results = list(prior_results or [])
     skipped = 0
+    # Waar de main thread nu mee bezig is. De reaper draait in een eigen thread
+    # en leest dit uit om de hangende site vast te leggen en erna te hervatten.
+    current = {"index": resume_from, "shop": None}
 
     def _reap_shard():
         """Laatste vangnet: één site hangt onbreekbaar (SIGALRM noch chromium-kill
-        kreeg de main thread los). Flush wat we hebben en sluit de shard schoon af,
-        zodat hij niet de 200-min-jobcap tikt. De geflushte deel-data gaat mee in
-        de merge; os._exit(0) i.p.v. sys.exit omdat we vanuit een thread de hele
-        process moeten beëindigen terwijl de main thread vastzit."""
-        print(f"\nWATCHDOG: site hangt > {PER_SITE_CAP_S + 2 * KILL_GRACE_S}s en is "
-              f"niet te breken; shard afgesloten met {len(results)} resultaten.", flush=True)
+        kreeg de main thread los). We kunnen die hang binnen dit proces niet meer
+        breken, dus herstarten we de shard vanaf de volgende site: de hangende
+        site gaat als 'timeout' de resultaten in, alles wordt geflusht en het
+        proces vervangt zichzelf via execv.
+
+        Eerder sloot dit de hele shard af (os._exit(0)). Dat kostte per hangende
+        site ~400 van de 856 sites aan dekking; op 27 juli en 3 augustus 2026
+        zakte de merge daardoor onder de 90%-drempel en werd er niets
+        gepubliceerd. execv i.p.v. sys.exit omdat de main thread vastzit: alleen
+        het procesbeeld vervangen komt daar nog langs.
+        """
+        hanger = current["shop"]
+        if hanger is not None:
+            results.append(_timeout_entry(
+                hanger, now,
+                f"Onbreekbare hang > {PER_SITE_CAP_S + 2 * KILL_GRACE_S}s; shard hervat"))
+        name = hanger["url"] if hanger else "onbekend"
+
         if flush_path:
             try:
                 _write_atomic(Path(flush_path), json.dumps(
                     {"last_updated": now, "webshops": results}, indent=2, ensure_ascii=False))
             except Exception:
                 pass
+
+        resume_at = current["index"] + 1
+        if restarts >= MAX_SHARD_RESTARTS or not flush_path or resume_at >= len(webshops):
+            print(f"\nWATCHDOG: {name} hangt onbreekbaar; shard afgesloten met "
+                  f"{len(results)} resultaten (geen herstart meer over).", flush=True)
+            sys.stdout.flush()
+            sys.stderr.flush()
+            os._exit(0)
+
+        print(f"\nWATCHDOG: {name} hangt onbreekbaar; shard hervat bij site "
+              f"{resume_at + 1}/{len(webshops)} "
+              f"(herstart {restarts + 1}/{MAX_SHARD_RESTARTS}).", flush=True)
         sys.stdout.flush()
         sys.stderr.flush()
-        os._exit(0)
+
+        # Chromium eerst opruimen: execv vervangt alleen dit proces, de
+        # childprocessen zouden anders blijven draaien en geheugen opeten.
+        try:
+            _kill_browser_processes()
+        except Exception:
+            pass
+
+        argv = _resume_argv(sys.argv, resume_at, restarts + 1)
+        os.execv(sys.executable, [sys.executable] + argv)
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         browser, context, page = _fresh_page(p, browser)
 
         for i, shop in enumerate(webshops):
+            if i < resume_from:
+                continue
             name = shop["name"]
             url = shop["url"]
+            current["index"] = i
+            current["shop"] = shop
 
             # Bevestigd groen en nog vers? Overslaan, bewaarde status overnemen.
             entry = confirmed.get(_normalize_url(url))
@@ -1472,7 +1672,7 @@ def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
 
             # Periodiek een verse context: rem op geheugengroei in lange runs.
             if i and i % CONTEXT_RECYCLE_EVERY == 0:
-                browser, context, page = _fresh_page(p, browser, context)
+                browser, context, page = _recover_page(p, browser, context, _reap_shard)
 
             # Harde per-site-cap rond de hele retry-keten: geen enkele site mag
             # een shard laten hangen (zie PER_SITE_CAP_S). De reaper (on_giveup)
@@ -1519,7 +1719,8 @@ def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
                     "error": f"Per-site cap {PER_SITE_CAP_S}s overschreden",
                 }
                 # De page/context kan corrupt zijn na het alarm: vers beginnen.
-                browser, context, page = _fresh_page(p, browser, context)
+                # Onder eigen cap, want dit herstel kan zelf hangen.
+                browser, context, page = _recover_page(p, browser, context, _reap_shard)
             except Exception as e:
                 # Vangnet: geen enkele losse site-fout mag een hele shard doden
                 # (zie de IPv6-href-crash van 29 juni 2026, die 3 shards meenam).
@@ -1533,7 +1734,7 @@ def scrape_webshops(webshops, now, confirmed=None, flush_path=None):
                     "scrape_status": "error",
                     "error": f"{type(e).__name__}: {e}",
                 }
-                browser, context, page = _fresh_page(p, browser, context)
+                browser, context, page = _recover_page(p, browser, context, _reap_shard)
 
             entry = {
                 "name": name,
@@ -1668,6 +1869,11 @@ def main():
     parser.add_argument("--num-shards", type=int, help="Total number of shards")
     parser.add_argument("--out", help="Where to write partial results (shard mode)")
     parser.add_argument("--merge", help="Directory of results.part-*.json to merge into final results.json")
+    # Zelfherstart na een onbreekbare hang; zet de reaper zelf (zie _reap_shard).
+    parser.add_argument("--resume-from", type=int, default=0,
+                        help=argparse.SUPPRESS)
+    parser.add_argument("--restarts", type=int, default=0,
+                        help=argparse.SUPPRESS)
     args = parser.parse_args()
 
     ds = DATASETS[args.dataset]
@@ -1704,7 +1910,25 @@ def main():
         flush_path = Path(args.out) if args.out else ds["results_file"].parent / f"results.part-{args.shard}.json"
         flush_path.parent.mkdir(parents=True, exist_ok=True)
 
-    results = scrape_webshops(entries, now, confirmed, flush_path=flush_path)
+    # Hervat na een zelfherstart: de reaper heeft alles tot en met de hangende
+    # site al naar flush_path geschreven, dus die lezen we terug en we beginnen
+    # bij de site erna.
+    prior_results = []
+    if args.resume_from and flush_path and Path(flush_path).exists():
+        try:
+            with open(flush_path) as f:
+                prior_results = json.load(f).get("webshops", [])
+            print(f"Hervat bij site {args.resume_from + 1}/{len(entries)} "
+                  f"met {len(prior_results)} eerdere resultaten "
+                  f"(herstart {args.restarts}/{MAX_SHARD_RESTARTS})")
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"Waarschuwing: deelbestand onleesbaar bij hervatten ({exc}); "
+                  f"begin opnieuw vanaf site {args.resume_from + 1}")
+
+    results = scrape_webshops(entries, now, confirmed, flush_path=flush_path,
+                              resume_from=args.resume_from,
+                              prior_results=prior_results,
+                              restarts=args.restarts)
 
     # Shard mode writes a partial file for the merge step; it must NOT finalize
     # (that would clobber results.json and regenerate assets from a partial set).
