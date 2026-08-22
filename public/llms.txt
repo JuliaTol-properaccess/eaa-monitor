@@ -63,6 +63,10 @@ Reisorganisaties (ACM-toezicht), laatste meting (17 augustus 2026): 24 reisorgan
 2 (8%) niet te controleren.
 <!-- REIZEN-MEASUREMENT:END -->
 
+## Volledige tekst
+
+- [llms-full.txt](https://eaa-monitor.nl/llms-full.txt): de volledige tekst van alle artikelen en beantwoorde praktijkvragen in één bestand, zonder de wekelijkse meetcijfers
+
 ## Belangrijkste pagina's
 - [Webshopmonitor](https://eaa-monitor.nl/monitor.html): cijfers, grafiek en volledige lijst van webshops (ACM-toezicht)
 - [Financiële monitor](https://eaa-monitor.nl/monitor-financieel.html): banken, verzekeraars, betaaldiensten en leasemaatschappijen (AFM-toezicht)
@@ -82,6 +86,7 @@ Reisorganisaties (ACM-toezicht), laatste meting (17 augustus 2026): 24 reisorgan
 
 ## English pages
 The monitor dashboards and the hub homepage are also available in English (same weekly data, live figures). The knowledge base and forms remain in Dutch.
+- [EAA knowledge base (English)](https://eaa-monitor.nl/en/articles.html): plain-language explanation of the European Accessibility Act in the Netherlands, written in English and not translated: scope and the micro-enterprise exemption, the six regulators and what they do, and what the law actually requires
 - [EAA Monitor (English hub)](https://eaa-monitor.nl/en/): the European Accessibility Act in the Netherlands, explained, with weekly figures across seven sectors
 - [Web shop monitor](https://eaa-monitor.nl/en/monitor.html): figures and full list of Dutch web shops (ACM supervision)
 - [Financial monitor](https://eaa-monitor.nl/en/monitor-financieel.html): banks, insurers, payment services and leasing companies (AFM supervision)

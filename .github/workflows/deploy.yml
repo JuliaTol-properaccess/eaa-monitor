@@ -56,6 +56,9 @@ jobs:
       # De volledige meetlijsten staan niet in git (2,6 MB die elke week
       # verandert). Ze worden hier gebouwd uit data/results*.json, zodat de
       # hele telling ook zonder JavaScript leesbaar is.
+      - name: Build Engelse kennisbank
+        run: python tools/build_articles_en.py
+
       - name: Build volledige meetlijsten
         run: python tools/build_lijsten.py
 

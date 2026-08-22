@@ -1,0 +1,483 @@
+# EAA Monitor — volledige tekst van de kennisbank
+
+> De onafhankelijke telling van digitaal toegankelijk Nederland. Dit bestand bevat de
+> volledige tekst van de artikelen en de beantwoorde praktijkvragen, zodat een taalmodel
+> de inhoud kan lezen zonder elke pagina apart op te halen.
+
+Bron: https://eaa-monitor.nl/ · Licentie: CC BY 4.0, verwijs bij gebruik naar EAA Monitor met een link.
+
+De wekelijkse meetcijfers staan bewust niet in dit bestand: die veranderen elke maandag.
+Ze staan met hun peildatum in https://eaa-monitor.nl/llms.txt en op de monitorpagina's per sector.
+
+---
+
+## Artikelen
+
+### De EAA en de financiële sector: wat doet de AFM?
+
+Bron: https://eaa-monitor.nl/artikelen/eaa-financiele-sector.html · Gepubliceerd: 2026-06-09 · Bijgewerkt: 2026-06-23
+
+Kort antwoord: Banken, verzekeraars, betaaldiensten en leasemaatschappijen vallen onder de European Accessibility Act. Niet de ACM maar de Autoriteit Financiële Markten (AFM) houdt toezicht. Onze meting van 12 juni 2026 laat zien dat 45 van de 68 gecontroleerde instellingen (66%) een toegankelijkheidsverklaring publiceren.
+
+De European Accessibility Act geldt niet alleen voor webshops. Ook financiële diensten aan consumenten vallen eronder: internetbankieren, verzekeringsportalen, beleggingsplatformen en de bijbehorende apps. Voor deze sector is niet de Autoriteit Consument en Markt de toezichthouder, maar de Autoriteit Financiële Markten (AFM).
+
+#### Welke partijen vallen eronder?
+
+De AFM houdt toezicht op de financiële diensten aan consumenten. In de praktijk gaat het om vier groepen:
+
+- **Banken** met internetbankieren en een mobiele app.
+- **Verzekeraars** met klantportalen en online afsluiten.
+- **Betaaldiensten en beleggingsplatformen** die rechtstreeks aan consumenten leveren.
+- **Leasemaatschappijen** met een consumentenkant.
+
+De micro-vrijstelling geldt ook hier: bedrijven met minder dan 10 medewerkers én minder dan € 2 miljoen omzet zijn vrijgesteld voor hun diensten. Voor de meeste vergunninghoudende instellingen is dat niet aan de orde.
+
+#### Wat liet het onderzoek zien?
+
+Onderzoeksbureau Digitaal Toegankelijk bekeek in het najaar van 2025 een groep van 62 financiële instellingen, samen goed voor 580 webpagina's. De uitkomst was scherp: geen enkele instelling voldeed volledig aan de eisen. In totaal vonden de onderzoekers 2.587 fouten, gemiddeld 45 problemen per website. Bij 17 homepages zaten kritieke fouten die veilige toegang blokkeren.
+
+Opvallend is het verschil tussen de groepen. Verzekeraars scoorden het best: zij hadden allemaal een toegankelijkheidsverklaring. Leasemaatschappijen scoorden het slechtst, met 7 van de 10 zonder verklaring. In totaal misten 16 sites een verklaring.
+
+De AFM dringt zelf aan op tempo. De toezichthouder roept partijen die nog veel werk te verzetten hebben op om vaart te maken, en wijst daarbij ook op de voordelen: een breder bereik, snellere klantreizen en maatschappelijke inclusie. De AFM rekent met 5,5 miljoen Nederlanders die met een beperking leven, oftewel 32% van de bevolking.
+
+#### Meldplicht en boetes
+
+Sinds oktober 2025 geldt een meldplicht. Voldoet je dienst niet aan de eisen, dan moet je dat zelf melden bij je toezichthouder. Voor financiële diensten gaat die melding naar de AFM in plaats van naar de ACM. Daarnaast moet je een toegankelijkheidsverklaring op je site of in je app plaatsen die makkelijk te vinden is.
+
+Over de hoogte van de boete lopen de bronnen uiteen. Vakbronnen noemen voor de AFM een maximum rond € 103.000 tot € 110.000, lager dan het bedrag dat voor webshops geldt. Behandel dit als een indicatie uit vakmedia, niet als een harde AFM-uitspraak.
+
+#### Hoe staat de sector er nu voor?
+
+Wij controleren wekelijks of de grootste Nederlandse financiële instellingen een link naar een toegankelijkheidsverklaring in hun footer hebben staan. Bekijk de actuele cijfers per bank, verzekeraar, betaaldienst en leasemaatschappij in de [financiële monitor](/monitor-financieel.html).
+
+Let op wat zo'n meting wel en niet zegt. Een link naar een verklaring is een eerste indicatie van bewustzijn en naleving. Het betekent niet automatisch dat de hele website ook echt toegankelijk is. Een verklaring zonder onderbouwing zegt weinig; een echte audit en gebruikerstests laten zien waar de drempels zitten en hoe je ze weghaalt.
+
+---
+
+### Niet alleen websites: welke digitale kanalen vallen onder de EAA?
+
+Bron: https://eaa-monitor.nl/artikelen/niet-alleen-websites-digitale-kanalen.html · Gepubliceerd: 2026-06-09
+
+Kort antwoord: De European Accessibility Act gaat over meer dan websites en apps. Ook zelfbedieningsterminals, e-readers, betaalautomaten, e-boeken en elektronische communicatie vallen eronder. Of iets onder de wet valt, hangt af van het product of de dienst, niet van het kanaal waarlangs je het aanbiedt.
+
+Als het over de European Accessibility Act gaat, denken de meeste mensen aan websites en apps. Logisch, want daar komen de meeste ondernemers het eerst mee in aanraking. Maar de wet is breder. Hij gaat over een vaste lijst producten en diensten, en lang niet allemaal zijn dat websites.
+
+Dit artikel zet op een rij welke digitale kanalen onder de EAA vallen. Wil je weten of de wet voor jouw situatie geldt, lees dan ook [Valt mijn website onder de EAA?](/artikelen/valt-mijn-website-onder-de-eaa.html).
+
+#### De wet gaat over producten én diensten
+
+De EAA noemt twee soorten dingen: producten die je koopt en diensten die je afneemt. Voor allebei gelden toegankelijkheidseisen, zodat mensen met een beperking ze kunnen gebruiken. De website is daarvan maar één onderdeel.
+
+#### Producten die eronder vallen
+
+De wet noemt onder andere deze producten:
+
+- Computers en besturingssystemen voor consumenten.
+- Zelfbedieningsterminals: betaalautomaten, geldautomaten, kaartautomaten en incheckautomaten, en informatiezuilen waarop je zelf iets bedient.
+- Smartphones en andere apparaten waarmee je belt of communiceert.
+- Apparatuur voor digitale televisie, zoals een settopbox.
+- E-readers.
+
+Een betaalautomaat in je winkel of een bestelzuil in je horecazaak is dus niet vrijblijvend. Ook die moet bruikbaar zijn voor iemand die slecht ziet of de schermen niet met een muis bedient.
+
+#### Diensten die eronder vallen
+
+Aan de dienstenkant noemt de wet onder andere:
+
+- E-commerce: online verkoop aan consumenten.
+- Bankdiensten voor consumenten.
+- Elektronische communicatiediensten, zoals bellen en berichten sturen.
+- Toegang tot audiovisuele mediadiensten, bijvoorbeeld de omgeving waarin je een serie of uitzending kiest.
+- E-boeken en de software om ze te lezen.
+- Onderdelen van personenvervoer per trein, bus, boot en vliegtuig: websites, apps, digitale tickets, reisinformatie in realtime en de automaten op stations en in terminals.
+
+#### Waarom dit belangrijk is
+
+Veel organisaties richten zich op hun website en vergeten de rest. Maar een klant ervaart je dienst als geheel. Een toegankelijke webshop met een betaalzuil die niemand met een beperking kan bedienen, voldoet alsnog niet. Kijk dus naar alle plekken waar een klant digitaal iets met je doet, niet alleen naar de homepage.
+
+#### Geldt dit allemaal voor jou?
+
+Nee, niet automatisch. Welke eisen voor jou tellen, hangt af van wat je aanbiedt en aan wie. Voor dienstverleners geldt bovendien een vrijstelling voor micro-ondernemingen: minder dan 10 medewerkers en een jaaromzet tot € 2 miljoen. Begin met uitzoeken of en hoe de wet op jouw situatie van toepassing is, en kijk daarbij verder dan je website alleen.
+
+---
+
+### Welke subsidies zijn er voor digitale toegankelijkheid?
+
+Bron: https://eaa-monitor.nl/artikelen/subsidies-voor-digitale-toegankelijkheid.html · Gepubliceerd: 2026-06-09
+
+Kort antwoord: Een landelijke subsidiepot voor digitale toegankelijkheid bestaat niet. Wel zijn er een handvol gemeentelijke regelingen, met flinke verschillen in wat ze dekken. Online overzichten zitten vol fouten; wij checkten welke regelingen er echt zijn en wat ze vergoeden.
+
+Online circuleren overzichten van "EAA-subsidies" met fouten: verzonnen rijksregelingen, halve bedragen en regelingen die helemaal niet over websites gaan. Wij controleerden het. Een landelijke pot is er niet. Wel een handvol gemeentelijke regelingen, en die verschillen sterk in wat ze dekken.
+
+#### Geen landelijke regeling
+
+Het ministerie en de Rijksdienst voor Ondernemend Nederland hebben geen specifieke subsidie voor EAA-implementatie of digitale toegankelijkheid. Lijstjes die spreken over een "Stimuleringsregeling Toegankelijkheid van RVO" met € 15.000 en 75% vergoeding kloppen niet. Die bedragen horen bij de gemeente Nijmegen, niet bij het Rijk.
+
+Algemene innovatie- of digitaliseringsregelingen kunnen soms passen, maar dan moet je je project actief inkleden als digitaal verbeterproject. Een aparte EAA-pot is er niet.
+
+#### Drie smaken gemeentelijke regelingen
+
+Voordat je gaat zoeken: let goed op het verschil tussen drie categorieën. Ze lijken op elkaar, maar pakken heel anders uit voor je portemonnee.
+
+1. **Alleen audits of scans**, geen implementatie. Voorbeelden: Amsterdam, Tilburg, Zoetermeer (digitale tak).
+2. **Audits én implementatie**. Voorbeelden: Nijmegen, Den Haag, Utrecht, Arnhem, Eindhoven.
+3. **Alleen fysieke toegankelijkheid**. Voorbeeld: Breda. Voor websites heb je hier niets aan.
+
+Voor wie EAA-conform wil worden is categorie 2 het meest interessant: daar krijg je naast de audit ook de daadwerkelijke aanpassingen vergoed.
+
+#### Overzicht per gemeente
+
+##### Nijmegen
+
+Subsidie stimulering toegankelijkheid 2025-2026. Maximaal 75% van de kosten, met een bovengrens van € 15.000 per aanvraag. Jaarbudget € 100.000. Dekt zowel fysieke als digitale aanpassingen, waarbij websites en apps worden getoetst aan WCAG 2.2.
+
+Doelgroep: bedrijven met klantbezoek en organisaties met een bezoek- of vergaderfunctie, KvK-geregistreerd in Nijmegen.
+
+##### Den Haag
+
+Subsidie Toegankelijke Stad. Voor het toegankelijk maken van websites of apps: 100% van de eerste € 10.000, daarna 75% van het meerdere, tot een maximum van € 25.000 per aanvrager. Aanvraag minimaal 12 weken voor projectstart, antwoord binnen 12 weken.
+
+Doelgroep: rechtspersonen (stichtingen, verenigingen, bedrijven) in Den Haag. Eis: ervaringsdeskundigen werken mee aan de activiteiten. PEP Den Haag begeleidt non-profits gratis bij de aanvraag.
+
+##### Utrecht
+
+Toegankelijkheidssubsidie. Maximaal € 40.000 per aanvraag. Digitale toegankelijkheid is expliciet onderdeel, inclusief verwijzing naar Stichting Accessibility voor advies. Aanvragers moeten op hun eigen site informatie opnemen over de toegankelijkheid van hun producten, diensten en gebouw.
+
+Doelgroep: KvK-geregistreerde organisaties en bedrijven, ook eenmanszaken.
+
+##### Amsterdam
+
+Subsidie vergroten sociale en fysieke toegankelijkheid 2025-2026. Maximaal € 25.000 per boekjaar. Budgetplafond € 300.000 in 2026. Aanvragen kan vanaf 1 januari 2026, op volgorde van binnenkomst.
+
+Belangrijke beperking: deze regeling vergoedt alleen toegankelijkheidsaudits volgens WCAG 2.2. Niet de implementatie van aanpassingen, niet het onderhoud van je site, niet de training van je team.
+
+Doelgroep: non-profits, verenigingen, stichtingen en bedrijven die hun activiteiten of gebouwen toegankelijker willen maken.
+
+##### Arnhem
+
+Toegankelijkheidsfonds. Open voor aanvragen tot 1 januari 2028. Twee categorieën:
+
+- **Bedrijven**: 100% tot € 2.000, daarboven 50%. Maximum € 20.000.
+- **Maatschappelijke of religieuze organisaties**: 100% tot € 4.000, daarboven 75%. Maximum € 30.000.
+
+Dekt fysieke verbeteringen én digitale aanpassingen volgens WCAG 2.2. Aanvragers moeten een fysieke locatie hebben waar klanten of bewoners komen. Onderwijsinstellingen zijn uitgesloten.
+
+##### Eindhoven
+
+Subsidie toegankelijkheidsaanpassingen in het MKB. Maximaal € 40.000 per aanvraag. Totaal budget € 250.000 voor 2025-2026, deadline 1 oktober 2026. Aanvraag minimaal 13 weken voor projectstart, antwoord binnen 12 weken.
+
+Doelgroep: eenmanszaken met personeel, mkb-bedrijven en maatschappelijke organisaties. Dekt fysieke, sociale en digitale aanpassingen, inclusief toegankelijke websites en begrijpelijke folders.
+
+##### Zoetermeer
+
+Impuls Toegankelijkheid. € 150.000 beschikbaar per jaar in 2026 en 2027. Drie sporen:
+
+- **Bedrijven (bouw of buitenruimte)**: 100% tot € 2.000, daarboven 50%. Maximum € 10.000 per jaar.
+- **Instellingen (bouw of buitenruimte)**: 100% tot € 4.000, daarboven 75%. Maximum € 15.000 per jaar.
+- **Digitale scan (alleen non-profits)**: maximaal € 1.500 per scan, één scan per twee jaar.
+
+De digitale tak vergoedt dus alleen een scan volgens WCAG 2.2 A en AA, niet de implementatie.
+
+##### Tilburg
+
+Subsidie digitale toegankelijkheid. Maximaal € 2.000 per aanvraag, subsidieplafond € 30.000. Alleen voor organisaties zonder winstoogmerk.
+
+Deze regeling is bedoeld voor bewustwording: ervaringscentra, het inhuren van een digitaal toegankelijkheidsadviseur, informatieavonden en workshops voor webspecialisten. Niet voor een audit van je eigen site of voor implementatie.
+
+##### Breda
+
+Toegankelijkheidsfonds. Vergoedt 100% tot € 1.000 en daarna 50%, met een maximum van € 3.000. Dit fonds dekt alleen fysieke toegankelijkheid van gebouwen en evenementen, geen websites of apps. Vermeld voor de volledigheid: kom je deze regeling tegen in een online lijstje over de EAA, dan klopt die context niet.
+
+#### En de provincies?
+
+Op provincieniveau bestaan algemene digitaliserings- of innovatiesubsidies waaronder een toegankelijkheidsproject soms kan vallen. Er is geen enkele provincie met een specifieke EAA-regeling. Online overzichten die per provincie een bedrag noemen zijn niet betrouwbaar. Vraag bij je provincieloket of jouw project in een bestaande pot past.
+
+#### Waar moet je op letten?
+
+- **Lokale binding**. Bijna alle gemeentelijke regelingen vragen een KvK-vestiging of fysieke locatie binnen de gemeentegrens.
+- **Aanvraagtermijn**. Vaak moet je 12 of 13 weken voor projectstart aanvragen. Begin op tijd.
+- **Wat valt eronder?**. Lees in de regeling of de subsidie ook implementatie dekt, of alleen een audit. Het verschil is meestal duizenden euro's.
+- **Plafond en volgorde van binnenkomst**. Veel regelingen werken first come, first served. Wie wacht tot de zomer, kan de pot leeg vinden.
+- **Cofinanciering of stapelen**. Soms mag het, soms niet. Check dit per regeling, niet bij een generieke bron.
+
+#### Wat als je gemeente er niet bij staat?
+
+Bel je gemeente of mail het ondernemersloket. Veel kleinere gemeenten hebben geen aparte EAA-pot, maar wel een algemene "inclusie", "digitale stad" of "ondernemersbudget". Een directe vraag levert in de praktijk vaker iets op dan een rondje langs subsidiezoekers, en de gemeenteambtenaar denkt soms mee over een pilot of cofinanciering.
+
+#### Wat betekent dit voor jou?
+
+Reken er niet op dat je je EAA-traject grotendeels gesubsidieerd krijgt. De regelingen die er zijn, zijn beperkt, regionaal en dekken vaak niet de hele rit. Beschouw subsidie als een meevaller, niet als de basis van je planning. Twijfel je of de EAA voor jou geldt? Begin bij [Valt mijn website onder de EAA?](/artikelen/valt-mijn-website-onder-de-eaa.html).
+
+---
+
+### Waarom accessibility-overlays je probleem niet oplossen
+
+Bron: https://eaa-monitor.nl/artikelen/overlay-tools-werken-niet.html · Gepubliceerd: 2026-06-08
+
+Kort antwoord: Een overlay belooft je website in één regel code toegankelijk te maken, maar lost de echte barrières niet op. Vakpartijen zijn er kritisch op: de onderliggende code blijft ontoegankelijk en sommige overlays hinderen hulpsoftware juist. Echte toegankelijkheid begint bij de broncode zelf.
+
+Een accessibility-overlay belooft veel: plak één regel code op je website en je bent in één klap toegankelijk. Voor een ondernemer die onder druk staat van de European Accessibility Act klinkt dat aantrekkelijk. Toch zijn vakpartijen er uitgesproken kritisch op. Een overlay lost het echte probleem niet op.
+
+#### Wat is een overlay?
+
+Een overlay is een stukje JavaScript dat bovenop je bestaande website draait. Het voegt een knopje toe waarmee bezoekers bijvoorbeeld het contrast of de lettergrootte kunnen aanpassen, en het probeert automatisch problemen in de code te repareren.
+
+De belofte is dat dit de toegankelijkheid regelt zonder dat je je website hoeft aan te passen. Precies daar zit het probleem.
+
+#### Waarom het niet werkt
+
+Toegankelijkheid zit in de structuur van je website: in de code, de opbouw van je pagina's en de logica van je bestelproces. Een laagje dat daar bovenop draait, kan die onderliggende problemen niet wegnemen.
+
+- **De echte barrières blijven.** Een verkeerd opgebouwd formulier of een bestelproces dat niet met een toetsenbord te bedienen is, repareer je niet met een knopje voor lettergrootte.
+- **Mensen die assistieve technologie gebruiken, hebben vaak hun eigen instellingen al.** Schermlezergebruikers en toetsenbordgebruikers werken met software die voor hen is ingesteld. Een overlay die daar overheen komt, kan juist in de weg gaan zitten.
+- **Automatische reparatie raakt lang niet alles.** Geautomatiseerde tools missen een groot deel van de barrières. Wat een echte gebruiker tegenkomt, valt buiten beeld.
+
+Dit is ook in de praktijk getest. In twee uitgebreide analyses zijn populaire overlay-tools zoals AccessiBe, UserWay en EqualWeb tegen de WCAG gehouden. Elke tool introduceerde eigen toegankelijkheidsfouten en loste de structurele problemen niet op. Lees [Waarom overlay-tools zoals AccessiBe en UserWay je webshop niet WCAG-conform maken](https://www.properaccess.nl/blog/overlay-tools-accessibe-userway-wcag/) en [Overlay-toegankelijkheidstools: lossen ze echt iets op?](https://www.properaccess.nl/blog/overlay-toegankelijkheidstools-lossen-ze-echt-iets-op/).
+
+#### Wat de toezichthouder belangrijk vindt
+
+Uit het eerste handhavingsjaar valt een duidelijke les te trekken: echte gebruikers tellen zwaarder dan testscores. Geautomatiseerde tools, en dus ook overlays, missen veel barrières die mensen in de praktijk wél tegenkomen.
+
+Een groene score van een tool of een overlay-knop in de hoek van je site zegt dus weinig over of iemand met een beperking echt kan afrekenen. Dat is wat telt.
+
+#### Toegankelijkheid is een proces, geen knop
+
+De tweede les uit dat eerste jaar: toegankelijkheid is een continu proces, geen eenmalig project en zeker geen knop die je aanzet. Je website verandert, je aanbod verandert, en je toegankelijkheid moet meebewegen.
+
+Daar past geen overlay bij, maar een aanpak die begint bij je eigen site.
+
+#### Wat wél werkt
+
+- **Breng in kaart waar je staat.** Een inhoudelijke audit laat zien welke barrières er zijn, per onderdeel van je site.
+- **Test met echte gebruikers.** Mensen die assistieve technologie gebruiken, vinden problemen die geen tool oppikt.
+- **Los het bij de bron op.** Pas de code en de opbouw aan, zodat de toegankelijkheid in je site zelf zit.
+
+Die eerste inventarisatie kun je voor een deel zelf doen. In het [overzicht van toegankelijkheidstools](/tools.html) staat waarmee, en per tool wat hij niet vindt.
+
+Kies bij voorkeur een onafhankelijke partij: zonder eigen websitebouw, software of overlay om te verkopen is er geen belang bij een snelle pleister, alleen bij een site die echt werkt voor iedereen.
+
+---
+
+### Zo schrijf je een toegankelijkheidsverklaring voor je webshop
+
+Bron: https://eaa-monitor.nl/artikelen/toegankelijkheidsverklaring-schrijven.html · Gepubliceerd: 2026-06-08
+
+Kort antwoord: Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Je beschrijft de stand van zaken, bekende knelpunten en hoe bezoekers een probleem kunnen melden. Een verklaring hoort bij de European Accessibility Act, maar vervangt echte toegankelijkheid niet.
+
+Een toegankelijkheidsverklaring is een pagina op je website waarin je beschrijft hoe toegankelijk je webshop is en wat je doet om dat te verbeteren. Onder de European Accessibility Act hoort zo'n verklaring bij je verplichtingen. Deze monitor controleert wekelijks of Nederlandse webshops er een publiceren.
+
+Dit artikel legt uit wat erin hoort en hoe je hem op de goede plek zet.
+
+#### Wat hoort er in een verklaring?
+
+Een bruikbare verklaring is concreet en eerlijk. Zet er in elk geval het volgende in:
+
+- **Je intentie.** Een korte zin dat je je inzet voor een toegankelijke webshop voor iedereen.
+- **De stand van zaken.** Hoe toegankelijk is je site nu? Wees eerlijk over wat nog niet goed werkt. Een verklaring die beweert dat alles perfect is, verliest direct geloofwaardigheid.
+- **De bekende knelpunten.** Benoem de onderdelen die nog niet toegankelijk zijn en wanneer je ze aanpakt.
+- **Hoe je de toegankelijkheid hebt vastgesteld.** Bijvoorbeeld met een audit of met gebruikerstests.
+- **Een contactmogelijkheid.** Een e-mailadres of formulier waar bezoekers een probleem kunnen melden. Dit is het belangrijkste onderdeel: het geeft mensen die vastlopen een directe route naar hulp.
+- **De datum.** Wanneer is de verklaring voor het laatst bijgewerkt?
+
+#### Wees concreet, niet vaag
+
+Een verklaring is geen marketingtekst. Vermijd zinnen als "wij hechten veel waarde aan toegankelijkheid" zonder dat er iets concreets volgt. Schrijf liever: "Het bestelproces is toetsenbordbedienbaar. De productfilters werken nog niet goed met een schermlezer; we verwachten dit in het derde kwartaal op te lossen."
+
+Zo'n verklaring helpt de bezoeker én laat een toezichthouder zien dat je weet waar je staat.
+
+#### Waar publiceer je hem?
+
+Zet de verklaring op een vaste plek waar bezoekers hem verwachten. In de praktijk is dat de footer, op elke pagina. Gebruik een duidelijke linktekst, bijvoorbeeld "Toegankelijkheidsverklaring", zodat meteen helder is waar de link heen gaat.
+
+Deze monitor zoekt precies daar: in de footer, naar links met woorden als toegankelijkheid of accessibility. Staat je verklaring goed gelinkt, dan vindt niet alleen de monitor hem, maar ook je bezoekers.
+
+#### Een verklaring maakt je nog niet toegankelijk
+
+Dit is het belangrijkste misverstand. Een verklaring publiceren is niet hetzelfde als voldoen aan de wet. De verklaring beschrijft de toegankelijkheid; de echte opgave is dat je webshop ook werkt voor mensen met een beperking.
+
+Zie de verklaring dus als het sluitstuk van je werk, niet als de start. Begin bij de site zelf: kan iemand met alleen een toetsenbord afrekenen? Werkt het bestelproces met een schermlezer? Pas als je dat weet, kun je een eerlijke verklaring schrijven.
+
+#### Hoe weet je waar je staat?
+
+Een geautomatiseerde tool vindt een deel van de problemen, maar lang niet alles. De barrières die echte gebruikers tegenkomen, zie je pas met een inhoudelijke audit en met tests door mensen die assistieve technologie gebruiken.
+
+Voor een eerste indruk kun je zelf beginnen. Het [overzicht van toegankelijkheidstools](/tools.html) zet de checkers, contrastmeters en schermlezers op een rij, met bij elke tool de beperkingen erbij.
+
+Wil je een eerlijke verklaring schrijven die klopt? Laat dan eerst in kaart brengen waar je staat. Daarna schrijf je een verklaring die de werkelijkheid beschrijft, niet een wens.
+
+---
+
+### Wie houdt toezicht op de EAA, en wat zijn de boetes?
+
+Bron: https://eaa-monitor.nl/artikelen/toezicht-en-boetes.html · Gepubliceerd: 2026-06-08 · Bijgewerkt: 2026-06-23
+
+Kort antwoord: In Nederland houdt vooral de ACM toezicht op de European Accessibility Act, met daarnaast de AFM voor de financiële sector en andere toezichthouders per domein. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet. Sinds oktober 2025 geldt bovendien een meldplicht.
+
+In Nederland is het toezicht op de European Accessibility Act verdeeld over meerdere sectorale toezichthouders. Elke toezichthouder bewaakt zijn eigen domein. Voor webshops is de Autoriteit Consument en Markt (ACM) de belangrijkste.
+
+#### Wie houdt waarop toezicht?
+
+| Toezichthouder | Domein |
+| --- | --- |
+| Autoriteit Consument en Markt (ACM) | e-commerce en elektronische communicatiediensten |
+| Autoriteit Financiële Markten (AFM) | financiële diensten zoals banken, verzekeraars en betaaldiensten |
+| Rijksinspectie Digitale Infrastructuur (RDI) | elektronische producten en hardware |
+| Commissariaat voor de Media | media-organisaties |
+| Inspectie Leefomgeving en Transport (ILT) | personenvervoer |
+
+De AFM noemt zelf een verdeling over vijf toezichthouders. Eén bron spreekt over zes en voegt de Inspectie Justitie en Veiligheid toe. Dat laatste is niet hard bevestigd. Houd dus aan: vijf toezichthouders, met een mogelijk zesde.
+
+#### Wat doet de ACM concreet?
+
+De ACM is de hoofdrolspeler voor webshops en is sinds 28 juni 2025 actief gaan controleren. Dat gebeurt op twee manieren:
+
+- **Reactief**, op basis van klachten. Consumenten kunnen sinds de ingangsdatum een melding doen bij ACM ConsuWijzer.
+- **Proactief**, met eigen steekproeven.
+
+De ACM heeft e-commerce bovendien expliciet benoemd als speerpunt in haar toezicht op de digitale economie in 2026. Dat onderwerp blijft dus hoog op de agenda staan.
+
+In maart 2026 publiceerde de ACM een onderzoek onder de circa 100 grootste Nederlandse webshops. Daaruit bleek dat 61% niet toegankelijk is en dat bij nog eens 33% serieuze problemen zijn. Opgeteld heeft ongeveer 94% tekortkomingen.
+
+Onze eigen wekelijkse meting wijst dezelfde kant op. Op 6 juni 2026 publiceerde slechts 2% van de 10.397 gecontroleerde webshops een toegankelijkheidsverklaring in de footer. Een verklaring is niet hetzelfde als echt toegankelijk zijn, maar het laat wel zien hoeveel werk er nog ligt. Bekijk de actuele stand in de [webshopmonitor](/monitor.html).
+
+#### Meldplicht sinds oktober 2025
+
+Sinds oktober 2025 geldt een meldplicht. Voldoet je e-commerce- of communicatiedienst niet aan de eisen, dan moet je dat zelf melden bij de ACM via een formulier. Voor financiële diensten gaat die melding naar de AFM.
+
+De ACM noemt twee termijnen. Kritieke of ernstige problemen meld je binnen een week, matige of kleine problemen binnen een maand. Naast de melding plaats je een toegankelijkheidsverklaring op je site of in je app, op een plek die makkelijk te vinden is.
+
+De meldplicht draait de bewijslast om. Je toont zelf aan hoe je dienst ervoor staat, en daarvoor heb je een onderbouwde audit nodig.
+
+#### Wat doet de AFM?
+
+De AFM is de bevoegde toezichthouder voor financiële diensten, zoals internetbankieren, verzekeringsportalen en beleggingsplatformen. De AFM roept de sector op om vaart te maken en wijst op de voordelen: een breder bereik onder onder andere senioren, snellere klantreizen en meer inclusie.
+
+De sector loopt achter. Uit onderzoek onder 62 financiële instellingen, najaar 2025, bleek dat geen enkele instelling volledig aan de eisen voldeed.
+
+#### Hoe hoog zijn de boetes?
+
+De ACM noemt op haar eigen pagina's geen concreet bedrag. Vakbronnen houden vrijwel unaniem € 900.000 of 1% van de jaaromzet aan, afhankelijk van welk bedrag hoger is. Voor grotere bedrijven is dat tweede getal vaak het zwaarst. Bij de AFM ligt de maximale boete volgens vakbronnen lager, rond € 103.000 tot € 110.000.
+
+Naast de boete telt de reputatieschade. Toezichthouders maken handhaving zichtbaar, en niet-naleving wordt daarmee een verhaal dat klanten en pers oppikken.
+
+#### Hoe streng wordt er gehandhaafd?
+
+Meerdere vakbronnen schetsen dat toezichthouders in het eerste jaar terughoudend zijn: eerst aanspreken en een verbeterplan vragen, daarna pas beboeten. Behandel dit als het beeld in de markt, niet als officieel ACM-beleid. Het kwam niet hard bevestigd uit de verificatie.
+
+Tegelijk laat het ACM-onderzoek van maart 2026 zien dat de toezichthouder echt meet en publiceert. De boodschap is dus niet om af te wachten, maar om je naleving aantoonbaar op orde te brengen.
+
+In Nederland is nog geen handhavingszaak bekend. Elders in Europa wel. In Frankrijk spanden gehandicaptenorganisaties eind 2025 kort gedingen aan tegen grote supermarkten wegens ontoegankelijke checkouts. In Duitsland kregen webwinkels kort na de invoering van de wet waarschuwingsbrieven. Opvallend in Frankrijk: de druk komt daar van belangenorganisaties, niet van de toezichthouder.
+
+#### Wat betekent dit voor jou?
+
+Val je onder de EAA, dan is de vraag niet óf er gecontroleerd wordt, maar wanneer. Een onderbouwde audit laat zien waar je staat en helpt je geloofwaardig aan te tonen dat je de toegankelijkheid serieus neemt. Wil je vast zelf kijken hoe je site ervoor staat, dan helpt het [overzicht van toegankelijkheidstools](/tools.html). Twijfel je of de wet voor jou geldt? Lees dan eerst [Valt mijn website onder de EAA?](/artikelen/valt-mijn-website-onder-de-eaa.html).
+
+---
+
+### Valt mijn website onder de EAA?
+
+Bron: https://eaa-monitor.nl/artikelen/valt-mijn-website-onder-de-eaa.html · Gepubliceerd: 2026-06-08
+
+Kort antwoord: Niet elke website valt onder de European Accessibility Act. De wet geldt voor bedrijven die online producten of diensten aan consumenten verkopen. Ben je een micro-onderneming met minder dan 10 medewerkers en een jaaromzet van maximaal € 2 miljoen, dan ben je waarschijnlijk vrijgesteld. Hieronder check je het met een paar vragen.
+
+De European Accessibility Act geldt sinds 28 juni 2025. Sindsdien circuleert er veel onjuiste informatie. De meest hardnekkige claim: vanaf die datum zou elke website aan de wet moeten voldoen. Dat klopt niet. Lang niet elke website valt eronder.
+
+Dit artikel legt uit voor wie de wet geldt. Onderaan staat een korte checker waarmee je een eerste indicatie krijgt.
+
+#### Waar gaat de EAA over?
+
+De European Accessibility Act harmoniseert de Europese regels voor de toegankelijkheid van bepaalde producten en diensten. E-commerce is een van die diensten. Verkoop je online aan consumenten, dan is de kans groot dat je eronder valt. Dan moeten je website en bestelproces bruikbaar zijn voor mensen met een beperking.
+
+Belangrijk: het doel van de wet is marktharmonisatie binnen Europa. Toegankelijkheid is het middel, niet een losse eis die voor iedereen automatisch geldt. Daarom valt niet elke site eronder.
+
+#### De drie vragen die de scope bepalen
+
+Of de wet voor jou geldt, hangt vooral af van drie dingen.
+
+**1. Verkoop je aan consumenten?** De EAA beschermt consumenten. Lever je uitsluitend aan andere bedrijven, dan val je in beginsel buiten de consumentgerichte verplichtingen.
+
+**2. Hoeveel mensen werken er?** Heb je 10 of meer medewerkers, dan tel je niet als micro-onderneming.
+
+**3. Wat is je jaaromzet?** Is je jaaromzet meer dan € 2 miljoen, dan tel je evenmin als micro-onderneming.
+
+#### De micro-vrijstelling
+
+Voor dienstverleners kent de wet een vrijstelling voor micro-ondernemingen. Een micro-onderneming heeft minder dan 10 medewerkers en een jaaromzet van maximaal € 2 miljoen. Voldoe je aan beide grenzen, dan ben je als dienstverlener vrijgesteld.
+
+Let op: dit verklaart waarom de meeste websites die nergens bij een keurmerk of vakorganisatie zijn aangesloten, buiten beeld blijven. Dat zijn vaak kleine ondernemingen onder beide grenzen.
+
+> Twijfel je over je cijfers? Reken met de actuele aantallen, niet met een schatting van vorig jaar. Eén medewerker of een paar ton omzet erbij kan het verschil maken tussen vrijgesteld en verplicht.
+
+#### Een verklaring is niet hetzelfde als toegankelijk zijn
+
+Veel ondernemers denken dat een toegankelijkheidsverklaring in de footer voldoende is. Een verklaring laat zien dat je je bewust bent van de regels en beschrijft hoe toegankelijk je site is. De echte verplichting is dat je site ook werkt voor mensen met een beperking. De verklaring is het sluitstuk, niet de hele opgave.
+
+Val je onder de wet, dan is de volgende vraag waar je nu staat. In het [overzicht van toegankelijkheidstools](/tools.html) staat waarmee je dat zelf kunt nakijken.
+
+#### Check je situatie
+
+Beantwoord de vragen hieronder voor een eerste indicatie. Dit is geen juridisch advies en geen audit, maar het helpt je de scope te begrijpen.
+
+      
+
+      
+
+      <button type="submit" class="utrecht-button utrecht-button--primary-action">Toon indicatie</button>
+    </fieldset>
+  </form>
+  
+</div>
+
+#### Kort samengevat
+
+Verkoop je aan consumenten en ben je geen micro-onderneming, dan val je waarschijnlijk onder de EAA. Lever je alleen aan bedrijven, of blijf je onder beide micro-grenzen, dan is de kans groot dat de wet niet voor je geldt. Laat je niet leiden door angst of onjuiste claims, maar check je eigen situatie.
+
+---
+
+## Vragen uit de praktijk
+
+Antwoorden van toezichthouders op anonieme vragen. Bron: https://eaa-monitor.nl/vragen.html
+
+### Kun je je beroepen op een onevenredige last?
+
+Daar is geen simpel ja of nee op te geven. Of er sprake is van een onevenredige last, beoordeel je als bedrijf zelf. Dat doe je met alle criteria uit Bijlage VI van de EAA. De ACM legt dit uit op haar website.
+
+Daarnaast moet je een melding doen bij de ACM als je e-handelsdienst niet aan de toegankelijkheidseisen voldoet. Daarvoor staat een meldformulier op de site van de ACM. In dat formulier geef je aan of je vindt dat je bepaalde eisen niet kunt naleven omdat dat een onevenredige last oplevert. De ACM kan je beoordeling daarna opvragen.
+
+Bron: ACM · 2026-03-30
+
+---
+
+### Geldt er een uitzondering als je afhankelijk bent van een bestaand technisch product van een externe leverancier?
+
+Volgens de ACM is alleen het feit dat je een externe leverancier gebruikt op zich geen reden voor een uitzondering. Je bent er zelf verantwoordelijk voor dat je dienst aan de toegankelijkheidsregels voldoet. Schakel je anderen in, dan moet je je ervan verzekeren dat zij producten leveren die voldoen.
+
+Bron: ACM · 2026-03-30
+
+---
+
+### Binnen welke termijn moeten alle bevindingen opgelost zijn?
+
+Volgens de ACM moeten alle websites sinds 28 juni 2025 toegankelijk zijn. Wettelijk gezien hadden de bevindingen dus al opgelost moeten zijn.
+
+Bron: ACM · 2026-03-30
+
+---
+
+### Geldt er een overgangsperiode nu de wet net van kracht is?
+
+Nee. Volgens de ACM geldt voor e-handelsdiensten geen overgangsperiode.
+
+Bron: ACM · 2026-03-30
+
+---
+
+### Moet ik mijn huisstijl en logo aanpassen als die niet aan de contrasteisen voldoen?
+
+Je logo hoeft niet te worden aangepast. Een logo geldt als een kunstobject en valt daarmee buiten de contrasteisen.
+
+Voor huisstijlkleuren die niet aan de minimale contrasteisen voldoen geldt: gebruik ze in decoratieve elementen, niet in tekst. Tekst moet een contrastverhouding hebben van minimaal 4,5:1 voor gewone tekst en minimaal 3:1 voor grote tekst, zoals koppen.
+
+Bron: 2026-06-10
+
+---

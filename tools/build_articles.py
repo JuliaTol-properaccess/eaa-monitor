@@ -55,6 +55,7 @@ OUT_DIR = ROOT / "public" / "artikelen"
 KENNISBANK_FILE = ROOT / "public" / "artikelen.html"
 SITEMAP_FILE = ROOT / "public" / "sitemap.xml"
 LLMS_FILE = ROOT / "public" / "llms.txt"
+LLMS_FULL_FILE = ROOT / "public" / "llms-full.txt"
 
 BASE_URL = "https://eaa-monitor.nl"
 
@@ -110,10 +111,15 @@ NAV_ITEMS = [
 ]
 
 
-def shared_head(title, description, canonical, *, extra_head="", og_type="website"):
-    """Gedeelde <head>. depth-onafhankelijk via absolute /static-paden."""
+def shared_head(title, description, canonical, *, extra_head="", og_type="website", lang="nl"):
+    """Gedeelde <head>. depth-onafhankelijk via absolute /static-paden.
+
+    lang zet het taalattribuut en de og:locale, zodat de Engelse pagina's
+    dezelfde head kunnen gebruiken zonder een tweede kopie van dit blok.
+    """
+    locale = "en_GB" if lang == "en" else "nl_NL"
     return f"""<!DOCTYPE html>
-<html lang="nl" class="utrecht-theme theme-telling">
+<html lang="{lang}" class="utrecht-theme theme-telling">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,7 +136,7 @@ def shared_head(title, description, canonical, *, extra_head="", og_type="websit
   <meta property="og:title" content="{html.escape(title)}">
   <meta property="og:description" content="{html.escape(description)}">
   <meta property="og:site_name" content="EAA Monitor">
-  <meta property="og:locale" content="nl_NL">
+  <meta property="og:locale" content="{locale}">
   <meta property="og:image" content="{BASE_URL}/static/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{html.escape(title)}">
@@ -808,6 +814,16 @@ def write_sitemap(articles: list):
     except Exception as exc:  # pragma: no cover
         print(f"Waarschuwing: lijstpagina's niet in de sitemap ({exc})")
 
+    # Engelse kennisbank: aparte artikelen, geen vertaling, dus geen
+    # hreflang-koppeling met een Nederlands artikel.
+    try:
+        from build_articles_en import en_urls  # noqa: PLC0415
+
+        for pad, lastmod_en in en_urls():
+            static_urls.append((f"{BASE_URL}{pad}", "monthly", "0.7", lastmod_en))
+    except Exception as exc:  # pragma: no cover
+        print(f"Waarschuwing: Engelse artikelen niet in de sitemap ({exc})")
+
     rows = []
     for loc, freq, prio, lastmod in static_urls:
         lastmod_xml = f"<lastmod>{lastmod}</lastmod>\n    " if lastmod else ""
@@ -863,6 +879,93 @@ def patch_llms_articles(articles: list):
         text = text.rstrip() + "\n\n" + block + "\n"
     LLMS_FILE.write_text(text, encoding="utf-8")
     print(f"Bijgewerkt: {LLMS_FILE.relative_to(ROOT)} (artikellijst, {len(articles)} items)")
+
+
+def _markdown_body(path: Path) -> str:
+    """De markdown van een artikel zonder frontmatter en zonder ruwe HTML-blokken.
+
+    De ruwe HTML in sommige artikelen is interactief, zoals de scope-checker.
+    Die heeft in een tekstbestand geen betekenis en zou alleen ruis toevoegen.
+    """
+    tekst = path.read_text(encoding="utf-8")
+    if tekst.startswith("---"):
+        eind = tekst.find("\n---", 3)
+        if eind != -1:
+            tekst = tekst[eind + 4:]
+    tekst = re.sub(r"<div\b.*?</div>", "", tekst, flags=re.DOTALL)
+    tekst = re.sub(r"<script\b.*?</script>", "", tekst, flags=re.DOTALL)
+    tekst = re.sub(r"\n{3,}", "\n\n", tekst)
+    # Koppen twee niveaus omlaag: in dit bestand is de artikeltitel al een ###,
+    # dus een ## uit het artikel zou boven zijn eigen titel uitkomen.
+    tekst = re.sub(r"^(#{1,4}) ", lambda m: "#" * (len(m.group(1)) + 2) + " ",
+                   tekst, flags=re.MULTILINE)
+    return tekst.strip()
+
+
+def write_llms_full(articles: list):
+    """Schrijft public/llms-full.txt: de volledige tekst van de kennisbank.
+
+    llms.txt is een index met links. Een taalmodel dat die links niet ophaalt,
+    heeft daar weinig aan. llms-full.txt zet de tekst zelf in één bestand, zodat
+    de inhoud ook zonder crawlen te lezen is.
+
+    Bewust géén meetcijfers: die veranderen elke week en staan met hun datum in
+    llms.txt en op de monitorpagina's. Een getal zonder verse datum in een
+    statisch tekstbestand wordt vanzelf onjuist.
+    """
+    delen = [
+        "# EAA Monitor — volledige tekst van de kennisbank",
+        "",
+        "> De onafhankelijke telling van digitaal toegankelijk Nederland. Dit bestand bevat de",
+        "> volledige tekst van de artikelen en de beantwoorde praktijkvragen, zodat een taalmodel",
+        "> de inhoud kan lezen zonder elke pagina apart op te halen.",
+        "",
+        f"Bron: {BASE_URL}/ · Licentie: CC BY 4.0, verwijs bij gebruik naar EAA Monitor met een link.",
+        "",
+        "De wekelijkse meetcijfers staan bewust niet in dit bestand: die veranderen elke maandag.",
+        f"Ze staan met hun peildatum in {BASE_URL}/llms.txt en op de monitorpagina's per sector.",
+        "",
+        "---",
+        "",
+        "## Artikelen",
+        "",
+    ]
+    for meta in sorted(articles, key=lambda m: m["date"], reverse=True):
+        url = f"{BASE_URL}/artikelen/{meta['slug']}.html"
+        delen += [
+            f"### {meta['title']}",
+            "",
+            f"Bron: {url} · Gepubliceerd: {meta['date'].isoformat()}"
+            + (f" · Bijgewerkt: {meta['updated'].isoformat()}" if meta.get("updated") else ""),
+            "",
+        ]
+        if meta.get("answer"):
+            delen += [f"Kort antwoord: {meta['answer']}", ""]
+        delen += [_markdown_body(Path(meta["_path"])), "", "---", ""]
+
+    vragen_pad = ROOT / "data" / "vragen.json"
+    if vragen_pad.exists():
+        try:
+            vragen = json.loads(vragen_pad.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            vragen = []
+        if vragen:
+            delen += ["## Vragen uit de praktijk", "",
+                      f"Antwoorden van toezichthouders op anonieme vragen. Bron: {BASE_URL}/vragen.html", ""]
+            for v in vragen:
+                delen.append(f"### {v.get('vraag', '').strip()}")
+                delen.append("")
+                delen.append(str(v.get("antwoord", "")).strip())
+                bron = " · ".join(
+                    str(v[k]).strip() for k in ("toezichthouder", "datum") if v.get(k)
+                )
+                if bron:
+                    delen += ["", f"Bron: {bron}"]
+                delen += ["", "---", ""]
+
+    LLMS_FULL_FILE.write_text("\n".join(delen).rstrip() + "\n", encoding="utf-8")
+    grootte = LLMS_FULL_FILE.stat().st_size
+    print(f"Geschreven: {LLMS_FULL_FILE.relative_to(ROOT)} ({grootte // 1024} kB)")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
@@ -923,6 +1026,7 @@ def main():
 
     write_sitemap(articles_sorted)
     patch_llms_articles(articles_sorted)
+    write_llms_full(articles_sorted)
     print(f"\nKlaar: {len(articles)} artikelen gebouwd.")
 
 
