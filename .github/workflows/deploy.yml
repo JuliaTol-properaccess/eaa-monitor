@@ -53,6 +53,12 @@ jobs:
           pip install markdown pyyaml
           python tools/build_halloffame.py
 
+      # De volledige meetlijsten staan niet in git (2,6 MB die elke week
+      # verandert). Ze worden hier gebouwd uit data/results*.json, zodat de
+      # hele telling ook zonder JavaScript leesbaar is.
+      - name: Build volledige meetlijsten
+        run: python tools/build_lijsten.py
+
       - name: Prepare site
         run: |
           mkdir -p _site

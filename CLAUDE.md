@@ -10,6 +10,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `tools/scrape_footer.py` — Playwright-based scraper die footers checkt op toegankelijkheidslinks, en bij elke scrape de cijfers + Dataset JSON-LD in de doel-HTML en de eigen meet-regio in `llms.txt` bakt. **Zes datasets** via `--dataset {webshops,financieel,telecom,vervoer,media,ebooks}` (default `webshops`), volledig config-gestuurd via de `DATASETS`-dict: `webshops` bakt in `index.html` (legacy ongeprefixte markers); elke andere sector bakt in zijn eigen `monitor-<sector>.html` én vult een hub-kaart op `index.html` (markers `STAT:{hub_prefix}Total`/`STAT:{hub_prefix}PctWithout`). Nieuwe sector toevoegen = DATASETS-entry + `data/<sector>.json` + monitorpagina + hub-kaart op index.html + llms-regio. Pagina's met bot-protectie of wachtrij (minder dan 5 links) tellen als "niet te controleren", nooit als "zonder verklaring"
 - `tools/build_articles.py` — Artikelgenerator: rendert `content/artikelen/*.md` → `public/artikelen/*.html`, bouwt `public/artikelen.html`, regenereert `sitemap.xml` en patcht de artikellijst-regio in `llms.txt`
 - `tools/build_auditbureaus.py` — Rendert `data/auditbureaus.json` → `public/wcag-audit.html` (server-rendered tabel). Deelt head/header/footer met `build_articles.py`
+- `tools/build_lijsten.py` — Rendert de volledige meting per sector als platte HTML naar `public/lijst/` plus de hub `public/lijst.html`. De monitorpagina's bouwen hun tabel client-side, dus zonder deze pagina's ziet een crawler geen enkele naam. Webshops wordt gesplitst per beginletter, de andere zes sectoren krijgen één pagina. **Filterregels moeten gelijk blijven aan `public/app.js`**: bezwaren uit `objections.json` vallen uit lijst én telling, `scrape_status != success` is "niet te controleren" en nooit "geen verklaring", en de WCAG-scan komt uit `axe-results.json` op genormaliseerde URL. **Staat niet in git** (2,6 MB die elke week verandert); `deploy.yml` bouwt de pagina's. `lijst_urls()` levert de URL's aan de sitemap in `build_articles.py`
 - `tools/build_hulp.py` — Rendert `data/hulptools.json` → `public/tools.html` (server-rendered toolsoverzicht per categorie, met SoftwareApplication ItemList JSON-LD). Categorieën staan in `CATEGORIES` in de tool; een onbekende categorie laat de build hard falen. Deelt head/header/footer met `build_articles.py`
 - `tools/build_vragen.py` — Rendert `data/vragen.json` → `public/vragen.html` (server-rendered vraag-en-antwoord met FAQPage JSON-LD). Deelt head/header/footer met `build_articles.py`
 - `tools/build_bronnen.py` — Rendert `data/bronnen.json` → `public/bronnen.html` (server-rendered, filterbaar bronnenoverzicht). Deelt head/header/footer met `build_articles.py`; de filters/zoek werken client-side via `public/static/bronnen.js`
@@ -111,6 +112,9 @@ python tools/build_auditbureaus.py
 
 # Praktijkvragen-pagina (her)bouwen na een wijziging in data/vragen.json
 python tools/build_vragen.py
+# Volledige meetlijsten bouwen (staan niet in git; de deploy doet dit ook)
+python tools/build_lijsten.py
+
 # Hulppagina (her)bouwen na een wijziging in data/hulptools.json
 python tools/build_hulp.py
 # Bronnenpagina (her)bouwen na een wijziging in data/bronnen.json

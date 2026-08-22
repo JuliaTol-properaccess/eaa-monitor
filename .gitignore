@@ -31,3 +31,8 @@ node_modules/
 
 # Lokale preview: data wordt bij deploy naar de site-root gekopieerd
 public/data
+
+# Volledige meetlijsten: elke week 2,6 MB opnieuw gegenereerd uit
+# data/results*.json. Die churn hoort niet in git; de deploy bouwt ze.
+public/lijst/
+public/lijst.html
