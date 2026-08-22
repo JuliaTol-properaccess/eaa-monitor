@@ -1,0 +1,176 @@
+[
+  {
+    "naam": "WCAG Radar",
+    "url": "https://testtoegankelijkheid.nl/wcag-radar",
+    "aanbieder": "Proper Access",
+    "categorie": [
+      "in-pagina",
+      "contrast",
+      "structuur"
+    ],
+    "wat": "Bookmarklet en browserextensie met drie tabbladen: redactie, design en development. Samen 45 checks, van alt-teksten, koppen en linkteksten tot contrast, focus en ARIA, gemarkeerd in de pagina die je op dat moment bekijkt. Alles rekent in je eigen browser, dus je kunt ook testen achter een login, op een acceptatieomgeving en op localhost.",
+    "grens": "Het is geen crawler die je hele site afloopt en geen vervanging van een handmatig onderzoek. Bij een streng Content Security Policy werkt alleen de extensie en niet de bookmarklet.",
+    "prijs": "Gratis basisversie zonder account. Voor alle checks en de export is een licentie nodig, vanaf € 119 per jaar.",
+    "platform": "Chrome, Firefox",
+    "varianten": {
+      "contrast": {
+        "wat": "Meet het contrast van tekst en van informatieve interface-elementen en geeft de contrastverhouding erbij. Staat je tekst op een foto of op een verloop, dan meet je de twee kleuren zelf met de pipetten.",
+        "grens": "Welke twee kleuren je moet vergelijken, bepaalt de radar niet. Bij halftransparante lagen en achtergrondafbeeldingen blijft dat je eigen afweging."
+      },
+      "structuur": {
+        "wat": "Tekent alle koppen met hun niveau en waarschuwt als je een niveau overslaat. De kopteksten zelf krijgen ook een beoordeling, dus je ziet niet alleen of de hiërarchie klopt. Je ziet ook waar tekst alleen groot en opvallend is gemaakt zonder dat er een kop-element onder zit.",
+        "grens": "Een kloppende hiërarchie en een leesbare koptekst zijn nog geen goede kop. Of een kop dekt wat eronder staat, beoordeel je zelf."
+      }
+    }
+  },
+  {
+    "naam": "axe DevTools",
+    "url": "https://www.deque.com/axe/devtools/",
+    "aanbieder": "Deque",
+    "categorie": "in-pagina",
+    "wat": "Browserextensie voor wie zich prettig voelt bij het lezen van de broncode van een website: de bevindingen verwijzen naar elementen en attributen, dus je moet weten waar je die terugvindt. Zoekt de meetbare fouten op en legt per bevinding uit wat er mis is. Weinig valse meldingen. De engine eronder, axe-core, draait ook onder de wekelijkse WCAG-scan van deze monitor.",
+    "grens": "Alles waar een oordeel bij hoort blijft buiten beeld: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt.",
+    "prijs": "Gratis, met betaalde uitbreidingen.",
+    "platform": "Chrome, Firefox, Edge"
+  },
+  {
+    "naam": "WAVE",
+    "url": "https://wave.webaim.org/extension/",
+    "aanbieder": "WebAIM",
+    "categorie": "in-pagina",
+    "wat": "Zet iconen en markeringen in de pagina zelf, dus je ziet meteen waar iets zit. Het snelste visuele overzicht van deze lijst.",
+    "grens": "Om te begrijpen wat een melding betekent heb je behoorlijk wat technische kennis nodig. Daar komt bij dat WAVE regelmatig dingen meldt die geen echt probleem zijn, dus elke melding moet je zelf nalopen en beoordelen.",
+    "prijs": "Gratis.",
+    "platform": "Chrome, Firefox, Edge"
+  },
+  {
+    "naam": "Accessibility Insights for Web",
+    "url": "https://accessibilityinsights.io/",
+    "aanbieder": "Microsoft",
+    "categorie": "in-pagina",
+    "wat": "Combineert een automatische scan met een geleide handmatige toets. Die toets loopt stap voor stap langs de checks die een tool niet zelf kan doen, zoals de toetsenbordbediening en de focusvolgorde.",
+    "grens": "De geleide toets kost tijd en vraagt kennis van WCAG. De tool stelt de vragen, jij geeft het oordeel.",
+    "prijs": "Gratis.",
+    "platform": "Chrome, Edge"
+  },
+  {
+    "naam": "Lighthouse",
+    "url": "https://developer.chrome.com/docs/lighthouse/overview",
+    "aanbieder": "Google",
+    "categorie": "in-pagina",
+    "wat": "Zit al in Chrome, onder de ontwikkelaarstools. Geeft in een paar seconden een indruk van de meetbare fouten.",
+    "grens": "De score van 0 tot 100 is misleidend. Een 100 betekent dat Lighthouse niets vond in wat het kan controleren, en niet dat je site toegankelijk is. Die 100 duikt met enige regelmaat op als bewijs in een aanbesteding, en dat is het niet.",
+    "prijs": "Gratis.",
+    "platform": "Chrome"
+  },
+  {
+    "naam": "ANDI",
+    "url": "https://www.ssa.gov/accessibility/andi/help/install.html",
+    "aanbieder": "Social Security Administration",
+    "categorie": "in-pagina",
+    "wat": "Bookmarklet die niets installeert. Bruikbaar op een werkplek waar je geen extensies mag installeren.",
+    "grens": "Engelstalig, en de uitleg verwijst naar de Amerikaanse regelgeving in plaats van naar de norm die hier geldt.",
+    "prijs": "Gratis.",
+    "platform": "Elke browser"
+  },
+  {
+    "naam": "WebAIM Contrast Checker",
+    "url": "https://webaim.org/resources/contrastchecker/",
+    "aanbieder": "WebAIM",
+    "categorie": "contrast",
+    "wat": "Twee kleuren invullen, contrastverhouding eruit, met een oordeel over niveau AA en AAA. De snelste manier om een kleurenpaar te controleren.",
+    "grens": "Werkt met kleurwaarden die je zelf invult. Staat je tekst op een foto of een verloop, dan moet je de kleur eerst ergens anders meten.",
+    "prijs": "Gratis.",
+    "platform": "Website"
+  },
+  {
+    "naam": "Colour Contrast Analyser",
+    "url": "https://www.tpgi.com/color-contrast-checker/",
+    "aanbieder": "TPGi",
+    "categorie": "contrast",
+    "wat": "Desktopprogramma met een pipet waarmee je kleuren van je scherm plukt. Precies wat je nodig hebt bij tekst op een foto of op een verloop, waar geen kleurwaarde in de code te vinden is.",
+    "grens": "De tool bepaalt niet welke twee kleuren je moet vergelijken. Halftransparante lagen, schaduwen en achtergrondafbeeldingen maken dat lastiger dan het lijkt.",
+    "prijs": "Gratis.",
+    "platform": "Windows, macOS"
+  },
+  {
+    "naam": "HeadingsMap",
+    "url": "https://addons.mozilla.org/nl/firefox/addon/headingsmap/",
+    "aanbieder": "Browserextensie",
+    "categorie": "structuur",
+    "wat": "Toont de koppenstructuur van een pagina als boom. In één blik zie je of je van een kop op niveau 2 naar niveau 4 springt of dat er twee koppen op niveau 1 staan.",
+    "grens": "Een kloppende hiërarchie zegt niets over de inhoud van je koppen. Een pagina waar elke kop \"Meer informatie\" heet, komt er foutloos doorheen en helpt niemand.",
+    "prijs": "Gratis.",
+    "platform": "Chrome, Firefox"
+  },
+  {
+    "naam": "NVDA",
+    "url": "https://www.nvaccess.org/download/",
+    "aanbieder": "NV Access",
+    "categorie": "schermlezer",
+    "wat": "Gratis en open source schermlezer voor Windows. Veel gebruikt bij het testen van websites, en de eerste keus als je er maar één wilt leren bedienen.",
+    "grens": "Een schermlezer is geen meetinstrument. Het is de manier waarop een deel van je bezoekers je site gebruikt. Reken erop dat de eerste keer tegenvalt: bedienen is een vaardigheid, en wie hem voor het eerst aanzet hoort vooral ruis.",
+    "prijs": "Gratis.",
+    "platform": "Windows"
+  },
+  {
+    "naam": "VoiceOver",
+    "url": "https://support.apple.com/nl-nl/guide/voiceover/welcome/mac",
+    "aanbieder": "Apple",
+    "categorie": "schermlezer",
+    "wat": "Zit ingebouwd in macOS en iOS. Op de Mac zet je hem aan met Cmd + F5. Op iOS is dit de schermlezer waarmee je een app op een echt toestel toetst.",
+    "grens": "VoiceOver op de Mac gedraagt zich anders dan VoiceOver op iOS. Een test op je laptop zegt dus niets over je app.",
+    "prijs": "Gratis, zit in het besturingssysteem.",
+    "platform": "macOS, iOS"
+  },
+  {
+    "naam": "TalkBack",
+    "url": "https://support.google.com/accessibility/android/answer/6283677",
+    "aanbieder": "Google",
+    "categorie": "schermlezer",
+    "wat": "Zit ingebouwd in Android. Nodig zodra je een Android-app onderzoekt.",
+    "grens": "Toestellen en Android-versies verschillen onderling. Test op het toestel dat je doelgroep gebruikt en niet alleen in een emulator.",
+    "prijs": "Gratis, zit in het besturingssysteem.",
+    "platform": "Android"
+  },
+  {
+    "naam": "JAWS",
+    "url": "https://www.freedomscientific.com/products/software/jaws/",
+    "aanbieder": "Freedom Scientific",
+    "categorie": "schermlezer",
+    "wat": "Betaalde schermlezer voor Windows, veel gebruikt binnen grotere organisaties. Werkt je publiek in zo'n omgeving, dan is dit de software waarmee ze je site openen.",
+    "grens": "Schermlezers gedragen zich onderling verschillend. Toets je alleen in JAWS, dan mis je wat NVDA en VoiceOver van dezelfde pagina maken.",
+    "prijs": "Betaald.",
+    "platform": "Windows"
+  },
+  {
+    "naam": "pdf-toegankelijk.nl",
+    "url": "https://pdf-toegankelijk.nl",
+    "aanbieder": "Proper Access",
+    "categorie": "documenten",
+    "wat": "Je uploadt een PDF en krijgt je eigen document terug, met een tagstructuur waar die ontbrak en met de titel, de taal en de bijbehorende instellingen erin. Je krijgt er een verslag bij: wat er is opgelost, wat er nog open staat en welke controles niet zijn gedraaid omdat er een mens naar moet kijken.",
+    "grens": "Een gerepareerde codelaag is nog geen toegankelijk document. Of de leesorde klopt, of een tabelkop op de goede plek staat en of een beschrijving de afbeelding dekt, stelt geen tool vast. Je krijgt dus geen verklaring dat je document aan WCAG of aan de wet voldoet.",
+    "prijs": "2 documenten per maand gratis. Betaalde abonnementen vanaf € 29 per maand.",
+    "platform": "Website"
+  },
+  {
+    "naam": "PAC 2024",
+    "url": "https://pac.pdf-accessibility.org/en/download",
+    "aanbieder": "axes4",
+    "categorie": "documenten",
+    "wat": "Controleprogramma voor PDF's. Met de schermlezer-voorvertoning zie je wat een schermlezer van je document maakt, en daarmee herken je tekst die geen tag heeft gekregen.",
+    "grens": "Controleert wat meetbaar is in de tagstructuur. Of de volgorde van die tags klopt met hoe het document gelezen moet worden, beoordeel je zelf.",
+    "prijs": "Gratis.",
+    "platform": "Windows"
+  },
+  {
+    "naam": "Adobe Acrobat Pro",
+    "url": "https://www.adobe.com/nl/acrobat.html",
+    "aanbieder": "Adobe",
+    "categorie": "documenten",
+    "wat": "Hiermee werk je de tagstructuur van een bestaande PDF handmatig bij, via het paneel Toegankelijkheidstags, en pas je de leesvolgorde aan. Arbeidsintensief werk, en bij een document dat al af is soms de enige route.",
+    "grens": "De ingebouwde toegankelijkheidscontrole meldt wat meetbaar is in de tagstructuur. Of de leesvolgorde klopt en of een alternatieve tekst de afbeelding dekt, beoordeel je zelf. Een document zonder meldingen in Acrobat is dus nog geen toegankelijk document.",
+    "prijs": "€ 285 per jaar.",
+    "platform": "Windows, macOS"
+  }
+]

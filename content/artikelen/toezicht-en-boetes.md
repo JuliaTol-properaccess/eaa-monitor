@@ -79,4 +79,4 @@ In Nederland is nog geen handhavingszaak bekend. Elders in Europa wel. In Frankr
 
 ## Wat betekent dit voor jou?
 
-Val je onder de EAA, dan is de vraag niet óf er gecontroleerd wordt, maar wanneer. Een onderbouwde audit laat zien waar je staat en helpt je geloofwaardig aan te tonen dat je de toegankelijkheid serieus neemt. Twijfel je of de wet voor jou geldt? Lees dan eerst [Valt mijn website onder de EAA?](/artikelen/valt-mijn-website-onder-de-eaa.html).
+Val je onder de EAA, dan is de vraag niet óf er gecontroleerd wordt, maar wanneer. Een onderbouwde audit laat zien waar je staat en helpt je geloofwaardig aan te tonen dat je de toegankelijkheid serieus neemt. Wil je vast zelf kijken hoe je site ervoor staat, dan helpt het [overzicht van toegankelijkheidstools](/tools.html). Twijfel je of de wet voor jou geldt? Lees dan eerst [Valt mijn website onder de EAA?](/artikelen/valt-mijn-website-onder-de-eaa.html).

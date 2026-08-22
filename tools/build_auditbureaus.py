@@ -159,6 +159,7 @@ def render(bureaus):
       <div class="prose max-w-prose bg-white rounded-2xl shadow-sm px-6 sm:px-8 pt-8 pb-6">
         <h2 class="mt-0">Waarom een onafhankelijke audit?</h2>
         <p>Een geautomatiseerde tool vindt maar een deel van de toegankelijkheidsproblemen. De barrieres die echte gebruikers tegenkomen, zie je pas met een inhoudelijke audit en met tests door mensen die assistieve technologie gebruiken. Een onafhankelijk bureau heeft geen belang bij de uitkomst en kijkt puur naar wat werkt voor de bezoeker.</p>
+        <p>Wil je eerst zelf kijken hoe je site ervoor staat? Dat kan met het <a href="/tools.html">overzicht van toegankelijkheidstools</a>. Daarmee vind je de meetbare fouten; voor de rest is een onderzoek nodig.</p>
       </div>
     </section>
 

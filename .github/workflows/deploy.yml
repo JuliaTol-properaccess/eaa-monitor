@@ -113,6 +113,7 @@ jobs:
                 "https://eaa-monitor.nl/artikelen.html",
                 "https://eaa-monitor.nl/bronnen.html",
                 "https://eaa-monitor.nl/vragen.html",
+                "https://eaa-monitor.nl/tools.html",
                 "https://eaa-monitor.nl/eregalerij.html"
               ]
             }' || true
