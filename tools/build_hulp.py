@@ -27,6 +27,11 @@ Format van data/hulptools.json (lijst van objecten, volgorde = volgorde op pagin
       }
     ]
 
+Met "uitleg" hang je een artikel aan een tool, bijvoorbeeld een handleiding
+op een andere site:
+
+    "uitleg": { "titel": "Zo gebruik je NVDA", "url": "https://..." }
+
 "categorie" mag ook een lijst zijn. De tool verschijnt dan in elke genoemde
 categorie. Met "varianten" geef je per categorie een eigen "wat" en "grens",
 zodat een kaart vertelt wat de tool in dat rijtje doet:
@@ -197,12 +202,21 @@ def _card(tool, categorie):
         if url
         else naam
     )
+    uitleg = tool.get("uitleg") or {}
+    uitleg_url = str(uitleg.get("url", "")).strip()
+    uitleg_titel = html.escape(str(uitleg.get("titel", "")).strip())
+    uitleg_regel = (
+        f'\n          <p class="mt-3 text-[15px]"><a href="{html.escape(uitleg_url)}" '
+        f'rel="noopener noreferrer" class="link font-semibold">{uitleg_titel}</a></p>'
+        if uitleg_url and uitleg_titel
+        else ""
+    )
     meta = " &middot; ".join(p for p in (aanbieder, platform) if p)
     return f"""        <li class="card p-6 flex flex-col">
           <h3 class="font-display text-xl font-semibold text-navy leading-snug">{titel}</h3>
           <p class="mt-1 text-sm text-gray-600">{meta}</p>
           <p class="mt-4 text-[15px] text-gray-700 leading-relaxed">{wat}</p>
-          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> {grens}</p>
+          <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> {grens}</p>{uitleg_regel}
           <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> {prijs}</p>
         </li>"""
 

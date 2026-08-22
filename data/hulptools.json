@@ -111,7 +111,11 @@
     "wat": "Gratis en open source schermlezer voor Windows. Veel gebruikt bij het testen van websites, en de eerste keus als je er maar één wilt leren bedienen.",
     "grens": "Een schermlezer is geen meetinstrument. Het is de manier waarop een deel van je bezoekers je site gebruikt. Reken erop dat de eerste keer tegenvalt: bedienen is een vaardigheid, en wie hem voor het eerst aanzet hoort vooral ruis.",
     "prijs": "Gratis.",
-    "platform": "Windows"
+    "platform": "Windows",
+    "uitleg": {
+      "titel": "Testen met NVDA: zo begin je op Windows",
+      "url": "https://www.properaccess.nl/blog/testen-met-nvda-op-windows/"
+    }
   },
   {
     "naam": "VoiceOver",
@@ -121,7 +125,11 @@
     "wat": "Zit ingebouwd in macOS en iOS. Op de Mac zet je hem aan met Cmd + F5. Op iOS is dit de schermlezer waarmee je een app op een echt toestel toetst.",
     "grens": "VoiceOver op de Mac gedraagt zich anders dan VoiceOver op iOS. Een test op je laptop zegt dus niets over je app.",
     "prijs": "Gratis, zit in het besturingssysteem.",
-    "platform": "macOS, iOS"
+    "platform": "macOS, iOS",
+    "uitleg": {
+      "titel": "Testen met VoiceOver: zo begin je op de Mac",
+      "url": "https://www.properaccess.nl/blog/testen-met-voiceover-op-de-mac/"
+    }
   },
   {
     "naam": "TalkBack",
@@ -131,7 +139,11 @@
     "wat": "Zit ingebouwd in Android. Nodig zodra je een Android-app onderzoekt.",
     "grens": "Toestellen en Android-versies verschillen onderling. Test op het toestel dat je doelgroep gebruikt en niet alleen in een emulator.",
     "prijs": "Gratis, zit in het besturingssysteem.",
-    "platform": "Android"
+    "platform": "Android",
+    "uitleg": {
+      "titel": "Zo gebruik je TalkBack op Android",
+      "url": "https://www.properaccess.nl/blog/zo-gebruik-je-talkback-op-android/"
+    }
   },
   {
     "naam": "JAWS",
