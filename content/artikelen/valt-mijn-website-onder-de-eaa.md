@@ -48,6 +48,8 @@ Let op: dit verklaart waarom de meeste websites die nergens bij een keurmerk of 
 
 Veel ondernemers denken dat een toegankelijkheidsverklaring in de footer voldoende is. Een verklaring laat zien dat je je bewust bent van de regels en beschrijft hoe toegankelijk je site is. De echte verplichting is dat je site ook werkt voor mensen met een beperking. De verklaring is het sluitstuk, niet de hele opgave.
 
+Val je onder de wet, dan is de volgende vraag waar je nu staat. In het [overzicht van toegankelijkheidstools](/tools.html) staat waarmee je dat zelf kunt nakijken.
+
 ## Check je situatie
 
 Beantwoord de vragen hieronder voor een eerste indicatie. Dit is geen juridisch advies en geen audit, maar het helpt je de scope te begrijpen.

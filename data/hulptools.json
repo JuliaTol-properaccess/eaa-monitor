@@ -59,7 +59,7 @@
     "aanbieder": "Google",
     "categorie": "in-pagina",
     "wat": "Zit al in Chrome, onder de ontwikkelaarstools. Geeft in een paar seconden een indruk van de meetbare fouten.",
-    "grens": "De score van 0 tot 100 is misleidend. Een 100 betekent dat Lighthouse niets vond in wat het kan controleren, en niet dat je site toegankelijk is. Wij zien die 100 met enige regelmaat langskomen als bewijs in een aanbesteding, en dat is het niet.",
+    "grens": "De score van 0 tot 100 is misleidend. Een 100 betekent dat Lighthouse niets vond in wat het kan controleren, en niet dat je site toegankelijk is. Die 100 duikt met enige regelmaat op als bewijs in een aanbesteding, en dat is het niet.",
     "prijs": "Gratis.",
     "platform": "Chrome"
   },
@@ -108,7 +108,7 @@
     "url": "https://www.nvaccess.org/download/",
     "aanbieder": "NV Access",
     "categorie": "schermlezer",
-    "wat": "Gratis en open source schermlezer voor Windows. Dit is de schermlezer waarmee in de Nederlandse auditpraktijk het meest wordt getoetst.",
+    "wat": "Gratis en open source schermlezer voor Windows. Veel gebruikt bij het testen van websites, en de eerste keus als je er maar één wilt leren bedienen.",
     "grens": "Een schermlezer is geen meetinstrument. Het is de manier waarop een deel van je bezoekers je site gebruikt. Reken erop dat de eerste keer tegenvalt: bedienen is een vaardigheid, en wie hem voor het eerst aanzet hoort vooral ruis.",
     "prijs": "Gratis.",
     "platform": "Windows"

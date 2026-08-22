@@ -2,7 +2,7 @@
 """
 Generator voor de hulppagina (WAT-framework, Layer 3: Tool).
 
-Rendert data/hulptools.json naar public/hulp.html: een overzicht van tools
+Rendert data/hulptools.json naar public/tools.html: een overzicht van tools
 waarmee je zelf aan de toegankelijkheid van je website en documenten kunt
 werken, gegroepeerd per categorie. Server-rendered, zodat de lijst vindbaar is
 in zoekmachines en AI-zoekmachines (GEO).
@@ -47,10 +47,10 @@ from build_articles import shared_head, site_header, site_footer, BASE_URL  # no
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "hulptools.json"
-OUT_FILE = ROOT / "public" / "hulp.html"
+OUT_FILE = ROOT / "public" / "tools.html"
 
-ACTIVE_PATH = "/hulp.html"
-URL = f"{BASE_URL}/hulp.html"
+ACTIVE_PATH = "/tools.html"
+URL = f"{BASE_URL}/tools.html"
 TITLE = "Hulp bij digitale toegankelijkheid: tools en waar je begint — EAA Monitor"
 DESCRIPTION = (
     "Waar begin je als je website of PDF toegankelijk moet zijn? Een overzicht van "
@@ -89,8 +89,8 @@ CATEGORIES = [
     (
         "documenten",
         "PDF en documenten",
-        "Een PDF op je site valt onder dezelfde eisen als de site zelf. In de auditpraktijk is "
-        "dit het onderdeel dat het vaakst wordt overgeslagen.",
+        "Een PDF op je site valt onder dezelfde eisen als de site zelf. Een document dat je alleen "
+        "aanbiedt om te downloaden telt dus gewoon mee.",
     ),
 ]
 
@@ -124,6 +124,47 @@ def _nl_datum(iso):
     return f"{int(dag)} {NL_MAANDEN[int(maand)]} {jaar}"
 
 
+# Veelgestelde vragen. Antwoorden staan zowel in de pagina als in FAQPage
+# JSON-LD, zodat een AI-zoekmachine het antwoord los kan citeren. Elk antwoord
+# moet op zichzelf kloppen, ook als het uit de pagina wordt getild.
+FAQ = [
+    (
+        "Is een geautomatiseerde scan genoeg om aan de European Accessibility Act te voldoen?",
+        "Nee. De European Accessibility Act vraagt een toegankelijke website of app en schrijft geen "
+        "onderzoek voor. Een scan herkent ongeveer 30% van de checkpunten onder WCAG, dus nul fouten in "
+        "een scan zegt niets over de rest. Val je onder het Besluit digitale toegankelijkheid overheid, "
+        "dan heb je bovendien een verklaring in het Register nodig, en dat accepteert alleen onderzoek "
+        "volgens WCAG-EM.",
+    ),
+    (
+        "Welke tool kan ik gebruiken als ik geen developer ben?",
+        "Begin met WAVE of de WCAG Radar. Allebei zetten ze hun resultaat in de pagina zelf, dus je hoeft "
+        "geen broncode te lezen. WAVE geeft het snelste visuele overzicht. De WCAG Radar heeft een apart "
+        "tabblad voor redactie, met de controles die horen bij alt-teksten, koppen en linkteksten.",
+    ),
+    (
+        "Wat kost een toegankelijkheidstool?",
+        "De meeste kosten niets. WAVE, Lighthouse, ANDI, Accessibility Insights, de WebAIM Contrast "
+        "Checker, de Colour Contrast Analyser, HeadingsMap, NVDA en PAC 2024 zijn gratis, en VoiceOver en "
+        "TalkBack zitten in het besturingssysteem. Betaald zijn JAWS, Adobe Acrobat Pro met € 285 per "
+        "jaar, de licentie van de WCAG Radar vanaf € 119 per jaar en pdf-toegankelijk.nl vanaf € 29 per "
+        "maand voor meer dan twee documenten.",
+    ),
+    (
+        "Helpt een toegankelijkheidsoverlay?",
+        "Niet voor het probleem waarvoor ze worden verkocht. Een overlay is JavaScript dat bovenop je site "
+        "draait en daar dingen aanpast, zoals contrast verhogen of tekst vergroten. De code eronder "
+        "repareert het niet. Een knop zonder toegankelijke naam blijft een knop zonder toegankelijke naam.",
+    ),
+    (
+        "Kan ik een PDF toegankelijk maken zonder hem opnieuw op te maken?",
+        "Voor een deel. Met pdf-toegankelijk.nl of Adobe Acrobat Pro breng je een tagstructuur aan in een "
+        "bestaand document. Wat geen van beide vaststelt is of de leesorde klopt en of een alternatieve "
+        "tekst de afbeelding dekt. Een gerepareerde codelaag is dus nog geen toegankelijk document.",
+    ),
+]
+
+
 def _badge(text, extra=""):
     return f'<span class="bron-badge {extra}">{html.escape(text)}</span>'
 
@@ -149,9 +190,8 @@ def _card(tool, categorie):
     platform = html.escape(str(tool.get("platform", "")).strip())
 
     titel = (
-        f'<a href="{html.escape(url)}" target="_blank" rel="noopener noreferrer" '
-        f'class="text-brand hover:text-brand-dark">{naam}'
-        f'<span class="sr-only"> (opent in een nieuw tabblad)</span></a>'
+        f'<a href="{html.escape(url)}" rel="noopener noreferrer" '
+        f'class="text-brand hover:text-brand-dark">{naam}</a>'
         if url
         else naam
     )
@@ -163,6 +203,18 @@ def _card(tool, categorie):
           <p class="mt-4 text-[15px] text-gray-700 leading-relaxed"><strong class="text-navy font-semibold">Wat hij niet doet:</strong> {grens}</p>
           <p class="mt-auto pt-5 text-sm text-gray-700"><span class="font-semibold text-navy">Prijs:</span> {prijs}</p>
         </li>"""
+
+
+def _faq_html():
+    blokken = []
+    for vraag, antwoord in FAQ:
+        blokken.append(
+            '        <div class="card p-6">\n'
+            f'          <h3 class="font-display text-lg font-semibold text-navy leading-snug">{html.escape(vraag)}</h3>\n'
+            f'          <p class="mt-3 text-[15px] text-gray-700 leading-relaxed">{html.escape(antwoord)}</p>\n'
+            "        </div>"
+        )
+    return "\n".join(blokken)
 
 
 def _sections(tools):
@@ -224,9 +276,27 @@ def _jsonld(tools):
             "numberOfItems": len(items),
             "itemListElement": items,
         }
+    faq = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": f"{URL}#faq",
+        "url": URL,
+        "inLanguage": "nl-NL",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": vraag,
+                "acceptedAnswer": {"@type": "Answer", "text": antwoord},
+            }
+            for vraag, antwoord in FAQ
+        ],
+    }
+    graph = {"@context": "https://schema.org", "@graph": [page, faq]}
+    graph["@graph"][1].pop("@context", None)
+    page.pop("@context", None)
     return (
         '  <script type="application/ld+json">\n  '
-        + json.dumps(page, ensure_ascii=False, indent=2)
+        + json.dumps(graph, ensure_ascii=False, indent=2)
         + "\n  </script>\n"
     )
 
@@ -255,7 +325,7 @@ def render(tools):
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="notice notice-warning max-w-3xl">
-        <p><strong>Een tool ziet ongeveer 30% van de checkpunten.</strong> Een geautomatiseerde scan herkent ongeveer 30% van alle checkpunten onder WCAG. Dat cijfer is een schatting uit het vakgebied en geen meting van ons. Wat overblijft is alles waar betekenis bij komt kijken: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt. Nul fouten in een scan is dus geen bewijs: Proper Access onderzocht een site die in de scan nul fouten gaf en leverde een rapport op met <a href="https://www.properaccess.nl/blog/nul-fouten-scan-ruim-honderd-bevindingen-audit/" target="_blank" rel="noopener noreferrer" class="link">ruim honderd bevindingen<span class="sr-only"> (opent in een nieuw tabblad)</span></a>.</p>
+        <p><strong>Een geautomatiseerde scan herkent ongeveer 30% van alle checkpunten onder WCAG.</strong> Dat cijfer is een schatting uit het vakgebied. Wat overblijft is alles waar betekenis bij komt kijken: of een alt-tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt. Nul fouten in een scan is dus geen bewijs: Proper Access onderzocht een site die in de scan nul fouten gaf en leverde een rapport op met <a href="https://www.properaccess.nl/blog/nul-fouten-scan-ruim-honderd-bevindingen-audit/" rel="noopener noreferrer" class="link">ruim honderd bevindingen</a>.</p>
       </div>
     </section>
 
@@ -284,10 +354,17 @@ def render(tools):
       </div>
     </section>
 
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16" aria-labelledby="vragen">
+      <h2 id="vragen" class="font-display text-2xl md:text-3xl font-semibold text-navy tracking-tight">Veelgestelde vragen</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+{_faq_html()}
+      </div>
+    </section>
+
     <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 mb-4">
       <div class="prose max-w-prose">
         <h2 class="mt-0">Hoe een tool op deze lijst komt</h2>
-        <p>Niemand betaalt voor een plek hier. De lijst bestaat uit tools die in de Nederlandse auditpraktijk worden gebruikt, en bij elke tool staat wat hij niet vindt. Zonder die tweede regel wordt een lijst als deze een reclamefolder.</p>
+        <p>Niemand betaalt voor een plek hier. De lijst bestaat uit tools die in Nederland worden gebruikt om websites en documenten te testen, en bij elke tool staat wat hij niet vindt. Zonder die tweede regel wordt een lijst als deze een reclamefolder.</p>
         <p>Mis je een tool, of klopt er iets niet meer? <a href="/melden.html" class="link">Laat het weten</a>.</p>
       </div>
     </section>

@@ -75,7 +75,7 @@ Reisorganisaties (ACM-toezicht), laatste meting (20 juli 2026): 24 reisorganisat
 - [Bronnen](https://eaa-monitor.nl/bronnen.html): doorzoekbaar overzicht van bronnen over de EAA (toezichthouders, overheid, juristen, bureaus, vakmedia)
 - [Vragen uit de praktijk](https://eaa-monitor.nl/vragen.html): antwoorden van toezichthouders (ACM, AFM) op anonieme vragen van ondernemers over de EAA
 - [Vraag stellen](https://eaa-monitor.nl/vraag-stellen.html): stel anoniem een vraag over de EAA; wij leggen hem voor aan de toezichthouder
-- [Hulp bij digitale toegankelijkheid](https://eaa-monitor.nl/hulp.html): overzicht van tools waarmee je je site of PDF zelf controleert, per tool met wat hij niet vindt; in-pagina checkers, contrastmeters, schermlezers en documenttools
+- [Hulp bij digitale toegankelijkheid](https://eaa-monitor.nl/tools.html): overzicht van tools waarmee je je site of PDF zelf controleert, per tool met wat hij niet vindt; in-pagina checkers, contrastmeters, schermlezers en documenttools
 - [WCAG-audit](https://eaa-monitor.nl/wcag-audit.html): overzicht van auditbureaus in Nederland die helpen je site toegankelijk te maken
 - [Over de EAA Monitor](https://eaa-monitor.nl/over.html): wie erachter zit en methodologie
 - [Ingediende bezwaren](https://eaa-monitor.nl/bezwaren.html): webshops die buiten de EAA vallen

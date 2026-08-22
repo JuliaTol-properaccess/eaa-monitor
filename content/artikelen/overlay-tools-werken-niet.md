@@ -54,4 +54,6 @@ Daar past geen overlay bij, maar een aanpak die begint bij je eigen site.
 - **Test met echte gebruikers.** Mensen die assistieve technologie gebruiken, vinden problemen die geen tool oppikt.
 - **Los het bij de bron op.** Pas de code en de opbouw aan, zodat de toegankelijkheid in je site zelf zit.
 
+Die eerste inventarisatie kun je voor een deel zelf doen. In het [overzicht van toegankelijkheidstools](/tools.html) staat waarmee, en per tool wat hij niet vindt.
+
 Kies bij voorkeur een onafhankelijke partij: zonder eigen websitebouw, software of overlay om te verkopen is er geen belang bij een snelle pleister, alleen bij een site die echt werkt voor iedereen.

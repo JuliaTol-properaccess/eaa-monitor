@@ -59,4 +59,6 @@ Zie de verklaring dus als het sluitstuk van je werk, niet als de start. Begin bi
 
 Een geautomatiseerde tool vindt een deel van de problemen, maar lang niet alles. De barrières die echte gebruikers tegenkomen, zie je pas met een inhoudelijke audit en met tests door mensen die assistieve technologie gebruiken.
 
+Voor een eerste indruk kun je zelf beginnen. Het [overzicht van toegankelijkheidstools](/tools.html) zet de checkers, contrastmeters en schermlezers op een rij, met bij elke tool de beperkingen erbij.
+
 Wil je een eerlijke verklaring schrijven die klopt? Laat dan eerst in kaart brengen waar je staat. Daarna schrijf je een verklaring die de werkelijkheid beschrijft, niet een wens.
