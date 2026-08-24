@@ -223,7 +223,7 @@
       "url": "https://www.bonprix.nl",
       "statement_url": "https://www.bonprix.nl/klantenservice/toegankelijkheid/",
       "statement_link_text": "Partial accessible",
-      "confirmed": "2026-07-13"
+      "confirmed": "2026-08-24"
     },
     {
       "name": "Booking.com",
@@ -338,6 +338,13 @@
       "confirmed": "2026-06-23"
     },
     {
+      "name": "Den Mulder Boomteelt",
+      "url": "https://www.denmulderboomteelt.com",
+      "statement_url": "https://www.denmulderboomteelt.com/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-08-24"
+    },
+    {
       "name": "Dierapotheker.nl",
       "url": "https://www.dierapotheker.nl",
       "statement_url": "https://www.dierapotheker.nl/dierapotheker.nl/european-accessibility-act/",
@@ -420,6 +427,20 @@
       "statement_url": "https://www.fbto.nl/over-ons/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
       "confirmed": "2026-08-07"
+    },
+    {
+      "name": "Festival outfit enzo",
+      "url": "https://festivaloutfitenzo.nl",
+      "statement_url": "https://banten-masuk.it.com/",
+      "statement_link_text": "Accessibility",
+      "confirmed": "2026-08-24"
+    },
+    {
+      "name": "Fietsaccu-revisie.nl",
+      "url": "https://www.fietsaccu-revisie.nl",
+      "statement_url": "https://www.fietsaccu-revisie.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-08-24"
     },
     {
       "name": "Fifty Cal",
@@ -643,7 +664,7 @@
       "url": "https://keizers.nu",
       "statement_url": "https://keizers.nu/pages/digitale-toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-07-20"
+      "confirmed": "2026-08-24"
     },
     {
       "name": "Kerstpakkettenplaza.nl",
@@ -905,6 +926,13 @@
       "confirmed": "2026-08-07"
     },
     {
+      "name": "Ozotof",
+      "url": "https://ozotof.nl",
+      "statement_url": "https://ozotof.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-08-24"
+    },
+    {
       "name": "Paradigit",
       "url": "https://www.paradigit.nl",
       "statement_url": "https://www.paradigit.nl/informatie/veiligheid-toegankelijkheid/",
@@ -947,6 +975,13 @@
       "confirmed": "2026-08-07"
     },
     {
+      "name": "Plus",
+      "url": "https://www.plus.nl",
+      "statement_url": "https://www.plus.nl/organisatie/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-08-24"
+    },
+    {
       "name": "Praxis",
       "url": "https://www.praxis.nl",
       "statement_url": "https://www.praxis.nl/toegankelijkheidsverklaring",
@@ -959,6 +994,13 @@
       "statement_url": "https://prettypolish.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
       "confirmed": "2026-08-07"
+    },
+    {
+      "name": "Primera.nl",
+      "url": "https://www.primera.nl",
+      "statement_url": "https://www.primera.nl/digitale-toegankelijkheid",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-08-24"
     },
     {
       "name": "Prénatal",
@@ -1036,6 +1078,13 @@
       "statement_url": "https://senifone.nl/pages/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-08-07"
+    },
+    {
+      "name": "Sexyjoy",
+      "url": "https://sexyjoy.nl",
+      "statement_url": "https://sexyjoy.nl/pages/toegankelijkheid",
+      "statement_link_text": "Verklaring inzake toegankelijkheid",
+      "confirmed": "2026-08-24"
     },
     {
       "name": "shirts.nl",
@@ -1190,6 +1239,20 @@
       "statement_url": "https://www.topshoe.nl/nl/pages/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-08-07"
+    },
+    {
+      "name": "Travelbags.nl",
+      "url": "https://www.travelbags.nl",
+      "statement_url": "https://www.travelbags.nl/klantenservice/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-08-24"
+    },
+    {
+      "name": "Treasure Juwelier",
+      "url": "https://www.treasurejuwelier.nl",
+      "statement_url": "https://www.treasurejuwelier.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-08-24"
     },
     {
       "name": "Triple J Online",
@@ -1409,6 +1472,13 @@
       "confirmed": "2026-08-07"
     },
     {
+      "name": "Yoek",
+      "url": "https://www.yoek.nl",
+      "statement_url": "https://www.yoek.nl/pages/accessibility-statement",
+      "statement_link_text": "Accessibility statement",
+      "confirmed": "2026-08-24"
+    },
+    {
       "name": "Your Look for less!",
       "url": "https://www.your-look-for-less.nl",
       "statement_url": "https://www.your-look-for-less.nl/content/toegankelijkheid",
@@ -1441,13 +1511,6 @@
       "url": "https://zenon-portretschilderen.nl",
       "statement_url": "https://www.amazon.com/b?node=15701038011&ie=UTF8",
       "statement_link_text": "Accessibility",
-      "confirmed": "2026-07-20"
-    },
-    {
-      "name": "Zilte Zusjes",
-      "url": "https://www.ziltezusjes.nl",
-      "statement_url": "https://www.ozbaredisco.com/accessibility-statement",
-      "statement_link_text": "https://www.ozbaredisco.com/accessibility-statement",
       "confirmed": "2026-07-20"
     },
     {
