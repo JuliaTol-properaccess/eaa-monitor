@@ -1,12 +1,12 @@
 {
-  "generated": "2026-08-18",
+  "generated": "2026-08-25",
   "engine": "axe-core 4.11.4",
   "scope": "WCAG 2.2 A/AA (best-practice uitgesloten)",
   "detail_url": "https://wcag-scan.nl/",
   "summary": {
-    "total": 262,
-    "fouten": 185,
-    "schoon": 65,
+    "total": 270,
+    "fouten": 192,
+    "schoon": 66,
     "niet_scanbaar": 12,
     "pct_fouten_van_gescand": 74
   },
@@ -68,7 +68,7 @@
       "url": "https://www.amefa.nl"
     },
     "https://www.annadiva.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.annadiva.nl"
     },
     "https://www.apple.com/nl": {
@@ -127,6 +127,10 @@
       "status": "fouten",
       "url": "https://www.boldmonkey.com/nl"
     },
+    "https://www.bonprix.nl": {
+      "status": "fouten",
+      "url": "https://www.bonprix.nl"
+    },
     "https://www.booking.com": {
       "status": "schoon",
       "url": "https://www.booking.com"
@@ -183,6 +187,10 @@
       "status": "fouten",
       "url": "https://www.deonlinedrogist.nl"
     },
+    "https://www.denmulderboomteelt.com": {
+      "status": "fouten",
+      "url": "https://www.denmulderboomteelt.com"
+    },
     "https://www.dierapotheker.nl": {
       "status": "fouten",
       "url": "https://www.dierapotheker.nl"
@@ -192,7 +200,7 @@
       "url": "https://www.dqahealthandbeauty.nl"
     },
     "https://drank.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://drank.nl"
     },
     "https://www.dutchbone.com": {
@@ -227,6 +235,14 @@
       "status": "schoon",
       "url": "https://www.fbto.nl"
     },
+    "https://festivaloutfitenzo.nl": {
+      "status": "fouten",
+      "url": "https://festivaloutfitenzo.nl"
+    },
+    "https://www.fietsaccu-revisie.nl": {
+      "status": "schoon",
+      "url": "https://www.fietsaccu-revisie.nl"
+    },
     "https://flakkeenetwerk.nl": {
       "status": "schoon",
       "url": "https://flakkeenetwerk.nl"
@@ -244,7 +260,7 @@
       "url": "https://www.gall.nl"
     },
     "https://www.goldner-fashion.com/nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.goldner-fashion.com/nl"
     },
     "https://www.greetz.nl": {
@@ -264,7 +280,7 @@
       "url": "https://www.hayesbrothers.nl"
     },
     "https://www.heine-shop.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.heine-shop.nl"
     },
     "https://hellowalls.nl": {
@@ -491,6 +507,10 @@
       "status": "fouten",
       "url": "https://www.overstappen.nl"
     },
+    "https://ozotof.nl": {
+      "status": "schoon",
+      "url": "https://ozotof.nl"
+    },
     "https://www.paradigit.nl": {
       "status": "fouten",
       "url": "https://www.paradigit.nl"
@@ -515,6 +535,10 @@
       "status": "fouten",
       "url": "https://www.pixum.nl"
     },
+    "https://www.plus.nl": {
+      "status": "fouten",
+      "url": "https://www.plus.nl"
+    },
     "https://www.praxis.nl": {
       "status": "fouten",
       "url": "https://www.praxis.nl"
@@ -522,6 +546,10 @@
     "https://prettypolish.nl": {
       "status": "fouten",
       "url": "https://prettypolish.nl"
+    },
+    "https://www.primera.nl": {
+      "status": "fouten",
+      "url": "https://www.primera.nl"
     },
     "https://www.prenatal.nl": {
       "status": "fouten",
@@ -567,6 +595,10 @@
       "status": "fouten",
       "url": "https://senifone.nl"
     },
+    "https://sexyjoy.nl": {
+      "status": "fouten",
+      "url": "https://sexyjoy.nl"
+    },
     "https://www.shirts.nl": {
       "status": "schoon",
       "url": "https://www.shirts.nl"
@@ -584,7 +616,7 @@
       "url": "https://Siemens-home.bsh-group.com"
     },
     "https://www.simpc.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.simpc.nl"
     },
     "https://www.smartphonepolis.nl": {
@@ -647,6 +679,14 @@
       "status": "fouten",
       "url": "https://www.topshoe.nl"
     },
+    "https://www.travelbags.nl": {
+      "status": "fouten",
+      "url": "https://www.travelbags.nl"
+    },
+    "https://www.treasurejuwelier.nl": {
+      "status": "fouten",
+      "url": "https://www.treasurejuwelier.nl"
+    },
     "https://triplejonline.nl": {
       "status": "fouten",
       "url": "https://triplejonline.nl"
@@ -660,7 +700,7 @@
       "url": "https://tummytuboriginal.com"
     },
     "https://www.zwijsen.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.zwijsen.nl"
     },
     "https://unoxovens.nl": {
@@ -684,7 +724,7 @@
       "url": "https://www.vegro.nl"
     },
     "https://www.veluxshop.nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.VELUXshop.nl"
     },
     "https://www.ventilatieshop.com": {
@@ -755,25 +795,21 @@
       "status": "fouten",
       "url": "https://www.woonveilig.nl/shop"
     },
+    "https://www.yoek.nl": {
+      "status": "fouten",
+      "url": "https://www.yoek.nl"
+    },
     "https://www.yourdog.nl": {
       "status": "fouten",
       "url": "https://www.yourdog.nl"
     },
     "https://www.zeeman.com/nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.zeeman.com/nl/"
     },
     "https://www.zeeman.com": {
-      "status": "schoon",
-      "url": "https://www.zeeman.com"
-    },
-    "https://zenon-portretschilderen.nl": {
-      "status": "niet-scanbaar",
-      "url": "https://zenon-portretschilderen.nl"
-    },
-    "https://www.ziltezusjes.nl": {
       "status": "fouten",
-      "url": "https://www.ziltezusjes.nl"
+      "url": "https://www.zeeman.com"
     },
     "https://www.zooplus.nl": {
       "status": "fouten",
@@ -788,7 +824,7 @@
       "url": "https://www.zwembroeken.nl"
     },
     "https://www.asr.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.asr.nl"
     },
     "https://www.abnamro.nl": {
@@ -824,7 +860,7 @@
       "url": "https://www.getbux.com"
     },
     "https://www.cz.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.cz.nl"
     },
     "https://www.defriesland.nl": {
@@ -984,7 +1020,7 @@
       "url": "https://www.ziggo.nl"
     },
     "https://www.dfds.com/nl-nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.dfds.com/nl-nl"
     },
     "https://www.eurostar.com/nl-nl": {
@@ -1046,10 +1082,6 @@
     "https://www.kobo.com/nl/nl": {
       "status": "schoon",
       "url": "https://www.kobo.com/nl/nl"
-    },
-    "https://nextory.com/nl": {
-      "status": "fouten",
-      "url": "https://nextory.com/nl"
     },
     "https://www.onlinebibliotheek.nl": {
       "status": "schoon",
