@@ -646,6 +646,13 @@
       "confirmed": "2026-08-07"
     },
     {
+      "name": "Kabrita.nl",
+      "url": "https://www.kabrita.nl",
+      "statement_url": "https://www.kabrita.nl/pages/toegankelijkheidsverklaring-kabrita-nederland",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-08-31"
+    },
+    {
       "name": "Karpet24.nl",
       "url": "https://www.karpet24.nl",
       "statement_url": "https://www.karpet24.nl/pages/toegankelijkheid",
@@ -1008,6 +1015,13 @@
       "statement_url": "https://www.prenatal.nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-08-07"
+    },
+    {
+      "name": "Puur Mieke",
+      "url": "https://www.puurmieke.nl",
+      "statement_url": "https://www.puurmieke.nl/service/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-08-31"
     },
     {
       "name": "reBuy",
@@ -1472,6 +1486,13 @@
       "confirmed": "2026-08-07"
     },
     {
+      "name": "Xenos B.V.",
+      "url": "https://www.xenos.nl",
+      "statement_url": "https://www.xenos.nl/digitale-toegankelijkheid",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-08-31"
+    },
+    {
       "name": "Yoek",
       "url": "https://www.yoek.nl",
       "statement_url": "https://www.yoek.nl/pages/accessibility-statement",
@@ -1505,6 +1526,13 @@
       "statement_url": "https://www.zeeman.com/nl-nl/juridisch/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheid",
       "confirmed": "2026-08-17"
+    },
+    {
+      "name": "Zen-lifestyle.nl",
+      "url": "https://www.zen-lifestyle.nl",
+      "statement_url": "https://www.zen-lifestyle.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-08-31"
     },
     {
       "name": "Zenon portretschilderen",
