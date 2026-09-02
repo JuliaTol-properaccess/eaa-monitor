@@ -3,12 +3,18 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # The weekly scrape pushes fresh results.json as github-actions[bot]. Pushes
-  # made with the default GITHUB_TOKEN don't trigger other workflows (GitHub's
-  # anti-recursion rule), so without this the dashboard would keep serving stale
-  # data. workflow_run fires after the scrape completes regardless of who pushed.
+  # De wekelijkse scrape en de WCAG-scan pushen verse data als
+  # github-actions[bot]. Pushes met de default GITHUB_TOKEN triggeren geen
+  # andere workflows (de anti-recursieregel van GitHub), dus zonder deze
+  # workflow_run zou het dashboard oude data blijven serveren. workflow_run
+  # vuurt na afloop van die runs, ongeacht wie er pushte.
+  #
+  # De WCAG-scan stond hier niet bij tot 2 september 2026. Gevolg: de scan van
+  # dinsdag kwam pas de maandag erna live, meegelift op de deploy van de
+  # scrape. Op 1 september 2026 draaide de scan groen terwijl monitor.html de
+  # meting van 25 augustus bleef tonen.
   workflow_run:
-    workflows: ["Scrape webshop footers"]
+    workflows: ["Scrape webshop footers", "WCAG-scan sites met verklaring"]
     types: [completed]
   workflow_dispatch:
 
