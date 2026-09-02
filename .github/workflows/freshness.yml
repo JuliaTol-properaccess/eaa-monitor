@@ -1,9 +1,18 @@
 name: Data freshness check
 
-# Vangt het geval dat de wekelijkse scrape stil niet doorkomt (zoals 8/15/22 juni
-# 2026): controleert dagelijks hoe oud de gecommitte results-bestanden zijn en
-# mailt een waarschuwing via de Worker-/alert-route als er iets te oud is. Dit
-# vangt ook een run die nooit startte (dat doet de faal-alert in scrape.yml niet).
+# Twee vangnetten in één cron.
+#
+# 1. Komt de meting door? Controleert hoe oud de gecommitte results-bestanden
+#    zijn (zoals 8/15/22 juni 2026, toen de wekelijkse scrape stil niet
+#    doorkwam). Dit vangt ook een run die nooit startte; de faal-alert in
+#    scrape.yml doet dat niet.
+# 2. Komt de meting ook op de site? Vergelijkt de datum in de repo met de datum
+#    die eaa-monitor.nl serveert. Een push door github-actions[bot] triggert
+#    namelijk geen deploy (anti-recursieregel van GitHub), dus een cron die niet
+#    in de workflow_run-lijst van deploy.yml staat, commit wel maar komt niet
+#    live. Dat gebeurde met de WCAG-scan: de scan van 1 september 2026 stond
+#    groen in de repo terwijl de site de meting van 25 augustus bleef tonen, en
+#    niets sloeg alarm. Check 1 kijkt alleen in de repo en zag dat dus niet.
 on:
   schedule:
     - cron: '0 9 * * *' # dagelijks 09:00 UTC
@@ -19,42 +28,105 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Controleer ouderdom van de results-bestanden
+      - name: Controleer ouderdom in de repo en op de live site
         run: |
           python3 - <<'PY'
-          import datetime, json, pathlib
+          import datetime, json, pathlib, urllib.error, urllib.request
+
           MAX_DAYS = 9  # wekelijkse meting + 2 dagen marge
-          datasets = {
-              "webshops": "data/results.json",
-              "financieel": "data/results-financieel.json",
-              "telecom": "data/results-telecom.json",
-              "vervoer": "data/results-vervoer.json",
-              "media": "data/results-media.json",
-              "ebooks": "data/results-ebooks.json",
+          DEPLOY_MARGE_DAGEN = 1  # een deploy die net loopt is geen alarm
+          SITE = "https://eaa-monitor.nl"
+
+          # pad -> (naam, sleutel met de meetdatum)
+          BESTANDEN = {
+              "data/results.json": ("webshops", "last_updated"),
+              "data/results-financieel.json": ("financieel", "last_updated"),
+              "data/results-telecom.json": ("telecom", "last_updated"),
+              "data/results-vervoer.json": ("vervoer", "last_updated"),
+              "data/results-media.json": ("media", "last_updated"),
+              "data/results-ebooks.json": ("ebooks", "last_updated"),
+              "data/results-reizen.json": ("reizen", "last_updated"),
+              "data/axe-results.json": ("wcag-scan", "generated"),
           }
-          now = datetime.datetime.now(datetime.timezone.utc)
-          stale = []
-          for name, path in datasets.items():
+
+          def lees_datum(tekst, sleutel):
+              """De meetdatum als date. results*.json heeft een ISO-tijdstempel,
+              axe-results.json alleen een datum."""
+              waarde = json.loads(tekst)[sleutel]
+              return datetime.datetime.fromisoformat(waarde).date()
+
+          def haal_live_op(pad):
+              verzoek = urllib.request.Request(
+                  f"{SITE}/{pad}",
+                  headers={"Cache-Control": "no-cache", "User-Agent": "eaa-monitor-freshness"},
+              )
+              with urllib.request.urlopen(verzoek, timeout=30) as antwoord:
+                  return antwoord.read().decode("utf-8")
+
+          vandaag = datetime.datetime.now(datetime.timezone.utc).date()
+          verouderd = []     # de meting zelf komt niet door
+          niet_live = []     # de meting staat in de repo maar niet op de site
+          onbereikbaar = []  # de site gaf geen antwoord
+
+          for pad, (naam, sleutel) in BESTANDEN.items():
               try:
-                  ts = json.loads(pathlib.Path(path).read_text())["last_updated"]
-                  age = (now - datetime.datetime.fromisoformat(ts)).days
-              except Exception as exc:
-                  stale.append(f"{name}: onleesbaar ({exc})")
+                  repo_datum = lees_datum(pathlib.Path(pad).read_text(), sleutel)
+              except Exception as fout:
+                  verouderd.append(f"{naam}: onleesbaar in de repo ({fout})")
                   continue
-              if age > MAX_DAYS:
-                  stale.append(f"{name}: {age} dagen oud")
-          if stale:
-              pathlib.Path("stale.txt").write_text("; ".join(stale))
-              print("VEROUDERD:", "; ".join(stale))
+
+              leeftijd = (vandaag - repo_datum).days
+              if leeftijd > MAX_DAYS:
+                  verouderd.append(f"{naam}: {leeftijd} dagen oud")
+
+              try:
+                  live_datum = lees_datum(haal_live_op(pad), sleutel)
+              except Exception as fout:
+                  onbereikbaar.append(f"{naam}: {fout}")
+                  continue
+
+              achterstand = (repo_datum - live_datum).days
+              if achterstand > DEPLOY_MARGE_DAGEN:
+                  niet_live.append(
+                      f"{naam}: repo {repo_datum}, site {live_datum} ({achterstand} dagen achter)"
+                  )
+
+          regels = []
+          # Faalt élke fetch, dan is de site zelf stuk en niet de deploy. Dat is
+          # één probleem, geen acht.
+          if len(onbereikbaar) == len(BESTANDEN):
+              regels.append(
+                  f"{SITE} geeft geen antwoord ({onbereikbaar[0].split(': ', 1)[1]})."
+                  " Controleer de VPS en de webserver."
+              )
+          elif onbereikbaar:
+              regels.append(
+                  "Niet op te halen van de site: " + "; ".join(onbereikbaar) + "."
+              )
+          if verouderd:
+              regels.append(
+                  "De meting komt niet door: " + "; ".join(verouderd)
+                  + ". Controleer de scrape- en scan-runs in GitHub Actions."
+              )
+          if niet_live:
+              regels.append(
+                  "De meting staat wel in de repo maar niet op de site: " + "; ".join(niet_live)
+                  + ". Waarschijnlijk is de deploy niet gestart; controleer de workflow_run-lijst"
+                  " in .github/workflows/deploy.yml en draai de deploy handmatig."
+              )
+
+          if regels:
+              pathlib.Path("alert.txt").write_text(" ".join(regels))
+              print("PROBLEEM:", " ".join(regels))
           else:
-              print("Alle datasets zijn vers.")
+              print("Alle datasets zijn vers en staan live.")
           PY
 
-      - name: Waarschuw bij verouderde data
-        if: ${{ hashFiles('stale.txt') != '' }}
+      - name: Waarschuw bij verouderde of niet-gedeployde data
+        if: ${{ hashFiles('alert.txt') != '' }}
         run: |
-          MSG=$(cat stale.txt)
+          MSG=$(cat alert.txt)
           curl -sS -X POST "https://eaa-monitor.nl/api/alert" \
             -H "Content-Type: application/json" \
             -H "X-Alert-Token: ${{ secrets.ALERT_TOKEN }}" \
-            -d "{\"subject\":\"EAA Monitor: data verouderd\",\"body\":\"Verouderde datasets: ${MSG}. De wekelijkse scrape komt waarschijnlijk niet door; controleer GitHub Actions.\"}" || true
+            -d "$(python3 -c 'import json,sys; print(json.dumps({"subject": "EAA Monitor: data verouderd of niet live", "body": sys.argv[1]}))' "$MSG")" || true
