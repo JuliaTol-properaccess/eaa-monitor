@@ -94,5 +94,13 @@
     "without_statement": 8726,
     "errors": 1338,
     "pct_with": 2
+  },
+  {
+    "date": "2026-09-07",
+    "total": 10271,
+    "with_statement": 202,
+    "without_statement": 8523,
+    "errors": 1546,
+    "pct_with": 2
   }
 ]
