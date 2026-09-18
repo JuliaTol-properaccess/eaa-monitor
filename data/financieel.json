@@ -53,7 +53,7 @@
   { "name": "DEGIRO", "url": "https://www.degiro.nl", "category": "beleggen", "bron": "AFM-register" },
   { "name": "BUX", "url": "https://www.getbux.com", "category": "beleggen", "bron": "AFM-register" },
   { "name": "Brand New Day", "url": "https://www.brandnewday.nl", "category": "beleggen", "bron": "AFM-register" },
-  { "name": "Semmie", "url": "https://www.semmie.nl", "category": "beleggen", "bron": "AFM-register" },
+  { "name": "SemmieWealth", "url": "https://www.semmiewealth.nl", "category": "beleggen", "bron": "AFM-register" },
   { "name": "LYNX", "url": "https://www.lynx.nl", "category": "beleggen", "bron": "AFM-register" },
   { "name": "Meesman", "url": "https://www.meesman.nl", "category": "beleggen", "bron": "AFM-register" },
   { "name": "Scalable Capital", "url": "https://nl.scalable.capital", "category": "beleggen", "bron": "AFM-register" },
