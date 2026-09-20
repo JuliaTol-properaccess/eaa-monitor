@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nomineer een toegankelijke website voor de eregalerij — EAA Monitor</title>
-  <meta name="description" content="Ken jij een website die uitstekend werkt met een schermlezer, toetsenbord of andere hulptechnologie? Nomineer hem voor de eregalerij. Wij controleren elke nominatie.">
-  <link rel="canonical" href="https://eaa-monitor.nl/nomineren.html">
+  <title>Hulp nodig bij digitale toegankelijkheid? — EAA Monitor</title>
+  <meta name="description" content="Zes onafhankelijke Nederlandse experts beantwoorden je praktische vragen over toegankelijkheid. Plus een gratis anonieme vraag aan de toezichthouder en een offerteaanvraag voor een WCAG-audit.">
+  <link rel="canonical" href="https://eaa-monitor.nl/hulp-nodig.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://eaa-monitor.nl/nomineren.html">
-  <meta property="og:title" content="Nomineer een toegankelijke website voor de eregalerij">
-  <meta property="og:description" content="Vertel ons welke website echt toegankelijk is en waarom. Na een check door een senior auditor komt hij in de eregalerij, met codevoorbeelden voor ontwikkelaars.">
+  <meta property="og:url" content="https://eaa-monitor.nl/hulp-nodig.html">
+  <meta property="og:title" content="Hulp nodig bij digitale toegankelijkheid?">
+  <meta property="og:description" content="Zes onafhankelijke experts, elk met een eigen bureau, beantwoorden je vraag over je eigen website. En een offerteaanvraag die naar de aangesloten auditbureaus gaat.">
   <meta property="og:site_name" content="EAA Monitor">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:image" content="https://eaa-monitor.nl/static/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nomineer een toegankelijke website voor de eregalerij">
-  <meta name="twitter:description" content="Vertel ons welke website echt toegankelijk is en waarom. Na een check komt hij in de eregalerij.">
+  <meta name="twitter:title" content="Hulp nodig bij digitale toegankelijkheid?">
+  <meta name="twitter:description" content="Zes onafhankelijke experts beantwoorden je vraag over je eigen website.">
   <meta name="twitter:image" content="https://eaa-monitor.nl/static/og.png">
 
   <link rel="preload" href="/static/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,6 +30,10 @@
   <link rel="stylesheet" href="/static/utrecht.css">
   <link rel="stylesheet" href="/static/utrecht-theme.css">
   <link rel="stylesheet" href="/static/site.css">
+  <style>
+    /* Honeypot: verborgen voor mensen, zichtbaar voor bots */
+    .hp-field { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+  </style>
 
   <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-oCJ6R9bzu6l8fcjrJ8_xA.js"></script>
@@ -39,6 +43,8 @@
   </script>
 </head>
 <body class="bg-papier">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-oker focus:text-inkt focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:z-50">Ga naar hoofdinhoud</a>
 
@@ -57,7 +63,7 @@
               <a href="/monitor-financieel.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Financiële sector</a>
               <a href="/monitor-telecom.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Telecom</a>
               <a href="/monitor-vervoer.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Personenvervoer</a>
-              <a href="/monitor-media.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Media &amp; streaming</a>
+              <a href="/monitor-media.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Media & streaming</a>
               <a href="/monitor-ebooks.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">E-books</a>
               <a href="/monitor-reizen.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Reizen</a>
               <a href="/over.html" class="block px-4 py-2 text-sm font-semibold text-navy hover:text-brand hover:bg-softblue transition-colors">Over de monitor</a>
@@ -67,7 +73,7 @@
           <a href="/artikelen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Kennisbank</a>
           <a href="/bronnen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Bronnen</a>
           <a href="/vragen.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Vragen</a>
-          <a href="/hulp-nodig.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Hulp nodig</a>
+          <a href="/hulp-nodig.html" class="text-sm font-semibold text-brand transition-colors" aria-current="page">Hulp nodig</a>
           <a href="/tools.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Tools</a>
           <a href="/eregalerij.html" class="text-sm font-semibold text-navy hover:text-brand transition-colors">Eregalerij</a>
       </nav>
@@ -84,7 +90,7 @@
             <a href="/monitor-financieel.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Financiële sector</a>
             <a href="/monitor-telecom.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Telecom</a>
             <a href="/monitor-vervoer.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Personenvervoer</a>
-            <a href="/monitor-media.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Media &amp; streaming</a>
+            <a href="/monitor-media.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Media & streaming</a>
             <a href="/monitor-ebooks.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">E-books</a>
             <a href="/monitor-reizen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Reizen</a>
             <a href="/over.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Over de monitor</a>
@@ -93,7 +99,7 @@
         <a href="/artikelen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Kennisbank</a>
         <a href="/bronnen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Bronnen</a>
         <a href="/vragen.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Vragen</a>
-        <a href="/hulp-nodig.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Hulp nodig</a>
+        <a href="/hulp-nodig.html" class="block py-2.5 text-base font-semibold text-brand" aria-current="page">Hulp nodig</a>
         <a href="/tools.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Tools</a>
         <a href="/eregalerij.html" class="block py-2.5 text-base font-semibold text-navy hover:text-brand">Eregalerij</a>
     </nav>
@@ -104,27 +110,123 @@
 
     <section>
       <div class="max-w-prose mx-auto px-4 sm:px-6 pt-14 pb-16">
-        <a href="/eregalerij.html" class="text-sm font-semibold text-brand">&larr; Eregalerij</a>
-        <h1 class="mt-6 text-3xl md:text-5xl font-semibold text-navy tracking-tight">Nomineer een toegankelijke website</h1>
-        <p class="mt-4 text-lg text-gray-600 leading-relaxed">Kom je een website tegen die je als digitaal toegankelijk ervaart? Vertel het ons. We plaatsen het graag in onze eregalerij.</p>
+        <h1 class="mt-2 text-3xl md:text-5xl font-semibold text-navy tracking-tight">Hulp nodig?</h1>
+        <p class="mt-4 text-lg text-gray-600 leading-relaxed">De monitor telt wie een toegankelijkheidsverklaring heeft en wie niet. Wat jij daarna moet doen, staat er niet bij. Daarom deze pagina: vier routes, van zelf kijken tot een offerte voor een onderzoek. De eerste twee kosten niets.</p>
       </div>
     </section>
 
-    <article class="max-w-prose mx-auto px-4 sm:px-6 py-12">
+    <article class="max-w-prose mx-auto px-4 sm:px-6 pb-12">
 
-      <section class="mb-8">
-        <h2 class="text-xl font-bold text-navy mb-4">Hoe het werkt</h2>
-        <ul class="mt-2 space-y-2 list-disc list-inside leading-relaxed text-gray-700">
-          <li>Je vult het formulier in en bevestigt je nominatie via een link in je mail.</li>
-          <li>Na je bevestiging plaatsen we de website in de <a href="/eregalerij.html" class="link">eregalerij</a>.</li>
-          <li>Je e-mailadres gebruiken we alleen voor de bevestiging. We publiceren het nooit en delen het met niemand.</li>
-          <li>Werk je zelf bij de website die je nomineert? Dat mag, maar zeg het er eerlijk bij in je motivatie.</li>
+      <section class="mb-12">
+        <p class="text-sm font-mono uppercase tracking-wider text-brand mb-2">Route 1</p>
+        <h2 class="text-2xl font-bold text-navy mb-4">Eerst zelf kijken</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Op de <a href="/tools.html" class="link">toolspagina</a> staan de gratis hulpmiddelen waarmee je in een half uur ziet waar je staat: contrastcheckers, in-pagina-checkers, schermlezers en tools voor documenten. Bij elke tool staat erbij wat hij <em>niet</em> vindt.</p>
+        <p class="text-gray-700 leading-relaxed">Een geautomatiseerde scan herkent ongeveer 30% van alle checkpunten onder WCAG. Dat cijfer is een schatting uit het vakgebied. Alles waar betekenis bij komt kijken blijft over: of de alternatieve tekst klopt bij de afbeelding, of de leesvolgorde logisch is, of je met het toetsenbord weer uit een dialoogvenster komt.</p>
+      </section>
+
+      <section class="mb-12">
+        <p class="text-sm font-mono uppercase tracking-wider text-brand mb-2">Route 2</p>
+        <h2 class="text-2xl font-bold text-navy mb-4">Een vraag over de wet, gratis en anoniem</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Twijfel je of de European Accessibility Act voor jou geldt, of wat een toezichthouder van je verwacht? <a href="/vraag-stellen.html" class="link">Stel je vraag anoniem</a>. Wij leggen hem namens jou voor aan de toezichthouder die erover gaat, en publiceren het antwoord zonder je naam bij de <a href="/vragen.html" class="link">vragen uit de praktijk</a>.</p>
+        <p class="text-gray-700 leading-relaxed">Dit kost niets. Er zit wel tijd tussen: een toezichthouder antwoordt in zijn eigen tempo, en we bundelen vragen voordat we ze voorleggen.</p>
+      </section>
+
+      <section class="mb-12">
+        <p class="text-sm font-mono uppercase tracking-wider text-brand mb-2">Route 3</p>
+        <h2 class="text-2xl font-bold text-navy mb-4">Een vraag over je eigen website: zes onafhankelijke experts</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Gaat je vraag over jouw eigen site, je eigen formulier, je eigen component, dan is een toezichthouder de verkeerde plek. Daarvoor is er een vragendienst waar zes onafhankelijke Nederlandse experts aan meedoen. Alle zes hebben meer dan vijf jaar fulltime ervaring met WCAG-audits en alle zes hebben een eigen bureau. Geen van hen is in dienst bij Proper Access. Bij elk antwoord staat de naam van de expert die het gaf, zodat je weet wie je voor je hebt.</p>
+
+        <h3 class="text-lg font-bold text-navy mt-8 mb-3">Hoe het werkt</h3>
+        <ul class="space-y-2 list-disc list-outside pl-5 leading-relaxed text-gray-700">
+          <li>Je stelt één vraag over één onderwerp op één pagina. Zet de context erbij: waar twijfel je over en wat heb je al geprobeerd.</li>
+          <li>Een expert antwoordt binnen 3 tot 5 werkdagen, in dezelfde gespreksthread.</li>
+          <li>Blijkt je vraag te groot voor één antwoord, dan krijg je een voorstel voor een mini-audit of een andere aanpak die wel past.</li>
         </ul>
+
+        <h3 class="text-lg font-bold text-navy mt-8 mb-3">Wat het kost</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">Je koopt strippen. Eén strip is één vraag.</p>
+        <div class="card overflow-hidden mb-4">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <caption class="sr-only">Prijs per strippenbundel en prijs per vraag</caption>
+              <thead>
+                <tr class="bg-gray-50 border-b border-line text-left">
+                  <th scope="col" class="py-3 px-4 font-bold text-navy">Bundel</th>
+                  <th scope="col" class="py-3 px-4 font-bold text-navy">Prijs</th>
+                  <th scope="col" class="py-3 px-4 font-bold text-navy">Per vraag</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-line">
+                  <td class="py-3 px-4">10 strippen</td>
+                  <td class="py-3 px-4 font-mono">€ 250</td>
+                  <td class="py-3 px-4 font-mono text-gray-700">€ 25,00</td>
+                </tr>
+                <tr class="border-b border-line">
+                  <td class="py-3 px-4">20 strippen</td>
+                  <td class="py-3 px-4 font-mono">€ 470</td>
+                  <td class="py-3 px-4 font-mono text-gray-700">€ 23,50</td>
+                </tr>
+                <tr class="border-b border-line">
+                  <td class="py-3 px-4">50 strippen</td>
+                  <td class="py-3 px-4 font-mono">€ 1.100</td>
+                  <td class="py-3 px-4 font-mono text-gray-700">€ 22,00</td>
+                </tr>
+                <tr class="border-b border-line">
+                  <td class="py-3 px-4">100 strippen</td>
+                  <td class="py-3 px-4 font-mono">€ 2.000</td>
+                  <td class="py-3 px-4 font-mono text-gray-700">€ 20,00</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4">Losse vraag, zonder bundel</td>
+                  <td class="py-3 px-4 font-mono">€ 37,50</td>
+                  <td class="py-3 px-4 font-mono text-gray-700">€ 37,50</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <ul class="space-y-2 list-disc list-outside pl-5 leading-relaxed text-gray-700">
+          <li>De strip gaat eraf op het moment dat het antwoord er staat, niet als jij je vraag verstuurt.</li>
+          <li>Een bundel is 12 maanden geldig.</li>
+          <li>Het saldo staat op je organisatie. Iedereen met een e-mailadres van dat domein kan vragen stellen.</li>
+          <li>Je hebt er geen licentie voor de WCAG Radar voor nodig.</li>
+        </ul>
+
+        <p class="mt-6"><a href="https://testtoegankelijkheid.nl/vragen" class="utrecht-button utrecht-button--primary-action" rel="noopener noreferrer" target="_blank">Stel je vraag aan een expert</a></p>
+
+        <div class="notice notice-info mt-6">
+          <p class="text-sm leading-relaxed"><strong>Waar deze link heen gaat.</strong> De vragendienst draait op testtoegankelijkheid.nl, het portaal van Proper Access. Proper Access heeft EAA Monitor gebouwd. De zes experts werken er niet; ze hebben elk een eigen bureau.</p>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <p class="text-sm font-mono uppercase tracking-wider text-brand mb-2">Route 4</p>
+        <h2 class="text-2xl font-bold text-navy mb-4">Een offerte voor een audit</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Is het te groot voor één vraag, dan heb je een onderzoek nodig. Iemand die je site doorloopt met een schermlezer, met alleen het toetsenbord en op de inhoud, en die opschrijft wat er per element misgaat en hoe je het oplost.</p>
+        <p class="text-gray-700 leading-relaxed mb-4">EAA Monitor verkoopt zelf geen audits, en dat is een bewuste keuze. Een site die bedrijven bij naam telt, kan die bedrijven daarna geen onderzoek verkopen. Wat we wel doen: je aanvraag doorsturen naar de auditbureaus die meedoen aan <a href="/vierogen-pact.html" class="link">Het Vierogen-pact</a>, de bureaus die zich hebben verbonden aan collegiale toetsing van hun eigen rapporten. Je krijgt rechtstreeks antwoord van de bureaus zelf. Wij vragen geen commissie en zijn geen partij in wat je met ze afspreekt.</p>
+
+        <div class="notice notice-warning mb-6">
+          <p class="text-sm leading-relaxed"><strong>Goed om te weten:</strong> het pact is net begonnen en er zijn nog geen bureaus aangesloten. Zolang dat zo is, gaat je aanvraag naar Proper Access, het bureau dat EAA Monitor gebouwd heeft. Je hoort van ons bij wie je aanvraag terecht is gekomen. Ben je auditbureau of freelance auditor, dan kun je je <a href="/vierogen-pact.html" class="link">aanmelden voor het pact</a>.</p>
+        </div>
+
+        <h3 class="text-lg font-bold text-navy mt-8 mb-3">Wat de prijs bepaalt</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">Een offerte voor een audit hangt niet aan het aantal pagina's van je site. Wat telt:</p>
+        <ul class="space-y-2 list-disc list-outside pl-5 leading-relaxed text-gray-700">
+          <li>Het aantal <strong>verschillende templates en schermen</strong>. Duizend productpagina's in dezelfde template is één template.</li>
+          <li>Of er naast de website ook een <strong>app</strong> onderzocht moet worden. Dat is een apart onderzoek.</li>
+          <li>Of er <strong>documenten</strong> bij horen, zoals PDF's die je bezoekers moeten kunnen lezen.</li>
+          <li>Of je alleen een rapport wilt, of ook hulp bij het oplossen.</li>
+          <li>Of er een <strong>hercontrole</strong> achteraan komt als je de bevindingen hebt opgelost.</li>
+        </ul>
+        <p class="text-gray-700 leading-relaxed mt-4">Zet die punten in je aanvraag. Dan krijg je een offerte met een bedrag in plaats van een bandbreedte.</p>
       </section>
 
       <div id="form-status" role="status" aria-live="polite" tabindex="-1" class="mb-6"></div>
 
-      <form id="nominatie-form" method="POST" novalidate>
+      <h2 class="text-2xl font-bold text-navy mb-6">Vraag een offerte aan</h2>
+
+      <form id="offerte-form" method="POST" novalidate>
 
         <div class="hp-field" aria-hidden="true">
           <label for="hp-website">Laat dit veld leeg</label>
@@ -132,48 +234,84 @@
         </div>
 
         <div class="mb-5">
-          <label for="naam" class="utrecht-form-label">Naam van de website <span class="text-status-notfound" aria-hidden="true">*</span></label>
-          <input type="text" id="naam" name="naam" required maxlength="200" placeholder="Bijvoorbeeld: Voorbeeldshop"
+          <label for="website" class="utrecht-form-label">De website waar het om gaat <span class="text-status-notfound" aria-hidden="true">*</span></label>
+          <input type="url" id="website" name="website" required maxlength="500" inputmode="url" placeholder="https://www.voorbeeld.nl"
             class="utrecht-textbox w-full">
         </div>
 
         <div class="mb-5">
-          <label for="webadres" class="utrecht-form-label">Webadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
-          <input type="url" id="webadres" name="webadres" required maxlength="500" inputmode="url" placeholder="https://www.voorbeeld.nl" aria-describedby="webadres-hint"
+          <label for="organisatie" class="utrecht-form-label">Naam van je organisatie <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <input type="text" id="organisatie" name="organisatie" maxlength="200" placeholder="Bijvoorbeeld: Voorbeeld B.V."
             class="utrecht-textbox w-full">
-          <p id="webadres-hint" class="text-sm text-gray-500 mt-1">Het volledige adres, inclusief https://</p>
         </div>
 
         <div class="mb-5">
-          <label for="motivatie" class="utrecht-form-label">Wat doet deze website goed? <span class="font-normal text-gray-500">(optioneel)</span></label>
-          <textarea id="motivatie" name="motivatie" rows="6" maxlength="2000" aria-describedby="motivatie-hint"
-            class="utrecht-textarea w-full"
-            placeholder="Bijvoorbeeld: ik kon met VoiceOver zonder hulp afrekenen, inclusief het kiezen van een bezorgmoment."></textarea>
-          <p id="motivatie-hint" class="text-sm text-gray-500 mt-1">Wees zo concreet mogelijk: wat lukte er dat op andere websites vaak misgaat? Zet er geen gegevens in die naar jou te herleiden zijn.</p>
+          <label for="sector" class="utrecht-form-label">Sector <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <select id="sector" name="sector" class="utrecht-select w-full">
+            <option value="">Kies een sector</option>
+            <option value="E-commerce">Webshop of e-commerce</option>
+            <option value="Financiële sector">Financiële sector</option>
+            <option value="Telecom">Telecom</option>
+            <option value="Personenvervoer">Personenvervoer</option>
+            <option value="Media en streaming">Media en streaming</option>
+            <option value="E-books">E-books</option>
+            <option value="Reizen">Reizen</option>
+            <option value="Overheid">Overheid</option>
+            <option value="Anders">Anders</option>
+          </select>
         </div>
 
         <div class="mb-5">
-          <label for="hulptechnologie" class="utrecht-form-label">Welke hulptechnologie gebruikte je? <span class="font-normal text-gray-500">(optioneel)</span></label>
-          <input type="text" id="hulptechnologie" name="hulptechnologie" maxlength="200" aria-describedby="hulptechnologie-hint" placeholder="Bijvoorbeeld: VoiceOver op iOS"
-            class="utrecht-textbox w-full">
-          <p id="hulptechnologie-hint" class="text-sm text-gray-500 mt-1">Bijvoorbeeld een schermlezer (NVDA, JAWS, VoiceOver, TalkBack), schermvergroting, spraakbediening of alleen het toetsenbord.</p>
+          <label for="omvang" class="utrecht-form-label">Wat moet er onderzocht worden? <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <select id="omvang" name="omvang" class="utrecht-select w-full">
+            <option value="">Kies wat van toepassing is</option>
+            <option value="Alleen de website">Alleen de website</option>
+            <option value="Website en app">Website en app</option>
+            <option value="Website en documenten (PDF)">Website en documenten, zoals PDF's</option>
+            <option value="Alles">Website, app en documenten</option>
+            <option value="Weet ik nog niet">Weet ik nog niet</option>
+          </select>
         </div>
 
-        <div class="mb-6">
+        <div class="mb-5">
+          <label for="termijn" class="utrecht-form-label">Wanneer wil je het? <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <select id="termijn" name="termijn" class="utrecht-select w-full">
+            <option value="">Kies een termijn</option>
+            <option value="Zo snel mogelijk">Zo snel mogelijk</option>
+            <option value="Binnen 3 maanden">Binnen 3 maanden</option>
+            <option value="Dit jaar">Dit jaar</option>
+            <option value="Ik oriënteer me nog">Ik oriënteer me nog</option>
+          </select>
+        </div>
+
+        <div class="mb-5">
           <label for="email" class="utrecht-form-label">Je e-mailadres <span class="text-status-notfound" aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-hint" placeholder="jij@voorbeeld.nl"
             class="utrecht-textbox w-full">
-          <p id="email-hint" class="text-sm text-gray-500 mt-1">Alleen om je nominatie te bevestigen. Het komt niet op de website en we delen het met niemand.</p>
+          <p id="email-hint" class="text-sm text-gray-500 mt-1">Hier sturen de bureaus hun offerte naartoe. We publiceren het nergens.</p>
+        </div>
+
+        <div class="mb-5">
+          <label for="naam" class="utrecht-form-label">Je naam <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <input type="text" id="naam" name="naam" maxlength="200" autocomplete="name" placeholder="Met wie hebben ze contact?"
+            class="utrecht-textbox w-full">
+        </div>
+
+        <div class="mb-6">
+          <label for="bericht" class="utrecht-form-label">Toelichting <span class="font-normal text-gray-500">(optioneel)</span></label>
+          <textarea id="bericht" name="bericht" rows="5" maxlength="4000" aria-describedby="bericht-hint" placeholder="Bijvoorbeeld: ongeveer 12 templates, we hebben zelf al met een contrastchecker gekeken, er hoort een bestelproces bij."
+            class="utrecht-textarea w-full"></textarea>
+          <p id="bericht-hint" class="text-sm text-gray-500 mt-1">Hoeveel verschillende templates, wat je al getest hebt, en waar je zelf over twijfelt.</p>
         </div>
 
         <div class="mb-6">
           <label class="flex items-start gap-3">
-            <input type="checkbox" name="toestemming_quote" value="ja" required class="mt-1 w-5 h-5 rounded border-field text-brand focus:ring-2 focus:ring-brand">
-            <span class="text-sm text-gray-700 leading-relaxed">Mijn motivatie mag als anonieme quote bij de vermelding staan. <span class="text-status-notfound" aria-hidden="true">*</span></span>
+            <input type="checkbox" name="akkoord_doorsturen" value="ja" required class="mt-1 w-5 h-5 rounded border-field text-brand focus:ring-2 focus:ring-brand">
+            <span class="text-sm text-gray-700 leading-relaxed">EAA Monitor mag deze aanvraag doorsturen naar de aangesloten auditbureaus, zodat zij mij een offerte kunnen sturen. <span class="text-status-notfound" aria-hidden="true">*</span></span>
           </label>
         </div>
 
-        <button type="submit" id="submit-btn" class="utrecht-button utrecht-button--primary-action">Nominatie versturen</button>
+        <button type="submit" id="submit-btn" class="utrecht-button utrecht-button--primary-action">Offerteaanvraag versturen</button>
         <p class="text-sm text-gray-500 mt-3">Velden met een <span class="text-status-notfound">*</span> zijn verplicht.</p>
       </form>
 
@@ -260,10 +398,10 @@
     (function () {
       "use strict";
 
-      // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md), route /hof/nominate.
-      const NOMINATIE_ENDPOINT = "https://eaa-monitor.nl/api/hof/nominate";
+      // Endpoint van de bezwaar-Worker (zie worker/DEPLOY.md), route /offerte.
+      const OFFERTE_ENDPOINT = "https://eaa-monitor.nl/api/offerte";
 
-      const form = document.getElementById("nominatie-form");
+      const form = document.getElementById("offerte-form");
       const statusEl = document.getElementById("form-status");
       const submitBtn = document.getElementById("submit-btn");
 
@@ -285,7 +423,7 @@
         submitBtn.textContent = "Bezig met versturen...";
 
         try {
-          const response = await fetch(NOMINATIE_ENDPOINT, {
+          const response = await fetch(OFFERTE_ENDPOINT, {
             method: "POST",
             body: new FormData(form),
             headers: { Accept: "application/json" },
@@ -295,18 +433,18 @@
             form.classList.add("hidden");
             showStatus(
               "success",
-              "<strong>Bijna klaar.</strong> We hebben je een mail gestuurd. Klik op de link daarin om je nominatie te bevestigen. Daarna plaatsen we de website in de eregalerij."
+              "<strong>Bedankt, je aanvraag is verstuurd.</strong> We sturen hem door naar de aangesloten auditbureaus en laten je weten bij wie hij terecht is gekomen. De offerte krijg je rechtstreeks van het bureau."
             );
           } else {
             const data = await response.json().catch(() => ({}));
             showStatus("error", (data && data.error) || "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl.");
             submitBtn.disabled = false;
-            submitBtn.textContent = "Nominatie versturen";
+            submitBtn.textContent = "Offerteaanvraag versturen";
           }
         } catch (err) {
           showStatus("error", "Er ging iets mis bij het versturen. Controleer je internetverbinding en probeer het opnieuw, of mail naar info@eaa-monitor.nl.");
           submitBtn.disabled = false;
-          submitBtn.textContent = "Nominatie versturen";
+          submitBtn.textContent = "Offerteaanvraag versturen";
         }
       });
     })();
