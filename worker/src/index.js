@@ -13,6 +13,7 @@
  *   POST /feedback               — feedback op een kennisbank-artikel, mailt Julia rechtstreeks
  *   POST /vraag                  — anonieme EAA-vraag voor de toezichthouder, mailt Julia rechtstreeks
  *   POST /pact/aanmelden         — aanmelding voor Het Vierogen-pact (auditor of bureau), mailt Julia rechtstreeks
+ *   POST /offerte                — offerteaanvraag voor een audit, mailt Julia die hem doorstuurt naar de pactbureaus
  *   POST /newsletter             — nieuwsbrief-opt-in, stuurt een bevestigingsmail (dubbele opt-in)
  *   GET  /newsletter/confirm     — bevestigt de inschrijving en slaat het adres op in KV
  *   GET  /newsletter/unsubscribe — meldt het adres af en verwijdert het uit KV
@@ -76,6 +77,9 @@ export default {
     if (url.pathname === "/pact/aanmelden" && request.method === "POST") {
       return withCors(env, await handlePactAanmelden(request, env));
     }
+    if (url.pathname === "/offerte" && request.method === "POST") {
+      return withCors(env, await handleOfferte(request, env));
+    }
     if (url.pathname === "/confirm" && request.method === "GET") {
       return handleConfirm(request, env, url);
     }
@@ -120,6 +124,7 @@ const RATE_LIMITS = {
   newsletter: { max: 3, windowSecs: 3600 },
   vraag: { max: 5, windowSecs: 3600 },
   pact: { max: 5, windowSecs: 3600 },
+  offerte: { max: 5, windowSecs: 3600 },
   feedback: { max: 10, windowSecs: 3600 },
   melden: { max: 10, windowSecs: 3600 },
   hofnominate: { max: 3, windowSecs: 3600 },
@@ -446,6 +451,66 @@ async function handlePactAanmelden(request, env) {
     await sendPactAanmeldingEmail(env, { type, naam, contact, website, email, talen, referentie, bericht });
   } catch (err) {
     console.error("Pact-aanmeldmail mislukt:", err && err.message);
+    return json(
+      { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
+      502
+    );
+  }
+  return json({ ok: true });
+}
+
+// ── /offerte ─────────────────────────────────────────────────────────────
+//
+// Offerteaanvraag voor een audit vanaf /hulp-nodig.html. EAA Monitor verkoopt
+// zelf geen audits: de aanvraag gaat per mail naar Julia, die hem doorstuurt
+// naar de bureaus die meedoen aan Het Vierogen-pact (data/auditbureaus.json).
+// Mail-only, geen opslag. Het akkoord om door te sturen is verplicht, want de
+// gegevens gaan naar derden.
+
+async function handleOfferte(request, env) {
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ ok: false, error: "Ongeldige aanvraag." }, 400);
+  }
+
+  // Honeypot: bots vullen dit verborgen veld; doe alsof het lukte, doe niets.
+  if ((form.get("_gotcha") || "").trim() !== "") {
+    return json({ ok: true });
+  }
+
+  const website = (form.get("website") || "").trim();
+  const organisatie = (form.get("organisatie") || "").trim();
+  const sector = (form.get("sector") || "").trim();
+  const omvang = (form.get("omvang") || "").trim();
+  const termijn = (form.get("termijn") || "").trim();
+  const email = (form.get("email") || "").trim();
+  const naam = (form.get("naam") || "").trim();
+  const bericht = (form.get("bericht") || "").trim();
+  const akkoord = form.get("akkoord_doorsturen") === "ja";
+
+  if (!website || !email) {
+    return json({ ok: false, error: "Vul in elk geval de website en je e-mailadres in." }, 422);
+  }
+  if (!isValidEmail(email)) {
+    return json({ ok: false, error: "Dit lijkt geen geldig e-mailadres." }, 422);
+  }
+  if (!akkoord) {
+    return json(
+      { ok: false, error: "Vink aan dat we je aanvraag mogen doorsturen naar de aangesloten auditbureaus." },
+      422
+    );
+  }
+  if (bericht.length > 4000) {
+    return json({ ok: false, error: "Je toelichting is te lang. Houd het onder de 4000 tekens." }, 422);
+  }
+  if (await rateLimited(env, request, "offerte")) return tooManyRequests();
+
+  try {
+    await sendOfferteEmail(env, { website, organisatie, sector, omvang, termijn, email, naam, bericht });
+  } catch (err) {
+    console.error("Offertemail mislukt:", err && err.message);
     return json(
       { ok: false, error: "Er ging iets mis bij het versturen. Probeer het later opnieuw of mail naar info@eaa-monitor.nl." },
       502
@@ -1453,6 +1518,37 @@ async function sendPactAanmeldingEmail(env, { type, naam, contact, website, emai
     ``,
     `Verwerk dit handmatig: check het voorbeeldrapport, voeg het bureau`,
     `toe aan data/auditbureaus.json en koppel terug per mail (2 maanden gratis, daarna € 295/jaar voor een zelfstandige auditor of € 495/jaar voor een bureau).`,
+  ];
+  await sendEmail(env, {
+    to: env.NOTIFY_EMAIL,
+    from: { email: env.FROM_EMAIL, name: env.FROM_NAME || "EAA Monitor" },
+    replyTo: email && isValidEmail(email) ? email : env.NOTIFY_EMAIL,
+    subject,
+    text: lines.join("\n"),
+  });
+}
+
+async function sendOfferteEmail(env, { website, organisatie, sector, omvang, termijn, email, naam, bericht }) {
+  const subject = `Offerteaanvraag audit: ${organisatie || website}`;
+  const lines = [
+    `Er is een offerteaanvraag voor een audit binnengekomen via /hulp-nodig.html.`,
+    ``,
+    `Website: ${website}`,
+    `Organisatie: ${organisatie || "(niet opgegeven)"}`,
+    `Sector: ${sector || "(niet opgegeven)"}`,
+    `Te onderzoeken: ${omvang || "(niet opgegeven)"}`,
+    `Termijn: ${termijn || "(niet opgegeven)"}`,
+    `Contactpersoon: ${naam || "(niet opgegeven)"}`,
+    `E-mailadres: ${email}`,
+    ``,
+    `De aanvrager gaf akkoord om de aanvraag door te sturen naar de aangesloten auditbureaus.`,
+    ``,
+    `Toelichting:`,
+    bericht || "(geen)",
+    ``,
+    `Stuur de aanvraag door naar de bureaus in data/auditbureaus.json en laat de`,
+    `aanvrager weten bij wie hij terecht is gekomen. Staat die lijst nog leeg, dan`,
+    `gaat de aanvraag naar Proper Access; dat staat zo ook op de pagina.`,
   ];
   await sendEmail(env, {
     to: env.NOTIFY_EMAIL,

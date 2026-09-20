@@ -252,6 +252,26 @@ die mail voor `vragen@eaa-monitor.nl` naar je echte inbox stuurt. Voorwaarde:
 > te veranderen. Wil je ook vanaf `vragen@` versturen, dan moet dat adres apart
 > onboarden bij Email Sending, maar dat is voor deze functie niet nodig.
 
+## Offerteaanvraag voor een audit (`POST /offerte`)
+
+Het formulier onderaan `public/hulp-nodig.html`. De route `/offerte` mailt de aanvraag
+naar `NOTIFY_EMAIL`, met het e-mailadres van de aanvrager als reply-to. Geen GitHub-PR,
+geen opslag.
+
+EAA Monitor verkoopt zelf geen audits. Julia stuurt de aanvraag door naar de bureaus in
+`data/auditbureaus.json`, dus de bureaus die meedoen aan Het Vierogen-pact, en laat de
+aanvrager weten bij wie hij terecht is gekomen. Staat die lijst nog leeg, dan gaat de
+aanvraag naar Proper Access; dat staat ook zo op de pagina zelf.
+
+Omdat de gegevens naar derden gaan, is het vinkje `akkoord_doorsturen` **verplicht**: de
+Worker weigert een aanvraag zonder dat vinkje met een 422. Diezelfde afspraak staat in de
+privacyverklaring (`tools/build_articles.py`, sectie Formulieren).
+
+- Verplichte velden: `website` en `email`. De rest is optioneel.
+- Rate limit: 5 aanvragen per IP per uur, net als de andere mailroutes.
+- De frontend-constante staat in `public/hulp-nodig.html` (`OFFERTE_ENDPOINT`).
+- **Na een wijziging aan de Worker opnieuw deployen** (`npx wrangler deploy`).
+
 ## Nieuwsbrief-opt-in (`POST /newsletter`)
 
 Dezelfde Worker bedient het inschrijfformulier in de footer (op elke pagina). De

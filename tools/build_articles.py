@@ -106,6 +106,7 @@ NAV_ITEMS = [
     ("Kennisbank", "/artikelen.html"),
     ("Bronnen", "/bronnen.html"),
     ("Vragen", "/vragen.html"),
+    ("Hulp nodig", "/hulp-nodig.html"),
     ("Tools", "/tools.html"),
     ("Eregalerij", "/eregalerij.html"),
 ]
@@ -308,6 +309,7 @@ def site_footer():
         <div>
           <p class="text-sm font-semibold text-white mb-3">Meedoen &amp; info</p>
           <ul class="space-y-2 text-sm text-white">
+            <li><a href="/hulp-nodig.html" class="hover:text-white">Hulp nodig</a></li>
             <li><a href="/vragen.html" class="hover:text-white">Vragen uit de praktijk</a></li>
             <li><a href="/eregalerij.html" class="hover:text-white">Eregalerij</a></li>
             <li><a href="/nomineren.html" class="hover:text-white">Nomineer een website</a></li>
@@ -709,6 +711,7 @@ PRIVACY_BODY = """      <p>De EAA Monitor verzamelt zo min mogelijk gegevens. Op
 
       <h2>Formulieren</h2>
       <p>Stuur je een bezwaar, een vraag, een nominatie of feedback via een formulier, dan komt dat als e-mail bij ons binnen. We bewaren die berichten niet in een database en delen ze niet met anderen. Een e-mailadres in een formulier is altijd optioneel, behalve waar we het nodig hebben om je een bevestiging te sturen.</p>
+      <p>Eén formulier is hierop een uitzondering: de offerteaanvraag op <a href="/hulp-nodig.html" class="link">Hulp nodig</a>. Die sturen we door naar de auditbureaus die meedoen aan Het Vierogen-pact, want anders kunnen ze je geen offerte sturen. Daarom vragen we daar apart je akkoord voor, en we sturen niets door zonder dat vinkje. Je hoort van ons bij welke bureaus je aanvraag terecht is gekomen.</p>
 
       <h2>Stemmen in de eregalerij</h2>
       <p>Stem je op een website in de eregalerij, dan slaan we een versleutelde (gehashte) versie van je e-mailadres op. Zo voorkomen we dubbele stemmen, zonder je echte adres te bewaren.</p>
@@ -792,6 +795,7 @@ def write_sitemap(articles: list):
         (f"{BASE_URL}/vragen.html", "weekly", "0.7", None),
         (f"{BASE_URL}/tools.html", "monthly", "0.7", None),
         (f"{BASE_URL}/wcag-audit.html", "monthly", "0.5", None),
+        (f"{BASE_URL}/hulp-nodig.html", "monthly", "0.7", None),
         (f"{BASE_URL}/vraag-stellen.html", "monthly", "0.6", None),
         (f"{BASE_URL}/melden.html", "monthly", "0.5", None),
         (f"{BASE_URL}/eregalerij.html", "weekly", "0.7", None),
