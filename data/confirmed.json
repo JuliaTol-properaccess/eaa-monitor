@@ -179,9 +179,9 @@
     {
       "name": "Bever",
       "url": "https://www.bever.nl",
-      "statement_url": "https://www.bever.nl/toegankelijkheidsverklaring.html",
+      "statement_url": "https://www.bever.nl/klantenservice/toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Bijenkorf",
@@ -461,7 +461,7 @@
       "url": "https://freshnrebel.com/nl",
       "statement_url": "https://freshnrebel.com/nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Gall.nl",
@@ -825,7 +825,14 @@
       "url": "https://www.missmary.com/nl",
       "statement_url": "https://www.missmary.com/nl/accessibility",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
+    },
+    {
+      "name": "MotoPort.nl",
+      "url": "https://www.motoport.nl",
+      "statement_url": "https://www.motoport.nl/over-motoport/wcag-toegankelijkheidsverklaring-motoport-nl",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Motorkledingoutlet.nl",
@@ -888,7 +895,7 @@
       "url": "https://www.nowinsure.com",
       "statement_url": "https://www.nowinsure.com/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "OfficeNext.nl",
@@ -916,7 +923,7 @@
       "url": "https://www.only.com/nl/nl/",
       "statement_url": "https://www.only.com/nl-nl/content/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Optiphar",
@@ -954,6 +961,13 @@
       "confirmed": "2026-08-24"
     },
     {
+      "name": "PadelDirect.nl",
+      "url": "https://www.padeldirect.nl",
+      "statement_url": "https://www.padeldirect.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-09-21"
+    },
+    {
       "name": "Paradigit",
       "url": "https://www.paradigit.nl",
       "statement_url": "https://www.paradigit.nl/informatie/veiligheid-toegankelijkheid/",
@@ -986,7 +1000,7 @@
       "url": "https://www.picnic.app/nl/",
       "statement_url": "https://picnic.app/nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Pixum",
@@ -1078,6 +1092,13 @@
       "statement_url": "https://www.roruvera.com/pages/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-09-07"
+    },
+    {
+      "name": "Royal Canin",
+      "url": "https://www.royalcanin.com/nl",
+      "statement_url": "https://www.mars.com/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Runningdirect.nl",
@@ -1318,6 +1339,13 @@
       "confirmed": "2026-09-07"
     },
     {
+      "name": "Van Beekum Specerijen",
+      "url": "https://www.vanbeekumspecerijen.nl",
+      "statement_url": "https://www.vanbeekumspecerijen.nl/",
+      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
+      "confirmed": "2026-09-21"
+    },
+    {
       "name": "Van der Garde tuinmeubelen",
       "url": "https://www.vdgarde.nl",
       "statement_url": "https://www.vdgarde.nl/toegankelijkheidverklaring",
@@ -1385,7 +1413,7 @@
       "url": "https://www.voetbaldirect.nl",
       "statement_url": "https://www.voetbaldirect.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Voetbalshop.nl",
@@ -1406,7 +1434,7 @@
       "url": "https://www.vvvcadeaukaarten.nl",
       "statement_url": "https://www.vvvcadeaukaarten.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-17"
+      "confirmed": "2026-09-21"
     },
     {
       "name": "Waterpompshop",
