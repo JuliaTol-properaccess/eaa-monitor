@@ -31,7 +31,9 @@ from pathlib import Path
 
 # Gedeelde partials hergebruiken uit de artikelgenerator.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_articles import shared_head, site_header, site_footer, BASE_URL  # noqa: E402
+from build_articles import (  # noqa: E402
+    shared_head, site_header, site_footer, lead_cta, BASE_URL,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "auditbureaus.json"
@@ -169,6 +171,12 @@ def render(bureaus):
       <p class="mt-4 text-sm text-gray-600">Ben je auditbureau of freelance auditor en wil je hier vermeld staan, vindbaar voor klanten? <a href="/vierogen-pact.html" class="link font-semibold">Plaatsing op deze pagina</a>.</p>
     </section>
 
+{lead_cta(
+    "Liever één aanvraag dan zelf bellen?",
+    "Zet in het formulier hoeveel templates je site heeft, of er een app en "
+    "documenten bij horen en wanneer je klaar wilt zijn. Dan krijg je een "
+    "offerte met een bedrag in plaats van een bandbreedte.",
+)}
   </main>
 {site_footer()}</body>
 </html>

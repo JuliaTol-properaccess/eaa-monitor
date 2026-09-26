@@ -48,7 +48,9 @@ from pathlib import Path
 
 # Gedeelde partials hergebruiken uit de artikelgenerator.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_articles import shared_head, site_header, site_footer, BASE_URL  # noqa: E402
+from build_articles import (  # noqa: E402
+    shared_head, site_header, site_footer, lead_cta, BASE_URL,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "hulptools.json"
@@ -377,6 +379,12 @@ def render(tools):
       </div>
     </section>
 
+{lead_cta(
+    "Zelf gekeken, en nu?",
+    "Deze tools vinden de meetbare fouten. De leesvolgorde, de foutmeldingen in "
+    "je formulieren en de bediening met alleen een toetsenbord blijven over. "
+    "Daarvoor loopt iemand je site zelf door, met een schermlezer erbij.",
+)}
   </main>
 {site_footer()}</body>
 </html>

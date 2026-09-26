@@ -270,6 +270,40 @@ def site_header(active_path):
 """
 
 
+# Route naar het offerteformulier op de hulppagina. EAA Monitor verkoopt zelf
+# geen audits: de aanvraag gaat naar de bureaus uit data/auditbureaus.json, en
+# zolang die lijst leeg is naar Proper Access. Zie public/hulp-nodig.html.
+INTAKE_HREF = "/hulp-nodig.html#offerte"
+INTAKE_KNOP = "Vraag een toegankelijkheidsintake aan"
+INTAKE_NOOT = (
+    "Je aanvraag gaat naar een onafhankelijk auditbureau. EAA Monitor "
+    "verkoopt zelf geen audits."
+)
+
+
+def lead_cta(kop, tekst, *, knop=INTAKE_KNOP, href=INTAKE_HREF, noot=INTAKE_NOOT,
+             eyebrow="Volgende stap", heading_id="intake-heading", extra_attrs=""):
+    """Eén primaire call-to-action per pagina, naar het offerteformulier.
+
+    De monitorpagina's zijn handgeschreven en hebben elk een eigen kopie van dit
+    blok in de HTML, net als de header en de footer (zie CLAUDE.md, "Navigatie:
+    twee plekken, geen één"). Wijzig je de opmaak hier, pas die kopieën dan mee
+    aan; `tests/test_lead_cta.py` controleert of elke pagina er één heeft.
+    """
+    return f"""    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 md:mt-20" aria-labelledby="{heading_id}">
+      <div class="rounded-xl bg-navy text-white on-dark p-8 md:p-10">
+        <div class="max-w-2xl">
+          <span class="eyebrow text-brand-bright">{html.escape(eyebrow)}</span>
+          <h2 id="{heading_id}" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">{html.escape(kop)}</h2>
+          <p class="mt-3 text-white leading-relaxed">{tekst}</p>
+          <p class="mt-6"><a href="{href}" class="utrecht-button utrecht-button--primary-action"{extra_attrs}>{html.escape(knop)}</a></p>
+          <p class="mt-4 text-sm text-white">{noot}</p>
+        </div>
+      </div>
+    </section>
+"""
+
+
 def site_footer():
     return f"""  <footer class="bg-navy text-white mt-24 on-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
