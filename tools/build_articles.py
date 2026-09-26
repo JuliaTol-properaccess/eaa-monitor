@@ -23,7 +23,8 @@ Frontmatter per artikel (YAML):
     ---
     title: "Valt mijn webshop onder de EAA?"
     slug: "valt-mijn-webshop-onder-de-eaa"
-    description: "Korte SEO/social-omschrijving."
+    description: "Korte omschrijving; staat ook als inleiding op de pagina."
+    meta_description: "Optioneel: kortere tekst voor het zoekresultaat (max 155)."
     date: 2026-06-08
     theme: "scope"        # scope | toezicht | praktijk | mythes
     keywords: [eaa, scope]
@@ -68,6 +69,10 @@ FEEDBACK_ENDPOINT = "https://eaa-monitor.nl/api/feedback"
 # opt-in. Het footerformulier post hiernaartoe; de Worker mailt een
 # bevestigingslink en slaat na bevestiging op in Cloudflare KV.
 NEWSLETTER_ENDPOINT = "https://eaa-monitor.nl/api/newsletter"
+
+# Google kapt een zoekresultaat rond de 155 tekens af. Elke pagina van de site
+# blijft eronder; tests/test_meta_descriptions.py controleert dat.
+MAX_META_DESCRIPTION = 155
 
 THEMES = {
     "scope": "Voor wie geldt het",
@@ -365,6 +370,11 @@ def parse_article(path: Path) -> dict:
             f"{path.name}: onbekend thema '{meta['theme']}' "
             f"(kies uit: {', '.join(THEMES)})"
         )
+    if len(meta.get("meta_description") or "") > MAX_META_DESCRIPTION:
+        raise ValueError(
+            f"{path.name}: meta_description is {len(meta['meta_description'])} tekens, "
+            f"maximaal {MAX_META_DESCRIPTION} (anders kapt Google hem af)"
+        )
 
     md = md_lib.Markdown(
         extensions=["extra", "attr_list", "sane_lists", "toc"],
@@ -377,6 +387,17 @@ def parse_article(path: Path) -> dict:
     if meta.get("updated") and isinstance(meta["updated"], str):
         meta["updated"] = _date.fromisoformat(meta["updated"])
     return meta
+
+
+def head_description(meta: dict) -> str:
+    """De tekst voor de meta description, og:description en twitter:description.
+
+    Het veld 'description' staat ook als inleiding onder de H1 en op de kaart in
+    de kennisbank; daar mag hij langer zijn. Google kapt een zoekresultaat rond
+    de 155 tekens af, dus een langere inleiding krijgt met het optionele
+    frontmatter-veld 'meta_description' een eigen, kortere versie.
+    """
+    return meta.get("meta_description") or meta["description"]
 
 
 ORG_ID = f"{BASE_URL}/#organization"
@@ -551,7 +572,7 @@ def render_article(meta: dict) -> str:
 
     head = shared_head(
         f'{meta["title"]} — EAA Monitor',
-        meta["description"],
+        head_description(meta),
         url,
         extra_head=extra_head,
         og_type="article",

@@ -58,9 +58,9 @@ ACTIVE_PATH = "/tools.html"
 URL = f"{BASE_URL}/tools.html"
 TITLE = "Hulp bij digitale toegankelijkheid: tools en waar je begint — EAA Monitor"
 DESCRIPTION = (
-    "Waar begin je als je website of PDF toegankelijk moet zijn? Een overzicht van "
-    "tools om zelf te controleren: in-pagina checkers, contrastmeters, schermlezers "
-    "en documenttools, met per tool wat hij niet vindt."
+    "Tools om je website of PDF zelf te controleren: in-pagina checkers, "
+    "contrastmeters, schermlezers en documenttools. Per tool lees je wat hij "
+    "niet vindt."
 )
 
 # Categorieën in weergavevolgorde. De slug moet matchen met het veld

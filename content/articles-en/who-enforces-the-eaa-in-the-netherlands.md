@@ -2,6 +2,7 @@
 title: "Who enforces the European Accessibility Act in the Netherlands?"
 slug: "who-enforces-the-eaa-in-the-netherlands"
 description: "Six Dutch regulators share enforcement of the EAA, each for its own type of product or service. Which one is yours, what they actually do, and why the number seven keeps circulating."
+meta_description: "Six Dutch regulators share enforcement of the EAA, each for its own type of product or service. Find out which one is yours and what it actually does."
 date: 2026-08-22
 theme: "toezicht"
 answer: "Six regulators enforce the European Accessibility Act in the Netherlands: the ACM for e-commerce, apps and electronic communications, the AFM for consumer banking and financial e-commerce, the RDI for hardware, the Dutch Media Authority for e-books and access to audiovisual media, the ILT for passenger transport, and the Justice and Security Inspectorate for the 112 emergency number."

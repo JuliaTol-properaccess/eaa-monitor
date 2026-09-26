@@ -2,6 +2,7 @@
 title: "Wie houdt toezicht op de EAA, en wat zijn de boetes?"
 slug: "toezicht-en-boetes"
 description: "Het toezicht op de European Accessibility Act is in Nederland verdeeld over meerdere toezichthouders. De ACM is de hoofdrolspeler voor webshops. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet."
+meta_description: "Het toezicht op de EAA is verdeeld over meerdere toezichthouders; voor webshops is dat de ACM. Boetes lopen volgens vakbronnen op tot € 900.000."
 answer: "In Nederland houdt vooral de ACM toezicht op de European Accessibility Act, met daarnaast de AFM voor de financiële sector en andere toezichthouders per domein. Boetes lopen volgens vakbronnen op tot € 900.000 of 1% van de jaaromzet. Sinds oktober 2025 geldt bovendien een meldplicht."
 date: 2026-06-08
 updated: 2026-06-23

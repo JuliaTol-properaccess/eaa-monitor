@@ -41,9 +41,9 @@ ACTIVE_PATH = "/bronnen.html"
 URL = f"{BASE_URL}/bronnen.html"
 TITLE = "Bronnen over de EAA — EAA Monitor"
 DESCRIPTION = (
-    "Een doorzoekbaar overzicht van bronnen over de European Accessibility Act: "
-    "toezichthouders, overheid, financiële sector, juristen, bureaus en vakmedia. "
-    "Filter op brontype."
+    "Doorzoekbaar overzicht van bronnen over de European Accessibility Act: "
+    "toezichthouders, overheid, juristen, bureaus en vakmedia. Filter op "
+    "brontype."
 )
 
 # Categorieën in weergavevolgorde. Slug moet matchen met het veld 'category'

@@ -41,9 +41,8 @@ ACTIVE_PATH = "/wcag-audit.html"
 URL = f"{BASE_URL}/wcag-audit.html"
 TITLE = "WCAG-audit: vind een auditbureau — EAA Monitor"
 DESCRIPTION = (
-    "Wil je weten of je website voldoet aan de WCAG en de European Accessibility "
-    "Act? Een onafhankelijke WCAG-audit brengt het in kaart. Overzicht van "
-    "auditbureaus in Nederland."
+    "Wil je weten of je website aan de WCAG voldoet? Een onafhankelijke audit "
+    "maakt dat duidelijk. Bekijk het overzicht van auditbureaus in Nederland."
 )
 
 

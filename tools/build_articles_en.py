@@ -18,7 +18,7 @@ Gebruik:
     python tools/build_articles_en.py
 
 Frontmatter is gelijk aan de Nederlandse generator: title, slug, description,
-date, theme, optioneel answer, keywords en sources.
+date, theme, optioneel answer, meta_description, keywords en sources.
 """
 
 import html
@@ -28,7 +28,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_articles import (  # noqa: E402
-    BASE_URL, LOGO_LICHT, LOGO_DONKER, parse_article, shared_head,
+    BASE_URL, LOGO_LICHT, LOGO_DONKER, head_description, parse_article,
+    shared_head,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -244,7 +245,7 @@ def render_article_en(meta):
     slug = meta["slug"]
     url = f"{BASE_URL}/en/articles/{slug}.html"
     head = shared_head(
-        f"{meta['title']} — EAA Monitor", meta["description"], url,
+        f"{meta['title']} — EAA Monitor", head_description(meta), url,
         extra_head=article_jsonld_en(meta, url), og_type="article", lang="en",
     )
     antwoord = (
@@ -277,9 +278,9 @@ def render_article_en(meta):
 def render_index_en(articles):
     url = f"{BASE_URL}/en/articles.html"
     beschrijving = (
-        "Plain-language explanation of the European Accessibility Act in the Netherlands: "
-        "who it applies to, which of the six regulators enforces it, and what the law actually "
-        "requires."
+        "Plain-language explanation of the European Accessibility Act in the "
+        "Netherlands: who it applies to, which regulator enforces it, and what "
+        "it requires."
     )
     kaarten = []
     for meta in articles:

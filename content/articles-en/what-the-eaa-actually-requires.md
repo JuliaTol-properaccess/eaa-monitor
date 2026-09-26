@@ -2,6 +2,7 @@
 title: "What the EAA actually requires: an accessible service, not a statement"
 slug: "what-the-eaa-actually-requires"
 description: "The European Accessibility Act does not require an audit and does not ask for a statement in the Dutch register. It requires an accessible service. Here is what that means in practice, and where the confusion comes from."
+meta_description: "The European Accessibility Act does not require an audit or a statement in a register. It requires an accessible service. Here is what that means."
 date: 2026-08-22
 theme: "mythes"
 answer: "The EAA requires an accessible website, app or product. It does not oblige you to commission an audit, and the accessibility statement in the Dutch register belongs to a different law, the one covering the public sector. Under the EAA you publish information about the accessibility of your service, for example in your terms and conditions."
