@@ -2,6 +2,7 @@
 title: "Valt mijn website onder de EAA?"
 slug: "valt-mijn-website-onder-de-eaa"
 description: "Lang niet elke website valt onder de European Accessibility Act. Check met een paar vragen of de wet voor jouw website geldt, en begrijp de micro-vrijstelling."
+meta_description: "Lang niet elke website valt onder de European Accessibility Act. Check met een paar vragen of de wet voor jou geldt, inclusief de micro-vrijstelling."
 answer: "Niet elke website valt onder de European Accessibility Act. De wet geldt voor bedrijven die online producten of diensten aan consumenten verkopen. Ben je een micro-onderneming met minder dan 10 medewerkers en een jaaromzet van maximaal € 2 miljoen, dan ben je waarschijnlijk vrijgesteld. Hieronder check je het met een paar vragen."
 date: 2026-06-08
 theme: "scope"

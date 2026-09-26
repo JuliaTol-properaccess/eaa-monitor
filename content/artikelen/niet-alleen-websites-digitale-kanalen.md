@@ -2,6 +2,7 @@
 title: "Niet alleen websites: welke digitale kanalen vallen onder de EAA?"
 slug: "niet-alleen-websites-digitale-kanalen"
 description: "De European Accessibility Act gaat over meer dan websites en apps. Ook zelfbedieningsterminals, e-readers, betaalautomaten, e-boeken en elektronische communicatie vallen eronder. Een overzicht."
+meta_description: "De European Accessibility Act gaat over meer dan websites en apps. Ook betaalautomaten, e-readers, e-boeken en telecomdiensten vallen eronder."
 answer: "De European Accessibility Act gaat over meer dan websites en apps. Ook zelfbedieningsterminals, e-readers, betaalautomaten, e-boeken en elektronische communicatie vallen eronder. Of iets onder de wet valt, hangt af van het product of de dienst, niet van het kanaal waarlangs je het aanbiedt."
 date: 2026-06-09
 theme: "scope"

@@ -2,6 +2,7 @@
 title: "Does the European Accessibility Act apply to my website?"
 slug: "does-the-eaa-apply-to-my-website"
 description: "The EAA has applied since 28 June 2025, but it does not cover every website. Check whether it covers yours, and understand the micro-enterprise exemption that is often quoted incorrectly."
+meta_description: "The EAA has applied since 28 June 2025, but it does not cover every website. Check whether it covers yours, and what the micro-enterprise exemption says."
 date: 2026-08-22
 theme: "scope"
 answer: "The European Accessibility Act covers companies that offer certain products and services to consumers, including e-commerce, consumer banking, e-books, electronic communications and passenger transport. Micro-enterprises with fewer than 10 staff and a turnover or balance sheet total of at most 2 million euro are exempt, but only for services."

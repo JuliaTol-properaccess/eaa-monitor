@@ -2,6 +2,7 @@
 title: "Zo schrijf je een toegankelijkheidsverklaring voor je webshop"
 slug: "toegankelijkheidsverklaring-schrijven"
 description: "Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Lees wat erin hoort, hoe je hem publiceert en waarom hij niet los staat van echte toegankelijkheid."
+meta_description: "Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is. Lees wat erin hoort, waar je hem publiceert en wat hij niet bewijst."
 answer: "Een toegankelijkheidsverklaring laat zien hoe toegankelijk je webshop is en wat je eraan doet. Je beschrijft de stand van zaken, bekende knelpunten en hoe bezoekers een probleem kunnen melden. Een verklaring hoort bij de European Accessibility Act, maar vervangt echte toegankelijkheid niet."
 date: 2026-06-08
 theme: "praktijk"

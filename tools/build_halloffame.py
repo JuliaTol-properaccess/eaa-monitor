@@ -72,9 +72,9 @@ ACTIVE_PATH = "/eregalerij.html"
 URL = f"{BASE_URL}/eregalerij.html"
 TITLE = "Eregalerij: websites die echt toegankelijk zijn — EAA Monitor"
 DESCRIPTION = (
-    "Een toegankelijkheidsverklaring zegt niets over echte toegankelijkheid. "
-    "In de eregalerij staan websites die bezoekers als digitaal toegankelijk "
-    "ervaren en daarom nomineren."
+    "In de eregalerij staan websites die bezoekers zelf als toegankelijk "
+    "ervaren en daarom nomineren. Met codevoorbeelden van wat die sites goed "
+    "doen."
 )
 
 # Basis-URL van de bezwaar-Worker (zie worker/DEPLOY.md). De stemroutes zijn

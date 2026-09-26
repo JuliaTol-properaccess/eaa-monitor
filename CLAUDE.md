@@ -22,7 +22,7 @@ Volgt het WAT framework (Workflows, Agents, Tools). Statische site (HTML + lokaa
 - `tools/sync_confirmed.py` — Onderhoudt de bevestigd-groen-lijst (`data/confirmed.json`) na een scrape: nieuwe greens toevoegen, herbevestigde verversen (datum vandaag), weggehaalde verklaringen verwijderen; error/timeout laat de bestaande bevestiging staan. Draait in `scrape.yml` na de merge (shard-veilig). De scraper zelf **slaat** bevestigd-groene sites op de wekelijkse run **over** zolang `confirmed` < `REVERIFY_DAYS` (30) oud is, en herverifieert ze daarna vanzelf. Beschermt ook handmatig geverifieerde greens (bv. bol.com) tegen wegvallen door een transiente bot-challenge
 - `tools/scan_axe.py` — WCAG-scanner: draait **axe-core 4.11** (lokaal gevendord in `tools/vendor/axe.min.js`, dezelfde engine als wcag-scan.eu) in headless Chromium over een lijst sites en aggregeert de violations. Standaard **alleen WCAG A/AA** (best-practice zoals landmarks uitgesloten, want in NL geen WCAG-falen). **Render-waarborg**: een pagina met < 50 DOM-elementen na laden geldt als niet gerenderd (redirect/consent/bot-muur) → status `niet-gerenderd`, nooit "geen fouten"; axe wordt via `page.evaluate` geïnjecteerd (CSP-proof), niet via `add_script_tag`. `tools/build_axe_targets.py` bouwt de doellijst (elke site met `has_statement=True`, gededupliceerd op URL). `tools/gen_axe_rules.js` genereert de regelcatalogus `data/axe-rules.json` (welke regels meetellen vs. uitgesloten). **Wall-clock-cap per site** (`SCAN_CAP_S`) plus zelfherstart bij een onbreekbare hang: hergebruikt de watchdog van `scrape_footer.py`, want de losse Playwright-timeouts dekken de axe-run in `page.evaluate` niet. Schrijft elke `FLUSH_EVERY` sites tussentijds weg, zodat een afgebroken run zijn werk houdt
 - `tools/build_axe_overlay.py` — Rendert een scan-output → de overlay `data/axe-results.json` (url → `fouten`/`schoon`/`niet-scanbaar`). Met `--patch-html public/monitor.html` bakt het ook het kerncijfer tussen de `<!--AXE-STAT:START/END-->`-markers (GEO/no-JS). Draait wekelijks via `scan-axe.yml`
-- `tests/test_detector.py` (deterministische detector-fixtures, confusion matrix), `tests/test_confirmed.py` (overslaan + sync), `tests/test_site_timeout.py` (per-site-cap + shard-zelfherstart), `tests/test_axe_scan.py` (scan-aggregatie + statusvertaling), `tests/check_live.py` + `tests/groundtruth_sites.json` (periodieke live-validatie tegen echte sites)
+- `tests/test_detector.py` (deterministische detector-fixtures, confusion matrix), `tests/test_confirmed.py` (overslaan + sync), `tests/test_site_timeout.py` (per-site-cap + shard-zelfherstart), `tests/test_axe_scan.py` (scan-aggregatie + statusvertaling), `tests/test_meta_descriptions.py` (elke pagina in `public/` één description, tussen 60 en 155 tekens, uniek), `tests/check_live.py` + `tests/groundtruth_sites.json` (periodieke live-validatie tegen echte sites)
 
 ### Data
 - `data/webshops.json` — Lijst van te controleren webshops (deels handmatig, deels gescraped)
@@ -104,6 +104,8 @@ python tests/test_detector.py
 python tests/test_confirmed.py
 python tests/test_site_timeout.py
 python tests/test_axe_scan.py
+# Meta descriptions van alle pagina's in public/ (lengte, uniek, precies één)
+python tests/test_meta_descriptions.py
 # Live ground-truth-validatie tegen echte sites (kan wisselen door bot-challenges)
 python tests/check_live.py
 
@@ -156,7 +158,7 @@ bezwaar.html → Worker → PR op objections.json → app.js sluit bezwaarmakers
 
 ## Artikel schrijven
 
-Maak `content/artikelen/<slug>.md` met YAML-frontmatter (`title`, `slug`, `description`, `date`, `theme` uit scope/toezicht/praktijk/mythes, optioneel `keywords` en `sources`). Schrijf de body in markdown; raw HTML mag (de scope-checker is zo ingebed). Draai daarna `python tools/build_articles.py`. Toon volgens de nlds-schrijfwijzer (je-vorm, geen jargon, geen em-dashes). **Nooit cijfers verzinnen**; onbevestigde claims als zodanig markeren.
+Maak `content/artikelen/<slug>.md` met YAML-frontmatter (`title`, `slug`, `description`, `date`, `theme` uit scope/toezicht/praktijk/mythes, optioneel `meta_description`, `keywords` en `sources`). `description` staat ook als inleiding onder de H1 en op de kaart in de kennisbank; is die langer dan 155 tekens, zet dan een kortere `meta_description` erbij voor het zoekresultaat (Google kapt daarboven af, en de build faalt als hij te lang is). Schrijf de body in markdown; raw HTML mag (de scope-checker is zo ingebed). Draai daarna `python tools/build_articles.py`. Toon volgens de nlds-schrijfwijzer (je-vorm, geen jargon, geen em-dashes). **Nooit cijfers verzinnen**; onbevestigde claims als zodanig markeren.
 
 ## Bezwaar tegen vermelding
 

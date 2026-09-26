@@ -301,8 +301,8 @@ def render_lijst(sector, sites, alle_sites, datum, axe, *, letter=None, letters=
     deel = f", namen met {letter}" if letter else ""
     titel = f"Alle gemeten {sector['noun']}{deel} — EAA Monitor"
     omschrijving = (
-        f"De volledige meting van {len(sites)} {sector['noun']}{deel}: heeft de site een "
-        f"toegankelijkheidsverklaring in de footer? Gemeten op {nl_datum(datum)} door EAA Monitor."
+        f"De volledige meting van {_getal(len(sites))} {sector['noun']}{deel}: staat er een "
+        f"toegankelijkheidsverklaring in de footer? Gemeten op {nl_datum(datum)}."
     )
     kop = f"Alle gemeten {sector['noun']}" + (f", namen met {letter}" if letter else "")
 
@@ -352,9 +352,9 @@ def render_hub(overzicht):
     url = f"{BASE_URL}/lijst.html"
     totaal = sum(o["totaal"] for o in overzicht)
     omschrijving = (
-        f"De volledige meting van {totaal} Nederlandse organisaties in zeven sectoren, "
-        "als platte lijst zonder JavaScript. Per site: staat er een toegankelijkheidsverklaring "
-        "in de footer?"
+        f"Alle {_getal(totaal)} gemeten Nederlandse organisaties in zeven sectoren, als "
+        "platte lijst zonder JavaScript. Staat er een toegankelijkheidsverklaring in "
+        "de footer?"
     )
     kaarten = []
     for o in overzicht:
