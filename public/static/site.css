@@ -21,7 +21,10 @@
   --line: #C8D2C9;
 }
 
-html { scroll-behavior: smooth; }
+/* De header is sticky. Zonder deze regel landt een link naar een anker (zoals
+   /hulp-nodig.html#offerte vanaf de CTA op de monitorpagina's) met de kop
+   achter die balk, en zie je de vraag niet waar je op klikte. */
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
 
 body {
   font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
