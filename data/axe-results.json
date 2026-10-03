@@ -1,14 +1,14 @@
 {
-  "generated": "2026-09-22",
+  "generated": "2026-10-03",
   "engine": "axe-core 4.11.4",
   "scope": "WCAG 2.2 A/AA (best-practice uitgesloten)",
   "detail_url": "https://wcag-scan.nl/",
   "summary": {
-    "total": 278,
+    "total": 281,
     "fouten": 198,
-    "schoon": 70,
-    "niet_scanbaar": 10,
-    "pct_fouten_van_gescand": 74
+    "schoon": 65,
+    "niet_scanbaar": 18,
+    "pct_fouten_van_gescand": 75
   },
   "sites": {
     "https://www.123-3d.nl": {
@@ -32,11 +32,11 @@
       "url": "https://www.123schoon.nl"
     },
     "https://www.aboutyou.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.aboutyou.nl"
     },
     "https://en.aboutyou.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://en.aboutyou.nl"
     },
     "https://www.absoluteteamsport.nl": {
@@ -64,7 +64,7 @@
       "url": "https://www.amazon.nl"
     },
     "https://www.amefa.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.amefa.nl"
     },
     "https://www.annadiva.nl": {
@@ -112,7 +112,7 @@
       "url": "https://www.bever.nl"
     },
     "https://www.debijenkorf.nl": {
-      "status": "schoon",
+      "status": "niet-scanbaar",
       "url": "https://www.debijenkorf.nl"
     },
     "https://lifestyle.bmw.com/nl/nl/home": {
@@ -120,7 +120,7 @@
       "url": "https://lifestyle.bmw.com/nl/nl/home"
     },
     "https://www.boldmonkey.com/nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.boldmonkey.com/nl"
     },
     "https://www.bonprix.nl": {
@@ -175,12 +175,16 @@
       "status": "fouten",
       "url": "https://www.cunavo.nl"
     },
+    "https://www.dartswarehouse.nl": {
+      "status": "niet-scanbaar",
+      "url": "https://www.dartswarehouse.nl"
+    },
     "https://www.dehoevebuitenleven.nl": {
       "status": "fouten",
       "url": "https://www.dehoevebuitenleven.nl"
     },
     "https://www.deonlinedrogist.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.deonlinedrogist.nl"
     },
     "https://www.denmulderboomteelt.com": {
@@ -191,16 +195,20 @@
       "status": "fouten",
       "url": "https://www.dierapotheker.nl"
     },
+    "https://directlicentie.nl": {
+      "status": "fouten",
+      "url": "https://directlicentie.nl"
+    },
     "https://www.dqahealthandbeauty.nl": {
       "status": "fouten",
       "url": "https://www.dqahealthandbeauty.nl"
     },
     "https://drank.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://drank.nl"
     },
     "https://www.dutchbone.com": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.dutchbone.com"
     },
     "https://lexima.nl": {
@@ -231,10 +239,6 @@
       "status": "schoon",
       "url": "https://www.fbto.nl"
     },
-    "https://festivaloutfitenzo.nl": {
-      "status": "fouten",
-      "url": "https://festivaloutfitenzo.nl"
-    },
     "https://www.fietsaccu-revisie.nl": {
       "status": "schoon",
       "url": "https://www.fietsaccu-revisie.nl"
@@ -254,6 +258,14 @@
     "https://www.gall.nl": {
       "status": "schoon",
       "url": "https://www.gall.nl"
+    },
+    "https://www.gents.nl": {
+      "status": "schoon",
+      "url": "https://www.gents.nl"
+    },
+    "https://www.goldennaturals.nl": {
+      "status": "fouten",
+      "url": "https://www.goldennaturals.nl"
     },
     "https://www.goldner-fashion.com/nl": {
       "status": "schoon",
@@ -276,7 +288,7 @@
       "url": "https://www.hayesbrothers.nl"
     },
     "https://www.heine-shop.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.heine-shop.nl"
     },
     "https://hellowalls.nl": {
@@ -284,8 +296,12 @@
       "url": "https://hellowalls.nl"
     },
     "https://nl.hudsonreed.com": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://nl.hudsonreed.com"
+    },
+    "https://hydropeptide.nl": {
+      "status": "fouten",
+      "url": "https://hydropeptide.nl"
     },
     "https://www.ikea.com/nl/nl": {
       "status": "schoon",
@@ -312,7 +328,7 @@
       "url": "https://www.intratuin.nl"
     },
     "https://www.jackjones.com/nl/nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.jackjones.com/nl/nl/"
     },
     "https://www.jdsports.nl": {
@@ -396,7 +412,7 @@
       "url": "https://www.kwantum.nl"
     },
     "https://www.lampenlicht.nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.lampenlicht.nl"
     },
     "https://www.laptop.nl": {
@@ -416,7 +432,7 @@
       "url": "https://www.lidl.nl"
     },
     "https://www.loberon.nl": {
-      "status": "schoon",
+      "status": "fouten",
       "url": "https://www.loberon.nl"
     },
     "https://www.lodewijkmode.nl": {
@@ -426,6 +442,10 @@
     "https://www.madeleine.com/nl": {
       "status": "fouten",
       "url": "https://www.madeleine.com/nl"
+    },
+    "https://www.matrasdirect.nl": {
+      "status": "fouten",
+      "url": "https://www.matrasdirect.nl"
     },
     "https://www.mediamarkt.nl": {
       "status": "fouten",
@@ -468,7 +488,7 @@
       "url": "https://www.neweco.nl"
     },
     "https://www.newpharma.nl": {
-      "status": "fouten",
+      "status": "niet-scanbaar",
       "url": "https://www.Newpharma.nl"
     },
     "https://www.nike.com/nl": {
@@ -515,10 +535,6 @@
       "status": "fouten",
       "url": "https://www.overstappen.nl"
     },
-    "https://ozotof.nl": {
-      "status": "schoon",
-      "url": "https://ozotof.nl"
-    },
     "https://www.padeldirect.nl": {
       "status": "niet-scanbaar",
       "url": "https://www.padeldirect.nl"
@@ -546,10 +562,6 @@
     "https://www.pixum.nl": {
       "status": "fouten",
       "url": "https://www.pixum.nl"
-    },
-    "https://www.plus.nl": {
-      "status": "fouten",
-      "url": "https://www.plus.nl"
     },
     "https://www.praxis.nl": {
       "status": "fouten",
@@ -580,7 +592,7 @@
       "url": "https://www.risk-direct.nl"
     },
     "https://www.rituals.com/nl-nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.rituals.com/nl-nl/"
     },
     "https://www.rituals.com/nl-nl/home": {
@@ -791,6 +803,10 @@
       "status": "fouten",
       "url": "https://www.auping.com/nl"
     },
+    "https://weekendjeweg.nl": {
+      "status": "niet-scanbaar",
+      "url": "https://weekendjeweg.nl"
+    },
     "https://www.wehkamp.nl": {
       "status": "fouten",
       "url": "https://www.wehkamp.nl"
@@ -851,10 +867,6 @@
       "status": "schoon",
       "url": "https://www.zwembroeken.nl"
     },
-    "https://www.asr.nl": {
-      "status": "schoon",
-      "url": "https://www.asr.nl"
-    },
     "https://www.abnamro.nl": {
       "status": "schoon",
       "url": "https://www.abnamro.nl"
@@ -862,10 +874,6 @@
     "https://www.aevitae.com": {
       "status": "fouten",
       "url": "https://www.aevitae.com"
-    },
-    "https://www.allianz.nl": {
-      "status": "schoon",
-      "url": "https://www.allianz.nl"
     },
     "https://www.alphabet.com/nl-nl": {
       "status": "fouten",
@@ -892,7 +900,7 @@
       "url": "https://www.getbux.com"
     },
     "https://www.cz.nl": {
-      "status": "fouten",
+      "status": "schoon",
       "url": "https://www.cz.nl"
     },
     "https://www.defriesland.nl": {
@@ -938,6 +946,10 @@
     "https://mobilize-fs.nl": {
       "status": "fouten",
       "url": "https://mobilize-fs.nl"
+    },
+    "https://www.monuta.nl": {
+      "status": "fouten",
+      "url": "https://www.monuta.nl"
     },
     "https://www.nn.nl": {
       "status": "schoon",
@@ -1072,7 +1084,7 @@
       "url": "https://www.stenaline.nl"
     },
     "https://www.transavia.com/nl-nl": {
-      "status": "schoon",
+      "status": "niet-scanbaar",
       "url": "https://www.transavia.com/nl-NL"
     },
     "https://www.kijk.nl": {
