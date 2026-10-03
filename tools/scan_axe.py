@@ -280,6 +280,53 @@ def main():
                 _reap_scan()
                 raise  # _reap_scan hoort niet terug te keren
 
+        def sluit_pagina(page):
+            """Sluit de pagina onder een eigen cap. Returnt False als dat hing.
+
+            `page.close()` staat in een finally, dus buiten de per-site-deadline:
+            die is bij het verlaten van de with-block al opgeheven. En sluiten
+            blokkeert wel degelijk op een wedged driver, net als de
+            `context.close()` in _recover_page van scrape_footer.py. Zonder eigen
+            cap hangt de scan daar voorgoed. Dat is precies wat de scan van 29
+            september 2026 deed: na de fout op site 15 (Annadiva.nl, "Execution
+            context was destroyed") kwam er 88 minuten lang geen regel meer uit,
+            tot de jobcap van 90 minuten de run cancelde.
+            """
+            if page is None:
+                return True
+            try:
+                with site_deadline(RECOVERY_CAP_S, on_giveup=_reap_scan):
+                    page.close()
+            except SiteTimeout:
+                print("  (pagina sluiten hangt, verse browser)", flush=True)
+                return False
+            except Exception:  # noqa: BLE001 - al gesloten is prima
+                pass
+            return True
+
+        def herstel_browser(old_context):
+            """Verse (browser, context) na een fout, zelf onder een cap.
+
+            Eerst de goedkope weg: oude context sluiten, nieuwe op dezelfde
+            browser. Hangt dat, dan chromium killen en een verse browser starten.
+            Komt ook die niet op tijd omhoog, dan herstart de reaper de scan.
+            Zelfde trapje als _recover_page in scrape_footer.py.
+            """
+            try:
+                with site_deadline(RECOVERY_CAP_S, on_giveup=_reap_scan):
+                    try:
+                        old_context.close()
+                    except Exception:  # noqa: BLE001
+                        pass
+                    return browser, browser.new_context(user_agent=UA)
+            except SiteTimeout:
+                print("  (contextherstel hangt, verse browser)", flush=True)
+            try:
+                _kill_browser_processes()
+            except Exception:  # noqa: BLE001
+                pass
+            return safe_new_browser()
+
         browser, context = new_browser()
         for i, site in enumerate(sites, 1):
             if i <= args.resume_from:
@@ -290,14 +337,23 @@ def main():
                 browser, context = safe_new_browser()
             url = site["url"]
             name = site.get("name", url)
-            page = context.new_page()
-            page.set_default_timeout(NAVIGATION_TIMEOUT)
             rec = {"name": name, "url": url}
             t0 = time.time()
+            page = None
+            # Elke uitzondering kan een corrupte page/context achterlaten, dus
+            # gaan we daarna met een verse browser verder. De hoofdlus van
+            # scrape_footer.py doet dat in álle takken; hier deden alleen de
+            # cap-hits dat, en daar liep de scan van 29 september 2026 op vast.
+            herstel_nodig = False
             try:
                 # Harde wall-clock-cap om de losse Playwright-timeouts heen: die
-                # dekken de axe-run in page.evaluate niet. Zie SCAN_CAP_S.
+                # dekken de axe-run in page.evaluate niet. Zie SCAN_CAP_S. Het
+                # openen van de pagina valt er bewust binnen: context.new_page()
+                # hangt net zo goed op een wedged driver, en stond tot nu toe
+                # buiten elke cap.
                 with site_deadline(SCAN_CAP_S, on_giveup=_reap_scan):
+                    page = context.new_page()
+                    page.set_default_timeout(NAVIGATION_TIMEOUT)
                     violations, dom_elements = scan_site(page, url, axe_source, tags)
                 rec["dom_elements"] = dom_elements
                 rec["load_ms"] = int((time.time() - t0) * 1000)
@@ -313,28 +369,25 @@ def main():
                           f"{rec['total_nodes']:>4} elem, dom={dom_elements} "
                           f"({time.time()-t0:.1f}s)", flush=True)
             except SiteTimeout:
-                # Cap-hit: niet te scannen, nooit "geen fouten gevonden". De
-                # browser kan corrupt zijn, dus vers beginnen.
+                # Cap-hit: niet te scannen, nooit "geen fouten gevonden".
                 rec["status"] = "timeout"
                 rec["error"] = f"Per-site cap {SCAN_CAP_S}s overschreden"
                 print(f"[{i}/{len(sites)}] {name:<16} CAP ({SCAN_CAP_S}s)", flush=True)
-                try:
-                    _kill_browser_processes()
-                except Exception:  # noqa: BLE001
-                    pass
-                browser, context = safe_new_browser()
+                herstel_nodig = True
             except PlaywrightTimeout:
                 rec["status"] = "timeout"
                 print(f"[{i}/{len(sites)}] {name:<16} TIMEOUT", flush=True)
+                herstel_nodig = True
             except Exception as e:  # noqa: BLE001
                 rec["status"] = "error"
                 rec["error"] = str(e)[:200]
                 print(f"[{i}/{len(sites)}] {name:<16} ERROR: {str(e)[:80]}", flush=True)
+                herstel_nodig = True
             finally:
-                try:
-                    page.close()
-                except Exception:  # noqa: BLE001
-                    pass
+                if not sluit_pagina(page):
+                    herstel_nodig = True
+            if herstel_nodig:
+                browser, context = herstel_browser(context)
             results.append(rec)
             if len(results) % FLUSH_EVERY == 0:
                 write_payload(args.out, results, tags)
