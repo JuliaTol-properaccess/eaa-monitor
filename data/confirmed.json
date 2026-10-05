@@ -436,6 +436,13 @@
       "confirmed": "2026-09-07"
     },
     {
+      "name": "Feestbeest.nl",
+      "url": "https://www.feestbeest.nl",
+      "statement_url": "https://www.feestbeest.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-05"
+    },
+    {
       "name": "Fietsaccu-revisie.nl",
       "url": "https://www.fietsaccu-revisie.nl",
       "statement_url": "https://www.fietsaccu-revisie.nl/toegankelijkheid",
@@ -520,6 +527,13 @@
       "confirmed": "2026-09-07"
     },
     {
+      "name": "Harlequin",
+      "url": "https://www.harlequin.nl",
+      "statement_url": "https://www.harlequin.nl/pages/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-05"
+    },
+    {
       "name": "Hayes Brothers",
       "url": "https://www.hayesbrothers.nl",
       "statement_url": "https://hayesbrothers.nl/klantenservice/digitale-toegankelijkheid/",
@@ -539,6 +553,13 @@
       "statement_url": "https://hellowalls.nl/hulp/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
       "confirmed": "2026-09-07"
+    },
+    {
+      "name": "HockeyDirect.nl",
+      "url": "https://www.hockeydirect.nl",
+      "statement_url": "https://www.hockeydirect.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-05"
     },
     {
       "name": "Hornbach",
@@ -671,7 +692,7 @@
       "url": "https://www.kabrita.nl",
       "statement_url": "https://www.kabrita.nl/pages/toegankelijkheidsverklaring-kabrita-nederland",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-31"
+      "confirmed": "2026-10-05"
     },
     {
       "name": "Karpet24.nl",
@@ -863,6 +884,13 @@
       "confirmed": "2026-09-21"
     },
     {
+      "name": "Mobisite",
+      "url": "https://mobisite.nl",
+      "statement_url": "https://mobisite.nl/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-10-05"
+    },
+    {
       "name": "MotoPort.nl",
       "url": "https://www.motoport.nl",
       "statement_url": "https://www.motoport.nl/over-motoport/wcag-toegankelijkheidsverklaring-motoport-nl",
@@ -938,6 +966,13 @@
       "statement_url": "https://officenext.nl/pagina/toegankelijkheid",
       "statement_link_text": "EAA Verklaring",
       "confirmed": "2026-09-07"
+    },
+    {
+      "name": "Olijfboomspecialist",
+      "url": "https://olijfbomen.nl",
+      "statement_url": "https://olijfbomen.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-10-05"
     },
     {
       "name": "Omoda",
@@ -1038,13 +1073,6 @@
       "confirmed": "2026-09-07"
     },
     {
-      "name": "Plus",
-      "url": "https://www.plus.nl",
-      "statement_url": "https://www.plus.nl/organisatie/toegankelijkheidsverklaring",
-      "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-24"
-    },
-    {
       "name": "Praxis",
       "url": "https://www.praxis.nl",
       "statement_url": "https://www.praxis.nl/toegankelijkheidsverklaring",
@@ -1070,7 +1098,7 @@
       "url": "https://www.puurmieke.nl",
       "statement_url": "https://www.puurmieke.nl/service/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-31"
+      "confirmed": "2026-10-05"
     },
     {
       "name": "reBuy",
@@ -1283,6 +1311,13 @@
       "confirmed": "2026-09-07"
     },
     {
+      "name": "TennisDirect.nl",
+      "url": "https://www.tennisdirect.nl",
+      "statement_url": "https://www.tennisdirect.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-05"
+    },
+    {
       "name": "Teufel",
       "url": "https://teufelaudio.nl",
       "statement_url": "https://teufelaudio.nl/toegankelijkheid",
@@ -1360,6 +1395,13 @@
       "confirmed": "2026-09-07"
     },
     {
+      "name": "Unilux",
+      "url": "https://www.unilux.nl",
+      "statement_url": "https://www.unilux.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-05"
+    },
+    {
       "name": "Unoxovens.nl",
       "url": "https://unoxovens.nl",
       "statement_url": "https://unoxovens.nl/accessibility-statement-2/",
@@ -1435,6 +1477,13 @@
       "statement_url": "https://www.vidaxl.nl/accessibility_statement.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-09-07"
+    },
+    {
+      "name": "Vitakruid",
+      "url": "https://www.vitakruid.nl",
+      "statement_url": "https://www.vitakruid.nl/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-05"
     },
     {
       "name": "VoetbalDirect.nl",
@@ -1574,7 +1623,7 @@
       "url": "https://www.xenos.nl",
       "statement_url": "https://www.xenos.nl/digitale-toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "confirmed": "2026-08-31"
+      "confirmed": "2026-10-05"
     },
     {
       "name": "Yoek",
@@ -1616,7 +1665,7 @@
       "url": "https://www.zen-lifestyle.nl",
       "statement_url": "https://www.zen-lifestyle.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-08-31"
+      "confirmed": "2026-10-05"
     },
     {
       "name": "Zooplus",
