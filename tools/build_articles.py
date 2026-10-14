@@ -274,7 +274,7 @@ def site_header(active_path):
 # geen audits: de aanvraag gaat naar de bureaus uit data/auditbureaus.json, en
 # zolang die lijst leeg is naar Proper Access. Zie public/hulp-nodig.html.
 INTAKE_HREF = "/hulp-nodig.html#offerte"
-INTAKE_KNOP = "Vraag een toegankelijkheidsintake aan"
+INTAKE_KNOP = "Vraag een offerte aan"
 INTAKE_NOOT = (
     "Je aanvraag gaat naar een onafhankelijk auditbureau. EAA Monitor "
     "verkoopt zelf geen audits."
