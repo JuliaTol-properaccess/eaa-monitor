@@ -174,7 +174,7 @@
       "url": "https://www.bever.nl",
       "statement_url": "https://www.bever.nl/klantenservice/toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "BMW",
@@ -401,6 +401,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Dyson",
+      "url": "https://www.dyson.nl",
+      "statement_url": "https://www.dyson.nl/over-dyson/voorwaarden/toegangkelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-10-26"
+    },
+    {
       "name": "Educatheek.nl",
       "url": "https://www.educatheek.nl",
       "statement_url": "https://www.educatheek.nl/toegankelijkheid",
@@ -489,7 +496,7 @@
       "url": "https://freshnrebel.com/nl",
       "statement_url": "https://freshnrebel.com/nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Gall.nl",
@@ -884,6 +891,13 @@
       "confirmed": "2026-10-19"
     },
     {
+      "name": "Marktconcurrent",
+      "url": "https://www.marktconcurrent.nl",
+      "statement_url": "https://kaplunmarx.com/accessibility/",
+      "statement_link_text": "JUTAWANBET",
+      "confirmed": "2026-10-26"
+    },
+    {
       "name": "Matras Direct",
       "url": "https://www.matrasdirect.nl",
       "statement_url": "https://matrasdirect.nl/digitale-toegankelijkheid",
@@ -912,11 +926,18 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Meubelista",
+      "url": "https://meubelista.nl",
+      "statement_url": "https://meubelista.nl/pages/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-10-26"
+    },
+    {
       "name": "Miss Mary of Sweden AB",
       "url": "https://www.missmary.com/nl",
       "statement_url": "https://www.missmary.com/nl/accessibility",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Mobisite",
@@ -930,7 +951,7 @@
       "url": "https://www.motoport.nl",
       "statement_url": "https://www.motoport.nl/over-motoport/wcag-toegankelijkheidsverklaring-motoport-nl",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Motorkledingoutlet.nl",
@@ -993,7 +1014,7 @@
       "url": "https://www.nowinsure.com",
       "statement_url": "https://www.nowinsure.com/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Obbink.nl",
@@ -1077,7 +1098,7 @@
       "url": "https://www.padeldirect.nl",
       "statement_url": "https://www.padeldirect.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Paradigit",
@@ -1112,7 +1133,7 @@
       "url": "https://www.picnic.app/nl/",
       "statement_url": "https://picnic.app/nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Piest.nl",
@@ -1224,7 +1245,14 @@
       "url": "https://www.royalcanin.com/nl",
       "statement_url": "https://www.mars.com/accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
+    },
+    {
+      "name": "RTV Stegeman",
+      "url": "https://www.rtvstegeman.nl",
+      "statement_url": "https://www.rtvstegeman.nl/klantenservice/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Runningdirect.nl",
@@ -1339,6 +1367,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Solza.nl",
+      "url": "https://www.solza.nl",
+      "statement_url": "https://www.solza.nl/pages/toegankelijkheidsverklaring",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-10-26"
+    },
+    {
       "name": "Sparkozijnen",
       "url": "https://www.sparkozijnen.nl",
       "statement_url": "https://www.sparkozijnen.nl/toegankelijkheid",
@@ -1414,6 +1449,13 @@
       "statement_url": "https://themeatlovers.nl/pages/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-10-12"
+    },
+    {
+      "name": "Thuiswinkel",
+      "url": "https://www.thuiswinkel.org",
+      "statement_url": "https://www.thuiswinkel.org/agenda/webinar-level-level-hoe-je-compliant-wordt-en-blijft-met-de-toegankelijkheidswet/?rid=2026-11-10",
+      "statement_link_text": "Webinar Level Level: Hoe je compliant wordt én blijft met de toegankelijkheidswet",
+      "confirmed": "2026-10-26"
     },
     {
       "name": "tink GmbH",
@@ -1511,7 +1553,7 @@
       "url": "https://www.vanbeekumspecerijen.nl",
       "statement_url": "https://www.vanbeekumspecerijen.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Van der Garde tuinmeubelen",
@@ -1595,7 +1637,7 @@
       "url": "https://www.voetbaldirect.nl",
       "statement_url": "https://www.voetbaldirect.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Voetbalshop.nl",
@@ -1616,7 +1658,7 @@
       "url": "https://www.vvvcadeaukaarten.nl",
       "statement_url": "https://www.vvvcadeaukaarten.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-21"
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Washcab B.V.",
@@ -1729,6 +1771,13 @@
       "statement_url": "https://www.woonveilig.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-10-12"
+    },
+    {
+      "name": "Wooof.com",
+      "url": "https://www.wooof.com",
+      "statement_url": "https://wooof.com/digitale-toegankelijkheid/",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-10-26"
     },
     {
       "name": "Xenos B.V.",
