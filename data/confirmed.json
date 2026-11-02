@@ -310,6 +310,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Crysun guitars&parts",
+      "url": "https://www.crysun.nl",
+      "statement_url": "https://butterflygarden.nl/",
+      "statement_link_text": "Accessibility",
+      "confirmed": "2026-11-02"
+    },
+    {
       "name": "Cunavo",
       "url": "https://www.cunavo.nl",
       "statement_url": "https://www.cunavo.nl/pages/toegankelijkheid",
@@ -321,7 +328,7 @@
       "url": "https://www.dartswarehouse.nl",
       "statement_url": "https://www.dartswarehouse.nl/toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "De Hoeve Buitenleven",
@@ -349,7 +356,14 @@
       "url": "https://www.denmulderboomteelt.com",
       "statement_url": "https://www.denmulderboomteelt.com/pages/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
+    },
+    {
+      "name": "diavazo.eu",
+      "url": "https://diavazo.eu",
+      "statement_url": "https://diavazo.eu/us/about-us/policies/accessibility-statement/",
+      "statement_link_text": "Accessibility Statement",
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Dierapotheker.nl",
@@ -357,13 +371,6 @@
       "statement_url": "https://www.dierapotheker.nl/dierapotheker.nl/european-accessibility-act/",
       "statement_link_text": "European Accessibility Act",
       "confirmed": "2026-10-12"
-    },
-    {
-      "name": "DirectLicentie.nl",
-      "url": "https://directlicentie.nl",
-      "statement_url": "https://directlicentie.nl/blogs/nieuws-1/windows-11-test-energietips-en-betere-muisaanwijzer",
-      "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-28"
     },
     {
       "name": "DOUXE Hotel Luxury",
@@ -429,6 +436,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Ep.nl",
+      "url": "https://www.ep.nl",
+      "statement_url": "https://www.ep.nl/digitale-toegankelijkheid",
+      "statement_link_text": "Digitale toegankelijkheid",
+      "confirmed": "2026-11-02"
+    },
+    {
       "name": "Essenza Home",
       "url": "https://www.essenzahome.nl",
       "statement_url": "https://www.essenzahome.nl/toegankelijkheidsverklaring",
@@ -468,7 +482,7 @@
       "url": "https://www.fietsaccu-revisie.nl",
       "statement_url": "https://www.fietsaccu-revisie.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Fifty Cal",
@@ -510,14 +524,14 @@
       "url": "https://www.gents.nl",
       "statement_url": "https://www.gents.nl/pages/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Golden Naturals",
       "url": "https://www.goldennaturals.nl",
       "statement_url": "https://www.goldennaturals.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "GOLDNER",
@@ -602,13 +616,6 @@
       "statement_url": "https://nl.hudsonreed.com/hudson-reed-toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-10-12"
-    },
-    {
-      "name": "Hydropeptide",
-      "url": "https://hydropeptide.nl",
-      "statement_url": "https://hydropeptide.nl/pages/accessibility-statement",
-      "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-28"
     },
     {
       "name": "iEar | Ultimate sound and vision",
@@ -748,7 +755,7 @@
       "url": "https://keizers.nu",
       "statement_url": "https://keizers.nu/pages/digitale-toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Kerstpakkettenplaza.nl",
@@ -902,7 +909,7 @@
       "url": "https://www.matrasdirect.nl",
       "statement_url": "https://matrasdirect.nl/digitale-toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "MediaMarkt",
@@ -1024,6 +1031,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Office Centre",
+      "url": "https://www.officecentre.nl",
+      "statement_url": "https://www.officecentre.nl/page/digitale-toegankelijkheidsverklaring.html",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-11-02"
+    },
+    {
       "name": "OfficeNext.nl",
       "url": "https://officenext.nl",
       "statement_url": "https://officenext.nl/pagina/toegankelijkheid",
@@ -1057,6 +1071,13 @@
       "statement_url": "https://www.only.com/nl-nl/content/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-09-21"
+    },
+    {
+      "name": "Only for Men",
+      "url": "https://www.onlyformen.nl",
+      "statement_url": "https://www.onlyformen.nl/veiligheid-privacy/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Optiphar",
@@ -1168,7 +1189,7 @@
       "url": "https://www.primera.nl",
       "statement_url": "https://www.primera.nl/digitale-toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Printerland.nl",
@@ -1287,7 +1308,7 @@
       "url": "https://sexyjoy.nl",
       "statement_url": "https://sexyjoy.nl/pages/toegankelijkheid",
       "statement_link_text": "Verklaring inzake toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "shirts.nl",
@@ -1490,14 +1511,14 @@
       "url": "https://www.travelbags.nl",
       "statement_url": "https://www.travelbags.nl/klantenservice/toegankelijkheid/",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Treasure Juwelier",
       "url": "https://www.treasurejuwelier.nl",
       "statement_url": "https://www.treasurejuwelier.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Triple J Online",
@@ -1626,11 +1647,25 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Visservice",
+      "url": "https://visservicewebshop.nl",
+      "statement_url": "https://visservicewebshop.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-02"
+    },
+    {
       "name": "Vitakruid",
       "url": "https://www.vitakruid.nl",
       "statement_url": "https://www.vitakruid.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-10-05"
+    },
+    {
+      "name": "VloertegelVoordeel.nl",
+      "url": "https://VloertegelVoordeel.nl",
+      "statement_url": "https://s-webdesign.nl/",
+      "statement_link_text": "Accessibility",
+      "confirmed": "2026-11-02"
     },
     {
       "name": "VoetbalDirect.nl",
@@ -1700,7 +1735,7 @@
       "url": "https://weekendjeweg.nl",
       "statement_url": "https://weekendjeweg.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Wehkamp",
@@ -1791,7 +1826,7 @@
       "url": "https://www.yoek.nl",
       "statement_url": "https://www.yoek.nl/pages/accessibility-statement",
       "statement_link_text": "Accessibility statement",
-      "confirmed": "2026-09-28"
+      "confirmed": "2026-11-02"
     },
     {
       "name": "Your Look for less!",
