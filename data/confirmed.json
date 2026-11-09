@@ -90,7 +90,7 @@
       "url": "https://www.amazon.nl",
       "statement_url": "https://www.amazon.nl/gp/help/customer/display.html?nodeId=GUUVBZ8WGVFP8R8X&ref_=nav_foot_accessibility",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-09-07"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Annadiva.nl",
@@ -175,6 +175,13 @@
       "statement_url": "https://www.bever.nl/klantenservice/toegankelijkheidsverklaring.html",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-10-26"
+    },
+    {
+      "name": "Bijenkorf",
+      "url": "https://www.debijenkorf.nl",
+      "statement_url": "https://www.debijenkorf.nl/over-de-bijenkorf/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
     },
     {
       "name": "BMW",
@@ -345,6 +352,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Dekbedden.nl",
+      "url": "https://www.dekbedden.nl",
+      "statement_url": "https://www.dekbedden.nl/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
+    },
+    {
       "name": "Delfitoys",
       "url": "https://www.delfitoys.com",
       "statement_url": "https://www.delfitoys.com/toegankelijkheidsverklaring",
@@ -371,6 +385,13 @@
       "statement_url": "https://www.dierapotheker.nl/dierapotheker.nl/european-accessibility-act/",
       "statement_link_text": "European Accessibility Act",
       "confirmed": "2026-10-12"
+    },
+    {
+      "name": "Donzendekbed.nl",
+      "url": "https://www.donzendekbed.nl",
+      "statement_url": "https://www.donzendekbed.nl/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
     },
     {
       "name": "DOUXE Hotel Luxury",
@@ -475,7 +496,7 @@
       "url": "https://www.feestbeest.nl",
       "statement_url": "https://www.feestbeest.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Fietsaccu-revisie.nl",
@@ -566,7 +587,7 @@
       "url": "https://www.harlequin.nl",
       "statement_url": "https://www.harlequin.nl/pages/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Hayes Brothers",
@@ -594,7 +615,7 @@
       "url": "https://www.hockeydirect.nl",
       "statement_url": "https://www.hockeydirect.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "HomeLiving.nl",
@@ -734,7 +755,7 @@
       "url": "https://www.kabrita.nl",
       "statement_url": "https://www.kabrita.nl/pages/toegankelijkheidsverklaring-kabrita-nederland",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Karpet24.nl",
@@ -800,11 +821,25 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Koopmetservice B.V.",
+      "url": "https://www.koopmetservice.nl",
+      "statement_url": "https://www.koopmetservice.nl/klantenservice/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-11-09"
+    },
+    {
       "name": "Korfbalshop.nl",
       "url": "https://www.korfbalshop.nl",
       "statement_url": "https://www.korfbalshop.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-10-12"
+    },
+    {
+      "name": "Kozijnshop.nl",
+      "url": "https://www.kozijnshop.nl",
+      "statement_url": "https://www.kozijnshop.nl/toegankelijkheid",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
     },
     {
       "name": "KPN",
@@ -951,7 +986,7 @@
       "url": "https://mobisite.nl",
       "statement_url": "https://mobisite.nl/pages/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "MotoPort.nl",
@@ -1049,7 +1084,7 @@
       "url": "https://olijfbomen.nl",
       "statement_url": "https://olijfbomen.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheid",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Omoda",
@@ -1164,6 +1199,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Pink Gellac",
+      "url": "https://pinkgellac.com/nl",
+      "statement_url": "https://pinkgellac.com/nl/pages/accessibility",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
+    },
+    {
       "name": "Pixum",
       "url": "https://www.pixum.nl",
       "statement_url": "https://www.pixum.nl/over-ons/toegankelijkheidsverklaring",
@@ -1210,7 +1252,7 @@
       "url": "https://www.puurmieke.nl",
       "statement_url": "https://www.puurmieke.nl/service/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "reBuy",
@@ -1455,7 +1497,7 @@
       "url": "https://www.tennisdirect.nl",
       "statement_url": "https://www.tennisdirect.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Teufel",
@@ -1549,6 +1591,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Tuursleep.com",
+      "url": "https://www.tuursleep.com",
+      "statement_url": "https://www.tuursleep.com/hulp-advies/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
+    },
+    {
       "name": "Uitgeverij Zwijsen Webshop",
       "url": "https://www.zwijsen.nl",
       "statement_url": "https://www.zwijsen.nl/klantenservice/toegankelijkheidsverklaring/",
@@ -1560,7 +1609,7 @@
       "url": "https://www.unilux.nl",
       "statement_url": "https://www.unilux.nl/toegankelijkheidsverklaring/",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Unoxovens.nl",
@@ -1575,6 +1624,13 @@
       "statement_url": "https://www.vanbeekumspecerijen.nl/",
       "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
       "confirmed": "2026-10-26"
+    },
+    {
+      "name": "Van Dal Mannenmode",
+      "url": "https://www.vdal.nl",
+      "statement_url": "https://www.vdal.nl/toegankelijkheidsverklaring/",
+      "statement_link_text": "Toegankelijkheidsverklaring",
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Van der Garde tuinmeubelen",
@@ -1658,7 +1714,7 @@
       "url": "https://www.vitakruid.nl",
       "statement_url": "https://www.vitakruid.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "VloertegelVoordeel.nl",
@@ -1801,6 +1857,13 @@
       "confirmed": "2026-10-12"
     },
     {
+      "name": "Wollendekbed.nl",
+      "url": "https://www.wollendekbed.nl",
+      "statement_url": "https://www.wollendekbed.nl/toegankelijkheid/",
+      "statement_link_text": "Toegankelijkheid",
+      "confirmed": "2026-11-09"
+    },
+    {
       "name": "WoonVeilig",
       "url": "https://www.woonveilig.nl/shop",
       "statement_url": "https://www.woonveilig.nl/toegankelijkheidsverklaring",
@@ -1819,7 +1882,7 @@
       "url": "https://www.xenos.nl",
       "statement_url": "https://www.xenos.nl/digitale-toegankelijkheid",
       "statement_link_text": "Digitale toegankelijkheid",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Yoek",
@@ -1861,7 +1924,7 @@
       "url": "https://www.zen-lifestyle.nl",
       "statement_url": "https://www.zen-lifestyle.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
-      "confirmed": "2026-10-05"
+      "confirmed": "2026-11-09"
     },
     {
       "name": "Zooplus",

@@ -166,5 +166,13 @@
     "without_statement": 8081,
     "errors": 1943,
     "pct_with": 2
+  },
+  {
+    "date": "2026-11-09",
+    "total": 10271,
+    "with_statement": 257,
+    "without_statement": 8044,
+    "errors": 1970,
+    "pct_with": 3
   }
 ]
