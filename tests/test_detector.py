@@ -105,6 +105,9 @@ CASES = [
      _page('<a href="/contact">Contact</a><a href="/retour">Retourneren</a>'),
      False, "success", None),
 
+    ("handmatig afgekeurd (BMW, uitleg over de Accessibility Act)", "https://lifestyle.bmw.com/nl/nl/home",
+     _page('<a href="https://lifestyle.bmw.com/nl/nl/accessibility-act.html">Accessibility Act</a>'),
+     False, "success", None),
     # ---- Niet te controleren: bot-challenge / lege render (<5 links) ----
     ("bot-challenge, weinig links", "https://www.kruidvat.nl",
      "<html><body><div class='footer'><a href='/verify'>Even geduld</a></div></body></html>",
