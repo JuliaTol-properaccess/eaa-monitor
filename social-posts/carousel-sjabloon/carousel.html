@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>EAA Monitor: stand van de telling</title>
+<!--
+  Sjabloon voor de driewekelijkse LinkedIn-carousel (5 pagina's, 1080x1350).
+  De cijfers staan in het blok <script id="cijfers"> hieronder: de uitvoer van
+  tools/carousel_cijfers.py. tools/maak_carousel.py vervangt alles tussen
+  CIJFERS-BEGIN en CIJFERS-EIND en drukt het af naar PDF. Het script onderaan
+  vult de pagina's; er wordt niets van buiten geladen behalve de fonts.
+  Fontpaden zijn relatief vanaf social-posts/<map>/.
+-->
+<style>
+@font-face { font-family: 'Fraunces'; font-weight: 100 900; src: url('../../public/static/fonts/fraunces-latin-wght-normal.woff2') format('woff2-variations'); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: 'Fraunces'; font-weight: 100 900; src: url('../../public/static/fonts/fraunces-latin-ext-wght-normal.woff2') format('woff2-variations'); unicode-range: U+0100-02BA; }
+@font-face { font-family: 'Atkinson'; font-weight: 400; src: url('../../public/static/fonts/atkinson-hyperlegible-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson'; font-weight: 700; src: url('../../public/static/fonts/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plex Mono'; font-weight: 400; src: url('../../public/static/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plex Mono'; font-weight: 500; src: url('../../public/static/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2'); }
+
+:root {
+  --papier: #FAF7F1; --zachtgroen: #E9F2EA; --inkt: #20281F; --steungrijs: #46524B;
+  --loofgroen: #1A5632; --dennengroen: #0D2B1F; --oker: #F4C84B;
+  --rood: #B3261E; --lijn: #C8D2C9; --spoor: #E4E0D6;
+}
+@page { size: 1080px 1350px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--papier); }
+body { font-family: 'Atkinson', system-ui, sans-serif; color: var(--inkt); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+.slide {
+  width: 1080px; height: 1350px; position: relative; overflow: hidden;
+  background: var(--papier); padding: 64px 84px 0;
+  display: flex; flex-direction: column;
+  border-top: 10px solid var(--oker);
+  page-break-after: always; break-after: page;
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+.slide.donker { background: var(--dennengroen); color: var(--papier); }
+
+.kop { display: flex; justify-content: space-between; align-items: center; }
+.kop svg { height: 72px; width: auto; }
+.teller { font-family: 'Plex Mono', monospace; font-size: 24px; color: var(--steungrijs); letter-spacing: .08em; }
+.donker .teller { color: #C9D6CC; }
+
+.label { font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 26px; letter-spacing: .14em; text-transform: uppercase; color: var(--loofgroen); margin-top: 52px; }
+.donker .label { color: var(--oker); }
+h1, h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.08; }
+h2 { font-size: 66px; margin-top: 24px; }
+.inhoud { flex: 1; display: flex; flex-direction: column; }
+.tekst { font-size: 32px; line-height: 1.45; color: var(--steungrijs); margin-top: 28px; max-width: 880px; }
+.tekst strong { color: var(--inkt); }
+.donker .tekst { color: #DCE5DE; }
+.donker .tekst strong { color: var(--papier); }
+
+.voet { border-top: 2px solid var(--lijn); margin-top: auto; padding: 24px 0 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+.donker .voet { border-color: #2E4A3C; }
+.bron { font-size: 22px; line-height: 1.4; color: var(--steungrijs); max-width: 700px; }
+.donker .bron { color: #C9D6CC; }
+.site { font-family: 'Plex Mono', monospace; font-size: 26px; color: var(--inkt); white-space: nowrap; }
+.donker .site { color: var(--papier); }
+
+/* 1. kopcijfer */
+.groot { font-family: 'Fraunces', Georgia, serif; font-weight: 800; font-size: 330px; line-height: .9; color: var(--loofgroen); letter-spacing: -.03em; margin-top: 56px; }
+.groot-zin { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 64px; line-height: 1.1; margin-top: 36px; }
+.groot-zin em { font-style: normal; color: var(--loofgroen); }
+.kerngetallen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.kerngetal { border-top: 4px solid var(--inkt); padding-top: 14px; }
+.kerngetal b { display: block; font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 40px; }
+.kerngetal span { display: block; font-size: 24px; line-height: 1.3; color: var(--steungrijs); margin-top: 6px; }
+
+/* 2. sectoren */
+.sectoren { list-style: none; margin-top: 36px; display: flex; flex-direction: column; gap: 18px; }
+.sector-rij { display: grid; grid-template-columns: 1fr auto; row-gap: 10px; align-items: baseline; }
+.sector-naam { font-size: 30px; font-weight: 700; }
+.sector-naam .klein { font-family: 'Plex Mono', monospace; font-weight: 400; font-size: 20px; color: var(--steungrijs); margin-left: 10px; }
+.sector-pct { font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 34px; text-align: right; }
+.sector-pct small { font-weight: 400; font-size: 22px; color: var(--steungrijs); margin-left: 12px; }
+.balk { grid-column: 1 / -1; height: 22px; background: var(--spoor); border-radius: 11px; overflow: hidden; }
+.balk i { display: block; height: 100%; background: var(--loofgroen); border-radius: 11px; min-width: 8px; }
+.aantekening { font-size: 24px; line-height: 1.4; color: var(--steungrijs); margin-top: 24px; }
+
+/* 3. lijn */
+.grafiek { margin-top: 28px; }
+.grafiek svg { width: 100%; height: auto; display: block; }
+.grafiek text { font-family: 'Plex Mono', monospace; }
+
+/* 4. WCAG-scan */
+.scan-groot { font-family: 'Fraunces', Georgia, serif; font-weight: 800; font-size: 210px; line-height: .9; color: var(--rood); margin-top: 36px; letter-spacing: -.03em; }
+.verdeling { display: flex; height: 64px; border-radius: 12px; overflow: hidden; margin-top: 36px; gap: 4px; }
+.verdeling .fout { background: var(--rood); }
+.verdeling .schoon { background: var(--loofgroen); }
+.legenda { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 28px; font-size: 30px; }
+.legenda li { display: flex; align-items: center; gap: 18px; }
+.legenda b { font-family: 'Plex Mono', monospace; font-weight: 500; min-width: 76px; }
+.stip { width: 26px; height: 26px; flex: none; }
+.stip.fout { background: var(--rood); border-radius: 50%; }
+.stip.schoon { background: var(--loofgroen); border-radius: 4px; }
+.stip.niet { border: 3px solid var(--steungrijs); border-radius: 50%; }
+.nuance { background: var(--zachtgroen); border: 2px solid var(--lijn); border-radius: 18px; padding: 30px 36px; font-size: 28px; line-height: 1.45; margin-top: 32px; }
+
+/* 5. oproep */
+.oproep { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 104px; line-height: 1.02; margin-top: 120px; }
+.oproep em { font-style: normal; color: var(--oker); }
+.url { display: inline-block; font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 54px; background: var(--oker); color: var(--dennengroen); padding: 18px 30px; border-radius: 14px; margin-top: 64px; }
+</style>
+</head>
+<body>
+
+<!-- CIJFERS-BEGIN -->
+<script type="application/json" id="cijfers">
+{"vul": "tools/maak_carousel.py vult dit blok met de uitvoer van tools/carousel_cijfers.py"}
+</script>
+<!-- CIJFERS-EIND -->
+
+<template id="logo">
+  <svg viewBox="0 0 432 96" role="img" aria-label="EAA Monitor">
+    <rect x="6" y="16" width="64" height="64" rx="14" fill="#0D2B1F" stroke="#FAF7F1" stroke-width="2"/>
+    <rect x="20" y="32" width="36" height="7" rx="3.5" fill="#FAF7F1"/>
+    <rect x="20" y="45" width="36" height="7" rx="3.5" fill="#FAF7F1"/>
+    <rect x="20" y="58" width="36" height="7" rx="3.5" fill="#FAF7F1" opacity="0.25"/>
+    <rect x="20" y="58" width="15" height="7" rx="3.5" fill="#F4C84B"/>
+    <text x="90" y="62" font-family="Fraunces, Georgia, serif" font-size="40" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="700">EAA</tspan><tspan dx="10">Monitor</tspan><tspan fill="#1A5632" font-weight="700">.</tspan></text>
+  </svg>
+</template>
+
+<main id="slides"></main>
+
+<script>
+(function () {
+  var d = JSON.parse(document.getElementById('cijfers').textContent);
+  var MAANDEN = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  function datum(iso, metJaar) {
+    var p = iso.split('-');
+    return (+p[2]) + ' ' + MAANDEN[+p[1] - 1] + (metJaar === false ? '' : ' ' + p[0]);
+  }
+  function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  var T = d.totaal, S = d.sectoren, W = d.wcag_scan;
+  var AANTAL = 5;
+  var NOEMER = 'van de sites die we konden controleren';
+  var bronMeting = 'Bron: EAA Monitor, meting van ' + datum(d.peildatum) + '. Percentages ' + NOEMER + '.';
+  var logo = document.getElementById('logo').innerHTML;
+
+  function slide(nr, inhoud, bron, donker) {
+    return '<section class="slide' + (donker ? ' donker' : '') + '" aria-label="Pagina ' + nr + ' van ' + AANTAL + '">' +
+      '<div class="kop">' + logo + '<span class="teller">' + nr + ' / ' + AANTAL + '</span></div>' +
+      '<div class="inhoud">' + inhoud + '</div>' +
+      '<div class="voet"><p class="bron">' + bron + '</p><span class="site">eaa-monitor.nl</span></div>' +
+      '</section>';
+  }
+
+  // 1. Kopcijfer
+  var s1 =
+    '<p class="label">Stand van de telling · ' + datum(d.peildatum) + '</p>' +
+    '<p class="groot">' + T.pct_met + '%</p>' +
+    '<h1 class="groot-zin">' + NOEMER + ' heeft een <em>toegankelijkheids&shy;verklaring</em> in de footer.</h1>' +
+    '<div class="kerngetallen">' +
+      '<div class="kerngetal"><b>' + getal(T.totaal) + '</b><span>sites gevolgd in ' + S.length + ' sectoren</span></div>' +
+      '<div class="kerngetal"><b>' + getal(T.met) + '</b><span>met verklaring, van ' + getal(T.gecontroleerd) + ' gecontroleerd</span></div>' +
+      '<div class="kerngetal"><b>' + getal(T.niet_te_controleren) + '</b><span>niet te controleren, telt niet mee</span></div>' +
+    '</div>';
+
+  // 2. Sectoren
+  var kleine = S.filter(function (s) { return s.klein; });
+  var rijen = S.map(function (s) {
+    return '<li class="sector-rij">' +
+      '<span class="sector-naam">' + esc(s.naam) + (s.klein ? '<span class="klein">kleine groep</span>' : '') + '</span>' +
+      '<span class="sector-pct">' + s.pct_met + '%<small>' + getal(s.met) + ' van ' + getal(s.gecontroleerd) + '</small></span>' +
+      '<span class="balk" aria-hidden="true"><i style="width:' + s.pct_met + '%"></i></span>' +
+    '</li>';
+  }).join('');
+  var aantekening = '';
+  if (kleine.length) {
+    var maxG = Math.max.apply(null, kleine.map(function (s) { return s.gecontroleerd; }));
+    var minG = Math.min.apply(null, kleine.map(function (s) { return s.gecontroleerd; }));
+    var van = Math.round(100 / maxG), tot = Math.round(100 / minG);
+    aantekening = '<p class="aantekening">Kleine groep: minder dan 30 sites. Daar verandert het percentage met ' +
+      (van === tot ? van : van + ' tot ' + tot) + ' procentpunt als één site een verklaring plaatst of weghaalt.</p>';
+  }
+  var s2 =
+    '<p class="label">Per sector</p>' +
+    '<h2>Hoeveel sites hebben een verklaring?</h2>' +
+    '<ul class="sectoren">' + rijen + '</ul>' + aantekening;
+
+  // 3. Lijn sinds de start van de wekelijkse meting (aantal sites met verklaring, totaal)
+  var L = T.lijn, n = L.length;
+  var b = 912, h = 430, ml = 84, mr = 24, mt = 30, mb = 64;
+  var pw = b - ml - mr, ph = h - mt - mb;
+  var maxMet = Math.max.apply(null, L.map(function (p) { return p.met; }));
+  var stap = Math.pow(10, Math.floor(Math.log10(maxMet)));
+  var yMax = Math.ceil(maxMet * 1.15 / stap) * stap;
+  function x(i) { return ml + (n === 1 ? pw / 2 : pw * i / (n - 1)); }
+  function y(v) { return mt + ph - ph * v / yMax; }
+  var svg = '<svg viewBox="0 0 ' + b + ' ' + h + '" role="img" aria-label="Lijn: aantal sites met verklaring per week, van ' +
+    getal(L[0].met) + ' op ' + datum(L[0].datum) + ' naar ' + getal(L[n - 1].met) + ' op ' + datum(L[n - 1].datum) + '.">';
+  for (var g = 0; g <= 4; g++) {
+    var v = yMax * g / 4;
+    svg += '<line x1="' + ml + '" x2="' + (b - mr) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="' + (g === 0 ? '#20281F' : '#C8D2C9') + '" stroke-width="' + (g === 0 ? 2 : 1.5) + '"/>' +
+      '<text x="' + (ml - 14) + '" y="' + (y(v) + 8) + '" text-anchor="end" font-size="22" fill="#46524B">' + getal(Math.round(v)) + '</text>';
+  }
+  svg += '<text x="' + x(0) + '" y="' + (h - 18) + '" text-anchor="start" font-size="22" fill="#46524B">' + datum(L[0].datum, false) + '</text>' +
+         '<text x="' + x(n - 1) + '" y="' + (h - 18) + '" text-anchor="end" font-size="22" fill="#46524B">' + datum(L[n - 1].datum, false) + '</text>';
+  var pad = L.map(function (p, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p.met).toFixed(1); }).join(' ');
+  svg += '<path d="' + pad + '" fill="none" stroke="#1A5632" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>';
+  L.forEach(function (p, i) { svg += '<circle cx="' + x(i) + '" cy="' + y(p.met) + '" r="7" fill="#1A5632"/>'; });
+  svg += '<text x="' + (x(0) + 8) + '" y="' + (y(L[0].met) - 22) + '" font-size="28" font-weight="500" fill="#20281F">' + getal(L[0].met) + '</text>' +
+         '<text x="' + (x(n - 1) - 4) + '" y="' + (y(L[n - 1].met) - 22) + '" text-anchor="end" font-size="28" font-weight="500" fill="#20281F">' + getal(L[n - 1].met) + '</text>';
+  svg += '</svg>';
+  var verschil = L[n - 1].met - L[0].met;
+  var kop3 = verschil > 0 ? getal(verschil) + ' sites kregen een verklaring erbij.'
+           : verschil < 0 ? getal(-verschil) + ' sites minder met een verklaring.'
+           : 'Evenveel sites met een verklaring als bij de start.';
+  var s3 =
+    '<p class="label">Sinds ' + datum(d.lijn_vanaf) + '</p>' +
+    '<h2>' + kop3 + '</h2>' +
+    '<p class="tekst">Aantal sites met een verklaring, alle sectoren samen, elke maandag geteld. Het aandeel ging van <strong>' +
+      L[0].pct_met + '%</strong> naar <strong>' + L[n - 1].pct_met + '%</strong> ' + NOEMER + '.</p>' +
+    '<div class="grafiek">' + svg + '</div>' +
+    (kleine.length ? '<p class="aantekening">Geen lijn per sector: ' + kleine.length + ' van de ' + S.length +
+      ' sectoren hebben minder dan 30 sites. Daar zegt een verschil van week tot week weinig.</p>' : '');
+
+  // 4. WCAG-scan
+  var gescand = W.fouten + W.schoon;
+  var s4 =
+    '<p class="label">WCAG-scan · ' + datum(W.scandatum) + '</p>' +
+    '<p class="scan-groot">' + W.pct_fouten_van_gescand + '%</p>' +
+    '<h2>van de gescande sites mét verklaring heeft toch WCAG-fouten.</h2>' +
+    '<div class="verdeling" aria-hidden="true"><span class="fout" style="flex:' + W.fouten + '"></span><span class="schoon" style="flex:' + W.schoon + '"></span></div>' +
+    '<ul class="legenda">' +
+      '<li><span class="stip fout" aria-hidden="true"></span><b>' + getal(W.fouten) + '</b>met minstens één gevonden fout</li>' +
+      '<li><span class="stip schoon" aria-hidden="true"></span><b>' + getal(W.schoon) + '</b>zonder gevonden fout</li>' +
+      '<li><span class="stip niet" aria-hidden="true"></span><b>' + getal(W.niet_scanbaar) + '</b>niet te scannen, telt niet mee</li>' +
+    '</ul>' +
+    '<p class="nuance">Een automatische scan vindt een deel van de fouten. Geen fouten gevonden betekent niet dat een site toegankelijk is. Het aantal sites met fouten is een ondergrens.</p>';
+  var bron4 = 'Bron: EAA Monitor, WCAG-scan van ' + datum(W.scandatum) + ' op ' + getal(W.total) + ' sites met verklaring. Percentage van de ' + getal(gescand) + ' sites die we konden scannen.';
+
+  // 5. Oproep
+  var s5 =
+    '<p class="label">Zelf kijken</p>' +
+    '<p class="oproep">Staat jouw site in de telling? <em>Zoek hem op.</em></p>' +
+    '<p class="tekst">' + getal(T.totaal) + ' sites in ' + S.length + ' sectoren, elke week opnieuw gecontroleerd. Per site zie je of we een verklaring vonden.</p>' +
+    '<p><span class="url">eaa-monitor.nl</span></p>';
+
+  document.getElementById('slides').innerHTML =
+    slide(1, s1, bronMeting) +
+    slide(2, s2, bronMeting) +
+    slide(3, s3, 'Bron: EAA Monitor, wekelijkse metingen van ' + datum(d.lijn_vanaf, false) + ' tot en met ' + datum(d.peildatum) + '.') +
+    slide(4, s4, bron4) +
+    slide(5, s5, 'Bron: EAA Monitor, meting van ' + datum(d.peildatum) + '.', true);
+})();
+</script>
+</body>
+</html>
