@@ -1,0 +1,824 @@
+{
+  "peildatum": "2026-11-23",
+  "lijn_vanaf": "2026-09-07",
+  "noemer": "met + zonder (sites die we konden controleren)",
+  "sectoren": [
+    {
+      "key": "webshops",
+      "naam": "E-commerce",
+      "toezicht": "ACM-toezicht",
+      "noun": "webshops",
+      "datum": "2026-11-23",
+      "totaal": 10271,
+      "met": 270,
+      "zonder": 7970,
+      "niet_te_controleren": 2031,
+      "gecontroleerd": 8240,
+      "pct_met": 3,
+      "klein": false,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 23,
+        "pct_punt": 0,
+        "pct_met_toen": 3
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 68,
+        "pct_punt": 1,
+        "pct_met_toen": 2
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 2,
+          "met": 202,
+          "gecontroleerd": 8725
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 2,
+          "met": 208,
+          "gecontroleerd": 8797
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 2,
+          "met": 210,
+          "gecontroleerd": 8764
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 2,
+          "met": 214,
+          "gecontroleerd": 8728
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 3,
+          "met": 222,
+          "gecontroleerd": 8635
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 3,
+          "met": 226,
+          "gecontroleerd": 8300
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 3,
+          "met": 237,
+          "gecontroleerd": 8325
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 3,
+          "met": 243,
+          "gecontroleerd": 8298
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 3,
+          "met": 247,
+          "gecontroleerd": 8328
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 3,
+          "met": 257,
+          "gecontroleerd": 8301
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 3,
+          "met": 261,
+          "gecontroleerd": 8191
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 3,
+          "met": 270,
+          "gecontroleerd": 8240
+        }
+      ]
+    },
+    {
+      "key": "financieel",
+      "naam": "Financiële sector",
+      "toezicht": "AFM-toezicht",
+      "noun": "financiële instellingen",
+      "datum": "2026-11-23",
+      "totaal": 68,
+      "met": 42,
+      "zonder": 20,
+      "niet_te_controleren": 6,
+      "gecontroleerd": 62,
+      "pct_met": 68,
+      "klein": false,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 1,
+        "pct_punt": 1,
+        "pct_met_toen": 67
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 0,
+        "pct_punt": 1,
+        "pct_met_toen": 67
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 67,
+          "met": 42,
+          "gecontroleerd": 63
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 67,
+          "met": 42,
+          "gecontroleerd": 63
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 68,
+          "met": 43,
+          "gecontroleerd": 63
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 66,
+          "met": 42,
+          "gecontroleerd": 64
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 68,
+          "met": 42,
+          "gecontroleerd": 62
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 68,
+          "met": 43,
+          "gecontroleerd": 63
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 68,
+          "met": 42,
+          "gecontroleerd": 62
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 68,
+          "met": 42,
+          "gecontroleerd": 62
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 67,
+          "met": 41,
+          "gecontroleerd": 61
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 69,
+          "met": 42,
+          "gecontroleerd": 61
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 68,
+          "met": 42,
+          "gecontroleerd": 62
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 68,
+          "met": 42,
+          "gecontroleerd": 62
+        }
+      ]
+    },
+    {
+      "key": "telecom",
+      "naam": "Telecom",
+      "toezicht": "ACM-toezicht",
+      "noun": "telecomaanbieders",
+      "datum": "2026-11-23",
+      "totaal": 18,
+      "met": 13,
+      "zonder": 5,
+      "niet_te_controleren": 0,
+      "gecontroleerd": 18,
+      "pct_met": 72,
+      "klein": true,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 1,
+        "pct_punt": 1,
+        "pct_met_toen": 71
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 1,
+        "pct_punt": 1,
+        "pct_met_toen": 71
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 71,
+          "met": 12,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 72,
+          "met": 13,
+          "gecontroleerd": 18
+        }
+      ]
+    },
+    {
+      "key": "vervoer",
+      "naam": "Personenvervoer",
+      "toezicht": "ILT-toezicht",
+      "noun": "vervoerders",
+      "datum": "2026-11-23",
+      "totaal": 21,
+      "met": 6,
+      "zonder": 11,
+      "niet_te_controleren": 4,
+      "gecontroleerd": 17,
+      "pct_met": 35,
+      "klein": true,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 1,
+        "pct_punt": 4,
+        "pct_met_toen": 31
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 0,
+        "pct_punt": 0,
+        "pct_met_toen": 35
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 35,
+          "met": 6,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 38,
+          "met": 6,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 38,
+          "met": 6,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 38,
+          "met": 6,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 38,
+          "met": 6,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 38,
+          "met": 6,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 38,
+          "met": 6,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 40,
+          "met": 6,
+          "gecontroleerd": 15
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 31,
+          "met": 5,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 31,
+          "met": 5,
+          "gecontroleerd": 16
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 41,
+          "met": 7,
+          "gecontroleerd": 17
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 35,
+          "met": 6,
+          "gecontroleerd": 17
+        }
+      ]
+    },
+    {
+      "key": "media",
+      "naam": "Media & streaming",
+      "toezicht": "Commissariaat voor de Media",
+      "noun": "mediadiensten",
+      "datum": "2026-11-23",
+      "totaal": 15,
+      "met": 8,
+      "zonder": 6,
+      "niet_te_controleren": 1,
+      "gecontroleerd": 14,
+      "pct_met": 57,
+      "klein": true,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 0,
+        "pct_punt": -5,
+        "pct_met_toen": 62
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 0,
+        "pct_punt": -5,
+        "pct_met_toen": 62
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 62,
+          "met": 8,
+          "gecontroleerd": 13
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 62,
+          "met": 8,
+          "gecontroleerd": 13
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 57,
+          "met": 8,
+          "gecontroleerd": 14
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 57,
+          "met": 8,
+          "gecontroleerd": 14
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 57,
+          "met": 8,
+          "gecontroleerd": 14
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 62,
+          "met": 8,
+          "gecontroleerd": 13
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 62,
+          "met": 8,
+          "gecontroleerd": 13
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 57,
+          "met": 8,
+          "gecontroleerd": 14
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 62,
+          "met": 8,
+          "gecontroleerd": 13
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 57,
+          "met": 8,
+          "gecontroleerd": 14
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 62,
+          "met": 8,
+          "gecontroleerd": 13
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 57,
+          "met": 8,
+          "gecontroleerd": 14
+        }
+      ]
+    },
+    {
+      "key": "ebooks",
+      "naam": "E-books",
+      "toezicht": "ACM-toezicht",
+      "noun": "e-bookplatforms",
+      "datum": "2026-11-23",
+      "totaal": 10,
+      "met": 5,
+      "zonder": 2,
+      "niet_te_controleren": 3,
+      "gecontroleerd": 7,
+      "pct_met": 71,
+      "klein": true,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 0,
+        "pct_punt": 0,
+        "pct_met_toen": 71
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 0,
+        "pct_punt": -12,
+        "pct_met_toen": 83
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 83,
+          "met": 5,
+          "gecontroleerd": 6
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 67,
+          "met": 4,
+          "gecontroleerd": 6
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 67,
+          "met": 4,
+          "gecontroleerd": 6
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 57,
+          "met": 4,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 71,
+          "met": 5,
+          "gecontroleerd": 7
+        }
+      ]
+    },
+    {
+      "key": "reizen",
+      "naam": "Reisorganisaties",
+      "toezicht": "ACM-toezicht",
+      "noun": "reisorganisaties",
+      "datum": "2026-11-23",
+      "totaal": 24,
+      "met": 4,
+      "zonder": 20,
+      "niet_te_controleren": 0,
+      "gecontroleerd": 24,
+      "pct_met": 17,
+      "klein": true,
+      "vorige_editie": {
+        "datum": "2026-11-02",
+        "met": 0,
+        "pct_punt": -1,
+        "pct_met_toen": 18
+      },
+      "eerste_meting": {
+        "datum": "2026-09-07",
+        "met": 0,
+        "pct_punt": -1,
+        "pct_met_toen": 18
+      },
+      "lijn": [
+        {
+          "datum": "2026-09-07",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-09-14",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-09-21",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-09-28",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-10-05",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-10-12",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-10-19",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-10-26",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-11-02",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-11-09",
+          "pct_met": 18,
+          "met": 4,
+          "gecontroleerd": 22
+        },
+        {
+          "datum": "2026-11-16",
+          "pct_met": 17,
+          "met": 4,
+          "gecontroleerd": 24
+        },
+        {
+          "datum": "2026-11-23",
+          "pct_met": 17,
+          "met": 4,
+          "gecontroleerd": 24
+        }
+      ]
+    }
+  ],
+  "totaal": {
+    "datum": "2026-11-23",
+    "totaal": 10427,
+    "met": 348,
+    "zonder": 8034,
+    "niet_te_controleren": 2045,
+    "gecontroleerd": 8382,
+    "pct_met": 4,
+    "vorige_editie": {
+      "datum": "2026-11-02",
+      "met": 26,
+      "pct_punt": 0,
+      "pct_met_toen": 4
+    },
+    "eerste_meting": {
+      "datum": "2026-09-07",
+      "met": 69,
+      "pct_punt": 1,
+      "pct_met_toen": 3
+    },
+    "lijn": [
+      {
+        "datum": "2026-09-07",
+        "pct_met": 3,
+        "met": 279,
+        "gecontroleerd": 8863
+      },
+      {
+        "datum": "2026-09-14",
+        "pct_met": 3,
+        "met": 284,
+        "gecontroleerd": 8934
+      },
+      {
+        "datum": "2026-09-21",
+        "pct_met": 3,
+        "met": 287,
+        "gecontroleerd": 8902
+      },
+      {
+        "datum": "2026-09-28",
+        "pct_met": 3,
+        "met": 290,
+        "gecontroleerd": 8868
+      },
+      {
+        "datum": "2026-10-05",
+        "pct_met": 3,
+        "met": 299,
+        "gecontroleerd": 8773
+      },
+      {
+        "datum": "2026-10-12",
+        "pct_met": 4,
+        "met": 304,
+        "gecontroleerd": 8438
+      },
+      {
+        "datum": "2026-10-19",
+        "pct_met": 4,
+        "met": 314,
+        "gecontroleerd": 8462
+      },
+      {
+        "datum": "2026-10-26",
+        "pct_met": 4,
+        "met": 320,
+        "gecontroleerd": 8435
+      },
+      {
+        "datum": "2026-11-02",
+        "pct_met": 4,
+        "met": 322,
+        "gecontroleerd": 8464
+      },
+      {
+        "datum": "2026-11-09",
+        "pct_met": 4,
+        "met": 333,
+        "gecontroleerd": 8438
+      },
+      {
+        "datum": "2026-11-16",
+        "pct_met": 4,
+        "met": 339,
+        "gecontroleerd": 8331
+      },
+      {
+        "datum": "2026-11-23",
+        "pct_met": 4,
+        "met": 348,
+        "gecontroleerd": 8382
+      }
+    ]
+  },
+  "wcag_scan": {
+    "scandatum": "2026-11-24",
+    "total": 339,
+    "fouten": 244,
+    "schoon": 70,
+    "niet_scanbaar": 25,
+    "pct_fouten_van_gescand": 78
+  },
+  "waarschuwingen": [],
+  "bron": {
+    "ref": "origin/main",
+    "bestanden": [
+      "data/history.json",
+      "data/history-financieel.json",
+      "data/history-telecom.json",
+      "data/history-vervoer.json",
+      "data/history-media.json",
+      "data/history-ebooks.json",
+      "data/history-reizen.json",
+      "data/axe-results.json"
+    ]
+  }
+}
