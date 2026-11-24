@@ -128,20 +128,6 @@
       "confirmed": "2026-06-06"
     },
     {
-      "name": "Babywinkel.be",
-      "url": "https://www.babywinkel.be",
-      "statement_url": "https://www.babywinkel.be/",
-      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "confirmed": "2026-11-16"
-    },
-    {
-      "name": "Babywinkel.nl",
-      "url": "https://www.babywinkel.nl",
-      "statement_url": "https://www.babywinkel.nl/",
-      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "confirmed": "2026-11-16"
-    },
-    {
       "name": "Baldur-Nederland",
       "url": "https://www.baldur-nederland.nl",
       "statement_url": "https://www.baldur-nederland.nl/onion/content/toegankelijkheidsverklaring",
@@ -329,13 +315,6 @@
       "statement_url": "https://www.crisp.nl/toegankelijkheid",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-11-16"
-    },
-    {
-      "name": "Crysun guitars&parts",
-      "url": "https://www.crysun.nl",
-      "statement_url": "https://butterflygarden.nl/",
-      "statement_link_text": "Accessibility",
-      "confirmed": "2026-11-02"
     },
     {
       "name": "Cunavo",
@@ -966,13 +945,6 @@
       "statement_url": "https://www.managementboek.nl/klantenservice/juridisch/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-11-23"
-    },
-    {
-      "name": "Marktconcurrent",
-      "url": "https://www.marktconcurrent.nl",
-      "statement_url": "https://kaplunmarx.com/accessibility/",
-      "statement_link_text": "JUTAWANBET",
-      "confirmed": "2026-10-26"
     },
     {
       "name": "Matrabike.nl",
@@ -1703,13 +1675,6 @@
       "confirmed": "2026-11-16"
     },
     {
-      "name": "Van Beekum Specerijen",
-      "url": "https://www.vanbeekumspecerijen.nl",
-      "statement_url": "https://www.vanbeekumspecerijen.nl/",
-      "statement_link_text": "Schakel toegankelijkheidsmodus in of uit (a)",
-      "confirmed": "2026-10-26"
-    },
-    {
       "name": "Van Dal Mannenmode",
       "url": "https://www.vdal.nl",
       "statement_url": "https://www.vdal.nl/toegankelijkheidsverklaring/",
@@ -1799,13 +1764,6 @@
       "statement_url": "https://www.vitakruid.nl/toegankelijkheidsverklaring",
       "statement_link_text": "Toegankelijkheidsverklaring",
       "confirmed": "2026-11-09"
-    },
-    {
-      "name": "VloertegelVoordeel.nl",
-      "url": "https://VloertegelVoordeel.nl",
-      "statement_url": "https://s-webdesign.nl/",
-      "statement_link_text": "Accessibility",
-      "confirmed": "2026-11-02"
     },
     {
       "name": "VoetbalDirect.nl",

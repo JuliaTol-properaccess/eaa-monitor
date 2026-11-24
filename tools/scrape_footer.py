@@ -511,6 +511,14 @@ def is_overlay_vendor(url):
     return any(host == d or host.endswith("." + d) for d in OVERLAY_VENDOR_DOMAINS)
 
 
+def _is_homepage_link(url):
+    """True als de URL naar de homepage wijst (pad leeg of "/", zonder trefwoord in de query)."""
+    parsed = urlparse(url)
+    if parsed.path not in ("", "/"):
+        return False
+    return not any(kw in parsed.query.lower() for kw in KEYWORDS_HREF)
+
+
 def check_links_for_statement(links, base_url):
     """Check a list of <a> tags for accessibility statement links."""
     for link in links:
@@ -527,9 +535,32 @@ def check_links_for_statement(links, base_url):
         if is_overlay_vendor(statement_url):
             continue
 
+        # Link naar een homepage (pad leeg of "/"): geen verklaring-pagina. Zo
+        # telt een knop "Schakel toegankelijkheidsmodus in" met href="#" (Babywinkel)
+        # of een webbouwer-link "Accessibility" naar s-webdesign.nl/ niet mee
+        # (gemeten 23 november 2026).
+        if _is_homepage_link(statement_url):
+            continue
+
+        text_hit = len(raw_text) <= MAX_LINK_TEXT_LEN and any(kw in text for kw in KEYWORDS_TEXT)
+
+        # Ander domein: alleen geldig als zowel de linktekst als het pad over
+        # toegankelijkheid gaan. Echte gevallen (Foot Locker-PDF, JD Sports naar
+        # jdplc.com, Royal Canin naar mars.com, VGZ naar cooperatievgz.nl) halen dat;
+        # een gehackte footer-link "JUTAWANBET" naar een vreemd /accessibility/-pad niet.
+        if not _same_site(base_url, statement_url):
+            path_hit = any(kw in urlparse(statement_url).path.lower() for kw in KEYWORDS_HREF)
+            if text_hit and path_hit:
+                return {
+                    "has_statement": True,
+                    "statement_url": statement_url,
+                    "statement_link_text": raw_text,
+                }
+            continue
+
         # Linktekst: alleen een kort, label-achtig label telt (anders matcht het
         # woord ook in lange marketing-/bodytekst).
-        if len(raw_text) <= MAX_LINK_TEXT_LEN and any(kw in text for kw in KEYWORDS_TEXT):
+        if text_hit:
             return {
                 "has_statement": True,
                 "statement_url": statement_url,
