@@ -505,6 +505,33 @@ def safe_statement_url(base_url, href):
     return None
 
 
+# Verklaring-adressen die Julia met de hand heeft afgekeurd: de link en de pagina
+# lijken op een verklaring, maar zijn het niet (bv. BMW Lifestyle linkt naar uitleg
+# over de Accessibility Act; die pagina noemt WCAG en haalt zo de content-check).
+# De detector slaat zo'n link over en zoekt verder in de footer.
+REJECTED_FILE = DATA_DIR / "afgekeurde-verklaringen.json"
+_REJECTED = None
+
+
+def _rejected_statement_urls():
+    """Set van genormaliseerde verklaring-URL's die handmatig zijn afgekeurd."""
+    global _REJECTED
+    if _REJECTED is None:
+        try:
+            with open(REJECTED_FILE, encoding="utf-8") as f:
+                data = json.load(f)
+            items = data.get("afgekeurd", []) if isinstance(data, dict) else []
+            _REJECTED = {_normalize_url(e["statement_url"]) for e in items if e.get("statement_url")}
+        except (FileNotFoundError, json.JSONDecodeError):
+            _REJECTED = set()
+    return _REJECTED
+
+
+def is_rejected_statement(url):
+    """True als deze verklaring-URL handmatig is afgekeurd."""
+    return _normalize_url(url) in _rejected_statement_urls()
+
+
 def is_overlay_vendor(url):
     """True als de URL naar een toegankelijkheids-overlay/plugin-vendor wijst."""
     host = (urlparse(url).hostname or "").lower()
@@ -533,6 +560,10 @@ def check_links_for_statement(links, base_url):
 
         # Overlay-widget/plugin-vendor: nooit een verklaring, dus overslaan.
         if is_overlay_vendor(statement_url):
+            continue
+
+        # Handmatig afgekeurd (data/afgekeurde-verklaringen.json).
+        if is_rejected_statement(statement_url):
             continue
 
         # Link naar een homepage (pad leeg of "/"): geen verklaring-pagina. Zo
@@ -627,6 +658,8 @@ def find_statement_in_raw_html(html, base_url):
             continue
         resolved = safe_statement_url(base_url, candidate)
         if resolved is None or not _same_site(base_url, resolved):
+            continue
+        if is_rejected_statement(resolved):
             continue
         path = urlparse(resolved).path
         if _ASSET_EXT_RE.search(path) or _ASSET_DIR_RE.search(path):
@@ -1013,6 +1046,10 @@ def _load_confirmed(ds):
     out = {}
     for e in sites if isinstance(sites, list) else []:
         if e.get("url") and e.get("confirmed"):
+            # Een handmatig afgekeurde verklaring wordt niet overgeslagen maar opnieuw
+            # gecontroleerd; sync_confirmed haalt hem daarna uit de lijst.
+            if e.get("statement_url") and is_rejected_statement(e["statement_url"]):
+                continue
             out[_normalize_url(e["url"])] = e
     return out
 

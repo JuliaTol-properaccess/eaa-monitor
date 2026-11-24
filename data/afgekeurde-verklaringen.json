@@ -1,0 +1,12 @@
+{
+  "_comment": "Verklaring-adressen die met de hand zijn bekeken en geen toegankelijkheidsverklaring zijn. De scraper slaat deze links over en zoekt verder in de footer. Alleen toevoegen na eigen controle van de pagina.",
+  "afgekeurd": [
+    {
+      "name": "BMW",
+      "url": "https://lifestyle.bmw.com/nl/nl/home",
+      "statement_url": "https://lifestyle.bmw.com/nl/nl/accessibility-act.html",
+      "reden": "Uitleg over de European Accessibility Act, geen verklaring",
+      "gecontroleerd": "2026-11-24"
+    }
+  ]
+}
