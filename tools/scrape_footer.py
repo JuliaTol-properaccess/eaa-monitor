@@ -12,6 +12,7 @@ import json
 import os
 import re
 import signal
+import socket
 import sys
 import threading
 import time
@@ -747,8 +748,38 @@ def _wait_for_footer(page):
     page.wait_for_timeout(FOOTER_SETTLE_MS)
 
 
+DNS_ERROR_PREFIX = "Domein bestaat niet"
+
+
+def dns_error(url):
+    """Foutmelding als de host van de URL geen DNS-adres heeft, anders None.
+
+    Zonder deze check belandt Chromium op een eigen foutpagina en meldt de scraper
+    "page is navigating". Dan is niet te zien dat de webshop verdwenen is. Op
+    26 november 2026 bleken 123 webshops zo al weken als "niet te controleren" mee
+    te tellen.
+    """
+    host = urlparse(url).hostname
+    if not host:
+        return f"{DNS_ERROR_PREFIX}: geen geldige host in {url!r}"
+    try:
+        socket.getaddrinfo(host, 443)
+    except (socket.gaierror, UnicodeError):
+        return f"{DNS_ERROR_PREFIX} (geen DNS-adres voor {host})"
+    return None
+
+
 def check_webshop(page, url):
     """Check a single webshop for an accessibility statement link."""
+    dns = dns_error(url)
+    if dns:
+        return {
+            "has_statement": False,
+            "statement_url": None,
+            "statement_link_text": None,
+            "scrape_status": "error",
+            "error": dns,
+        }
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
         _dismiss_cookie_wall(page)

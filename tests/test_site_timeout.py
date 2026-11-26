@@ -17,6 +17,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import tools.scrape_footer as sf  # noqa: E402
 
+# Deze tests gaan over de per-site-cap met nagebootste pagina's op nep-domeinen
+# (voorbeeld.nl heeft geen DNS). Zet de DNS-check uit, anders stopt check_webshop
+# al vóór de pagina gebruikt wordt. De DNS-check zelf staat in test_detector.py.
+sf.dns_error = lambda url: None
+
 NOW = "2026-08-07T12:00:00+00:00"
 
 

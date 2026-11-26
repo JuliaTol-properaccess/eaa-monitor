@@ -22,6 +22,7 @@ from bs4 import BeautifulSoup  # noqa: E402
 from tools.scrape_footer import (  # noqa: E402
     accessibility_subpages,
     classify_html,
+    dns_error,
     page_looks_unrendered,
     statement_page_has_statement,
 )
@@ -272,6 +273,12 @@ def run():
         ok = ok and passed
         print(f"  [{'PASS' if passed else 'FAIL'}] {name:52} niet-gerenderd={got!s:5} verwacht={expected!s:5}")
 
+    print("\n  Dood domein:")
+    msg = dns_error("https://bestaat-niet.invalid")
+    passed = bool(msg) and msg.startswith("Domein bestaat niet")
+    ok = ok and passed
+    print(f"  [{'PASS' if passed else 'FAIL'}] .invalid-domein geeft 'Domein bestaat niet'  kreeg={msg!r}")
+
     print("\n  " + ("ALLES GOED" if ok else "REGRESSIE GEDETECTEERD"))
     return ok
 
@@ -304,3 +311,7 @@ def test_accessibility_subpages():
 
 if __name__ == "__main__":
     sys.exit(0 if run() else 1)
+
+
+def test_dns_error_dead_domain():
+    assert (dns_error("https://bestaat-niet.invalid") or "").startswith("Domein bestaat niet")
