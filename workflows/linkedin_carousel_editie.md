@@ -24,6 +24,30 @@ Access.
 Eerste editie: peildatum 23 november 2026. De volgende heeft peildatum 14 december
 2026 en wordt dinsdag 15 december gemaakt.
 
+### De herinnering
+
+Een cloud-routine, "EAA-monitor carousel-herinnering", draait elke dinsdag en
+woensdag om 09:00 UTC (10:00 in Nederland, in de zomer 11:00). Hij draait ook als
+de Mac uit staat. Beheren en stoppen: claude.ai/code/routines.
+
+De routine draait eerst `python3 tools/editie_nodig.py`. Dat script geeft één van
+drie besluiten:
+
+- `niets`: nog geen 21 dagen sinds de laatste editie, of er staat al een branch
+  `carousel-editie-<peildatum>`. De routine stopt zonder bericht.
+- `wachten`: het is tijd, maar de commit `Update WCAG-scan <peildatum + 1 dag>`
+  staat nog niet op `main`. De routine zet een kort bericht in Slack; woensdag
+  probeert hij het opnieuw.
+- `maken`: de routine voert stap 2, 3 en 6 hieronder uit, opent een pull request
+  en merget die niet. In `#flonam_eaa-monitor` komt een bericht met de link naar
+  de pull request, de kopcijfers en eventuele waarschuwingen.
+
+Stap 4, 5, 7 en 8 blijven met de hand: Julia controleert de cijfers, vult "wat viel
+op" in op de branch van de pull request, merget en plaatst het bericht.
+
+Een testrun zonder te wachten: `python3 tools/editie_nodig.py --laatste-editie
+<datum 21 dagen voor de peildatum>` doet alsof de vorige editie oud genoeg is.
+
 ## Stappen
 
 1. **Controleer of de scan binnen is.**
